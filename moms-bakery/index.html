@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Moms Bakery — custom taarten, cupcakes en bento cakes in Spijkenisse</title>
+<meta name="description" content="Custom verjaardagstaarten, gepersonaliseerde koekjes en cupcakes, bonbons, cupcake-party's voor kinderen en bento cake workshops. Moms Bakery in Spijkenisse, 5,0 op Google.">
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --butter:#ffd84d; --butter-l:#fff6d6; --tomato:#e2413b; --tomato-d:#b92e29; --choc:#3b2416; --mint:#9fe0c9; --sky:#bfe3ff;
+  --paper:#fffdf6; --ink:#3b2416; --soft:#6e5546; --line:#f0e3c4;
+  --display:"Fredoka", system-ui, sans-serif; --sans:"Nunito", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17.5px;line-height:1.6}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--tomato);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.demo{background:var(--choc);color:#e8d6c4;font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--butter)}
+.notice{background:var(--tomato);color:#fff;font-size:14px;text-align:center;padding:8px 16px;font-weight:800}
+
+.bar{display:flex;justify-content:space-between;align-items:center;height:84px}
+.bar img{height:56px;width:auto;display:block}
+.bar nav a{text-decoration:none;font-size:15.5px;margin-left:24px;font-weight:800;color:var(--soft)}
+.bar nav a:hover{color:var(--tomato)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:14px 28px;border-radius:16px;font-family:var(--display);font-weight:600;font-size:18px;text-decoration:none;border:3px solid var(--choc);cursor:pointer;box-shadow:4px 4px 0 var(--choc);transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--choc)}
+.btn-red{background:var(--tomato);color:#fff}
+.btn-red:hover{background:var(--tomato-d)}
+.btn-wh{background:#fff;color:var(--choc)}
+.btn-yel{background:var(--butter);color:var(--choc)}
+
+/* hero */
+.hero{background:var(--butter);position:relative;overflow:hidden;border-bottom:3px solid var(--choc)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(255,255,255,.35) 2px,transparent 2.5px) 0 0/26px 26px}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;padding-top:40px;padding-bottom:60px}
+.tag{display:inline-block;background:#fff;border:3px solid var(--choc);border-radius:999px;padding:5px 16px;font-weight:800;font-size:14px;margin-bottom:22px;transform:rotate(-2deg)}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(46px,6.6vw,90px);line-height:1;margin:0 0 22px;color:var(--choc)}
+.rot{display:inline-block;color:#fff;background:var(--tomato);padding:0 .22em .06em;border-radius:.2em;margin-top:.1em;transform:rotate(-1.5deg);border:3px solid var(--choc)}
+.hero p{font-size:19px;max-width:28em;margin:0 0 30px;color:var(--choc)}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.trust{margin-top:26px;font-size:15px;display:flex;flex-wrap:wrap;gap:8px 20px;font-weight:600}
+.trust b{font-family:var(--display);font-size:18px}
+.stage{position:relative;aspect-ratio:1/1;max-width:500px;width:100%;justify-self:center}
+.stage canvas{width:100%;height:100%;display:block}
+
+/* marquee */
+.band{background:var(--choc);color:var(--butter);overflow:hidden;white-space:nowrap}
+.band .track{display:inline-block;padding:14px 0;animation:slide 34s linear infinite;font-family:var(--display);font-weight:600;font-size:22px}
+.band span{margin:0 24px}
+.band span::after{content:"";display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--tomato);margin-left:48px;vertical-align:2px;box-shadow:0 0 0 3px var(--mint)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:96px 0}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(36px,4.6vw,58px);line-height:1.05;margin:0 0 14px;color:var(--choc)}
+h2 u{text-decoration:none;background:linear-gradient(transparent 62%,var(--butter) 62%)}
+.lead{color:var(--soft);font-size:18px;max-width:36em;margin:0 0 44px}
+
+/* bestel-kiezer */
+.pick .grid{display:grid;grid-template-columns:1.12fr .88fr;gap:44px;align-items:start}
+.step{margin-bottom:30px}
+.step h3{font-family:var(--display);font-weight:600;font-size:20px;margin:0 0 12px}
+.step h3 small{font-family:var(--sans);font-weight:400;font-size:14.5px;color:var(--soft)}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.opt{position:relative;text-align:left;background:#fff;border:3px solid var(--choc);border-radius:18px;padding:14px 14px 12px;font:inherit;color:var(--ink);cursor:pointer;min-height:44px;transition:transform .12s}
+.opt .em{display:block;width:36px;height:36px;margin-bottom:8px}
+.opt b{display:block;font-family:var(--display);font-weight:600;font-size:20px;line-height:1.1}
+.opt small{display:block;color:var(--soft);font-size:14px;margin-top:3px}
+.opt:hover{transform:translateY(-2px)}
+.opt[aria-pressed="true"]{background:var(--butter);box-shadow:4px 4px 0 var(--choc)}
+.opt .lbl{position:absolute;top:-12px;right:10px;background:var(--tomato);color:#fff;font-size:12px;font-weight:800;border-radius:999px;padding:2px 10px;border:2px solid var(--choc)}
+.date input{font:inherit;padding:12px 16px;border:3px solid var(--choc);border-radius:14px;min-height:54px;background:#fff;color:var(--ink)}
+.summary{background:#fff;border:3px solid var(--choc);border-radius:24px;padding:28px;position:sticky;top:24px;box-shadow:8px 8px 0 var(--tomato)}
+.summary .k{display:inline-block;background:var(--mint);border:2px solid var(--choc);border-radius:999px;padding:2px 12px;font-weight:800;font-size:13px}
+.summary h3{font-family:var(--display);font-weight:700;font-size:32px;line-height:1.1;margin:12px 0 18px}
+.summary dl{margin:0 0 24px;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:16px}
+.summary dt{color:var(--soft);font-weight:600}
+.summary dd{margin:0;font-weight:800}
+.summary .btn{width:100%}
+.summary .note{font-size:14px;color:var(--soft);margin-top:14px;text-align:center}
+.summary .open{margin-top:16px;padding-top:14px;border-top:2px dashed var(--line);font-size:14px;color:var(--soft);text-align:center}
+
+/* waarom */
+.why{background:var(--butter-l);border-top:3px solid var(--choc);border-bottom:3px solid var(--choc)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border:3px solid var(--choc);border-radius:24px;padding:28px}
+.card:nth-child(1){background:var(--sky)}
+.card:nth-child(2){background:var(--mint);transform:rotate(1deg)}
+.card:nth-child(3){background:#ffc9c4}
+.card h3{font-family:var(--display);font-weight:600;margin:0 0 8px;font-size:24px}
+.card p{margin:0}
+
+/* reviews */
+.revtop{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-bottom:44px}
+.five{background:var(--tomato);color:#fff;border:3px solid var(--choc);border-radius:50%;width:150px;height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-6deg);box-shadow:5px 5px 0 var(--choc)}
+.five b{font-family:var(--display);font-size:56px;line-height:1}
+.five span{font-size:13px;font-weight:800}
+.revtop p{margin:0;color:var(--soft);font-size:18px}
+.revtop h2{margin:0 0 6px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+blockquote{margin:0;background:#fff;border:3px solid var(--choc);border-radius:22px 22px 22px 4px;padding:24px;font-family:var(--display);font-weight:500;font-size:22px;line-height:1.3}
+blockquote cite{display:block;margin-top:12px;font-family:var(--sans);font-style:normal;font-size:14px;color:var(--soft);font-weight:600}
+
+/* workshop */
+.work{background:var(--tomato);color:#fff;border-top:3px solid var(--choc);border-bottom:3px solid var(--choc)}
+.work .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+.work h2{color:#fff}
+.work p{margin:0 0 26px;font-size:18px;color:#ffe9e7;max-width:30em}
+.bento{justify-self:center;width:220px;height:220px;background:var(--butter-l);border:3px solid var(--choc);border-radius:28px;position:relative;box-shadow:8px 8px 0 var(--choc);transform:rotate(4deg)}
+.bento::before{content:"";position:absolute;inset:22px;border-radius:50%;background:#ffc9c4;border:3px solid var(--choc);box-shadow:inset 0 0 0 10px #fff,inset 0 0 0 13px var(--tomato)}
+.bento::after{content:"jij!";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:40px;color:var(--tomato-d)}
+
+/* stappen */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:18px;background:var(--butter);border:3px solid var(--choc);font-family:var(--display);font-weight:700;font-size:28px;margin-bottom:14px;box-shadow:3px 3px 0 var(--choc)}
+.steps h3{margin:0 0 6px;font-family:var(--display);font-weight:600;font-size:23px}
+.steps p{margin:0;color:var(--soft)}
+
+/* faq */
+.faq{background:var(--butter-l);border-top:3px solid var(--choc)}
+.faq .wrap{max-width:840px}
+details{background:#fff;border:3px solid var(--choc);border-radius:18px;margin-bottom:12px;padding:0 20px}
+summary{cursor:pointer;list-style:none;padding:16px 36px 16px 0;font-family:var(--display);font-weight:600;font-size:20px;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:0;top:10px;font-size:30px;color:var(--tomato)}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 18px;color:var(--soft)}
+
+/* bezoek */
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.visit address{font-style:normal;font-size:20px;margin:0 0 24px;font-weight:600}
+.hours{width:100%;border-collapse:separate;border-spacing:0;border:3px solid var(--choc);border-radius:20px;overflow:hidden;background:#fff}
+.hours td{padding:12px 18px;border-bottom:2px dashed var(--line);font-weight:600}
+.hours tr:last-child td{border-bottom:0}
+.hours td:last-child{text-align:right}
+.hours .shut td{color:#a89282;font-weight:400}
+.hours .open td:last-child{color:var(--tomato-d)}
+
+.final{background:var(--butter);text-align:center;border-top:3px solid var(--choc)}
+.final h2{max-width:16ch;margin:0 auto 14px}
+.final .lead{margin:0 auto 30px;color:var(--choc)}
+
+footer{background:var(--choc);color:#e8d6c4;padding:48px 0 96px;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;align-items:center}
+footer img{height:54px}
+
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:6;display:none}
+.float.on{display:block}
+.float .btn{width:100%}
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:860px){
+  .bar nav{display:none}
+  .bar{height:74px}
+  .bar img{height:48px}
+  .hero .wrap,.pick .grid,.visit .wrap,.work .wrap{grid-template-columns:1fr}
+  .hero .wrap{padding-bottom:36px}
+  .stage{max-width:330px}
+  .cards,.quotes,.steps{grid-template-columns:1fr}
+  .card:nth-child(2){transform:none}
+  .opts{grid-template-columns:1fr 1fr}
+  .summary{position:relative;top:0;box-shadow:6px 6px 0 var(--tomato)}
+  section{padding:70px 0}
+  .bento{width:180px;height:180px}
+}
+@media (prefers-reduced-motion:reduce){.band .track{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice">Open donderdag t/m zondag aan de Theemsweg in Spijkenisse</div>
+
+<header class="wrap bar">
+  <a href="#"><img src="logo-dark.svg" alt="Moms Bakery"></a>
+  <nav aria-label="Hoofdmenu"><a href="#bestellen">Bestellen</a><a href="#workshop">Workshop</a><a href="#ervaringen">Ervaringen</a><a href="#vragen">Vragen</a></nav>
+</header>
+
+<main>
+  <div class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <span class="tag">Custom taarten · Cupcakes · Bonbons</span>
+        <h1>Gebakken met liefde, <span class="rot" id="rot">voor je verjaardag</span></h1>
+        <p>Custom verjaardagstaarten, gepersonaliseerde koekjes en cupcakes, bonbons en truffels. Tot in detail afgewerkt en niet te zoet. Uit Spijkenisse.</p>
+        <div class="btns">
+          <a class="btn btn-red" href="#bestellen">Stel je bestelling samen</a>
+          <a class="btn btn-wh" href="#workshop">Bento workshop</a>
+        </div>
+        <div class="trust"><span><b>5,0</b> op Google (14 reviews)</span><span>Spijkenisse</span></div>
+      </div>
+      <div class="stage" aria-hidden="true"><canvas id="pipe"></canvas></div>
+    </div>
+  </div>
+
+  <div class="band" aria-hidden="true"><div class="track" id="track"><span>Custom verjaardagstaarten</span><span>Niet te zoet, lekker luchtig</span><span>Gepersonaliseerde koekjes</span><span>Bonbons en truffels</span><span>Cupcake-party voor kids</span><span>Bento cake workshops</span></div></div>
+
+  <section class="pick" id="bestellen">
+    <div class="wrap">
+      <h2>Stel je <u>bestelling</u> samen</h2>
+      <p class="lead">Kies wat je wilt, voor welke gelegenheid en hoeveel. Je stuurt het met één tik via WhatsApp en krijgt een voorstel met prijs.</p>
+      <div class="grid">
+        <div>
+          <div class="step">
+            <h3>1. Wat mag het zijn?</h3>
+            <div class="opts" data-group="wat">
+              <button class="opt" type="button" data-v="Custom taart"><span class="lbl">Aanbevolen</span><svg class="em" viewBox="0 0 36 36"><rect x="5" y="16" width="26" height="14" rx="3" fill="#ffc9c4" stroke="#3b2416" stroke-width="2.5"/><path d="M5 21c4 3 8-3 13 0s9-3 13 0" fill="none" stroke="#3b2416" stroke-width="2.5"/><path d="M18 6v9" stroke="#3b2416" stroke-width="2.5"/><circle cx="18" cy="5" r="2.5" fill="#e2413b"/></svg><b>Taart</b><small>Custom, elk thema</small></button>
+              <button class="opt" type="button" data-v="Cupcakes"><svg class="em" viewBox="0 0 36 36"><path d="M9 18h18l-3 13H12z" fill="#ffd84d" stroke="#3b2416" stroke-width="2.5"/><path d="M8 18c0-6 5-10 10-10s10 4 10 10z" fill="#9fe0c9" stroke="#3b2416" stroke-width="2.5"/></svg><b>Cupcakes</b><small>Gepersonaliseerd</small></button>
+              <button class="opt" type="button" data-v="Koekjes"><svg class="em" viewBox="0 0 36 36"><circle cx="18" cy="18" r="12" fill="#f3c27a" stroke="#3b2416" stroke-width="2.5"/><circle cx="14" cy="15" r="2" fill="#3b2416"/><circle cx="21" cy="21" r="2" fill="#3b2416"/><circle cx="22" cy="13" r="1.6" fill="#3b2416"/></svg><b>Koekjes</b><small>Met naam of tekst</small></button>
+              <button class="opt" type="button" data-v="Bonbons of truffels"><svg class="em" viewBox="0 0 36 36"><circle cx="18" cy="19" r="10" fill="#6b3b22" stroke="#3b2416" stroke-width="2.5"/><path d="M12 15c3-3 9-3 12 0" fill="none" stroke="#ffd84d" stroke-width="2.5"/></svg><b>Bonbons</b><small>Of truffels</small></button>
+              <button class="opt" type="button" data-v="Cupcake-party voor kinderen"><svg class="em" viewBox="0 0 36 36"><path d="M10 30l8-24 8 24z" fill="#bfe3ff" stroke="#3b2416" stroke-width="2.5"/><circle cx="18" cy="5" r="2.5" fill="#e2413b"/><circle cx="15" cy="20" r="1.6" fill="#e2413b"/><circle cx="21" cy="24" r="1.6" fill="#ffd84d"/></svg><b>Cupcake-party</b><small>Voor kinderen</small></button>
+              <button class="opt" type="button" data-v="Bento cake workshop"><svg class="em" viewBox="0 0 36 36"><rect x="5" y="9" width="26" height="22" rx="5" fill="#fff6d6" stroke="#3b2416" stroke-width="2.5"/><circle cx="18" cy="20" r="6" fill="#ffc9c4" stroke="#3b2416" stroke-width="2.5"/></svg><b>Bento workshop</b><small>Zelf leren decoreren</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3>2. Voor welke gelegenheid?</h3>
+            <div class="opts" data-group="feest">
+              <button class="opt" type="button" data-v="Verjaardag"><b>Verjaardag</b><small>Groot of klein</small></button>
+              <button class="opt" type="button" data-v="Kinderfeestje"><b>Kinderfeest</b><small>Feest met de kids</small></button>
+              <button class="opt" type="button" data-v="Iets anders"><b>Iets anders</b><small>Vertel het ons</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3>3. Voor hoeveel personen?</h3>
+            <div class="opts" data-group="aantal">
+              <button class="opt" type="button" data-v="tot 10 personen"><b>Tot 10</b></button>
+              <button class="opt" type="button" data-v="10 tot 20 personen"><b>10–20</b></button>
+              <button class="opt" type="button" data-v="meer dan 20 personen"><b>20+</b></button>
+            </div>
+          </div>
+          <div class="step date">
+            <h3>4. Wanneer heb je het nodig? <small>(open do t/m zo)</small></h3>
+            <label for="d1" style="position:absolute;left:-9999px">Datum</label><input type="date" id="d1" class="js-date">
+          </div>
+        </div>
+        <aside class="summary" aria-live="polite">
+          <span class="k">Jouw bestelling</span>
+          <h3 id="s-title">Kies wat je wilt</h3>
+          <dl>
+            <dt>Gelegenheid</dt><dd id="s-feest">–</dd>
+            <dt>Personen</dt><dd id="s-aantal">–</dd>
+            <dt>Datum</dt><dd id="s-datum">–</dd>
+          </dl>
+          <a class="btn btn-red js-ask" href="#">Vraag een voorstel via WhatsApp</a>
+          <div class="note">Vrijblijvend. Je krijgt eerst een voorstel met prijs.</div>
+          <div class="open">Theemsweg 35, Spijkenisse · do–zo open</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Waarom klanten blijven komen</h2>
+      <p class="lead">Wat in de reviews steeds terugkomt.</p>
+      <div class="cards">
+        <div class="card"><h3>Tot in detail</h3><p>Prachtig en tot in de kleinste details afgewerkt. Elke taart wordt gemaakt op jouw idee.</p></div>
+        <div class="card"><h3>Niet te zoet</h3><p>Lekker luchtig en niet te zoet. Het soort taart waar gasten nog een stuk van willen.</p></div>
+        <div class="card"><h3>Flexibel</h3><p>Ook als je wat later bent met bestellen, denken ze met je mee.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ervaringen">
+    <div class="wrap">
+      <div class="revtop">
+        <div class="five"><b>5,0</b><span>op Google</span></div>
+        <div><h2>Wat klanten zeggen</h2><p>Gemiddeld 5,0 uit 14 Google-reviews.</p></div>
+      </div>
+      <div class="quotes">
+        <blockquote>"Al bijna 5 jaar laten we al onze taarten hier maken."<cite>Vaste klant, Google-review</cite></blockquote>
+        <blockquote>"Lekker luchtig en niet te zoet, precies goed."<cite>Klant, Google-review</cite></blockquote>
+        <blockquote>"Ze luisteren echt naar je wensen en ideeën."<cite>Klant, Google-review</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <div class="work" id="workshop">
+    <section style="padding:80px 0">
+      <div class="wrap">
+        <div>
+          <h2>Zelf een bento cake maken?</h2>
+          <p>Moms Bakery geeft bento cake workshops: je decoreert je eigen kleine taart. Leuk met vriendinnen of als uitje. Vraag naar de volgende datum.</p>
+          <a class="btn btn-yel js-work" href="#">Vraag naar de workshop</a>
+        </div>
+        <div class="bento" aria-hidden="true"></div>
+      </div>
+    </section>
+  </div>
+
+  <section id="werkwijze">
+    <div class="wrap">
+      <h2>Zo bestel je</h2>
+      <p class="lead">Geen ingewikkelde formulieren. Gewoon even appen.</p>
+      <ol class="steps">
+        <li><h3>Stuur je idee</h3><p>Stel hierboven je bestelling samen of stuur een foto of thema via WhatsApp.</p></li>
+        <li><h3>Voorstel</h3><p>Je krijgt een voorstel met prijs, afgestemd op je wensen.</p></li>
+        <li><h3>Genieten</h3><p>Je spreekt samen de dag af. Tijdens de openingstijden ben je welkom aan de Theemsweg in Spijkenisse.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq" id="vragen">
+    <div class="wrap">
+      <h2>Veelgestelde vragen</h2>
+      <details><summary>Wat kost een taart?</summary><p>Dat hangt af van het ontwerp en het aantal personen. Stel je bestelling hierboven samen en je krijgt via WhatsApp een voorstel met prijs.</p></details>
+      <details><summary>Kan ik ook laat nog bestellen?</summary><p>App je datum gewoon, dan hoor je of het nog lukt. Klanten noemen hoe flexibel Moms Bakery is, ook bij een late bestelling.</p></details>
+      <details><summary>Zijn de taarten erg zoet?</summary><p>Nee, klanten noemen ze juist lekker luchtig en niet te zoet.</p></details>
+      <details><summary>Wat is een cupcake-party?</summary><p>Een feestje voor kinderen waarbij cupcakes centraal staan. Vraag via WhatsApp naar de mogelijkheden.</p></details>
+      <details><summary>Wanneer zijn jullie open?</summary><p>Donderdag en vrijdag van 10:00 tot 14:00, zaterdag en zondag van 12:00 tot 18:00.</p></details>
+    </div>
+  </section>
+
+  <section class="visit">
+    <div class="wrap">
+      <div>
+        <h2>Langskomen</h2>
+        <address>Theemsweg 35<br>3201 LT Spijkenisse</address>
+        <a class="btn btn-red" href="https://maps.google.com/?q=Moms+Bakery+Theemsweg+35+Spijkenisse" target="_blank" rel="noopener">Route plannen</a>
+      </div>
+      <table class="hours" aria-label="Openingstijden">
+        <tr class="shut"><td>Maandag t/m woensdag</td><td>Gesloten</td></tr>
+        <tr class="open"><td>Donderdag</td><td>10:00 – 14:00</td></tr>
+        <tr class="open"><td>Vrijdag</td><td>10:00 – 14:00</td></tr>
+        <tr class="open"><td>Zaterdag</td><td>12:00 – 18:00</td></tr>
+        <tr class="open"><td>Zondag</td><td>12:00 – 18:00</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Iets te vieren?</h2>
+      <p class="lead">Stel je bestelling samen en stuur het in één keer via WhatsApp.</p>
+      <a class="btn btn-red" href="#bestellen">Stel je bestelling samen</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><img src="logo-light.svg" alt="Moms Bakery"><span>© 2026 Moms Bakery · <a class="js-wa-plain" href="#">WhatsApp 06 84049221</a> · Website door Mohamedia</span></div>
+</footer>
+
+<div class="float" id="float"><a class="btn btn-red" href="#bestellen">Stel je bestelling samen</a></div>
+
+<script>
+const WA = "31684049221";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const st = { wat: "", feest: "", aantal: "", datum: "" };
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) : "";
+const $ = id => document.getElementById(id);
+function render() {
+  $("s-title").textContent = st.wat || "Kies wat je wilt";
+  $("s-feest").textContent = st.feest || "–";
+  $("s-aantal").textContent = st.aantal || "–";
+  $("s-datum").textContent = st.datum ? fmt(st.datum) : "–";
+  const msg = `Hoi Moms Bakery! Ik wil graag iets bestellen.\nWat: ${st.wat || "nog niet gekozen"}\nGelegenheid: ${st.feest || "nog niet gekozen"}\nAantal: ${st.aantal || "weet ik nog niet"}\nDatum: ${st.datum ? fmt(st.datum) : "nog niet bekend"}\nKunnen jullie dit maken en wat kost het?`;
+  document.querySelectorAll(".js-ask").forEach(a => { a.href = wa(msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+document.querySelectorAll(".opts").forEach(g => {
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", "false"));
+  g.addEventListener("click", e => { const b = e.target.closest(".opt"); if (!b) return; g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b)); st[g.dataset.group] = b.dataset.v; render(); });
+});
+const today = new Date().toISOString().slice(0, 10);
+document.querySelectorAll(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => { st.datum = i.value; render(); }); });
+document.querySelectorAll(".js-wa-plain").forEach(a => { a.href = wa("Hoi Moms Bakery!"); a.target = "_blank"; a.rel = "noopener"; });
+document.querySelectorAll(".js-work").forEach(a => { a.href = wa("Hoi Moms Bakery! Ik heb interesse in de bento cake workshop. Wanneer is de volgende?"); a.target = "_blank"; a.rel = "noopener"; });
+render();
+
+const tr = $("track"); tr.innerHTML += tr.innerHTML;
+const words = ["voor je verjaardag", "voor het kinderfeest", "voor jou"]; let wi = 0;
+const rot = $("rot");
+if (!reduce) setInterval(() => { wi = (wi + 1) % words.length; rot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 }).onfinish = () => { rot.textContent = words[wi]; rot.animate([{ opacity: 0, transform: "rotate(-1.5deg) scale(.9)" }, { opacity: 1, transform: "rotate(-1.5deg)" }], { duration: 420 }); }; }, 2600);
+
+const fl = $("float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe($("top"));
+new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .1 }).observe($("bestellen"));
+
+// bewegende hero: bovenaanzicht van een taart; een spuitzak spuit toefjes rondom, daarna kaarsjes met flakkerende vlam
+const c = $("pipe"), x = c.getContext("2d"); let S;
+function size() { const r = devicePixelRatio || 1; S = c.clientWidth; c.width = S * r; c.height = S * r; x.setTransform(r, 0, 0, r, 0, 0); }
+const N = 22, cols = ["#ffffff", "#9fe0c9", "#ffffff", "#bfe3ff"];
+let t0 = null;
+function frame(t) {
+  if (t0 === null) t0 = t; const el = reduce ? 1e6 : (t - t0) % 11000;
+  const cx = S / 2, cy = S / 2, R = S * .4;
+  x.clearRect(0, 0, S, S);
+  // bord
+  x.fillStyle = "#fff"; x.strokeStyle = "#3b2416"; x.lineWidth = 3;
+  x.beginPath(); x.arc(cx, cy + 6, R * 1.12, 0, 6.283); x.fillStyle = "#3b2416"; x.fill();
+  x.beginPath(); x.arc(cx, cy, R * 1.12, 0, 6.283); x.fillStyle = "#fff"; x.fill(); x.stroke();
+  // taart
+  x.beginPath(); x.arc(cx, cy, R, 0, 6.283); x.fillStyle = "#ffc9c4"; x.fill(); x.stroke();
+  x.beginPath(); x.arc(cx, cy, R * .62, 0, 6.283); x.strokeStyle = "rgba(226,65,59,.35)"; x.setLineDash([4, 8]); x.stroke(); x.setLineDash([]);
+  // sprinkles op de taart
+  for (let i = 0; i < 26; i++) { const a = i * 2.39, rr = R * .2 + (i * 37 % 100) / 100 * R * .38; x.save(); x.translate(cx + Math.cos(a) * rr, cy + Math.sin(a) * rr); x.rotate(a * 3); x.fillStyle = ["#e2413b", "#ffd84d", "#9fe0c9", "#bfe3ff", "#fff"][i % 5]; x.beginPath(); x.roundRect(-5, -2, 10, 4, 2); x.fill(); x.restore(); }
+  // toefjes
+  const done = Math.min(N, Math.floor(el / 140));
+  for (let i = 0; i < done; i++) {
+    const a = i / N * 6.283 - 1.57, px = cx + Math.cos(a) * R * .86, py = cy + Math.sin(a) * R * .86, s = R * .1;
+    x.fillStyle = cols[i % 4]; x.strokeStyle = "#3b2416"; x.lineWidth = 2.5;
+    x.beginPath(); for (let k = 0; k < 6; k++) { const aa = k / 6 * 6.283; const rr = k % 2 ? s * .75 : s; x.lineTo(px + Math.cos(aa + a) * rr, py + Math.sin(aa + a) * rr); } x.closePath(); x.fill(); x.stroke();
+    x.beginPath(); x.arc(px, py, s * .25, 0, 6.283); x.fillStyle = "#e2413b"; x.fill();
+  }
+  // spuitzak
+  if (done < N && !reduce) {
+    const a = done / N * 6.283 - 1.57, px = cx + Math.cos(a) * R * .86, py = cy + Math.sin(a) * R * .86;
+    x.save(); x.translate(px, py); x.rotate(a + 2.3);
+    x.beginPath(); x.moveTo(0, 0); x.lineTo(-S * .07, -S * .2); x.quadraticCurveTo(0, -S * .26, S * .07, -S * .2); x.closePath();
+    x.fillStyle = "#ffd84d"; x.fill(); x.strokeStyle = "#3b2416"; x.lineWidth = 3; x.stroke(); x.restore();
+  }
+  // kaarsjes
+  if (done >= N) {
+    const k = Math.min(3, Math.floor((el - N * 140) / 350) + 1);
+    const cc = ["#e2413b", "#9fe0c9", "#bfe3ff"];
+    for (let i = 0; i < k; i++) {
+      const px = cx + (i - 1) * R * .3, py = cy + (i === 1 ? -R * .08 : R * .04);
+      x.fillStyle = cc[i]; x.strokeStyle = "#3b2416"; x.lineWidth = 2.5;
+      x.beginPath(); x.roundRect(px - R * .05, py - R * .02, R * .1, R * .28, 4); x.fill(); x.stroke();
+      const f = 1 + Math.sin(el / 90 + i) * .12;
+      x.beginPath(); x.ellipse(px, py - R * .12, R * .05, R * .1 * f, 0, 0, 6.283); x.fillStyle = "#ffd84d"; x.fill(); x.stroke();
+    }
+  }
+  if (!reduce) requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>

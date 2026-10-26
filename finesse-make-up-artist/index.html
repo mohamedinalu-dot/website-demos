@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Finesse Make Up Artist — high-end make-up voor elke huidskleur in Rotterdam</title>
+<meta name="description" content="High-end make-up voor bruiloft, fotoshoot, babyshower, verjaardag en events. Gespecialiseerd in alle huidskleuren, ook voor bruidegoms. Salon aan huis in Rotterdam of op locatie.">
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --esp:#241612; --esp-2:#3a2621; --cobalt:#2f45d8; --cobalt-d:#2133a8; --lilac:#c9a4ff; --nude:#f3e3d6;
+  --s1:#f6d3b9; --s2:#e2ad86; --s3:#c4865c; --s4:#9a6040; --s5:#6e4029; --s6:#47281a;
+  --paper:#fffaf6; --ink:#241612; --soft:#6b5750; --line:#ecdcd0;
+  --display:"Abril Fatface", Didot, Georgia, serif; --sans:"Outfit", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17.5px;line-height:1.62;font-weight:400}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.demo{background:#000;color:#cbbdb6;font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--lilac)}
+.notice{background:var(--cobalt);color:#fff;font-size:14px;text-align:center;padding:8px 16px;font-weight:500}
+
+header.top{background:var(--esp)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:84px}
+header.top img{height:46px;width:auto;display:block}
+header.top nav a{color:#e9d9cf;text-decoration:none;font-size:15px;margin-left:26px}
+header.top nav a:hover{color:var(--lilac)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 28px;border-radius:0;font-family:var(--sans);font-weight:500;font-size:16px;text-decoration:none;border:2px solid var(--cobalt);cursor:pointer;letter-spacing:.02em}
+.btn-co{background:var(--cobalt);color:#fff}
+.btn-co:hover{background:var(--cobalt-d);border-color:var(--cobalt-d)}
+.btn-wh{background:transparent;color:#fff;border-color:#fff}
+.btn-wh:hover{background:#fff;color:var(--esp)}
+.btn-dk{background:var(--esp);color:#fff;border-color:var(--esp)}
+
+/* hero */
+.hero{position:relative;background:var(--esp);color:#fff;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative;z-index:2;padding-top:72px;padding-bottom:96px}
+.issue{display:flex;gap:18px;align-items:center;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--lilac);margin-bottom:24px;font-weight:500}
+.issue i{flex:0 0 60px;height:1px;background:var(--lilac)}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(50px,8vw,118px);line-height:.98;margin:0 0 26px;max-width:9.5ch;letter-spacing:-.01em}
+.rot{display:block;color:var(--lilac);min-height:1em}
+.hero p.sub{font-size:19.5px;font-weight:300;max-width:29em;color:#ecdcd2;margin:0 0 34px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.trust{margin-top:34px;display:flex;flex-wrap:wrap;gap:0;font-size:14.5px;color:#d8c6bb}
+.trust span{padding:0 18px;border-left:1px solid rgba(255,255,255,.25)}
+.trust span:first-child{padding-left:0;border-left:0}
+.trust b{color:#fff;font-weight:700}
+
+/* swatches band */
+.band{background:var(--nude);color:var(--esp);overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--line)}
+.band .track{display:inline-block;padding:16px 0;animation:slide 42s linear infinite;font-family:var(--display);font-size:22px}
+.band span{margin:0 22px;display:inline-flex;align-items:center;gap:14px}
+.band span::before{content:"";width:18px;height:18px;border-radius:50%;background:var(--c,var(--s3));box-shadow:0 0 0 2px #fff}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:100px 0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(38px,5vw,64px);line-height:1.02;margin:0 0 16px;color:var(--esp)}
+.lead{color:var(--soft);font-size:18.5px;font-weight:300;max-width:36em;margin:0 0 46px}
+
+/* kiezer */
+.pick .grid{display:grid;grid-template-columns:1.14fr .86fr;gap:48px;align-items:start}
+.step{margin-bottom:34px}
+.step h3{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px;color:var(--cobalt)}
+.step h3 small{text-transform:none;letter-spacing:0;font-weight:400;color:var(--soft);font-size:14px}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--esp)}
+.opts.two{grid-template-columns:repeat(2,1fr)}
+.opt{position:relative;text-align:left;background:#fff;border:0;border-right:1px solid var(--esp);border-bottom:1px solid var(--esp);padding:18px 16px 16px;font:inherit;color:var(--ink);cursor:pointer;min-height:44px;margin:0 -1px -1px 0;transition:background .15s}
+.opt b{display:block;font-family:var(--display);font-weight:400;font-size:22px;line-height:1.1}
+.opt small{display:block;color:var(--soft);font-size:14px;margin-top:5px}
+@media (hover:hover){.opt:not([aria-pressed="true"]):hover{background:var(--nude)}}
+.opt[aria-pressed="true"]{background:var(--esp);color:#fff}
+.opt[aria-pressed="true"] small{color:var(--lilac)}
+.opt .lbl{position:absolute;top:10px;right:10px;background:var(--lilac);color:var(--esp);font-size:11px;font-weight:700;padding:2px 8px;letter-spacing:.04em}
+.date input{font:inherit;padding:12px 16px;border:1px solid var(--esp);border-radius:0;min-height:52px;background:#fff;color:var(--ink)}
+.summary{background:#fff;border:1px solid var(--esp);padding:0;position:sticky;top:24px}
+.summary .swatch{display:flex;height:16px}
+.summary .swatch i{flex:1}
+.summary .in{padding:30px}
+.summary .k{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cobalt);font-weight:700}
+.summary h3{font-family:var(--display);font-weight:400;font-size:36px;line-height:1.05;margin:10px 0 22px}
+.summary dl{margin:0 0 26px;font-size:15.5px}
+.summary dl div{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.summary dt{color:var(--soft)}
+.summary dd{margin:0;font-weight:500}
+.summary .btn{width:100%}
+.summary .note{font-size:13.5px;color:var(--soft);margin-top:12px;text-align:center}
+
+/* waarom */
+.why{background:var(--esp);color:#fff}
+.why h2{color:#fff}
+.why .lead{color:#d8c6bb}
+.why .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.why .cols div{border-top:4px solid var(--c);padding-top:24px}
+.why h3{font-family:var(--display);font-weight:400;font-size:28px;margin:0 0 10px}
+.why p{margin:0;color:#d8c6bb;font-weight:300}
+
+/* reviews */
+.revgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.big{font-family:var(--display);font-size:clamp(110px,14vw,190px);line-height:.85;color:var(--cobalt)}
+.big + p{margin:16px 0 0;color:var(--soft)}
+.quotes{display:grid;gap:0}
+blockquote{margin:0;padding:24px 0;border-top:1px solid var(--line);font-family:var(--display);font-size:clamp(23px,2.4vw,30px);line-height:1.25}
+blockquote:last-child{border-bottom:1px solid var(--line)}
+blockquote cite{display:block;margin-top:10px;font-family:var(--sans);font-style:normal;font-size:14px;color:var(--soft)}
+
+/* bonnets */
+.bonnet{background:var(--lilac);padding:56px 0}
+.bonnet .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.bonnet h2{font-size:clamp(30px,3.6vw,44px);margin:0 0 6px}
+.bonnet p{margin:0;color:var(--esp-2)}
+
+/* stappen */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:s;border-top:1px solid var(--esp)}
+.steps li{counter-increment:s;padding:28px 28px 8px 0}
+.steps li+li{padding-left:28px;border-left:1px solid var(--line)}
+.steps li::before{content:"0" counter(s);display:block;font-family:var(--display);font-size:54px;line-height:1;color:var(--cobalt);margin-bottom:14px}
+.steps h3{margin:0 0 6px;font-size:21px;font-weight:500}
+.steps p{margin:0;color:var(--soft);font-weight:300}
+
+/* faq */
+.faq{background:var(--nude)}
+.faq .wrap{max-width:860px}
+details{border-bottom:1px solid #d9c3b2;padding:4px 0}
+summary{cursor:pointer;list-style:none;padding:18px 40px 18px 0;font-size:19px;font-weight:500;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:12px;font-size:28px;color:var(--cobalt);font-weight:300}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 20px;color:var(--soft)}
+
+/* bezoek */
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.visit address{font-style:normal;font-size:21px;margin:0 0 8px}
+.visit .park{color:var(--cobalt);font-weight:500;margin:0 0 26px}
+.hours{border:1px solid var(--esp);padding:30px}
+.hours .k{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cobalt);font-weight:700}
+.hours .t{font-family:var(--display);font-size:clamp(40px,4.4vw,58px);line-height:1.05;margin:8px 0 6px;white-space:nowrap}
+.hours p{margin:0;color:var(--soft)}
+
+.final{background:var(--cobalt);color:#fff;text-align:center}
+.final h2{color:#fff;max-width:14ch;margin:0 auto 16px}
+.final .lead{color:#dfe3ff;margin:0 auto 32px}
+.final .date{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.final .date input{border-color:#fff}
+.final .btn{background:#fff;color:var(--cobalt);border-color:#fff}
+
+footer{background:#000;color:#cbbdb6;padding:56px 0 96px;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer img{height:46px;margin-bottom:14px}
+footer h4{color:var(--lilac);margin:0 0 10px;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+footer p{margin:0}
+.fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;margin-top:16px;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:6;display:none}
+.float.on{display:block}
+.float .btn{width:100%;box-shadow:0 12px 30px rgba(36,22,18,.45)}
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:860px){
+  header.top nav{display:none}
+  header.top .wrap{height:72px}
+  header.top img{height:40px}
+  .hero .wrap{padding-top:48px;padding-bottom:150px}
+  .pick .grid,.visit .wrap,.revgrid{grid-template-columns:1fr}
+  .why .cols{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .steps li,.steps li+li{padding:24px 0 16px;border-left:0;border-bottom:1px solid var(--line)}
+  .opts{grid-template-columns:1fr 1fr}
+  .summary{position:relative;top:0}
+  footer .wrap{grid-template-columns:1fr}
+  section{padding:72px 0}
+  .opt b{font-size:19px}
+  .trust span{padding:4px 14px 4px 0;border-left:0}
+  .revgrid{gap:28px}
+}
+@media (prefers-reduced-motion:reduce){.band .track{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice">Salon aan huis in Rotterdam, met gratis parkeren · of op locatie</div>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#"><img src="logo-light.svg" alt="Finesse Make Up Artist"></a>
+    <nav aria-label="Hoofdmenu"><a href="#kiezer">Boek je look</a><a href="#ervaringen">Ervaringen</a><a href="#bonnets">Satin bonnets</a><a href="#vragen">Vragen</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="top">
+    <canvas id="strokes" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="issue"><i></i>High-end make-up · Elke huidskleur</div>
+      <h1>Make-up die jou ziet <span class="rot" id="rot">op je bruiloft</span></h1>
+      <p class="sub">High-end make-up, gespecialiseerd in alle huidskleuren. Voor bruiden, bruidegoms en iedereen met iets te vieren. In de salon aan huis in Rotterdam of op locatie.</p>
+      <div class="btns">
+        <a class="btn btn-co" href="#kiezer">Boek je look</a>
+        <a class="btn btn-wh" href="#ervaringen">Lees ervaringen</a>
+      </div>
+      <div class="trust"><span><b>4,8</b> op Google · 16 reviews</span><span>Rotterdam Schiebroek</span><span>Elke dag 09:00 – 20:00</span></div>
+    </div>
+  </div>
+
+  <div class="band" aria-hidden="true"><div class="track" id="track"><span style="--c:var(--s1)">Alle huidskleuren</span><span style="--c:var(--s2)">Bruiloft en fotoshoot</span><span style="--c:var(--s3)">Babyshower en verjaardag</span><span style="--c:var(--s4)">Ook voor bruidegoms</span><span style="--c:var(--s5)">Salon aan huis of op locatie</span><span style="--c:var(--s6)">Gratis parkeren</span></div></div>
+
+  <section class="pick" id="kiezer">
+    <div class="wrap">
+      <h2>Boek je look</h2>
+      <p class="lead">Kies je gelegenheid, voor wie en waar. Je stuurt het met één tik via WhatsApp en krijgt een prijs op maat.</p>
+      <div class="grid">
+        <div>
+          <div class="step">
+            <h3>01 — Gelegenheid</h3>
+            <div class="opts" data-group="feest">
+              <button class="opt" type="button" data-v="Bruiloft"><span class="lbl">Bruid</span><b>Bruiloft</b><small>Je grote dag</small></button>
+              <button class="opt" type="button" data-v="Fotoshoot"><b>Fotoshoot</b><small>Voor de camera</small></button>
+              <button class="opt" type="button" data-v="Babyshower"><b>Babyshower</b><small>Stralend erbij</small></button>
+              <button class="opt" type="button" data-v="Verjaardag"><b>Verjaardag</b><small>Jouw dag</small></button>
+              <button class="opt" type="button" data-v="Event"><b>Event</b><small>Feest of gala</small></button>
+              <button class="opt" type="button" data-v="Iets anders"><b>Anders</b><small>Vertel het ons</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3>02 — Voor wie</h3>
+            <div class="opts two" data-group="wie">
+              <button class="opt" type="button" data-v="Voor mij (vrouw)"><b>Voor haar</b><small>Bruid of gast</small></button>
+              <button class="opt" type="button" data-v="Voor een man (bruidegom of model)"><b>Voor hem</b><small>Bruidegom of model</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3>03 — Waar</h3>
+            <div class="opts two" data-group="waar">
+              <button class="opt" type="button" data-v="In de salon aan huis (Rotterdam)"><b>In de salon</b><small>Aan huis, gratis parkeren</small></button>
+              <button class="opt" type="button" data-v="Op locatie"><b>Op locatie</b><small>Bij jou</small></button>
+            </div>
+          </div>
+          <div class="step date">
+            <h3>04 — Datum</h3>
+            <label for="d1" style="position:absolute;left:-9999px">Datum</label><input type="date" id="d1" class="js-date">
+          </div>
+        </div>
+        <aside class="summary" aria-live="polite">
+          <div class="swatch" aria-hidden="true"><i style="background:var(--s1)"></i><i style="background:var(--s2)"></i><i style="background:var(--s3)"></i><i style="background:var(--s4)"></i><i style="background:var(--s5)"></i><i style="background:var(--s6)"></i></div>
+          <div class="in">
+            <div class="k">Jouw look</div>
+            <h3 id="s-title">Kies je gelegenheid</h3>
+            <dl>
+              <div><dt>Voor wie</dt><dd id="s-wie">–</dd></div>
+              <div><dt>Waar</dt><dd id="s-waar">–</dd></div>
+              <div><dt>Datum</dt><dd id="s-datum">–</dd></div>
+            </dl>
+            <a class="btn btn-co js-ask" href="#">Vraag je look aan via WhatsApp</a>
+            <div class="note">Vrijblijvend. Je krijgt eerst een prijs op maat.</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Waarom Finesse</h2>
+      <p class="lead">Wat klanten in hun reviews steeds noemen.</p>
+      <div class="cols">
+        <div style="--c:var(--s2)"><h3>Snapt het meteen</h3><p>Je laat zien wat je wilt en ze begrijpt direct welke look je bedoelt.</p></div>
+        <div style="--c:var(--s4)"><h3>Gezellig en op tijd</h3><p>Tijdens het opmaken wordt er gekletst en gelachen, en ze is punctueel.</p></div>
+        <div style="--c:var(--lilac)"><h3>Een stapje verder</h3><p>Klanten noemen hoe ze net dat beetje extra doet voor het resultaat.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ervaringen">
+    <div class="wrap revgrid">
+      <div>
+        <h2>Ervaringen</h2>
+        <div class="big">4,8</div>
+        <p>gemiddeld op Google, uit 16 reviews</p>
+      </div>
+      <div class="quotes">
+        <blockquote>"Tijdens het opmaken zit je te kletsen en lachen."<cite>Klant, Google-review</cite></blockquote>
+        <blockquote>"Begrijpt meteen welke look je wil, resultaat is geweldig."<cite>Klant, Google-review</cite></blockquote>
+        <blockquote>"Al drie mooie bonnets laten maken, passen perfect."<cite>Klant satin bonnets, Google-review</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <div class="bonnet" id="bonnets">
+    <div class="wrap">
+      <div><h2>Ook: eigen satin bonnets</h2><p>Finesse heeft een eigen collectie satin bonnets. Vraag gerust wat er is.</p></div>
+      <a class="btn btn-dk js-bonnet" href="#">Vraag naar de bonnets</a>
+    </div>
+  </div>
+
+  <section id="werkwijze">
+    <div class="wrap">
+      <h2>Zo werkt het</h2>
+      <p class="lead">Van appje tot je look klaar is.</p>
+      <ol class="steps">
+        <li><h3>Stuur je wensen</h3><p>Stel hierboven je look samen en stuur hem via WhatsApp, met je datum erbij.</p></li>
+        <li><h3>Bespreek je look</h3><p>Je deelt je ideeën en krijgt een prijs op maat. Boeken kan ook via de online agenda.</p></li>
+        <li><h3>Stralen</h3><p>In de salon aan huis in Rotterdam of bij jou op locatie.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq" id="vragen">
+    <div class="wrap">
+      <h2>Veelgestelde vragen</h2>
+      <details><summary>Wat kost een make-up look?</summary><p>Dat hangt af van de gelegenheid en de locatie. Stel je look hierboven samen en je krijgt via WhatsApp een prijs op maat.</p></details>
+      <details><summary>Werk je met elke huidskleur?</summary><p>Ja, Finesse is gespecialiseerd in alle huidskleuren.</p></details>
+      <details><summary>Doe je ook make-up voor mannen?</summary><p>Ja, ook voor bruidegoms en mannelijke modellen.</p></details>
+      <details><summary>Kom je ook op locatie?</summary><p>Ja. Je kunt naar de salon aan huis in Rotterdam komen, of Finesse komt naar jou toe.</p></details>
+      <details><summary>Kan ik parkeren bij de salon?</summary><p>Ja, je parkeert gratis bij de salon.</p></details>
+    </div>
+  </section>
+
+  <section class="visit">
+    <div class="wrap">
+      <div>
+        <h2>De salon</h2>
+        <address>Artemispad 18<br>3054 RN Rotterdam</address>
+        <p class="park">Gratis parkeren bij de salon</p>
+        <a class="btn btn-dk" href="https://maps.google.com/?q=Artemispad+18+3054+RN+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
+      </div>
+      <div class="hours">
+        <div class="k">Open</div>
+        <div class="t">09:00 – 20:00</div>
+        <p>Maandag tot en met zondag</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Klaar voor je look?</h2>
+      <p class="lead">Kies je datum en vraag direct via WhatsApp of Finesse vrij is.</p>
+      <div class="date"><label for="d2" style="position:absolute;left:-9999px">Datum</label><input type="date" id="d2" class="js-date"><a class="btn js-ask" href="#">Check mijn datum</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><img src="logo-light.svg" alt="Finesse Make Up Artist"><p>High-end make-up voor elke huidskleur. Salon aan huis in Rotterdam of op locatie.</p></div>
+    <div><h4>Salon</h4><p>Artemispad 18<br>3054 RN Rotterdam</p></div>
+    <div><h4>Contact</h4><p><a class="js-wa-plain" href="#">WhatsApp 06 85054696</a></p></div>
+    <div class="fine"><span>© 2026 Finesse Make Up Artist</span><span>Website door Mohamedia</span></div>
+  </div>
+</footer>
+
+<div class="float" id="float"><a class="btn btn-co" href="#kiezer">Boek je look</a></div>
+
+<script>
+const WA = "31685054696";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const st = { feest: "", wie: "", waar: "", datum: "" };
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) : "";
+const $ = id => document.getElementById(id);
+function render() {
+  $("s-title").textContent = st.feest || "Kies je gelegenheid";
+  $("s-wie").textContent = st.wie || "–";
+  $("s-waar").textContent = st.waar || "–";
+  $("s-datum").textContent = st.datum ? fmt(st.datum) : "–";
+  const msg = `Hoi Finesse! Ik wil graag een make-up afspraak.\nGelegenheid: ${st.feest || "nog niet gekozen"}\nVoor wie: ${st.wie || "nog niet gekozen"}\nWaar: ${st.waar || "nog niet bekend"}\nDatum: ${st.datum ? fmt(st.datum) : "nog niet bekend"}\nBen je dan beschikbaar en wat kost het?`;
+  document.querySelectorAll(".js-ask").forEach(a => { a.href = wa(msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+document.querySelectorAll(".opts").forEach(g => {
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", "false"));
+  g.addEventListener("click", e => { const b = e.target.closest(".opt"); if (!b) return; g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b)); st[g.dataset.group] = b.dataset.v; render(); });
+});
+const today = new Date().toISOString().slice(0, 10);
+document.querySelectorAll(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => { st.datum = i.value; document.querySelectorAll(".js-date").forEach(j => j.value = i.value); render(); }); });
+document.querySelectorAll(".js-wa-plain").forEach(a => { a.href = wa("Hoi Finesse!"); a.target = "_blank"; a.rel = "noopener"; });
+document.querySelectorAll(".js-bonnet").forEach(a => { a.href = wa("Hoi Finesse! Ik ben benieuwd naar je satin bonnets. Welke heb je er?"); a.target = "_blank"; a.rel = "noopener"; });
+render();
+
+const tr = $("track"); tr.innerHTML += tr.innerHTML;
+const words = ["op je bruiloft", "op de foto", "op je babyshower", "op je verjaardag"]; let wi = 0;
+const rot = $("rot");
+if (!reduce) setInterval(() => { wi = (wi + 1) % words.length; rot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 }).onfinish = () => { rot.textContent = words[wi]; rot.animate([{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: 420 }); }; }, 2600);
+
+const fl = $("float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe($("top"));
+new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .1 }).observe($("kiezer"));
+
+// bewegende hero: penseelstreken (swatches) in zes huidtinten die zich over het canvas vegen
+const c = $("strokes"), x = c.getContext("2d"); let W, H, strokes = [];
+const tones = ["#f6d3b9", "#e2ad86", "#c4865c", "#9a6040", "#6e4029", "#c9a4ff"];
+function size() {
+  const r = devicePixelRatio || 1; W = c.clientWidth; H = c.clientHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0);
+  const mob = W < 860, x0 = mob ? W * .3 : W * .55, sp = mob ? 20 : 58;
+  strokes = tones.map((col, i) => ({ col, x0: x0 + i * sp * .35, y: (mob ? H - 128 : H * .14) + i * sp, len: (mob ? W * .75 : W * .42), w: mob ? 18 : 44, d: i * 380 }));
+}
+function brush(s, p, t) {
+  const n = Math.max(2, Math.floor(60 * p));
+  x.fillStyle = s.col;
+  for (let k = 0; k < n; k++) {
+    const u = k / 60, px = s.x0 + u * s.len, py = s.y + Math.sin(u * 3 + s.d) * 8 + Math.sin(t / 1800 + s.d) * 3;
+    const taper = Math.sin(Math.min(1, u / .98) * Math.PI) * .6 + .4;
+    x.globalAlpha = .82; x.beginPath(); x.ellipse(px, py, 9, s.w * taper / 2, -.18, 0, 6.283); x.fill();
+  }
+  x.globalAlpha = 1;
+}
+let t0 = null;
+function frame(t) {
+  if (t0 === null) t0 = t; const el = reduce ? 1e6 : t - t0;
+  x.clearRect(0, 0, W, H);
+  const cyc = 9000, ph = el % cyc;
+  for (const s of strokes) {
+    let p = Math.max(0, Math.min(1, (ph - s.d) / 1100));
+    if (ph > cyc - 1200) p *= Math.max(0, (cyc - ph) / 1200);
+    if (reduce) p = 1;
+    if (p > 0) brush(s, p, el);
+  }
+  if (!reduce) requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>

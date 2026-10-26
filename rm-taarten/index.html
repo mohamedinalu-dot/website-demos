@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>R&amp;M Taarten — kindertaarten, bruidstaarten en fototaarten in Barendrecht</title>
+<meta name="description" content="Themataarten voor kinderen, bruidstaarten, fototaarten, slagroomtaarten, cupcakes, koekjes en donuts. R&amp;M Taarten in Barendrecht, met bezorging. 4,8 op Google uit 60 reviews.">
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1b2a4a; --navy-2:#24365e; --navy-d:#111c33; --pink:#e8457a; --pink-d:#c42e60; --sun:#ffd166; --aqua:#5cc8c2;
+  --cloud:#f4f6fb; --ink:#1b2a4a; --soft:#56607a; --line:#dfe4ef;
+  --display:"Fraunces", Georgia, serif; --sans:"Lexend", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.demo{background:var(--navy-d);color:#aab5cf;font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--sun)}
+.notice{background:var(--sun);color:var(--navy);font-size:14px;text-align:center;padding:8px 16px;font-weight:600}
+
+header.top{background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:84px}
+header.top img{height:52px;width:auto;display:block}
+header.top nav a{color:#d4dbec;text-decoration:none;font-size:15px;margin-left:26px}
+header.top nav a:hover{color:var(--sun)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:14px 28px;border-radius:14px;font-family:var(--sans);font-weight:600;font-size:16.5px;text-decoration:none;border:2px solid var(--pink);cursor:pointer}
+.btn-pink{background:var(--pink);color:#fff}
+.btn-pink:hover{background:var(--pink-d);border-color:var(--pink-d)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.btn-ghost:hover{border-color:#fff}
+.btn-navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn-sun{background:var(--sun);color:var(--navy);border-color:var(--sun)}
+
+/* hero */
+.hero{position:relative;background:linear-gradient(180deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;overflow:hidden;min-height:min(86vh,760px);display:flex;align-items:center}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative;z-index:2;padding-top:56px;padding-bottom:110px;width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.chips span{font-size:13.5px;font-weight:500;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.1);color:#e7ecf7}
+.chips span:first-child{background:var(--pink);color:#fff}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(46px,6.8vw,96px);line-height:1;margin:0 0 24px;max-width:11ch;letter-spacing:-.02em}
+.rot{display:block;color:var(--sun);min-height:1.02em}
+.hero p.sub{font-size:19px;max-width:30em;color:#d4dbec;margin:0 0 34px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.trust{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:15px;color:#d4dbec;align-items:center}
+.trust .stars{color:var(--sun);letter-spacing:2px}
+.trust b{color:#fff}
+.wave{position:absolute;left:0;right:0;bottom:-1px;height:60px;z-index:2;display:block;width:100%}
+
+/* marquee */
+.band{background:#fff;color:var(--navy);overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--line)}
+.band .track{display:inline-block;padding:14px 0 20px;animation:slide 36s linear infinite;font-family:var(--display);font-weight:700;font-size:23px}
+.band span{margin:0 24px}
+.band span:nth-child(3n+1)::after{background:var(--pink)}
+.band span:nth-child(3n+2)::after{background:var(--sun)}
+.band span::after{content:"";display:inline-block;width:12px;height:16px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:var(--aqua);margin-left:48px;vertical-align:1px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:96px 0}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,4.6vw,58px);line-height:1.04;margin:0 0 14px;color:var(--navy);letter-spacing:-.015em}
+h2 span{color:var(--pink)}
+.lead{color:var(--soft);font-size:18px;max-width:36em;margin:0 0 44px}
+
+/* bestelkiezer */
+.pick{background:var(--cloud)}
+.pick .grid{display:grid;grid-template-columns:1.14fr .86fr;gap:44px;align-items:start}
+.bar-steps{display:flex;gap:6px;margin-bottom:26px}
+.bar-steps i{flex:1;height:6px;border-radius:6px;background:var(--line);transition:background .3s}
+.bar-steps i.on{background:var(--pink)}
+.step{margin-bottom:30px}
+.step h3{font-size:16px;font-weight:600;margin:0 0 12px;color:var(--navy)}
+.step h3 small{font-weight:400;color:var(--soft)}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.opts.four{grid-template-columns:repeat(4,1fr)}
+.opt{position:relative;text-align:left;background:#fff;border:2px solid #fff;border-radius:16px;padding:15px 14px 13px;font:inherit;color:var(--ink);cursor:pointer;min-height:44px;box-shadow:0 1px 2px rgba(27,42,74,.06)}
+.opt b{display:block;font-family:var(--display);font-weight:700;font-size:20px;line-height:1.15}
+.opt small{display:block;color:var(--soft);font-size:13.5px;margin-top:3px;line-height:1.35}
+.opt:hover{border-color:#f6b5ca}
+.opt[aria-pressed="true"]{border-color:var(--pink);background:#fff0f5}
+.opt .lbl{position:absolute;top:-10px;right:10px;background:var(--sun);color:var(--navy);font-size:11.5px;font-weight:600;border-radius:999px;padding:2px 9px}
+.date input{font:inherit;padding:12px 16px;border:2px solid #fff;border-radius:14px;min-height:54px;background:#fff;color:var(--ink)}
+.summary{background:var(--navy);color:#fff;border-radius:24px;padding:30px;position:sticky;top:24px;overflow:hidden}
+.summary::before{content:"";position:absolute;right:24px;top:-26px;width:46px;height:58px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:var(--pink);opacity:.9}
+.summary::after{content:"";position:absolute;right:76px;top:-34px;width:36px;height:46px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:var(--sun);opacity:.9}
+.summary .k{font-size:13px;color:#aab5cf;font-weight:500}
+.summary h3{font-family:var(--display);font-weight:800;font-size:32px;line-height:1.08;margin:4px 0 20px}
+.summary dl{margin:0 0 24px;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:15.5px}
+.summary dt{color:#aab5cf}
+.summary dd{margin:0}
+.summary .btn{width:100%}
+.summary .note{font-size:13.5px;color:#aab5cf;margin-top:12px;text-align:center}
+
+/* themes */
+.themes{background:#fff;padding:72px 0}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.theme{border-radius:22px;padding:30px 26px;color:#fff;min-height:170px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.theme b{font-family:var(--display);font-weight:800;font-size:34px;line-height:1}
+.theme small{font-size:14px;opacity:.9;margin-top:6px}
+.theme:nth-child(1){background:#f2b134;color:var(--navy)}
+.theme:nth-child(2){background:#5aa9e6}
+.theme:nth-child(3){background:#e0444b}
+.theme svg{position:absolute;right:-10px;top:-10px;width:110px;height:110px;opacity:.25}
+.themes p.note{color:var(--soft);font-size:15px;margin:16px 0 0}
+
+/* waarom */
+.why{background:var(--cloud)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;border-radius:22px;padding:28px;border-top:6px solid var(--c)}
+.card h3{font-family:var(--display);font-weight:700;margin:0 0 8px;font-size:23px}
+.card p{margin:0;color:var(--soft)}
+
+/* reviews */
+.reviews{background:var(--navy);color:#fff}
+.reviews h2{color:#fff}
+.revhead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.score{text-align:right}
+.score b{font-family:var(--display);font-weight:800;font-size:84px;line-height:1;color:var(--sun);display:block}
+.score span{color:#aab5cf;font-size:15px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+blockquote{margin:0;background:var(--navy-2);border-radius:22px;padding:26px;font-family:var(--display);font-weight:700;font-size:22px;line-height:1.3}
+blockquote cite{display:block;margin-top:14px;font-family:var(--sans);font-weight:400;font-style:normal;font-size:14px;color:#aab5cf}
+
+/* stappen */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:54px;height:66px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:var(--pink);color:#fff;font-family:var(--display);font-weight:800;font-size:26px;margin-bottom:14px}
+.steps li:nth-child(2)::before{background:var(--sun);color:var(--navy)}
+.steps li:nth-child(3)::before{background:var(--aqua);color:var(--navy)}
+.steps h3{margin:0 0 6px;font-size:20px;font-weight:600}
+.steps p{margin:0;color:var(--soft)}
+
+/* faq */
+.faq{background:var(--cloud)}
+.faq .wrap{max-width:840px}
+details{background:#fff;border-radius:16px;margin-bottom:10px;padding:0 22px}
+summary{cursor:pointer;list-style:none;padding:18px 36px 18px 0;font-size:17.5px;font-weight:600;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:0;top:12px;font-size:28px;color:var(--pink);font-weight:400}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 20px;color:var(--soft)}
+
+/* bezoek */
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.visit address{font-style:normal;font-size:20px;margin:0 0 24px}
+.hourcard{background:var(--cloud);border-radius:24px;padding:32px}
+.hourcard .k{font-size:14px;color:var(--soft)}
+.hourcard .t{font-family:var(--display);font-weight:800;font-size:clamp(40px,4.6vw,60px);line-height:1.05;margin:6px 0;white-space:nowrap}
+.hourcard p{margin:0;color:var(--soft)}
+
+.final{background:var(--pink);color:#fff;text-align:center}
+.final h2{color:#fff;max-width:15ch;margin:0 auto 16px}
+.final .lead{color:#ffe1eb;margin:0 auto 30px}
+.final .date{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+footer{background:var(--navy-d);color:#aab5cf;padding:52px 0 96px;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer img{height:52px;margin-bottom:14px}
+footer h4{color:var(--sun);margin:0 0 10px;font-size:15px;font-weight:600}
+footer p{margin:0}
+.fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-top:20px;margin-top:16px;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:6;display:none}
+.float.on{display:block}
+.float .btn{width:100%;box-shadow:0 12px 30px rgba(17,28,51,.4)}
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:860px){
+  header.top nav{display:none}
+  header.top .wrap{height:72px}
+  header.top img{height:44px}
+  .hero .wrap{padding-top:40px;padding-bottom:90px}
+  .pick .grid,.visit .wrap{grid-template-columns:1fr}
+  .cards,.quotes,.steps,.tgrid{grid-template-columns:1fr}
+  .opts,.opts.four{grid-template-columns:1fr 1fr}
+  .summary{position:relative;top:0}
+  .score{text-align:left}
+  footer .wrap{grid-template-columns:1fr}
+  section{padding:70px 0}
+  .theme{min-height:130px}
+}
+@media (prefers-reduced-motion:reduce){.band .track{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice">Ophalen in Barendrecht of laten bezorgen · elke dag bereikbaar van 09:00 tot 21:00</div>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#"><img src="logo-light.svg" alt="R&amp;M Taarten"></a>
+    <nav aria-label="Hoofdmenu"><a href="#bestellen">Bestellen</a><a href="#themas">Thema's</a><a href="#ervaringen">Ervaringen</a><a href="#vragen">Vragen</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="top">
+    <canvas id="balloons" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="chips"><span>Kindertaarten</span><span>Bruidstaarten</span><span>Fototaarten</span><span>Cupcakes &amp; donuts</span></div>
+      <h1>De taart waar iedereen van opkijkt <span class="rot" id="rot">op het kinderfeest</span></h1>
+      <p class="sub">Themataarten als Bumba, Frozen en Paw Patrol, bruidstaarten, fototaarten en slagroomtaarten. Plus cupcakes, koekjes, donuts en feestgebak. Uit Barendrecht, met bezorging.</p>
+      <div class="btns">
+        <a class="btn btn-pink" href="#bestellen">Stel je taart samen</a>
+        <a class="btn btn-ghost" href="#ervaringen">Lees ervaringen</a>
+      </div>
+      <div class="trust"><span class="stars" aria-hidden="true">★★★★★</span><span><b>4,8</b> op Google · 60 reviews</span><span>Barendrecht</span></div>
+    </div>
+    <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C 240 70 480 0 720 26 S 1200 60 1440 22 V60 H0z" fill="#fff"/></svg>
+  </div>
+
+  <div class="band" aria-hidden="true"><div class="track" id="track"><span>Themataarten voor kids</span><span>Bruidstaarten</span><span>Ook last minute</span><span>Fototaarten</span><span>Marsepein of fondant</span><span>Bezorging</span></div></div>
+
+  <section class="pick" id="bestellen">
+    <div class="wrap">
+      <h2>Stel je <span>taart</span> samen</h2>
+      <p class="lead">Kies je gelegenheid, wat je wilt en voor hoeveel personen. Je stuurt het met één tik via WhatsApp en krijgt een voorstel met prijs.</p>
+      <div class="grid">
+        <div>
+          <div class="bar-steps" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="step">
+            <h3>1. Voor welke gelegenheid?</h3>
+            <div class="opts" data-group="feest">
+              <button class="opt" type="button" data-v="Kinderfeest of verjaardag"><b>Kinderfeest</b><small>Of verjaardag</small></button>
+              <button class="opt" type="button" data-v="Bruiloft"><b>Bruiloft</b><small>Bruidstaart</small></button>
+              <button class="opt" type="button" data-v="Ander feest"><b>Ander feest</b><small>Vertel het ons</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3>2. Wat wil je?</h3>
+            <div class="opts" data-group="soort">
+              <button class="opt" type="button" data-v="Themataart"><span class="lbl">Aanbevolen</span><b>Themataart</b><small>Bumba, Frozen, Paw Patrol…</small></button>
+              <button class="opt" type="button" data-v="Bruidstaart"><b>Bruidstaart</b><small>In jullie kleuren</small></button>
+              <button class="opt" type="button" data-v="Fototaart"><b>Fototaart</b><small>Met eigen foto</small></button>
+              <button class="opt" type="button" data-v="Slagroomtaart"><b>Slagroomtaart</b><small>Klassiek lekker</small></button>
+              <button class="opt" type="button" data-v="Cupcakes, koekjes of donuts"><b>Cupcakes</b><small>Koekjes, donuts</small></button>
+              <button class="opt" type="button" data-v="Feestgebak"><b>Feestgebak</b><small>Voor op tafel</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3>3. Voor hoeveel personen?</h3>
+            <div class="opts four" data-group="grootte">
+              <button class="opt" type="button" data-v="tot 10 personen"><b>Tot 10</b></button>
+              <button class="opt" type="button" data-v="10 tot 20 personen"><b>10–20</b></button>
+              <button class="opt" type="button" data-v="20 tot 50 personen"><b>20–50</b></button>
+              <button class="opt" type="button" data-v="meer dan 50 personen"><b>50+</b></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3>4. Ophalen of bezorgen?</h3>
+            <div class="opts" data-group="levering">
+              <button class="opt" type="button" data-v="Ophalen in Barendrecht"><b>Ophalen</b><small>In Barendrecht</small></button>
+              <button class="opt" type="button" data-v="Laten bezorgen"><b>Bezorgen</b><small>Op je adres</small></button>
+            </div>
+          </div>
+          <div class="step date">
+            <h3>5. Wanneer is het feest?</h3>
+            <label for="d1" style="position:absolute;left:-9999px">Datum</label><input type="date" id="d1" class="js-date">
+          </div>
+        </div>
+        <aside class="summary" aria-live="polite">
+          <div class="k">Jouw taart</div>
+          <h3 id="s-title">Kies je gelegenheid</h3>
+          <dl>
+            <dt>Wat</dt><dd id="s-soort">–</dd>
+            <dt>Personen</dt><dd id="s-grootte">–</dd>
+            <dt>Levering</dt><dd id="s-levering">–</dd>
+            <dt>Datum</dt><dd id="s-datum">–</dd>
+          </dl>
+          <a class="btn btn-pink js-ask" href="#">Vraag een voorstel via WhatsApp</a>
+          <div class="note">Vrijblijvend. Je krijgt eerst een voorstel met prijs.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="themes" id="themas">
+    <div class="wrap">
+      <h2>Hun favoriete <span>thema</span></h2>
+      <p class="lead" style="margin-bottom:30px">Een paar thema's die R&amp;M al maakte. Heb je een ander idee? Stuur gewoon een voorbeeld.</p>
+      <div class="tgrid">
+        <div class="theme"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="#fff"/></svg><b>Bumba</b><small>"Een kunstwerk", volgens een ouder</small></div>
+        <div class="theme"><svg viewBox="0 0 100 100"><path d="M50 5l10 35 35 10-35 10-10 35-10-35L5 50l35-10z" fill="#fff"/></svg><b>Frozen</b><small>Themataart voor kids</small></div>
+        <div class="theme"><svg viewBox="0 0 100 100"><circle cx="50" cy="62" r="20" fill="#fff"/><circle cx="25" cy="35" r="10" fill="#fff"/><circle cx="45" cy="22" r="10" fill="#fff"/><circle cx="68" cy="25" r="10" fill="#fff"/><circle cx="82" cy="45" r="10" fill="#fff"/></svg><b>Paw Patrol</b><small>Themataart voor kids</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Waarom klanten terugkomen</h2>
+      <p class="lead">Wat in de reviews steeds terugkomt.</p>
+      <div class="cards">
+        <div class="card" style="--c:var(--pink)"><h3>Mooie themataarten</h3><p>Gasten zijn sprakeloos. Je favoriete thema wordt echt een taart om naar te kijken.</p></div>
+        <div class="card" style="--c:var(--sun)"><h3>Lekker en eerlijk</h3><p>Klanten noemen de smaak en dat je waar voor je geld krijgt.</p></div>
+        <div class="card" style="--c:var(--aqua)"><h3>Snel, ook last minute</h3><p>Zelfs een bruidstaart kon nog binnen vijf dagen, in de kleuren van het bruidspaar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="ervaringen">
+    <div class="wrap">
+      <div class="revhead">
+        <h2>Wat klanten zeggen</h2>
+        <div class="score"><b>4,8</b><span>Google, 60 reviews</span></div>
+      </div>
+      <div class="quotes">
+        <blockquote>"De Bumba-taart was een kunstwerk, gasten waren sprakeloos."<cite>Ouder, Google-review</cite></blockquote>
+        <blockquote>"Last minute bruidstaart binnen 5 dagen geleverd, in onze kleuren."<cite>Bruid, Google-review</cite></blockquote>
+        <blockquote>"Al jaren halen we hier de taarten voor de kinderen."<cite>Vaste klant, Google-review</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="werkwijze">
+    <div class="wrap">
+      <h2>Zo bestel je</h2>
+      <p class="lead">Geen formulieren. Gewoon even appen.</p>
+      <ol class="steps">
+        <li><h3>Stuur je idee</h3><p>Stel hierboven je taart samen, of stuur een foto of thema via WhatsApp.</p></li>
+        <li><h3>Voorstel</h3><p>Je krijgt een voorstel met prijs, afgestemd op je wensen en het aantal personen.</p></li>
+        <li><h3>Ophalen of bezorgen</h3><p>Je haalt je taart op in Barendrecht of laat hem bezorgen.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq" id="vragen">
+    <div class="wrap">
+      <h2>Veelgestelde vragen</h2>
+      <details><summary>Wat kost een taart?</summary><p>Dat hangt af van het soort taart, het ontwerp en het aantal personen. Stel je taart hierboven samen en je krijgt via WhatsApp een voorstel met prijs.</p></details>
+      <details><summary>Kan het ook last minute?</summary><p>Vaak wel. Een bruid kreeg haar bruidstaart nog binnen vijf dagen. App je datum, dan hoor je of het lukt.</p></details>
+      <details><summary>Bezorgen jullie?</summary><p>Ja, je kunt je taart laten bezorgen of ophalen in Barendrecht.</p></details>
+      <details><summary>Ik hou niet van fondant, kan het anders?</summary><p>Ja, een afwerking met marsepein is ook mogelijk. Zet het erbij in je bericht.</p></details>
+      <details><summary>Welke thema's kunnen jullie maken?</summary><p>Onder andere Bumba, Frozen en Paw Patrol. Heb je een ander thema? Stuur een voorbeeld via WhatsApp.</p></details>
+    </div>
+  </section>
+
+  <section class="visit">
+    <div class="wrap">
+      <div>
+        <h2>Ophalen in Barendrecht</h2>
+        <address>Standerdmolen 38<br>2992 DL Barendrecht</address>
+        <a class="btn btn-navy" href="https://maps.google.com/?q=Standerdmolen+38+Barendrecht" target="_blank" rel="noopener">Route plannen</a>
+      </div>
+      <div class="hourcard">
+        <div class="k">Bereikbaar</div>
+        <div class="t">09:00 – 21:00</div>
+        <p>Maandag tot en met zondag</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Staat het feest al gepland?</h2>
+      <p class="lead">Kies je datum en vraag direct via WhatsApp of het lukt.</p>
+      <div class="date"><label for="d2" style="position:absolute;left:-9999px">Datum</label><input type="date" id="d2" class="js-date"><a class="btn btn-sun js-ask" href="#">Check mijn datum</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><img src="logo-light.svg" alt="R&amp;M Taarten"><p>Kindertaarten, bruidstaarten, fototaarten en feestgebak. Barendrecht, met bezorging.</p></div>
+    <div><h4>Adres</h4><p>Standerdmolen 38<br>2992 DL Barendrecht</p></div>
+    <div><h4>Contact</h4><p><a class="js-wa-plain" href="#">WhatsApp 06 14283743</a><br><a href="mailto:info@renmtaarten.nl">info@renmtaarten.nl</a></p></div>
+    <div class="fine"><span>© 2026 R&amp;M Taarten</span><span>Website door Mohamedia</span></div>
+  </div>
+</footer>
+
+<div class="float" id="float"><a class="btn btn-pink" href="#bestellen">Stel je taart samen</a></div>
+
+<script>
+const WA = "31614283743";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const st = { feest: "", soort: "", grootte: "", levering: "", datum: "" };
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) : "";
+const $ = id => document.getElementById(id);
+function render() {
+  const vals = [st.feest, st.soort, st.grootte, st.levering, st.datum];
+  document.querySelectorAll(".bar-steps i").forEach((i, k) => i.classList.toggle("on", !!vals[k]));
+  $("s-title").textContent = st.feest || "Kies je gelegenheid";
+  $("s-soort").textContent = st.soort || "–";
+  $("s-grootte").textContent = st.grootte || "–";
+  $("s-levering").textContent = st.levering || "–";
+  $("s-datum").textContent = st.datum ? fmt(st.datum) : "–";
+  const msg = `Hoi R&M Taarten! Ik wil graag een taart bestellen.\nGelegenheid: ${st.feest || "nog niet gekozen"}\nWat: ${st.soort || "nog niet gekozen"}\nPersonen: ${st.grootte || "weet ik nog niet"}\nLevering: ${st.levering || "nog niet bekend"}\nDatum: ${st.datum ? fmt(st.datum) : "nog niet bekend"}\nKan dit en wat kost het?`;
+  document.querySelectorAll(".js-ask").forEach(a => { a.href = wa(msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+document.querySelectorAll(".opts").forEach(g => {
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", "false"));
+  g.addEventListener("click", e => { const b = e.target.closest(".opt"); if (!b) return; g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b)); st[g.dataset.group] = b.dataset.v; render(); });
+});
+const today = new Date().toISOString().slice(0, 10);
+document.querySelectorAll(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => { st.datum = i.value; document.querySelectorAll(".js-date").forEach(j => j.value = i.value); render(); }); });
+document.querySelectorAll(".js-wa-plain").forEach(a => { a.href = wa("Hoi R&M Taarten!"); a.target = "_blank"; a.rel = "noopener"; });
+render();
+
+const tr = $("track"); tr.innerHTML += tr.innerHTML;
+const words = ["op het kinderfeest", "op je bruiloft", "op elke verjaardag"]; let wi = 0;
+const rot = $("rot");
+if (!reduce) setInterval(() => { wi = (wi + 1) % words.length; rot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 }).onfinish = () => { rot.textContent = words[wi]; rot.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 420 }); }; }, 2600);
+
+const fl = $("float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe($("top"));
+new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .1 }).observe($("bestellen"));
+
+// bewegende hero: ballonnen die opstijgen en zachtjes wiegen, meer aan de rechterkant
+const c = $("balloons"), x = c.getContext("2d"); let W, H, bs = [];
+const cols = ["#e8457a", "#ffd166", "#5cc8c2", "#ffffff", "#f78fb3"];
+function mk(initial) {
+  const right = Math.random() < .78, mob = W < 860;
+  const r = (mob ? 14 : 22) + Math.random() * (mob ? 12 : 22);
+  return { x: right ? W * (mob ? .55 : .58) + Math.random() * W * (mob ? .45 : .42) : Math.random() * W, y: initial ? Math.random() * H : H + r * 3, r, v: .35 + Math.random() * .5, p: Math.random() * 6.28, c: cols[Math.floor(Math.random() * cols.length)], a: mob ? (right ? .45 : .15) : (right ? .92 : .25) };
+}
+function size() { const r = devicePixelRatio || 1; W = c.clientWidth; H = c.clientHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0); bs = Array.from({ length: W < 860 ? 9 : 16 }, () => mk(true)); }
+function balloon(b, t) {
+  const sway = Math.sin(t / 1300 + b.p) * 10, bx = b.x + sway, by = b.y;
+  x.globalAlpha = b.a;
+  x.strokeStyle = "rgba(255,255,255,.45)"; x.lineWidth = 1.2; x.beginPath(); x.moveTo(bx, by + b.r * 1.2);
+  x.bezierCurveTo(bx - 8, by + b.r * 2, bx + 8, by + b.r * 2.6, bx - sway * .4, by + b.r * 3.4); x.stroke();
+  x.fillStyle = b.c; x.beginPath(); x.ellipse(bx, by, b.r, b.r * 1.2, Math.sin(t / 1300 + b.p) * .08, 0, 6.283); x.fill();
+  x.beginPath(); x.moveTo(bx - 4, by + b.r * 1.26); x.lineTo(bx + 4, by + b.r * 1.26); x.lineTo(bx, by + b.r * 1.14); x.closePath(); x.fill();
+  x.fillStyle = "rgba(255,255,255,.45)"; x.beginPath(); x.ellipse(bx - b.r * .38, by - b.r * .45, b.r * .16, b.r * .3, -.5, 0, 6.283); x.fill();
+  x.globalAlpha = 1;
+}
+function frame(t) {
+  x.clearRect(0, 0, W, H);
+  bs.sort((a, b) => a.r - b.r);
+  for (let i = 0; i < bs.length; i++) { const b = bs[i]; if (!reduce) b.y -= b.v; if (b.y < -b.r * 4) bs[i] = mk(false); balloon(b, reduce ? 0 : t); }
+  if (!reduce) requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>
