@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Beauty4ever by Anna — huidbehandelingen, lippen en wimpers in Vlaardingen</title>
+<meta name="description" content="Huidbehandelingen met gezichtsanalyse, lipvergroting met hyaluronzuur, wimperextensions, wenkbrauwen en permanente make-up bij Anna in Vlaardingen. 4,9 op Google. Vraag je afspraak aan via WhatsApp.">
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0f3d47; --teal-2:#165260; --copper:#b07a68; --copper-d:#94604f; --rose:#e2b8a8; --aqua:#cfe6e3;
+  --pearl:#f5f8f7; --ink:#0f3d47; --soft:#536b70; --line:#d6e3e1;
+  --display:"Tenor Sans", Optima, sans-serif; --sans:"Mulish", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--pearl);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--copper);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.demo{background:#0a2b32;color:#a9c2c4;font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--rose)}
+.notice{background:var(--aqua);color:var(--teal);font-size:14px;text-align:center;padding:8px 16px;font-weight:600}
+
+.bar{display:flex;justify-content:space-between;align-items:center;height:88px}
+.bar img{height:48px;display:block}
+.bar nav a{text-decoration:none;font-size:15px;font-weight:600;margin-left:28px;color:var(--soft)}
+.bar nav a:hover{color:var(--teal)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 28px;border-radius:12px;font-family:var(--sans);font-weight:700;font-size:16px;text-decoration:none;border:1.5px solid var(--copper);cursor:pointer;transition:background .2s}
+.btn-c{background:var(--copper);color:#fff}
+.btn-c:hover{background:var(--copper-d);border-color:var(--copper-d)}
+.btn-t{background:transparent;color:var(--teal);border-color:var(--teal)}
+.btn-t:hover{background:var(--teal);color:#fff}
+
+/* hero */
+.hero{padding:0 16px}
+.hero .panel{position:relative;max-width:1340px;margin:0 auto;background:var(--teal);color:var(--pearl);border-radius:32px;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:30px;align-items:center;padding-top:84px;padding-bottom:90px}
+.tag{display:inline-block;border:1px solid rgba(226,184,168,.6);color:var(--rose);border-radius:999px;padding:6px 16px;font-size:14px;margin-bottom:24px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,6vw,84px);line-height:1.04;margin:0 0 24px;letter-spacing:-.01em}
+.rot{display:block;color:var(--rose);min-height:1.04em}
+.hero p.sub{font-size:19px;max-width:30em;color:#cfe0e0;margin:0 0 34px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.hero .btn-t{color:var(--pearl);border-color:rgba(245,248,247,.55)}
+.hero .btn-t:hover{background:rgba(255,255,255,.08)}
+.trust{margin-top:30px;font-size:15px;color:#a9c2c4;display:flex;flex-wrap:wrap;gap:8px 24px}
+.trust b{color:var(--rose)}
+.exp{justify-self:end;width:260px;height:260px;border-radius:50%;border:1px solid rgba(226,184,168,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;backdrop-filter:blur(2px);background:rgba(15,61,71,.35)}
+.exp b{font-family:var(--display);font-weight:400;font-size:88px;line-height:1;color:var(--rose)}
+.exp span{font-size:15px;color:#cfe0e0;max-width:12em;margin-top:6px}
+
+/* marquee */
+.band{overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--line)}
+.band .track{display:inline-block;padding:20px 0;animation:slide 42s linear infinite;font-family:var(--display);font-size:23px;color:var(--teal)}
+.band span{margin:0 26px}
+.band span::after{content:"";display:inline-block;width:9px;height:9px;border:1.5px solid var(--copper);border-radius:50%;margin-left:52px;vertical-align:3px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:100px 0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,4.4vw,56px);line-height:1.08;margin:0 0 16px}
+.lead{color:var(--soft);font-size:18px;max-width:36em;margin:0 0 46px}
+
+/* kiezer */
+.pick .grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:46px;align-items:start}
+.step{margin-bottom:34px}
+.step h3{font-size:15px;font-weight:700;margin:0 0 14px;display:flex;align-items:center;gap:10px}
+.step h3 i{font-style:normal;font-family:var(--display);font-size:14px;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--copper);color:var(--copper);display:inline-flex;align-items:center;justify-content:center}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.opt{position:relative;display:flex;flex-direction:column;justify-content:flex-start;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:18px 18px 16px;font:inherit;color:var(--ink);cursor:pointer;min-height:44px;transition:border-color .2s}
+.opt:hover{border-color:var(--aqua)}
+.opt b{display:block;font-family:var(--display);font-weight:400;font-size:21px;line-height:1.2;overflow-wrap:anywhere;hyphens:auto}
+.opt small{display:block;color:var(--soft);font-size:14px;margin-top:5px;line-height:1.45}
+.opt[aria-pressed="true"]{border-color:var(--teal);background:var(--aqua)}
+.opt .lbl{position:absolute;top:-11px;right:14px;background:var(--copper);color:#fff;font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:15px;font-weight:600;min-height:46px;padding:9px 18px;border-radius:12px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.chip[hidden]{display:none}
+.date input{font:inherit;padding:12px 16px;border:1.5px solid var(--line);border-radius:12px;min-height:52px;background:#fff;color:var(--ink)}
+.summary{position:sticky;top:24px;background:#fff;border:1.5px solid var(--line);border-radius:24px;padding:34px;box-shadow:0 30px 60px -30px rgba(15,61,71,.35)}
+.summary .k{font-size:13px;color:var(--copper);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.summary h3{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.15;margin:8px 0 20px}
+.summary dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:0 0 26px;font-size:15.5px;padding-top:16px;border-top:1px solid var(--line)}
+.summary dt{color:var(--soft)}
+.summary dd{margin:0}
+.summary .btn{width:100%}
+.summary .note{font-size:13.5px;color:var(--soft);margin-top:14px;text-align:center}
+
+/* waarom */
+.why{background:#fff}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--pearl);border-radius:22px;padding:32px;position:relative;overflow:hidden}
+.card::after{content:"";position:absolute;right:-40px;bottom:-40px;width:120px;height:120px;border-radius:50%;border:1px solid var(--rose);opacity:.7}
+.card .n{font-family:var(--display);font-size:15px;color:var(--copper);letter-spacing:.1em}
+.card h3{font-family:var(--display);font-weight:400;font-size:24px;margin:10px 0 8px;line-height:1.2}
+.card p{margin:0;color:var(--soft);position:relative}
+
+/* reviews */
+.rv{background:var(--teal);color:var(--pearl)}
+.rv .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px}
+.score{display:flex;align-items:baseline;gap:16px}
+.score b{font-family:var(--display);font-weight:400;font-size:92px;line-height:1;color:var(--rose)}
+.score span{color:#a9c2c4;max-width:12em}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+blockquote{margin:0;padding:30px;border-radius:22px;background:var(--teal-2);font-family:var(--display);font-size:23px;line-height:1.35}
+blockquote cite{display:block;margin-top:14px;font-family:var(--sans);font-style:normal;font-size:14px;color:#a9c2c4}
+
+/* stappen */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:36px;counter-reset:s;position:relative}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:var(--aqua);color:var(--teal);font-family:var(--display);font-size:24px;margin-bottom:18px}
+.steps h3{margin:0 0 6px;font-size:20px}
+.steps p{margin:0;color:var(--soft)}
+
+/* faq */
+.faq{background:#fff}
+.faq .wrap{max-width:840px}
+details{border-bottom:1px solid var(--line);padding:4px 0}
+summary{cursor:pointer;list-style:none;padding:18px 40px 18px 0;font-size:18px;font-weight:700;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:12px;font-size:26px;font-weight:400;color:var(--copper)}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 20px;color:var(--soft)}
+
+/* bezoek */
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.addr{font-size:20px;margin:0 0 26px}
+.hours{width:100%;border-collapse:collapse;background:#fff;border-radius:18px;overflow:hidden}
+.hours td{padding:12px 20px;border-bottom:1px solid var(--line)}
+.hours tr:last-child td{border-bottom:0}
+.hours td:last-child{text-align:right;color:var(--soft)}
+.hours tr.today td{background:var(--aqua);color:var(--teal);font-weight:700}
+
+.final{padding:0 16px 100px}
+.final .panel{max-width:1340px;margin:0 auto;background:var(--aqua);border-radius:32px;padding:84px 24px;text-align:center}
+.final h2{max-width:15ch;margin:0 auto 16px}
+.final .lead{margin:0 auto 32px}
+.final .btns{justify-content:center}
+
+footer{background:var(--teal);color:#a9c2c4;padding:52px 0 100px;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+footer img{height:46px;display:block}
+footer a{color:var(--rose)}
+
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:6;display:none}
+.float.on{display:block}
+.float .btn{width:100%;box-shadow:0 10px 30px rgba(10,43,50,.4)}
+.sr{position:absolute;left:-9999px}
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:860px){
+  .bar nav{display:none}
+  .bar img{height:40px}
+  .hero{padding:0 8px}
+  .hero .panel{border-radius:24px}
+  .hero .wrap{grid-template-columns:minmax(0,1fr);padding-top:44px;padding-bottom:56px}
+  .exp{justify-self:start;width:170px;height:170px;order:-1}
+  .exp b{font-size:56px}.exp span{font-size:13px}
+  .pick .grid,.visit .wrap,.cards,.quotes,.steps{grid-template-columns:minmax(0,1fr)}
+  .summary{position:relative;top:0}
+  section{padding:72px 0}
+  .opt{padding:16px 14px 14px}
+  .opt b{font-size:16.5px}
+  .opt small{font-size:13px}
+  .score b{font-size:70px}
+  .tag{font-size:13px}
+  .final{padding:0 8px 72px}
+  .final .panel{padding:60px 20px;border-radius:24px}
+}
+@media (prefers-reduced-motion:reduce){.band .track{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice">Elke behandeling begint met een grondige analyse · Vlaardingen</div>
+
+<header class="wrap bar">
+  <a href="#"><img src="logo-dark.svg" alt="Beauty4ever by Anna"></a>
+  <nav aria-label="Hoofdmenu"><a href="#afspraak">Behandelingen</a><a href="#ervaringen">Ervaringen</a><a href="#vragen">Vragen</a><a href="#langskomen">Langskomen</a></nav>
+</header>
+
+<main>
+  <div class="hero" id="top">
+    <div class="panel">
+      <canvas id="drops" aria-hidden="true"></canvas>
+      <div class="wrap">
+        <div>
+          <span class="tag">Huid · Lippen · Wimpers · PMU</span>
+          <h1>Vakkundige zorg <span class="rot" id="rot">voor je huid</span></h1>
+          <p class="sub">Bij Anna in Vlaardingen begint elke behandeling met een grondige analyse. Daarna kies je samen wat bij je past: huidbehandeling, lippen met hyaluronzuur, wimpers, wenkbrauwen of permanente make-up.</p>
+          <div class="btns">
+            <a class="btn btn-c" href="#afspraak">Kies je behandeling</a>
+            <a class="btn btn-t" href="#ervaringen">Lees ervaringen</a>
+          </div>
+          <div class="trust"><span><b>4,9</b> op Google (29 reviews)</span><span>Schiedamseweg 10, Vlaardingen</span><span>Ma t/m za open</span></div>
+        </div>
+        <div class="exp" aria-hidden="true"><b>4,9</b><span>op Google, uit 29 reviews</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band" aria-hidden="true"><div class="track" id="track"><span>Gezichtsanalyse</span><span>Huidbehandelingen</span><span>Lipvergroting met hyaluronzuur</span><span>Wimperextensions</span><span>Wenkbrauw tint en henna</span><span>Permanente make-up</span><span>Ontspannen sfeer</span></div></div>
+
+  <section class="pick" id="afspraak">
+    <div class="wrap">
+      <h2>Kies je behandeling</h2>
+      <p class="lead">Kies waarvoor je komt, zet er eventueel iets bij en geef aan wanneer het je past. Je verzoek staat klaar in WhatsApp.</p>
+      <div class="grid">
+        <div>
+          <div class="step">
+            <h3><i>1</i>Waarvoor kom je?</h3>
+            <div class="opts" data-group="dienst">
+              <button class="opt" type="button" data-v="Huidbehandeling met gezichtsanalyse"><span class="lbl">Aanbevolen</span><b>Huidbehandeling</b><small>Begint met een gezichtsanalyse</small></button>
+              <button class="opt" type="button" data-v="Lipvergroting met hyaluronzuur"><b>Lippen</b><small>Lipvergroting met hyaluronzuur</small></button>
+              <button class="opt" type="button" data-v="Hyaluronzuur behandeling"><b>Hyaluronzuur</b><small>Bespreek je wens bij de analyse</small></button>
+              <button class="opt" type="button" data-v="Wimperextensions"><b>Wimpers</b><small>Wimperextensions</small></button>
+              <button class="opt" type="button" data-v="Wenkbrauwen tint/henna"><b>Wenkbrauwen</b><small>Tint of henna</small></button>
+              <button class="opt" type="button" data-v="Permanente make-up"><b>Permanente make-up</b><small>Bespreek wat je wilt</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3><i>2</i>Iets erbij? <span style="font-weight:400">(meerdere mag)</span></h3>
+            <div class="chips" id="extras">
+              <button class="chip" type="button" aria-pressed="false" data-for="Wenkbrauwen tint/henna">Wenkbrauwen tint/henna</button>
+              <button class="chip" type="button" aria-pressed="false" data-for="Wimperextensions">Wimperextensions</button>
+              <button class="chip" type="button" aria-pressed="false" data-for="Huidbehandeling met gezichtsanalyse">Huidbehandeling</button>
+            </div>
+          </div>
+          <div class="step">
+            <h3><i>3</i>Eerste keer bij Anna?</h3>
+            <div class="opts" data-group="klant">
+              <button class="opt" type="button" data-v="Ik kom voor het eerst"><b>Ja, eerste keer</b></button>
+              <button class="opt" type="button" data-v="Ik ben al klant"><b>Nee, al klant</b></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3><i>4</i>Welke dag past?</h3>
+            <div class="chips" id="days">
+              <button class="chip" type="button" aria-pressed="false">Maandag</button><button class="chip" type="button" aria-pressed="false">Dinsdag</button><button class="chip" type="button" aria-pressed="false">Woensdag</button><button class="chip" type="button" aria-pressed="false">Donderdag</button><button class="chip" type="button" aria-pressed="false">Vrijdag</button><button class="chip" type="button" aria-pressed="false">Zaterdag</button>
+            </div>
+          </div>
+          <div class="step date">
+            <h3><i>+</i>Of kies een datum</h3>
+            <label class="sr" for="d1">Datum</label><input type="date" id="d1" class="js-date">
+          </div>
+        </div>
+        <aside class="summary" aria-live="polite">
+          <div class="k">Jouw afspraakverzoek</div>
+          <h3 id="s-title">Kies je behandeling</h3>
+          <dl>
+            <dt>Erbij</dt><dd id="s-extra">–</dd>
+            <dt>Klant</dt><dd id="s-klant">–</dd>
+            <dt>Wanneer</dt><dd id="s-when">–</dd>
+          </dl>
+          <a class="btn btn-c js-ask" href="#">Vraag je afspraak via WhatsApp</a>
+          <div class="note">Vrijblijvend. Anna laat weten wanneer er plek is.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Waarom klanten voor Anna kiezen</h2>
+      <p class="lead">Wat in de Google-reviews steeds terugkomt.</p>
+      <div class="cards">
+        <div class="card"><span class="n">01</span><h3>Grondige analyse vooraf</h3><p>Anna kijkt eerst goed naar je huid en je wensen, en pas daarna begint de behandeling.</p></div>
+        <div class="card"><span class="n">02</span><h3>Professioneel en vakkundig</h3><p>Een klant schrijft dat Anna 23 jaar ervaring heeft, en dat je dat merkt.</p></div>
+        <div class="card"><span class="n">03</span><h3>Een ontspannen sfeer</h3><p>"Een fijne plek met ziel", zo omschrijft een klant de salon.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rv" id="ervaringen">
+    <div class="wrap">
+      <div class="head">
+        <h2 style="margin:0">Ervaringen</h2>
+        <div class="score"><b>4,9</b><span>gemiddeld op Google, uit 29 reviews</span></div>
+      </div>
+      <div class="quotes">
+        <blockquote>"Anna heeft 23 jaar ervaring, en dat merk je."<cite>Klant, Google-review</cite></blockquote>
+        <blockquote>"Geen blauwe plekken na mijn lipbehandeling."<cite>Klant, Google-review</cite></blockquote>
+        <blockquote>"Een fijne plek met ziel."<cite>Klant, Google-review</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="werkwijze">
+    <div class="wrap">
+      <h2>Zo werkt het</h2>
+      <p class="lead">Rustig en zorgvuldig, van eerste bericht tot resultaat.</p>
+      <ol class="steps">
+        <li><h3>Kies je behandeling</h3><p>Huid, lippen, wimpers, wenkbrauwen of permanente make-up, op een dag die jou past.</p></li>
+        <li><h3>Stuur het via WhatsApp</h3><p>Je verzoek staat klaar. Anna laat weten wanneer er plek is.</p></li>
+        <li><h3>Analyse en behandeling</h3><p>In de salon aan de Schiedamseweg kijkt Anna eerst grondig met je mee.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq" id="vragen">
+    <div class="wrap">
+      <h2>Veelgestelde vragen</h2>
+      <details><summary>Wat kost een behandeling?</summary><p>Dat hangt af van de behandeling en wat er uit de analyse komt. Je krijgt de prijs op maat via WhatsApp.</p></details>
+      <details><summary>Wat gebeurt er bij de eerste afspraak?</summary><p>Anna begint met een grondige analyse van je huid en je wensen. Daarna bespreek je samen welke behandeling bij je past.</p></details>
+      <details><summary>Doe je ook lipvergroting?</summary><p>Ja, lipvergroting en behandelingen met hyaluronzuur. Een klant schreef: "Geen blauwe plekken na mijn lipbehandeling."</p></details>
+      <details><summary>Wanneer is de salon open?</summary><p>Maandag tot en met donderdag en zaterdag van 9:00 tot 19:00, vrijdag tot 20:00. Zondag gesloten.</p></details>
+    </div>
+  </section>
+
+  <section class="visit" id="langskomen">
+    <div class="wrap">
+      <div>
+        <h2>Langskomen</h2>
+        <p class="addr">Schiedamseweg 10<br>3134 BJ Vlaardingen</p>
+        <a class="btn btn-c" href="https://www.google.com/maps/search/?api=1&query=Beauty4ever+by+Anna+Schiedamseweg+10+Vlaardingen" target="_blank" rel="noopener">Route plannen</a>
+      </div>
+      <table class="hours" aria-label="Openingstijden">
+        <tr data-d="1"><td>Maandag</td><td>09:00 – 19:00</td></tr>
+        <tr data-d="2"><td>Dinsdag</td><td>09:00 – 19:00</td></tr>
+        <tr data-d="3"><td>Woensdag</td><td>09:00 – 19:00</td></tr>
+        <tr data-d="4"><td>Donderdag</td><td>09:00 – 19:00</td></tr>
+        <tr data-d="5"><td>Vrijdag</td><td>09:00 – 20:00</td></tr>
+        <tr data-d="6"><td>Zaterdag</td><td>09:00 – 19:00</td></tr>
+        <tr data-d="0"><td>Zondag</td><td>Gesloten</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="panel">
+      <h2>Begin met een goede analyse</h2>
+      <p class="lead">Kies je behandeling en stuur je verzoek in één keer via WhatsApp.</p>
+      <div class="btns"><a class="btn btn-c" href="#afspraak">Kies je behandeling</a><a class="btn btn-t js-wa-plain" href="#">App Anna</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><img src="logo-light.svg" alt="Beauty4ever by Anna"><span><a href="mailto:beauty4everanna@interia.eu">beauty4everanna@interia.eu</a><br>© 2026 Beauty4ever by Anna · Website door Mohamedia</span></div>
+</footer>
+
+<div class="float" id="float"><a class="btn btn-c" href="#afspraak">Kies je behandeling</a></div>
+
+<script>
+const WA = "31617472904";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const st = { dienst: "", klant: "", extras: [], dagen: [], datum: "" };
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long" }) : "";
+const when = () => st.datum ? fmt(st.datum) : st.dagen.map(d => d.toLowerCase()).join(" of ");
+function render() {
+  document.querySelectorAll("#extras .chip").forEach(c => { const hide = c.dataset.for === st.dienst; c.hidden = hide; if (hide) c.setAttribute("aria-pressed", "false"); });
+  st.extras = [...document.querySelectorAll("#extras .chip[aria-pressed=true]")].map(x => x.textContent);
+  document.getElementById("s-title").textContent = st.dienst || "Kies je behandeling";
+  document.getElementById("s-extra").textContent = st.extras.join(", ") || "–";
+  document.getElementById("s-klant").textContent = st.klant || "–";
+  document.getElementById("s-when").textContent = when() || "–";
+  const msg = `Hoi Anna! Ik wil graag een afspraak.\nBehandeling: ${st.dienst || "graag eerst een analyse en advies"}${st.extras.length ? "\nErbij: " + st.extras.join(", ") : ""}${st.klant ? "\n" + st.klant : ""}\nWanneer: ${when() || "het eerste moment dat vrij is"}\nWanneer heb je plek?`;
+  document.querySelectorAll(".js-ask").forEach(a => { a.href = wa(msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+document.querySelectorAll(".opts").forEach(g => {
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", "false"));
+  g.addEventListener("click", e => { const b = e.target.closest(".opt"); if (!b) return; g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b)); st[g.dataset.group] = b.dataset.v; render(); });
+});
+["extras", "days"].forEach(id => document.getElementById(id).addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true");
+  st.dagen = [...document.querySelectorAll("#days .chip[aria-pressed=true]")].map(x => x.textContent); render();
+}));
+const today = new Date().toISOString().slice(0, 10);
+document.querySelectorAll(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => { st.datum = i.value; render(); }); });
+document.querySelectorAll(".js-wa-plain").forEach(a => { a.href = wa("Hoi Anna!"); a.target = "_blank"; a.rel = "noopener"; });
+render();
+const tr0 = document.querySelector(`.hours tr[data-d="${new Date().getDay()}"]`); if (tr0) tr0.classList.add("today");
+
+const tr = document.getElementById("track"); tr.innerHTML += tr.innerHTML;
+const words = ["voor je huid", "voor je lippen", "voor je wimpers", "voor je brows"]; let wi = 0;
+const rot = document.getElementById("rot");
+if (!reduce) setInterval(() => { wi = (wi + 1) % words.length; rot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 280 }).onfinish = () => { rot.textContent = words[wi]; rot.animate([{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: 460 }); }; }, 2700);
+
+const fl = document.getElementById("float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe(document.getElementById("top"));
+new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .1 }).observe(document.getElementById("afspraak"));
+
+// bewegende hero: serumdruppels die opstijgen + een zachte analyse-ring die rondgaat
+const c = document.getElementById("drops"), x = c.getContext("2d"); let W, H, drops = [];
+function size() { const r = devicePixelRatio || 1; W = c.clientWidth; H = c.clientHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0);
+  drops = Array.from({ length: Math.round(W / (W < 860 ? 60 : 34)) }, () => ({ x: W * (.35 + Math.random() * .65), y: Math.random() * H, r: 3 + Math.random() * 14, v: .15 + Math.random() * .35, w: Math.random() * 6.28 })); }
+function frame(t) {
+  x.clearRect(0, 0, W, H);
+  const eb = document.querySelector(".exp").getBoundingClientRect(), cb = c.getBoundingClientRect();
+  const cx = eb.left - cb.left + eb.width / 2, cy = eb.top - cb.top + eb.height / 2, R = eb.width / 2 + 24;
+  for (let k = 0; k < 3; k++) { x.beginPath(); x.arc(cx, cy, R + k * 34, 0, 6.283); x.strokeStyle = `rgba(207,230,227,${.08 - k * .02})`; x.lineWidth = 1; x.stroke(); }
+  const a = t / 2200; x.beginPath(); x.arc(cx, cy, R + 34, a, a + 1.1); x.strokeStyle = "rgba(226,184,168,.55)"; x.lineWidth = 2; x.lineCap = "round"; x.stroke();
+  for (const d of drops) {
+    d.y -= d.v; d.w += .01; if (d.y < -30) { d.y = H + 30; d.x = W * (.35 + Math.random() * .65); }
+    const xx = d.x + Math.sin(d.w) * 10, g = x.createRadialGradient(xx - d.r * .35, d.y - d.r * .35, 0, xx, d.y, d.r);
+    g.addColorStop(0, "rgba(255,255,255,.45)"); g.addColorStop(.6, "rgba(207,230,227,.12)"); g.addColorStop(1, "rgba(207,230,227,.03)");
+    x.beginPath(); x.arc(xx, d.y, d.r, 0, 6.283); x.fillStyle = g; x.fill(); x.strokeStyle = "rgba(207,230,227,.25)"; x.lineWidth = 1; x.stroke();
+  }
+  if (!reduce) requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>

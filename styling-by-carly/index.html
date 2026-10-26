@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Styling by Carly — gelnagels, permanente make-up en tattoos in Maassluis</title>
+<meta name="description" content="Gelnagels, kunstnagels, permanente make-up (wenkbrauwen en eyeliner) en tattoos bij Carly, Nieuwstraat 9 in Maassluis. 5,0 op Google. Vraag je afspraak aan via WhatsApp.">
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --graphite:#16191d; --slate:#2a2f36; --rasp:#b1123b; --rasp-d:#8f0e30; --powder:#f6dbe0; --blush:#fbeef0;
+  --chalk:#ffffff; --ink:#16191d; --soft:#5d6168; --line:#ead9dc; --nude:#e3bfae;
+  --display:"Bodoni Moda", Didot, Georgia, serif; --sans:"Manrope", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--chalk);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rasp);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.demo{background:var(--graphite);color:#b9bcc2;font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--powder)}
+.notice{background:var(--powder);color:var(--graphite);font-size:14px;text-align:center;padding:8px 16px;font-weight:500}
+
+.bar{display:flex;justify-content:space-between;align-items:center;height:92px;border-bottom:1px solid var(--line)}
+.bar img{height:56px;display:block}
+.bar nav a{text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;margin-left:30px}
+.bar nav a:hover{color:var(--rasp)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 30px;font-family:var(--sans);font-weight:700;font-size:14.5px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--rasp);cursor:pointer;border-radius:2px}
+.btn-r{background:var(--rasp);color:#fff}
+.btn-r:hover{background:var(--rasp-d);border-color:var(--rasp-d)}
+.btn-o{background:transparent;color:var(--graphite);border-color:var(--graphite)}
+.btn-o:hover{background:var(--graphite);color:#fff}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--blush)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center;padding-top:72px;padding-bottom:80px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--rasp);margin-bottom:20px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,6.6vw,96px);line-height:1;margin:0 0 26px;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--rasp)}
+.rot{display:block;font-style:italic;color:var(--rasp);min-height:1em}
+.hero p.sub{font-size:19px;max-width:29em;color:var(--soft);margin:0 0 34px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.trust{margin-top:30px;font-size:14.5px;color:var(--soft);display:flex;flex-wrap:wrap;gap:8px 26px}
+.trust b{color:var(--graphite)}
+/* animatie: nagels met glans + eyeliner die zich tekent */
+.art{position:relative;height:480px}
+.art svg{width:100%;height:100%}
+.nail{transform-box:fill-box;transform-origin:50% 100%;animation:rise 1s cubic-bezier(.2,.9,.3,1.1) both}
+.nail:nth-of-type(2){animation-delay:.12s}.nail:nth-of-type(3){animation-delay:.24s}.nail:nth-of-type(4){animation-delay:.36s}.nail:nth-of-type(5){animation-delay:.48s}
+@keyframes rise{from{transform:translateY(40px) scaleY(.6);opacity:0}to{transform:none;opacity:1}}
+.shine{animation:shine 3.6s ease-in-out infinite}
+@keyframes shine{0%{transform:translateX(-260px)}60%,100%{transform:translateX(560px)}}
+.liner{stroke-dasharray:520;stroke-dashoffset:520;animation:draw 2.4s .9s ease-out forwards,breathe 6s 3.3s ease-in-out infinite}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes breathe{0%,100%{opacity:1}50%{opacity:.55}}
+.brow{stroke-dasharray:300;stroke-dashoffset:300;animation:draw2 2s .4s ease-out forwards}
+@keyframes draw2{to{stroke-dashoffset:0}}
+
+/* marquee */
+.band{background:var(--graphite);color:#fff;overflow:hidden;white-space:nowrap}
+.band .track{display:inline-block;padding:16px 0;animation:slide 40s linear infinite;font-family:var(--display);font-style:italic;font-size:24px}
+.band span{margin:0 26px}
+.band span::after{content:"";display:inline-block;width:10px;height:14px;border-radius:50% 50% 45% 45%;background:var(--rasp);margin-left:52px;vertical-align:1px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:100px 0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(38px,4.8vw,62px);line-height:1.04;margin:0 0 16px;letter-spacing:-.01em}
+h2 em{color:var(--rasp)}
+.lead{color:var(--soft);font-size:18px;max-width:36em;margin:0 0 46px}
+
+/* kiezer */
+.pick .grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:48px;align-items:start}
+.step{margin-bottom:34px}
+.step h3{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin:0 0 14px;color:var(--soft);display:flex;gap:12px;align-items:center}
+.step h3 span{font-family:var(--display);font-style:italic;font-size:22px;letter-spacing:0;text-transform:none;color:var(--rasp)}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.opt{position:relative;display:flex;flex-direction:column;justify-content:flex-start;text-align:left;background:#fff;border:1px solid var(--line);padding:18px 18px 16px;font:inherit;color:var(--ink);cursor:pointer;min-height:44px;border-radius:2px;transition:border-color .2s}
+.opt:hover{border-color:var(--rasp)}
+.opt b{display:block;font-family:var(--display);font-weight:400;font-size:24px;line-height:1.1}
+.opt small{display:block;color:var(--soft);font-size:14px;margin-top:5px;line-height:1.45}
+.opt[aria-pressed="true"]{border-color:var(--rasp);box-shadow:inset 0 0 0 1px var(--rasp);background:var(--blush)}
+.opt .lbl{position:absolute;top:-10px;right:12px;background:var(--graphite);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:14.5px;font-weight:500;min-height:46px;padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--graphite);border-color:var(--graphite);color:#fff}
+.chip[hidden]{display:none}
+.chip small{display:block;font-size:12px;opacity:.7;line-height:1.2}
+.date input{font:inherit;padding:12px 16px;border:1px solid var(--line);min-height:52px;background:#fff;color:var(--ink);border-radius:2px}
+.hint{font-size:14px;color:var(--soft);margin:10px 0 0}
+.summary{position:sticky;top:24px;background:var(--graphite);color:#fff;padding:36px 34px;border-radius:2px}
+.summary .k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--powder);font-weight:700}
+.summary h3{font-family:var(--display);font-weight:400;font-style:italic;font-size:36px;line-height:1.08;margin:10px 0 22px}
+.summary dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:0 0 28px;font-size:15.5px;border-top:1px solid #3a3f47;padding-top:18px}
+.summary dt{color:#9da2aa}
+.summary dd{margin:0}
+.summary .btn{width:100%}
+.summary .note{font-size:13.5px;color:#9da2aa;margin-top:14px;text-align:center}
+
+/* waarom */
+.why{background:var(--blush)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--graphite)}
+.cols div{padding:30px 30px 0 0}
+.cols div+div{padding-left:30px;border-left:1px solid var(--line)}
+.cols .n{font-family:var(--display);font-style:italic;font-size:44px;line-height:1;color:var(--rasp)}
+.cols h3{font-family:var(--display);font-weight:400;font-size:27px;margin:14px 0 8px;line-height:1.1}
+.cols p{margin:0;color:var(--soft)}
+
+/* reviews */
+.rv .grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
+.big{font-family:var(--display);font-weight:400;font-size:clamp(110px,14vw,180px);line-height:.85;color:var(--rasp)}
+.stars{display:flex;gap:6px;margin:16px 0 8px}
+.stars i{width:18px;height:18px;background:var(--graphite);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.rv .src{color:var(--soft);font-size:15px}
+.qs{display:grid;gap:30px}
+blockquote{margin:0;padding-left:26px;border-left:2px solid var(--rasp);font-family:var(--display);font-style:italic;font-size:28px;line-height:1.25}
+blockquote cite{display:block;margin-top:10px;font-family:var(--sans);font-style:normal;font-size:14px;color:var(--soft)}
+
+/* stappen */
+.how{background:var(--graphite);color:#fff}
+.how .lead{color:#b9bcc2}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;counter-reset:s}
+.steps li{counter-increment:s;border-top:1px solid #3a3f47;padding-top:22px}
+.steps li::before{content:"0" counter(s);display:block;font-family:var(--display);font-style:italic;font-size:54px;line-height:1;color:var(--powder);margin-bottom:14px}
+.steps h3{margin:0 0 6px;font-size:19px}
+.steps p{margin:0;color:#b9bcc2}
+
+/* faq */
+.faq .wrap{max-width:840px}
+details{border-bottom:1px solid var(--line);padding:4px 0}
+summary{cursor:pointer;list-style:none;padding:18px 40px 18px 0;font-size:18px;font-weight:700;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:10px;font-family:var(--display);font-size:30px;color:var(--rasp)}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 20px;color:var(--soft)}
+
+/* bezoek */
+.visit{background:var(--blush)}
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.addr{font-size:20px;margin:0 0 26px}
+.addr small{display:block;font-size:15px;color:var(--soft);margin-top:6px}
+.hours{width:100%;border-collapse:collapse}
+.hours td{padding:12px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;color:var(--soft)}
+.hours tr.today td{color:var(--rasp);font-weight:700}
+
+.final{text-align:center}
+.final h2{max-width:15ch;margin:0 auto 16px}
+.final .lead{margin:0 auto 32px}
+.final .btns{justify-content:center}
+
+footer{background:var(--graphite);color:#b9bcc2;padding:52px 0 100px;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+footer img{height:54px;display:block}
+
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:6;display:none}
+.float.on{display:block}
+.float .btn{width:100%;box-shadow:0 10px 30px rgba(22,25,29,.35)}
+.sr{position:absolute;left:-9999px}
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:860px){
+  .bar nav{display:none}
+  .bar img{height:48px}
+  .hero .wrap{grid-template-columns:minmax(0,1fr);padding-top:28px;padding-bottom:56px;gap:8px}
+  .art{height:260px;order:-1}
+  .pick .grid,.visit .wrap,.steps,.rv .grid{grid-template-columns:minmax(0,1fr)}
+  .rv .grid{gap:32px}
+  .cols{grid-template-columns:1fr}
+  .cols div,.cols div+div{padding:26px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .summary{position:relative;top:0}
+  section{padding:72px 0}
+  .opt{padding:16px 14px 14px}
+  .opt b{font-size:20px}
+  .opt small{font-size:13px}
+  blockquote{font-size:24px}
+}
+@media (prefers-reduced-motion:reduce){.nail,.shine,.liner,.brow,.band .track{animation:none}.liner,.brow{stroke-dashoffset:0}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice">Salon boven de parfumerie · Nieuwstraat 9, Maassluis</div>
+
+<header class="wrap bar">
+  <a href="#"><img src="logo-dark.svg" alt="Styling by Carly"></a>
+  <nav aria-label="Hoofdmenu"><a href="#afspraak">Behandelingen</a><a href="#ervaringen">Ervaringen</a><a href="#vragen">Vragen</a><a href="#langskomen">Langskomen</a></nav>
+</header>
+
+<main>
+  <div class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Nagels · Permanente make-up · Tattoos</div>
+        <h1>Precisiewerk, <span class="rot" id="rot">voor je nagels</span></h1>
+        <p class="sub">Gelnagels, kunstnagels, permanente make-up voor wenkbrauwen en eyeliner, en tattoos. Nauwkeurig gezet door Carly, in haar salon aan de Nieuwstraat in Maassluis.</p>
+        <div class="btns">
+          <a class="btn btn-r" href="#afspraak">Kies je behandeling</a>
+          <a class="btn btn-o" href="#ervaringen">Lees ervaringen</a>
+        </div>
+        <div class="trust"><span><b>5,0</b> op Google (20 reviews)</span><span>Nieuwstraat 9, Maassluis</span><span>Di t/m vr open</span></div>
+      </div>
+      <div class="art" aria-hidden="true">
+        <svg viewBox="20 10 500 390" preserveAspectRatio="xMidYMid meet"><circle cx="280" cy="200" r="190" fill="#f6dbe0"/>
+          <defs>
+            <linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".75"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <clipPath id="nails">
+              <path d="M60 330 C60 230 80 190 110 190 C140 190 160 230 160 330 Z"/>
+              <path d="M170 330 C170 200 192 150 225 150 C258 150 280 200 280 330 Z"/>
+              <path d="M290 330 C290 190 312 140 345 140 C378 140 400 190 400 330 Z"/>
+              <path d="M410 330 C410 215 428 175 455 175 C482 175 500 215 500 330 Z"/>
+            </clipPath>
+          </defs>
+          <!-- wenkbrauw + eyeliner -->
+          <path class="brow" d="M140 70 C200 30 300 26 380 56" fill="none" stroke="#16191d" stroke-width="9" stroke-linecap="round"/>
+          <path class="liner" d="M130 110 C200 132 300 134 372 112 L420 88" fill="none" stroke="#16191d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- nagels -->
+          <g>
+            <path class="nail" d="M60 330 C60 230 80 190 110 190 C140 190 160 230 160 330 Z" fill="#b1123b"/>
+            <path class="nail" d="M170 330 C170 200 192 150 225 150 C258 150 280 200 280 330 Z" fill="#e3bfae"/>
+            <path class="nail" d="M290 330 C290 190 312 140 345 140 C378 140 400 190 400 330 Z" fill="#16191d"/>
+            <path class="nail" d="M410 330 C410 215 428 175 455 175 C482 175 500 215 500 330 Z" fill="#ffffff" stroke="#e3bfae" stroke-width="2"/>
+          </g>
+          <g clip-path="url(#nails)"><rect class="shine" x="0" y="120" width="120" height="240" fill="url(#gl)" transform="skewX(-18)"/></g>
+          <rect x="40" y="330" width="480" height="2" fill="#16191d" opacity=".15"/>
+          <text x="40" y="380" font-family="Manrope, sans-serif" font-size="13" letter-spacing="3" fill="#5d6168">GEL · KUNSTNAGELS · PMU · TATTOO</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="band" aria-hidden="true"><div class="track" id="track"><span>Gelnagels</span><span>Kunstnagels</span><span>Permanente make-up</span><span>Wenkbrauwen</span><span>Eyeliner</span><span>Tattoos</span><span>Nauwkeurig en eerlijk</span></div></div>
+
+  <section class="pick" id="afspraak">
+    <div class="wrap">
+      <h2>Kies je <em>behandeling</em></h2>
+      <p class="lead">Kies wat je wilt laten doen, zet er eventueel iets bij en geef aan welke dag je kunt. Je verzoek staat klaar in WhatsApp.</p>
+      <div class="grid">
+        <div>
+          <div class="step">
+            <h3><span>i.</span>Wat wil je laten doen?</h3>
+            <div class="opts" data-group="dienst">
+              <button class="opt" type="button" data-v="Gelnagels"><span class="lbl">Aanbevolen</span><b>Gelnagels</b><small>"Blijven perfect", zegt een vaste klant</small></button>
+              <button class="opt" type="button" data-v="Kunstnagels"><b>Kunstnagels</b><small>Gel- of kunstnagels, jij kiest</small></button>
+              <button class="opt" type="button" data-v="Permanente make-up wenkbrauwen"><b>PMU wenkbrauwen</b><small>Permanente make-up voor je brows</small></button>
+              <button class="opt" type="button" data-v="Permanente make-up eyeliner"><b>PMU eyeliner</b><small>Permanente eyeliner</small></button>
+              <button class="opt" type="button" data-v="Tattoo"><b>Tattoo</b><small>Bespreek je ontwerp</small></button>
+              <button class="opt" type="button" data-v="Eerst advies"><b>Eerst advies</b><small>Eerlijk advies over wat bij je past</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3><span>ii.</span>Ben je al klant?</h3>
+            <div class="opts" data-group="klant">
+              <button class="opt" type="button" data-v="Ik ben al klant"><b>Ja, vaste klant</b></button>
+              <button class="opt" type="button" data-v="Ik kom voor het eerst"><b>Eerste keer</b></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3><span>iii.</span>Combineren? <small style="text-transform:none;letter-spacing:0;font-weight:400">(meerdere mag)</small></h3>
+            <div class="chips" id="extras">
+              <button class="chip" type="button" aria-pressed="false" data-for="Gelnagels">Gelnagels</button>
+              <button class="chip" type="button" aria-pressed="false" data-for="Kunstnagels">Kunstnagels</button>
+              <button class="chip" type="button" aria-pressed="false" data-for="Permanente make-up wenkbrauwen">PMU wenkbrauwen</button>
+              <button class="chip" type="button" aria-pressed="false" data-for="Permanente make-up eyeliner">PMU eyeliner</button>
+            </div>
+          </div>
+          <div class="step">
+            <h3><span>iv.</span>Welke dag kun je?</h3>
+            <div class="chips" id="days">
+              <button class="chip" type="button" aria-pressed="false" data-d="dinsdag">Di<small>9–17</small></button>
+              <button class="chip" type="button" aria-pressed="false" data-d="woensdag">Wo<small>9–15</small></button>
+              <button class="chip" type="button" aria-pressed="false" data-d="donderdag">Do<small>9–18</small></button>
+              <button class="chip" type="button" aria-pressed="false" data-d="vrijdag">Vr<small>9–16:30</small></button>
+            </div>
+          </div>
+          <div class="step date">
+            <h3><span>v.</span>Of kies een datum</h3>
+            <label class="sr" for="d1">Datum</label><input type="date" id="d1" class="js-date">
+            <p class="hint" id="hint">De salon is open van dinsdag tot en met vrijdag.</p>
+          </div>
+        </div>
+        <aside class="summary" aria-live="polite">
+          <div class="k">Jouw afspraakverzoek</div>
+          <h3 id="s-title">Kies je behandeling</h3>
+          <dl>
+            <dt>Klant</dt><dd id="s-klant">–</dd>
+            <dt>Erbij</dt><dd id="s-extra">–</dd>
+            <dt>Wanneer</dt><dd id="s-when">–</dd>
+          </dl>
+          <a class="btn btn-r js-ask" href="#">Vraag je afspraak via WhatsApp</a>
+          <div class="note">Vrijblijvend. Carly laat weten wanneer er plek is.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Waarom klanten <em>blijven</em></h2>
+      <p class="lead">Wat in de Google-reviews steeds terugkomt.</p>
+      <div class="cols">
+        <div><span class="n">01</span><h3>Al jaren vaste klanten</h3><p>Klanten komen al jaren terug. Hun nagels blijven perfect, zelfs tijdens een verbouwing en verhuizing.</p></div>
+        <div><span class="n">02</span><h3>Nauwkeurig en eerlijk</h3><p>Carly werkt heel precies en zegt eerlijk wat bij je past. Dat telt extra bij permanente make-up.</p></div>
+        <div><span class="n">03</span><h3>Complimenten op je nagels</h3><p>Klanten krijgen veel complimenten. Een klant noemt haar een echte expert in wenkbrauwen, eyeliner en gelnagels.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rv" id="ervaringen">
+    <div class="wrap grid">
+      <div>
+        <h2>Ervaringen</h2>
+        <div class="big">5,0</div>
+        <div class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="src">Gemiddeld op Google, uit 20 reviews</div>
+      </div>
+      <div class="qs">
+        <blockquote>"Mijn nagels blijven perfect, zelfs tijdens verbouwing en verhuizing."<cite>Vaste klant, Google-review</cite></blockquote>
+        <blockquote>"Eerlijk advies, ze werkt heel nauwkeurig."<cite>Klant, Google-review</cite></blockquote>
+        <blockquote>"Een echte expert in wenkbrauwen, eyeliner en gelnagels."<cite>Klant, Google-review</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="werkwijze">
+    <div class="wrap">
+      <h2>Zo werkt het</h2>
+      <p class="lead">Van appje tot afspraak.</p>
+      <ol class="steps">
+        <li><h3>Kies je behandeling</h3><p>Nagels, permanente make-up of een tattoo, en de dag die jou past.</p></li>
+        <li><h3>Stuur het via WhatsApp</h3><p>Je verzoek staat klaar. Carly laat weten wanneer er plek is.</p></li>
+        <li><h3>Kom naar de salon</h3><p>Nieuwstraat 9 in Maassluis, boven de parfumerie.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq" id="vragen">
+    <div class="wrap">
+      <h2>Veelgestelde vragen</h2>
+      <details><summary>Wat kost een behandeling?</summary><p>Dat hangt af van de behandeling. Je krijgt de prijs op maat via WhatsApp.</p></details>
+      <details><summary>Doe je ook permanente make-up?</summary><p>Ja, voor wenkbrauwen en eyeliner. Twijfel je wat bij je past? Kies "Eerst advies" in de kiezer.</p></details>
+      <details><summary>Kan ik nagels en permanente make-up combineren?</summary><p>Vraag het gerust. Kies je behandeling en zet bij "Combineren" wat je erbij wilt, dan hoor je wat er kan.</p></details>
+      <details><summary>Wanneer is de salon open?</summary><p>Dinsdag 9:00–17:00, woensdag 9:00–15:00, donderdag 9:00–18:00 en vrijdag 9:00–16:30. Maandag en in het weekend gesloten.</p></details>
+      <details><summary>Waar vind ik de salon?</summary><p>Nieuwstraat 9 in Maassluis, boven de parfumerie.</p></details>
+    </div>
+  </section>
+
+  <section class="visit" id="langskomen">
+    <div class="wrap">
+      <div>
+        <h2>Langskomen</h2>
+        <p class="addr">Nieuwstraat 9<br>3141 AA Maassluis<small>Boven de parfumerie</small></p>
+        <a class="btn btn-r" href="https://www.google.com/maps/search/?api=1&query=Styling+by+Carly+Nieuwstraat+9+Maassluis" target="_blank" rel="noopener">Route plannen</a>
+      </div>
+      <table class="hours" aria-label="Openingstijden">
+        <tr data-d="1"><td>Maandag</td><td>Gesloten</td></tr>
+        <tr data-d="2"><td>Dinsdag</td><td>09:00 – 17:00</td></tr>
+        <tr data-d="3"><td>Woensdag</td><td>09:00 – 15:00</td></tr>
+        <tr data-d="4"><td>Donderdag</td><td>09:00 – 18:00</td></tr>
+        <tr data-d="5"><td>Vrijdag</td><td>09:00 – 16:30</td></tr>
+        <tr data-d="6"><td>Zaterdag</td><td>Gesloten</td></tr>
+        <tr data-d="0"><td>Zondag</td><td>Gesloten</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Tijd voor <em>nieuwe nagels?</em></h2>
+      <p class="lead">Kies je behandeling en stuur je verzoek in één keer via WhatsApp.</p>
+      <div class="btns"><a class="btn btn-r" href="#afspraak">Kies je behandeling</a><a class="btn btn-o js-wa-plain" href="#">App Carly</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><img src="logo-light.svg" alt="Styling by Carly"><span>© 2026 Styling by Carly · Website door Mohamedia</span></div>
+</footer>
+
+<div class="float" id="float"><a class="btn btn-r" href="#afspraak">Kies je behandeling</a></div>
+
+<script>
+const WA = "31623875636";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const st = { dienst: "", klant: "", extras: [], dagen: [], datum: "" };
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long" }) : "";
+const when = () => st.datum ? fmt(st.datum) : st.dagen.join(" of ");
+function render() {
+  document.querySelectorAll("#extras .chip").forEach(c => { const hide = c.dataset.for === st.dienst; c.hidden = hide; if (hide) c.setAttribute("aria-pressed", "false"); });
+  st.extras = [...document.querySelectorAll("#extras .chip[aria-pressed=true]")].map(x => x.textContent);
+  document.getElementById("s-title").textContent = st.dienst || "Kies je behandeling";
+  document.getElementById("s-klant").textContent = st.klant || "–";
+  document.getElementById("s-extra").textContent = st.extras.join(", ") || "–";
+  document.getElementById("s-when").textContent = when() || "–";
+  const msg = `Hoi Carly! Ik wil graag een afspraak.\nBehandeling: ${st.dienst || "graag advies"}${st.extras.length ? "\nErbij: " + st.extras.join(", ") : ""}${st.klant ? "\n" + st.klant : ""}\nWanneer: ${when() || "het eerste moment dat vrij is"}\nWanneer heb je plek?`;
+  document.querySelectorAll(".js-ask").forEach(a => { a.href = wa(msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+document.querySelectorAll(".opts").forEach(g => {
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", "false"));
+  g.addEventListener("click", e => { const b = e.target.closest(".opt"); if (!b) return; g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b)); st[g.dataset.group] = b.dataset.v; render(); });
+});
+["extras", "days"].forEach(id => document.getElementById(id).addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true");
+  st.dagen = [...document.querySelectorAll("#days .chip[aria-pressed=true]")].map(x => x.dataset.d); render();
+}));
+const today = new Date().toISOString().slice(0, 10);
+const hint = document.getElementById("hint");
+document.querySelectorAll(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => {
+  st.datum = i.value; const d = i.value ? new Date(i.value + "T12:00").getDay() : 2;
+  hint.textContent = [0, 1, 6].includes(d) ? "Let op: op die dag is de salon gesloten. Kies dinsdag tot en met vrijdag." : "De salon is open van dinsdag tot en met vrijdag.";
+  hint.style.color = [0, 1, 6].includes(d) ? "var(--rasp)" : ""; render(); }); });
+document.querySelectorAll(".js-wa-plain").forEach(a => { a.href = wa("Hoi Carly!"); a.target = "_blank"; a.rel = "noopener"; });
+render();
+const tr0 = document.querySelector(`.hours tr[data-d="${new Date().getDay()}"]`); if (tr0) tr0.classList.add("today");
+
+const tr = document.getElementById("track"); tr.innerHTML += tr.innerHTML;
+const words = ["voor je nagels", "voor je brows", "voor je eyeliner", "voor je tattoo"]; let wi = 0;
+const rot = document.getElementById("rot");
+if (!reduce) setInterval(() => { wi = (wi + 1) % words.length; rot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 }).onfinish = () => { rot.textContent = words[wi]; rot.animate([{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: 420 }); }; }, 2600);
+
+const fl = document.getElementById("float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe(document.getElementById("top"));
+new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .1 }).observe(document.getElementById("afspraak"));
+</script>
+</body>
+</html>

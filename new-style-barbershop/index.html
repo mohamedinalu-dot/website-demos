@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>New Style Barbershop — betaalbare kapper voor heren en kinderen in Slinge, Rotterdam</title>
+<meta name="description" content="New Style Barbershop aan Slinge 25 in Rotterdam. Vader en zoon knippen heren en kinderen, al jaren vaste klanten. 4,9 uit 112 Google-reviews. Vraag je afspraak aan via WhatsApp.">
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1d3b2a; --green-2:#2b5239; --mustard:#f2b134; --orange:#d9622b; --cream:#fbf3e0; --sand:#f1e3c2;
+  --ink:#1d3b2a; --soft:#5a6b5f; --line:#e2d3ae;
+  --display:"Alfa Slab One", Rockwell, serif; --sans:"Karla", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17.5px;line-height:1.6}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.demo{background:#132a1d;color:#b9c9bc;font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--mustard)}
+.notice{background:var(--mustard);color:var(--green);font-size:14.5px;text-align:center;padding:8px 16px;font-weight:700}
+
+.bar{display:flex;justify-content:space-between;align-items:center;height:86px}
+.bar img{height:52px;display:block}
+.bar nav a{text-decoration:none;font-weight:700;font-size:16px;margin-left:26px}
+.bar nav a:hover{color:var(--orange)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:14px 28px;border-radius:14px;font-family:var(--sans);font-weight:700;font-size:17px;text-decoration:none;border:3px solid var(--green);cursor:pointer}
+.btn-go{background:var(--orange);border-color:var(--green);color:#fff;box-shadow:0 5px 0 var(--green)}
+.btn-go:hover{transform:translateY(2px);box-shadow:0 3px 0 var(--green)}
+.btn-line{background:var(--cream);color:var(--green)}
+.btn-line:hover{background:var(--sand)}
+
+/* hero */
+.hero{position:relative;background:var(--green);color:var(--cream);overflow:hidden;border-radius:0 0 40px 40px}
+.sun{position:absolute;right:-260px;top:50%;width:900px;height:900px;margin-top:-450px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(242,177,52,.16) 0 7.5deg,transparent 7.5deg 15deg);animation:spin 80s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;padding-top:72px;padding-bottom:84px}
+.tag{display:inline-block;background:var(--mustard);color:var(--green);border-radius:999px;padding:6px 16px;font-size:14.5px;font-weight:700;margin-bottom:22px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,6.4vw,88px);line-height:1.02;margin:0 0 24px}
+.rot{display:block;color:var(--mustard);min-height:1.02em}
+.hero p.sub{font-size:19.5px;max-width:30em;color:#d8e2d6;margin:0 0 32px}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.hero .btn-line{background:transparent;color:var(--cream);border-color:var(--cream)}
+.hero .btn-line:hover{background:rgba(255,255,255,.08)}
+.hero .btn-go{border-color:var(--cream);box-shadow:0 5px 0 #0e1f15}
+.trust{margin-top:28px;font-size:15.5px;color:#c8d6c9;display:flex;flex-wrap:wrap;gap:8px 22px}
+.trust b{color:var(--mustard)}
+/* schaar die knipt */
+.scene{position:relative;height:380px}
+.medal{position:absolute;left:50%;top:50%;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;background:var(--cream);border:6px solid var(--mustard);box-shadow:0 0 0 10px var(--green),0 0 0 13px var(--mustard)}
+.medal .dash{position:absolute;left:-40px;right:-40px;top:50%;border-top:4px dashed var(--orange)}
+.scis{position:absolute;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;animation:travel 4.8s ease-in-out infinite}
+.scis svg{width:100%;height:100%;overflow:visible}
+.blade-a{transform-origin:75px 75px;animation:snipA .5s ease-in-out infinite alternate}
+.blade-b{transform-origin:75px 75px;animation:snipB .5s ease-in-out infinite alternate}
+@keyframes snipA{from{transform:rotate(-16deg)}to{transform:rotate(2deg)}}
+@keyframes snipB{from{transform:rotate(16deg)}to{transform:rotate(-2deg)}}
+@keyframes travel{0%,100%{transform:translateX(-60px)}50%{transform:translateX(60px)}}
+.medal .yr{position:absolute;bottom:38px;left:0;right:0;text-align:center;font-family:var(--display);color:var(--green);font-size:19px}
+.medal .yr2{position:absolute;top:38px;left:0;right:0;text-align:center;font-weight:700;color:var(--orange);font-size:14px;letter-spacing:.14em;text-transform:uppercase}
+
+/* marquee */
+.band{overflow:hidden;white-space:nowrap;margin-top:28px}
+.band .track{display:inline-block;padding:10px 0;animation:slide 34s linear infinite;font-family:var(--display);font-size:24px;color:var(--green)}
+.band span{margin:0 24px}
+.band span::after{content:"✂";margin-left:48px;color:var(--orange);font-family:var(--sans)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:92px 0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,4.6vw,58px);line-height:1.06;margin:0 0 16px}
+.lead{color:var(--soft);font-size:18.5px;max-width:36em;margin:0 0 42px}
+
+/* kiezer */
+.pick .grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:start}
+.step{margin-bottom:30px}
+.step h3{font-size:17px;font-weight:700;margin:0 0 12px}
+.step h3 i{font-style:normal;display:inline-flex;width:28px;height:28px;border-radius:50%;background:var(--mustard);align-items:center;justify-content:center;font-size:14px;margin-right:8px}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.opts.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.opt{position:relative;display:flex;flex-direction:column;justify-content:flex-start;text-align:left;background:#fff;border:3px solid var(--line);border-radius:18px;padding:16px 16px 14px;font:inherit;color:var(--ink);cursor:pointer;min-height:44px}
+.opt b{display:block;font-family:var(--display);font-weight:400;font-size:22px;line-height:1.15;overflow-wrap:anywhere}
+.opt small{display:block;color:var(--soft);font-size:14.5px;margin-top:4px}
+.opt[aria-pressed="true"]{border-color:var(--green);background:var(--sand)}
+.opt .lbl{position:absolute;top:-12px;right:12px;background:var(--orange);color:#fff;font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-weight:700;font-size:15.5px;min-height:46px;padding:9px 16px;border-radius:999px;border:3px solid var(--line);background:#fff;color:var(--green);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--cream)}
+.date input{font:inherit;padding:12px 14px;border:3px solid var(--line);border-radius:14px;min-height:52px;background:#fff;color:var(--ink)}
+.summary{background:var(--green);color:var(--cream);border-radius:28px;padding:32px;position:sticky;top:24px;border:3px solid var(--green);box-shadow:0 8px 0 var(--mustard)}
+.summary .k{font-weight:700;color:var(--mustard);font-size:14px}
+.summary h3{font-family:var(--display);font-weight:400;font-size:32px;line-height:1.1;margin:6px 0 20px}
+.summary dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:0 0 26px;font-size:16px}
+.summary dt{color:#b9c9bc}
+.summary dd{margin:0}
+.summary .btn{width:100%}
+.summary .btn-go{border-color:var(--cream);box-shadow:0 5px 0 #0e1f15}
+.summary .btn-ghost{margin-top:14px;background:transparent;color:var(--cream);border-color:#4f7a5d}
+.summary .btn-ghost:hover{border-color:var(--cream)}
+.summary .note{font-size:14px;color:#b9c9bc;margin-top:14px;text-align:center}
+
+/* waarom */
+.why{background:var(--sand)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--cream);border:3px solid var(--green);border-radius:24px;padding:30px}
+.card:nth-child(2){background:var(--mustard)}
+.card .ic{font-family:var(--display);font-size:46px;line-height:1;color:var(--orange);margin-bottom:12px}
+.card:nth-child(2) .ic{color:var(--green)}
+.card h3{margin:0 0 8px;font-family:var(--display);font-weight:400;font-size:24px}
+.card p{margin:0;color:var(--soft)}
+.card:nth-child(2) p{color:var(--green)}
+
+/* reviews */
+.rv .head{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;margin-bottom:46px}
+.seal{width:200px;height:200px;border-radius:50%;background:var(--orange);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 0 0 8px var(--cream),0 0 0 11px var(--orange)}
+.seal b{font-family:var(--display);font-weight:400;font-size:70px;line-height:1}
+.seal span{font-size:14px;font-weight:700;max-width:10em}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+blockquote{margin:0;padding:28px;border-radius:24px;background:#fff;border:3px solid var(--line);font-family:var(--display);font-size:22px;line-height:1.3}
+blockquote cite{display:block;margin-top:14px;font-family:var(--sans);font-style:normal;font-size:14.5px;color:var(--soft);font-weight:500}
+
+/* stappen */
+.how{background:var(--green);color:var(--cream);border-radius:40px;margin:0 16px}
+.how .lead{color:#c8d6c9}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;background:var(--mustard);color:var(--green);font-family:var(--display);font-size:28px;margin-bottom:16px}
+.steps h3{margin:0 0 6px;font-size:20px}
+.steps p{margin:0;color:#c8d6c9}
+
+/* faq */
+.faq .wrap{max-width:840px}
+details{background:#fff;border:3px solid var(--line);border-radius:18px;padding:0 22px;margin-bottom:12px}
+details[open]{border-color:var(--green)}
+summary{cursor:pointer;list-style:none;padding:18px 36px 18px 0;font-size:18px;font-weight:700;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:0;top:12px;font-family:var(--display);font-size:26px;color:var(--orange)}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 20px;color:var(--soft)}
+
+/* bezoek */
+.visit{background:var(--sand)}
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.addr{font-size:20px;margin:0 0 24px}
+.hours{width:100%;border-collapse:collapse;background:var(--cream);border-radius:20px;overflow:hidden;border:3px solid var(--green)}
+.hours td{padding:12px 20px;border-bottom:2px solid var(--line)}
+.hours tr:last-child td{border-bottom:0}
+.hours td:last-child{text-align:right;font-weight:700}
+.hours tr.today{background:var(--mustard)}
+
+.final{text-align:center}
+.final h2{max-width:16ch;margin:0 auto 16px}
+.final .lead{margin:0 auto 32px}
+.final .btns{justify-content:center}
+
+footer{background:var(--green);color:#c8d6c9;padding:48px 0 100px;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+footer img{height:52px;display:block}
+footer a{color:var(--mustard)}
+
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:6;display:none}
+.float.on{display:block}
+.float .btn{width:100%}
+.sr{position:absolute;left:-9999px}
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:860px){
+  .bar nav{display:none}
+  .bar img{height:44px}
+  .hero{border-radius:0 0 28px 28px}
+  .hero .wrap{grid-template-columns:1fr;padding-top:36px;padding-bottom:56px}
+  .scene{height:220px;order:-1}
+  .medal{width:180px;height:180px;margin:-90px 0 0 -90px;border-width:5px;box-shadow:0 0 0 7px var(--green),0 0 0 10px var(--mustard)}
+  .medal .yr{bottom:22px;font-size:14px}.medal .yr2{top:22px;font-size:11px}
+  .scis{width:96px;height:96px;margin:-48px 0 0 -48px}
+  @keyframes travel{0%,100%{transform:translateX(-34px)}50%{transform:translateX(34px)}}
+  .sun{right:-420px;top:120px}
+  .pick .grid,.visit .wrap,.cards,.quotes,.steps{grid-template-columns:minmax(0,1fr)}
+  .rv .head{grid-template-columns:1fr;gap:24px}
+  .seal{width:160px;height:160px}.seal b{font-size:56px}
+  .summary{position:static}
+  section{padding:68px 0}
+  .how{margin:0;border-radius:28px}
+  .opt b{font-size:19px}
+  .opts.three .opt{padding:12px 10px;text-align:center}
+  .opts.three .opt b{font-size:16px}
+}
+@media (max-width:380px){.opts.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){.sun,.scis,.blade-a,.blade-b,.band .track{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice">Vader en zoon in de zaak · Slinge 25, Rotterdam</div>
+
+<header class="wrap bar">
+  <a href="#"><img src="logo-dark.svg" alt="New Style Barbershop"></a>
+  <nav aria-label="Hoofdmenu"><a href="#afspraak">Afspraak</a><a href="#reviews">Reviews</a><a href="#vragen">Vragen</a><a href="#langskomen">Langskomen</a></nav>
+</header>
+
+<main>
+  <div class="hero" id="top">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="wrap">
+      <div>
+        <span class="tag">Betaalbare kapper in Slinge</span>
+        <h1>Goed geknipt, al jaren <span class="rot" id="rot">voor heren</span></h1>
+        <p class="sub">Vader en zoon knippen heren en kinderen aan Slinge 25. Snel, betaalbaar en ze nemen de tijd voor je. Veel klanten komen hier al sinds hun jeugd.</p>
+        <div class="btns">
+          <a class="btn btn-go" href="#afspraak">Plan je knipbeurt</a>
+          <a class="btn btn-line" href="#reviews">Wat klanten zeggen</a>
+        </div>
+        <div class="trust"><span><b>4,9</b> op Google (112 reviews)</span><span>Slinge 25, Rotterdam</span><span>Ma t/m za open</span></div>
+      </div>
+      <div class="scene" aria-hidden="true">
+        <div class="medal">
+          <div class="yr2">Slinge · Rotterdam</div>
+          <div class="dash"></div>
+          <div class="scis"><svg viewBox="0 0 150 150">
+            <g class="blade-a"><path d="M75 75 L148 62 L150 68 Z" fill="#1d3b2a"/><circle cx="34" cy="96" r="18" fill="none" stroke="#1d3b2a" stroke-width="9"/><path d="M48 86 L75 75" stroke="#1d3b2a" stroke-width="9" stroke-linecap="round"/></g>
+            <g class="blade-b"><path d="M75 75 L148 88 L150 82 Z" fill="#2b5239"/><circle cx="34" cy="54" r="18" fill="none" stroke="#d9622b" stroke-width="9"/><path d="M48 64 L75 75" stroke="#d9622b" stroke-width="9" stroke-linecap="round"/></g>
+            <circle cx="75" cy="75" r="5" fill="#f2b134"/>
+          </svg></div>
+          <div class="yr">Heren · Kinderen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band" aria-hidden="true"><div class="track" id="track"><span>Heren en kinderen</span><span>Snel en betaalbaar</span><span>Vader en zoon</span><span>Al jaren vaste klanten</span><span>4,9 op Google</span></div></div>
+
+  <section class="pick" id="afspraak">
+    <div class="wrap">
+      <h2>Plan je knipbeurt</h2>
+      <p class="lead">Kies voor wie, met hoeveel je komt en welke dag je uitkomt. Je bericht staat meteen klaar in WhatsApp.</p>
+      <div class="grid">
+        <div>
+          <div class="step">
+            <h3><i>1</i>Voor wie?</h3>
+            <div class="opts" data-group="wie">
+              <button class="opt" type="button" data-v="Heren knippen"><b>Heren</b><small>Knippen voor mannen</small></button>
+              <button class="opt" type="button" data-v="Kinderen knippen"><b>Kinderen</b><small>Knippen voor de kids</small></button>
+              <button class="opt" type="button" data-v="Vader en kind(eren) samen"><span class="lbl">Aanbevolen</span><b>Samen</b><small>Vader en kind in één keer</small></button>
+              <button class="opt" type="button" data-v="Broers of vrienden samen"><b>Met z'n allen</b><small>Broers of vrienden achter elkaar</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3><i>2</i>Met hoeveel personen?</h3>
+            <div class="opts three" data-group="aantal">
+              <button class="opt" type="button" data-v="1 persoon"><b>1</b></button>
+              <button class="opt" type="button" data-v="2 personen"><b>2</b></button>
+              <button class="opt" type="button" data-v="3 of meer personen"><b>3+</b></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3><i>3</i>Welke dag komt je uit?</h3>
+            <div class="chips" id="days">
+              <button class="chip" type="button" aria-pressed="false">Maandag</button><button class="chip" type="button" aria-pressed="false">Dinsdag</button><button class="chip" type="button" aria-pressed="false">Woensdag</button><button class="chip" type="button" aria-pressed="false">Donderdag</button><button class="chip" type="button" aria-pressed="false">Vrijdag</button><button class="chip" type="button" aria-pressed="false">Zaterdag</button>
+            </div>
+          </div>
+          <div class="step">
+            <h3><i>4</i>Liever ochtend of middag?</h3>
+            <div class="opts three" data-group="dagdeel">
+              <button class="opt" type="button" data-v="ochtend"><b>Ochtend</b></button>
+              <button class="opt" type="button" data-v="middag"><b>Middag</b></button>
+              <button class="opt" type="button" data-v="maakt niet uit"><b>Geen voorkeur</b></button>
+            </div>
+          </div>
+          <div class="step date">
+            <h3><i>+</i>Of kies een vaste datum</h3>
+            <label class="sr" for="d1">Datum</label><input type="date" id="d1" class="js-date">
+          </div>
+        </div>
+        <aside class="summary" aria-live="polite">
+          <div class="k">Jouw afspraakverzoek</div>
+          <h3 id="s-title">Kies voor wie</h3>
+          <dl>
+            <dt>Personen</dt><dd id="s-aantal">–</dd>
+            <dt>Wanneer</dt><dd id="s-when">–</dd>
+          </dl>
+          <a class="btn btn-go js-ask" href="#">Vraag je afspraak via WhatsApp</a>
+          <a class="btn btn-ghost" href="https://www.fresha.com/lvp/new-style-barbershop-slinge-rotterdam-X0BLZE" target="_blank" rel="noopener">Boek online via Fresha</a>
+          <div class="note">Je hoort terug welke tijd er vrij is.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Waarom Slinge hier al jaren komt</h2>
+      <p class="lead">Wat in de 112 Google-reviews steeds terugkomt.</p>
+      <div class="cards">
+        <div class="card"><div class="ic">01</div><h3>Vaste klanten</h3><p>Veel klanten komen hier al jaren, sommigen al sinds hun jeugd.</p></div>
+        <div class="card"><div class="ic">02</div><h3>Snel en betaalbaar</h3><p>Goede kwaliteit voor een goede prijs. Snel geholpen en netjes de deur uit.</p></div>
+        <div class="card"><div class="ic">03</div><h3>Familiebedrijf</h3><p>Vader en zoon staan samen in de zaak. Klanten noemen ze vriendelijk en zeggen dat ze de tijd nemen.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rv" id="reviews">
+    <div class="wrap">
+      <div class="head">
+        <div class="seal"><b>4,9</b><span>uit 112 Google-reviews</span></div>
+        <div><h2>Wat klanten zeggen</h2><p class="lead" style="margin:0">Drie stemmen uit de buurt.</p></div>
+      </div>
+      <div class="quotes">
+        <blockquote>"De beste kapper van Slinge, al klant sinds mijn jeugd."<cite>Vaste klant, Google-review</cite></blockquote>
+        <blockquote>"Hij en zijn zoon nemen de tijd, hart van goud."<cite>Klant, Google-review</cite></blockquote>
+        <blockquote>"Goede kwaliteit voor een goede prijs."<cite>Klant, Google-review</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="werkwijze">
+    <div class="wrap">
+      <h2>Zo werkt het</h2>
+      <p class="lead">Geen gedoe, gewoon even appen.</p>
+      <ol class="steps">
+        <li><h3>Kies je knipbeurt</h3><p>Voor wie, met hoeveel personen en welke dag je uitkomt.</p></li>
+        <li><h3>App het door</h3><p>Je bericht staat klaar in WhatsApp. Je hoort welke tijd er vrij is.</p></li>
+        <li><h3>Kom langs</h3><p>Loop binnen aan Slinge 25 en ga netjes geknipt weer naar huis.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq" id="vragen">
+    <div class="wrap">
+      <h2>Veelgestelde vragen</h2>
+      <details><summary>Wat kost een knipbeurt?</summary><p>Klanten noemen het betaalbaar: "goede kwaliteit voor een goede prijs". De actuele prijs hoor je via WhatsApp.</p></details>
+      <details><summary>Knippen jullie ook kinderen?</summary><p>Ja, heren en kinderen. Kom je samen? Kies hierboven "Samen" en het aantal personen.</p></details>
+      <details><summary>Kan ik online boeken?</summary><p>Ja, via Fresha. Of je stuurt je verzoek via WhatsApp met de knop hierboven.</p></details>
+      <details><summary>Wanneer zijn jullie open?</summary><p>Maandag tot en met donderdag en zaterdag van 10:00 tot 18:00, vrijdag tot 19:00. Zondag gesloten.</p></details>
+      <details><summary>Waar zitten jullie?</summary><p>Slinge 25, 3085 HS Rotterdam.</p></details>
+    </div>
+  </section>
+
+  <section class="visit" id="langskomen">
+    <div class="wrap">
+      <div>
+        <h2>Langskomen</h2>
+        <p class="addr">Slinge 25<br>3085 HS Rotterdam</p>
+        <a class="btn btn-go" href="https://www.google.com/maps/search/?api=1&query=New+Style+Barbershop+Slinge+25+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
+      </div>
+      <table class="hours" aria-label="Openingstijden">
+        <tr data-d="1"><td>Maandag</td><td>10:00 – 18:00</td></tr>
+        <tr data-d="2"><td>Dinsdag</td><td>10:00 – 18:00</td></tr>
+        <tr data-d="3"><td>Woensdag</td><td>10:00 – 18:00</td></tr>
+        <tr data-d="4"><td>Donderdag</td><td>10:00 – 18:00</td></tr>
+        <tr data-d="5"><td>Vrijdag</td><td>10:00 – 19:00</td></tr>
+        <tr data-d="6"><td>Zaterdag</td><td>10:00 – 18:00</td></tr>
+        <tr data-d="0"><td>Zondag</td><td>Gesloten</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Weer tijd voor de kapper?</h2>
+      <p class="lead">Kies je dag en app het in één keer door.</p>
+      <div class="btns"><a class="btn btn-go" href="#afspraak">Plan je knipbeurt</a><a class="btn btn-line js-wa-plain" href="#">App de zaak</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><img src="logo-light.svg" alt="New Style Barbershop"><span><a href="mailto:barbershop.newstyle.slinge@gmail.com">barbershop.newstyle.slinge@gmail.com</a><br>© 2026 New Style Barbershop · Website door Mohamedia</span></div>
+</footer>
+
+<div class="float" id="float"><a class="btn btn-go" href="#afspraak">Plan je knipbeurt</a></div>
+
+<script>
+const WA = "31684100220";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const st = { wie: "", aantal: "", dagdeel: "", dagen: [], datum: "" };
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long" }) : "";
+const when = () => { const base = st.datum ? fmt(st.datum) : st.dagen.map(d => d.toLowerCase()).join(" of "); return [base, st.dagdeel && st.dagdeel !== "maakt niet uit" ? "in de " + st.dagdeel : ""].filter(Boolean).join(", "); };
+function render() {
+  document.getElementById("s-title").textContent = st.wie || "Kies voor wie";
+  document.getElementById("s-aantal").textContent = st.aantal || "–";
+  document.getElementById("s-when").textContent = when() || "–";
+  const msg = `Hoi! Ik wil graag een afspraak bij New Style.\nVoor: ${st.wie || "heren knippen"}\nAantal: ${st.aantal || "1 persoon"}\nWanneer: ${when() || "de eerste plek die vrij is"}\nWelke tijd is er nog vrij?`;
+  document.querySelectorAll(".js-ask").forEach(a => { a.href = wa(msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+document.querySelectorAll(".opts").forEach(g => {
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", "false"));
+  g.addEventListener("click", e => { const b = e.target.closest(".opt"); if (!b) return; g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b)); st[g.dataset.group] = b.dataset.v; render(); });
+});
+document.getElementById("days").addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true");
+  st.dagen = [...document.querySelectorAll("#days .chip[aria-pressed=true]")].map(x => x.textContent); render();
+});
+const today = new Date().toISOString().slice(0, 10);
+document.querySelectorAll(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => { st.datum = i.value; render(); }); });
+document.querySelectorAll(".js-wa-plain").forEach(a => { a.href = wa("Hoi New Style!"); a.target = "_blank"; a.rel = "noopener"; });
+render();
+const tr0 = document.querySelector(`.hours tr[data-d="${new Date().getDay()}"]`); if (tr0) tr0.classList.add("today");
+
+const tr = document.getElementById("track"); tr.innerHTML += tr.innerHTML;
+const words = ["voor heren", "voor de kids", "in Slinge"]; let wi = 0;
+const rot = document.getElementById("rot");
+if (!reduce) setInterval(() => { wi = (wi + 1) % words.length; rot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 }).onfinish = () => { rot.textContent = words[wi]; rot.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 400 }); }; }, 2600);
+
+const fl = document.getElementById("float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe(document.getElementById("top"));
+new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .1 }).observe(document.getElementById("afspraak"));
+</script>
+</body>
+</html>
