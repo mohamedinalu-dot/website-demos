@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Delicious Tasty en Crispy — Antilliaanse catering en partyverhuur in Rotterdam</title>
+<meta name="description" content="Antilliaanse catering met pastechi en bitterballen, partyverhuur en de foodtruck in Rotterdam-IJsselmonde. Stel je bestelling samen en vraag het aan via WhatsApp.">
+<meta name="theme-color" content="#00a6a6">
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--tq:#00a6a6;--tq-d:#006b70;--deep:#073b4c;--coral:#ff6b4a;--sun:#ffd23f;--foam:#e8f8f6;
+--bg:#ffffff;--ink:#0b2730;--soft:#47626a;--line:#cfe7e4;--acc:#ff6b4a;--acc-ink:#ffffff;--sel:#006b70;--sel-bg:#e8f8f6;
+--display:"Bricolage Grotesque",system-ui,sans-serif;--sans:"Nunito",system-ui,sans-serif;--r-btn:999px;--r-opt:20px;--r-card:26px;--logo-h:46px}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.sr{position:absolute;left:-9999px}
+.demo{font-size:12.5px;text-align:center;padding:6px 16px;background:#111;color:#cfcfcf}
+.demo a{color:#fff}
+.notice{font-size:14px;text-align:center;padding:9px 16px;font-weight:600}
+.bar{display:flex;justify-content:space-between;align-items:center;height:82px}
+.bar img{height:var(--logo-h,46px);width:auto;display:block}
+.bar nav{display:flex;align-items:center;gap:26px}
+.bar nav a{text-decoration:none;font-size:15px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:var(--r-btn,999px);font-family:var(--sans);font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;cursor:pointer;line-height:1.2;text-align:center}
+.btn svg{width:20px;height:20px;fill:currentColor;flex:none}
+.btn-main{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.btn-main:hover{filter:brightness(1.07)}
+.bar .btn{min-height:44px;padding:10px 20px;font-size:15px}
+.hero{position:relative;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{margin:0 0 22px;font-family:var(--display)}
+.rot{display:block;min-height:1.05em}
+.hero .sub{font-size:19px;max-width:31em;margin:0 0 32px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.trust{margin-top:26px;font-size:15px;display:flex;flex-wrap:wrap;gap:8px 22px}
+.band{overflow:hidden;white-space:nowrap}
+.band .track{display:inline-block;padding:16px 0;animation:slide 40s linear infinite;font-family:var(--display);font-size:21px}
+.band span{margin:0 26px}
+@keyframes slide{to{transform:translateX(-50%)}}
+section{padding:96px 0}
+h2{font-family:var(--display);line-height:1.05;margin:0 0 16px;font-size:clamp(36px,4.4vw,56px)}
+.lead{font-size:18px;max-width:36em;margin:0 0 44px;color:var(--soft)}
+.kz .grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:44px;align-items:start}
+.step{margin-bottom:30px}
+.step h3{font-size:15px;font-weight:700;margin:0 0 12px;color:var(--soft);font-family:var(--sans);letter-spacing:.02em}
+.step h3 span{font-weight:400}
+.opts{display:grid;grid-template-columns:repeat(var(--cols,4),minmax(0,1fr));gap:10px}
+.opt{position:relative;text-align:left;font:inherit;cursor:pointer;min-height:56px;padding:15px 14px 12px;background:var(--opt-bg,#fff);color:var(--ink);border:2px solid var(--line);border-radius:var(--r-opt,16px)}
+.opt b{display:block;overflow-wrap:break-word;hyphens:auto;font-family:var(--display);font-weight:var(--opt-w,400);font-size:20px;line-height:1.15}
+.opt small{display:block;color:var(--soft);font-size:13.5px;margin-top:3px;line-height:1.35}
+.opt[aria-pressed="true"]{border-color:var(--sel);background:var(--sel-bg)}
+.opt .lbl{position:absolute;top:-11px;right:10px;font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 9px;background:var(--acc);color:var(--acc-ink)}
+.opt .tick{position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);display:none}
+.multi .opt .tick{display:block}
+.multi .opt[aria-pressed="true"] .tick{background:var(--sel);border-color:var(--sel);box-shadow:inset 0 0 0 3px var(--sel-bg)}
+.multi .opt b{padding-right:24px}
+.date input{font:inherit;padding:12px 14px;border:2px solid var(--line);border-radius:12px;min-height:52px;background:var(--opt-bg,#fff);color:var(--ink)}
+.progress{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin:4px 0 24px}
+.progress i{display:block;height:100%;width:0;background:var(--sel);transition:width .3s}
+.summary{border-radius:var(--r-card,24px);padding:30px;position:sticky;top:24px}
+.summary .k{font-size:13px;margin-bottom:4px;opacity:.8;letter-spacing:.06em;text-transform:uppercase}
+.summary h3{font-family:var(--display);font-weight:400;font-size:32px;margin:0 0 18px;line-height:1.1}
+.summary dl{margin:0 0 24px;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:15.5px}
+.summary dt{opacity:.75}
+.summary dd{margin:0}
+.summary .btn{width:100%}
+.summary .note{font-size:13.5px;margin-top:12px;text-align:center;opacity:.8}
+.why .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.why h3{margin:0 0 8px;font-size:20px}
+.why p{margin:0;color:var(--soft)}
+.why svg{width:30px;height:30px;fill:none;stroke-width:1.7;stroke:currentColor}
+.scores{display:flex;gap:56px;flex-wrap:wrap;margin-bottom:48px}
+.score b{font-family:var(--display);font-weight:400;font-size:80px;line-height:1;display:block}
+.score span{font-size:15px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+blockquote{margin:0;font-family:var(--display);font-size:24px;line-height:1.32}
+blockquote cite{display:block;margin-top:14px;font-family:var(--sans);font-style:normal;font-size:14px;opacity:.75}
+.steps{list-style:none;margin:0 0 40px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s)}
+.steps h3{margin:0 0 6px;font-size:20px}
+.steps p{margin:0;color:var(--soft)}
+.faq .wrap{max-width:820px}
+details{border-bottom:1px solid var(--line);padding:4px 0}
+summary{cursor:pointer;list-style:none;padding:16px 40px 16px 0;font-size:18px;font-weight:700;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:10px;font-size:28px;font-weight:400;color:var(--sel)}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 18px;color:var(--soft)}
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.hours{width:100%;border-collapse:collapse}
+.hours td{padding:11px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right}
+.final{text-align:center}
+.final h2{max-width:16ch;margin:0 auto 16px}
+.final .lead{margin:0 auto 30px}
+.final .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+footer{padding:52px 0 96px;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;align-items:center}
+footer img{height:44px;display:block}
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:9;display:none}
+.float.on{display:block}
+.float .btn{width:100%;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:860px){
+  .bar nav{display:none}
+  .bar{height:70px}
+  .kz .grid,.visit .wrap{grid-template-columns:minmax(0,1fr)}
+  .why .cards,.quotes,.steps{grid-template-columns:1fr}
+  .opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .summary{position:static}
+  section{padding:72px 0}
+  .hero .sub{font-size:17.5px}
+  .score b{font-size:64px}
+  .scores{gap:32px}
+  blockquote{font-size:21px}
+  .opt b{font-size:18px}
+}
+@media (max-width:340px){.opts{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.band .track{animation:none}html{scroll-behavior:auto}*{animation-duration:.001s!important;animation-iteration-count:1!important}}
+
+
+.notice{background:var(--sun);color:var(--deep)}
+.head{background:var(--tq);color:#fff}
+.head nav a{color:#e6fffd;font-weight:700}.head nav a.btn{color:#fff}
+.hero{background:linear-gradient(180deg,var(--tq) 0%,#00918f 70%,var(--tq-d) 100%);color:#fff}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:46px;background:var(--sun);clip-path:path("M0 30 Q 60 0 120 30 T 240 30 T 360 30 T 480 30 T 600 30 T 720 30 T 840 30 T 960 30 T 1080 30 T 1200 30 T 1320 30 T 1440 30 T 1560 30 T 1680 30 T 1800 30 V 60 H 0 Z");z-index:1}
+.hero-in{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center;padding:48px 24px 100px}
+.tag{display:inline-block;background:var(--deep);color:var(--sun);border-radius:999px;padding:6px 16px;font-size:14px;font-weight:800;margin-bottom:24px}
+.hero h1{font-weight:800;font-size:clamp(46px,6.6vw,92px);line-height:.98;letter-spacing:-.03em}
+.rot{color:var(--sun)}
+.hero .sub{color:#e6fffd}
+.btn-2{color:#fff;border-color:rgba(255,255,255,.6);background:transparent}
+.trust{color:#d6f6f3}.trust b{color:var(--sun)}
+.btn{font-weight:800}
+.pas{position:relative;width:min(380px,100%);justify-self:center}
+.pastechi{width:100%;overflow:visible;animation:wob 3s ease-in-out infinite;transform-origin:50% 80%}
+.dough{fill:#e9a23b}
+.crimp{fill:none;stroke:#c7781d;stroke-width:14;stroke-dasharray:4 14;stroke-linecap:round}
+.shine{fill:none;stroke:#ffe3a3;stroke-width:8;stroke-linecap:round;opacity:.7}
+@keyframes wob{50%{transform:translateY(-10px) rotate(-3deg)}}
+.cr{position:absolute;width:30px;height:5px;background:var(--sun);border-radius:4px;opacity:0;animation:crunch 1.8s ease-out infinite}
+.k1{left:-6%;top:28%;rotate:-25deg}.k2{right:-4%;top:22%;rotate:25deg;animation-delay:.2s}.k3{left:2%;top:4%;rotate:-55deg;animation-delay:.9s}.k4{right:6%;top:0;rotate:55deg;animation-delay:1.1s}
+@keyframes crunch{0%{opacity:0;transform:scaleX(.2)}20%{opacity:1;transform:scaleX(1)}60%,100%{opacity:0;transform:scaleX(.4) translateX(10px)}}
+.band{background:var(--sun);color:var(--deep)}
+.band .track{font-weight:800;font-size:22px}
+.band span::after{content:"✸";margin-left:52px;color:var(--coral);font-size:16px;vertical-align:2px}
+h2{color:var(--deep);font-weight:800;letter-spacing:-.025em}
+.kz{background:var(--foam)}
+.opt b{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em}
+.summary{background:var(--deep);color:#fff}
+.summary h3{color:var(--sun);font-weight:800}
+.btn-sum{background:var(--coral);color:#fff}
+.why .card{background:#fff;padding:30px 26px;border-radius:26px;border:2px solid var(--line)}
+.why .card svg{color:#fff;width:52px;height:52px;padding:11px;border-radius:50%;background:var(--coral);margin-bottom:16px}
+.why .card:nth-child(2) svg{background:var(--tq)}.why .card:nth-child(3) svg{background:var(--deep)}
+.reviews{background:var(--deep);color:#fff}
+.reviews h2{color:#fff}
+.score b{color:var(--sun);font-weight:800}
+.score span{color:#bcd6dc}
+.quotes blockquote{background:rgba(255,255,255,.07);padding:28px;border-radius:26px;font-weight:700;letter-spacing:-.01em}
+.how{background:#fff}
+.steps li::before{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:18px;background:var(--sun);color:var(--deep);font-family:var(--display);font-weight:800;font-size:26px;margin-bottom:16px;rotate:-6deg}
+.faq{background:var(--foam)}
+.visit{background:#fff}
+.visit .hh{margin:6px 0 10px;font-size:15px;color:var(--soft)}
+.visit .btn-2{color:var(--tq-d);border-color:var(--tq-d)}
+.final{background:var(--coral);color:#fff}
+.final h2{color:#fff}.final .lead{color:#fff1ec}
+.final .btn-main{background:var(--deep);border-color:var(--deep)}
+footer{background:var(--deep);color:#bcd6dc}
+@media (max-width:860px){
+ .hero-in{grid-template-columns:1fr;padding-top:30px;padding-bottom:84px}
+ .pas{order:-1;width:200px;justify-self:start;margin:14px 0 6px}
+}
+
+</style>
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice">Bestel via onze WhatsApp-catalogus · Ook op Thuisbezorgd</div>
+<header class="head"><div class="wrap bar">
+  <a href="#top"><img src="logo-light.svg" alt="Delicious Tasty en Crispy"></a>
+  <nav aria-label="Hoofdmenu"><a href="#kiezer">Bestellen</a><a href="#ervaringen">Ervaringen</a><a href="#werkwijze">Werkwijze</a><a href="#contact">Contact</a><a class="btn btn-main" href="#kiezer">Bestelling aanvragen</a></nav>
+</div></header>
+<main>
+<div class="hero" id="top">
+<canvas id="fry" aria-hidden="true"></canvas>
+  <div class="wrap hero-in">
+    <div class="hero-txt">
+      <span class="tag">Antilliaans · Catering · Partyverhuur</span>
+      <h1>Antilliaanse hapjes <span class="rot" id="rot">voor je feest</span></h1>
+      <p class="sub">Pastechi, bitterballen en meer Antilliaanse catering. Plus partyverhuur, bezorgd of zelf opgehaald, en op vrijdag en zaterdag de foodtruck.</p>
+      <div class="btns"><a class="btn btn-main" href="#kiezer">Stel je bestelling samen</a><a class="btn btn-2" href="#ervaringen">Lees ervaringen</a></div>
+      <div class="trust"><span><b>4,9</b> op Google (30 reviews)</span><span>IJsselmonde, Rotterdam</span><span>4.400+ volgers op Instagram</span></div>
+    </div>
+    <div class="pas" aria-hidden="true">
+  <svg viewBox="0 0 300 220" class="pastechi">
+    <path class="dough" d="M20 170a130 130 0 0 1 260 0z"/>
+    <path class="crimp" d="M20 170a130 130 0 0 1 260 0"/>
+    <path class="shine" d="M70 120q50-60 120-50"/>
+  </svg>
+  <i class="cr k1"></i><i class="cr k2"></i><i class="cr k3"></i><i class="cr k4"></i>
+</div>
+  </div>
+</div>
+<div class="band" aria-hidden="true"><div class="track" id="track"><span>Pastechi</span><span>Bitterballen</span><span>Partyverhuur</span><span>Truck di pan</span><span>Netjes verpakt</span><span>Ook last minute</span></div></div>
+
+<section class="kz" id="kiezer"><div class="wrap">
+  <h2>Stel je bestelling samen</h2>
+  <p class="lead">Kies je feest, het aantal gasten en wat je nodig hebt. Je stuurt het in één keer via WhatsApp en krijgt de catalogus en een voorstel.</p>
+  <div class="grid">
+    <div><div class="progress" aria-hidden="true"><i id="prog"></i></div><div class="step"><h3>1. Wat vier je?</h3><div class="opts" data-group="feest" style="--cols:3"><button class="opt" type="button" aria-pressed="false" data-v="Verjaardag"><span class="tick" aria-hidden="true"></span><b>Verjaardag</b><small>Groot of klein</small></button><button class="opt" type="button" aria-pressed="false" data-v="Familiefeest"><span class="tick" aria-hidden="true"></span><b>Familiefeest</b><small>Iedereen erbij</small></button><button class="opt" type="button" aria-pressed="false" data-v="Ander feest"><span class="tick" aria-hidden="true"></span><b>Ander feest</b><small>Vertel het ons</small></button></div></div><div class="step"><h3>2. Hoeveel gasten?</h3><div class="opts" data-group="gasten" style="--cols:4"><button class="opt" type="button" aria-pressed="false" data-v="tot 25 gasten"><span class="tick" aria-hidden="true"></span><b>Tot 25</b></button><button class="opt" type="button" aria-pressed="false" data-v="25 tot 50 gasten"><span class="tick" aria-hidden="true"></span><b>25–50</b></button><button class="opt" type="button" aria-pressed="false" data-v="50 tot 100 gasten"><span class="tick" aria-hidden="true"></span><b>50–100</b></button><button class="opt" type="button" aria-pressed="false" data-v="meer dan 100 gasten"><span class="tick" aria-hidden="true"></span><b>Meer dan 100</b></button></div></div><div class="step"><h3>3. Wat heb je nodig? <span>(meerdere mag)</span></h3><div class="opts multi" data-group="wat" data-multi="1" style="--cols:3"><button class="opt" type="button" aria-pressed="false" data-v="Antilliaanse catering"><span class="lbl">Aanbevolen</span><span class="tick" aria-hidden="true"></span><b>Catering</b><small>Pastechi, bitterballen e.d.</small></button><button class="opt" type="button" aria-pressed="false" data-v="Partyverhuur"><span class="tick" aria-hidden="true"></span><b>Partyverhuur</b><small>Spullen voor je feest</small></button><button class="opt" type="button" aria-pressed="false" data-v="Foodtruck"><span class="tick" aria-hidden="true"></span><b>Foodtruck</b><small>Truck di pan, vr/za</small></button></div></div><div class="step"><h3>4. Bezorgen of ophalen?</h3><div class="opts" data-group="levering" style="--cols:2"><button class="opt" type="button" aria-pressed="false" data-v="bezorgen"><span class="tick" aria-hidden="true"></span><b>Bezorgen</b><small>Op je adres</small></button><button class="opt" type="button" aria-pressed="false" data-v="zelf ophalen"><span class="tick" aria-hidden="true"></span><b>Zelf ophalen</b><small>Tijd via WhatsApp</small></button></div></div><div class="step date"><h3>5. Wanneer is het feest?</h3><label for="d1" class="sr">Datum</label><input type="date" id="d1" class="js-date"></div></div>
+    <aside class="summary" aria-live="polite">
+      <div class="k">Jouw bestelling</div>
+      <h3 id="s-title">Kies je feest</h3>
+      <dl><dt>Feest</dt><dd id="s-feest">–</dd><dt>Gasten</dt><dd id="s-gasten">–</dd><dt>Wat</dt><dd id="s-wat">–</dd><dt>Levering</dt><dd id="s-levering">–</dd><dt>Datum</dt><dd id="s-datum">–</dd></dl>
+      <a class="btn btn-sum js-ask" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Vraag aan via WhatsApp</a>
+      <div class="note">Vrijblijvend. Je krijgt de catalogus en een voorstel.</div>
+    </aside>
+  </div>
+</div></section>
+
+<section class="why"><div class="wrap">
+  <h2>Waarom klanten blijven bestellen</h2>
+  <p class="lead">Wat in de reviews steeds terugkomt.</p>
+  <div class="cards"><div class="card"><svg viewBox="0 0 30 30"><path d="M17 3L6 17h8l-2 10 11-14h-8z"/></svg><h3>Snel, ook last minute</h3><p>Snel antwoord via WhatsApp en altijd bereid om op het laatste moment te helpen.</p></div><div class="card"><svg viewBox="0 0 30 30"><path d="M4 16l6 6h9l7-7-3-3-5 4h-4"/><path d="M4 16l4-4h7l3 3"/></svg><h3>Betrouwbaar</h3><p>Afspraken worden nagekomen. Vaste klanten bestellen al jaren en de kwaliteit blijft gelijk.</p></div><div class="card"><svg viewBox="0 0 30 30"><path d="M4 10l11-5 11 5v11l-11 5-11-5z"/><path d="M4 10l11 5 11-5M15 15v11"/></svg><h3>Netjes verzorgd</h3><p>Hapjes netjes verpakt en verhuurspullen die er netjes uitzien. Zo ziet je feest er meteen goed uit.</p></div></div>
+</div></section>
+
+<section class="reviews" id="ervaringen"><div class="wrap">
+  <h2>Wat klanten zeggen</h2>
+  <div class="scores"><div class="score"><b>4,9</b><span>Google, 30 reviews</span></div><div class="score"><b>4.400+</b><span>volgers op Instagram</span></div></div>
+  <div class="quotes"><blockquote>&ldquo;Contact via WhatsApp loopt soepel, je kunt de catalogus bekijken.&rdquo;<cite>Klant, Google-review</cite></blockquote><blockquote>&ldquo;Altijd bereid om op het laatste moment te helpen.&rdquo;<cite>Klant, Google-review</cite></blockquote><blockquote>&ldquo;Al jaren vaste klant, kwaliteit blijft altijd gelijk.&rdquo;<cite>Vaste klant, Google-review</cite></blockquote></div>
+</div></section>
+
+<section class="how" id="werkwijze"><div class="wrap">
+  <h2>Zo werkt het</h2>
+  <p class="lead">Bestellen gaat gewoon via WhatsApp.</p>
+  <ol class="steps"><li><h3>Stuur je wensen</h3><p>Stel hierboven je bestelling samen of app je datum en het aantal gasten.</p></li><li><h3>Kies uit de catalogus</h3><p>Je bekijkt de WhatsApp-catalogus en spreekt je bestelling en de prijs af.</p></li><li><h3>Bezorgen of ophalen</h3><p>Je hapjes en verhuurspullen worden bezorgd, of je haalt ze zelf op.</p></li></ol>
+  <a class="btn btn-main" href="#kiezer">Stel je bestelling samen</a>
+</div></section>
+
+<section class="faq" id="vragen"><div class="wrap">
+  <h2>Veelgestelde vragen</h2>
+  <details><summary>Wat kost het?</summary><p>Dat hangt af van het aantal gasten en wat je bestelt. Stel je bestelling hierboven samen en je krijgt via WhatsApp een prijs op maat.</p></details><details><summary>Hoe bestel ik?</summary><p>Via WhatsApp op 06 38201012. Daar kun je ook de catalogus bekijken.</p></details><details><summary>Kan het ook op het laatste moment?</summary><p>Klanten noemen de snelle reactie, ook last minute. App je datum, dan hoor je of het nog lukt.</p></details><details><summary>Hoe werkt de partyverhuur?</summary><p>Je laat de spullen bezorgen of haalt ze zelf op. Via WhatsApp spreek je de details af.</p></details><details><summary>Wanneer staat de foodtruck er?</summary><p>De truck di pan rijdt op vrijdag en zaterdag.</p></details>
+</div></section>
+
+<section class="visit" id="contact"><div class="wrap">
+  <div>
+    <h2>Ophalen en contact</h2>
+    <p class="lead" style="margin-bottom:26px">Arthurweg 39<br>3077 NW Rotterdam (IJsselmonde)<br>WhatsApp 06 38201012</p>
+    <div class="btns"><a class="btn btn-main" href="https://www.google.com/maps/search/?api=1&query=Delicious%20Tasty%20en%20Crispy%2C%20Arthurweg%2039%2C%203077%20NW%20Rotterdam" target="_blank" rel="noopener">Route plannen</a><a class="btn btn-2 js-wa-plain" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>WhatsApp</a></div>
+  </div>
+  <div><h3 class="hh">Openingstijden</h3><table class="hours" aria-label="Openingstijden"><tr><td>Maandag</td><td>Gesloten</td></tr><tr><td>Dinsdag t/m donderdag</td><td>12:00 – 18:00</td></tr><tr><td>Vrijdag en zaterdag</td><td>12:00 – 21:30</td></tr><tr><td>Zondag</td><td>12:00 – 16:00</td></tr></table></div>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>Feestje op de planning?</h2>
+  <p class="lead">Stel je bestelling samen en stuur hem in één keer via WhatsApp.</p>
+  <div class="row"><a class="btn btn-main" href="#kiezer">Stel je bestelling samen</a></div>
+</div></section>
+</main>
+<footer><div class="wrap"><img src="logo-light.svg" alt="Delicious Tasty en Crispy"><span>© 2026 Delicious Tasty en Crispy · Website door Mohamedia</span></div></footer>
+<div class="float" id="float"><a class="btn btn-main" href="#kiezer">Stel je bestelling samen</a></div>
+<script>
+const WA = "31638201012";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const K = {"steps": [{"key": "feest", "label": "Feest", "multi": false, "fb": "nog niet gekozen"}, {"key": "gasten", "label": "Gasten", "multi": false, "fb": "weet ik nog niet"}, {"key": "wat", "label": "Wat", "multi": true, "fb": "graag advies"}, {"key": "levering", "label": "Levering", "multi": false, "fb": "nog niet bekend"}], "intro": "Hoi! Ik wil graag iets bestellen voor een feest.", "outro": "Kunnen jullie de catalogus en een voorstel sturen?", "titleKey": "feest", "empty": "Kies je feest", "dateFb": "nog niet bekend"};
+const st = { datum: "" }; K.steps.forEach(s => st[s.key] = s.multi ? [] : "");
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) : "";
+const val = s => s.multi ? st[s.key].join(", ") : st[s.key];
+function render() {
+  const done = K.steps.filter(s => val(s)).length + (st.datum ? 1 : 0);
+  document.getElementById("prog").style.width = (done / (K.steps.length + 1) * 100) + "%";
+  const ts = K.steps.find(s => s.key === K.titleKey);
+  document.getElementById("s-title").textContent = val(ts) || K.empty;
+  K.steps.forEach(s => document.getElementById("s-" + s.key).textContent = val(s) || "–");
+  document.getElementById("s-datum").textContent = st.datum ? fmt(st.datum) : "–";
+  const lines = [K.intro, ...K.steps.map(s => `${s.label}: ${val(s) || s.fb}`), `Datum: ${st.datum ? fmt(st.datum) : K.dateFb}`, K.outro];
+  const msg = lines.join("\n");
+  document.querySelectorAll(".js-ask").forEach(a => { a.href = wa(msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+document.querySelectorAll(".opts").forEach(g => g.addEventListener("click", e => {
+  const b = e.target.closest(".opt"); if (!b) return;
+  const key = g.dataset.group;
+  if (g.dataset.multi) { b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true"); st[key] = [...g.querySelectorAll('.opt[aria-pressed="true"]')].map(o => o.dataset.v); }
+  else { g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b)); st[key] = b.dataset.v; }
+  render();
+}));
+const today = new Date().toISOString().slice(0, 10);
+document.querySelectorAll(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => { st.datum = i.value; render(); }); });
+document.querySelectorAll(".js-wa-plain").forEach(a => { a.href = wa("Hoi! Mag ik de catalogus zien?"); a.target = "_blank"; a.rel = "noopener"; });
+render();
+const tr = document.getElementById("track"); tr.innerHTML += tr.innerHTML;
+const words = ["voor je feest", "en partyverhuur", "uit de truck di pan"]; let wi = 0; const rot = document.getElementById("rot");
+if (rot && words.length && !reduce) setInterval(() => { wi = (wi + 1) % words.length; rot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 }).onfinish = () => { rot.textContent = words[wi]; rot.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 420 }); }; }, 2600);
+const fl = document.getElementById("float"); let heroOut = false, kzIn = false; const upd = () => fl.classList.toggle("on", heroOut && !kzIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe(document.getElementById("top"));
+new IntersectionObserver(([e]) => { kzIn = e.isIntersecting; upd(); }, { threshold: .1 }).observe(document.getElementById("kiezer"));
+
+// opborrelende frituurbelletjes
+(() => { const c = document.getElementById("fry"), x = c.getContext("2d"); let W, H, b = [];
+function size() { const r = devicePixelRatio || 1; W = c.clientWidth; H = c.clientHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0);
+  b = Array.from({ length: Math.round(W / 24) }, () => mk(true)); }
+function mk(any) { return { x: Math.random() * W, y: any ? Math.random() * H : H + 20, r: 3 + Math.random() * 12, v: .3 + Math.random() * .8, w: Math.random() * 6.28 }; }
+function f() { x.clearRect(0, 0, W, H);
+  for (let i = 0; i < b.length; i++) { const p = b[i]; p.y -= p.v; p.w += .03; if (p.y < -20) b[i] = mk(false);
+    const xx = p.x + Math.sin(p.w) * 4; x.strokeStyle = "rgba(255,255,255,.28)"; x.lineWidth = 1.5; x.beginPath(); x.arc(xx, p.y, p.r, 0, 6.28); x.stroke();
+    x.fillStyle = "rgba(255,255,255,.35)"; x.beginPath(); x.arc(xx - p.r * .35, p.y - p.r * .35, p.r * .2, 0, 6.28); x.fill(); }
+  if (!reduce) requestAnimationFrame(f); }
+size(); addEventListener("resize", size); requestAnimationFrame(f); })();
+
+</script>
+</body>
+</html>
