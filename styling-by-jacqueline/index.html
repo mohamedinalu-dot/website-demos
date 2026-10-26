@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Styling by Jacqueline — ziana en bruidsstyling in Rotterdam</title>
+<meta name="description" content="Ziana en bruidsstyling voor je henna, nikah en bruiloft. Make-up, haar, jurken en sieraden uit eigen collectie. Rotterdam.">
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#2a1530;
+  --plum-2:#3b1f42;
+  --gold:#c9a35f;
+  --gold-soft:#e6cf9f;
+  --rose:#e9c4c4;
+  --ivory:#fbf6ef;
+  --white:#ffffff;
+  --ink:#2a1530;
+  --soft:#6e5a72;
+  --line:#ece3ea;
+  --display:"Italiana", Georgia, serif;
+  --sans:"Jost", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+img.logo{display:block;height:44px;width:auto}
+
+/* aankondiging */
+.notice{background:var(--gold);color:var(--plum);font-size:14px;text-align:center;padding:8px 16px;font-weight:500}
+
+/* header */
+header.top{position:absolute;left:0;right:0;z-index:3}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:84px}
+header.top nav a{color:var(--ivory);text-decoration:none;font-size:15px;margin-left:26px;opacity:.85}
+header.top nav a:hover{opacity:1}
+
+/* hero */
+.hero{position:relative;background:var(--plum);color:var(--ivory);min-height:min(92vh,820px);display:flex;align-items:center;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;z-index:2;padding-top:110px;padding-bottom:80px}
+.tag{display:inline-block;border:1px solid var(--gold);color:var(--gold-soft);border-radius:999px;padding:6px 16px;font-size:14px;margin-bottom:26px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(50px,7.6vw,108px);line-height:1;margin:0 0 26px;max-width:11ch}
+.rot{display:block;color:var(--gold);min-height:1em}
+.hero p.sub{font-size:19px;max-width:32em;color:#e8dcea;margin:0 0 34px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:14px 26px;border-radius:999px;font-family:var(--sans);font-weight:500;font-size:16px;text-decoration:none;border:1.5px solid var(--gold);cursor:pointer}
+.btn-gold{background:var(--gold);color:var(--plum)}
+.btn-gold:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
+.btn-line{background:transparent;color:var(--ivory)}
+.btn-line:hover{background:rgba(201,163,95,.12)}
+.trust{margin-top:28px;font-size:14.5px;color:#cdbfd0;display:flex;flex-wrap:wrap;gap:8px 22px}
+.trust b{color:var(--gold-soft);font-weight:500}
+
+/* marquee */
+.band{background:var(--plum-2);color:var(--gold-soft);overflow:hidden;white-space:nowrap;border-top:1px solid rgba(201,163,95,.25)}
+.band .track{display:inline-block;padding:16px 0;animation:slide 38s linear infinite;font-family:var(--display);font-size:22px}
+.band span{margin:0 28px}
+.band span::after{content:"✦";margin-left:56px;color:var(--gold);font-size:14px;vertical-align:3px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:96px 0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(38px,4.6vw,58px);line-height:1.05;margin:0 0 16px;color:var(--plum)}
+.lead{color:var(--soft);font-size:18px;max-width:36em;margin:0 0 44px}
+
+/* pakketkiezer */
+.pick{background:var(--ivory)}
+.pick .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.step{margin-bottom:30px}
+.step h3{font-size:15px;font-weight:500;margin:0 0 12px;color:var(--soft)}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.opt{position:relative;text-align:left;background:var(--white);border:1.5px solid var(--line);border-radius:16px;padding:16px 16px 14px;font:inherit;color:var(--ink);cursor:pointer;min-height:44px}
+.opt b{display:block;font-family:var(--display);font-weight:400;font-size:24px;line-height:1.1}
+.opt small{display:block;color:var(--soft);font-size:14px;margin-top:4px}
+.opt[aria-pressed="true"]{border-color:var(--plum);box-shadow:inset 0 0 0 1px var(--plum)}
+.opt .lbl{position:absolute;top:-10px;right:12px;background:var(--gold);color:var(--plum);font-size:12px;font-weight:500;border-radius:999px;padding:2px 10px}
+.date{display:flex;gap:12px;flex-wrap:wrap}
+.date input{font:inherit;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;min-height:50px;background:var(--white);color:var(--ink)}
+.summary{background:var(--plum);color:var(--ivory);border-radius:24px;padding:32px;position:sticky;top:24px}
+.summary h3{font-family:var(--display);font-weight:400;font-size:34px;margin:0 0 4px;color:var(--gold-soft)}
+.summary .when{color:#cdbfd0;font-size:15px;margin-bottom:20px}
+.summary ul{list-style:none;padding:0;margin:0 0 26px}
+.summary li{padding:10px 0 10px 28px;border-bottom:1px solid rgba(255,255,255,.12);position:relative}
+.summary li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-size:13px;top:13px}
+.summary .btn{width:100%}
+.summary .note{font-size:13.5px;color:#cdbfd0;margin-top:14px;text-align:center}
+
+/* waarom */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.why div{border-top:1px solid var(--gold);padding-top:22px}
+.why svg{width:34px;height:34px;stroke:var(--gold);fill:none;stroke-width:1.4;margin-bottom:12px}
+.why h3{font-size:20px;font-weight:500;margin:0 0 8px}
+.why p{margin:0;color:var(--soft)}
+
+/* reviews */
+.reviews{background:var(--plum);color:var(--ivory)}
+.reviews h2{color:var(--ivory)}
+.score{display:flex;align-items:baseline;gap:16px;margin-bottom:48px}
+.score b{font-family:var(--display);font-weight:400;font-size:84px;line-height:1;color:var(--gold)}
+.score span{color:#cdbfd0}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+blockquote{margin:0;font-family:var(--display);font-size:25px;line-height:1.3}
+blockquote cite{display:block;margin-top:14px;font-family:var(--sans);font-style:normal;font-size:14px;color:#cdbfd0}
+
+/* stappen */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:block;font-family:var(--display);font-size:56px;line-height:1;color:var(--gold);margin-bottom:12px}
+.steps h3{margin:0 0 6px;font-size:20px;font-weight:500}
+.steps p{margin:0;color:var(--soft)}
+
+/* faq */
+.faq{background:var(--ivory)}
+.faq .wrap{max-width:820px}
+details{border-bottom:1px solid #e3d6c8;padding:6px 0}
+summary{cursor:pointer;list-style:none;padding:16px 36px 16px 0;font-size:18px;font-weight:500;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:12px;font-size:24px;color:var(--gold)}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 18px;color:var(--soft)}
+
+/* slot */
+.final{background:var(--plum);color:var(--ivory);text-align:center}
+.final h2{color:var(--ivory);margin:0 auto 16px;max-width:14ch}
+.final .lead{color:#cdbfd0;margin:0 auto 32px}
+.final .date{justify-content:center}
+
+footer{background:#1d0e21;color:#bfaec3;padding:56px 0 90px;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px}
+footer h4{color:var(--gold-soft);font-weight:500;margin:0 0 10px;font-size:15px}
+footer p{margin:0}
+.fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-top:20px;margin-top:20px;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* zwevende cta + demo-label */
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:6;display:none}
+.float.on{display:block}
+.float .btn{width:100%;box-shadow:0 10px 30px rgba(20,5,25,.4)}
+.demo{background:#1d0e21;color:#bfaec3;font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--gold-soft)}
+
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:860px){
+  header.top nav{display:none}
+  .pick .grid,.why,.quotes,.steps{grid-template-columns:1fr}
+  .summary{position:static}
+  footer .wrap{grid-template-columns:1fr}
+  section{padding:72px 0}
+  .opt{padding:18px 10px 12px}
+  .opt b{font-size:20px}
+  .opt small{font-size:12.5px}
+}
+@media (max-width:340px){.opts{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.band .track{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice">Pasafspraak op afspraak in Rotterdam · Henna, nikah en bruiloft</div>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#"><img class="logo" src="logo-light.svg" alt="Styling by Jacqueline"></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#pakket">Pakketten</a>
+      <a href="#ervaringen">Ervaringen</a>
+      <a href="#werkwijze">Werkwijze</a>
+      <a href="#vragen">Vragen</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="top">
+    <canvas id="orn" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <span class="tag">Ziana · Make-up · Haar · Jurken &amp; sieraden</span>
+      <h1>Jij straalt, ik regel de rest <span class="rot" id="rot" aria-live="off">op je henna</span></h1>
+      <p class="sub">Ziana en bruidsstyling uit Rotterdam. Make-up, haar, jurken en sieraden uit eigen collectie, en ik blijf de hele avond aan je zijde.</p>
+      <div class="btns">
+        <a class="btn btn-gold" href="#pakket">Check of je datum vrij is</a>
+        <a class="btn btn-line" href="#ervaringen">Lees ervaringen</a>
+      </div>
+      <div class="trust"><span><b>4,9</b> op Google</span><span>Henna, nikah en bruiloft</span><span>Pasafspraak in Rotterdam</span></div>
+    </div>
+  </div>
+
+  <div class="band" aria-hidden="true"><div class="track" id="track"><span>Make-up en haar</span><span>Jurken en sieraden in huis</span><span>Begeleiding de hele avond</span><span>Henna, nikah en bruiloft</span><span>Pasafspraak in Rotterdam</span></div></div>
+
+  <section class="pick" id="pakket">
+    <div class="wrap">
+      <h2>Stel je pakket samen</h2>
+      <p class="lead">Kies je feest en hoeveel looks je wilt. Je stuurt je keuze en datum direct via WhatsApp en krijgt een prijs op maat.</p>
+      <div class="grid">
+        <div>
+          <div class="step">
+            <h3>1. Welk feest?</h3>
+            <div class="opts" data-group="feest">
+              <button class="opt" type="button" data-v="Henna"><b>Henna</b><small>Avond met je dierbaren</small></button>
+              <button class="opt" type="button" data-v="Bruiloft"><b>Bruiloft</b><small>Je grote dag</small></button>
+              <button class="opt" type="button" data-v="Henna en bruiloft" aria-pressed="true"><span class="lbl">Aanbevolen</span><b>Allebei</b><small>Eén vertrouwd gezicht</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3>2. Hoeveel looks?</h3>
+            <div class="opts" data-group="looks">
+              <button class="opt" type="button" data-v="1 look"><b>1 look</b><small>Eén jurk, één stijl</small></button>
+              <button class="opt" type="button" data-v="2 looks" aria-pressed="true"><b>2 looks</b><small>Wissel tijdens de avond</small></button>
+              <button class="opt" type="button" data-v="3 of meer looks"><b>3+ looks</b><small>De volledige ziana-ervaring</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3>3. Wanneer is het?</h3>
+            <div class="date"><label class="sr" for="d1" style="position:absolute;left:-9999px">Datum van je feest</label><input type="date" id="d1" class="js-date"></div>
+          </div>
+        </div>
+        <aside class="summary" aria-live="polite">
+          <h3 id="s-title">Henna en bruiloft</h3>
+          <div class="when" id="s-when">2 looks · datum nog kiezen</div>
+          <ul id="s-list"></ul>
+          <a class="btn btn-gold js-ask" href="#">Vraag prijs en beschikbaarheid</a>
+          <div class="note">Je zit nergens aan vast. Antwoord meestal dezelfde dag.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Waarom bruiden voor Jacqueline kiezen</h2>
+      <p class="lead">Wat in de reviews steeds terugkomt.</p>
+      <div class="why">
+        <div><svg viewBox="0 0 34 34"><path d="M17 3l3.5 9.5L30 14l-7.5 6 2.5 10L17 24.5 9 30l2.5-10L4 14l9.5-1.5z"/></svg><h3>Alles in één hand</h3><p>Make-up, haar, jurken en sieraden komen van één stylist. Geen gedoe met vier verschillende partijen.</p></div>
+        <div><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="13"/><path d="M17 9v8l5 4"/></svg><h3>De hele avond bij je</h3><p>Niet alleen aan het begin. Ze helpt je omkleden, houdt je look strak en begeleidt je tot het einde.</p></div>
+        <div><svg viewBox="0 0 34 34"><path d="M6 20c3 6 19 6 22 0M10 13h.01M24 13h.01"/><circle cx="17" cy="17" r="13"/></svg><h3>Eerlijk advies</h3><p>Ze zegt wat je staat en wat niet. Daardoor voel je je op je dag zeker van elke keuze.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="ervaringen">
+    <div class="wrap">
+      <h2>Ervaringen</h2>
+      <div class="score"><b>4,9</b><span>gemiddeld op Google, uit 20 reviews</span></div>
+      <div class="quotes">
+        <blockquote>"Ik fotografeer al ruim tien jaar bruiloften en zie zelden dit niveau."<cite>Bruidsfotograaf, Google-review</cite></blockquote>
+        <blockquote>"Ik voelde me opnieuw een prinses. Ik zou je weer kiezen."<cite>Bruid, henna en bruiloft</cite></blockquote>
+        <blockquote>"Van bijna alle gasten hoorde ik hoe mooi ik eruitzag."<cite>Bruid, henna en bruiloft</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="werkwijze">
+    <div class="wrap">
+      <h2>Zo werkt het</h2>
+      <p class="lead">Van eerste appje tot de laatste dans.</p>
+      <ol class="steps">
+        <li><h3>Kennismaken</h3><p>Stuur je datum en wensen via WhatsApp. Je krijgt snel antwoord met beschikbaarheid en een prijs op maat.</p></li>
+        <li><h3>Pasafspraak</h3><p>Je past jurken uit de collectie in Rotterdam en kiest je looks, sieraden en stijl.</p></li>
+        <li><h3>Jouw dag</h3><p>Make-up en haar, omkleden tussen de looks en begeleiding tot het einde van de avond.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq" id="vragen">
+    <div class="wrap">
+      <h2>Veelgestelde vragen</h2>
+      <details><summary>Wat kost een pakket?</summary><p>Dat hangt af van je feest, het aantal looks en of je jurken en sieraden huurt. Stel je pakket hierboven samen en je krijgt via WhatsApp een prijs op maat.</p></details>
+      <details><summary>Hoe ver van tevoren moet ik boeken?</summary><p>Hoe eerder, hoe meer keuze in data en jurken. Check je datum zodra die vastligt.</p></details>
+      <details><summary>Kan ik de jurken eerst passen?</summary><p>Ja. Je plant een pasafspraak in Rotterdam en kiest daar je looks.</p></details>
+      <details><summary>Doe je ook alleen make-up en haar?</summary><p>Ja, ook voor henna, verloving of als gast. Vraag het gerust via WhatsApp.</p></details>
+      <details><summary>Waar zit je?</summary><p>Zwaanshals 215 in Rotterdam-Noord, op afspraak. Op je dag zelf ben ik bij je op locatie.</p></details>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Is jouw datum nog vrij?</h2>
+      <p class="lead">Kies je datum en stuur hem direct via WhatsApp.</p>
+      <div class="date"><label for="d2" style="position:absolute;left:-9999px">Datum van je feest</label><input type="date" id="d2" class="js-date"><a class="btn btn-gold js-ask" href="#">Check mijn datum</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><img class="logo" src="logo-light.svg" alt="Styling by Jacqueline" style="margin-bottom:14px"><p>Ziana en bruidsstyling voor henna, nikah en bruiloft.</p></div>
+    <div><h4>Langskomen</h4><p>Zwaanshals 215<br>3036 KN Rotterdam<br>Op afspraak</p></div>
+    <div><h4>Contact</h4><p><a class="js-wa-plain" href="#">WhatsApp 06 16546612</a></p></div>
+    <div class="fine"><span>© 2026 Styling by Jacqueline</span><span>Website door Mohamedia</span></div>
+  </div>
+</footer>
+
+<div class="float" id="float"><a class="btn btn-gold" href="#pakket">Check of je datum vrij is</a></div>
+
+<script>
+const WA = "31616546612";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// pakketkiezer
+const state = { feest: "Henna en bruiloft", looks: "2 looks", datum: "" };
+const incl = {
+  "Henna": ["Make-up en haar voor je henna", "Jurk en sieraden uit de collectie", "Begeleiding tijdens de avond"],
+  "Bruiloft": ["Make-up en haar voor je bruiloft", "Jurken en sieraden uit de collectie", "Omkleden tussen de looks", "Begeleiding tot het einde"],
+  "Henna en bruiloft": ["Twee avonden, één vertrouwde stylist", "Make-up en haar op beide dagen", "Jurken en sieraden uit de collectie", "Begeleiding tijdens beide feesten"]
+};
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) : "";
+function render() {
+  document.getElementById("s-title").textContent = state.feest;
+  document.getElementById("s-when").textContent = `${state.looks} · ${state.datum ? fmt(state.datum) : "datum nog kiezen"}`;
+  const ul = document.getElementById("s-list"); ul.innerHTML = "";
+  incl[state.feest].forEach(t => { const li = document.createElement("li"); li.textContent = t; ul.appendChild(li); });
+  const msg = `Hoi Jacqueline! Ik ben op zoek naar een ziana.\nFeest: ${state.feest}\nLooks: ${state.looks}\nDatum: ${state.datum ? fmt(state.datum) : "nog niet bekend"}\nIs dit nog vrij en wat kost het?`;
+  document.querySelectorAll(".js-ask").forEach(a => { a.href = wa(msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+document.querySelectorAll(".opts").forEach(g => g.addEventListener("click", e => {
+  const b = e.target.closest(".opt"); if (!b) return;
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b));
+  state[g.dataset.group] = b.dataset.v; render();
+}));
+document.querySelectorAll(".opts .opt:not([aria-pressed])").forEach(o => o.setAttribute("aria-pressed", "false"));
+const today = new Date().toISOString().slice(0, 10);
+document.querySelectorAll(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => { state.datum = i.value; document.querySelectorAll(".js-date").forEach(j => j.value = i.value); render(); }); });
+document.querySelectorAll(".js-wa-plain").forEach(a => { a.href = wa("Hoi Jacqueline!"); a.target = "_blank"; a.rel = "noopener"; });
+render();
+
+// marquee verdubbelen
+const tr = document.getElementById("track"); tr.innerHTML += tr.innerHTML;
+
+// wisselende feesten in de kop
+const words = ["op je henna", "op je nikah", "op je bruiloft"]; let wi = 0;
+const rot = document.getElementById("rot");
+if (!reduce) setInterval(() => { wi = (wi + 1) % words.length; rot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 }).onfinish = () => { rot.textContent = words[wi]; rot.animate([{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration: 400 }); }; }, 2600);
+
+// zwevende knop op mobiel zodra de hero uit beeld is
+const fl = document.getElementById("float");
+let heroOut=false, pickIn=false; const upd=()=>fl.classList.toggle("on", heroOut && !pickIn);
+new IntersectionObserver(([e]) => { heroOut=!e.isIntersecting; upd(); }).observe(document.getElementById("top"));
+new IntersectionObserver(([e]) => { pickIn=e.isIntersecting; upd(); }, { threshold: .15 }).observe(document.getElementById("pakket"));
+
+// bewegende hero: gouden ornamenten (Marokkaanse ster) die langzaam draaien
+const c = document.getElementById("orn"), x = c.getContext("2d");
+let W, H, stars = [];
+function size() {
+  const r = devicePixelRatio || 1; W = c.clientWidth; H = c.clientHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0);
+  stars = []; const s = Math.max(120, W / 9);
+  for (let yy = -s; yy < H + s; yy += s) for (let xx = -s; xx < W + s; xx += s) stars.push({ x: xx + ((yy / s) % 2 ? s / 2 : 0), y: yy, r: s * .32, p: Math.random() * 6.28 });
+}
+function star(cx, cy, r, a, alpha) {
+  x.save(); x.translate(cx, cy); x.rotate(a); x.strokeStyle = `rgba(201,163,95,${alpha})`; x.lineWidth = 1;
+  for (let k = 0; k < 2; k++) { x.rotate(Math.PI / 4 * k); x.strokeRect(-r / 1.414, -r / 1.414, r * 1.414, r * 1.414); }
+  x.beginPath(); x.arc(0, 0, r * .28, 0, 6.28); x.stroke(); x.restore();
+}
+function frame(t) {
+  x.clearRect(0, 0, W, H);
+  const g = x.createRadialGradient(W * .78, H * .45, 0, W * .78, H * .45, W * .7); g.addColorStop(0, "rgba(201,163,95,.16)"); g.addColorStop(1, "rgba(42,21,48,0)"); x.fillStyle = g; x.fillRect(0, 0, W, H);
+  for (const s of stars) { const fade = Math.min(1, Math.max(0, (s.x / W) - .25) * 1.6); const a = .06 + .16 * fade * (.6 + .4 * Math.sin(t / 2400 + s.p)); star(s.x, s.y, s.r, t / 26000 + s.p * .05, a); }
+  if (!reduce) requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>
