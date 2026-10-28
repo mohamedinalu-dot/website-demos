@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Luviteli Taarten – taarten op bestelling in Dordrecht</title>
+<meta name="description" content="Gepersonaliseerde taarten, bruidstaarten, cupcakes en sweets op bestelling. Geen fondant of marsepein. Afhalen in Dordrecht. 4,9 op Google uit 29 reviews.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#12392b; --forest-2:#1c4d3a; --forest-d:#0b2a1f;
+  --pista:#dcefd6; --pista-2:#eef7ea; --paper:#fbfdf9;
+  --rasp:#e2426f; --rasp-d:#c22d58; --rasp-l:#ffe3ec;
+  --lemon:#ffe066; --lilac:#c9b6f2; --sky:#9ed8f0;
+  --ink:#12392b; --soft:#4f6a5e; --line:#d5e6cf;
+  --display:"Shrikhand", Georgia, cursive; --sans:"Outfit", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--rasp);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+.demo{background:var(--forest-d);color:#b9d1c4;font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--lemon)}
+.notice{background:var(--forest);color:#fff;font-size:14px;text-align:center;padding:8px 16px;font-weight:500}
+.notice b{color:var(--lemon)}
+
+header.top{background:var(--paper)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:86px}
+header.top img{height:56px;width:auto;display:block}
+header.top nav{display:flex;align-items:center}
+header.top nav a{text-decoration:none;font-size:15.5px;font-weight:500;margin-left:26px}
+header.top nav a:hover{color:var(--rasp)}
+header.top nav a.btn{margin-left:26px;min-height:46px;padding:10px 20px;font-size:15px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:14px 26px;border-radius:999px;font-family:var(--sans);font-weight:600;font-size:16.5px;text-decoration:none;border:2px solid var(--rasp);cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-rasp{background:var(--rasp);color:#fff}
+.btn-rasp:hover{background:var(--rasp-d);border-color:var(--rasp-d)}
+.btn-line{background:transparent;color:var(--forest);border-color:var(--forest)}
+.btn-lemon{background:var(--lemon);color:var(--forest);border-color:var(--lemon)}
+
+/* hero */
+.hero{position:relative;background:var(--pista);overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.glaze{position:absolute;left:0;top:0;width:100%;height:120px;z-index:2;display:block}
+.hero .wrap{position:relative;z-index:3;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-top:130px;padding-bottom:90px}
+.kicker{display:inline-block;background:#fff;color:var(--forest);font-weight:600;font-size:14px;padding:6px 14px;border-radius:999px;margin-bottom:20px;box-shadow:0 2px 0 var(--line)}
+.kicker i{font-style:normal;color:var(--rasp)}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,5.4vw,72px);line-height:1.04;margin:0 0 22px;max-width:12ch;letter-spacing:-.005em}
+.rot{display:block;color:var(--rasp);min-height:1.08em}
+.hero p.sub{font-size:19px;max-width:31em;color:var(--soft);margin:0 0 30px}
+.hero p.sub b{color:var(--forest)}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.trust{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15.5px;color:var(--soft);align-items:center}
+.trust .stars{color:var(--rasp);letter-spacing:2px}
+.trust b{color:var(--forest)}
+.cake{width:100%;max-width:440px;justify-self:center}
+.cake .bob{animation:bob 5s ease-in-out infinite;transform-origin:50% 100%}
+.cake .flame{animation:flick 1.2s ease-in-out infinite alternate;transform-origin:50% 100%;transform-box:fill-box}
+@keyframes bob{50%{transform:translateY(-8px)}}
+@keyframes flick{to{transform:scale(.8,1.1) rotate(4deg)}}
+
+/* marquee */
+.band{background:var(--rasp);color:#fff;overflow:hidden;white-space:nowrap}
+.band .track{display:inline-block;padding:15px 0;animation:slide 38s linear infinite;font-family:var(--display);font-size:21px}
+.band span{margin:0 22px}
+.band span::after{content:"";display:inline-block;width:22px;height:7px;border-radius:7px;background:var(--lemon);margin-left:44px;vertical-align:4px;transform:rotate(-25deg)}
+.band span:nth-child(3n+2)::after{background:var(--sky)}
+.band span:nth-child(3n)::after{background:#fff}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:92px 0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,4.4vw,54px);line-height:1.08;margin:0 0 14px;color:var(--forest)}
+h2 span{color:var(--rasp)}
+.lead{color:var(--soft);font-size:18px;max-width:36em;margin:0 0 42px}
+
+/* kiezer */
+.pick{background:var(--paper)}
+.pick .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start}
+.dots{display:flex;gap:8px;margin-bottom:26px}
+.dots i{flex:1;height:8px;border-radius:8px;background:var(--line);transition:background .3s}
+.dots i.on{background:var(--rasp)}
+.step{margin-bottom:30px}
+.step h3{font-size:17px;font-weight:700;margin:0 0 12px}
+.step h3 small{font-weight:400;color:var(--soft)}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.opts.two{grid-template-columns:repeat(2,1fr)}
+.opts.four{grid-template-columns:repeat(4,1fr)}
+.opt{position:relative;text-align:left;background:var(--pista-2);border:2px solid var(--pista-2);border-radius:18px;padding:15px 14px 13px;font:inherit;color:var(--ink);cursor:pointer;min-height:48px}
+.opt b{display:block;font-weight:700;font-size:17.5px;line-height:1.2}
+.opt small{display:block;color:var(--soft);font-size:13.5px;margin-top:3px;line-height:1.35}
+.opt:hover{border-color:#f3a9be}
+.opt[aria-pressed="true"]{border-color:var(--rasp);background:var(--rasp-l)}
+.opt .lbl{position:absolute;top:-10px;right:10px;background:var(--lemon);color:var(--forest);font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 9px}
+.date input{font:inherit;padding:12px 16px;border:2px solid var(--line);border-radius:16px;min-height:54px;background:#fff;color:var(--ink)}
+.nofondant{display:flex;gap:12px;align-items:center;background:var(--pista-2);border-radius:16px;padding:14px 16px;font-size:15.5px;color:var(--soft);margin-top:4px}
+.nofondant b{color:var(--forest)}
+.summary{background:var(--forest);color:#fff;border-radius:28px;padding:56px 30px 30px;position:sticky;top:24px;overflow:hidden}
+.summary::before{content:"";position:absolute;left:0;right:0;top:0;height:34px;background:var(--rasp);-webkit-mask:radial-gradient(14px 18px at 50% 100%,#000 98%,transparent) 0 0/56px 100% repeat-x,linear-gradient(#000,#000) 0 0/100% 18px no-repeat;mask:radial-gradient(14px 18px at 50% 100%,#000 98%,transparent) 0 0/56px 100% repeat-x,linear-gradient(#000,#000) 0 0/100% 18px no-repeat}
+.summary .k{font-size:13.5px;color:#b9d1c4;font-weight:500}
+.summary h3{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.12;margin:4px 0 20px}
+.summary dl{margin:0 0 24px;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:15.5px}
+.summary dt{color:#b9d1c4}
+.summary dd{margin:0}
+.summary .btn{width:100%}
+.summary .note{font-size:13.5px;color:#b9d1c4;margin-top:12px;text-align:center}
+
+/* thema's */
+.themes{background:var(--pista);padding:80px 0}
+.tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.theme{border-radius:24px;padding:26px 22px;min-height:180px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:#fff}
+.theme b{font-family:var(--display);font-weight:400;font-size:25px;line-height:1.1}
+.theme small{font-size:14.5px;color:var(--soft);margin-top:6px}
+.theme svg{position:absolute;right:14px;top:14px;width:64px;height:64px}
+.themes p.note{color:var(--soft);font-size:15px;margin:18px 0 0}
+
+/* waarom */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--pista-2);border-radius:24px;padding:30px 28px;position:relative}
+.card .ic{width:52px;height:52px;border-radius:16px;background:var(--c);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.card .ic svg{width:28px;height:28px}
+.card h3{font-weight:700;margin:0 0 8px;font-size:21px}
+.card p{margin:0;color:var(--soft)}
+
+/* reviews */
+.reviews{background:var(--forest);color:#fff;position:relative}
+.reviews h2{color:#fff}
+.revhead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.score{text-align:right}
+.score b{font-family:var(--display);font-weight:400;font-size:82px;line-height:1;color:var(--lemon);display:block}
+.score span{color:#b9d1c4;font-size:15px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+blockquote{margin:0;background:var(--forest-2);border-radius:24px;padding:28px 26px;font-size:21px;font-weight:500;line-height:1.38;position:relative}
+blockquote::before{content:"\201C";font-family:var(--display);font-size:62px;line-height:.6;color:var(--rasp);display:block;margin-bottom:6px}
+blockquote cite{display:block;margin-top:16px;font-weight:400;font-style:normal;font-size:14.5px;color:#b9d1c4}
+blockquote cite b{color:#fff;font-weight:600}
+
+/* stappen */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;background:var(--rasp);color:#fff;font-family:var(--display);font-size:26px;margin-bottom:14px;box-shadow:0 0 0 6px var(--rasp-l)}
+.steps li:nth-child(2)::before{background:var(--lemon);color:var(--forest);box-shadow:0 0 0 6px #fff6c9}
+.steps li:nth-child(3)::before{background:var(--forest);box-shadow:0 0 0 6px var(--pista)}
+.steps h3{margin:0 0 6px;font-size:20px;font-weight:700}
+.steps p{margin:0;color:var(--soft)}
+
+/* faq */
+.faq{background:var(--pista-2)}
+.faq .wrap{max-width:840px}
+details{background:#fff;border-radius:18px;margin-bottom:10px;padding:0 22px}
+summary{cursor:pointer;list-style:none;padding:18px 36px 18px 0;font-size:17.5px;font-weight:600;position:relative;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:0;top:12px;font-size:28px;color:var(--rasp);font-weight:400}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 20px;color:var(--soft)}
+
+/* afhalen */
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.visit .place{font-family:var(--display);font-size:clamp(30px,3.6vw,42px);line-height:1.1;margin:0 0 12px;color:var(--rasp)}
+.visit p{color:var(--soft);margin:0 0 24px}
+.hours{background:var(--pista-2);border-radius:24px;padding:28px 30px}
+.hours h3{margin:0 0 14px;font-size:18px;font-weight:700}
+.hours table{width:100%;border-collapse:collapse;font-size:16.5px}
+.hours td{padding:9px 0;border-bottom:1px solid var(--line)}
+.hours td+td{text-align:right;font-weight:600}
+.hours tr:last-child td{border-bottom:0}
+.hours tr.today td{color:var(--rasp)}
+.hours small{display:block;margin-top:12px;color:var(--soft);font-size:13.5px}
+
+.final{background:var(--rasp);color:#fff;text-align:center;position:relative;overflow:hidden}
+.final h2{color:#fff;max-width:16ch;margin:0 auto 16px}
+.final .lead{color:#ffe3ec;margin:0 auto 30px}
+.final .date{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.final .date input{border-color:#fff}
+
+footer{background:var(--forest-d);color:#b9d1c4;padding:52px 0 100px;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer img{height:58px;margin-bottom:14px}
+footer h4{color:var(--lemon);margin:0 0 10px;font-size:15px;font-weight:600}
+footer p{margin:0;line-height:1.9}
+footer a{text-decoration:underline;text-underline-offset:3px}
+.fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;margin-top:16px;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:10;display:none}
+.float.on{display:block}
+.float .btn{width:100%;box-shadow:0 12px 30px rgba(11,42,31,.35)}
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:980px){.tgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){
+  header.top nav{display:none}
+  header.top .wrap{height:74px}
+  header.top img{height:46px}
+  .glaze{height:90px}
+  .hero .wrap{grid-template-columns:1fr;padding-top:96px;padding-bottom:64px}
+  .cake{display:none}
+  .pick .grid,.visit .wrap{grid-template-columns:1fr}
+  .cards,.quotes,.steps{grid-template-columns:1fr}
+  .opts,.opts.four{grid-template-columns:1fr 1fr}
+  .summary{position:relative;top:0}
+  .score{text-align:left}
+  footer .wrap{grid-template-columns:1fr}
+  section{padding:68px 0}
+}
+@media (max-width:420px){.tgrid{grid-template-columns:1fr}.theme{min-height:140px}.btns .btn{width:100%}}
+@media (prefers-reduced-motion:reduce){.band .track,.cake .bob,.cake .flame{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice"><b>4,9 ★</b> uit 29 Google-reviews · Afhalen in Dordrecht</div>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#top" class="logo"><img src="logo-dark.svg" alt="Luviteli Taarten" width="144" height="56"></a>
+    <nav aria-label="Hoofdmenu"><a href="#bestellen">Bestellen</a><a href="#themas">Thema's</a><a href="#ervaringen">Ervaringen</a><a href="#vragen">Vragen</a><a class="btn btn-rasp js-wa-plain" href="#">WhatsApp</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="top">
+    <svg class="glaze" id="glaze" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path id="glazePath" fill="#e2426f" d="M0 0H1440V40H0Z"/></svg>
+    <canvas id="sprinkles" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <span class="kicker">Op bestelling · <i>geen fondant of marsepein</i></span>
+        <h1>Een taart op maat <span class="rot" id="rot">voor je verjaardag</span></h1>
+        <p class="sub">Gepersonaliseerde taarten, bruidstaarten, cupcakes en sweets, helemaal in jouw thema. <b>Afhalen in Dordrecht.</b></p>
+        <div class="btns">
+          <a class="btn btn-rasp js-wa-plain" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>Bestel via WhatsApp</a>
+          <a class="btn btn-line" href="#bestellen">Stel je taart samen</a>
+        </div>
+        <div class="trust"><span class="stars" aria-hidden="true">★★★★★</span><span><b>4,9</b> op Google · 29 reviews</span><span>Dordrecht</span></div>
+      </div>
+      <svg class="cake" viewBox="0 0 400 380" aria-hidden="true">
+        <ellipse cx="200" cy="356" rx="150" ry="14" fill="#12392b" opacity=".12"/>
+        <g class="bob">
+          <rect x="70" y="210" width="260" height="130" rx="22" fill="#fff"/>
+          <path d="M70 232c0-12 10-22 22-22h216c12 0 22 10 22 22v4c-10 0-10 30-22 30s-10-18-22-18-10 34-24 34-10-26-22-26-10 18-22 18-10-30-24-30-10 40-24 40-10-28-22-28-10 14-22 14-12-22-22-22-10 26-22 26-12-30-12-30Z" fill="#e2426f"/>
+          <rect x="70" y="316" width="260" height="24" rx="12" fill="#c9b6f2"/>
+          <rect x="112" y="110" width="176" height="108" rx="20" fill="#ffe066"/>
+          <path d="M112 128c0-10 8-18 18-18h140c10 0 18 8 18 18v2c-8 0-8 22-18 22s-8-14-18-14-8 28-20 28-8-20-18-20-8 12-18 12-8-24-20-24-8 30-18 30-8-18-18-18-8 10-10 10Z" fill="#fff"/>
+          <g fill="#e2426f"><circle cx="150" cy="190" r="7"/><circle cx="200" cy="196" r="7"/><circle cx="250" cy="190" r="7"/></g>
+          <g stroke-width="6" stroke-linecap="round"><path d="M108 290l12-6" stroke="#ffe066"/><path d="M160 300l10 6" stroke="#9ed8f0"/><path d="M220 288l12-4" stroke="#c9b6f2"/><path d="M270 300l10 6" stroke="#ffe066"/><path d="M300 282l8-8" stroke="#9ed8f0"/><path d="M134 268l-4 10" stroke="#fff"/></g>
+          <rect x="194" y="64" width="12" height="48" rx="5" fill="#9ed8f0"/>
+          <path class="flame" d="M200 30c10 12 12 20 12 25a12 12 0 0 1-24 0c0-5 2-13 12-25Z" fill="#ffb02e"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="band" aria-hidden="true"><div class="track" id="track"><span>Gepersonaliseerde taarten</span><span>Bruidstaarten</span><span>Cupcakes</span><span>Sweets op bestelling</span><span>Geen fondant of marsepein</span><span>Afhalen in Dordrecht</span></div></div>
+
+  <section class="pick" id="bestellen">
+    <div class="wrap">
+      <h2>Stel je <span>taart</span> samen</h2>
+      <p class="lead">Kies wat je wilt, het thema en de datum. Met één tik staat je aanvraag klaar in WhatsApp en hoor je wat er kan.</p>
+      <div class="grid">
+        <div>
+          <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="step">
+            <h3>1. Wat wil je bestellen?</h3>
+            <div class="opts" data-group="soort">
+              <button class="opt" type="button" data-v="Gepersonaliseerde taart"><b>Taart op maat</b><small>In jouw thema</small></button>
+              <button class="opt" type="button" data-v="Bruidstaart"><b>Bruidstaart</b><small>Voor je bruiloft</small></button>
+              <button class="opt" type="button" data-v="Cupcakes"><b>Cupcakes</b><small>Voor op tafel</small></button>
+              <button class="opt" type="button" data-v="Sweets"><b>Sweets</b><small>Zoals een boeket met chocolaatjes</small></button>
+              <button class="opt" type="button" data-v="Zakelijke bestelling (bijv. mini-taartjes met logo)"><b>Zakelijk</b><small>Mini-taartjes met logo</small></button>
+              <button class="opt" type="button" data-v="Weet ik nog niet, graag advies"><b>Weet ik nog niet</b><small>Denk met me mee</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3>2. Welk thema? <small>(of je eigen idee)</small></h3>
+            <div class="opts" data-group="thema">
+              <button class="opt" type="button" data-v="Eenhoorn / regenboog"><b>Eenhoorn</b><small>Of regenboog</small></button>
+              <button class="opt" type="button" data-v="Disney"><b>Disney</b><small>Favoriete figuur</small></button>
+              <button class="opt" type="button" data-v="Feyenoord"><b>Feyenoord</b><small>Voor de fan</small></button>
+              <button class="opt" type="button" data-v="Huisstijl / logo van ons bedrijf"><b>Huisstijl</b><small>Voor je event</small></button>
+              <button class="opt" type="button" data-v="Eigen idee, ik stuur een voorbeeldfoto"><b>Eigen idee</b><small>Ik stuur een foto</small></button>
+              <button class="opt" type="button" data-v="Nog geen idee, graag advies"><b>Advies</b><small>Help me kiezen</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3>3. Voor hoeveel personen?</h3>
+            <div class="opts four" data-group="personen">
+              <button class="opt" type="button" data-v="tot 10 personen"><b>Tot 10</b></button>
+              <button class="opt" type="button" data-v="10 tot 20 personen"><b>10–20</b></button>
+              <button class="opt" type="button" data-v="20 tot 40 personen"><b>20–40</b></button>
+              <button class="opt" type="button" data-v="meer dan 40 personen"><b>40+</b></button>
+            </div>
+          </div>
+          <div class="step date">
+            <h3>4. Wanneer wil je afhalen?</h3>
+            <label for="d1" style="position:absolute;left:-9999px">Afhaaldatum</label><input type="date" id="d1" class="js-date">
+          </div>
+          <div class="nofondant"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#e2426f"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Goed om te weten:</b> Luviteli werkt zonder fondant en marsepein.</span></div>
+        </div>
+        <aside class="summary" aria-live="polite">
+          <div class="k">Jouw aanvraag</div>
+          <h3 id="s-title">Kies wat je wilt</h3>
+          <dl>
+            <dt>Thema</dt><dd id="s-thema">–</dd>
+            <dt>Personen</dt><dd id="s-personen">–</dd>
+            <dt>Afhalen</dt><dd id="s-datum">–</dd>
+          </dl>
+          <a class="btn btn-rasp js-ask" href="#">Vraag aan via WhatsApp</a>
+          <div class="note">Vrijblijvend. Je hoort eerst wat er kan en wat het kost.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="themes" id="themas">
+    <div class="wrap">
+      <h2>Eerder <span>gemaakt</span></h2>
+      <p class="lead" style="margin-bottom:30px">Een greep uit wat Luviteli eerder maakte. Ander idee? Stuur gewoon een voorbeeld mee.</p>
+      <div class="tgrid">
+        <div class="theme"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 48a24 24 0 0 1 48 0" stroke="#e2426f" stroke-width="6" fill="none"/><path d="M16 48a16 16 0 0 1 32 0" stroke="#ffe066" stroke-width="6" fill="none"/><path d="M24 48a8 8 0 0 1 16 0" stroke="#9ed8f0" stroke-width="6" fill="none"/></svg><b>Eenhoorn &amp; regenboog</b><small>Kleurrijk en vrolijk</small></div>
+        <div class="theme"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6l6 16 17 1-13 11 4 17-14-9-14 9 4-17L9 23l17-1z" fill="#c9b6f2"/></svg><b>Disney</b><small>Met je favoriete figuur</small></div>
+        <div class="theme"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="#fff" stroke="#12392b" stroke-width="4"/><path d="M32 22l9 6.5-3.4 10.5H26.4L23 28.5z" fill="#12392b"/></svg><b>Feyenoord</b><small>Voor de echte fan</small></div>
+        <div class="theme"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="22" cy="22" r="10" fill="#7a4a2b"/><circle cx="42" cy="20" r="10" fill="#e2426f"/><circle cx="32" cy="36" r="10" fill="#ffe066"/><path d="M20 44l12 14 12-14z" fill="#9ed8f0"/></svg><b>Boeketten</b><small>Met zelfgemaakte chocolaatjes</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Waarom <span>Luviteli</span></h2>
+      <p class="lead">Dit komt steeds terug in de Google-reviews.</p>
+      <div class="cards">
+        <div class="card" style="--c:var(--rasp-l)"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11Z" fill="#e2426f"/></svg></div><h3>Mooi én lekker</h3><p>Taarten en cupcakes die er prachtig uitzien en heerlijk smaken. Klanten bestellen er steeds opnieuw.</p></div>
+        <div class="card" style="--c:#fff6c9"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#12392b" stroke-width="2.4"/><circle cx="12" cy="12" r="4" fill="#e2426f"/></svg></div><h3>Precies zoals gevraagd</h3><p>Ook bij grote zakelijke bestellingen, zoals mini-taartjes in de stijl van het event en met logo.</p></div>
+        <div class="card" style="--c:#e3f1fa"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="#12392b"/><circle cx="9" cy="10.5" r="1.3" fill="#fff"/><circle cx="12.5" cy="10.5" r="1.3" fill="#fff"/><circle cx="16" cy="10.5" r="1.3" fill="#fff"/></svg></div><h3>Snel en vriendelijk</h3><p>Reviewers noemen de communicatie snel en vriendelijk.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="ervaringen">
+    <div class="wrap">
+      <div class="revhead">
+        <h2>Wat klanten zeggen</h2>
+        <div class="score"><b>4,9</b><span>★★★★★ · Google, 29 reviews</span></div>
+      </div>
+      <div class="quotes">
+        <blockquote>Alles was prachtig en iedereen vond de taart heerlijk<cite><b>Michelle</b> · Google-review</cite></blockquote>
+        <blockquote>Het zag er heel feestelijk uit en smaakte heerlijk<cite><b>Megan</b> · Google-review</cite></blockquote>
+        <blockquote>Oprecht een super goede ervaring!<cite><b>Natascha</b> · Google-review</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="werkwijze">
+    <div class="wrap">
+      <h2>Zo bestel je</h2>
+      <p class="lead">Geen ingewikkelde formulieren. Gewoon even appen.</p>
+      <ol class="steps">
+        <li><h3>Stuur je idee</h3><p>Stel hierboven je taart samen, of stuur je thema of een voorbeeldfoto via WhatsApp.</p></li>
+        <li><h3>Afstemmen</h3><p>Je hoort wat er kan en wat het kost, afgestemd op jouw wensen en datum.</p></li>
+        <li><h3>Afhalen</h3><p>Je haalt je bestelling op in Dordrecht, op het moment dat jullie samen afspreken.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq" id="vragen">
+    <div class="wrap">
+      <h2>Veelgestelde vragen</h2>
+      <details><summary>Werken jullie met fondant of marsepein?</summary><p>Nee. Luviteli maakt taarten, cupcakes en sweets zonder fondant en marsepein.</p></details>
+      <details><summary>Wat kost een taart?</summary><p>Dat hangt af van wat je wilt, het thema en het aantal personen. Stel je taart hierboven samen en je hoort de prijs via WhatsApp.</p></details>
+      <details><summary>Welke thema's kunnen jullie maken?</summary><p>Eerder gemaakt zijn onder andere eenhoorn- en regenboogtaarten, Disney en Feyenoord. Heb je een ander idee? Stuur een voorbeeldfoto mee.</p></details>
+      <details><summary>Kunnen jullie ook voor bedrijven bakken?</summary><p>Ja. In de reviews vertelt een klant over een grote zakelijke bestelling: mini-taartjes in de stijl van het event, met logo.</p></details>
+      <details><summary>Hoe kan ik bestellen?</summary><p>Via WhatsApp, door te bellen of met een DM op Instagram (@luviteli.taarten).</p></details>
+    </div>
+  </section>
+
+  <section class="visit" id="afhalen">
+    <div class="wrap">
+      <div>
+        <h2>Afhalen</h2>
+        <div class="place">in Dordrecht</div>
+        <p>Je bestelling haal je op in Dordrecht. Het afhaalmoment stem je af wanneer je bestelt.</p>
+        <a class="btn btn-rasp js-wa-plain" href="#">App over je bestelling</a>
+      </div>
+      <div class="hours">
+        <h3>Openingstijden</h3>
+        <table id="hours">
+          <tr data-d="1"><td>Maandag</td><td>09:00–18:00</td></tr>
+          <tr data-d="2"><td>Dinsdag</td><td>09:00–18:00</td></tr>
+          <tr data-d="3"><td>Woensdag</td><td>09:00–18:00</td></tr>
+          <tr data-d="4"><td>Donderdag</td><td>09:00–18:00</td></tr>
+          <tr data-d="5"><td>Vrijdag</td><td>09:00–18:00</td></tr>
+          <tr data-d="6"><td>Zaterdag</td><td>09:00–17:00</td></tr>
+          <tr data-d="0"><td>Zondag</td><td>Gesloten</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Staat je feest al gepland?</h2>
+      <p class="lead">Kies je datum en vraag direct via WhatsApp of het lukt.</p>
+      <div class="date"><label for="d2" style="position:absolute;left:-9999px">Datum</label><input type="date" id="d2" class="js-date"><a class="btn btn-lemon js-ask" href="#">Check mijn datum</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><img src="logo-light.svg" alt="Luviteli Taarten" width="149" height="58"><p>Gepersonaliseerde taarten, bruidstaarten, cupcakes en sweets op bestelling. Geen fondant of marsepein.</p></div>
+    <div><h4>Afhalen</h4><p>Dordrecht<br>Ma–vr 09:00–18:00<br>Za 09:00–17:00 · zo gesloten</p></div>
+    <div><h4>Contact</h4><p><a class="js-wa-plain" href="#">WhatsApp 06 38329751</a><br><a href="tel:+31638329751">Bel 06 38329751</a><br><a href="mailto:luviteli-taarten@hotmail.com">luviteli-taarten@hotmail.com</a><br><a href="https://www.instagram.com/luviteli.taarten/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/Luviteli.taarten/" target="_blank" rel="noopener">Facebook</a></p></div>
+    <div class="fine"><span>© 2026 Luviteli Taarten</span><span>Website door <a href="https://mohamedia.nl">Mohamedia</a></span></div>
+  </div>
+</footer>
+
+<div class="float" id="float"><a class="btn btn-rasp" href="#bestellen">Stel je taart samen</a></div>
+<script>
+const WA = "31638329751";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = id => document.getElementById(id);
+const st = { soort: "", thema: "", personen: "", datum: "" };
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) : "";
+function render() {
+  const vals = [st.soort, st.thema, st.personen, st.datum];
+  document.querySelectorAll(".dots i").forEach((i, k) => i.classList.toggle("on", !!vals[k]));
+  $("s-title").textContent = st.soort || "Kies wat je wilt";
+  $("s-thema").textContent = st.thema || "–";
+  $("s-personen").textContent = st.personen || "–";
+  $("s-datum").textContent = st.datum ? fmt(st.datum) : "–";
+  const msg = `Hoi Luviteli! Ik wil graag iets bestellen.\nWat: ${st.soort || "nog niet gekozen"}\nThema: ${st.thema || "nog niet gekozen"}\nPersonen: ${st.personen || "weet ik nog niet"}\nAfhalen op: ${st.datum ? fmt(st.datum) : "nog niet bekend"}\nKan dit en wat kost het?`;
+  document.querySelectorAll(".js-ask").forEach(a => { a.href = wa(msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+document.querySelectorAll(".opts").forEach(g => {
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", "false"));
+  g.addEventListener("click", e => { const b = e.target.closest(".opt"); if (!b) return; g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b)); st[g.dataset.group] = b.dataset.v; render(); });
+});
+const today = new Date().toISOString().slice(0, 10);
+document.querySelectorAll(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => { st.datum = i.value; document.querySelectorAll(".js-date").forEach(j => j.value = i.value); render(); }); });
+document.querySelectorAll(".js-wa-plain").forEach(a => { a.href = wa("Hoi Luviteli! Ik wil graag een taart bestellen."); a.target = "_blank"; a.rel = "noopener"; });
+render();
+const row = document.querySelector(`#hours tr[data-d="${new Date().getDay()}"]`); if (row) row.classList.add("today");
+
+const tr = $("track"); tr.innerHTML += tr.innerHTML;
+const words = ["voor je verjaardag", "voor je bruiloft", "voor je event"]; let wi = 0;
+const rot = $("rot");
+if (!reduce) setInterval(() => { wi = (wi + 1) % words.length; rot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 }).onfinish = () => { rot.textContent = words[wi]; rot.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 420 }); }; }, 2600);
+
+const fl = $("float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe($("top"));
+new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .1 }).observe($("bestellen"));
+
+// bewegende hero 1: glazuur dat langzaam van de bovenrand druipt
+const gp = $("glazePath");
+let GW = 1440, drips = [];
+function mkDrips() { GW = Math.max(320, $("top").clientWidth); $("glaze").setAttribute("viewBox", `0 0 ${GW} 120`); const n = Math.max(4, Math.round(GW / 100)), mob = GW < 860; drips = Array.from({ length: n }, (_, i) => ({ x: (i + .5) * GW / n + (Math.random() - .5) * 30, w: (mob ? 20 : 26) + Math.random() * (mob ? 14 : 22), len: (mob ? 12 : 18) + Math.random() * (mob ? 30 : 46), p: Math.random() * 6.28, s: .4 + Math.random() * .5 })); }
+function glaze(t) {
+  let d = `M0 0H${GW}V34`;
+  for (let i = drips.length - 1; i >= 0; i--) {
+    const k = drips[i], L = 34 + k.len * (0.75 + 0.25 * Math.sin(t / 1600 * k.s + k.p)), h = k.w / 2;
+    d += `L${(k.x + h + 14).toFixed(1)} 34C${(k.x + h).toFixed(1)} 34 ${(k.x + h).toFixed(1)} ${(L - h).toFixed(1)} ${(k.x + h).toFixed(1)} ${(L - h).toFixed(1)}A${h.toFixed(1)} ${h.toFixed(1)} 0 0 1 ${(k.x - h).toFixed(1)} ${(L - h).toFixed(1)}C${(k.x - h).toFixed(1)} ${(L - h).toFixed(1)} ${(k.x - h).toFixed(1)} 34 ${(k.x - h - 14).toFixed(1)} 34`;
+  }
+  gp.setAttribute("d", d + "L0 34Z");
+}
+// bewegende hero 2: regenboogspikkels die zachtjes naar beneden dwarrelen
+const c = $("sprinkles"), x = c.getContext("2d"); let W, H, sp = [];
+const cols = ["#e2426f", "#ffe066", "#9ed8f0", "#c9b6f2", "#ffffff"];
+const mk = init => ({ x: Math.random() * W, y: init ? Math.random() * H : -10, a: Math.random() * 6.28, va: (Math.random() - .5) * .03, v: .25 + Math.random() * .45, c: cols[Math.floor(Math.random() * cols.length)], l: 8 + Math.random() * 6 });
+function size() { mkDrips(); const r = devicePixelRatio || 1; W = c.clientWidth; H = c.clientHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0); sp = Array.from({ length: W < 860 ? 26 : 50 }, () => mk(true)); }
+function frame(t) {
+  glaze(reduce ? 0 : t);
+  x.clearRect(0, 0, W, H); x.lineCap = "round"; x.lineWidth = 4.5;
+  for (let i = 0; i < sp.length; i++) {
+    const s = sp[i]; if (!reduce) { s.y += s.v; s.a += s.va; } if (s.y > H + 12) sp[i] = mk(false);
+    x.globalAlpha = .75; x.strokeStyle = s.c; x.beginPath();
+    x.moveTo(s.x - Math.cos(s.a) * s.l / 2, s.y - Math.sin(s.a) * s.l / 2); x.lineTo(s.x + Math.cos(s.a) * s.l / 2, s.y + Math.sin(s.a) * s.l / 2); x.stroke();
+  }
+  x.globalAlpha = 1;
+  if (!reduce) requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>
