@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Taarten with love – taarten op maat in Heenvliet</title>
+<meta name="description" content="Verjaardagstaarten op maat, themataarten, cupcakes en bruidstaarten van Taarten with love in Heenvliet (Nissewaard). 5,0 uit 11 Google-reviews. Vraag je taart aan via WhatsApp.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1c2a6b; --navy-2:#283b8f; --navy-d:#121c4c;
+  --pink:#f2466f; --pink-d:#d42f58; --rose:#ffd6e1; --rose-l:#fff0f4;
+  --yellow:#ffc23d; --yellow-d:#e2a113; --sky:#e3eaff;
+  --paper:#fff8fa; --ink:#18214f; --soft:#565d85; --line:#f1d4de;
+  --display:"Sniglet", "Trebuchet MS", sans-serif; --sans:"Rubik", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+.sr{position:absolute;left:-9999px}
+.demo{background:var(--navy-d);color:#c9d0f0;font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--yellow)}
+.notice{background:var(--pink);color:#fff;font-size:14.5px;text-align:center;padding:8px 16px;font-weight:500}
+.notice b{font-weight:700}
+
+header.top{background:var(--paper);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:84px}
+header.top .logo img{height:54px;width:auto;display:block}
+header.top nav{display:flex;align-items:center}
+header.top nav a{text-decoration:none;font-size:15.5px;font-weight:500;margin-left:26px;padding:10px 0}
+header.top nav a:hover{color:var(--pink-d)}
+header.top nav a.btn{padding:10px 20px;min-height:46px;font-size:15px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:13px 26px;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:16.5px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s,background .15s;line-height:1.2;text-align:center}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-yellow{background:var(--yellow);color:var(--navy-d);box-shadow:0 4px 0 var(--yellow-d)}
+.btn-yellow:hover{background:#ffcd5e}
+.btn-navy{background:var(--navy);color:#fff;box-shadow:0 4px 0 var(--navy-d)}
+.btn-navy:hover{background:var(--navy-2)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn-ghost:hover{border-color:var(--yellow);color:var(--yellow)}
+
+/* hero */
+.hero{position:relative;background:radial-gradient(120% 95% at 78% 28%,var(--navy-2) 0,var(--navy) 60%);color:#fff;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-top:76px;padding-bottom:124px}
+.kicker{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.1);color:var(--yellow);font-weight:500;font-size:14px;padding:6px 14px;border-radius:999px;margin-bottom:20px}
+.kicker svg{width:14px;height:14px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(42px,5.8vw,76px);line-height:1.02;margin:0 0 22px}
+.rot{display:block;color:var(--yellow);min-height:1.05em}
+.hero p.sub{font-size:19px;max-width:30em;color:#dfe4fb;margin:0 0 30px}
+.hero p.sub b{color:#fff}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.trust{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15.5px;color:#c9d0f0;align-items:center}
+.trust .stars{color:var(--yellow);letter-spacing:2px}
+.trust b{color:#fff}
+.cake{width:100%;max-width:430px;justify-self:center;overflow:visible}
+.cake .bob{animation:bob 6s ease-in-out infinite}
+.cake .drip{transform-box:fill-box;transform-origin:50% 0;animation:drip 4.4s ease-in-out infinite;animation-delay:var(--d)}
+.cake .dot{transform-box:fill-box;transform-origin:50% 50%;animation:pop 6s ease-in-out infinite;animation-delay:var(--d)}
+.cake .beat{transform-box:fill-box;transform-origin:50% 100%;animation:beat 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-7px)}}
+@keyframes drip{0%,100%{transform:scaleY(.55)}50%{transform:scaleY(1.15)}}
+@keyframes pop{0%{transform:scale(0)}12%,80%{transform:scale(1)}92%,100%{transform:scale(0)}}
+@keyframes beat{0%,40%,100%{transform:scale(1)}15%{transform:scale(1.14)}28%{transform:scale(1.04)}}
+/* bewegende glazuur-golf onderaan de hero */
+.glaze{position:absolute;left:0;right:0;bottom:-1px;height:54px;z-index:3;pointer-events:none}
+.glaze div{position:absolute;inset:0;
+  -webkit-mask:radial-gradient(26px 22px at 26px 0,transparent 98%,#000) 0 0/52px 100% repeat-x;
+  mask:radial-gradient(26px 22px at 26px 0,transparent 98%,#000) 0 0/52px 100% repeat-x}
+.glaze .g1{background:var(--pink);top:0;animation:glaze 7s linear infinite}
+.glaze .g2{background:var(--paper);top:14px;animation:glaze 5s linear infinite reverse}
+@keyframes glaze{to{-webkit-mask-position:52px 0;mask-position:52px 0}}
+
+/* marquee */
+.band{background:var(--paper);overflow:hidden;white-space:nowrap;padding:8px 0 18px}
+.band .track{display:inline-block;animation:slide 40s linear infinite;font-family:var(--display);font-weight:800;font-size:23px;color:var(--navy)}
+.band span{margin:0 18px;display:inline-flex;align-items:center;gap:36px}
+.band span::after{content:"";width:16px;height:14px;background:var(--pink);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 18'%3E%3Cpath d='M10 18S0 11.8 0 5.6A5.4 5.4 0 0 1 10 2.6a5.4 5.4 0 0 1 10 3C20 11.8 10 18 10 18z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 18'%3E%3Cpath d='M10 18S0 11.8 0 5.6A5.4 5.4 0 0 1 10 2.6a5.4 5.4 0 0 1 10 3C20 11.8 10 18 10 18z'/%3E%3C/svg%3E") center/contain no-repeat}
+.band span:nth-child(2n)::after{background:var(--yellow-d)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:92px 0}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.4vw,54px);line-height:1.06;margin:0 0 14px;color:var(--navy)}
+h2 span{color:var(--pink-d)}
+.lead{color:var(--soft);font-size:18px;max-width:36em;margin:0 0 42px}
+
+/* kiezer */
+.pick{background:var(--rose-l)}
+.pick .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start}
+.dots{display:flex;gap:8px;margin-bottom:26px}
+.dots i{flex:1;height:8px;border-radius:8px;background:var(--line);transition:background .3s}
+.dots i.on{background:var(--pink)}
+.step{margin-bottom:30px}
+.step h3{font-family:var(--display);font-weight:800;font-size:21px;margin:0 0 12px;color:var(--navy)}
+.step h3 small{font-family:var(--sans);font-weight:400;font-size:15px;color:var(--soft)}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.opts.three{grid-template-columns:repeat(3,1fr)}
+.opt{position:relative;text-align:left;background:#fff;border:2px solid var(--line);border-radius:18px;padding:15px 14px 13px;font:inherit;color:var(--ink);cursor:pointer;min-height:48px;transition:border-color .15s,background .15s}
+.opt b{display:block;font-weight:700;font-size:17px;line-height:1.2}
+.opt small{display:block;color:var(--soft);font-size:13.5px;margin-top:3px;line-height:1.35}
+@media (hover:hover){.opt:not([aria-pressed="true"]):hover{border-color:var(--pink)}}
+.opt[aria-pressed="true"]{border-color:var(--navy);background:var(--navy);color:#fff}
+.opt[aria-pressed="true"] small{color:var(--yellow)}
+.date input{font:inherit;padding:12px 16px;border:2px solid var(--line);border-radius:16px;min-height:54px;background:#fff;color:var(--ink);max-width:100%}
+.hint{font-size:14.5px;color:var(--soft);margin:8px 0 0}
+.summary{background:var(--navy);color:#fff;border-radius:28px;padding:30px;position:sticky;top:24px;overflow:hidden}
+.summary .bord{height:18px;margin:-30px -30px 24px;background:radial-gradient(10px 10px at 10px 0,var(--pink) 98%,transparent) 0 0/20px 18px repeat-x,var(--navy)}
+.summary .k{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);font-weight:700}
+.summary h3{font-family:var(--display);font-weight:800;font-size:30px;line-height:1.12;margin:6px 0 18px}
+.summary dl{margin:0 0 24px;font-size:15.5px}
+.summary dl div{display:grid;grid-template-columns:92px 1fr;gap:10px;padding:10px 0;border-top:1px solid rgba(255,255,255,.14)}
+.summary dt{color:#bcc5ec}
+.summary dd{margin:0;font-weight:700}
+.summary .btn{width:100%}
+.summary .note{font-size:13.5px;color:#bcc5ec;margin-top:12px;text-align:center}
+
+/* waarom */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--c);border-radius:26px;padding:30px 28px}
+.card svg{width:56px;height:56px;margin-bottom:16px;display:block}
+.card h3{font-family:var(--display);font-weight:800;margin:0 0 8px;font-size:24px;line-height:1.15;color:var(--navy)}
+.card p{margin:0;color:var(--soft)}
+
+/* reviews */
+.reviews{background:var(--navy);color:#fff}
+.reviews h2{color:#fff}
+.revhead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.score{text-align:right}
+.score b{font-family:var(--display);font-weight:800;font-size:86px;line-height:1;color:var(--yellow);display:block}
+.score span{color:#bcc5ec;font-size:15px}
+.score a{color:#fff;text-underline-offset:3px;display:inline-flex;align-items:center;min-height:44px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rv{margin:0;background:var(--navy-2);border-radius:24px;padding:26px 26px 28px}
+.rv .who{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.rv .who i{width:42px;height:42px;border-radius:50%;background:var(--pink);color:#fff;font-style:normal;font-family:var(--display);font-weight:800;font-size:20px;display:grid;place-items:center}
+.rv .who b{font-weight:700;font-size:17px}
+.rv .who small{display:block;color:#bcc5ec;font-size:13.5px}
+.rv p{margin:0;font-size:18.5px;line-height:1.45;color:#eef1ff}
+.revnote{margin:22px 0 0;color:#bcc5ec;font-size:14.5px}
+
+/* stappen */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;background:var(--pink);color:#fff;font-family:var(--display);font-weight:800;font-size:26px;margin-bottom:14px;box-shadow:0 0 0 6px var(--rose)}
+.steps li:nth-child(2)::before{background:var(--yellow);color:var(--navy-d);box-shadow:0 0 0 6px #fff1cc}
+.steps li:nth-child(3)::before{background:var(--navy);box-shadow:0 0 0 6px var(--sky)}
+.steps h3{margin:0 0 6px;font-size:20px;font-weight:700}
+.steps p{margin:0;color:var(--soft)}
+
+/* faq */
+.faq{background:var(--sky)}
+.faq .wrap{max-width:840px}
+details{background:#fff;border-radius:18px;margin-bottom:10px;padding:0 22px}
+summary{cursor:pointer;list-style:none;padding:18px 36px 18px 0;font-size:17.5px;font-weight:700;position:relative;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:0;top:12px;font-size:28px;color:var(--pink-d);font-weight:400}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 20px;color:var(--soft)}
+
+/* plaats */
+.visit .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.visit .place{font-family:var(--display);font-weight:800;font-size:clamp(30px,3.6vw,44px);line-height:1.1;margin:0 0 12px;color:var(--pink-d)}
+.visit p{color:var(--soft);margin:0 0 24px}
+.facts{background:var(--rose);border-radius:26px;padding:28px 30px}
+.facts ul{margin:0;padding:0;list-style:none}
+.facts li{padding:12px 0 12px 34px;border-top:1px solid #f6bccc;position:relative;font-weight:500}
+.facts li:first-child{border-top:0}
+.facts li::before{content:"";position:absolute;left:2px;top:18px;width:18px;height:16px;background:var(--pink-d);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 18'%3E%3Cpath d='M10 18S0 11.8 0 5.6A5.4 5.4 0 0 1 10 2.6a5.4 5.4 0 0 1 10 3C20 11.8 10 18 10 18z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 18'%3E%3Cpath d='M10 18S0 11.8 0 5.6A5.4 5.4 0 0 1 10 2.6a5.4 5.4 0 0 1 10 3C20 11.8 10 18 10 18z'/%3E%3C/svg%3E") center/contain no-repeat}
+
+.final{background:var(--yellow);color:var(--navy-d);text-align:center}
+.final h2{max-width:16ch;margin:0 auto 16px}
+.final .lead{color:var(--navy-d);margin:0 auto 30px}
+.final .date{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.final .date input{border-color:var(--navy)}
+
+footer{background:var(--navy-d);color:#bcc5ec;padding:52px 0 100px;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer img{height:56px;width:auto;margin-bottom:14px;display:block}
+footer h4{color:var(--yellow);margin:0 0 10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+footer p{margin:0;line-height:1.9}
+footer a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;margin-top:16px;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:10;display:none}
+.float.on{display:block}
+.float .btn{width:100%;box-shadow:0 12px 30px rgba(18,28,76,.4)}
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:860px){
+  header.top nav{display:none}
+  header.top .wrap{height:72px}
+  header.top .logo img{height:46px}
+  .hero .wrap{grid-template-columns:1fr;padding-top:52px;padding-bottom:100px}
+  .cake{display:none}
+  .pick .grid,.visit .wrap{grid-template-columns:1fr}
+  .cards,.quotes,.steps{grid-template-columns:1fr}
+  .opts.three{grid-template-columns:1fr 1fr}
+  .summary{position:relative;top:0}
+  .score{text-align:left}
+  footer .wrap{grid-template-columns:1fr}
+  section{padding:68px 0}
+  .btns .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .band .track,.cake .bob,.cake .drip,.cake .dot,.cake .beat,.glaze .g1,.glaze .g2{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice"><b>5,0 ★</b> uit 11 Google-reviews · Taarten op maat in Heenvliet</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Taarten with love, naar boven"><img src="logo-dark.svg" alt="Taarten with love" width="184" height="54"></a>
+    <nav aria-label="Hoofdmenu"><a href="#kiezer">Taart aanvragen</a><a href="#reviews">Reviews</a><a href="#vragen">Vragen</a><a href="#contact">Contact</a><a class="btn btn-navy js-wa-plain" href="#">WhatsApp</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="top">
+    <canvas id="hearts" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <span class="kicker"><svg viewBox="0 0 20 18" aria-hidden="true"><path fill="#f2466f" d="M10 18S0 11.8 0 5.6A5.4 5.4 0 0 1 10 2.6a5.4 5.4 0 0 1 10 3C20 11.8 10 18 10 18z"/></svg>Verjaardagstaarten · Cupcakes · Bruidstaarten</span>
+        <h1>Taarten op maat <span class="rot" id="rot">voor je verjaardag</span></h1>
+        <p class="sub">Verjaardagstaarten en themataarten, cupcakes en bruidstaarten, op maat gemaakt in <b>Heenvliet</b> (Nissewaard). Vertel je idee via WhatsApp.</p>
+        <div class="btns">
+          <a class="btn btn-yellow js-wa-hero" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>Vraag je taart aan via WhatsApp</a>
+          <a class="btn btn-ghost" href="#kiezer">Stel je taart samen</a>
+        </div>
+        <div class="trust"><span class="stars" aria-hidden="true">★★★★★</span><span><b>5,0</b> op Google · 11 reviews</span><span>Heenvliet, Nissewaard</span></div>
+      </div>
+      <svg class="cake" viewBox="0 0 400 400" aria-hidden="true">
+        <ellipse cx="200" cy="372" rx="160" ry="14" fill="#121c4c" opacity=".5"/>
+        <g class="bob">
+          <rect x="40" y="350" width="320" height="16" rx="8" fill="#ffc23d"/>
+          <!-- onderste laag -->
+          <rect x="66" y="236" width="268" height="116" rx="20" fill="#ffffff"/>
+          <rect x="66" y="306" width="268" height="12" fill="#ffd6e1"/>
+          <!-- roze glazuur met druppels -->
+          <path d="M66 256v-6c0-8 6-14 14-14h240c8 0 14 6 14 14v6z" fill="#f2466f"/>
+          <g fill="#f2466f">
+            <rect class="drip" style="--d:0s" x="84" y="252" width="14" height="30" rx="7"/>
+            <rect class="drip" style="--d:.7s" x="122" y="252" width="12" height="20" rx="6"/>
+            <rect class="drip" style="--d:1.4s" x="162" y="252" width="15" height="36" rx="7.5"/>
+            <rect class="drip" style="--d:.3s" x="206" y="252" width="12" height="24" rx="6"/>
+            <rect class="drip" style="--d:1.9s" x="246" y="252" width="15" height="34" rx="7.5"/>
+            <rect class="drip" style="--d:1s" x="290" y="252" width="12" height="22" rx="6"/>
+          </g>
+          <!-- bovenste laag -->
+          <rect x="112" y="146" width="176" height="96" rx="18" fill="#ffd6e1"/>
+          <rect x="112" y="204" width="176" height="10" fill="#ffffff" opacity=".8"/>
+          <path d="M112 166v-4c0-9 7-16 16-16h144c9 0 16 7 16 16v4z" fill="#ffffff"/>
+          <!-- hartjes op de rand -->
+          <g fill="#ffc23d">
+            <path class="dot" style="--d:0s" d="M132 150s-9-5.6-9-11.2a4.9 4.9 0 0 1 9-2.7 4.9 4.9 0 0 1 9 2.7c0 5.6-9 11.2-9 11.2z"/>
+            <path class="dot" style="--d:.3s" d="M166 148s-9-5.6-9-11.2a4.9 4.9 0 0 1 9-2.7 4.9 4.9 0 0 1 9 2.7c0 5.6-9 11.2-9 11.2z"/>
+            <path class="dot" style="--d:.6s" d="M234 148s-9-5.6-9-11.2a4.9 4.9 0 0 1 9-2.7 4.9 4.9 0 0 1 9 2.7c0 5.6-9 11.2-9 11.2z"/>
+            <path class="dot" style="--d:.9s" d="M268 150s-9-5.6-9-11.2a4.9 4.9 0 0 1 9-2.7 4.9 4.9 0 0 1 9 2.7c0 5.6-9 11.2-9 11.2z"/>
+          </g>
+          <g fill="#ffffff">
+            <circle class="dot" style="--d:1.1s" cx="86" cy="234" r="10"/>
+            <circle class="dot" style="--d:1.25s" cx="120" cy="232" r="10"/>
+            <circle class="dot" style="--d:1.4s" cx="280" cy="232" r="10"/>
+            <circle class="dot" style="--d:1.55s" cx="314" cy="234" r="10"/>
+          </g>
+          <!-- kloppend hart als topper -->
+          <path d="M200 132V98" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+          <g class="beat"><path d="M200 102s-26-16-26-32a14 14 0 0 1 26-7.8 14 14 0 0 1 26 7.8c0 16-26 32-26 32z" fill="#f2466f"/><circle cx="188" cy="70" r="5" fill="#fff" opacity=".5"/></g>
+          <g stroke-width="5" stroke-linecap="round"><path d="M140 190l9-5" stroke="#ffc23d"/><path d="M180 222l8 5" stroke="#1c2a6b"/><path d="M226 186l10-3" stroke="#f2466f"/><path d="M256 222l7 6" stroke="#ffc23d"/><path d="M100 334l9-5" stroke="#f2466f"/><path d="M200 336l9 4" stroke="#ffc23d"/><path d="M296 330l8-6" stroke="#1c2a6b"/></g>
+        </g>
+      </svg>
+    </div>
+    <div class="glaze" aria-hidden="true"><div class="g1"></div><div class="g2"></div></div>
+  </div>
+
+  <div class="band" aria-hidden="true"><div class="track" id="track"><span>Verjaardagstaarten</span><span>Themataarten</span><span>Cupcakes met logo</span><span>Bruidstaarten</span><span>Op maat</span><span>Heenvliet</span><span>Nissewaard</span></div></div>
+
+  <section class="pick" id="kiezer">
+    <div class="wrap">
+      <h2>Stel je <span>taart</span> samen</h2>
+      <p class="lead">Kies wat je wilt, je wensen en je datum. Met één tik staat je aanvraag klaar in WhatsApp.</p>
+      <div class="grid">
+        <div>
+          <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="step">
+            <h3>1. Wat wil je?</h3>
+            <div class="opts" data-group="soort">
+              <button class="opt" type="button" data-v="Verjaardagstaart"><b>Verjaardagstaart</b><small>Op maat, ook met een thema</small></button>
+              <button class="opt" type="button" data-v="Cupcakes"><b>Cupcakes</b><small>Ook met een logo</small></button>
+              <button class="opt" type="button" data-v="Bruidstaart"><b>Bruidstaart</b><small>Voor jullie trouwdag</small></button>
+              <button class="opt" type="button" data-v="Weet ik nog niet, ik wil graag advies"><b>Weet ik nog niet</b><small>Help me kiezen</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3 id="v-title">2. Je wensen <small>(of je eigen idee)</small></h3>
+            <div class="opts three" data-group="variant" id="variant"></div>
+          </div>
+          <div class="step date">
+            <h3>3. Voor welke datum?</h3>
+            <label for="d1" class="sr">Datum</label><input type="date" id="d1" class="js-date">
+            <p class="hint">Datum nog niet zeker? Stuur je vraag dan zonder datum.</p>
+          </div>
+        </div>
+        <aside class="summary" aria-live="polite">
+          <div class="bord" aria-hidden="true"></div>
+          <div class="k">Jouw aanvraag</div>
+          <h3 id="s-title">Kies wat je wilt</h3>
+          <dl>
+            <div><dt>Wensen</dt><dd id="s-var">–</dd></div>
+            <div><dt>Datum</dt><dd id="s-datum">–</dd></div>
+          </dl>
+          <a class="btn btn-yellow js-ask" href="#">Verstuur via WhatsApp</a>
+          <div class="note">Je stuurt alleen een vraag. Er staat nog niets vast.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Waarom <span>Taarten with love</span></h2>
+      <p class="lead">Wat klanten noemen in hun Google-reviews.</p>
+      <div class="cards">
+        <div class="card" style="--c:var(--rose)">
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff"/><rect x="13" y="28" width="30" height="15" rx="4" fill="#1c2a6b"/><path d="M13 32c3.75 0 3.75 3 7.5 3s3.75-3 7.5-3 3.75 3 7.5 3 3.75-3 7.5-3v-1a3 3 0 0 0-3-3H16a3 3 0 0 0-3 3z" fill="#f2466f"/><path d="M28 24s-7-4.4-7-8.8a3.8 3.8 0 0 1 7-2.1 3.8 3.8 0 0 1 7 2.1c0 4.4-7 8.8-7 8.8z" fill="#f2466f"/></svg>
+          <h3>Mooi én lekker</h3><p>Klanten schrijven dat hun taart er prachtig uitzag en ook echt lekker was.</p>
+        </div>
+        <div class="card" style="--c:#fff1cc">
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff"/><path d="M28 12a11 11 0 0 1 6.5 19.9V36H21.5v-4.1A11 11 0 0 1 28 12z" fill="#ffc23d"/><rect x="22" y="38" width="12" height="4" rx="2" fill="#1c2a6b"/><rect x="24" y="44" width="8" height="3" rx="1.5" fill="#1c2a6b"/></svg>
+          <h3>Denkt mee met je idee</h3><p>Klanten schrijven dat er wordt meegedacht met hun idee, voor een taart op maat.</p>
+        </div>
+        <div class="card" style="--c:var(--sky)">
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff"/><path d="M14 16h28v18H24l-8 7v-7h-2z" fill="#1c2a6b"/><circle cx="22" cy="25" r="2" fill="#ffc23d"/><circle cx="28" cy="25" r="2" fill="#ffc23d"/><circle cx="34" cy="25" r="2" fill="#ffc23d"/></svg>
+          <h3>Snel contact</h3><p>Klanten noemen snelle communicatie en dat hun taart op tijd was.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="wrap">
+      <div class="revhead">
+        <h2>Wat klanten zeggen</h2>
+        <div class="score"><b>5,0</b><span>★★★★★ · <a href="https://www.google.com/maps/search/?api=1&amp;query=Taarten%20with%20love%20Heenvliet" target="_blank" rel="noopener">Google, 11 reviews</a></span></div>
+      </div>
+      <div class="quotes">
+        <div class="rv"><div class="who"><i aria-hidden="true">C</i><div><b>Catherina</b><small>Google-review</small></div></div><p>Kocht al twee keer een verjaardagstaart en raadt het van harte aan.</p></div>
+        <div class="rv"><div class="who"><i aria-hidden="true">J</i><div><b>Joy</b><small>Google-review</small></div></div><p>Fijne communicatie, snel antwoord en een geweldige taart.</p></div>
+        <div class="rv"><div class="who"><i aria-hidden="true">J</i><div><b>Joanna</b><small>Google-review</small></div></div><p>Een van de lekkerste taarten die ze in Nederland heeft geproefd.</p></div>
+      </div>
+      <p class="revnote">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+    </div>
+  </section>
+
+  <section id="zo-werkt-het">
+    <div class="wrap">
+      <h2>Zo werkt het</h2>
+      <p class="lead">Geen ingewikkelde formulieren. Gewoon een berichtje.</p>
+      <ol class="steps">
+        <li><h3>Vertel je idee</h3><p>Stel je taart hierboven samen, of stuur je thema of een voorbeeldfoto via WhatsApp.</p></li>
+        <li><h3>Stem het samen af</h3><p>Bespreek via WhatsApp wat er kan en wat het kost voor jouw datum.</p></li>
+        <li><h3>Vier je feest</h3><p>Je taart is klaar op de datum die jullie afspreken. De details regel je via WhatsApp.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq" id="vragen">
+    <div class="wrap">
+      <h2>Vragen</h2>
+      <details><summary>Wat kan ik bestellen?</summary><p>Klanten noemen in hun reviews verjaardagstaarten op maat (ook themataarten), cupcakes met een bedrijfslogo en een bruidstaart. Iets anders in gedachten? Vraag het via WhatsApp.</p></details>
+      <details><summary>Wat kost een taart?</summary><p>Dat hangt af van je wensen en het ontwerp. Stuur je aanvraag via WhatsApp, dan hoor je de prijs.</p></details>
+      <details><summary>Kan ik mijn eigen idee laten maken?</summary><p>Reviewers schrijven dat er wordt meegedacht met hun idee. Heb je een voorbeeld of thema? Stuur een foto mee.</p></details>
+      <details><summary>Kan ik cupcakes met ons bedrijfslogo bestellen?</summary><p>In de reviews worden cupcakes met een bedrijfslogo genoemd. Stuur je logo en je datum via WhatsApp, dan hoor je wat er kan.</p></details>
+      <details><summary>Waar zit Taarten with love?</summary><p>In Heenvliet, gemeente Nissewaard. Hoe en wanneer je je taart krijgt, spreek je af via WhatsApp.</p></details>
+    </div>
+  </section>
+
+  <section class="visit" id="contact">
+    <div class="wrap">
+      <div>
+        <h2>Taarten with love</h2>
+        <div class="place">in Heenvliet</div>
+        <p>Taarten op maat uit Heenvliet, gemeente Nissewaard. Je vraag, je datum en de details regel je via WhatsApp.</p>
+        <a class="btn btn-navy js-wa-plain" href="#">Stel je vraag via WhatsApp</a>
+      </div>
+      <div class="facts">
+        <ul>
+          <li>Verjaardagstaarten en themataarten op maat</li>
+          <li>Cupcakes, ook met een logo</li>
+          <li>Bruidstaarten</li>
+          <li>Aanvragen en vragen via WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Iets te vieren?</h2>
+      <p class="lead">Kies je datum en vraag meteen via WhatsApp of het kan.</p>
+      <div class="date"><label for="d2" class="sr">Datum</label><input type="date" id="d2" class="js-date"><a class="btn btn-navy js-ask" href="#">Vraag je datum aan</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><img src="logo-light.svg" alt="Taarten with love" width="191" height="56"><p>Verjaardagstaarten, cupcakes en bruidstaarten op maat, uit Heenvliet.</p></div>
+    <div><h4>Plaats</h4><p>Heenvliet, gemeente Nissewaard</p></div>
+    <div><h4>Contact</h4><p><a class="js-wa-plain" href="#">WhatsApp 06 22 71 73 51</a><br><a href="tel:+31622717351">Bel 06 22 71 73 51</a></p></div>
+    <div class="fine"><span>© 2026 Taarten with love</span><span>Website door <a href="https://mohamedia.nl">Mohamedia</a></span></div>
+  </div>
+</footer>
+
+<div class="float" id="float"><a class="btn btn-yellow js-wa-float" href="#">Bestel via WhatsApp</a></div>
+
+<script>
+const WA = "31622717351";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = id => document.getElementById(id);
+const st = { soort: "", variant: "", datum: "" };
+const SETS = {
+  taart: [["Met een thema", "Met een thema", "Jij kiest het thema"], ["Eigen idee, ik stuur een foto", "Eigen idee", "Ik stuur een foto"], ["Ik wil graag hulp bij het ontwerp", "Help me kiezen", "Denk met me mee"]],
+  cupcakes: [["Met ons bedrijfslogo", "Met logo", "Voor je bedrijf"], ["Voor een feest", "Voor een feest", "Verjaardag of feestje"], ["Ik wil graag hulp bij het ontwerp", "Help me kiezen", "Denk met me mee"]],
+  bruid: [["Eigen idee, ik stuur een foto", "Eigen idee", "Ik stuur een foto"], ["Ik wil graag hulp bij het ontwerp", "Help me kiezen", "Denk met me mee"], ["Weet ik nog niet", "Weet ik nog niet", "Even overleggen"]]
+};
+function buildVariant() {
+  const set = st.soort === "Bruidstaart" ? SETS.bruid : st.soort === "Cupcakes" ? SETS.cupcakes : SETS.taart;
+  $("variant").innerHTML = set.map(([v, b, s]) => `<button class="opt" type="button" data-v="${v}" aria-pressed="false"><b>${b}</b><small>${s}</small></button>`).join("");
+  st.variant = "";
+}
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) : "";
+const short = v => v.startsWith("Eigen idee") ? "Eigen idee (foto)" : v.startsWith("Ik wil graag hulp") ? "Hulp bij het ontwerp" : v;
+function render() {
+  const vals = [st.soort, st.variant, st.datum];
+  document.querySelectorAll(".dots i").forEach((i, k) => i.classList.toggle("on", !!vals[k]));
+  $("s-title").textContent = st.soort ? (st.soort.startsWith("Weet ik") ? "Weet ik nog niet" : st.soort) : "Kies wat je wilt";
+  $("s-var").textContent = st.variant ? short(st.variant) : "–";
+  $("s-datum").textContent = st.datum ? fmt(st.datum) : "–";
+  const msg = [`Hoi Taarten with love! Ik wil graag een aanvraag doen: ${st.soort || "nog niet gekozen"}`,
+    `Wensen: ${st.variant || "nog niet gekozen"}`,
+    `Datum: ${st.datum ? fmt(st.datum) : "nog niet zeker"}`,
+    "Kan dit, en wat zou het kosten?"].join("\n");
+  document.querySelectorAll(".js-ask").forEach(a => { a.href = wa(msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+document.querySelectorAll(".opts").forEach(g => {
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", "false"));
+  g.addEventListener("click", e => {
+    const b = e.target.closest(".opt"); if (!b) return;
+    g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b));
+    st[g.dataset.group] = b.dataset.v;
+    if (g.dataset.group === "soort") buildVariant();
+    render();
+  });
+});
+buildVariant();
+const today = new Date().toLocaleDateString("sv-SE");
+document.querySelectorAll(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => { st.datum = i.value; document.querySelectorAll(".js-date").forEach(j => j.value = i.value); render(); }); });
+const setWa = (sel, t) => document.querySelectorAll(sel).forEach(a => { a.href = wa(t); a.target = "_blank"; a.rel = "noopener"; });
+setWa(".js-wa-hero", "Hoi Taarten with love! Ik wil graag een taart op maat aanvragen. Kunnen we de mogelijkheden bespreken?");
+setWa(".js-wa-float", "Hoi Taarten with love! Ik wil graag een taart bestellen.");
+setWa(".js-wa-plain", "Hoi Taarten with love! Ik heb een vraag over een taart.");
+render();
+
+const tr = $("track"); tr.innerHTML += tr.innerHTML;
+const words = ["voor je verjaardag", "voor je bruiloft", "met jouw thema"]; let wi = 0;
+const rot = $("rot");
+if (!reduce) setInterval(() => { wi = (wi + 1) % words.length; rot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 }).onfinish = () => { rot.textContent = words[wi]; rot.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 420 }); }; }, 2600);
+
+const fl = $("float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe($("top"));
+new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .1 }).observe($("kiezer"));
+
+// bewegende hero: hartjes en spikkels die langzaam opstijgen, plus een schuivende glazuur-golf (CSS)
+const c = $("hearts"), x = c.getContext("2d"); let W, H, ps = [];
+const cols = ["#f2466f", "#ffc23d", "#ffd6e1", "#ffffff"];
+const mk = init => ({ x: Math.random() * W, y: init ? Math.random() * H : H + 14, r: 3 + Math.random() * 5, v: .2 + Math.random() * .4, w: Math.random() * 6.28, c: cols[Math.floor(Math.random() * cols.length)], t: Math.random(), a: Math.random() * 6.28 });
+function heart(px, py, s) {
+  x.beginPath(); x.moveTo(px, py + s * .9);
+  x.bezierCurveTo(px - s * 1.4, py, px - s * .9, py - s * 1.1, px, py - s * .35);
+  x.bezierCurveTo(px + s * .9, py - s * 1.1, px + s * 1.4, py, px, py + s * .9); x.fill();
+}
+function size() { const r = devicePixelRatio || 1; W = c.clientWidth; H = c.clientHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0); ps = Array.from({ length: W < 860 ? 22 : 42 }, () => mk(true)); }
+function frame() {
+  x.clearRect(0, 0, W, H);
+  for (let i = 0; i < ps.length; i++) {
+    const p = ps[i];
+    if (!reduce) { p.y -= p.v; p.w += .012; p.a += .01; }
+    if (p.y < -14) ps[i] = mk(false);
+    const px = p.x + Math.sin(p.w) * 10;
+    x.globalAlpha = .5; x.fillStyle = p.c; x.strokeStyle = p.c;
+    if (p.t < .45) heart(px, p.y, p.r * 1.3);
+    else if (p.t < .75) { x.lineWidth = 4; x.lineCap = "round"; x.beginPath(); x.moveTo(px - Math.cos(p.a) * 5, p.y - Math.sin(p.a) * 5); x.lineTo(px + Math.cos(p.a) * 5, p.y + Math.sin(p.a) * 5); x.stroke(); }
+    else { x.beginPath(); x.arc(px, p.y, p.r * .6, 0, 6.29); x.fill(); }
+  }
+  x.globalAlpha = 1;
+  if (!reduce) requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>
