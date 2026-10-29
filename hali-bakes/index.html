@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Hali Bakes – custom cakes in Zoetermeer</title>
+<meta name="description" content="Custom birthday cakes, cupcakes and wedding cakes made to order by Hali Bakes in Zoetermeer. Rated 4.9 from 82 Google reviews. Order via WhatsApp.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plum:#3a1440; --plum-2:#4e1d55; --plum-d:#260b2a;
+  --mango:#ff8a4c; --mango-d:#f2702e; --peach:#ffb38a; --blush:#ffe3ea; --blush-2:#fff0f4;
+  --mint:#8fd3b8; --mint-l:#e2f5ee; --cherry:#e2416a; --paper:#fff9fb;
+  --ink:#2c0f31; --soft:#6a4d6e; --line:#f1d5de;
+  --display:"Fredoka", "Trebuchet MS", sans-serif; --sans:"Nunito Sans", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mango);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+.sr{position:absolute;left:-9999px}
+.demo{background:var(--plum-d);color:#d9c3dc;font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--peach)}
+.notice{background:var(--mint);color:var(--plum);font-size:14.5px;text-align:center;padding:8px 16px;font-weight:700}
+
+header.top{background:var(--paper);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:84px}
+header.top .logo img{height:52px;width:auto;display:block}
+header.top nav{display:flex;align-items:center}
+header.top nav a{text-decoration:none;font-size:15.5px;font-weight:700;margin-left:26px;padding:10px 0}
+header.top nav a:hover{color:var(--cherry)}
+header.top nav a.btn{padding:10px 20px;min-height:46px;font-size:15px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:13px 26px;border-radius:18px;font-family:var(--sans);font-weight:800;font-size:16.5px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s,background .15s;line-height:1.2;text-align:center}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-mango{background:var(--mango);color:var(--plum);box-shadow:0 4px 0 var(--mango-d)}
+.btn-mango:hover{background:#ff9a63}
+.btn-plum{background:var(--plum);color:#fff;box-shadow:0 4px 0 var(--plum-d)}
+.btn-plum:hover{background:var(--plum-2)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.btn-ghost:hover{border-color:var(--peach);color:var(--peach)}
+
+/* hero */
+.hero{position:relative;background:radial-gradient(110% 90% at 80% 30%,var(--plum-2) 0,var(--plum) 62%);color:#fff;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-top:76px;padding-bottom:120px}
+.kicker{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.1);color:var(--peach);font-weight:700;font-size:14px;padding:6px 14px;border-radius:999px;margin-bottom:20px}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint)}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(42px,5.8vw,76px);line-height:1.02;margin:0 0 22px;letter-spacing:-.01em}
+.rot{display:block;color:var(--peach);min-height:1.05em}
+.hero p.sub{font-size:19px;max-width:30em;color:#ead9ec;margin:0 0 30px}
+.hero p.sub b{color:#fff}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.trust{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15.5px;color:#d9c3dc;align-items:center}
+.trust .stars{color:var(--peach);letter-spacing:2px}
+.trust b{color:#fff}
+.cake{width:100%;max-width:430px;justify-self:center;overflow:visible}
+.cake .bob{animation:bob 6s ease-in-out infinite}
+.cake .drip{transform-box:fill-box;transform-origin:50% 0;animation:drip 4.2s ease-in-out infinite;animation-delay:var(--d)}
+.cake .ros{transform-box:fill-box;transform-origin:50% 100%;animation:pipe 7s ease-in-out infinite;animation-delay:var(--d)}
+.cake .cherry{transform-box:fill-box;transform-origin:50% 100%;animation:hop 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-7px)}}
+@keyframes drip{0%,100%{transform:scaleY(.55)}50%{transform:scaleY(1.15)}}
+@keyframes pipe{0%{transform:scale(0)}12%,80%{transform:scale(1)}92%,100%{transform:scale(0)}}
+@keyframes hop{0%,60%,100%{transform:translateY(0)}75%{transform:translateY(-12px) rotate(-6deg)}}
+/* bewegende botercreme-rand onderaan de hero */
+.frost{position:absolute;left:0;right:0;bottom:-1px;height:46px;z-index:3;background:var(--paper);
+  -webkit-mask:radial-gradient(22px 24px at 22px 0,transparent 98%,#000) 0 0/44px 100% repeat-x;
+  mask:radial-gradient(22px 24px at 22px 0,transparent 98%,#000) 0 0/44px 100% repeat-x;
+  animation:frost 6s linear infinite}
+@keyframes frost{to{-webkit-mask-position:44px 0;mask-position:44px 0}}
+
+/* marquee */
+.band{background:var(--paper);overflow:hidden;white-space:nowrap;padding:6px 0 18px}
+.band .track{display:inline-block;animation:slide 40s linear infinite;font-family:var(--display);font-weight:600;font-size:23px;color:var(--plum)}
+.band span{margin:0 20px;display:inline-flex;align-items:center;gap:40px}
+.band span::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--mango);box-shadow:0 0 0 5px var(--blush)}
+.band span:nth-child(3n+2)::after{background:var(--mint);box-shadow:0 0 0 5px var(--mint-l)}
+.band span:nth-child(3n)::after{background:var(--cherry)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:92px 0}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(34px,4.4vw,54px);line-height:1.06;margin:0 0 14px;color:var(--plum);letter-spacing:-.01em}
+h2 span{color:var(--cherry)}
+.lead{color:var(--soft);font-size:18px;max-width:36em;margin:0 0 42px}
+
+/* kiezer */
+.pick{background:var(--blush-2)}
+.pick .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start}
+.dots{display:flex;gap:8px;margin-bottom:26px}
+.dots i{flex:1;height:8px;border-radius:8px;background:var(--line);transition:background .3s}
+.dots i.on{background:var(--mango)}
+.step{margin-bottom:30px}
+.step h3{font-family:var(--display);font-weight:600;font-size:20px;margin:0 0 12px;color:var(--plum)}
+.step h3 small{font-family:var(--sans);font-weight:400;font-size:15px;color:var(--soft)}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.opts.three{grid-template-columns:repeat(3,1fr)}
+.opt{position:relative;text-align:left;background:#fff;border:2px solid var(--line);border-radius:18px;padding:15px 14px 13px;font:inherit;color:var(--ink);cursor:pointer;min-height:48px;transition:border-color .15s,background .15s}
+.opt b{display:block;font-weight:800;font-size:17px;line-height:1.2}
+.opt small{display:block;color:var(--soft);font-size:13.5px;margin-top:3px;line-height:1.35}
+@media (hover:hover){.opt:not([aria-pressed="true"]):hover{border-color:var(--peach)}}
+.opt[aria-pressed="true"]{border-color:var(--plum);background:var(--plum);color:#fff}
+.opt[aria-pressed="true"] small{color:var(--peach)}
+.opt .lbl{position:absolute;top:-10px;right:10px;background:var(--mint);color:var(--plum);font-size:11.5px;font-weight:800;border-radius:999px;padding:2px 9px}
+.date input{font:inherit;padding:12px 16px;border:2px solid var(--line);border-radius:16px;min-height:54px;background:#fff;color:var(--ink);max-width:100%}
+.hint{font-size:14.5px;color:var(--soft);margin:8px 0 0}
+.summary{background:var(--plum);color:#fff;border-radius:28px;padding:30px;position:sticky;top:24px;overflow:hidden}
+.summary .bord{height:18px;margin:-30px -30px 24px;background:radial-gradient(10px 10px at 10px 0,var(--peach) 98%,transparent) 0 0/20px 18px repeat-x,var(--plum)}
+.summary .k{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--peach);font-weight:800}
+.summary h3{font-family:var(--display);font-weight:600;font-size:30px;line-height:1.12;margin:6px 0 18px}
+.summary dl{margin:0 0 24px;font-size:15.5px}
+.summary dl div{display:grid;grid-template-columns:92px 1fr;gap:10px;padding:10px 0;border-top:1px solid rgba(255,255,255,.14)}
+.summary dt{color:#cdb3d0}
+.summary dd{margin:0;font-weight:700}
+.summary .btn{width:100%}
+.summary .note{font-size:13.5px;color:#cdb3d0;margin-top:12px;text-align:center}
+
+/* waarom */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--c);border-radius:26px;padding:30px 28px}
+.card svg{width:56px;height:56px;margin-bottom:16px;display:block}
+.card h3{font-family:var(--display);font-weight:600;margin:0 0 8px;font-size:24px;line-height:1.15;color:var(--plum)}
+.card p{margin:0;color:var(--soft)}
+
+/* reviews */
+.reviews{background:var(--plum);color:#fff}
+.reviews h2{color:#fff}
+.revhead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.score{text-align:right}
+.score b{font-family:var(--display);font-weight:700;font-size:86px;line-height:1;color:var(--peach);display:block}
+.score span{color:#cdb3d0;font-size:15px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rv{margin:0;background:var(--plum-2);border-radius:24px;padding:26px 26px 28px}
+.rv .who{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.rv .who i{width:42px;height:42px;border-radius:50%;background:var(--peach);color:var(--plum);font-style:normal;font-family:var(--display);font-weight:700;font-size:20px;display:grid;place-items:center}
+.rv .who b{font-weight:800;font-size:17px}
+.rv .who small{display:block;color:#cdb3d0;font-size:13.5px}
+.rv p{margin:0;font-size:18.5px;line-height:1.45;color:#f6e9f7}
+.revnote{margin:22px 0 0;color:#cdb3d0;font-size:14.5px}
+.reply{margin:28px 0 0;color:#cdb3d0;font-size:15.5px}
+.reply b{color:#fff}
+
+/* stappen */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;background:var(--mango);color:var(--plum);font-family:var(--display);font-weight:700;font-size:26px;margin-bottom:14px;box-shadow:0 0 0 6px var(--blush)}
+.steps li:nth-child(2)::before{background:var(--mint);box-shadow:0 0 0 6px var(--mint-l)}
+.steps li:nth-child(3)::before{background:var(--plum);color:#fff;box-shadow:0 0 0 6px var(--line)}
+.steps h3{margin:0 0 6px;font-size:20px;font-weight:800}
+.steps p{margin:0;color:var(--soft)}
+
+/* faq */
+.faq{background:var(--mint-l)}
+.faq .wrap{max-width:840px}
+details{background:#fff;border-radius:18px;margin-bottom:10px;padding:0 22px}
+summary{cursor:pointer;list-style:none;padding:18px 36px 18px 0;font-size:17.5px;font-weight:800;position:relative;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:0;top:12px;font-size:28px;color:var(--mango-d);font-weight:400}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 20px;color:var(--soft)}
+
+/* afhalen */
+.visit .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.visit .place{font-family:var(--display);font-weight:700;font-size:clamp(30px,3.6vw,44px);line-height:1.1;margin:0 0 12px;color:var(--cherry)}
+.visit p{color:var(--soft);margin:0 0 24px}
+.pickup{background:var(--blush);border-radius:26px;padding:28px 30px}
+.pickup ul{margin:0;padding:0;list-style:none}
+.pickup li{padding:12px 0 12px 34px;border-top:1px solid var(--line);position:relative;font-weight:600}
+.pickup li:first-child{border-top:0}
+.pickup li::before{content:"";position:absolute;left:4px;top:19px;width:14px;height:14px;border-radius:50%;background:var(--mango);box-shadow:0 0 0 4px #fff}
+
+.final{background:var(--mango);color:var(--plum);text-align:center}
+.final h2{max-width:16ch;margin:0 auto 16px}
+.final .lead{color:var(--plum);margin:0 auto 30px}
+.final .date{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.final .date input{border-color:var(--plum)}
+
+footer{background:var(--plum-d);color:#cdb3d0;padding:52px 0 100px;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer img{height:54px;margin-bottom:14px}
+footer h4{color:var(--peach);margin:0 0 10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+footer p{margin:0;line-height:1.9}
+footer a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;margin-top:16px;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:10;display:none}
+.float.on{display:block}
+.float .btn{width:100%;box-shadow:0 12px 30px rgba(38,11,42,.4)}
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:860px){
+  header.top nav{display:none}
+  header.top .wrap{height:72px}
+  header.top .logo img{height:44px}
+  .hero .wrap{grid-template-columns:1fr;padding-top:52px;padding-bottom:96px}
+  .cake{display:none}
+  .pick .grid,.visit .wrap{grid-template-columns:1fr}
+  .cards,.quotes,.steps{grid-template-columns:1fr}
+  .opts.three{grid-template-columns:1fr 1fr}
+  .summary{position:relative;top:0}
+  .score{text-align:left}
+  footer .wrap{grid-template-columns:1fr}
+  section{padding:68px 0}
+  .btns .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .band .track,.cake .bob,.cake .drip,.cake .ros,.cake .cherry,.frost{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="demo">This is a demo, made by <a href="https://mohamedia.nl">Mohamedia</a> · Dit is een demo, gemaakt door Mohamedia</div>
+<div class="notice">4.9 ★ from 82 Google reviews · Made to order in Zoetermeer</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Hali Bakes, home"><img src="logo-dark.svg" alt="Hali Bakes" width="166" height="84"></a>
+    <nav aria-label="Main menu"><a href="#order">Order</a><a href="#reviews">Reviews</a><a href="#faq">Questions</a><a href="#contact">Contact</a><a class="btn btn-plum js-wa-plain" href="#">WhatsApp</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="top">
+    <canvas id="pearls" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <span class="kicker">Custom cakes · Cupcakes · Wedding cakes</span>
+        <h1>Custom cakes <span class="rot" id="rot">for your birthday</span></h1>
+        <p class="sub">Birthday cakes, cupcakes and wedding cakes, made to order in <b>Zoetermeer</b>. Share your idea and talk through flavour and design on WhatsApp.</p>
+        <div class="btns">
+          <a class="btn btn-mango js-wa-hero" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>Order on WhatsApp</a>
+          <a class="btn btn-ghost" href="#order">Design your cake</a>
+        </div>
+        <div class="trust"><span class="stars" aria-hidden="true">★★★★★</span><span><b>4.9</b> on Google · 82 reviews</span><span>Zoetermeer</span></div>
+      </div>
+      <svg class="cake" viewBox="0 0 400 400" aria-hidden="true">
+        <ellipse cx="200" cy="372" rx="160" ry="14" fill="#260b2a" opacity=".45"/>
+        <g class="bob">
+          <rect x="40" y="350" width="320" height="16" rx="8" fill="#8fd3b8"/>
+          <!-- onderste laag -->
+          <rect x="66" y="236" width="268" height="116" rx="20" fill="#ffe3ea"/>
+          <rect x="66" y="300" width="268" height="12" fill="#ffb38a" opacity=".6"/>
+          <!-- karamel-chocoladedruppels -->
+          <path d="M66 254v-4c0-8 6-14 14-14h240c8 0 14 6 14 14v4z" fill="#7a3b1e"/>
+          <g fill="#7a3b1e">
+            <rect class="drip" style="--d:0s" x="84" y="250" width="14" height="30" rx="7"/>
+            <rect class="drip" style="--d:.7s" x="122" y="250" width="12" height="20" rx="6"/>
+            <rect class="drip" style="--d:1.4s" x="162" y="250" width="15" height="36" rx="7.5"/>
+            <rect class="drip" style="--d:.3s" x="206" y="250" width="12" height="24" rx="6"/>
+            <rect class="drip" style="--d:1.9s" x="246" y="250" width="15" height="34" rx="7.5"/>
+            <rect class="drip" style="--d:1s" x="290" y="250" width="12" height="22" rx="6"/>
+          </g>
+          <!-- bovenste laag -->
+          <rect x="112" y="146" width="176" height="96" rx="18" fill="#ffffff"/>
+          <rect x="112" y="200" width="176" height="10" fill="#8fd3b8" opacity=".7"/>
+          <path d="M112 164v-2c0-9 7-16 16-16h144c9 0 16 7 16 16v2z" fill="#ffb38a"/>
+          <!-- gespoten rozetjes -->
+          <g fill="#ff8a4c">
+            <circle class="ros" style="--d:0s" cx="130" cy="142" r="11"/>
+            <circle class="ros" style="--d:.25s" cx="164" cy="140" r="11"/>
+            <circle class="ros" style="--d:.5s" cx="236" cy="140" r="11"/>
+            <circle class="ros" style="--d:.75s" cx="270" cy="142" r="11"/>
+          </g>
+          <g fill="#ffffff">
+            <circle class="ros" style="--d:1s" cx="86" cy="234" r="10"/>
+            <circle class="ros" style="--d:1.15s" cx="120" cy="232" r="10"/>
+            <circle class="ros" style="--d:1.3s" cx="280" cy="232" r="10"/>
+            <circle class="ros" style="--d:1.45s" cx="314" cy="234" r="10"/>
+          </g>
+          <!-- kers -->
+          <g class="cherry">
+            <path d="M200 112c2-14 10-24 22-28" stroke="#260b2a" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <circle cx="200" cy="124" r="17" fill="#e2416a"/>
+            <circle cx="194" cy="118" r="5" fill="#fff" opacity=".55"/>
+          </g>
+          <g stroke-width="5" stroke-linecap="round"><path d="M140 190l9-5" stroke="#ff8a4c"/><path d="M180 220l8 5" stroke="#e2416a"/><path d="M226 186l10-3" stroke="#8fd3b8"/><path d="M256 222l7 6" stroke="#ff8a4c"/><path d="M100 330l9-5" stroke="#e2416a"/><path d="M200 334l9 4" stroke="#8fd3b8"/><path d="M296 326l8-6" stroke="#e2416a"/></g>
+        </g>
+      </svg>
+    </div>
+    <div class="frost" aria-hidden="true"></div>
+  </div>
+
+  <div class="band" aria-hidden="true"><div class="track" id="track"><span>Custom cakes</span><span>Cupcakes</span><span>Wedding cakes</span><span>Birthday cakes</span><span>Made to order</span><span>Zoetermeer</span></div></div>
+
+  <section class="pick" id="order">
+    <div class="wrap">
+      <h2>Design your <span>cake</span></h2>
+      <p class="lead">Choose what you'd like, the flavour and your date. One tap and your request is ready to send on WhatsApp, so you hear what's possible.</p>
+      <div class="grid">
+        <div>
+          <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="step">
+            <h3>1. What would you like?</h3>
+            <div class="opts" data-group="soort">
+              <button class="opt" type="button" data-v="Custom cake"><b>Custom cake</b><small>For a birthday or celebration</small></button>
+              <button class="opt" type="button" data-v="Cupcakes"><b>Cupcakes</b><small>For the table or as a treat</small></button>
+              <button class="opt" type="button" data-v="Wedding cake"><b>Wedding cake</b><small>For your big day</small></button>
+              <button class="opt" type="button" data-v="Not sure yet, I'd like some advice"><b>Not sure yet</b><small>Help me decide</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3 id="v-title">2. The occasion</h3>
+            <div class="opts three" data-group="variant" id="variant"></div>
+          </div>
+          <div class="step">
+            <h3>3. Flavour and design <small>(or your own idea)</small></h3>
+            <div class="opts three" data-group="smaak">
+              <button class="opt" type="button" data-v="Chocolate caramel"><b>Chocolate caramel</b><small>Mentioned in reviews</small></button>
+              <button class="opt" type="button" data-v="I have my own idea, I'll send a photo"><b>My own idea</b><small>I'll send a photo</small></button>
+              <button class="opt" type="button" data-v="I'd like help choosing a flavour and design"><b>Help me choose</b><small>Think along with me</small></button>
+            </div>
+          </div>
+          <div class="step date">
+            <h3>4. When do you need it?</h3>
+            <label for="d1" class="sr">Date</label><input type="date" id="d1" class="js-date">
+            <p class="hint">Short notice? Ask anyway, and you'll hear if it's possible.</p>
+          </div>
+        </div>
+        <aside class="summary" aria-live="polite">
+          <div class="bord" aria-hidden="true"></div>
+          <div class="k">Your request</div>
+          <h3 id="s-title">Choose what you'd like</h3>
+          <dl>
+            <div><dt id="s-vlabel">Occasion</dt><dd id="s-var">–</dd></div>
+            <div><dt>Flavour</dt><dd id="s-smaak">–</dd></div>
+            <div><dt>Date</dt><dd id="s-datum">–</dd></div>
+          </dl>
+          <a class="btn btn-mango js-ask" href="#">Send on WhatsApp</a>
+          <div class="note">No obligation. You'll hear what's possible and what it costs.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Why <span>Hali Bakes</span></h2>
+      <p class="lead">What clients mention in their Google reviews.</p>
+      <div class="cards">
+        <div class="card" style="--c:var(--blush)">
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff"/><path d="M14 30h28l-3 13H17z" fill="#3a1440"/><path d="M12 30c-2-6 3-9 7-8 0-6 6-9 10-6 3-4 9-2 8 4 5 0 7 5 5 10z" fill="#ff8a4c"/><circle cx="28" cy="13" r="4" fill="#e2416a"/></svg>
+          <h3>As clients imagined it</h3><p>Clients write that their cake came out just the way they pictured it, and looked beautiful.</p>
+        </div>
+        <div class="card" style="--c:var(--mint-l)">
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff"/><path d="M28 42s-12-7.5-12-16a6.5 6.5 0 0 1 12-3.6A6.5 6.5 0 0 1 40 26c0 8.5-12 16-12 16Z" fill="#e2416a"/></svg>
+          <h3>Moist and tasty</h3><p>Clients write that the cakes are moist and delicious. One calls it one of the greatest cakes they've ever had.</p>
+        </div>
+        <div class="card" style="--c:#ffeede">
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff"/><path d="M14 16h28v18H24l-8 7v-7h-2z" fill="#3a1440"/><circle cx="22" cy="25" r="2" fill="#ffb38a"/><circle cx="28" cy="25" r="2" fill="#ffb38a"/><circle cx="34" cy="25" r="2" fill="#ffb38a"/></svg>
+          <h3>Thinking along with you</h3><p>Clients mention clear, fast communication and help with the flavour and design of their cake.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="wrap">
+      <div class="revhead">
+        <h2>What clients say</h2>
+        <div class="score"><b>4.9</b><span>★★★★★ · Google, 82 reviews</span></div>
+      </div>
+      <div class="quotes">
+        <div class="rv"><div class="who"><i aria-hidden="true">N</i><div><b>Nia</b><small>Google review</small></div></div><p>Their cake turned out exactly as imagined: beautiful and tasty.</p></div>
+        <div class="rv"><div class="who"><i aria-hidden="true">J</i><div><b>Jaïr</b><small>Google review</small></div></div><p>Delicious cakes, and clear, fast communication.</p></div>
+        <div class="rv"><div class="who"><i aria-hidden="true">G</i><div><b>Gial</b><small>Google review</small></div></div><p>One of the greatest cakes they've ever had.</p></div>
+      </div>
+      <p class="revnote">Summarised from Google reviews, not quoted verbatim.</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>How to order</h2>
+      <p class="lead">No complicated forms. Just send a message.</p>
+      <ol class="steps">
+        <li><h3>Share your idea</h3><p>Design your cake above, or send your theme or an example photo on WhatsApp.</p></li>
+        <li><h3>Flavour and design</h3><p>Talk it through together and hear what's possible and what it costs for your date.</p></li>
+        <li><h3>Enjoy your cake</h3><p>Your cake is ready on the date you agreed on. The details are arranged on WhatsApp.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <details><summary>What can I order?</summary><p>Custom cakes (for example for a birthday), cupcakes and wedding cakes, all made to order.</p></details>
+      <details><summary>How much does a cake cost?</summary><p>That depends on what you'd like and the design. Send your request on WhatsApp and you'll hear the price.</p></details>
+      <details><summary>Can you help me with the flavour and design?</summary><p>Yes. Reviewers mention that Hali Bakes thinks along with them about flavour and design. Have an example? Send a photo along.</p></details>
+      <details><summary>Can I order at short notice?</summary><p>Reviewers mention last-minute orders. Send your date on WhatsApp and you'll hear whether it's possible.</p></details>
+      <details><summary>Where is Hali Bakes?</summary><p>In Zoetermeer. How and when you get your cake is arranged when you order.</p></details>
+    </div>
+  </section>
+
+  <section class="visit" id="contact">
+    <div class="wrap">
+      <div>
+        <h2>Hali Bakes</h2>
+        <div class="place">in Zoetermeer</div>
+        <p>Hali Bakes bakes to order in Zoetermeer. How and when you get your cake, you arrange on WhatsApp.</p>
+        <a class="btn btn-plum js-wa-plain" href="#">Ask about your order</a>
+      </div>
+      <div class="pickup">
+        <ul>
+          <li>Made to order</li>
+          <li>Date and time agreed together</li>
+          <li>Order and questions via WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Got a celebration coming up?</h2>
+      <p class="lead">Pick your date and ask straight away on WhatsApp if it works.</p>
+      <div class="date"><label for="d2" class="sr">Date</label><input type="date" id="d2" class="js-date"><a class="btn btn-plum js-ask" href="#">Check my date</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><img src="logo-light.svg" alt="Hali Bakes" width="110" height="56"><p>Custom cakes, cupcakes and wedding cakes, made to order in Zoetermeer.</p></div>
+    <div><h4>Location</h4><p>Zoetermeer</p></div>
+    <div><h4>Contact</h4><p><a class="js-wa-plain" href="#">WhatsApp +31 6 43 79 71 35</a><br><a href="tel:+31643797135">Call +31 6 43 79 71 35</a><br><a href="https://www.facebook.com/people/Hali-Bakes/61557522000119/" target="_blank" rel="noopener">Facebook</a></p></div>
+    <div class="fine"><span>© 2026 Hali Bakes</span><span>Website by <a href="https://mohamedia.nl">Mohamedia</a> · Website door Mohamedia</span></div>
+  </div>
+</footer>
+
+<div class="float" id="float"><a class="btn btn-mango js-wa-float" href="#">Order on WhatsApp</a></div>
+
+<script>
+const WA = "31643797135";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = id => document.getElementById(id);
+const st = { soort: "", variant: "", smaak: "", datum: "" };
+const SETS = {
+  occasion: { title: "2. The occasion", label: "Occasion", opts: [["Birthday", "Birthday", "Any age"], ["Another celebration", "Celebration", "A party or event"], ["Something else", "Other", "Tell us"]] },
+  wedding: { title: "2. Your wedding", label: "Occasion", opts: [["Wedding", "Wedding", "The big day"], ["Engagement", "Engagement", "Or another ceremony"], ["Not sure yet", "Not sure yet", "Let's talk"]] },
+  amount: { title: "2. How many cupcakes?", label: "Amount", opts: [["a small batch", "A few", "A small batch"], ["for a party", "For a party", "A bigger batch"], ["not sure yet", "Not sure yet", "Let's talk"]] }
+};
+function buildVariant() {
+  const set = st.soort === "Wedding cake" ? SETS.wedding : st.soort === "Cupcakes" ? SETS.amount : SETS.occasion;
+  $("v-title").textContent = set.title; $("s-vlabel").textContent = set.label;
+  $("variant").innerHTML = set.opts.map(([v, b, s]) => `<button class="opt" type="button" data-v="${v}" aria-pressed="false"><b>${b}</b><small>${s}</small></button>`).join("");
+  st.variant = "";
+}
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) : "";
+const short = v => v.startsWith("I have") ? "My own idea" : v.startsWith("I'd like help") ? "Help me choose" : v;
+function render() {
+  const vals = [st.soort, st.variant, st.smaak, st.datum];
+  document.querySelectorAll(".dots i").forEach((i, k) => i.classList.toggle("on", !!vals[k]));
+  $("s-title").textContent = st.soort ? (st.soort.startsWith("Not sure") ? "Not sure yet" : st.soort) : "Choose what you'd like";
+  $("s-var").textContent = st.variant || "–";
+  $("s-smaak").textContent = st.smaak ? short(st.smaak) : "–";
+  $("s-datum").textContent = st.datum ? fmt(st.datum) : "–";
+  const msg = [`Hi Hali Bakes! I'd like to order: ${st.soort || "not chosen yet"}`,
+    `${$("s-vlabel").textContent}: ${st.variant || "not chosen yet"}`,
+    `Flavour/design: ${st.smaak || "not sure yet"}`,
+    `Date: ${st.datum ? fmt(st.datum) : "not sure yet"}`,
+    "Is this possible, and what would it cost?"].join("\n");
+  document.querySelectorAll(".js-ask").forEach(a => { a.href = wa(msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+document.querySelectorAll(".opts").forEach(g => {
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", "false"));
+  g.addEventListener("click", e => {
+    const b = e.target.closest(".opt"); if (!b) return;
+    g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b));
+    st[g.dataset.group] = b.dataset.v;
+    if (g.dataset.group === "soort") buildVariant();
+    render();
+  });
+});
+buildVariant();
+const today = new Date().toISOString().slice(0, 10);
+document.querySelectorAll(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => { st.datum = i.value; document.querySelectorAll(".js-date").forEach(j => j.value = i.value); render(); }); });
+const setWa = (sel, t) => document.querySelectorAll(sel).forEach(a => { a.href = wa(t); a.target = "_blank"; a.rel = "noopener"; });
+setWa(".js-wa-hero", "Hi Hali Bakes! I'd like to order a cake. Can we talk about the options?");
+setWa(".js-wa-float", "Hi Hali Bakes! I'd like to order a cake.");
+setWa(".js-wa-plain", "Hi Hali Bakes! I have a question about ordering a cake.");
+render();
+
+const tr = $("track"); tr.innerHTML += tr.innerHTML;
+const words = ["for your birthday", "for your wedding", "for your celebration"]; let wi = 0;
+const rot = $("rot");
+if (!reduce) setInterval(() => { wi = (wi + 1) % words.length; rot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 }).onfinish = () => { rot.textContent = words[wi]; rot.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 420 }); }; }, 2600);
+
+const fl = $("float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe($("top"));
+new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .1 }).observe($("order"));
+
+// bewegende hero: suikerparels en spikkels die langzaam opstijgen, plus een schuivende botercreme-rand (CSS)
+const c = $("pearls"), x = c.getContext("2d"); let W, H, ps = [];
+const cols = ["#ffb38a", "#8fd3b8", "#ffe3ea", "#e2416a", "#ff8a4c"];
+const mk = init => ({ x: Math.random() * W, y: init ? Math.random() * H : H + 12, r: 2 + Math.random() * 4, v: .2 + Math.random() * .4, w: Math.random() * 6.28, c: cols[Math.floor(Math.random() * cols.length)], s: Math.random() < .4, a: Math.random() * 6.28 });
+function size() { const r = devicePixelRatio || 1; W = c.clientWidth; H = c.clientHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0); ps = Array.from({ length: W < 860 ? 24 : 46 }, () => mk(true)); }
+function frame() {
+  x.clearRect(0, 0, W, H);
+  for (let i = 0; i < ps.length; i++) {
+    const p = ps[i];
+    if (!reduce) { p.y -= p.v; p.w += .012; p.a += .01; }
+    if (p.y < -12) ps[i] = mk(false);
+    const px = p.x + Math.sin(p.w) * 10;
+    x.globalAlpha = .55;
+    if (p.s) { x.strokeStyle = p.c; x.lineWidth = 4; x.lineCap = "round"; x.beginPath(); x.moveTo(px - Math.cos(p.a) * 5, p.y - Math.sin(p.a) * 5); x.lineTo(px + Math.cos(p.a) * 5, p.y + Math.sin(p.a) * 5); x.stroke(); }
+    else { x.fillStyle = p.c; x.beginPath(); x.arc(px, p.y, p.r, 0, 6.29); x.fill(); }
+  }
+  x.globalAlpha = 1;
+  if (!reduce) requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>
