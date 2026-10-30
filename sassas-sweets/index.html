@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sassa's Sweets – taarten, cupcakes en cookies in Hendrik-Ido-Ambacht</title>
+<meta name="description" content="Taarten, cupcakes en cookies van Sassa's Sweets in Hendrik-Ido-Ambacht: smash cakes, themataarten en traktaties. 5,0 uit 10 Google-reviews. Bestel via WhatsApp.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1d2a5b; --navy-2:#283873; --navy-d:#131c40;
+  --rasp:#e0457b; --rasp-d:#c22f63; --pink:#ff8fb3; --pink-l:#ffe4ee;
+  --butter:#ffd66b; --butter-d:#f0bc3a; --butter-l:#fff4d2;
+  --mint:#5fc4b8; --mint-l:#dcf3f0; --sky:#e7edff; --paper:#fbfaff;
+  --ink:#1a2147; --soft:#56608a; --line:#e3e2f3;
+  --display:"Lilita One","Arial Rounded MT Bold",sans-serif; --sans:"Outfit",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--butter-d);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+.sr{position:absolute;left:-9999px}
+.demo{background:var(--navy-d);color:#c9cfee;font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--butter)}
+.notice{background:var(--butter);color:var(--navy);font-size:14.5px;text-align:center;padding:8px 16px;font-weight:700}
+
+header.top{background:var(--paper);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:86px}
+header.top .logo img{height:58px;width:auto;display:block}
+header.top nav{display:flex;align-items:center}
+header.top nav a{text-decoration:none;font-size:16px;font-weight:600;margin-left:26px;padding:10px 0}
+header.top nav a:hover{color:var(--rasp)}
+header.top nav a.btn{padding:10px 20px;min-height:46px;font-size:15.5px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:13px 26px;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:17px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s,background .15s;line-height:1.2;text-align:center}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-rasp{background:var(--rasp);color:#fff;box-shadow:0 5px 0 var(--rasp-d)}
+.btn-rasp:hover{background:#ea5689}
+.btn-navy{background:var(--navy);color:#fff;box-shadow:0 5px 0 var(--navy-d)}
+.btn-navy:hover{background:var(--navy-2)}
+.btn-butter{background:var(--butter);color:var(--navy);box-shadow:0 5px 0 var(--butter-d)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn-ghost:hover{border-color:var(--butter);color:var(--butter)}
+
+/* hero */
+.hero{position:relative;background:radial-gradient(120% 90% at 85% 40%,var(--navy-2) 0,var(--navy) 60%);color:#fff;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+/* frambozenglazuur dat van de bovenrand druipt */
+.glaze{position:absolute;top:0;left:0;width:100%;height:70px;z-index:2;pointer-events:none}
+.glaze .dr{transform-box:fill-box;transform-origin:50% 0;animation:drip 5s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes drip{0%,100%{transform:scaleY(.6)}50%{transform:scaleY(1.2)}}
+.hero .wrap{position:relative;z-index:3;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-top:96px;padding-bottom:130px}
+.kicker{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.1);color:var(--butter);font-weight:600;font-size:14.5px;padding:6px 15px;border-radius:999px;margin-bottom:20px}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--pink)}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(42px,5.6vw,74px);line-height:1.04;margin:0 0 22px;letter-spacing:.005em}
+.rot{display:block;color:var(--pink);min-height:1.05em}
+.hero p.sub{font-size:19px;max-width:30em;color:#dfe3f7;margin:0 0 30px}
+.hero p.sub b{color:#fff}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.trust{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15.5px;color:#c9cfee;align-items:center}
+.trust .stars{color:var(--butter);letter-spacing:2px}
+.trust b{color:#fff}
+.trust a{color:#fff;text-underline-offset:3px;display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px}
+.art{width:100%;max-width:440px;justify-self:center;overflow:visible}
+.art .bob{animation:bob 6s ease-in-out infinite}
+.art .bob2{animation:bob 5s ease-in-out infinite;animation-delay:-2s}
+.art .dr{transform-box:fill-box;transform-origin:50% 0;animation:drip 4.4s ease-in-out infinite;animation-delay:var(--d)}
+.art .spin{transform-box:fill-box;transform-origin:50% 50%;animation:wig 3.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+@keyframes wig{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+/* glazuur-golf onderaan de hero */
+.wave{position:absolute;left:0;bottom:-1px;width:200%;height:54px;z-index:4;animation:wave 9s linear infinite}
+.wave path{fill:var(--paper)}
+@keyframes wave{to{transform:translateX(-50%)}}
+
+/* marquee */
+.band{background:var(--paper);overflow:hidden;white-space:nowrap;padding:8px 0 20px}
+.band .track{display:inline-block;animation:slide 40s linear infinite;font-family:var(--display);font-size:24px;color:var(--navy)}
+.band span{margin:0 20px;display:inline-flex;align-items:center;gap:40px}
+.band span::after{content:"";width:22px;height:8px;border-radius:8px;background:var(--rasp);transform:rotate(-30deg)}
+.band span:nth-child(3n+2)::after{background:var(--mint);transform:rotate(25deg)}
+.band span:nth-child(3n)::after{background:var(--butter-d);transform:rotate(-60deg)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:92px 0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,4.4vw,54px);line-height:1.08;margin:0 0 14px;color:var(--navy)}
+h2 span{color:var(--rasp)}
+.lead{color:var(--soft);font-size:18px;max-width:36em;margin:0 0 42px}
+
+/* kiezer */
+.pick{background:var(--sky)}
+.pick .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start}
+.dots{display:flex;gap:8px;margin-bottom:26px}
+.dots i{flex:1;height:8px;border-radius:8px;background:#cfd6f3;transition:background .3s}
+.dots i.on{background:var(--rasp)}
+.step{margin-bottom:30px}
+.step h3{font-family:var(--display);font-weight:400;font-size:22px;margin:0 0 12px;color:var(--navy)}
+.step h3 small{font-family:var(--sans);font-weight:400;font-size:15px;color:var(--soft)}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.opts.three{grid-template-columns:repeat(3,1fr)}
+.opt{position:relative;text-align:left;background:#fff;border:2px solid var(--line);border-radius:20px;padding:15px 14px 13px;font:inherit;color:var(--ink);cursor:pointer;min-height:48px;transition:border-color .15s,background .15s}
+.opt b{display:block;font-weight:700;font-size:17px;line-height:1.2}
+.opt small{display:block;color:var(--soft);font-size:13.5px;margin-top:3px;line-height:1.35}
+@media (hover:hover){.opt:not([aria-pressed="true"]):hover{border-color:var(--pink)}}
+.opt[aria-pressed="true"]{border-color:var(--navy);background:var(--navy);color:#fff}
+.opt[aria-pressed="true"] small{color:var(--butter)}
+.date input{font:inherit;padding:12px 16px;border:2px solid var(--line);border-radius:16px;min-height:54px;background:#fff;color:var(--ink);max-width:100%}
+.hint{font-size:14.5px;color:var(--soft);margin:8px 0 0}
+.summary{background:var(--navy);color:#fff;border-radius:28px;padding:30px;position:sticky;top:24px;overflow:hidden}
+.summary .bord{height:22px;margin:-30px -30px 24px;background:radial-gradient(11px 14px at 50% 0,var(--rasp) 98%,transparent) 0 0/26px 22px repeat-x,linear-gradient(var(--rasp),var(--rasp)) 0 0/100% 6px no-repeat,var(--navy)}
+.summary .k{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--butter);font-weight:700}
+.summary h3{font-family:var(--display);font-weight:400;font-size:31px;line-height:1.12;margin:6px 0 18px}
+.summary dl{margin:0 0 24px;font-size:15.5px}
+.summary dl div{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:10px 0;border-top:1px solid rgba(255,255,255,.14)}
+.summary dt{color:#b9c1e6}
+.summary dd{margin:0;font-weight:600}
+.summary .btn{width:100%}
+.summary .note{font-size:13.5px;color:#b9c1e6;margin-top:14px;text-align:center}
+
+/* waarom */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--c);border-radius:28px;padding:30px 28px}
+.card svg{width:56px;height:56px;margin-bottom:16px;display:block}
+.card h3{font-family:var(--display);font-weight:400;margin:0 0 8px;font-size:25px;line-height:1.15;color:var(--navy)}
+.card p{margin:0;color:var(--soft)}
+
+/* reviews */
+.reviews{background:var(--navy);color:#fff}
+.reviews h2{color:#fff}
+.revhead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.score{text-align:right}
+.score b{font-family:var(--display);font-weight:400;font-size:90px;line-height:1;color:var(--butter);display:block}
+.score a{color:#c9cfee;font-size:15px;text-underline-offset:3px;display:inline-flex;align-items:center;min-height:44px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rv{margin:0;background:var(--navy-2);border-radius:26px;padding:26px 26px 28px}
+.rv .who{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.rv .who i{width:42px;height:42px;border-radius:50%;background:var(--pink);color:var(--navy);font-style:normal;font-family:var(--display);font-size:20px;display:grid;place-items:center}
+.rv:nth-child(2) .who i{background:var(--butter)}
+.rv:nth-child(3) .who i{background:var(--mint)}
+.rv .who b{font-weight:700;font-size:17px}
+.rv .who small{display:block;color:#b9c1e6;font-size:13.5px}
+.rv p{margin:0;font-size:18.5px;line-height:1.45;color:#eef0fb}
+.revnote{margin:22px 0 0;color:#b9c1e6;font-size:14.5px}
+
+/* stappen */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;background:var(--rasp);color:#fff;font-family:var(--display);font-size:28px;margin-bottom:14px;box-shadow:0 0 0 6px var(--pink-l)}
+.steps li:nth-child(2)::before{background:var(--butter);color:var(--navy);box-shadow:0 0 0 6px var(--butter-l)}
+.steps li:nth-child(3)::before{background:var(--mint);color:var(--navy);box-shadow:0 0 0 6px var(--mint-l)}
+.steps h3{margin:0 0 6px;font-size:20px;font-weight:700}
+.steps p{margin:0;color:var(--soft)}
+
+/* faq */
+.faq{background:var(--pink-l)}
+.faq .wrap{max-width:840px}
+details{background:#fff;border-radius:20px;margin-bottom:10px;padding:0 22px}
+summary{cursor:pointer;list-style:none;padding:18px 36px 18px 0;font-size:17.5px;font-weight:700;position:relative;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:0;top:12px;font-size:28px;color:var(--rasp);font-weight:400}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 20px;color:var(--soft)}
+
+/* plaats */
+.visit .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.visit .place{font-family:var(--display);font-size:clamp(28px,3.4vw,42px);line-height:1.1;margin:0 0 12px;color:var(--rasp)}
+.visit p{color:var(--soft);margin:0 0 24px}
+.facts{background:var(--butter-l);border-radius:28px;padding:28px 30px}
+.facts ul{margin:0;padding:0;list-style:none}
+.facts li{padding:12px 0 12px 34px;border-top:1px solid #f3e2ac;position:relative;font-weight:600}
+.facts li:first-child{border-top:0}
+.facts li::before{content:"";position:absolute;left:2px;top:21px;width:18px;height:7px;border-radius:7px;background:var(--rasp);transform:rotate(-30deg)}
+.facts li:nth-child(2)::before{background:var(--mint)}
+.facts li:nth-child(3)::before{background:var(--navy)}
+
+.final{background:var(--rasp);color:#fff;text-align:center}
+.final h2{max-width:16ch;margin:0 auto 16px;color:#fff}
+.final .lead{color:#ffe9f1;margin:0 auto 30px}
+.final .date{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.final .date input{border-color:#fff}
+
+footer{background:var(--navy-d);color:#b9c1e6;padding:52px 0 100px;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer img{height:58px;width:auto;margin-bottom:14px}
+footer h4{color:var(--butter);margin:0 0 10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+footer p{margin:0;line-height:1.9}
+footer a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;margin-top:16px;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:10;display:none}
+.float.on{display:block}
+.float .btn{width:100%;box-shadow:0 12px 30px rgba(19,28,64,.4)}
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:860px){
+  header.top nav{display:none}
+  header.top .wrap{height:74px}
+  header.top .logo img{height:50px}
+  .hero .wrap{grid-template-columns:1fr;padding-top:76px;padding-bottom:100px}
+  .art{display:none}
+  .pick .grid,.visit .wrap{grid-template-columns:1fr}
+  .cards,.quotes,.steps{grid-template-columns:1fr}
+  .opts.three{grid-template-columns:1fr 1fr}
+  .summary{position:relative;top:0}
+  .score{text-align:left}
+  footer .wrap{grid-template-columns:1fr}
+  section{padding:68px 0}
+  .btns .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .band .track,.art .bob,.art .bob2,.art .dr,.art .spin,.glaze .dr,.wave{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice">5,0 ★ uit 10 Google-reviews · Taarten, cupcakes en cookies in Hendrik-Ido-Ambacht</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Sassa's Sweets, naar boven"><img src="logo-dark.svg" alt="Sassa's Sweets" width="204" height="84"></a>
+    <nav aria-label="Hoofdmenu"><a href="#bestel">Bestellen</a><a href="#reviews">Reviews</a><a href="#faq">Vragen</a><a href="#contact">Contact</a><a class="btn btn-rasp js-wa-plain" href="#">WhatsApp</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="top">
+    <svg class="glaze" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
+      <rect width="1200" height="16" fill="#e0457b"/>
+      <g fill="#e0457b">
+        <rect class="dr" style="--d:0s" x="40" y="8" width="26" height="46" rx="13"/>
+        <rect class="dr" style="--d:1.2s" x="150" y="8" width="20" height="30" rx="10"/>
+        <rect class="dr" style="--d:.5s" x="260" y="8" width="28" height="56" rx="14"/>
+        <rect class="dr" style="--d:2s" x="390" y="8" width="20" height="34" rx="10"/>
+        <rect class="dr" style="--d:.9s" x="500" y="8" width="26" height="48" rx="13"/>
+        <rect class="dr" style="--d:1.6s" x="630" y="8" width="20" height="28" rx="10"/>
+        <rect class="dr" style="--d:.3s" x="740" y="8" width="28" height="52" rx="14"/>
+        <rect class="dr" style="--d:2.4s" x="870" y="8" width="20" height="32" rx="10"/>
+        <rect class="dr" style="--d:1s" x="980" y="8" width="26" height="46" rx="13"/>
+        <rect class="dr" style="--d:1.8s" x="1100" y="8" width="22" height="36" rx="11"/>
+      </g>
+    </svg>
+    <canvas id="sprinkles" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <span class="kicker">Taarten · Cupcakes · Cookies</span>
+        <h1>Taarten en traktaties <span class="rot" id="rot">voor elke verjaardag</span></h1>
+        <p class="sub">Smash cakes, themataarten, cupcakes en cookies van Sassa's Sweets in <b>Hendrik-Ido-Ambacht</b>. Vertel je idee en je datum, en bespreek het via WhatsApp.</p>
+        <div class="btns">
+          <a class="btn btn-rasp js-wa-hero" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>Bestel via WhatsApp</a>
+          <a class="btn btn-ghost" href="#bestel">Stel je bestelling samen</a>
+        </div>
+        <div class="trust"><span class="stars" aria-hidden="true">★★★★★</span><span><b>5,0</b> op <a href="https://www.google.com/maps/search/?api=1&amp;query=Sassa%27s+Sweets+Hendrik-Ido-Ambacht" target="_blank" rel="noopener">Google</a> · 10 reviews</span><span>Hendrik-Ido-Ambacht</span></div>
+      </div>
+      <svg class="art" viewBox="0 0 420 400" aria-hidden="true">
+        <ellipse cx="210" cy="374" rx="170" ry="14" fill="#131c40" opacity=".5"/>
+        <!-- taart met frambozendrip -->
+        <g class="bob">
+          <rect x="70" y="352" width="250" height="14" rx="7" fill="#5fc4b8"/>
+          <rect x="94" y="196" width="202" height="158" rx="22" fill="#ffffff"/>
+          <rect x="94" y="268" width="202" height="12" fill="#ffd66b"/>
+          <rect x="94" y="306" width="202" height="10" fill="#ffe4ee"/>
+          <path d="M94 222v-4c0-12 10-22 22-22h158c12 0 22 10 22 22v4z" fill="#e0457b"/>
+          <g fill="#e0457b">
+            <rect class="dr" style="--d:0s" x="108" y="216" width="14" height="34" rx="7"/>
+            <rect class="dr" style="--d:.8s" x="140" y="216" width="12" height="22" rx="6"/>
+            <rect class="dr" style="--d:1.5s" x="172" y="216" width="15" height="40" rx="7.5"/>
+            <rect class="dr" style="--d:.4s" x="210" y="216" width="12" height="26" rx="6"/>
+            <rect class="dr" style="--d:2s" x="242" y="216" width="15" height="36" rx="7.5"/>
+            <rect class="dr" style="--d:1.1s" x="274" y="216" width="12" height="24" rx="6"/>
+          </g>
+          <!-- spikkels -->
+          <g stroke-width="5" stroke-linecap="round">
+            <path d="M120 296l9-5" stroke="#5fc4b8"/><path d="M160 330l8 5" stroke="#e0457b"/><path d="M206 292l10-3" stroke="#1d2a5b"/>
+            <path d="M246 326l7 6" stroke="#ffd66b"/><path d="M276 292l8-6" stroke="#e0457b"/><path d="M190 340l9 2" stroke="#5fc4b8"/>
+          </g>
+          <!-- cijfer-topper -->
+          <g class="spin">
+            <rect x="193" y="120" width="5" height="78" rx="2.5" fill="#ffd66b"/>
+            <circle cx="196" cy="120" r="30" fill="#ffd66b"/>
+            <path d="M190 104l10-6h6v44h-10v-31l-6 3z" fill="#1d2a5b"/>
+          </g>
+          <circle cx="132" cy="190" r="10" fill="#ff8fb3"/><circle cx="262" cy="190" r="10" fill="#ff8fb3"/>
+        </g>
+        <!-- hartjescookie -->
+        <g class="bob2">
+          <path d="M360 300c-24-16-38-28-38-46 0-12 9-21 20-21 8 0 14 4 18 10 4-6 10-10 18-10 11 0 20 9 20 21 0 18-14 30-38 46Z" fill="#e8b36b"/>
+          <path d="M360 288c-18-12-28-21-28-34 0-8 6-14 13-14 6 0 11 4 15 9 4-5 9-9 15-9 7 0 13 6 13 14 0 13-10 22-28 34Z" fill="#ff8fb3"/>
+          <circle cx="350" cy="258" r="2.6" fill="#fff"/><circle cx="368" cy="266" r="2.6" fill="#fff"/><circle cx="360" cy="276" r="2.6" fill="#fff"/>
+        </g>
+        <!-- cupcake -->
+        <g class="bob2" style="animation-delay:-3.5s">
+          <path d="M22 290h64l-8 52H30z" fill="#5fc4b8"/>
+          <path d="M34 296l3 40M46 296l1 40M62 296l-1 40M74 296l-3 40" stroke="#1d2a5b" stroke-width="2" opacity=".25"/>
+          <path d="M16 292c-4-12 6-20 14-18 0-12 12-18 22-12 6-8 20-6 20 6 10-2 16 10 12 24z" fill="#fff"/>
+          <circle cx="54" cy="254" r="9" fill="#e0457b"/>
+        </g>
+      </svg>
+    </div>
+    <svg class="wave" viewBox="0 0 2400 54" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30C100 6 200 6 300 30S500 54 600 30 800 6 900 30 1100 54 1200 30 1400 6 1500 30 1700 54 1800 30 2000 6 2100 30 2300 54 2400 30V54H0Z"/></svg>
+  </div>
+
+  <div class="band" aria-hidden="true"><div class="track" id="track"><span>Taarten</span><span>Cupcakes</span><span>Cookies</span><span>Smash cakes</span><span>Themataarten</span><span>Cijfertaarten</span><span>Traktaties</span><span>Hendrik-Ido-Ambacht</span></div></div>
+
+  <section class="pick" id="bestel">
+    <div class="wrap">
+      <h2>Stel je <span>bestelling</span> samen</h2>
+      <p class="lead">Kies wat je zoekt, je thema of smaak en je datum. Met één tik staat je aanvraag klaar in WhatsApp.</p>
+      <div class="grid">
+        <div>
+          <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="step">
+            <h3>1. Wat wil je bestellen?</h3>
+            <div class="opts" data-group="soort">
+              <button class="opt" type="button" data-v="Taart"><b>Taart</b><small>Smash cake, thema of cijfer</small></button>
+              <button class="opt" type="button" data-v="Cupcakes"><b>Cupcakes</b><small>Voor een feestje of afscheid</small></button>
+              <button class="opt" type="button" data-v="Cookies"><b>Cookies</b><small>Als traktatie of bedankje</small></button>
+              <button class="opt" type="button" data-v="Weet ik nog niet, ik wil graag advies"><b>Weet ik nog niet</b><small>Denk met me mee</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3 id="v-title">2. Wat voor taart?</h3>
+            <div class="opts three" data-group="variant" id="variant"></div>
+          </div>
+          <div class="step">
+            <h3>3. Smaak of thema <small>(of je eigen idee)</small></h3>
+            <div class="opts three" data-group="smaak">
+              <button class="opt" type="button" data-v="Witte chocolade-framboos"><b>Witte choco­lade-framboos</b><small>Genoemd in reviews</small></button>
+              <button class="opt" type="button" data-v="Ik heb een eigen idee, ik stuur een foto"><b>Eigen idee</b><small>Ik stuur een foto</small></button>
+              <button class="opt" type="button" data-v="Ik wil graag hulp bij smaak en thema"><b>Help me kiezen</b><small>Denk met me mee</small></button>
+            </div>
+          </div>
+          <div class="step date">
+            <h3>4. Voor welke datum?</h3>
+            <label for="d1" class="sr">Datum</label><input type="date" id="d1" class="js-date">
+            <p class="hint">Kies de dag van je feestje. Of het past, hoor je via WhatsApp.</p>
+          </div>
+        </div>
+        <aside class="summary" aria-live="polite">
+          <div class="bord" aria-hidden="true"></div>
+          <div class="k">Jouw aanvraag</div>
+          <h3 id="s-title">Kies wat je zoekt</h3>
+          <dl>
+            <div><dt id="s-vlabel">Soort</dt><dd id="s-var">–</dd></div>
+            <div><dt>Smaak/thema</dt><dd id="s-smaak">–</dd></div>
+            <div><dt>Datum</dt><dd id="s-datum">–</dd></div>
+          </dl>
+          <a class="btn btn-rasp js-ask" href="#">Verstuur via WhatsApp</a>
+          <div class="note">Vrijblijvend vragen wat er kan.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Waarom <span>Sassa's Sweets</span></h2>
+      <p class="lead">Wat klanten terugschrijven in hun Google-reviews.</p>
+      <div class="cards">
+        <div class="card" style="--c:var(--pink-l)">
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff"/><rect x="14" y="26" width="28" height="16" rx="4" fill="#1d2a5b"/><path d="M14 30v-2a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v2z" fill="#e0457b"/><rect x="21" y="14" width="3" height="10" rx="1.5" fill="#ffd66b"/><rect x="32" y="14" width="3" height="10" rx="1.5" fill="#5fc4b8"/><circle cx="22.5" cy="12" r="2.5" fill="#e0457b"/><circle cx="33.5" cy="12" r="2.5" fill="#e0457b"/></svg>
+          <h3>Elke verjaardag weer</h3><p>Klanten schrijven dat ze al jaren voor elke verjaardag bij Sassa's Sweets bestellen.</p>
+        </div>
+        <div class="card" style="--c:var(--butter-l)">
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff"/><path d="M28 42s-12-7.5-12-16a6.5 6.5 0 0 1 12-3.6A6.5 6.5 0 0 1 40 26c0 8.5-12 16-12 16Z" fill="#e0457b"/><circle cx="23" cy="25" r="1.8" fill="#fff"/><circle cx="31" cy="30" r="1.8" fill="#fff"/></svg>
+          <h3>Mooi én lekker</h3><p>Klanten schrijven dat de taarten bijna te mooi zijn om aan te snijden, en noemen de smaak, zoals witte chocolade-framboos.</p>
+        </div>
+        <div class="card" style="--c:var(--mint-l)">
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff"/><path d="M14 16h28v18H24l-8 7v-7h-2z" fill="#1d2a5b"/><circle cx="22" cy="25" r="2" fill="#ffd66b"/><circle cx="28" cy="25" r="2" fill="#ffd66b"/><circle cx="34" cy="25" r="2" fill="#ffd66b"/></svg>
+          <h3>Denkt met je mee</h3><p>Klanten schrijven dat er wordt meegedacht met hun ideeën en dat ze snel antwoord kregen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="wrap">
+      <div class="revhead">
+        <h2>Wat klanten zeggen</h2>
+        <div class="score"><b>5,0</b><a href="https://www.google.com/maps/search/?api=1&amp;query=Sassa%27s+Sweets+Hendrik-Ido-Ambacht" target="_blank" rel="noopener">★★★★★ · Google, 10 reviews</a></div>
+      </div>
+      <div class="quotes">
+        <div class="rv"><div class="who"><i aria-hidden="true">R</i><div><b>Robin</b><small>Google-review</small></div></div><p>Kreeg een heerlijke taart voor de jongste.</p></div>
+        <div class="rv"><div class="who"><i aria-hidden="true">T</i><div><b>Thilata</b><small>Google-review</small></div></div><p>Super blij met de schattige cookies.</p></div>
+        <div class="rv"><div class="who"><i aria-hidden="true">M</i><div><b>Michelle</b><small>Google-review</small></div></div><p>Heerlijke cupcakes, taarten en cookies.</p></div>
+      </div>
+      <p class="revnote">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+    </div>
+  </section>
+
+  <section id="zo-werkt-het">
+    <div class="wrap">
+      <h2>Zo bestel je</h2>
+      <p class="lead">Geen ingewikkelde formulieren. Gewoon een berichtje.</p>
+      <ol class="steps">
+        <li><h3>Vertel je idee</h3><p>Stel je bestelling hierboven samen, of stuur je thema of een voorbeeldfoto via WhatsApp.</p></li>
+        <li><h3>Stem het samen af</h3><p>Bespreek smaak, thema en datum, en hoor wat er kan en wat het kost.</p></li>
+        <li><h3>Vier je feestje</h3><p>Hoe en wanneer je je bestelling krijgt, spreek je samen af via WhatsApp.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <h2>Vragen</h2>
+      <details><summary>Wat kan ik bestellen?</summary><p>Taarten, cupcakes en cookies. In de reviews komen onder meer smash cakes, themataarten, cijfertaarten, cookies als traktatie of bedankje en cupcakes voor feestjes en afscheid voorbij.</p></details>
+      <details><summary>Kan ik een taart met een thema bestellen?</summary><p>Klanten noemen in hun reviews onder meer een Nijntje-taart, een Feyenoord-taart en een cijfertaart. Heb je zelf een thema in gedachten? Stuur het via WhatsApp.</p></details>
+      <details><summary>Wat kost een taart?</summary><p>Dat hangt af van wat je wilt en hoe het eruit moet zien. Stuur je aanvraag via WhatsApp en je hoort de prijs.</p></details>
+      <details><summary>Kan ik een eigen idee of voorbeeld sturen?</summary><p>Ja. Klanten schrijven dat er wordt meegedacht met hun ideeën. Heb je een voorbeeld? Stuur de foto mee in WhatsApp.</p></details>
+      <details><summary>Waar zit Sassa's Sweets?</summary><p>In Hendrik-Ido-Ambacht. Hoe en wanneer je je bestelling krijgt, regel je bij het bestellen via WhatsApp.</p></details>
+    </div>
+  </section>
+
+  <section class="visit" id="contact">
+    <div class="wrap">
+      <div>
+        <h2>Sassa's Sweets</h2>
+        <div class="place">in Hendrik-Ido-Ambacht</div>
+        <p>Je bestelling plan je via WhatsApp. Daar spreek je ook de datum en de details samen af.</p>
+        <a class="btn btn-navy js-wa-plain" href="#">Stel je vraag via WhatsApp</a>
+      </div>
+      <div class="facts">
+        <ul>
+          <li>Taarten, cupcakes en cookies</li>
+          <li>Datum en details samen afgesproken</li>
+          <li>Bestellen en vragen via WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Feestje op de planning?</h2>
+      <p class="lead">Kies je datum en vraag meteen via WhatsApp of het past.</p>
+      <div class="date"><label for="d2" class="sr">Datum</label><input type="date" id="d2" class="js-date"><a class="btn btn-butter js-ask" href="#">Vraag mijn datum aan</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><img src="logo-light.svg" alt="Sassa's Sweets" width="141" height="58"><p>Taarten, cupcakes en cookies in Hendrik-Ido-Ambacht.</p></div>
+    <div><h4>Plaats</h4><p>Hendrik-Ido-Ambacht</p></div>
+    <div><h4>Contact</h4><p><a class="js-wa-plain" href="#">WhatsApp 06 30 26 83 19</a><br><a href="tel:+31630268319">Bel 06 30 26 83 19</a><br><a href="https://www.instagram.com/sassas.sweets/" target="_blank" rel="noopener">Instagram @sassas.sweets</a></p></div>
+    <div class="fine"><span>© 2026 Sassa's Sweets</span><span>Website door <a href="https://mohamedia.nl">Mohamedia</a></span></div>
+  </div>
+</footer>
+
+<div class="float" id="float"><a class="btn btn-rasp js-wa-float" href="#">Bestel via WhatsApp</a></div>
+
+<script>
+const WA = "31630268319";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = id => document.getElementById(id);
+const st = { soort: "", variant: "", smaak: "", datum: "" };
+const SETS = {
+  taart: { title: "2. Wat voor taart?", label: "Soort", opts: [["Smash cake", "Smash cake", "Voor de kleinste"], ["Themataart", "Themataart", "Bijv. Nijntje of Feyenoord"], ["Cijfertaart", "Cijfertaart", "In de vorm van een cijfer"]] },
+  cupcakes: { title: "2. Waarvoor?", label: "Gelegenheid", opts: [["Feestje", "Feestje", "Verjaardag of feest"], ["Afscheid", "Afscheid", "Om iemand uit te zwaaien"], ["Iets anders", "Iets anders", "Vertel het me"]] },
+  cookies: { title: "2. Waarvoor?", label: "Gelegenheid", opts: [["Traktatie", "Traktatie", "Om uit te delen"], ["Bedankje", "Bedankje", "Om iemand te bedanken"], ["Iets anders", "Iets anders", "Vertel het me"]] },
+  advies: { title: "2. Voor welke gelegenheid?", label: "Gelegenheid", opts: [["Verjaardag", "Verjaardag", "Groot of klein"], ["Afscheid", "Afscheid", "Of een bedankje"], ["Iets anders", "Iets anders", "Vertel het me"]] }
+};
+function buildVariant() {
+  const set = st.soort === "Cupcakes" ? SETS.cupcakes : st.soort === "Cookies" ? SETS.cookies : st.soort.startsWith("Weet") ? SETS.advies : SETS.taart;
+  $("v-title").textContent = set.title; $("s-vlabel").textContent = set.label;
+  $("variant").innerHTML = set.opts.map(([v, b, s]) => `<button class="opt" type="button" data-v="${v}" aria-pressed="false"><b>${b}</b><small>${s}</small></button>`).join("");
+  st.variant = "";
+}
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) : "";
+const short = v => v.startsWith("Ik heb") ? "Eigen idee" : v.startsWith("Ik wil graag hulp") ? "Help me kiezen" : v;
+function render() {
+  const vals = [st.soort, st.variant, st.smaak, st.datum];
+  document.querySelectorAll(".dots i").forEach((i, k) => i.classList.toggle("on", !!vals[k]));
+  $("s-title").textContent = st.soort ? (st.soort.startsWith("Weet") ? "Weet ik nog niet" : st.soort) : "Kies wat je zoekt";
+  $("s-var").textContent = st.variant || "–";
+  $("s-smaak").textContent = st.smaak ? short(st.smaak) : "–";
+  $("s-datum").textContent = st.datum ? fmt(st.datum) : "–";
+  const msg = [`Hoi Sassa's Sweets! Ik wil graag bestellen: ${st.soort || "nog niet gekozen"}`,
+    `${$("s-vlabel").textContent}: ${st.variant || "nog niet gekozen"}`,
+    `Smaak/thema: ${st.smaak || "weet ik nog niet"}`,
+    `Datum: ${st.datum ? fmt(st.datum) : "weet ik nog niet"}`,
+    "Kan dit, en wat kost het?"].join("\n");
+  document.querySelectorAll(".js-ask").forEach(a => { a.href = wa(msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+document.querySelectorAll(".opts").forEach(g => {
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", "false"));
+  g.addEventListener("click", e => {
+    const b = e.target.closest(".opt"); if (!b) return;
+    g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b));
+    st[g.dataset.group] = b.dataset.v;
+    if (g.dataset.group === "soort") buildVariant();
+    render();
+  });
+});
+buildVariant();
+const today = new Date().toISOString().slice(0, 10);
+document.querySelectorAll(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => { st.datum = i.value; document.querySelectorAll(".js-date").forEach(j => j.value = i.value); render(); }); });
+const setWa = (sel, t) => document.querySelectorAll(sel).forEach(a => { a.href = wa(t); a.target = "_blank"; a.rel = "noopener"; });
+setWa(".js-wa-hero", "Hoi Sassa's Sweets! Ik wil graag iets bestellen. Kunnen we de mogelijkheden bespreken?");
+setWa(".js-wa-float", "Hoi Sassa's Sweets! Ik wil graag iets bestellen.");
+setWa(".js-wa-plain", "Hoi Sassa's Sweets! Ik heb een vraag over een bestelling.");
+render();
+
+const tr = $("track"); tr.innerHTML += tr.innerHTML;
+const words = ["voor elke verjaardag", "voor een feestje", "om uit te delen"]; let wi = 0;
+const rot = $("rot");
+if (!reduce) setInterval(() => { wi = (wi + 1) % words.length; rot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 }).onfinish = () => { rot.textContent = words[wi]; rot.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 420 }); }; }, 2600);
+
+const fl = $("float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe($("top"));
+new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .1 }).observe($("bestel"));
+
+// bewegende hero: vallende hagelslag-spikkels, druipend glazuur (CSS) en een glazuur-golf onderaan (CSS)
+const c = $("sprinkles"), x = c.getContext("2d"); let W, H, ps = [];
+const cols = ["#ff8fb3", "#ffd66b", "#5fc4b8", "#ffffff", "#e0457b"];
+const mk = init => ({ x: Math.random() * W, y: init ? Math.random() * H : -12, v: .25 + Math.random() * .5, a: Math.random() * 6.28, va: (Math.random() - .5) * .03, l: 4 + Math.random() * 4, c: cols[Math.floor(Math.random() * cols.length)], dot: Math.random() < .3 });
+function size() { const r = devicePixelRatio || 1; W = c.clientWidth; H = c.clientHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0); ps = Array.from({ length: W < 860 ? 26 : 50 }, () => mk(true)); }
+function frame() {
+  x.clearRect(0, 0, W, H);
+  for (let i = 0; i < ps.length; i++) {
+    const p = ps[i];
+    if (!reduce) { p.y += p.v; p.a += p.va; }
+    if (p.y > H + 12) ps[i] = mk(false);
+    x.globalAlpha = .6;
+    if (p.dot) { x.fillStyle = p.c; x.beginPath(); x.arc(p.x, p.y, 2.6, 0, 6.29); x.fill(); }
+    else { x.strokeStyle = p.c; x.lineWidth = 4; x.lineCap = "round"; x.beginPath(); x.moveTo(p.x - Math.cos(p.a) * p.l, p.y - Math.sin(p.a) * p.l); x.lineTo(p.x + Math.cos(p.a) * p.l, p.y + Math.sin(p.a) * p.l); x.stroke(); }
+  }
+  x.globalAlpha = 1;
+  if (!reduce) requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>
