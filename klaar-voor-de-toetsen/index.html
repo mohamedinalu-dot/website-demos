@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Klaar voor de Toetsen – bijles en CITO-training in Rotterdam</title>
+<meta name="description" content="Bijles, 1-op-1 privéles, groepslessen en CITO-training in Rotterdam en online. Rekenen, wiskunde, begrijpend lezen, spelling, Nederlands, Engels en studievaardigheden. Plan een gratis proefles.">
+<meta name="theme-color" content="#004AAD">
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#38B6FF;--blue:#00A3FF;--royal:#004AAD;--royal-h:#003a8a;--ink:#0A2A4D;--soft:#48607c;--bg:#F9FBFD;--tint:#EAF6FF;--tint-2:#E3F7FF;--line:#E1EBF5;--mint:#00CFA5;--sun:#FFB300;--card:#fff;--r:18px;--display:"Poppins",system-ui,sans-serif;--sans:"Inter","Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.sr{position:absolute;left:-9999px}
+#prog{position:fixed;top:0;left:0;height:4px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--sky),var(--royal));z-index:30}
+.demo{background:var(--ink);color:#b9cde4;font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:#fff}
+.notice{background:var(--blue);color:#fff;font-family:var(--display);font-weight:600;font-size:13.5px;text-align:center;padding:9px 12px;letter-spacing:.01em}
+.notice span{white-space:nowrap}
+.notice i{font-style:normal;opacity:.6;margin:0 8px}
+header.bar{position:sticky;top:0;z-index:20;background:rgba(249,251,253,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+header.bar.scr{border-color:var(--line);box-shadow:0 6px 24px rgba(10,42,77,.06)}
+header.bar .wrap{display:flex;justify-content:space-between;align-items:center;height:72px;gap:12px}
+header.bar .logo img{height:50px;width:auto;display:block}
+header.bar nav{display:flex;align-items:center;gap:26px}
+header.bar nav a{text-decoration:none;font-weight:600;font-size:15px;color:var(--ink);opacity:.8}
+header.bar nav a:hover{opacity:1;color:var(--royal)}
+header.bar nav a.btn{color:#fff;opacity:1}
+header.bar nav a.btn:hover{color:#fff}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:3rem;font-family:var(--display);font-weight:600;font-size:16px;line-height:1.2;text-align:center;text-decoration:none;border:2px solid var(--royal);cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-fill{background:var(--royal);color:#fff}
+.btn-fill:hover{background:var(--blue);border-color:var(--blue)}
+.btn-line{background:#fff;color:var(--royal)}
+.btn-line:hover{background:var(--tint)}
+.btn-sm{min-height:44px;padding:10px 18px;font-size:14.5px}
+.btn svg{width:20px;height:20px;fill:currentColor;flex:none}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.pulse::after{content:"";position:absolute;inset:-2px;border-radius:inherit;box-shadow:0 0 0 0 rgba(0,163,255,.55);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,163,255,.5)}70%,100%{box-shadow:0 0 0 16px rgba(0,163,255,0)}}
+.shine{overflow:hidden}
+.shine::before{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite}
+@keyframes shine{0%,60%{left:-60%}85%,100%{left:130%}}
+h1,h2,h3{font-family:var(--display);color:var(--ink)}
+h2{font-size:clamp(29px,4.4vw,46px);line-height:1.12;font-weight:700;letter-spacing:-.015em;margin:0 0 14px}
+h2 em,h1 em{font-style:normal;color:var(--blue)}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--royal);margin-bottom:12px}
+.kicker::before{content:"";width:22px;height:4px;border-radius:4px;background:var(--sky)}
+.lead{color:var(--soft);font-size:17.5px;max-width:38em;margin:0 0 40px}
+section{padding:88px 0;position:relative}
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(700px 480px at 85% 30%,rgba(56,182,255,.18),transparent 70%),
+  linear-gradient(transparent 31px,rgba(0,74,173,.055) 32px),linear-gradient(90deg,transparent 31px,rgba(0,74,173,.055) 32px),var(--bg);
+  background-size:auto,32px 32px,32px 32px,auto}
+.hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;padding-top:44px;padding-bottom:72px}
+.tag{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:6px 14px 6px 8px;font-size:13.5px;font-weight:600;color:var(--royal);margin-bottom:20px;box-shadow:0 4px 14px rgba(10,42,77,.05)}
+.tag b{background:var(--mint);color:#fff;border-radius:99px;padding:2px 10px;font-family:var(--display);font-size:12px}
+.hero h1{font-size:clamp(36px,5.4vw,62px);line-height:1.06;font-weight:800;letter-spacing:-.02em;margin:0 0 18px}
+.rot{display:block;color:var(--blue);min-height:1.1em;position:relative}
+.rot .caret{display:inline-block;width:3px;height:.85em;background:var(--royal);margin-left:4px;vertical-align:-.06em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.sub{font-size:18px;color:var(--soft);max-width:31em;margin:0 0 26px}
+.trust{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14.5px;color:var(--soft)}
+.trust span{display:inline-flex;align-items:center;gap:6px}
+.trust svg{width:18px;height:18px;flex:none}
+.quick{margin-top:26px}
+.quick p{margin:0 0 10px;font-weight:600;font-size:14.5px}
+.quick .row{display:flex;flex-wrap:wrap;gap:8px}
+.qchip{min-height:44px;padding:9px 16px;border-radius:99px;border:2px solid var(--line);background:#fff;font:600 14.5px var(--sans);color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
+.qchip:hover{border-color:var(--sky);background:var(--tint);transform:translateY(-2px)}
+.stage{position:relative;max-width:470px;width:100%;margin-left:auto;aspect-ratio:420/380}
+.stage svg.scene{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.sym{position:absolute;font-family:var(--display);font-weight:800;line-height:1;pointer-events:none;will-change:transform;user-select:none}
+.sym span{display:block;animation:bob var(--d,6s) ease-in-out infinite alternate}
+@keyframes bob{from{transform:translateY(-8px) rotate(-8deg)}to{transform:translateY(10px) rotate(8deg)}}
+/* scène-animaties: 9 s per cyclus */
+.scene .blob{transform-box:fill-box;transform-origin:center;animation:breathe 7s ease-in-out infinite alternate}
+@keyframes breathe{from{transform:scale(.97) rotate(-2deg)}to{transform:scale(1.03) rotate(2deg)}}
+.scene .orbit{transform-box:view-box;transform-origin:210px 190px;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.scene .w,.scene .chk{stroke-dasharray:1;stroke-dashoffset:1}
+.scene .w1{animation:w1 9s linear infinite}.scene .w2{animation:w2 9s linear infinite}.scene .w3{animation:w3 9s linear infinite}
+.scene .c1{animation:c1 9s ease-out infinite}.scene .c2{animation:c2 9s ease-out infinite}.scene .c3{animation:c3 9s ease-out infinite}
+@keyframes w1{0%{stroke-dashoffset:1;opacity:1}15%,92%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes w2{0%,18%{stroke-dashoffset:1;opacity:1}33%,92%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes w3{0%,36%{stroke-dashoffset:1;opacity:1}51%,92%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes c1{0%,15%{stroke-dashoffset:1;opacity:1}19%,92%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes c2{0%,33%{stroke-dashoffset:1;opacity:1}37%,92%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes c3{0%,51%{stroke-dashoffset:1;opacity:1}55%,92%{stroke-dashoffset:0;opacity:1}97%,100%{stroke-dashoffset:0;opacity:0}}
+.scene .pencil{animation:pen 9s ease-in-out infinite}
+@keyframes pen{0%{transform:translate(150px,124px)}15%{transform:translate(268px,124px)}18%{transform:translate(150px,168px)}33%{transform:translate(268px,168px)}36%{transform:translate(150px,212px)}51%{transform:translate(268px,212px)}57%,90%{transform:translate(318px,96px) rotate(12deg)}100%{transform:translate(150px,124px)}}
+.scene .stamp{transform-box:fill-box;transform-origin:center;opacity:0;animation:stamp 9s cubic-bezier(.2,.9,.3,1.3) infinite}
+@keyframes stamp{0%,55%{opacity:0;transform:scale(2.3) rotate(-30deg)}61%{opacity:1;transform:scale(.92) rotate(-8deg)}65%,92%{opacity:1;transform:scale(1) rotate(-8deg)}97%,100%{opacity:0;transform:scale(1) rotate(-8deg)}}
+.scene .burst line{stroke-dasharray:1;stroke-dashoffset:1;opacity:0;animation:burst 9s ease-out infinite}
+@keyframes burst{0%,60%{stroke-dashoffset:1;opacity:0}62%{opacity:1}70%{stroke-dashoffset:-1;opacity:0}100%{opacity:0}}
+/* ---------- band ---------- */
+.band{overflow:hidden;white-space:nowrap;background:var(--royal);color:#fff;position:relative}
+.band .track{display:inline-block;padding:16px 0;animation:slide 38s linear infinite;font-family:var(--display);font-size:17px;font-weight:600}
+.band span{margin:0 18px}
+.band span::after{content:"+";margin-left:36px;color:var(--sky);font-weight:800}
+@keyframes slide{to{transform:translateX(-50%)}}
+/* ---------- tellers ---------- */
+.facts{padding:0;margin-top:-1px;background:linear-gradient(var(--royal) 50%,var(--bg) 50%)}
+.facts .grid{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:24px;box-shadow:0 18px 50px rgba(10,42,77,.12);overflow:hidden}
+.fact{padding:26px 18px;text-align:center;border-right:1px solid var(--line)}
+.fact:last-child{border-right:0}
+.fact b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,48px);line-height:1;color:var(--royal)}
+.fact b small{font-size:.5em;font-weight:700;color:var(--blue);margin-left:2px}
+.fact > span{display:block;margin-top:8px;font-size:14px;color:var(--soft);line-height:1.35}
+/* ---------- reveal ---------- */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
+/* ---------- kiezer ---------- */
+.pick{background:var(--tint)}
+.pick::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 300px at 0% 0%,rgba(56,182,255,.2),transparent 70%);pointer-events:none}
+.pick .grid{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:start}
+.step{margin-bottom:28px;counter-increment:k}
+.steps-k{counter-reset:k}
+.step h3{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;margin:0 0 12px}
+.step h3::before{content:counter(k);display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--royal);color:#fff;font-size:14px;flex:none}
+.step h3 i{font-style:normal;font-weight:500;color:var(--soft);font-size:14px}
+.step .hint{margin:-4px 0 12px;font-size:14.5px;color:var(--soft)}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.opts.chips{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative;text-align:left;background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:14px 14px 12px;font:inherit;color:var(--ink);cursor:pointer;min-height:48px;transition:border-color .15s,background .15s,transform .15s}
+.opt:hover{border-color:var(--sky)}
+.opt:active{transform:scale(.97)}
+.opt b{display:block;font-family:var(--display);font-weight:600;font-size:17px;line-height:1.2}
+.opt small{display:block;color:var(--soft);font-size:13.5px;margin-top:3px;line-height:1.35}
+.opt[aria-pressed="true"]{border-color:var(--royal);background:#f1f8ff;box-shadow:0 0 0 3px rgba(0,163,255,.18)}
+.opt[aria-pressed="true"]::after{content:"";position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:50%;background:var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 7' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat;animation:pop .25s ease-out}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.chips .opt{padding:10px 16px;border-radius:99px;font-weight:600;font-size:15px;min-height:44px}
+.chips .opt[aria-pressed="true"]{background:var(--royal);color:#fff;border-color:var(--royal);box-shadow:none}
+.chips .opt[aria-pressed="true"]::after{display:none}
+.opt:disabled{opacity:.35;cursor:not-allowed}
+.sel{font:inherit;font-size:16px;padding:12px 14px;border:2px solid var(--line);border-radius:14px;min-height:48px;background:#fff;color:var(--ink);margin-top:10px;max-width:100%}
+.txt{font:inherit;font-size:16px;padding:12px 14px;border:2px solid var(--line);border-radius:14px;min-height:48px;background:#fff;color:var(--ink);width:100%;max-width:340px}
+.sel:focus,.txt:focus{border-color:var(--blue);outline:none}
+.subrow{margin-top:10px}
+.hide{display:none!important}
+.summary{background:var(--royal);color:#fff;border-radius:26px;padding:28px;position:sticky;top:96px;box-shadow:0 24px 60px rgba(0,74,173,.3);overflow:hidden}
+.summary::before{content:"10+";position:absolute;right:-14px;bottom:-30px;font-family:var(--display);font-weight:800;font-size:150px;line-height:1;color:rgba(255,255,255,.07);pointer-events:none}
+.summary .k{font-size:12.5px;color:#bfe6ff;margin-bottom:4px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.summary h3{color:#fff;font-weight:700;font-size:25px;line-height:1.15;margin:0 0 18px}
+.summary dl{margin:0 0 22px;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:15px;position:relative}
+.summary dt{color:#bfe6ff}
+.summary dd{margin:0;overflow-wrap:anywhere}
+.summary dd.flash{animation:flash .5s ease}
+@keyframes flash{from{color:var(--sky)}to{color:#fff}}
+.summary .btn{width:100%}
+.summary .btn-fill{background:#fff;border-color:#fff;color:var(--royal)}
+.summary .btn-fill:hover{background:var(--tint);border-color:var(--tint)}
+.summary .btn-line{background:transparent;color:#fff;border-color:rgba(255,255,255,.55);margin-top:10px}
+.summary .btn-line:hover{background:rgba(255,255,255,.1)}
+.summary .note{font-size:13.5px;color:#cfe9ff;margin-top:14px;text-align:center;position:relative}
+.summary .note a{color:#fff;font-weight:600;display:inline-block;padding:12px 2px}
+/* ---------- aanbod ---------- */
+.offer-g{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ocard{position:relative;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px 26px 26px;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.ocard:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(10,42,77,.1)}
+.ocard .ic{width:74px;height:74px;border-radius:22px;background:var(--tint);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.ocard .ic svg{width:46px;height:46px}
+.ocard h3{margin:0 0 8px;font-size:22px;font-weight:700}
+.ocard p{margin:0 0 14px;color:var(--soft)}
+.ocard ul{margin:0 0 20px;padding:0;list-style:none;font-size:15px}
+.ocard li{padding-left:26px;position:relative;margin-bottom:6px}
+.ocard li::before{content:"";position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:50%;background:var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 7' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+.ocard .btn{margin-top:auto;align-self:flex-start}
+.ic .bob1{animation:icb 3s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+.ic .bob2{animation:icb 3s ease-in-out -1.5s infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes icb{from{transform:translateY(-2px)}to{transform:translateY(3px)}}
+.ic .spinp{animation:icr 6s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes icr{to{transform:rotate(360deg)}}
+/* ---------- waarom ---------- */
+.why{background:#fff}
+.why-g{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.wcard{border-radius:22px;padding:26px 22px;background:var(--bg);border:1px solid var(--line);border-top:6px solid var(--sky)}
+.wcard:nth-child(2){border-top-color:var(--mint)}.wcard:nth-child(3){border-top-color:var(--sun)}.wcard:nth-child(4){border-top-color:var(--royal)}
+.wcard svg{width:40px;height:40px;margin-bottom:12px}
+.wcard h3{margin:0 0 6px;font-size:18.5px;font-weight:700}
+.wcard p{margin:0;color:var(--soft);font-size:15.5px}
+.motto{margin-top:64px;text-align:center}
+.motto p{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(26px,4.4vw,48px);line-height:1.15;letter-spacing:-.015em}
+.motto .l1{color:#9fb3c8}
+.motto .l2{color:var(--royal);position:relative;display:inline-block}
+.motto .l2 svg{position:absolute;left:0;right:0;bottom:-14px;width:100%;height:18px;overflow:visible}
+.motto .l2 path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.2s .3s ease}
+.motto.in .l2 path{stroke-dashoffset:0}
+.motto small{display:block;margin-top:26px;color:var(--soft);font-size:14px}
+/* ---------- CITO ---------- */
+.cito{background:var(--royal);color:#fff;overflow:hidden}
+.cito h2{color:#fff}
+.cito h2 em{color:var(--sky)}
+.cito .kicker{color:#bfe6ff}
+.cito .lead{color:#cfe9ff}
+.cito .grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.sheet{background:#fff;color:var(--ink);border-radius:20px;padding:26px 24px;box-shadow:0 30px 70px rgba(0,0,0,.25);transform:rotate(-2deg);position:relative}
+.sheet::before{content:"";position:absolute;left:14px;top:18px;bottom:18px;width:2px;background:rgba(255,90,90,.35)}
+.sheet h3{margin:0 0 4px 16px;font-size:20px}
+.sheet .meta{margin:0 0 16px 16px;font-size:13.5px;color:var(--soft)}
+.item{display:flex;gap:14px;align-items:flex-start;padding:14px 0 14px 16px;border-top:1px dashed var(--line)}
+.box{flex:none;width:30px;height:30px;border:2.5px solid var(--royal);border-radius:8px;position:relative;margin-top:2px}
+.box svg{position:absolute;inset:-6px;width:42px;height:42px;overflow:visible}
+.box path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .45s ease}
+.sheet.in .item:nth-of-type(1) .box path{transition-delay:.5s}
+.sheet.in .item:nth-of-type(2) .box path{transition-delay:1.1s}
+.sheet.in .item:nth-of-type(3) .box path{transition-delay:1.7s}
+.sheet.in .box path{stroke-dashoffset:0}
+.item b{display:block;font-family:var(--display);font-size:16.5px}
+.item span{display:block;font-size:14.5px;color:var(--soft);line-height:1.45}
+.item em{font-style:normal;font-size:12px;font-weight:700;color:#00936f;background:#e2fbf4;border-radius:99px;padding:2px 8px;margin-left:6px;white-space:nowrap}
+.getlist{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:12px}
+.getlist li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
+.getlist li::before{content:"";flex:none;width:24px;height:24px;margin-top:1px;border-radius:50%;background:var(--sky) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 7' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+.getlist b{font-weight:700}
+.cito .btn-fill{background:#fff;border-color:#fff;color:var(--royal)}
+.cito .btn-fill:hover{background:var(--tint);border-color:var(--tint)}
+.cito .btn-line{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.cito .floaty{position:absolute;font-family:var(--display);font-weight:800;color:rgba(255,255,255,.08);font-size:180px;line-height:1;pointer-events:none;will-change:transform}
+/* ---------- tarieven ---------- */
+.toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;background:#fff;border:2px solid var(--line);border-radius:99px;padding:4px;margin-bottom:34px}
+.toggle button{position:relative;z-index:1;min-height:46px;padding:10px 22px;border:0;background:none;font:600 15.5px var(--display);color:var(--ink);cursor:pointer;border-radius:99px;transition:color .25s}
+.toggle button[aria-selected="true"]{color:#fff}
+.toggle .pill{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);background:var(--royal);border-radius:99px;transition:transform .35s cubic-bezier(.3,.8,.3,1)}
+.toggle.g .pill{transform:translateX(100%)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.plans[hidden]{display:none}
+.plans.show .plan{animation:planin .5s cubic-bezier(.2,.7,.2,1) both}
+.plans.show .plan:nth-child(2){animation-delay:.07s}.plans.show .plan:nth-child(3){animation-delay:.14s}
+@keyframes planin{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.plan{position:relative;background:#fff;border-radius:22px;padding:28px 24px 24px;border:1px solid var(--line);border-top:8px solid var(--mint);border-left:8px solid var(--mint);display:flex;flex-direction:column}
+.plan.mb{border-top-color:var(--blue);border-left-color:var(--blue)}
+.plan.ll{border-top-color:var(--sun);border-left-color:var(--sun)}
+.plan .badge{position:absolute;top:-16px;right:18px;background:var(--mint);color:#fff;font:700 13px var(--display);padding:6px 14px;border-radius:99px;box-shadow:0 4px 10px rgba(0,207,165,.3)}
+.plan h3{margin:0 0 2px;font-size:22px;font-weight:700}
+.plan .what{margin:0 0 14px;color:var(--soft);font-size:14.5px}
+.plan .price{font-family:var(--display);font-weight:800;font-size:38px;line-height:1;color:var(--ink)}
+.plan .price small{font-size:15px;font-weight:600;color:var(--soft)}
+.plan .ph{font-size:14px;color:var(--royal);font-weight:600;margin:6px 0 16px}
+.plan ul{list-style:none;margin:0 0 20px;padding:0;font-size:15px}
+.plan li{padding:7px 0 7px 26px;border-top:1px solid var(--line);position:relative}
+.plan li::before{content:"";position:absolute;left:0;top:11px;width:16px;height:16px;border-radius:50%;background:var(--tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 7' fill='none' stroke='%23004AAD' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+.plan .btn{margin-top:auto;width:100%}
+.plan .fine{font-size:13px;color:var(--soft);margin:10px 0 0;text-align:center}
+.pnote{margin:26px 0 0;font-size:14.5px;color:var(--soft)}
+/* ---------- ervaringen ---------- */
+.reviews{background:var(--tint)}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.quote{position:relative;background:#fff;border-radius:24px;padding:30px 26px 24px;margin:0;box-shadow:0 10px 30px rgba(10,42,77,.06)}
+.quote::before{content:"\201C";position:absolute;top:-8px;left:20px;font-family:var(--display);font-weight:800;font-size:90px;line-height:1;color:var(--sky)}
+.quote p{margin:18px 0 18px;font-size:16.5px}
+.quote footer{display:flex;align-items:center;gap:12px;font-size:14.5px;color:var(--soft)}
+.quote footer i{width:42px;height:42px;border-radius:50%;background:var(--royal);color:#fff;display:flex;align-items:center;justify-content:center;font:700 17px var(--display);font-style:normal;flex:none}
+.quote footer b{display:block;color:var(--ink);font-size:15.5px}
+.src{margin:30px 0 0;font-size:14.5px;color:var(--soft)}
+.src a{color:var(--royal);font-weight:600}
+/* ---------- zo werkt het ---------- */
+.how-l{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:s}
+.how-l::before,.how-l::after{content:"";position:absolute;left:8%;right:8%;top:31px;height:4px;border-radius:4px;background:var(--line)}
+.how-l::after{background:linear-gradient(90deg,var(--sky),var(--royal));transform-origin:0 50%;transform:scaleX(var(--p,0))}
+.how-l li{position:relative;z-index:1;counter-increment:s;text-align:center;padding:0 6px}
+.how-l li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:66px;height:66px;margin:0 auto 16px;border-radius:50%;background:#fff;border:4px solid var(--sky);color:var(--royal);font:800 26px var(--display);box-shadow:0 8px 20px rgba(0,74,173,.12)}
+.how-l h3{margin:0 0 6px;font-size:19px;font-weight:700}
+.how-l p{margin:0;color:var(--soft)}
+/* ---------- faq ---------- */
+.faq{background:#fff}
+.faq .wrap{max-width:860px}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;padding:18px 44px 18px 0;font-family:var(--display);font-size:17.5px;font-weight:600;position:relative;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";position:absolute;right:4px;top:50%;width:30px;height:30px;margin-top:-15px;border-radius:50%;background:var(--tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 5v10M5 10h10' stroke='%23004AAD' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") center/60% no-repeat;transition:transform .3s}
+details[open] summary::after{transform:rotate(135deg)}
+details p{margin:0 0 18px;color:var(--soft)}
+details p a{color:var(--royal);font-weight:600}
+/* ---------- locatie ---------- */
+.loc .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+.lcard{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px}
+.lcard h3{margin:0 0 6px;font-size:20px}
+.lcard p{margin:0 0 14px;color:var(--soft)}
+.lcard .btns{margin-top:6px}
+.lrow{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line)}
+.lrow:first-of-type{border-top:0;padding-top:0}
+.lrow svg{width:26px;height:26px;flex:none;margin-top:2px}
+.lrow b{display:block;font-family:var(--display);font-size:15px}
+.lrow a,.lrow span{color:var(--ink);font-size:16px;text-decoration:none;display:inline-block;padding:10px 0;min-height:44px}
+.lrow a:hover{color:var(--royal);text-decoration:underline}
+.pinmap{position:relative;border-radius:24px;overflow:hidden;min-height:300px;background:
+  linear-gradient(transparent 39px,rgba(0,74,173,.08) 40px),linear-gradient(90deg,transparent 39px,rgba(0,74,173,.08) 40px),var(--tint);background-size:40px 40px;display:flex;align-items:center;justify-content:center}
+.pinmap svg{width:100%;height:100%;position:absolute;inset:0}
+.pinmap .road{stroke-dasharray:6 10;animation:dash 3s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-32}}
+.pinmap .pin{transform-box:fill-box;transform-origin:50% 100%;animation:drop 2.4s cubic-bezier(.3,1.4,.5,1) infinite}
+@keyframes drop{0%{transform:translateY(-18px)}30%,100%{transform:none}}
+.pinmap .ring{transform-box:fill-box;transform-origin:center;animation:ring 2.4s ease-out infinite}
+@keyframes ring{0%{transform:scale(.3);opacity:.8}100%{transform:scale(2.4);opacity:0}}
+.pinmap .lbl{position:relative;z-index:1;margin-top:150px;background:#fff;border-radius:14px;padding:10px 16px;font-weight:600;font-size:14.5px;box-shadow:0 8px 24px rgba(10,42,77,.12);text-align:center}
+/* ---------- slot ---------- */
+.final{background:linear-gradient(135deg,var(--royal),#0a62d0 60%,var(--blue));color:#fff;text-align:center;overflow:hidden}
+.final h2{color:#fff;max-width:18ch;margin:0 auto 14px}
+.final .lead{color:#dff1ff;margin:0 auto 30px}
+.final .btns{justify-content:center}
+.final .btn-fill{background:#fff;border-color:#fff;color:var(--royal)}
+.final .btn-fill:hover{background:var(--tint);border-color:var(--tint)}
+.final .btn-line{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+.final .confetti span{position:absolute;font-family:var(--display);font-weight:800;color:rgba(255,255,255,.14);animation:rise linear infinite;bottom:-60px;will-change:transform}
+@keyframes rise{to{transform:translateY(-560px) rotate(200deg)}}
+footer.site{background:var(--ink);color:#b9cde4;padding:56px 0 110px;font-size:15px}
+footer.site .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
+footer.site img{height:62px;width:auto;margin-bottom:14px}
+footer.site h4{color:#fff;font-family:var(--display);font-weight:600;margin:0 0 10px;font-size:15.5px}
+footer.site p{margin:0}
+footer.site p a{display:inline-block;padding:10px 0;min-height:44px;text-decoration:none}
+footer.site p a:hover{color:#fff;text-decoration:underline}
+footer.site .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;margin-top:10px;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+/* ---------- zwevende CTA ---------- */
+.float{position:fixed;left:12px;right:12px;bottom:12px;z-index:25;display:flex;gap:10px;transform:translateY(140%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.float.on{transform:none}
+.float .btn{flex:1;box-shadow:0 14px 34px rgba(0,42,100,.35)}
+.float .btn-fill{border-color:#fff;box-shadow:0 0 0 2px rgba(0,163,255,.5),0 14px 34px rgba(0,42,100,.35)}
+.float .wa{flex:none;width:56px;min-height:56px;padding:0;border-radius:50%;background:#fff;color:var(--royal);border-color:#fff;box-shadow:0 14px 34px rgba(0,42,100,.3)}
+.float .wa svg{width:26px;height:26px}
+@media (min-width:901px){.float{display:none}}
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  header.bar nav a:not(.btn){display:none}
+  header.bar .wrap{height:64px}
+  header.bar .logo img{height:44px}
+  .hgrid{grid-template-columns:minmax(0,1fr);padding-top:26px;padding-bottom:48px;gap:20px}
+  .stage{margin:0 auto;max-width:360px}
+  .pick .grid,.cito .grid,.loc .grid{grid-template-columns:minmax(0,1fr)}
+  .offer-g,.rgrid,.plans{grid-template-columns:minmax(0,1fr)}
+  .plans{gap:30px}
+  .why-g{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .summary{position:static}
+  .facts .grid{grid-template-columns:repeat(2,1fr)}
+  .fact:nth-child(2){border-right:0}
+  .fact:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  footer.site .wrap{grid-template-columns:1fr}
+  section{padding:68px 0}
+  .how-l{grid-template-columns:minmax(0,1fr);gap:26px}
+  .how-l::before,.how-l::after{left:31px;right:auto;top:8px;bottom:90px;width:4px;height:auto;transform-origin:50% 0;transform:scaleY(var(--p,0))}
+  .how-l::before{transform:none}
+  .how-l li{text-align:left;padding-left:88px;min-height:66px}
+  .how-l li::before{position:absolute;left:0;top:0;margin:0}
+  .sheet{transform:rotate(-1deg)}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .hero h1{font-size:35px}
+  .sub{font-size:16.5px;margin-bottom:22px}
+  .hero .btns .btn{width:100%}
+  .why-g{grid-template-columns:minmax(0,1fr)}
+  .opts{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .opt{padding:13px 12px 11px}
+  .opt b{font-size:15.5px;padding-right:18px}
+  .opt small{font-size:12.5px}
+  .notice i{margin:0 5px}
+  .notice{font-size:12.5px}
+  .toggle{display:grid;width:100%}
+  .toggle button{padding:10px 8px}
+  .lead{font-size:16.5px}
+  .summary{padding:24px 20px}
+}
+@media (max-width:360px){.hero h1{font-size:31px}header.bar .btn-sm{padding:10px 12px;font-size:13.5px}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .scene .w,.scene .chk{stroke-dashoffset:0}
+  .scene .stamp{opacity:1;transform:rotate(-8deg)}
+  .scene .pencil{transform:translate(318px,96px) rotate(12deg)}
+  .js .rv{opacity:1;transform:none}
+  .motto .l2 path,.box path{stroke-dashoffset:0}
+  .rot .caret{display:none}
+  .how-l::after{transform:none}
+}
+</style>
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<div id="prog" aria-hidden="true"></div>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice"><span>Gratis proefles</span> <i>+</i> <span>Geen inschrijfkosten</span> <i>+</i> <span>Maandelijks opzegbaar</span></div>
+<header class="bar" id="bar"><div class="wrap">
+  <a class="logo" href="#top" aria-label="Klaar voor de Toetsen, naar boven"><img src="logo-dark.svg" alt="Klaar voor de Toetsen" width="257" height="120"></a>
+  <nav aria-label="Hoofdmenu"><a href="#aanbod">Aanbod</a><a href="#cito">CITO-training</a><a href="#tarieven">Tarieven</a><a href="#vragen">Vragen</a><a href="#contact">Contact</a><a class="btn btn-fill btn-sm" href="#kiezer">Gratis proefles</a></nav>
+</div></header>
+<main>
+<div class="hero" id="top">
+<div class="wrap hgrid">
+  <div>
+    <span class="tag"><b>Gratis</b>Proefles, vrijblijvend</span>
+    <h1>Bijles in <span class="rot" aria-live="off"><span id="rotw">rekenen</span><span class="caret" aria-hidden="true"></span></span><span style="display:block">in Rotterdam en online</span></h1>
+    <p class="sub">1-op-1 privéles, kleine groepslessen en CITO-training voor de basisschool en de middelbare school. Na elke les krijg je als ouder een korte terugkoppeling.</p>
+    <div class="btns">
+      <a class="btn btn-fill pulse shine" href="#kiezer">Plan een gratis proefles</a>
+      <a class="btn btn-line js-wa-hero" href="https://wa.me/31686017402"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>App ons direct</a>
+    </div>
+    <div class="trust">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="#00CFA5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Docenten met hbo/wo-opleiding</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="#00CFA5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Ook in het weekend en in vakanties</span>
+    </div>
+    <div class="quick">
+      <p id="qlabel">Waar heeft je kind hulp bij?</p>
+      <div class="row" role="group" aria-labelledby="qlabel">
+        <button class="qchip" type="button" data-vak="Rekenen">Rekenen</button><button class="qchip" type="button" data-vak="Wiskunde">Wiskunde</button><button class="qchip" type="button" data-vak="Begrijpend lezen">Begrijpend lezen</button><button class="qchip" type="button" data-vak="Spelling">Spelling</button><button class="qchip" type="button" data-vak="Nederlands">Nederlands</button><button class="qchip" type="button" data-vak="Engels">Engels</button><button class="qchip" type="button" data-vak="Studievaardigheden">Leren leren</button>
+      </div>
+    </div>
+  </div>
+  <div class="stage" id="stage" aria-hidden="true">
+    <svg class="scene" viewBox="0 0 420 380">
+      <ellipse class="blob" cx="210" cy="190" rx="160" ry="168" fill="#38B6FF"/>
+      <g class="orbit"><circle cx="210" cy="190" r="186" fill="none" stroke="#38B6FF" stroke-width="2" stroke-dasharray="3 12" stroke-linecap="round" opacity=".7"/><circle cx="396" cy="190" r="7" fill="#00CFA5"/><circle cx="24" cy="190" r="5" fill="#FFB300"/></g>
+      <g transform="rotate(-6 210 190)">
+        <rect x="128" y="62" width="196" height="254" rx="14" fill="#004AAD" opacity=".18" transform="translate(8 10)"/>
+        <rect x="128" y="62" width="196" height="254" rx="14" fill="#fff"/>
+        <g stroke="#cfe8ff" stroke-width="1.5"><path d="M146 104h160M146 148h160M146 192h160M146 236h160M146 280h160"/></g>
+        <path d="M138 70v238" stroke="#ff8a8a" stroke-width="1.5" opacity=".5"/>
+        <rect x="150" y="80" width="78" height="10" rx="5" fill="#004AAD"/><rect x="234" y="80" width="30" height="10" rx="5" fill="#38B6FF"/>
+        <g fill="none" stroke="#004AAD" stroke-width="3.2" stroke-linecap="round">
+          <path d="M120 84h16M120 108h16M120 132h16M120 156h16M120 180h16M120 204h16M120 228h16M120 252h16M120 276h16M120 300h16"/>
+        </g>
+        <g fill="none" stroke="#0A2A4D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path class="w w1" pathLength="1" d="M150 124c6-10 10-10 14 0s8 10 14 0 8-10 14 0 8 10 14 0 8-10 14 0 8 10 14 0 8-10 14 0 8 10 14 0"/>
+          <path class="w w2" pathLength="1" d="M150 168c6-10 10-10 14 0s8 10 14 0 8-10 14 0 8 10 14 0 8-10 14 0 8 10 14 0 8-10 14 0 8 10 14 0"/>
+          <path class="w w3" pathLength="1" d="M150 212c6-10 10-10 14 0s8 10 14 0 8-10 14 0 8 10 14 0 8-10 14 0 8 10 14 0 8-10 14 0 8 10 14 0"/>
+        </g>
+        <g fill="none" stroke="#00CFA5" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+          <path class="chk c1" pathLength="1" d="M280 122l7 8 15-17"/>
+          <path class="chk c2" pathLength="1" d="M280 166l7 8 15-17"/>
+          <path class="chk c3" pathLength="1" d="M280 210l7 8 15-17"/>
+        </g>
+        <g class="pencil">
+          <polygon points="0,0 3,-13 13,-3" fill="#f3d6a0"/><polygon points="0,0 1.2,-5 5,-1.2" fill="#0A2A4D"/>
+          <polygon points="3,-13 13,-3 58,-48 48,-58" fill="#FFB300"/><polygon points="8,-8 53,-53 48,-58 3,-13" fill="#ffc94d"/>
+          <polygon points="48,-58 58,-48 64,-54 54,-64" fill="#004AAD"/><polygon points="54,-64 64,-54 70,-60 60,-70" fill="#38B6FF"/>
+        </g>
+        <g class="burst" stroke="#FFB300" stroke-width="4" stroke-linecap="round"><line pathLength="1" x1="250" y1="236" x2="236" y2="222"/><line pathLength="1" x1="282" y1="228" x2="282" y2="208"/><line pathLength="1" x1="314" y1="236" x2="328" y2="222"/><line pathLength="1" x1="322" y1="268" x2="342" y2="268"/></g>
+        <g class="stamp">
+          <rect x="232" y="240" width="96" height="70" rx="12" fill="#004AAD"/>
+          <text x="243" y="294" font-family="Poppins,Arial,sans-serif" font-weight="800" font-size="44" fill="#fff">10</text>
+          <path d="M303 262v26M290 275h26" stroke="#38B6FF" stroke-width="8" stroke-linecap="round"/>
+        </g>
+      </g>
+    </svg>
+    <div class="sym" data-depth="0.35" style="left:-2%;top:6%;color:#004AAD;font-size:44px"><span style="--d:5s">+</span></div>
+    <div class="sym" data-depth="-0.25" style="right:2%;top:2%;color:#00CFA5;font-size:40px"><span style="--d:6.5s">&times;</span></div>
+    <div class="sym" data-depth="0.5" style="left:4%;bottom:10%;color:#FFB300;font-size:46px"><span style="--d:7s">&divide;</span></div>
+    <div class="sym" data-depth="-0.4" style="right:-2%;bottom:30%;color:#004AAD;font-size:30px"><span style="--d:5.5s">abc</span></div>
+    <div class="sym" data-depth="0.2" style="left:44%;top:-4%;color:#00A3FF;font-size:34px"><span style="--d:6s">=</span></div>
+    <div class="sym" data-depth="-0.3" style="left:-4%;top:46%;color:#00A3FF;font-size:32px"><span style="--d:8s">?</span></div>
+    <div class="sym" data-depth="0.45" style="right:20%;bottom:-3%;color:#00CFA5;font-size:34px"><span style="--d:6.8s">&frac12;</span></div>
+  </div>
+</div>
+</div>
+<div class="band" aria-hidden="true"><div class="track" id="track"><span>Rekenen</span><span>Wiskunde</span><span>Begrijpend lezen</span><span>Spelling</span><span>Nederlands</span><span>Engels</span><span>Studievaardigheden</span><span>CITO-training groep 6 t/m 8</span><span>Rotterdam en online</span></div></div>
+<div class="facts"><div class="wrap"><div class="grid">
+  <div class="fact rv"><b><span class="cnt" data-to="90">90</span><small>min</small></b><span>per privéles-sessie in de pakketten</span></div>
+  <div class="fact rv d1"><b><span class="cnt" data-to="7">7</span></b><span>vakken, van rekenen tot Engels</span></div>
+  <div class="fact rv d2"><b>4&ndash;<span class="cnt" data-to="5">5</span></b><span>leerlingen per groepsles</span></div>
+  <div class="fact rv d3"><b>&euro;<span class="cnt" data-to="0">0</span></b><span>inschrijfkosten</span></div>
+</div></div></div>
+
+<section class="pick" id="kiezer">
+  <div class="wrap">
+    <span class="kicker">Gratis proefles</span>
+    <h2>Plan een <em>gratis proefles</em> in een paar tikken</h2>
+    <p class="lead">Kies wat je kind nodig heeft en wanneer het uitkomt. Je aanvraag staat meteen klaar in WhatsApp of in je mail. Vrijblijvend en zonder verplichtingen.</p>
+    <div class="grid"><div class="steps-k">
+      <div class="step"><h3>Wat zoek je?</h3><div class="opts" data-group="soort">
+        <button class="opt" type="button" data-v="1-op-1 privéles" aria-pressed="true"><b>Privéles</b><small>1-op-1, volle aandacht</small></button>
+        <button class="opt" type="button" data-v="Groepsles" aria-pressed="false"><b>Groepsles</b><small>Kleine groep, 4&ndash;5 leerlingen</small></button>
+        <button class="opt" type="button" data-v="CITO-training" aria-pressed="false"><b>CITO-training</b><small>Voor groep 6, 7 en 8</small></button>
+        <button class="opt" type="button" data-v="Weet ik nog niet, graag advies" aria-pressed="false"><b>Weet ik nog niet</b><small>Ik wil eerst advies</small></button>
+      </div></div>
+      <div class="step" id="st-vak"><h3>Welk vak? <i>(meer kan)</i></h3><div class="opts chips" id="vakken">
+        <button class="opt" type="button" data-v="Rekenen" aria-pressed="false">Rekenen</button>
+        <button class="opt" type="button" data-v="Wiskunde" aria-pressed="false">Wiskunde</button>
+        <button class="opt" type="button" data-v="Begrijpend lezen" aria-pressed="false">Begrijpend lezen</button>
+        <button class="opt" type="button" data-v="Spelling" aria-pressed="false">Spelling</button>
+        <button class="opt" type="button" data-v="Nederlands" aria-pressed="false">Nederlands</button>
+        <button class="opt" type="button" data-v="Engels" aria-pressed="false">Engels</button>
+        <button class="opt" type="button" data-v="Studievaardigheden" aria-pressed="false">Studievaardigheden</button>
+      </div></div>
+      <div class="step hide" id="st-cito"><h3>Wat wordt behandeld?</h3><p class="hint">De CITO-training behandelt rekenen, begrijpend lezen en taalverzorging. Ook geschikt voor de Doorstroomtoets.</p></div>
+      <div class="step"><h3>In welke klas zit je kind?</h3>
+        <div class="opts chips" data-group="school" id="school">
+          <button class="opt" type="button" data-v="Basisschool" aria-pressed="true">Basisschool</button>
+          <button class="opt" type="button" data-v="Middelbare school" aria-pressed="false">Middelbare school</button>
+        </div>
+        <label class="sr" for="klas">Groep of klas</label>
+        <select class="sel" id="klas"></select>
+        <div class="opts chips subrow hide" data-group="niveau" id="niveau">
+          <button class="opt" type="button" data-v="vmbo" aria-pressed="false">vmbo</button>
+          <button class="opt" type="button" data-v="havo" aria-pressed="false">havo</button>
+          <button class="opt" type="button" data-v="vwo" aria-pressed="false">vwo</button>
+          <button class="opt" type="button" data-v="" aria-pressed="true">Niveau zeg ik later</button>
+        </div>
+      </div>
+      <div class="step" id="st-waar"><h3>Waar?</h3><div class="opts chips" data-group="waar">
+        <button class="opt" type="button" data-v="Op de leslocatie in Rotterdam" aria-pressed="false">Op locatie in Rotterdam</button>
+        <button class="opt" type="button" data-v="Online" aria-pressed="false">Online</button>
+        <button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button>
+      </div></div>
+      <div class="step"><h3>Wanneer komt het uit?</h3><div class="opts chips" data-group="wanneer">
+        <button class="opt" type="button" data-v="Doordeweeks na school" aria-pressed="false">Doordeweeks na school</button>
+        <button class="opt" type="button" data-v="In het weekend" aria-pressed="false">In het weekend</button>
+        <button class="opt" type="button" data-v="In de schoolvakantie" aria-pressed="false">In de schoolvakantie</button>
+        <button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button>
+      </div></div>
+      <div class="step"><h3>Voornaam van je kind <i>(optioneel)</i></h3><label class="sr" for="naam">Voornaam van je kind</label><input class="txt" id="naam" type="text" autocomplete="off" maxlength="40" placeholder="Voornaam"></div>
+    </div><aside class="summary" aria-live="polite">
+      <div class="k">Jouw aanvraag</div>
+      <h3>Gratis proefles</h3>
+      <dl><dt>Soort</dt><dd id="s-soort">&ndash;</dd><dt>Vak</dt><dd id="s-vak">&ndash;</dd><dt>Klas</dt><dd id="s-klas">&ndash;</dd><dt>Waar</dt><dd id="s-waar">&ndash;</dd><dt>Wanneer</dt><dd id="s-wanneer">&ndash;</dd></dl>
+      <a class="btn btn-fill js-ask" href="https://wa.me/31686017402"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>Verstuur via WhatsApp</a>
+      <a class="btn btn-line js-mail" href="mailto:info@klaarvoordetoetsen.nl">Liever per e-mail</a>
+      <div class="note">Je bericht gaat naar 06 86 01 74 02. Bellen kan ook: <a href="tel:+31686017402">06 86 01 74 02</a></div>
+    </aside></div>
+  </div>
+</section>
+
+<section class="offer" id="aanbod">
+  <div class="wrap">
+    <span class="kicker rv">Wat we doen</span>
+    <h2 class="rv">Begeleiding die past bij <em>jouw kind</em></h2>
+    <p class="lead rv">Voor leerlingen van de basisschool en de middelbare school. Toetsvoorbereiding, studiebegeleiding en maatwerk, afgestemd op leerdoelen, vakken en persoonlijkheid.</p>
+    <div class="offer-g">
+      <article class="ocard rv">
+        <div class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle class="bob1" cx="18" cy="15" r="7" fill="#004AAD"/><path class="bob1" d="M6 40c0-8 5-13 12-13s12 5 12 13" fill="#004AAD"/><circle class="bob2" cx="35" cy="19" r="5.5" fill="#38B6FF"/><path class="bob2" d="M27 40c0-6 3.5-10 8-10s8 4 8 10" fill="#38B6FF"/></svg></div>
+        <h3>1-op-1 privéles</h3>
+        <p>Volle aandacht, op het tempo van je kind.</p>
+        <ul><li>Vaste persoonlijke begeleider</li><li>Sessies van 90 minuten in de pakketten</li><li>Op locatie in Rotterdam of online</li></ul>
+        <a class="btn btn-line btn-sm js-pre" data-soort="1-op-1 privéles" href="#kiezer">Proefles privéles</a>
+      </article>
+      <article class="ocard rv d1">
+        <div class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle class="bob1" cx="12" cy="17" r="5" fill="#38B6FF"/><circle class="bob2" cx="24" cy="13" r="5.5" fill="#004AAD"/><circle class="bob1" cx="36" cy="17" r="5" fill="#00CFA5"/><path d="M4 40c0-7 4-11 8-11s8 4 8 11M16 40c0-8 4-13 8-13s8 5 8 13M28 40c0-7 4-11 8-11s8 4 8 11" fill="none" stroke="#004AAD" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <h3>Groepslessen</h3>
+        <p>Leren in een kleine groep: persoonlijke aandacht en samenwerken.</p>
+        <ul><li>Kleine groep van 4&ndash;5 leerlingen</li><li>Interactief lesmateriaal</li><li>Eén keer per week les</li></ul>
+        <a class="btn btn-line btn-sm js-pre" data-soort="Groepsles" href="#kiezer">Proefles groepsles</a>
+      </article>
+      <article class="ocard rv d2">
+        <div class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="6" width="30" height="36" rx="5" fill="#fff" stroke="#004AAD" stroke-width="3"/><path d="M15 17l3 3 6-6M15 28l3 3 6-6" fill="none" stroke="#00CFA5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 18h6M28 29h6" stroke="#38B6FF" stroke-width="3" stroke-linecap="round"/><g class="spinp"><circle cx="38" cy="38" r="7" fill="#FFB300"/><path d="M38 34v8M34 38h8" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></g></svg></div>
+        <h3>CITO-training</h3>
+        <p>De Cito 2-daagse voor groep 6, 7 en 8: twee intensieve maar rustige dagen.</p>
+        <ul><li>Rekenen, begrijpend lezen en taalverzorging</li><li>Oefenboek voor thuis</li><li>Persoonlijk voortgangsrapport</li></ul>
+        <a class="btn btn-line btn-sm" href="#cito">Meer over de training</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="waarom">
+  <div class="wrap">
+    <span class="kicker rv">Onze aanpak</span>
+    <h2 class="rv">Elk kind is <em>anders</em></h2>
+    <p class="lead rv">Daarom sluit de begeleiding aan op wat jouw kind nodig heeft: met deskundigheid, oprechte aandacht en een veilige, rustige leeromgeving.</p>
+    <div class="why-g">
+      <div class="wcard rv"><svg viewBox="0 0 40 40" fill="none" stroke="#004AAD" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15l16-8 16 8-16 8z"/><path d="M11 19v8c0 3 4 5 9 5s9-2 9-5v-8"/><path d="M36 15v9"/></svg><h3>Hoogopgeleide docenten</h3><p>De docenten hebben een hbo- of wo-opleiding.</p></div>
+      <div class="wcard rv d1"><svg viewBox="0 0 40 40" fill="none" stroke="#004AAD" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="5" width="28" height="30" rx="4"/><path d="M12 14h16M12 20h16M12 26h9"/></svg><h3>Update na elke les</h3><p>Je krijgt als ouder na elke les een korte terugkoppeling: wat is behandeld, hoe het gaat en waar aandacht nodig is.</p></div>
+      <div class="wcard rv d2"><svg viewBox="0 0 40 40" fill="none" stroke="#004AAD" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="8" width="30" height="27" rx="4"/><path d="M5 16h30M13 4v8M27 4v8"/><path d="M13 23h4M23 23h4M13 29h4"/></svg><h3>Flexibel plannen</h3><p>Lestijden in overleg, ook buiten schooltijd, in het weekend en in de schoolvakanties.</p></div>
+      <div class="wcard rv d3"><svg viewBox="0 0 40 40" fill="none" stroke="#004AAD" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 36s-11-9-11-18a11 11 0 0 1 22 0c0 9-11 18-11 18z"/><circle cx="20" cy="18" r="4"/></svg><h3>Op locatie of online</h3><p>Les op de leslocatie in Rotterdam of online, wat het beste past.</p></div>
+    </div>
+    <div class="motto rv" id="motto">
+      <p class="l1">Meer dan klaar voor de toets.</p>
+      <p><span class="l2">Klaar voor de toekomst.<svg viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 12c60-8 130-10 200-6s70 4 92 1" fill="none" stroke="#38B6FF" stroke-width="6" stroke-linecap="round"/></svg></span></p>
+      <small>De missie van Klaar voor de Toetsen</small>
+    </div>
+  </div>
+</section>
+
+<section class="cito" id="cito">
+  <div class="floaty" data-depth="0.25" style="left:-30px;top:40px" aria-hidden="true">+</div>
+  <div class="floaty" data-depth="-0.2" style="right:-20px;bottom:40px" aria-hidden="true">10</div>
+  <div class="wrap grid">
+    <div>
+      <span class="kicker rv">CITO-training</span>
+      <h2 class="rv">Met rust en vertrouwen <em>de CITO-toets in</em></h2>
+      <p class="lead rv">De Cito 2-daagse bereidt leerlingen uit groep 6, 7 en 8 in twee intensieve maar rustige dagen voor op de CITO-toets. Ook geschikt voor de Doorstroomtoets. In kleine groepjes, in Rotterdam.</p>
+      <ul class="getlist rv">
+        <li><span><b>Gerichte oefeningen</b> met echte CITO-vraagtypen en slimme aanpakken</span></li>
+        <li><span><b>Kleine groepen</b> met persoonlijke aandacht</span></li>
+        <li><span><b>CITO-oefenboek</b> om thuis verder te oefenen</span></li>
+        <li><span><b>Persoonlijk voortgangsrapport</b> met niveau, sterke punten en aandachtspunten</span></li>
+        <li><span><b>Certificaat</b> van afronding</span></li>
+      </ul>
+      <div class="btns rv"><a class="btn btn-fill js-wa-cito" href="https://wa.me/31686017402">Vraag de volgende data</a><a class="btn btn-line js-pre" data-soort="CITO-training" href="#kiezer">Meld je kind aan</a></div>
+    </div>
+    <div class="sheet rv" id="sheet">
+      <h3>Wat wordt behandeld?</h3>
+      <p class="meta">Cito 2-daagse &middot; groep 6 t/m 8</p>
+      <div class="item"><span class="box"><svg viewBox="0 0 42 42" aria-hidden="true"><path pathLength="1" d="M10 22l7 7 16-18" fill="none" stroke="#00CFA5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Rekenen <em>Wordt behandeld</em></b><span>Getallen, verhoudingen, meten en slimme rekenstrategieën.</span></div></div>
+      <div class="item"><span class="box"><svg viewBox="0 0 42 42" aria-hidden="true"><path pathLength="1" d="M10 22l7 7 16-18" fill="none" stroke="#00CFA5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Begrijpend lezen <em>Wordt behandeld</em></b><span>Hoofdgedachte, verbanden leggen en CITO-vraagstrategieën.</span></div></div>
+      <div class="item"><span class="box"><svg viewBox="0 0 42 42" aria-hidden="true"><path pathLength="1" d="M10 22l7 7 16-18" fill="none" stroke="#00CFA5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Taalverzorging <em>Wordt behandeld</em></b><span>Spelling, grammatica en zinsopbouw volgens CITO-niveau.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="prices" id="tarieven">
+  <div class="wrap">
+    <span class="kicker rv">Tarieven</span>
+    <h2 class="rv">Duidelijke pakketten, <em>maandelijks opzegbaar</em></h2>
+    <p class="lead rv">Geen inschrijfkosten. Begin met een gratis proefles en kies daarna wat past.</p>
+    <div class="toggle rv" id="toggle" role="tablist" aria-label="Soort les"><span class="pill" aria-hidden="true"></span><button type="button" role="tab" aria-selected="true" aria-controls="p-prive" id="t-prive">Privéles 1-op-1</button><button type="button" role="tab" aria-selected="false" aria-controls="p-groep" id="t-groep">Groepsles</button></div>
+    <div class="plans show" id="p-prive" role="tabpanel" aria-labelledby="t-prive">
+      <div class="plan"><h3>Starter</h3><p class="what">Voor een vliegende start</p><div class="price">&euro;199,99 <small>p.m.</small></div><div class="ph">&euro;33,33 per uur</div><ul><li>6 uur privéles per maand</li><li>1x per week les, 90 minuten</li><li>Flexibele planning</li><li>Vaste persoonlijke begeleider</li><li>Privéles op locatie in Rotterdam</li></ul><a class="btn btn-fill js-pre" data-soort="1-op-1 privéles" href="#kiezer">Plan je gratis proefles</a><p class="fine">Geen inschrijfkosten, maandelijks opzegbaar</p></div>
+      <div class="plan mb"><h3>Meesterbrein</h3><p class="what">Twee keer per week les</p><div class="price">&euro;349,99 <small>p.m.</small></div><div class="ph">&euro;29,17 per uur</div><ul><li>12 uur privéles per maand</li><li>2x per week les, 90 minuten</li><li>Flexibele planning</li><li>Vaste persoonlijke begeleider</li><li>Persoonlijk leerplan en ouderfeedback</li></ul><a class="btn btn-fill js-pre" data-soort="1-op-1 privéles" href="#kiezer">Plan je gratis proefles</a><p class="fine">Geen inschrijfkosten, maandelijks opzegbaar</p></div>
+      <div class="plan ll"><h3>Losse les</h3><p class="what">Eén keer, zonder pakket</p><div class="price">&euro;35</div><div class="ph">60 minuten privéles</div><ul><li>Los af te nemen, zonder pakket</li></ul><a class="btn btn-line js-wa-los" href="https://wa.me/31686017402">Vraag een losse les aan</a></div>
+    </div>
+    <div class="plans" id="p-groep" role="tabpanel" aria-labelledby="t-groep" hidden>
+      <div class="plan"><h3>Starter</h3><p class="what">Betaalbare leeromgeving</p><div class="price">&euro;69,99 <small>p.m.</small></div><div class="ph">&euro;17,50 per uur</div><ul><li>4 uur groepsles per maand</li><li>1x per week les, 60 minuten</li><li>Kleine groep (4&ndash;5 leerlingen)</li><li>Professionele begeleiding</li></ul><a class="btn btn-fill js-pre" data-soort="Groepsles" href="#kiezer">Plan je gratis proefles</a><p class="fine">Geen inschrijfkosten, maandelijks opzegbaar</p></div>
+      <div class="plan mb"><span class="badge">Aangeraden</span><h3>Meesterbrein</h3><p class="what">Intensieve begeleiding</p><div class="price">&euro;99,99 <small>p.m.</small></div><div class="ph">&euro;12,50 per uur</div><ul><li>8 uur groepsles per maand</li><li>1x per week les, 120 minuten</li><li>Kleine groep (4&ndash;5 leerlingen)</li><li>Snellere groei en diepere kennis</li></ul><a class="btn btn-fill js-pre" data-soort="Groepsles" href="#kiezer">Plan je gratis proefles</a><p class="fine">Geen inschrijfkosten, maandelijks opzegbaar</p></div>
+      <div class="plan ll"><h3>Losse les</h3><p class="what">Eén keer, zonder pakket</p><div class="price">&euro;35</div><div class="ph">60 minuten privéles</div><ul><li>Los af te nemen, zonder pakket</li></ul><a class="btn btn-line js-wa-los" href="https://wa.me/31686017402">Vraag een losse les aan</a></div>
+    </div>
+    <p class="pnote rv">Opzeggen kan per maand, met een opzegtermijn van minstens 14 dagen voor de nieuwe maand. Zie de <a href="https://klaarvoordetoetsen.nl/#voorwaarden" target="_blank" rel="noopener">algemene voorwaarden</a>.</p>
+  </div>
+</section>
+
+<section class="reviews" id="ervaringen">
+  <div class="wrap">
+    <span class="kicker rv">Ervaringen</span>
+    <h2 class="rv">Wat <em>ouders</em> schrijven</h2>
+    <div class="rgrid">
+      <blockquote class="quote rv"><p>Mijn dochter had moeite met rekenen. Dankzij de begeleiding is zij in korte tijd enorm vooruit gegaan. De aanpak is professioneel én persoonlijk.</p><footer><i aria-hidden="true">F</i><span><b>Fati</b>Ouder van een leerling in groep 7</span></footer></blockquote>
+      <blockquote class="quote rv d1"><p>De docenten zijn vriendelijk en leggen alles duidelijk uit. Mijn kind begrijpt de stof veel beter en heeft weer plezier in leren.</p><footer><i aria-hidden="true">M</i><span><b>Maya</b>Ouder van een brugklasleerling</span></footer></blockquote>
+      <blockquote class="quote rv d2"><p>Er wordt echt de tijd genomen. Mijn dochter voelt zich veel zekerder tijdens toetsen. Dit heeft haar enorm geholpen.</p><footer><i aria-hidden="true">M</i><span><b>Maryam</b>Ouder van een havo-leerling</span></footer></blockquote>
+    </div>
+    <p class="src rv">Ervaringen zoals gepubliceerd op klaarvoordetoetsen.nl. Lees ook de <a href="https://www.google.com/search?q=Klaar+voor+de+Toetsen+Bijles+CITO-training+Rotterdam+Reviews" target="_blank" rel="noopener">reviews op Google</a>.</p>
+  </div>
+</section>
+
+<section class="how" id="werkwijze">
+  <div class="wrap">
+    <span class="kicker rv">Zo werkt het</span>
+    <h2 class="rv">In drie stappen <em>van start</em></h2>
+    <p class="lead rv">Geen gedoe, geen inschrijfkosten.</p>
+    <ol class="how-l" id="howl">
+      <li class="rv"><h3>Kies wat je kind nodig heeft</h3><p>Soort les, vak, klas en wanneer het uitkomt.</p></li>
+      <li class="rv d1"><h3>Stuur je aanvraag</h3><p>Je bericht staat klaar in WhatsApp of in je mail. Eén tik op verzenden.</p></li>
+      <li class="rv d2"><h3>Gratis proefles</h3><p>Maak kennis met de aanpak en de docenten, vrijblijvend en zonder verplichtingen.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" id="vragen">
+  <div class="wrap">
+    <span class="kicker rv">Vragen</span>
+    <h2 class="rv">Veelgestelde vragen</h2>
+    <details><summary>Kan ik eerst een proefles volgen?</summary><p>Ja. De proefles is gratis en vrijblijvend. Zo ervaar je of de aanpak en de begeleiding bij je kind passen, zonder verplichtingen. <a href="#kiezer">Plan de proefles</a>.</p></details>
+    <details><summary>Welke vakken zijn er?</summary><p>Rekenen, wiskunde, begrijpend lezen, spelling, Nederlands, Engels en studievaardigheden. Voor leerlingen van de basisschool en de middelbare school.</p></details>
+    <details><summary>Hoe lang duurt een bijles?</summary><p>In de privéles-pakketten duurt een sessie 90 minuten: tijd voor uitleg, oefenen en terugkijken. In overleg kan de duur worden aangepast. Een losse les is 60 minuten.</p></details>
+    <details><summary>Hoor ik als ouder hoe het gaat?</summary><p>Ja. Na elke les krijg je een korte terugkoppeling: wat is behandeld, hoe je kind zich ontwikkelt en waar extra aandacht nodig is. Wil je een extra voortgangsgesprek met de docent, dan kun je dat aanvragen.</p></details>
+    <details><summary>Waar vinden de lessen plaats?</summary><p>Op de leslocatie aan de Clemmensstraat 111 in Rotterdam. Online les volgen kan ook.</p></details>
+    <details><summary>Hoe flexibel is de planning?</summary><p>De lestijden worden in overleg afgestemd, ook buiten schooltijd. Les in het weekend of in de schoolvakantie kan ook.</p></details>
+    <details><summary>Zijn de pakketten maandelijks opzegbaar?</summary><p>Ja, er zijn geen inschrijfkosten en je zit nergens langdurig aan vast. De opzegtermijn is minstens 14 dagen voor de nieuwe maand (zie de <a href="https://klaarvoordetoetsen.nl/#voorwaarden" target="_blank" rel="noopener">algemene voorwaarden</a>).</p></details>
+    <details><summary>Wat neemt mijn kind mee?</summary><p>Een schrift en een pen. Basisschoolleerlingen kunnen het lesmateriaal op de locatie gebruiken.</p></details>
+  </div>
+</section>
+
+<section class="loc" id="contact">
+  <div class="wrap">
+    <span class="kicker rv">Contact</span>
+    <h2 class="rv">Vragen? <em>Stuur een berichtje</em></h2>
+    <p class="lead rv">Vragen over de lessen of de CITO-training? App, bel of mail. Je kunt ook direct een <a href="#kiezer">gratis proefles plannen</a>.</p>
+    <div class="grid">
+      <div class="lcard rv">
+        <div class="lrow"><svg viewBox="0 0 24 24" fill="none" stroke="#004AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-7-6-7-12a7 7 0 0 1 14 0c0 6-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>Leslocatie</b><a href="https://www.google.com/maps/search/?api=1&amp;query=Clemmensstraat+111+3082+CE+Rotterdam" target="_blank" rel="noopener">Clemmensstraat 111, 3082 CE Rotterdam</a></div></div>
+        <div class="lrow"><svg viewBox="0 0 24 24" fill="none" stroke="#004AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><div><b>Telefoon en WhatsApp</b><a href="tel:+31686017402">06 86 01 74 02</a></div></div>
+        <div class="lrow"><svg viewBox="0 0 24 24" fill="none" stroke="#004AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><div><b>E-mail</b><a href="mailto:info@klaarvoordetoetsen.nl">info@klaarvoordetoetsen.nl</a></div></div>
+        <div class="lrow"><svg viewBox="0 0 24 24" fill="none" stroke="#004AAD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#004AAD"/></svg><div><b>Instagram</b><a href="https://www.instagram.com/klaarvoordetoetsen/" target="_blank" rel="noopener">@klaarvoordetoetsen</a></div></div>
+        <div class="btns"><a class="btn btn-fill js-wa-plain" href="https://wa.me/31686017402">App ons</a><a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=Clemmensstraat+111+3082+CE+Rotterdam" target="_blank" rel="noopener">Plan je route</a></div>
+      </div>
+      <div class="pinmap rv" aria-hidden="true">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><path d="M-10 210C80 190 120 240 200 150S330 90 410 110" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round"/><path class="road" d="M-10 210C80 190 120 240 200 150S330 90 410 110" fill="none" stroke="#38B6FF" stroke-width="3"/><path d="M120 -10C140 80 180 120 200 150s20 120 10 170" fill="none" stroke="#fff" stroke-width="12"/><circle class="ring" cx="200" cy="150" r="16" fill="#38B6FF"/><g class="pin"><path d="M200 152c-14-16-22-26-22-38a22 22 0 0 1 44 0c0 12-8 22-22 38z" fill="#004AAD"/><circle cx="200" cy="114" r="8" fill="#fff"/></g></svg>
+        <div class="lbl">Clemmensstraat 111<br>Rotterdam</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="slot">
+  <div class="confetti" aria-hidden="true" id="confetti"></div>
+  <div class="wrap" style="position:relative">
+    <h2 class="rv">Geef je kind een voorsprong met de juiste begeleiding</h2>
+    <p class="lead rv">Plan een gratis proefles en ontdek hoe je kind wordt ondersteund in groei, zelfvertrouwen en ontwikkeling.</p>
+    <div class="btns rv"><a class="btn btn-fill" href="#kiezer">Plan een gratis proefles</a><a class="btn btn-line js-wa-plain" href="https://wa.me/31686017402">App ons direct</a></div>
+  </div>
+</section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <div><img src="logo-light.svg" alt="Klaar voor de Toetsen" width="257" height="120"><p>Bijles, privéles, groepslessen en CITO-training in Rotterdam en online.</p></div>
+    <div><h4>Contact</h4><p><a class="js-wa-plain" href="https://wa.me/31686017402">WhatsApp 06 86 01 74 02</a><br><a href="tel:+31686017402">Bel 06 86 01 74 02</a><br><a href="mailto:info@klaarvoordetoetsen.nl">info@klaarvoordetoetsen.nl</a><br><a href="https://www.instagram.com/klaarvoordetoetsen/" target="_blank" rel="noopener">Instagram @klaarvoordetoetsen</a></p></div>
+    <div><h4>Leslocatie</h4><p>Clemmensstraat 111<br>3082 CE Rotterdam<br>KvK 96469072<br><a href="https://klaarvoordetoetsen.nl/#voorwaarden" target="_blank" rel="noopener">Algemene voorwaarden</a></p></div>
+    <div class="fine"><span>&copy; 2026 Klaar voor de Toetsen</span><span>Website door <a href="https://mohamedia.nl">Mohamedia</a></span></div>
+  </div>
+</footer>
+<div class="float" id="float"><a class="btn btn-fill" href="#kiezer">Plan een gratis proefles</a><a class="btn wa js-wa-plain" href="https://wa.me/31686017402" aria-label="App Klaar voor de Toetsen via WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg></a></div>
+<script>
+const WA = "31686017402", MAIL = "info@klaarvoordetoetsen.nl";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const ext = (a, href) => { a.href = href; if (href.startsWith("https")) { a.target = "_blank"; a.rel = "noopener"; } };
+
+/* ---------- kiezer ---------- */
+const GROEP = ["Groep 1", "Groep 2", "Groep 3", "Groep 4", "Groep 5", "Groep 6", "Groep 7", "Groep 8"];
+const KLAS = ["Klas 1 (brugklas)", "Klas 2", "Klas 3", "Klas 4", "Klas 5", "Klas 6"];
+const st = { soort: "", vak: [], school: "", klas: "", niveau: "", waar: "", wanneer: "", naam: "" };
+const pressed = g => { const b = $(`[data-group="${g}"] .opt[aria-pressed="true"]`); return b ? b.dataset.v : ""; };
+const setPressed = (g, v) => $$(`[data-group="${g}"] .opt`).forEach(o => o.setAttribute("aria-pressed", o.dataset.v === v));
+function fillKlas() {
+  const cito = pressed("soort") === "CITO-training", mid = pressed("school") === "Middelbare school", sel = $("#klas"), cur = sel.value;
+  const list = mid ? KLAS : (cito ? GROEP.slice(5) : GROEP);
+  sel.innerHTML = `<option value="">Kies ${mid ? "de klas" : "de groep"}</option>` + list.map(k => `<option${k === cur ? " selected" : ""}>${k}</option>`).join("");
+}
+function setText(id, v) { const el = $(id); if (el.textContent !== v) { el.textContent = v; el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash"); } }
+function message() {
+  const cito = st.soort === "CITO-training";
+  const L = [cito ? "Hoi! Ik wil mijn kind graag aanmelden voor de CITO-training." : "Hoi! Ik wil graag een gratis proefles plannen."];
+  if (st.naam) L.push(`Naam van mijn kind: ${st.naam}`);
+  if (!cito) L.push(`Soort les: ${st.soort}`);
+  if (!cito && st.vak.length) L.push(`Vak: ${st.vak.join(", ")}`);
+  L.push(`Klas: ${klasText()}`);
+  if (!cito) L.push(`Waar: ${st.waar.toLowerCase()}`);
+  L.push(`Wanneer: ${st.wanneer.toLowerCase()}`);
+  L.push(cito ? "Wanneer zijn de volgende data?" : "Wanneer is er plek?");
+  return L.join("\n");
+}
+function klasText() {
+  if (!st.klas) return st.school === "Middelbare school" ? "middelbare school" : "basisschool";
+  return st.klas + (st.school === "Middelbare school" && st.niveau ? `, ${st.niveau}` : "") + (st.school === "Basisschool" ? " (basisschool)" : "");
+}
+function render() {
+  st.soort = pressed("soort"); st.school = pressed("school"); st.niveau = pressed("niveau");
+  st.waar = pressed("waar"); st.wanneer = pressed("wanneer"); st.klas = $("#klas").value; st.naam = $("#naam").value.trim();
+  st.vak = $$('#vakken .opt[aria-pressed="true"]').map(b => b.dataset.v);
+  const cito = st.soort === "CITO-training";
+  $("#st-vak").classList.toggle("hide", cito); $("#st-cito").classList.toggle("hide", !cito); $("#st-waar").classList.toggle("hide", cito);
+  $('[data-group="school"] [data-v="Middelbare school"]').disabled = cito;
+  $("#niveau").classList.toggle("hide", st.school !== "Middelbare school");
+  setText("#s-soort", st.soort);
+  setText("#s-vak", cito ? "Rekenen, begrijpend lezen, taalverzorging" : (st.vak.join(", ") || "Nog niet gekozen"));
+  setText("#s-klas", klasText().replace(/^./, c => c.toUpperCase()));
+  setText("#s-waar", cito ? "Rotterdam" : st.waar);
+  setText("#s-wanneer", st.wanneer);
+  const m = message();
+  $$(".js-ask").forEach(a => ext(a, wa(m)));
+  $$(".js-mail").forEach(a => a.href = `mailto:${MAIL}?subject=${encodeURIComponent(cito ? "Aanmelding CITO-training" : "Aanvraag gratis proefles")}&body=${encodeURIComponent(m)}`);
+}
+$$(".opts[data-group]").forEach(g => g.addEventListener("click", e => {
+  const b = e.target.closest(".opt"); if (!b || b.disabled) return;
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b));
+  if (g.dataset.group === "soort") { if (b.dataset.v === "CITO-training") setPressed("school", "Basisschool"); fillKlas(); }
+  if (g.dataset.group === "school") { $("#klas").value = ""; fillKlas(); }
+  render();
+}));
+$("#vakken").addEventListener("click", e => { const b = e.target.closest(".opt"); if (!b) return; b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true"); render(); });
+$("#klas").addEventListener("change", render);
+$("#naam").addEventListener("input", render);
+// snelkeuze vanuit hero en kaarten
+$$(".qchip").forEach(c => c.addEventListener("click", () => {
+  if (pressed("soort") === "CITO-training") { setPressed("soort", "1-op-1 privéles"); fillKlas(); }
+  $$("#vakken .opt").forEach(o => { if (o.dataset.v === c.dataset.vak) o.setAttribute("aria-pressed", "true"); });
+  render(); $("#kiezer").scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+}));
+$$(".js-pre").forEach(a => a.addEventListener("click", () => {
+  setPressed("soort", a.dataset.soort);
+  if (a.dataset.soort === "CITO-training") setPressed("school", "Basisschool");
+  fillKlas(); render();
+}));
+$$(".js-wa-plain").forEach(a => ext(a, wa("Hoi! Ik heb een vraag over de bijles bij Klaar voor de Toetsen.")));
+$$(".js-wa-hero").forEach(a => ext(a, wa("Hoi! Ik wil graag een gratis proefles plannen voor mijn kind. Wanneer is er plek?")));
+$$(".js-wa-cito").forEach(a => ext(a, wa("Hoi! Ik heb interesse in de Cito 2-daagse. Wanneer zijn de volgende data?")));
+$$(".js-wa-los").forEach(a => ext(a, wa("Hoi! Ik wil graag een losse privéles aanvragen. Wanneer is er plek?")));
+fillKlas(); render();
+
+/* ---------- tarieven-wissel ---------- */
+(() => { const t = $("#toggle"), bp = $("#t-prive"), bg = $("#t-groep"), pp = $("#p-prive"), pg = $("#p-groep");
+  function sw(g) { t.classList.toggle("g", g); bp.setAttribute("aria-selected", !g); bg.setAttribute("aria-selected", g);
+    const on = g ? pg : pp, off = g ? pp : pg; off.hidden = true; off.classList.remove("show"); on.hidden = false; void on.offsetWidth; on.classList.add("show"); }
+  bp.addEventListener("click", () => sw(false)); bg.addEventListener("click", () => sw(true)); })();
+
+/* ---------- typende vakken in de kop ---------- */
+(() => { const el = $("#rotw"), words = ["rekenen", "wiskunde", "begrijpend lezen", "spelling", "Nederlands", "Engels"];
+  if (reduce) return; let i = 0, n = words[0].length, del = true;
+  function tick() { const w = words[i];
+    if (del) { n--; el.textContent = w.slice(0, n); if (n <= 0) { del = false; i = (i + 1) % words.length; } setTimeout(tick, 45); }
+    else { n++; el.textContent = words[i].slice(0, n); if (n >= words[i].length) { del = true; setTimeout(tick, 2200); } else setTimeout(tick, 85); } }
+  setTimeout(tick, 2600); })();
+
+/* ---------- marquee ---------- */
+const tr = $("#track"); tr.innerHTML += tr.innerHTML;
+
+/* ---------- reveals, tellers, vinkjes ---------- */
+function count(el) { const to = +el.dataset.to, from = el.dataset.from ? +el.dataset.from : 0, t0 = performance.now(), dur = 1400;
+  if (reduce) { el.textContent = to; return; }
+  (function f(t) { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(from + (to - from) * e); if (p < 1) requestAnimationFrame(f); })(t0); }
+const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; const el = e.target; el.classList.add("in");
+  el.querySelectorAll(".cnt").forEach(count); io.unobserve(el); }), { threshold: .15, rootMargin: "0px 0px -40px 0px" });
+$$(".rv, #sheet, #motto").forEach(el => io.observe(el));
+$$(".cnt").forEach(c => { if (!reduce) c.textContent = c.dataset.from || "0"; });
+
+/* ---------- scroll: voortgang, parallax, stappenlijn, header ---------- */
+(() => { const prog = $("#prog"), bar = $("#bar"), howl = $("#howl"), syms = $$("[data-depth]"), stage = $("#stage");
+  let mx = 0, my = 0, ticking = false;
+  function upd() { ticking = false; const y = scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${h > 0 ? y / h : 0})`; bar.classList.toggle("scr", y > 10);
+    const r = howl.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight * .8 - r.top) / (r.height + innerHeight * .3)));
+    howl.style.setProperty("--p", reduce ? 1 : p.toFixed(3));
+    if (reduce) return;
+    syms.forEach(s => { const d = +s.dataset.depth, top = s.closest("section,.hero").getBoundingClientRect().top;
+      s.style.transform = `translate(${mx * d * 30}px, ${(-top * d * .35) + my * d * 30}px)`; }); }
+  const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(upd); } };
+  addEventListener("scroll", req, { passive: true }); addEventListener("resize", req);
+  if (!reduce && matchMedia("(pointer:fine)").matches) addEventListener("pointermove", e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; req(); }, { passive: true });
+  upd(); })();
+
+/* ---------- opstijgende cijfers in de slot-CTA ---------- */
+(() => { if (reduce) return; const c = $("#confetti"), chars = ["+", "10", "×", "÷", "=", "A", "?", "✓"];
+  for (let i = 0; i < 14; i++) { const s = document.createElement("span"); s.textContent = chars[i % chars.length];
+    s.style.left = (i * 7.3 % 100) + "%"; s.style.fontSize = (22 + (i * 13) % 40) + "px";
+    s.style.animationDuration = (9 + (i * 3) % 9) + "s"; s.style.animationDelay = (-(i * 1.7)) + "s"; c.appendChild(s); } })();
+
+/* ---------- zwevende CTA op mobiel ---------- */
+(() => { const fl = $("#float"); let heroOut = false, pickIn = false, endIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn && !endIn);
+  new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe($("#top"));
+  new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .1 }).observe($("#kiezer"));
+  new IntersectionObserver(([e]) => { endIn = e.isIntersecting; upd(); }, { threshold: .3 }).observe($("#slot")); })();
+</script>
+</body>
+</html>
