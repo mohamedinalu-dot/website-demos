@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>JG skin studio – huidverzorging en facials in Oud-Beijerland</title>
+<meta name="description" content="Gezichtsbehandelingen, facial cupping, huidadvies en wenkbrauwen bij JG skin studio in Oud-Beijerland. 5,0 op Google uit 15 reviews. Vraag je afspraak aan via WhatsApp.">
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f5f7;--ink:#1f2a44;--soft:#56627a;--navy:#1f2a44;--navy-h:#141c30;--berry:#a8385f;--rose:#eeb3c1;--rose-2:#fbe6eb;--dew:#d7e7ee;--card:#fff;--line:#d9e2ea;--deep:#141c30;--deep-soft:#b4c0d4;--r:16px;--display:"Outfit",system-ui,sans-serif;--sans:"Nunito Sans",system-ui,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--berry);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.demo{background:var(--deep);color:var(--deep-soft);font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--rose)}
+.notice{background:var(--rose);color:var(--ink);font-size:14px;text-align:center;padding:9px 16px;font-weight:700}
+header.bar .wrap{display:flex;justify-content:space-between;align-items:center;height:84px}
+header.bar img{height:50px;width:auto;display:block}
+header.bar nav a{text-decoration:none;font-size:15px;margin-left:28px;opacity:.8}
+header.bar nav a:hover{opacity:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:16px;line-height:1.2;text-align:center;text-decoration:none;border:2px solid var(--navy);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn-fill{background:var(--navy);color:#fff}
+.btn-fill:hover{background:var(--navy-h);border-color:var(--navy-h)}
+.btn-line{background:transparent;color:var(--navy);border-color:currentColor}
+.btn svg{width:20px;height:20px;fill:currentColor;flex:none}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+h1,h2{font-family:var(--display);font-weight:500;letter-spacing:-.02em}
+h2{font-size:clamp(32px,4.2vw,52px);line-height:1.08;margin:0 0 16px}
+h2 em,h1 em{font-style:normal;font-weight:300;color:var(--berry)}
+.lead{color:var(--soft);font-size:18px;max-width:36em;margin:0 0 44px}
+.kicker{display:block;font-family:var(--display);font-size:12.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--berry);margin-bottom:14px}
+section{padding:100px 0}
+/* hero */
+.hero{position:relative;overflow:hidden;background:radial-gradient(760px 520px at 80% 45%,var(--rose-2),transparent 70%),radial-gradient(600px 400px at 10% 100%,var(--dew),transparent 70%),var(--bg)}
+.hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding-top:36px;padding-bottom:90px}
+.tag{display:inline-block;font-family:var(--display);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--berry);font-weight:600;margin-bottom:22px}
+.hero h1{font-size:clamp(40px,5vw,66px);line-height:1.04;margin:0 0 24px}
+.sub{font-size:19px;color:var(--soft);max-width:30em;margin:0 0 32px}
+.trust{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px;color:var(--soft)}
+.trust b{color:var(--ink)}
+.glass{position:relative;height:460px;border-radius:50%;max-width:460px;width:100%;margin-left:auto;background:radial-gradient(circle at 35% 30%,#fff 0%,var(--rose-2) 45%,var(--dew) 100%);overflow:hidden;box-shadow:inset 0 0 0 1px rgba(31,42,68,.08),0 30px 80px rgba(31,42,68,.12)}
+.glass canvas{position:absolute;inset:0;width:100%;height:100%}
+.step-l{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);font-family:var(--display);font-size:14px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--ink);background:rgba(255,255,255,.88);border-radius:999px;padding:8px 20px;white-space:nowrap}
+/* band */
+.band{overflow:hidden;white-space:nowrap;background:var(--navy);color:var(--bg)}
+.band .track{display:inline-block;padding:16px 0;animation:slide 42s linear infinite;font-family:var(--display);font-size:18px;letter-spacing:.06em;text-transform:uppercase;font-weight:300}
+.band span{margin:0 26px}
+.band span::after{content:"\25CB";margin-left:52px;color:var(--rose)}
+@keyframes slide{to{transform:translateX(-50%)}}
+/* kiezer */
+.pick{background:var(--dew)}
+.pick .grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:44px;align-items:start}
+.steps-k{counter-reset:k}
+.step{margin-bottom:30px;counter-increment:k}
+.step h3{font-size:15px;font-weight:700;margin:0 0 12px;color:var(--soft)}
+.step h3::before{content:counter(k) ". "}
+.step h3 i{font-style:normal;font-weight:400}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.opts.chips{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative;text-align:left;background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:15px 15px 13px;font:inherit;color:var(--ink);cursor:pointer;min-height:48px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--rose)}
+.opt b{display:block;font-family:var(--display);font-weight:500;font-size:19px;line-height:1.15}
+.opt small{display:block;color:var(--soft);font-size:13.5px;margin-top:4px;line-height:1.35}
+.opt[aria-pressed="true"]{border-color:var(--berry);background:#fdf1f4}
+.chips .opt{padding:10px 18px;border-radius:999px;font-weight:600}
+.chips .opt[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.date input{font:inherit;padding:12px 14px;border:2px solid var(--line);border-radius:var(--r);min-height:52px;background:var(--card);color:var(--ink);max-width:100%}
+.summary{background:var(--navy);color:#fff;border-radius:26px;padding:32px;position:sticky;top:24px}
+.summary .k{font-size:13px;color:var(--deep-soft);margin-bottom:4px;letter-spacing:.12em;text-transform:uppercase}
+.summary h3{font-family:var(--display);font-weight:500;font-size:30px;line-height:1.1;margin:0 0 20px}
+.summary dl{margin:0 0 26px;display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:15.5px}
+.summary dt{color:var(--deep-soft)}
+.summary dd{margin:0}
+.summary .btn{width:100%;background:var(--rose);border-color:var(--rose);color:var(--ink)}
+.summary .btn:hover{background:#fff;border-color:#fff}
+.summary .note{font-size:13.5px;color:var(--deep-soft);margin-top:14px;text-align:center}
+/* waarom */
+.why-g{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.wcard{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px}
+.wcard h3{margin:0 0 8px;font-size:20px;font-weight:700}
+.wcard p{margin:0;color:var(--soft)}
+.wcard svg{width:34px;height:34px;stroke:var(--berry);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:14px}
+/* reviews */
+.reviews{background:var(--navy);color:#fff}
+.reviews .kicker{color:var(--rose)}
+.reviews h2 em{color:var(--rose)}
+.score{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:46px}
+.score b{font-family:var(--display);font-weight:500;font-size:92px;line-height:1}
+.score span{color:var(--deep-soft);font-size:16px}
+.stars{letter-spacing:4px;font-size:20px;display:block;color:var(--rose)}
+.themes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.themes li{border-top:1px solid rgba(255,255,255,.3);padding-top:20px}
+.themes b{display:block;font-family:var(--display);font-weight:500;font-size:22px;line-height:1.2;margin-bottom:8px}
+.themes p{margin:0;color:var(--deep-soft)}
+.src{margin:40px 0 0;font-size:14px;color:var(--deep-soft)}
+/* stappen */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:var(--rose);color:var(--ink);font-family:var(--display);font-weight:600;font-size:22px;margin-bottom:16px}
+.steps h3{margin:0 0 6px;font-size:20px;font-weight:700}
+.steps p{margin:0;color:var(--soft)}
+/* faq */
+.faq{background:var(--card)}
+.faq .wrap{max-width:840px}
+details{border-bottom:1px solid var(--line);padding:4px 0}
+summary{cursor:pointer;list-style:none;padding:17px 40px 17px 0;font-size:18px;font-weight:700;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:12px;font-size:26px;font-weight:400;color:var(--berry)}
+details[open] summary::after{content:"\2013"}
+details p{margin:0 0 18px;color:var(--soft)}
+.final{background:var(--navy);color:#fff;text-align:center}
+.final h2{max-width:16ch;margin:0 auto 16px}
+.final h2 em{color:var(--rose)}
+.final .lead{color:var(--deep-soft);margin:0 auto 32px}
+.final .btns{justify-content:center}
+.final .btn-fill{background:var(--rose);border-color:var(--rose);color:var(--ink)}
+.final .btn-line{color:#fff}
+footer{background:var(--deep);color:var(--deep-soft);padding:56px 0 96px;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px}
+footer img{height:50px;width:auto;margin-bottom:14px}
+footer h4{color:var(--rose);font-weight:700;margin:0 0 10px;font-size:15px}
+footer p{margin:0}
+footer p a{display:inline-block;padding:6px 0}
+.fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;margin-top:20px;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:9;display:none}
+.float.on{display:block}
+.float .btn{width:100%;background:var(--rose);border-color:var(--rose);color:var(--ink);box-shadow:0 12px 30px rgba(20,28,48,.35)}
+.sr{position:absolute;left:-9999px}
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:860px){
+  header.bar nav{display:none}
+  .hgrid,.pick .grid{grid-template-columns:minmax(0,1fr)}
+  .hgrid{padding-bottom:60px}
+  .glass{height:320px;max-width:320px;margin:0 auto}
+  .why-g,.themes,.steps{grid-template-columns:1fr}
+  .opt b{font-size:17px}
+  .opt{padding:14px 12px 12px;overflow-wrap:anywhere}
+  .summary{position:static}
+  footer .wrap{grid-template-columns:1fr}
+  section{padding:72px 0}
+  .score b{font-size:76px}
+}
+@media (max-width:420px){header.bar img{height:42px}}
+@media (prefers-reduced-motion:reduce){.band .track{animation:none}html{scroll-behavior:auto}*{animation-duration:.001s!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice">5,0 &#9733; uit 15 Google-reviews · Oud-Beijerland</div>
+<header class="bar"><div class="wrap"><a href="#top"><img src="logo-dark.svg" alt="JG skin studio" width="182" height="50"></a><nav aria-label="Hoofdmenu"><a href="#kiezer">Afspraak</a><a href="#waarom">Waarom</a><a href="#ervaringen">Ervaringen</a><a href="#vragen">Vragen</a></nav></div></header>
+<main>
+<div class="hero" id="top">
+<div class="wrap hgrid">
+  <div>
+    <span class="tag">Facials · Facial cupping · Huidadvies · Wenkbrauwen</span>
+    <h1>Huidverzorging en facials <em>in Oud-Beijerland</em></h1>
+    <p class="sub">Gezichtsbehandelingen, facial cupping, huidadvies en wenkbrauwen. Voor wie goed voor de eigen huid wil zorgen, ook als het je allereerste facial is.</p>
+    <div class="btns"><a class="btn btn-fill js-ask-hero" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>App voor een afspraak</a><a class="btn btn-line" href="#kiezer">Kies je behandeling</a></div>
+    <div class="trust"><span><b>5,0</b> op Google</span><span><b>15</b> reviews</span><span>Oud-Beijerland</span></div>
+  </div>
+  <div class="glass" aria-hidden="true"><canvas id="dew"></canvas><span class="step-l" id="stepl">facials</span></div>
+</div>
+</div>
+<div class="band" aria-hidden="true"><div class="track" id="track"><span>Gezichtsbehandelingen</span><span>Facial cupping</span><span>Huidadvies</span><span>Wenkbrauwen</span><span>5,0 uit 15 Google-reviews</span><span>Oud-Beijerland</span></div></div>
+<section class="pick" id="kiezer">
+  <div class="wrap">
+    <span class="kicker">Afspraak aanvragen</span>
+    <h2>Kies je <em>behandeling</em></h2>
+    <p class="lead">Kies wat je wilt laten doen en wanneer het je uitkomt. Je aanvraag staat in één tik klaar in WhatsApp.</p>
+    <div class="grid"><div class="steps-k">
+      <div class="step"><h3>Wat wil je laten doen?</h3><div class="opts" data-group="t">
+        <button class="opt" type="button" data-v="Gezichtsbehandeling (facial)" aria-pressed="true"><b>Facial</b><small>Gezichtsbehandeling</small></button>
+        <button class="opt" type="button" data-v="Facial cupping" aria-pressed="false"><b>Facial cupping</b><small>Cupping voor het gezicht</small></button>
+        <button class="opt" type="button" data-v="Huidadvies en huidplan" aria-pressed="false"><b>Huidadvies</b><small>Een plan en productadvies</small></button>
+        <button class="opt" type="button" data-v="Behandeling onzuivere huid" aria-pressed="false"><b>Onzuivere huid</b><small>Puistjes en onzuiverheden</small></button>
+        <button class="opt" type="button" data-v="Wenkbrauwen" aria-pressed="false"><b>Wenkbrauwen</b><small>Je wenkbrauwen laten doen</small></button>
+        <button class="opt" type="button" data-v="Weet ik nog niet, graag advies" aria-pressed="false"><b>Weet ik nog niet</b><small>Ik wil eerst advies</small></button>
+      </div></div>
+      <div class="step"><h3>Wil je iets combineren? <i>(optioneel)</i></h3><div class="opts chips" id="extras">
+        <button class="opt" type="button" data-v="Huidadvies en huidplan" aria-pressed="false">+ Huidadvies</button>
+        <button class="opt" type="button" data-v="Wenkbrauwen" aria-pressed="false">+ Wenkbrauwen</button>
+        <button class="opt" type="button" data-v="Facial cupping" aria-pressed="false">+ Facial cupping</button>
+      </div></div>
+      <div class="step"><h3>Ben je eerder bij JG skin studio geweest?</h3><div class="opts chips" data-group="v">
+        <button class="opt" type="button" data-v="Eerste keer" aria-pressed="true">Eerste keer</button>
+        <button class="opt" type="button" data-v="Ik ben al klant" aria-pressed="false">Ik ben al klant</button>
+      </div></div>
+      <div class="step"><h3>Wanneer past het je het best?</h3><div class="opts chips" data-group="dag">
+        <button class="opt" type="button" data-v="Doordeweeks" aria-pressed="false">Doordeweeks</button>
+        <button class="opt" type="button" data-v="In het weekend" aria-pressed="false">Weekend</button>
+        <button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button>
+      </div></div>
+      <div class="step date"><h3>Heb je al een datum in gedachten? <i>(optioneel)</i></h3><label class="sr" for="d1">Datum</label><input type="date" id="d1" class="js-date"></div>
+    </div><aside class="summary" aria-live="polite">
+      <div class="k">Jouw afspraakverzoek</div>
+      <h3 id="s-title"></h3>
+      <dl><dt>Behandeling</dt><dd id="s-t">–</dd><dt>Ook graag</dt><dd id="s-x">–</dd><dt>Klant</dt><dd id="s-v">–</dd><dt>Voorkeur</dt><dd id="s-dag">–</dd><dt>Datum</dt><dd id="s-datum">–</dd></dl>
+      <a class="btn js-ask" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>Vraag je afspraak aan via WhatsApp</a>
+      <div class="note">Vrijblijvend. Je bericht gaat naar 06 28 74 36 26.</div>
+    </aside></div>
+  </div>
+</section>
+<section class="why" id="waarom">
+  <div class="wrap">
+    <span class="kicker">Uit de reviews</span>
+    <h2>Waarom klanten voor <em>JG skin studio</em> kiezen</h2>
+    <p class="lead">Drie dingen die klanten in hun Google-reviews noemen.</p>
+    <div class="why-g">
+      <div class="wcard"><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="12"/><path d="M17 10v7l5 3"/></svg><h3>Tijd en rustige uitleg</h3><p>Klanten schrijven dat er tijd voor ze wordt genomen en dat alles rustig wordt uitgelegd.</p></div>
+      <div class="wcard"><svg viewBox="0 0 34 34"><path d="M9 6h16v22H9z"/><path d="M13 12h8M13 17h8M13 22h5"/></svg><h3>Een plan voor je huid</h3><p>Klanten schrijven over deskundig huidadvies, met een stap-voor-stapplan en advies over producten.</p></div>
+      <div class="wcard"><svg viewBox="0 0 34 34"><path d="M17 4c-5 7-8 11-8 15a8 8 0 0 0 16 0c0-4-3-8-8-15z"/><path d="M13.5 20a3.5 3.5 0 0 0 3.5 3.5"/></svg><h3>Ontspannen en zichtbaar resultaat</h3><p>Klanten schrijven over een ontspannen salon en een huid die er zichtbaar beter uitziet.</p></div>
+    </div>
+  </div>
+</section>
+<section class="reviews" id="ervaringen">
+  <div class="wrap">
+    <span class="kicker">Ervaringen</span>
+    <h2>15 reviews, gemiddeld <em>een 5,0</em></h2>
+    <div class="score"><b>5,0</b><span><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>gemiddeld op Google, uit 15 reviews</span></div>
+    <ul class="themes">
+      <li><b>Marlinde</b><p>Schrijft dat haar huid er na elke behandeling stralend en goed verzorgd uitziet.</p></li>
+      <li><b>Noa</b><p>Had haar allereerste facial en noemt het een heel fijne ervaring.</p></li>
+      <li><b>Stephanie</b><p>Is erg tevreden over de behandelingen bij JG skin studio.</p></li>
+    </ul>
+    <p class="src">Samengevat uit reviews op Google, niet letterlijk geciteerd. Bekijk de <a href="https://www.google.com/maps/search/?api=1&amp;query=JG+skin+studio+Oud-Beijerland" target="_blank" rel="noopener">Google-reviews van JG skin studio</a>.</p>
+  </div>
+</section>
+<section class="how" id="werkwijze">
+  <div class="wrap">
+    <span class="kicker">Zo werkt het</span>
+    <h2>Zo werkt het</h2>
+    <p class="lead">Van kiezen tot je afspraak, gewoon via WhatsApp.</p>
+    <ol class="steps"><li><h3>Kies je behandeling</h3><p>Facial, facial cupping, huidadvies of wenkbrauwen, en wanneer het je uitkomt.</p></li><li><h3>Stuur je aanvraag</h3><p>Je bericht staat klaar in WhatsApp. Eén tik op verzenden.</p></li><li><h3>Plan je afspraak</h3><p>Je spreekt het moment samen af via WhatsApp, in Oud-Beijerland.</p></li></ol>
+  </div>
+</section>
+<section class="faq" id="vragen">
+  <div class="wrap">
+    <span class="kicker">Vragen</span>
+    <h2>Veelgestelde vragen</h2>
+    <details><summary>Wat kost een behandeling?</summary><p>Dat verschilt per behandeling. Stuur je keuze via WhatsApp of bel <a href="tel:+31628743626">06 28 74 36 26</a> en vraag het na.</p></details>
+    <details><summary>Wanneer kan ik terecht?</summary><p>Je plant je afspraak via WhatsApp.</p></details>
+    <details><summary>Ik heb nog nooit een facial gehad. Kan dat?</summary><p>Ja. In de reviews schrijven klanten over hun allereerste facial. Twijfel je wat bij je huid past, kies dan "Weet ik nog niet" in de kiezer.</p></details>
+    <details><summary>Krijg ik ook advies over producten?</summary><p>Ja. Klanten schrijven in hun reviews over een huidplan met productadvies. Vraag via WhatsApp gerust wat bij jouw huid past.</p></details>
+    <details><summary>Waar zit JG skin studio?</summary><p>In Oud-Beijerland. Vraag via WhatsApp naar het adres.</p></details>
+    <details><summary>Waar zie ik meer?</summary><p>Op Instagram: <a href="https://instagram.com/jgskinstudio" target="_blank" rel="noopener">@jgskinstudio</a>.</p></details>
+  </div>
+</section>
+<section class="final">
+  <div class="wrap">
+    <h2>Tijd voor <em>jouw facial?</em></h2>
+    <p class="lead">Kies je behandeling en stuur je aanvraag in één tik via WhatsApp.</p>
+    <div class="btns"><a class="btn btn-fill js-ask-hero" href="#">App voor een afspraak</a><a class="btn btn-line" href="#kiezer">Kies je behandeling</a></div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div><img src="logo-light.svg" alt="JG skin studio" width="182" height="50"><p>Huidverzorging, facials en wenkbrauwen in Oud-Beijerland.</p></div>
+    <div><h4>Plaats</h4><p>Oud-Beijerland<br><a href="https://instagram.com/jgskinstudio" target="_blank" rel="noopener">Instagram @jgskinstudio</a></p></div>
+    <div><h4>Contact</h4><p><a class="js-wa-plain" href="#">WhatsApp 06 28 74 36 26</a><br><a href="tel:+31628743626">Bel 06 28 74 36 26</a></p></div>
+    <div class="fine"><span>&copy; 2026 JG skin studio</span><span>Website door <a href="https://mohamedia.nl">Mohamedia</a></span></div>
+  </div>
+</footer>
+<div class="float" id="float"><a class="btn btn-fill" href="#kiezer">Vraag je afspraak aan</a></div>
+<script>
+const WA = "31628743626";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const st = { t: "", v: "", x: [], dag: "", datum: "" };
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long" }) : "";
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+function pressed(g) { const b = g && g.querySelector('.opt[aria-pressed="true"]'); return b ? b.dataset.v : ""; }
+function render() {
+  st.t = pressed($('[data-group="t"]'));
+  st.v = pressed($('[data-group="v"]'));
+  st.dag = pressed($('[data-group="dag"]'));
+  $$("#extras .opt").forEach(b => { const same = b.dataset.v === st.t; b.disabled = same; b.style.opacity = same ? .35 : 1; if (same) b.setAttribute("aria-pressed", "false"); });
+  st.x = $$('#extras .opt[aria-pressed="true"]').map(b => b.dataset.v).filter(x => x !== st.t);
+  $("#s-title").textContent = st.t;
+  $("#s-t").textContent = st.t;
+  $("#s-x").textContent = st.x.join(", ") || "–";
+  $("#s-v").textContent = st.v;
+  $("#s-dag").textContent = st.dag || "Maakt niet uit";
+  $("#s-datum").textContent = st.datum ? fmt(st.datum) : "Flexibel";
+  const lines = ["Hoi! Ik wil graag een afspraak aanvragen bij JG skin studio.", `Behandeling: ${st.t}`];
+  if (st.x.length) lines.push(`Ook graag: ${st.x.join(", ")}`);
+  lines.push(st.v === "Eerste keer" ? "Het is mijn eerste keer." : "Ik ben al klant.");
+  lines.push(`Voorkeur: ${st.dag && st.dag !== "Maakt niet uit" ? st.dag.toLowerCase() : "maakt niet uit"}`);
+  lines.push(`Datum: ${st.datum ? fmt(st.datum) : "flexibel"}`);
+  lines.push("Is er plek? Dank je!");
+  $$(".js-ask").forEach(a => { a.href = wa(lines.join("\n")); a.target = "_blank"; a.rel = "noopener"; });
+}
+$$(".opts[data-group]").forEach(g => g.addEventListener("click", e => {
+  const b = e.target.closest(".opt"); if (!b) return;
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b)); render();
+}));
+$("#extras").addEventListener("click", e => { const b = e.target.closest(".opt"); if (!b || b.disabled) return; b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true"); render(); });
+const today = new Date().toISOString().slice(0, 10);
+$$(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => { st.datum = i.value; render(); }); });
+$$(".js-wa-plain").forEach(a => { a.href = wa("Hoi! Ik heb een vraag over een behandeling bij JG skin studio."); a.target = "_blank"; a.rel = "noopener"; });
+$$(".js-ask-hero").forEach(a => { a.href = wa("Hoi! Ik wil graag een afspraak maken bij JG skin studio. Wanneer is er plek?"); a.target = "_blank"; a.rel = "noopener"; });
+render();
+const tr = $("#track"); tr.innerHTML += tr.innerHTML;
+const fl = $("#float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe($("#top"));
+new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .12 }).observe($("#kiezer"));
+
+// dauwdruppels en serumparels die langzaam opstijgen, met zachte cupping-ringen die uitdijen; label wisselt per dienst
+(() => { const c = $("#dew"), x = c.getContext("2d"); let W, H, drops = [], rings = [], last = 0;
+ const lbl = $("#stepl"), names = ["facials", "facial cupping", "huidadvies", "wenkbrauwen"]; let li = -1;
+ function rnd(a, b) { return a + Math.random() * (b - a); }
+ function drop(init) { return { x: rnd(.1, .9) * W, y: init ? rnd(0, H) : H + 20, r: rnd(4, 16), v: rnd(.15, .5), p: rnd(0, 6.28), w: rnd(.3, 1) }; }
+ function size() { const r = devicePixelRatio || 1; W = c.clientWidth; H = c.clientHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0);
+  drops = []; for (let i = 0; i < 22; i++) drops.push(drop(true)); rings = []; }
+ function draw(d) {
+  const g = x.createRadialGradient(d.x - d.r * .35, d.y - d.r * .35, d.r * .1, d.x, d.y, d.r);
+  g.addColorStop(0, "rgba(255,255,255,.95)"); g.addColorStop(.5, "rgba(251,230,235,.55)"); g.addColorStop(1, "rgba(168,56,95,.18)");
+  x.fillStyle = g; x.beginPath(); x.arc(d.x, d.y, d.r, 0, 6.29); x.fill();
+  x.strokeStyle = "rgba(31,42,68,.18)"; x.lineWidth = 1; x.stroke();
+  x.fillStyle = "rgba(255,255,255,.9)"; x.beginPath(); x.arc(d.x - d.r * .4, d.y - d.r * .4, d.r * .18, 0, 6.29); x.fill(); }
+ function f(t) { x.clearRect(0, 0, W, H);
+  const i = Math.floor((reduce ? 0 : t) / 2600) % 4; if (i !== li) { li = i; lbl.textContent = names[i]; }
+  if (!reduce && t - last > 1300) { last = t; rings.push({ x: W * rnd(.35, .65), y: H * rnd(.35, .6), r: 10, a: .55 }); }
+  rings = rings.filter(r => r.a > .01);
+  rings.forEach(r => { if (!reduce) { r.r += .7; r.a *= .985; }
+   x.strokeStyle = `rgba(168,56,95,${r.a})`; x.lineWidth = 2; x.beginPath(); x.arc(r.x, r.y, r.r, 0, 6.29); x.stroke();
+   x.strokeStyle = `rgba(31,42,68,${r.a * .5})`; x.lineWidth = 1; x.beginPath(); x.arc(r.x, r.y, r.r * .6, 0, 6.29); x.stroke(); });
+  drops.forEach((d, k) => { if (!reduce) { d.y -= d.v; d.x += Math.sin(t / 1200 + d.p) * .25 * d.w; if (d.y < -20) drops[k] = drop(false); } draw(d); });
+  if (!reduce) requestAnimationFrame(f); }
+ size(); addEventListener("resize", size); requestAnimationFrame(f); })();
+</script>
+</body>
+</html>
