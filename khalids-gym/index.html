@@ -207,7 +207,9 @@ main{overflow-x:clip}
 .award:nth-child(2)::after{animation-delay:1.2s}.award:nth-child(3)::after{animation-delay:2.4s}.award:nth-child(4)::after{animation-delay:3.6s}
 @keyframes shine{0%,60%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 .award .medal{width:64px;height:64px;color:var(--gold)}
-.award h3{font-size:24px;color:#fff;font-weight:900}
+.award > div{min-width:0}
+.award h3{font-size:clamp(19px,5.6vw,24px);color:#fff;font-weight:900;overflow-wrap:break-word;hyphens:auto}
+@media (max-width:400px){.award{grid-template-columns:48px 1fr;gap:12px;padding:18px}.award .medal{width:48px;height:48px}}
 .award p{font-size:15px;margin-top:6px}
 .award p a{color:var(--gold);font-weight:700}
 .award .big{font-family:var(--head);font-weight:900;color:var(--gold);font-size:15px;letter-spacing:.08em;text-transform:uppercase}
