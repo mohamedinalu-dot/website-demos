@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Khalid's Gym – thaiboksschool in Rotterdam Oude Westen</title>
+<meta name="description" content="Thaiboksen bij Khalid's Gym in het Oude Westen, Rotterdam. Lessen voor kinderen van 5 tot 12, tieners van 13 tot 17 en volwassenen, op maandag, woensdag en vrijdag. Vraag een proefles aan.">
+<meta name="theme-color" content="#0c0606">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,500;0,700;0,900;1,900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="khalid-ring.jpg">
+<style>
+:root{
+  --red:#d83a3a; --red2:#b73d3d; --ink:#0c0606; --black:#0a0a0a; --navy:#00102E; --navy2:#233452;
+  --gray:#6d7685; --gray2:#868990; --light:#F4F5F7; --line:#dbdbdb; --gold:#FFD700; --white:#fff;
+  --head:'Roboto Condensed', 'Arial Narrow', sans-serif; --body:'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --r:6px; --wrap:1160px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--body);color:#3b4150;background:var(--white);line-height:1.6;font-size:16px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--head);color:var(--navy);line-height:1.02;text-transform:uppercase;letter-spacing:.005em}
+.wrap{width:min(100% - 40px, var(--wrap));margin-inline:auto}
+section{position:relative}
+main{overflow-x:clip}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* demo + aankondiging */
+.demo{background:var(--white);color:var(--navy);font-size:13px;text-align:center;padding:7px 12px;border-bottom:1px solid var(--line)}
+.demo a{color:var(--red);font-weight:700}
+.announce{background:var(--red);color:#fff;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:13px;text-align:center;padding:8px 14px;position:relative;overflow:hidden;height:36px}
+.announce span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:opacity .5s, transform .5s}
+.announce span.out{opacity:0;transform:translateY(-8px)}
+
+/* header */
+.top{position:sticky;top:0;z-index:50;background:rgba(12,6,6,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.brand img{height:56px;width:auto}
+.brand b{font-family:var(--head);font-weight:900;text-transform:uppercase;font-size:18px;line-height:1;letter-spacing:.02em}
+.brand small{display:block;font-family:var(--head);font-weight:500;font-size:12px;letter-spacing:.14em;color:var(--red);margin-top:3px}
+.nav{display:none;list-style:none;gap:4px}
+.nav a{display:flex;align-items:center;min-height:44px;padding:0 12px;color:#fff;text-decoration:none;font-weight:500;font-size:15px}
+.nav a:hover{color:var(--red)}
+.btn{--bg:var(--red);display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:var(--r);background:var(--bg);color:#fff;font-family:var(--head);font-weight:700;font-size:17px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:2px solid var(--bg);cursor:pointer;position:relative;overflow:hidden;transition:transform .15s, background .2s, border-color .2s, color .2s;-webkit-tap-highlight-color:transparent}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .6s}
+.btn:hover::after{transform:translateX(120%)}
+.btn:hover{background:var(--red2);border-color:var(--red2)}
+.btn:active{transform:scale(.96)}
+.btn.ghost{background:transparent;border-color:rgba(255,255,255,.55);color:#fff}
+.btn.ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn.dark{--bg:var(--navy)}
+.btn.small{min-height:44px;padding:0 16px;font-size:15px}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* HERO */
+.hero{position:relative;background:var(--ink);color:#fff;overflow:hidden;isolation:isolate;min-height:calc(100svh - 108px);display:flex;align-items:flex-end}
+.hero-photo{position:absolute;inset:-4% 0 auto 0;height:52%;z-index:-3;will-change:transform}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:58% 20%;filter:grayscale(.25) contrast(1.08)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:
+  linear-gradient(180deg,rgba(12,6,6,0) 0%,rgba(12,6,6,.1) 22%,rgba(12,6,6,.85) 44%,#0c0606 52%,#0c0606 100%)}
+.slab{position:absolute;z-index:-1;left:-10%;width:120%;height:42%;bottom:-8%;background:var(--red);transform:skewY(-9deg);transform-origin:left;opacity:.9;mix-blend-mode:multiply}
+.slab.two{display:none;height:9px;background:var(--red);opacity:1;mix-blend-mode:normal}
+.speed{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;opacity:.35}
+.speed i{position:absolute;height:2px;width:38%;background:linear-gradient(90deg,transparent,#fff);border-radius:2px;transform:rotate(-9deg);animation:dash 2.6s linear infinite}
+.speed i:nth-child(1){top:18%;left:-40%;animation-delay:0s}
+.speed i:nth-child(2){top:32%;left:-40%;animation-delay:.9s;width:24%}
+.speed i:nth-child(3){top:47%;left:-40%;animation-delay:1.7s;width:30%}
+.speed i:nth-child(4){top:62%;left:-40%;animation-delay:.4s;width:18%}
+.speed i:nth-child(5){top:9%;left:-40%;animation-delay:2.1s;width:28%}
+@keyframes dash{0%{transform:translateX(0) rotate(-9deg);opacity:0}15%{opacity:1}100%{transform:translateX(420%) rotate(-9deg);opacity:0}}
+.hero-in{position:relative;padding:48px 0 34px;width:min(100% - 40px, var(--wrap))}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:13px;color:#fff;background:rgba(216,58,58,.92);padding:7px 12px;border-radius:3px}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25;transform:scale(.7)}}
+.hero h1{color:#fff;margin:16px 0 14px;font-weight:900;font-size:clamp(46px,15.5vw,148px);line-height:.86;position:relative}
+.hero h1 .w{display:block;will-change:transform}
+.hero h1 .w1{font-style:italic;color:#fff;text-shadow:.06em .05em 0 var(--red)}
+.hero h1 .w2{color:#fff}
+.hero h1 .w3{color:var(--red);font-size:.46em;letter-spacing:.04em;margin-top:.18em;font-style:normal}
+.burst{position:absolute;width:260px;height:260px;left:0;top:0;pointer-events:none;opacity:0;z-index:2}
+.ring{position:absolute;width:120px;height:120px;border:4px solid var(--red);border-radius:50%;left:0;top:0;opacity:0;pointer-events:none}
+.hero .lead{max-width:560px;font-size:17px;color:rgba(255,255,255,.9)}
+.hero .lead strong{color:#fff}
+.hero-cta{display:flex;flex-direction:column;gap:12px;margin-top:22px;max-width:420px}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:20px;font-size:13px;color:rgba(255,255,255,.82);font-family:var(--head);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.trust span{display:inline-flex;align-items:center;gap:7px}
+.trust svg{width:16px;height:16px;color:var(--gold)}
+.combo{display:inline-flex;align-items:center;gap:10px;margin-top:4px;font-family:var(--head);font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:#fff;min-height:26px}
+.combo .slot{display:inline-block;color:var(--gold);min-width:12ch}
+.scrollhint{display:none}
+
+/* marquee */
+.marquee{background:var(--red);color:#fff;overflow:hidden;transform:skewY(-2deg);margin:-14px 0 0;position:relative;z-index:3;border-block:3px solid var(--ink)}
+.marquee .track{display:flex;width:max-content;animation:mq 26s linear infinite}
+.marquee .row{display:flex;align-items:center;gap:28px;padding:14px 14px;font-family:var(--head);font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;transform:skewY(2deg)}
+.marquee .row i{display:inline-block;width:12px;height:12px;background:var(--ink);transform:rotate(45deg)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* sections */
+.sec{padding:84px 0}
+.sec.light{background:var(--light)}
+.sec.dark{background:var(--ink);color:rgba(255,255,255,.82)}
+.sec.dark h2,.sec.dark h3{color:#fff}
+.kicker{display:inline-block;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:13px;color:var(--red);margin-bottom:10px}
+.h2{font-size:clamp(36px,9vw,64px);font-weight:900;position:relative;display:inline-block;padding-bottom:14px}
+.h2::after{content:"";position:absolute;left:0;bottom:0;height:6px;width:72px;background:var(--red);transform:skewX(-20deg);transform-origin:left}
+.anim .h2::after{transform:skewX(-20deg) scaleX(0);transition:transform .7s cubic-bezier(.2,.9,.2,1) .15s}
+.anim .h2.on::after{transform:skewX(-20deg) scaleX(1)}
+.sub{max-width:620px;margin-top:16px;font-size:17px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line);border:2px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:36px}
+.stat{background:#fff;padding:22px 16px;text-align:left}
+.stat b{display:block;font-family:var(--head);font-weight:900;font-size:clamp(44px,12vw,72px);line-height:1;color:var(--navy)}
+.stat b em{font-style:normal;color:var(--red)}
+.stat > span{display:block;margin-top:6px;font-size:14px;color:var(--gray);font-weight:500}
+.stat b span{display:inline}
+
+/* kiezer */
+.picker{margin-top:34px;background:#fff;border-radius:12px;box-shadow:0 30px 60px -30px rgba(0,16,46,.35);border:1px solid var(--line);overflow:hidden}
+.ph{background:var(--navy);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ph strong{font-family:var(--head);text-transform:uppercase;letter-spacing:.06em;font-size:18px}
+.bar{height:6px;background:rgba(255,255,255,.15);border-radius:3px;flex:1;max-width:220px;overflow:hidden}
+.bar i{display:block;height:100%;width:25%;background:var(--red);border-radius:3px;transition:width .45s cubic-bezier(.2,.9,.2,1)}
+.pgrid{display:grid;gap:0}
+.steps{position:relative;padding:22px 20px 24px;min-height:330px}
+.step{display:none}
+.step.on{display:block;animation:stepin .45s cubic-bezier(.2,.9,.2,1)}
+@keyframes stepin{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+.step h3{font-size:26px;font-weight:900;margin-bottom:4px}
+.step p.hint{font-size:14px;color:var(--gray);margin-bottom:14px}
+.chips{display:grid;gap:10px}
+.chip{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:58px;padding:12px 16px;border:2px solid var(--line);background:#fff;border-radius:8px;font:500 16px/1.3 var(--body);color:var(--navy);text-align:left;cursor:pointer;transition:border-color .2s, background .2s, transform .12s;-webkit-tap-highlight-color:transparent}
+.chip small{display:block;color:var(--gray);font-size:13px;font-weight:400}
+.chip b{font-family:var(--head);font-size:18px;text-transform:uppercase;letter-spacing:.02em}
+.chip .tag{font-family:var(--head);font-weight:700;font-size:13px;color:var(--red);white-space:nowrap}
+.chip:hover{border-color:var(--navy2)}
+.chip.sel{border-color:var(--red);background:#fdf1f1}
+.chip.hit{animation:hit .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes hit{0%{transform:scale(1)}35%{transform:scale(.95)}100%{transform:scale(1)}}
+.chips.cols2{grid-template-columns:1fr 1fr}
+.back{margin-top:14px;background:none;border:0;color:var(--navy2);font:500 15px var(--body);min-height:44px;min-width:44px;padding:0 6px;cursor:pointer;text-decoration:underline}
+.field{display:block;margin:6px 0 14px}
+.field span{display:block;font-size:14px;font-weight:500;color:var(--navy);margin-bottom:6px}
+.field input{width:100%;min-height:52px;border:2px solid var(--line);border-radius:8px;padding:0 14px;font:16px var(--body);color:var(--navy)}
+.field input:focus{outline:none;border-color:var(--red)}
+.send{display:grid;gap:10px}
+.send .btn{width:100%}
+.alt{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.alt .btn{font-size:15px;padding:0 10px}
+.btn.line{background:#fff;color:var(--navy);border-color:var(--line)}
+.btn.line:hover{border-color:var(--navy);background:#fff}
+.preview{background:#e9e2d8;background-image:radial-gradient(rgba(0,0,0,.05) 1px,transparent 1px);background-size:14px 14px;padding:20px;border-top:1px solid var(--line)}
+.preview .who{font-size:12px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.bubble{background:#dcf8c6;color:#1d2a1d;border-radius:10px 10px 2px 10px;padding:12px 14px;font-size:15px;line-height:1.5;white-space:pre-line;margin-left:auto;max-width:360px;box-shadow:0 1px 1px rgba(0,0,0,.12);position:relative}
+.bubble .caret{display:inline-block;width:2px;height:1em;background:#1d2a1d;vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.picker-note{font-size:13px;color:var(--gray);margin-top:14px}
+
+/* rooster */
+.sched{display:grid;gap:26px;margin-top:34px}
+.daypills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.daypills span{font-family:var(--head);font-weight:900;text-transform:uppercase;font-size:18px;letter-spacing:.04em;padding:6px 14px;border-radius:4px;background:var(--navy);color:#fff}
+.daypills span.today{background:var(--red)}
+.daypills span.off{background:transparent;color:var(--gray2);border:1px solid var(--line)}
+.todayline{font-size:15px;color:var(--navy);font-weight:500;margin-bottom:16px;min-height:24px}
+.timeline{position:relative;padding-left:26px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:3px;background:var(--line);border-radius:3px}
+.timeline .fill{position:absolute;left:7px;top:6px;bottom:6px;width:3px;background:var(--red);border-radius:3px;transform-origin:top}
+.slot{position:relative}
+.les{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px;padding:14px 14px 14px 16px;margin-bottom:12px}
+.les::before{content:"";position:absolute;left:-28px;top:50%;width:13px;height:13px;margin-top:-6px;border-radius:50%;background:#fff;border:3px solid var(--red)}
+.les.kids{border-left-color:var(--gold)}
+.les.teen{border-left-color:var(--red)}
+.les time{display:block;font-family:var(--head);font-weight:900;font-size:24px;color:var(--navy);line-height:1}
+.les b{display:block;font-weight:700;color:#3b4150;margin-top:4px}
+.les .btn{min-height:44px;padding:0 12px;font-size:14px}
+.hours{background:var(--navy);color:rgba(255,255,255,.85);border-radius:10px;padding:22px;align-self:start}
+.hours h3{color:#fff;font-size:26px;margin-bottom:12px}
+.hours dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px}
+.hours dt{font-weight:700;color:#fff}
+.hours dd{text-align:right;font-variant-numeric:tabular-nums}
+.hours .now dt,.hours .now dd{color:var(--gold)}
+.hours p{font-size:13px;margin-top:14px;color:rgba(255,255,255,.65)}
+
+/* waarom */
+.cards{display:grid;gap:16px;margin-top:34px}
+.card{background:#fff;border-radius:10px;padding:26px 22px;border:1px solid var(--line);position:relative;overflow:hidden}
+.card .ico{width:54px;height:54px;border-radius:8px;background:var(--red);display:grid;place-items:center;color:#fff;margin-bottom:16px;transform:rotate(-6deg)}
+.card .ico svg{width:28px;height:28px}
+.card h3{font-size:26px;font-weight:900;margin-bottom:8px}
+.card blockquote{font-style:italic;color:var(--navy2);border-left:3px solid var(--red);padding-left:12px;margin-top:10px}
+.card cite{display:block;font-style:normal;font-size:12px;color:var(--gray);margin-top:6px}
+
+/* awards */
+.awards{display:grid;gap:14px;margin-top:34px}
+.award{background:#14090a;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:22px;display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start;position:relative;overflow:hidden}
+.award::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,215,0,.12) 50%,transparent 60%);transform:translateX(-100%);animation:shine 5s ease-in-out infinite}
+.award:nth-child(2)::after{animation-delay:1.2s}.award:nth-child(3)::after{animation-delay:2.4s}.award:nth-child(4)::after{animation-delay:3.6s}
+@keyframes shine{0%,60%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.award .medal{width:64px;height:64px;color:var(--gold)}
+.award h3{font-size:24px;color:#fff;font-weight:900}
+.award p{font-size:15px;margin-top:6px}
+.award p a{color:var(--gold);font-weight:700}
+.award .big{font-family:var(--head);font-weight:900;color:var(--gold);font-size:15px;letter-spacing:.08em;text-transform:uppercase}
+.wmo{margin-top:22px;font-size:15px;color:rgba(255,255,255,.7)}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
+.member{text-align:center}
+.member .ph2{aspect-ratio:1;border-radius:50%;overflow:hidden;background:#fff;border:4px solid var(--red);box-shadow:0 0 0 4px #fff, 0 16px 30px -14px rgba(0,16,46,.5);display:grid;place-items:center;max-width:180px;margin:0 auto}
+.member .ph2 img{width:100%;height:100%;object-fit:cover}
+.member .ph2.ini{background:var(--navy);color:#fff;font-family:var(--head);font-weight:900;font-size:clamp(28px,9vw,56px)}
+.member h3{font-size:clamp(17px,4.6vw,24px);font-weight:900;margin-top:14px}
+.member span{font-size:13px;color:var(--gray)}
+
+/* media */
+.media{display:grid;gap:14px;margin-top:34px}
+.vid{display:block;text-decoration:none;background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--line);transition:transform .25s, box-shadow .25s}
+.vid:hover{transform:translateY(-4px);box-shadow:0 18px 34px -18px rgba(0,16,46,.45)}
+.vid .th{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,var(--ink) 0 55%,var(--red) 55% 100%);overflow:hidden}
+.vid .th::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-14deg,transparent 0 22px,rgba(255,255,255,.05) 22px 24px)}
+.vid .th em{position:absolute;left:16px;bottom:12px;font-family:var(--head);font-weight:900;font-style:italic;text-transform:uppercase;color:#fff;font-size:22px;letter-spacing:.04em}
+.vid .play{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:var(--red);display:grid;place-items:center;box-shadow:0 0 0 0 rgba(216,58,58,.6);animation:ping 2.2s infinite}
+.vid .play svg{width:24px;height:24px;color:#fff;margin-left:4px}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(216,58,58,.6)}80%,100%{box-shadow:0 0 0 22px rgba(216,58,58,0)}}
+.vid .tx{padding:14px 16px}
+.vid strong{display:block;color:var(--navy);font-weight:700;line-height:1.35}
+.vid small{color:var(--gray)}
+
+/* prijs */
+.price{display:grid;gap:18px;margin-top:34px}
+.pcard{background:var(--ink);color:rgba(255,255,255,.85);border-radius:12px;padding:28px 22px;position:relative;overflow:hidden}
+.pcard::before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;background:var(--red);transform:rotate(30deg);opacity:.9}
+.pcard > *{position:relative}
+.pcard .amt{font-family:var(--head);font-weight:900;color:#fff;font-size:clamp(72px,22vw,120px);line-height:.9}
+.pcard .amt sup{font-size:.4em;vertical-align:.95em;margin-right:4px}
+.pcard .per{font-family:var(--head);text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:#fff}
+.pcard ul{list-style:none;margin:18px 0 22px;display:grid;gap:8px}
+.pcard li{display:flex;gap:10px;align-items:flex-start}
+.pcard li::before{content:"";flex:none;width:10px;height:10px;margin-top:8px;background:var(--red);transform:rotate(45deg)}
+.pcard .btns{display:grid;gap:10px}
+.pinfo{display:grid;gap:12px}
+.pinfo div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px}
+.pinfo h3{font-size:22px;font-weight:900;margin-bottom:4px}
+.pinfo .warn{border-color:var(--red);border-width:2px}
+.pinfo .warn h3{color:var(--red)}
+
+/* stappen */
+.how{display:grid;gap:14px;margin-top:34px;counter-reset:s}
+.how li{list-style:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 20px 22px 84px;position:relative;min-height:96px}
+.how li::before{counter-increment:s;content:counter(s);position:absolute;left:18px;top:18px;width:50px;height:50px;border-radius:6px;background:var(--navy);color:#fff;font-family:var(--head);font-weight:900;font-size:30px;display:grid;place-items:center;transform:skewX(-8deg)}
+.how h3{font-size:22px;font-weight:900}
+.bring{margin-top:20px;background:#fff;border-left:5px solid var(--red);border-radius:8px;padding:18px 20px}
+.bring h3{font-size:20px;margin-bottom:6px}
+.bring ul{margin:8px 0 0 18px}
+
+/* faq */
+.faq{margin-top:30px;display:grid;gap:10px;max-width:820px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;min-height:58px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 18px;font-weight:700;color:var(--navy)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--head);font-size:28px;color:var(--red);transition:transform .25s;line-height:1}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 18px 18px}
+.faq p a{color:var(--red);font-weight:700}
+
+/* locatie */
+.loc{display:grid;gap:18px;margin-top:34px}
+.mapcard{position:relative;border-radius:12px;overflow:hidden;background:var(--navy);min-height:260px;display:grid;place-items:center;color:#fff;text-align:center;padding:30px 20px}
+.mapcard svg.grid{position:absolute;inset:0;width:100%;height:100%;opacity:.25}
+.pin{width:58px;height:58px;color:var(--red);filter:drop-shadow(0 8px 10px rgba(0,0,0,.4));animation:drop 2.6s cubic-bezier(.3,1.5,.6,1) infinite}
+@keyframes drop{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.mapcard .addr{position:relative;font-family:var(--head);font-weight:900;font-size:clamp(26px,7vw,36px);text-transform:uppercase;line-height:1.05;margin:10px 0 6px}
+.mapcard p{position:relative;color:rgba(255,255,255,.8)}
+.mapcard .btn{position:relative;margin-top:18px}
+.contactlist{display:grid;gap:10px}
+.contactlist a{display:flex;align-items:center;gap:14px;min-height:64px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 16px;text-decoration:none;color:var(--navy);font-weight:700;transition:border-color .2s, transform .15s}
+.contactlist a:hover{border-color:var(--red);transform:translateX(4px)}
+.contactlist a small{display:block;font-weight:400;color:var(--gray);font-size:13px}
+.contactlist .ci{width:40px;height:40px;border-radius:8px;background:var(--red);color:#fff;display:grid;place-items:center;flex:none}
+.contactlist .ci svg{width:20px;height:20px}
+
+/* slot */
+.final{background:var(--red);color:#fff;text-align:center;overflow:hidden;padding:90px 0}
+.final::before,.final::after{content:"";position:absolute;left:-10%;width:120%;height:60px;background:var(--ink);transform:skewY(-4deg)}
+.final::before{top:-40px}.final::after{bottom:-40px}
+.final h2{color:#fff;font-size:clamp(46px,14vw,120px);font-weight:900;line-height:.88}
+.final h2 span{display:block}
+.final h2 .o{color:var(--ink);font-style:italic}
+.final p{max-width:520px;margin:18px auto 26px;font-size:17px}
+.final .row{display:grid;gap:12px;max-width:420px;margin:0 auto}
+.final .btn{--bg:var(--ink)}
+.final .btn.ghost{background:transparent;border-color:#fff}
+
+/* footer */
+footer{background:var(--black);color:rgba(255,255,255,.7);padding:56px 0 110px;font-size:15px}
+footer .cols{display:grid;gap:30px}
+footer img{width:120px;height:auto}
+footer h4{font-family:var(--head);color:#fff;text-transform:uppercase;letter-spacing:.08em;font-size:18px;margin-bottom:10px}
+footer ul{list-style:none;display:grid;gap:4px}
+footer ul a{display:inline-flex;align-items:center;min-height:36px;text-decoration:none}
+footer a:hover{color:#fff}
+footer .fine{border-top:1px solid rgba(255,255,255,.1);margin-top:36px;padding-top:18px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;font-size:13px}
+footer .fine a{color:#fff}
+
+/* zwevende CTA */
+.float{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;display:flex;gap:8px;transform:translateY(140%);transition:transform .4s cubic-bezier(.2,.9,.2,1);pointer-events:none}
+.float.show{transform:none;pointer-events:auto}
+.float .btn{flex:1;box-shadow:0 12px 28px -8px rgba(0,0,0,.55);min-height:56px}
+.float .wa{flex:none;width:56px;padding:0;--bg:#1f9d55}
+.float .wa svg{width:26px;height:26px}
+
+/* progress */
+.prog{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--red);transform-origin:left;transform:scaleX(0);z-index:70}
+
+/* reveal (alleen met JS + beweging toegestaan) */
+.anim .rv{opacity:0;transform:translateY(34px)}
+
+@media (min-width:700px){
+  .hero-cta{flex-direction:row;max-width:none}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .awards{grid-template-columns:1fr 1fr}
+  .media{grid-template-columns:repeat(3,1fr)}
+  .how{grid-template-columns:repeat(3,1fr)}
+  .how li{padding:84px 22px 24px}
+  .price{grid-template-columns:1.1fr 1fr}
+  .loc{grid-template-columns:1.2fr 1fr}
+  .final .row{grid-template-columns:1fr 1fr;max-width:620px}
+  footer .cols{grid-template-columns:1fr 1fr 1fr}
+  .float{display:none}
+  .pcard .btns{grid-template-columns:1fr 1fr}
+}
+@media (min-width:960px){
+  .nav{display:flex}
+  .hero{min-height:calc(100vh - 108px);align-items:center}
+  .hero::before{background:linear-gradient(90deg,#0c0606 0%,#0c0606 36%,rgba(12,6,6,.55) 52%,rgba(12,6,6,0) 72%),linear-gradient(0deg,rgba(12,6,6,.7),transparent 35%)}
+  .hero-photo{left:36%;top:-6%;bottom:0;height:auto}
+  .hero-photo img{object-position:50% 30%}
+  .hero h1{font-size:clamp(60px,7.4vw,112px)}
+  .hero-in{padding:80px 0}
+  .slab{width:46%;height:130%;left:-14%;bottom:-15%;transform:skewX(-14deg);transform-origin:bottom;opacity:.16;mix-blend-mode:normal}
+  .slab.two{display:block;width:12px;height:140%;left:39%;bottom:-20%;opacity:.95;transform:skewX(-14deg)}
+  .sched{grid-template-columns:1.5fr 1fr;align-items:start}
+  .pgrid{grid-template-columns:1.25fr 1fr}
+  .preview{border-top:0;border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
+  .steps{padding:30px 32px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .speed{display:none}
+  .anim .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="prog" aria-hidden="true"></div>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="announce" aria-live="polite"><span id="ann">Thaiboksles op maandag, woensdag en vrijdag</span></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Khalid's Gym, naar boven">
+      <img src="logo-light.svg" width="48" height="56" alt="Logo Khalid's Gym Rotterdam Oude Westen">
+      <span><b>Khalid's Gym</b><small>Oude Westen</small></span>
+    </a>
+    <ul class="nav">
+      <li><a href="#rooster">Rooster</a></li>
+      <li><a href="#prijs">Lidmaatschap</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#locatie">Locatie</a></li>
+    </ul>
+    <a class="btn small" href="#kiezer">Proefles</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="hero-photo"><img src="khalid-ring.jpg" width="1349" height="899" alt="Khalid Chennouf leunt met bokshandschoenen op de touwen van de ring in Khalid's Gym"></div>
+  <div class="slab" aria-hidden="true"></div>
+  <div class="slab two" aria-hidden="true"></div>
+  <div class="speed" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <svg class="burst" viewBox="-130 -130 260 260" aria-hidden="true"><g stroke="#FFD700" stroke-width="7" stroke-linecap="round">
+    <line x1="0" y1="-60" x2="0" y2="-118"/><line x1="42" y1="-42" x2="82" y2="-82"/><line x1="60" y1="0" x2="118" y2="0"/><line x1="42" y1="42" x2="82" y2="82"/>
+    <line x1="0" y1="60" x2="0" y2="118"/><line x1="-42" y1="42" x2="-82" y2="82"/><line x1="-60" y1="0" x2="-118" y2="0"/><line x1="-42" y1="-42" x2="-82" y2="-82"/></g></svg>
+  <div class="ring" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <span class="eyebrow"><span class="dot"></span>Thaiboksschool · Rotterdam</span>
+    <h1 aria-label="Thaiboksen in het Oude Westen">
+      <span class="w w1" aria-hidden="true">Thaiboksen</span>
+      <span class="w w2" aria-hidden="true">in het Oude Westen</span>
+      <span class="w w3" aria-hidden="true">bij Khalid's Gym</span>
+    </h1>
+    <p class="lead">Les voor <strong>kinderen van 5 tot 12</strong>, <strong>tieners van 13 tot 17</strong> en <strong>volwassenen</strong>. Training van Khalid Chennouf, voormalig wereldkampioen karate.</p>
+    <p class="combo" aria-hidden="true">Ma · Wo · Vr <span class="slot" id="combo">17:00 kids</span></p>
+    <div class="hero-cta">
+      <a class="btn" href="#kiezer">Vraag een proefles aan
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn ghost" href="https://wa.me/31649383244?text=Hoi%20Khalid%2C%20ik%20wil%20graag%20een%20proefles%20thaiboksen%20aanvragen.%20Kan%20dat%3F">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+        App Khalid</a>
+    </div>
+    <div class="trust">
+      <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.9L12 17.6 5.9 20.9 7.1 14l-5-4.8 6.9-.9z"/></svg>Echt Rotterdams Erfgoed</span>
+      <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.9L12 17.6 5.9 20.9 7.1 14l-5-4.8 6.9-.9z"/></svg>Be a Nelson Award</span>
+      <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.3 6.9.9-5 4.8 1.2 6.9L12 17.6 5.9 20.9 7.1 14l-5-4.8 6.9-.9z"/></svg>Paul Nijghpenning</span>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <div class="row">Thaiboksen <i></i> Fitness <i></i> Kids 5 tot 12 <i></i> Tieners 13 tot 17 <i></i> Volwassenen <i></i> Rotterdampas welkom <i></i> Betalen met pin of iDEAL <i></i> Oude Westen <i></i></div>
+    <div class="row">Thaiboksen <i></i> Fitness <i></i> Kids 5 tot 12 <i></i> Tieners 13 tot 17 <i></i> Volwassenen <i></i> Rotterdampas welkom <i></i> Betalen met pin of iDEAL <i></i> Oude Westen <i></i></div>
+  </div>
+</div>
+
+<!-- STATS + KIEZER -->
+<section class="sec light" id="kiezer">
+  <div class="wrap">
+    <span class="kicker rv">Proefles aanvragen</span><br>
+    <h2 class="h2 rv">Stap de ring in</h2>
+    <p class="sub rv">Kies voor wie de les is, hoe ver je al bent en welke dag je wilt. Je bericht aan Khalid staat dan klaar in WhatsApp; liever bellen of mailen kan ook.</p>
+
+    <div class="picker rv" id="picker">
+      <div class="ph"><strong id="stepLabel">Stap 1 van 4</strong><div class="bar" aria-hidden="true"><i id="barFill"></i></div></div>
+      <div class="pgrid">
+        <div class="steps">
+          <div class="step on" data-step="1">
+            <h3>Voor wie is de les?</h3>
+            <p class="hint">Dit zijn de vaste lesgroepen uit het rooster.</p>
+            <div class="chips" role="group" aria-label="Lesgroep">
+              <button class="chip" type="button" data-k="groep" data-v="kids"><span><b>Kind</b><small>Van 5 tot 12 jaar</small></span><span class="tag">17:00</span></button>
+              <button class="chip" type="button" data-k="groep" data-v="teen"><span><b>Tiener</b><small>Van 13 tot 17 jaar</small></span><span class="tag">18:00</span></button>
+              <button class="chip" type="button" data-k="groep" data-v="volw"><span><b>Volwassene</b><small>Les voor volwassenen</small></span><span class="tag">19:00 · 20:00</span></button>
+            </div>
+          </div>
+          <div class="step" data-step="2">
+            <h3>Ervaring met vechtsport?</h3>
+            <p class="hint">Zo weet Khalid wat hij kan verwachten.</p>
+            <div class="chips" role="group" aria-label="Ervaring">
+              <button class="chip" type="button" data-k="ervaring" data-v="Nog nooit gedaan"><b>Nog nooit gedaan</b></button>
+              <button class="chip" type="button" data-k="ervaring" data-v="Een beetje ervaring"><b>Een beetje</b></button>
+              <button class="chip" type="button" data-k="ervaring" data-v="Al ervaring met thaiboksen of een andere vechtsport"><b>Al ervaren</b></button>
+            </div>
+            <button class="back" type="button" data-back>Terug</button>
+          </div>
+          <div class="step" data-step="3">
+            <h3>Welke dag past?</h3>
+            <p class="hint" id="dayHint">Les op maandag, woensdag en vrijdag.</p>
+            <div class="chips cols2" role="group" aria-label="Dag" id="dayChips">
+              <button class="chip" type="button" data-k="dag" data-v="maandag"><b>Maandag</b></button>
+              <button class="chip" type="button" data-k="dag" data-v="woensdag"><b>Woensdag</b></button>
+              <button class="chip" type="button" data-k="dag" data-v="vrijdag"><b>Vrijdag</b></button>
+              <button class="chip" type="button" data-k="dag" data-v="maakt niet uit"><b>Maakt niet uit</b></button>
+            </div>
+            <div id="timeWrap" hidden>
+              <p class="hint" style="margin:16px 0 10px">Welk tijdstip?</p>
+              <div class="chips cols2" role="group" aria-label="Tijd">
+                <button class="chip" type="button" data-k="tijd" data-v="19:00–19:45"><b>19:00</b></button>
+                <button class="chip" type="button" data-k="tijd" data-v="20:00–20:45"><b>20:00</b></button>
+              </div>
+            </div>
+            <button class="back" type="button" data-back>Terug</button>
+          </div>
+          <div class="step" data-step="4">
+            <h3>Verstuur je aanvraag</h3>
+            <label class="field"><span>Je naam (mag ook leeg)</span><input id="naam" type="text" autocomplete="given-name" maxlength="40" placeholder="Bijv. je voornaam"></label>
+            <div class="send">
+              <a class="btn" id="waBtn" href="https://wa.me/31649383244?text=Hoi%20Khalid%2C%20ik%20wil%20graag%20een%20proefles%20thaiboksen%20aanvragen.%20Kan%20dat%3F" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+                Verstuur via WhatsApp</a>
+              <div class="alt">
+                <a class="btn line" href="tel:+31649383244">Bel Khalid</a>
+                <a class="btn line" id="mailBtn" href="mailto:info@khalidsgym.nl?subject=Proefles%20aanvragen">Mail</a>
+              </div>
+            </div>
+            <button class="back" type="button" data-back>Terug</button>
+          </div>
+        </div>
+        <div class="preview" aria-live="polite">
+          <div class="who">Jouw bericht aan Khalid</div>
+          <div class="bubble" id="bubble">Hoi Khalid, ik wil graag een proefles thaiboksen aanvragen.<span class="caret"></span></div>
+          <p class="picker-note">Liever langskomen? Een proefles kun je ook aanvragen bij de balie, tijdens de openingstijden.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat rv"><b data-count="3">3</b><span>lesdagen per week</span></div>
+      <div class="stat rv"><b data-count="4">4</b><span>lessen per lesdag</span></div>
+      <div class="stat rv"><b data-count="45">45</b><span>minuten per les</span></div>
+      <div class="stat rv"><b><em>€</em><span data-count="20">20</span></b><span>per maand, lidmaatschap</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOSTER -->
+<section class="sec" id="rooster">
+  <div class="wrap">
+    <span class="kicker rv">Lesrooster thaiboksen</span><br>
+    <h2 class="h2 rv">Elke maandag, woensdag en vrijdag</h2>
+    <div class="sched">
+      <div>
+        <div class="daypills rv" id="days"><span data-d="1">Ma</span><span class="off" data-d="2">Di</span><span data-d="3">Wo</span><span class="off" data-d="4">Do</span><span data-d="5">Vr</span></div>
+        <p class="todayline rv" id="todayline"></p>
+        <div class="timeline" id="tl">
+          <span class="fill" aria-hidden="true"></span>
+          <div class="les kids lesrow"><div><time>17:00 – 17:45</time><b>Van 5 tot 12 jaar</b></div><a class="btn small" href="#kiezer" data-pre="kids">Proefles</a></div>
+          <div class="les teen lesrow"><div><time>18:00 – 18:45</time><b>Van 13 tot 17 jaar</b></div><a class="btn small" href="#kiezer" data-pre="teen">Proefles</a></div>
+          <div class="les lesrow"><div><time>19:00 – 19:45</time><b>Volwassenen</b></div><a class="btn small" href="#kiezer" data-pre="volw" data-t="19:00–19:45">Proefles</a></div>
+          <div class="les lesrow"><div><time>20:00 – 20:45</time><b>Volwassenen</b></div><a class="btn small" href="#kiezer" data-pre="volw" data-t="20:00–20:45">Proefles</a></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray);margin-top:6px">Bron: het rooster in de Virtuagym-app van Khalid's Gym. Kijk in de app voor wijzigingen.</p>
+      </div>
+      <aside class="hours rv" aria-label="Openingstijden">
+        <h3>Openingstijden</h3>
+        <dl id="hours">
+          <dt data-d="1">Maandag</dt><dd data-d="1">17:00 – 21:00</dd>
+          <dt data-d="2">Dinsdag</dt><dd data-d="2">18:00 – 21:00</dd>
+          <dt data-d="3">Woensdag</dt><dd data-d="3">17:00 – 21:00</dd>
+          <dt data-d="4">Donderdag</dt><dd data-d="4">18:00 – 21:00</dd>
+          <dt data-d="5">Vrijdag</dt><dd data-d="5">17:00 – 21:00</dd>
+        </dl>
+        <p>In de Virtuagym-app check je in met een QR-code, boek je lessen en koop je je lidmaatschap.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- WAAROM -->
+<section class="sec light">
+  <div class="wrap">
+    <span class="kicker rv">Waarom Khalid's Gym</span><br>
+    <h2 class="h2 rv">Waarom hier trainen</h2>
+    <div class="cards">
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10Z"/></svg></div>
+        <h3>Meer dan een vechtleraar</h3>
+        <p>Bij Khalid's Gym draait het om thaiboksen en fitnessen, en om meer dan dat.</p>
+        <blockquote>"De leerlingen krijgen er namelijk naast een vechtleraar ook een inspirator, mentor en in sommige gevallen een vaderfiguur bij."<cite>Khalid's Gym over zichzelf</cite></blockquote>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="7" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14 20c.2-2.6 1.5-4.5 3-4.5s3 1.9 3 4.5"/></svg></div>
+        <h3>Een groep voor elke leeftijd</h3>
+        <p>Kinderen van 5 tot 12 om 17:00, tieners van 13 tot 17 om 18:00 en twee lessen voor volwassenen om 19:00 en 20:00.</p>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div>
+        <h3>Sporten met de Rotterdampas</h3>
+        <p>Kinderen uit Rotterdamse gezinnen met een laag inkomen kunnen meedoen met het Sport- en cultuurtegoed. Zoek "Khalid's Gym" in de app of laat de pas scannen bij de balie.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ONDERSCHEIDINGEN -->
+<section class="sec dark" id="erkenning">
+  <div class="wrap">
+    <span class="kicker rv">Onderscheidingen</span><br>
+    <h2 class="h2 rv">Erkend in Rotterdam</h2>
+    <p class="sub rv">Khalid Chennouf won diverse prijzen en onderscheidingen.</p>
+    <div class="awards">
+      <article class="award rv">
+        <svg class="medal" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M20 4h10l4 14h-10zM34 4h10l-4 14h-10z" opacity=".7"/><circle cx="32" cy="40" r="18"/><path d="m32 29 3.2 6.6 7.2 1-5.2 5 1.2 7.2L32 45.4l-6.4 3.4 1.2-7.2-5.2-5 7.2-1z" fill="#14090a"/></svg>
+        <div><h3>Paul Nijghpenning</h3><p>Onderscheiden door de Stichting Paul Nijgh-penning Rotterdam. <a href="https://www.rijnmond.nl/nieuws/150975/Thaiboksleraar-uit-Oude-Westen-krijgt-onderscheiding" target="_blank" rel="noopener">Lees bij Rijnmond</a></p></div>
+      </article>
+      <article class="award rv">
+        <svg class="medal" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M18 8h28v12a14 14 0 0 1-28 0z"/><path d="M18 12H8v4a10 10 0 0 0 10 10M46 12h10v4a10 10 0 0 1-10 10" fill="none" stroke="currentColor" stroke-width="4"/><path d="M28 34h8v10h-8zM20 46h24v8H20z"/></svg>
+        <div><span class="big">Op zijn <span data-count="24">24</span>e</span><h3>Wereldkampioen karate</h3><p>Op zijn 24e werd Khalid Chennouf wereldkampioen karate.</p></div>
+      </article>
+      <article class="award rv">
+        <svg class="medal" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><circle cx="32" cy="24" r="16"/><circle cx="32" cy="24" r="9" fill="#14090a"/><path d="m22 36-6 22 9-5 5 8 2-25zM42 36l6 22-9-5-5 8-2-25z"/></svg>
+        <div><h3>Be a Nelson Award</h3><p>Uitgereikt door burgemeester Ahmed Aboutaleb. <a href="https://www.rijnmond.nl/nieuws/169289/Rotterdamse-boksleraar-wint-Be-a-Nelson-Award" target="_blank" rel="noopener">Lees bij Rijnmond</a></p></div>
+      </article>
+      <article class="award rv">
+        <svg class="medal" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="m32 4 8.4 17.2 19 2.7-13.7 13.4 3.2 18.9L32 47.3l-16.9 8.9 3.2-18.9L4.6 23.9l19-2.7z"/></svg>
+        <div><h3>Echt Rotterdams Erfgoed</h3><p>Door Museum Rotterdam benoemd tot "Echt Rotterdams Erfgoed".</p></div>
+      </article>
+    </div>
+    <p class="wmo rv">Khalid's Gym is samenwerkingspartner van WMO Radar.</p>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="sec" id="team">
+  <div class="wrap">
+    <span class="kicker rv">Het team</span><br>
+    <h2 class="h2 rv">Khalid en zijn rechterhanden</h2>
+    <div class="team">
+      <div class="member rv"><div class="ph2"><img src="khalid.jpg" width="400" height="400" alt="Khalid Chennouf" loading="lazy"></div><h3>Khalid Chennouf</h3><span>Trainer</span></div>
+      <div class="member rv"><div class="ph2"><img src="raddad.jpg" width="400" height="400" alt="Raddad Echalh" loading="lazy"></div><h3>Raddad Echalh</h3><span>Rechterhand</span></div>
+      <div class="member rv"><div class="ph2 ini" aria-hidden="true">DM</div><h3>Dilano Mijnals</h3><span>Rechterhand</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section class="sec light" id="media">
+  <div class="wrap">
+    <span class="kicker rv">In de media</span><br>
+    <h2 class="h2 rv">Bekijk het zelf</h2>
+    <div class="media">
+      <a class="vid rv" href="https://www.youtube.com/watch?v=6haRcDA8t6g" target="_blank" rel="noopener">
+        <div class="th"><em>Video</em><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span></div>
+        <div class="tx"><strong>Paul Nijghpenning – Thaiboksschoolhouder Khalid Chennouf</strong><small>OPEN Rotterdam · YouTube</small></div>
+      </a>
+      <a class="vid rv" href="https://www.youtube.com/watch?v=3jy8TIgwpm4" target="_blank" rel="noopener">
+        <div class="th"><em>Video</em><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span></div>
+        <div class="tx"><strong>Khalid Chennouf, meester van de thaiboksgym</strong><small>YouTube</small></div>
+      </a>
+      <a class="vid rv" href="https://www.youtube.com/watch?v=1pk_3Ocs3JQ" target="_blank" rel="noopener">
+        <div class="th"><em>Video</em><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span></div>
+        <div class="tx"><strong>Zakaria Zouggary: "Ik heb altijd geprobeerd om zo groot mogelijk te denken"</strong><small>Veronica Fight · YouTube</small></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRIJS -->
+<section class="sec" id="prijs">
+  <div class="wrap">
+    <span class="kicker rv">Lidmaatschap</span><br>
+    <h2 class="h2 rv">Helder geregeld</h2>
+    <div class="price">
+      <div class="pcard rv">
+        <div class="per">Lidmaatschap 1 jaar</div>
+        <div class="amt"><sup>€</sup><span data-count="20">20</span></div>
+        <div class="per">per maand</div>
+        <ul>
+          <li>Maandelijks betalen via automatische incasso</li>
+          <li>Ook mogelijk: één maand los kopen, met een enkele betaling</li>
+          <li>Afsluiten en betalen in de webshop of de Virtuagym-app</li>
+        </ul>
+        <div class="btns">
+          <a class="btn" href="https://khalidsgym.virtuagym.com/webshop&amp;embedded=1" target="_blank" rel="noopener">Lid worden</a>
+          <a class="btn ghost" href="#kiezer">Eerst een proefles</a>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="warn rv"><h3>Geen contant geld</h3><p>Bij de balie wordt geen cash geaccepteerd. Lessen betaal je het liefst via iDEAL.</p></div>
+        <div class="rv"><h3>Rotterdampas</h3><p>Met het Sport- en cultuurtegoed op de Rotterdampas kunnen kinderen uit gezinnen met een laag inkomen meedoen. Het tegoed staat als twee halfjaarvouchers op de pas.</p></div>
+        <div class="rv"><h3>Eén maand proberen?</h3><p><a href="https://khalidsgym.virtuagym.com/webshop/singlemonth" target="_blank" rel="noopener" style="color:var(--red);font-weight:700">Koop één losse maand</a> in de webshop.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZO WERKT HET -->
+<section class="sec light" id="stappen">
+  <div class="wrap">
+    <span class="kicker rv">Zo werkt het</span><br>
+    <h2 class="h2 rv">In drie rondes</h2>
+    <ol class="how">
+      <li class="rv"><h3>Kies je les</h3><p>Groep, ervaring en dag in de kiezer hierboven.</p></li>
+      <li class="rv"><h3>Stuur je bericht</h3><p>Via WhatsApp, telefoon of mail naar Khalid. Of vraag je proefles aan bij de balie.</p></li>
+      <li class="rv"><h3>Kom trainen</h3><p>Sportkleding aan, en je staat op de mat in het Oude Westen.</p></li>
+    </ol>
+    <div class="bring rv">
+      <h3>Wat zeggen de huisregels?</h3>
+      <ul>
+        <li>Correcte sportkleding is verplicht; schoenen zijn niet toegestaan in de trainingsruimte.</li>
+        <li>Bij thaiboksen is de standaard veiligheidsuitrusting verplicht: bokshandschoenen, scheenbeschermers en een bitje.</li>
+        <li>Vraag bij je aanvraag gerust wat je voor je eerste les nodig hebt.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <span class="kicker rv">Vragen</span><br>
+    <h2 class="h2 rv">Goed om te weten</h2>
+    <div class="faq">
+      <details class="rv"><summary>Vanaf welke leeftijd kan mijn kind meedoen?</summary><p>De jongste groep is van 5 tot 12 jaar en traint op maandag, woensdag en vrijdag van 17:00 tot 17:45. Tieners van 13 tot 17 jaar trainen daarna, van 18:00 tot 18:45.</p></details>
+      <details class="rv"><summary>Wat kost een lidmaatschap?</summary><p>Een lidmaatschap van 1 jaar kost € 20 per maand, via automatische incasso. Je kunt ook één losse maand kopen in de webshop.</p></details>
+      <details class="rv"><summary>Kan ik contant betalen?</summary><p>Nee, bij de balie wordt geen cash geaccepteerd. Betalen gaat het liefst via iDEAL.</p></details>
+      <details class="rv"><summary>Kan ik de Rotterdampas gebruiken?</summary><p>Ja. Kinderen uit Rotterdamse gezinnen met een laag inkomen kunnen het Sport- en cultuurtegoed gebruiken. Zoek "Khalid's Gym" in de app en vraag je lespakket aan, of laat de pas scannen bij de balie.</p></details>
+      <details class="rv"><summary>Hoe vraag ik een proefles aan?</summary><p>Via de <a href="#kiezer">proefles-kiezer</a> stuur je in één keer een bericht naar Khalid. Je kunt een proefles ook aanvragen bij de balie.</p></details>
+      <details class="rv"><summary>Hoe werkt de app?</summary><p>Met je inloggegevens log je in op de Virtuagym-app. Daarin check je in met een QR-code, boek je lessen en koop je lidmaatschappen.</p></details>
+      <details class="rv"><summary>Waar kan ik terecht als er iets niet goed voelt?</summary><p>Bij een vertrouwenscontactpersoon kun je grensoverschrijdend gedrag melden. Op de <a href="https://khalidsgym.nl/vertrouwenscontactpersonen/" target="_blank" rel="noopener">pagina vertrouwenscontactpersonen</a> staat bij wie je terechtkunt.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIE -->
+<section class="sec light" id="locatie">
+  <div class="wrap">
+    <span class="kicker rv">Locatie</span><br>
+    <h2 class="h2 rv">Midden in het Oude Westen</h2>
+    <div class="loc">
+      <div class="mapcard rv">
+        <svg class="grid" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g stroke="#fff" stroke-width="1.5" fill="none"><path d="M0 60 400 20M0 150 400 110M0 240 400 200M80 0 60 260M200 0 180 260M320 0 300 260"/><path d="M0 100 400 70" stroke-width="6" opacity=".6"/></g></svg>
+        <div>
+          <svg class="pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+          <div class="addr">Josephstraat,<br>hoek Kogelvangerstraat</div>
+          <p>Rotterdam, Oude Westen</p>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Khalids+Gym+Josephstraat+Kogelvangerstraat+Rotterdam" target="_blank" rel="noopener">Route in Google Maps</a>
+        </div>
+      </div>
+      <div class="contactlist">
+        <a class="rv" href="https://wa.me/31649383244?text=Hoi%20Khalid%2C%20ik%20heb%20een%20vraag%20over%20de%20lessen."><span class="ci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg></span><span>WhatsApp<small>06 49 38 32 44</small></span></a>
+        <a class="rv" href="tel:+31649383244"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span>Bel Khalid<small>06 49 38 32 44</small></span></a>
+        <a class="rv" href="mailto:info@khalidsgym.nl"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span>Mail<small>info@khalidsgym.nl</small></span></a>
+        <a class="rv" href="https://www.instagram.com/khalidsgym/" target="_blank" rel="noopener"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span><span>Instagram<small>@khalidsgym</small></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLOT -->
+<section class="final" id="slot">
+  <div class="wrap">
+    <h2 id="finalH"><span>Klaar voor</span><span class="o">je eerste les?</span></h2>
+    <p>Kies je groep en dag, en je aanvraag staat binnen een paar tikken bij Khalid.</p>
+    <div class="row">
+      <a class="btn" href="#kiezer">Vraag een proefles aan</a>
+      <a class="btn ghost" href="https://wa.me/31649383244?text=Hoi%20Khalid%2C%20ik%20wil%20graag%20een%20proefles%20thaiboksen%20aanvragen.%20Kan%20dat%3F">App Khalid</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><img src="logo-light.svg" width="120" height="141" alt="Logo Khalid's Gym Rotterdam Oude Westen" loading="lazy"></div>
+      <div>
+        <h4>Khalid's Gym</h4>
+        <p>Thaiboksschool Oude Westen<br>Josephstraat, hoek Kogelvangerstraat<br>Rotterdam</p>
+        <p style="margin-top:8px"><a href="tel:+31649383244">06 49 38 32 44</a><br><a href="mailto:info@khalidsgym.nl">info@khalidsgym.nl</a></p>
+      </div>
+      <div>
+        <h4>Info</h4>
+        <ul>
+          <li><a href="https://khalidsgym.nl/huisregels-khalidsgym/" target="_blank" rel="noopener">Huisregels</a></li>
+          <li><a href="https://khalidsgym.nl/vertrouwenscontactpersonen/" target="_blank" rel="noopener">Vertrouwenscontactpersonen</a></li>
+          <li><a href="https://khalidsgym.nl/privacy-statement/" target="_blank" rel="noopener">Privacyverklaring</a></li>
+          <li><a href="https://khalidsgym.nl/algemene-voorwaarden/" target="_blank" rel="noopener">Algemene voorwaarden Stichting Vrienden van Khalid</a></li>
+          <li><a href="https://www.instagram.com/khalidsgym/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fine"><span>© 2026 Khalid's Gym</span><span>Website door <a href="https://mohamedia.nl">Mohamedia</a></span></div>
+  </div>
+</footer>
+
+<div class="float" id="float">
+  <a class="btn" href="#kiezer">Boek een proefles</a>
+  <a class="btn wa" href="https://wa.me/31649383244?text=Hoi%20Khalid%2C%20ik%20wil%20graag%20een%20proefles%20thaiboksen%20aanvragen.%20Kan%20dat%3F" aria-label="WhatsApp Khalid"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg></a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>
+(function(){
+  var WA = '31649383244';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s, c){ return (c || document).querySelector(s); };
+  var $$ = function(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  /* ---------- Aankondiging wisselt tussen echte feiten ---------- */
+  var ann = ['Thaiboksles op maandag, woensdag en vrijdag', 'Khalid: Echt Rotterdams Erfgoed', 'Kinderen vanaf 5 jaar welkom', 'Sporten met de Rotterdampas kan hier'];
+  var ai = 0, annEl = $('#ann');
+  if (!reduce) setInterval(function(){
+    annEl.classList.add('out');
+    setTimeout(function(){ ai = (ai + 1) % ann.length; annEl.textContent = ann[ai]; annEl.classList.remove('out'); }, 500);
+  }, 4200);
+
+  /* ---------- Combo-regel in de hero ---------- */
+  var combo = ['17:00 kids', '18:00 tieners', '19:00 volwassenen', '20:00 volwassenen'], ci = 0, comboEl = $('#combo');
+  if (!reduce) setInterval(function(){ ci = (ci + 1) % combo.length; comboEl.textContent = combo[ci]; if (window.gsap) gsap.fromTo(comboEl, {y: -14, opacity: 0, skewX: -12}, {y: 0, opacity: 1, skewX: 0, duration: .45, ease: 'back.out(3)'}); }, 2000);
+
+  /* ---------- Vandaag in rooster en openingstijden ---------- */
+  var d = new Date().getDay(); // 0 = zondag
+  var dagen = ['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+  $$('#days span').forEach(function(s){ if (+s.dataset.d === d) s.classList.add('today'); });
+  $$('#hours dt').forEach(function(dt){ if (+dt.dataset.d === d){ dt.classList.add('now'); dt.nextElementSibling.classList.add('now'); dt.style.color = 'var(--gold)'; dt.nextElementSibling.style.color = 'var(--gold)'; } });
+  var lesdag = [1,3,5];
+  var tl = $('#todayline');
+  if (lesdag.indexOf(d) > -1) tl.textContent = 'Vandaag (' + dagen[d] + ') is er thaiboksles.';
+  else { var n = d; do { n = (n + 1) % 7; } while (lesdag.indexOf(n) < 0); tl.textContent = 'Volgende lesdag: ' + dagen[n] + '.'; }
+
+  /* ---------- Kiezer ---------- */
+  var groepen = {
+    kids: {wie: 'mijn kind (groep 5 tot 12 jaar)', tijd: '17:00–17:45'},
+    teen: {wie: 'een tiener (groep 13 tot 17 jaar)', tijd: '18:00–18:45'},
+    volw: {wie: 'mezelf (les voor volwassenen)', tijd: ''}
+  };
+  var st = {groep: '', ervaring: '', dag: '', tijd: '', naam: ''};
+  var step = 1;
+  var bubble = $('#bubble');
+
+  function bericht(){
+    var r = ['Hoi Khalid, ik wil graag een proefles thaiboksen aanvragen.'];
+    if (st.groep) r.push('Voor: ' + groepen[st.groep].wie);
+    if (st.ervaring) r.push('Ervaring: ' + st.ervaring.toLowerCase());
+    if (st.dag){
+      var t = st.groep === 'volw' ? st.tijd : (groepen[st.groep] ? groepen[st.groep].tijd : '');
+      r.push('Voorkeur: ' + st.dag + (t && st.dag !== 'maakt niet uit' ? ', ' + t : (t ? ' (' + t + ')' : '')));
+    }
+    if (st.naam) r.push('Naam: ' + st.naam);
+    r.push('Kan dat?');
+    return r.join('\n');
+  }
+  function update(){
+    var b = bericht();
+    bubble.innerHTML = '';
+    bubble.appendChild(document.createTextNode(b));
+    var c = document.createElement('span'); c.className = 'caret'; bubble.appendChild(c);
+    $('#waBtn').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(b);
+    $('#mailBtn').href = 'mailto:info@khalidsgym.nl?subject=' + encodeURIComponent('Proefles aanvragen') + '&body=' + encodeURIComponent(b);
+    if (window.gsap && !reduce) gsap.fromTo(bubble, {scale: .97}, {scale: 1, duration: .35, ease: 'back.out(3)'});
+  }
+  function go(n){
+    step = n;
+    $$('.step').forEach(function(s){ s.classList.toggle('on', +s.dataset.step === n); });
+    $('#stepLabel').textContent = 'Stap ' + n + ' van 4';
+    $('#barFill').style.width = (n * 25) + '%';
+  }
+  function markeer(k, v){
+    $$('.chip[data-k="' + k + '"]').forEach(function(c){ c.classList.toggle('sel', c.dataset.v === v); });
+  }
+  function dagStap(){
+    var isV = st.groep === 'volw';
+    $('#timeWrap').hidden = !isV;
+    $('#dayHint').textContent = isV ? 'Les voor volwassenen op maandag, woensdag en vrijdag, om 19:00 of 20:00.' : 'Les op maandag, woensdag en vrijdag, ' + (groepen[st.groep] ? groepen[st.groep].tijd : '') + '.';
+  }
+  $$('.chip').forEach(function(c){
+    c.addEventListener('click', function(){
+      var k = c.dataset.k, v = c.dataset.v;
+      st[k] = v; markeer(k, v);
+      c.classList.remove('hit'); void c.offsetWidth; c.classList.add('hit');
+      update();
+      var delay = reduce ? 0 : 260;
+      if (k === 'groep'){ st.tijd = ''; markeer('tijd', ''); dagStap(); setTimeout(function(){ go(2); }, delay); }
+      else if (k === 'ervaring'){ setTimeout(function(){ go(3); }, delay); }
+      else if (k === 'dag' || k === 'tijd'){
+        if (st.groep !== 'volw' || (st.dag && st.tijd) || (k === 'dag' && v === 'maakt niet uit' && st.tijd)) setTimeout(function(){ go(4); }, delay);
+      }
+    });
+  });
+  $$('[data-back]').forEach(function(b){ b.addEventListener('click', function(){ go(Math.max(1, step - 1)); }); });
+  $('#naam').addEventListener('input', function(e){ st.naam = e.target.value.trim(); update(); });
+
+  // Proefles-knoppen in het rooster vullen de kiezer vooraf in
+  $$('[data-pre]').forEach(function(a){
+    a.addEventListener('click', function(){
+      st.groep = a.dataset.pre; markeer('groep', st.groep);
+      st.tijd = a.dataset.t || ''; markeer('tijd', st.tijd);
+      dagStap(); update(); go(2);
+    });
+  });
+
+  /* ---------- Tellers (alleen echte getallen) ---------- */
+  function tel(el){
+    var doel = +el.dataset.count; if (reduce){ el.textContent = doel; return; }
+    var t0 = null, dur = 1100;
+    function f(t){ if (!t0) t0 = t; var p = Math.min(1, (t - t0) / dur); el.textContent = Math.round(doel * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(f); }
+    el.textContent = '0'; requestAnimationFrame(f);
+  }
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ tel(e.target); io.unobserve(e.target); } }); }, {threshold: .6});
+  $$('[data-count]').forEach(function(el){ io.observe(el); });
+
+  /* ---------- Zwevende CTA: na de hero, verborgen bij de kiezer ---------- */
+  var fl = $('#float'), heroUit = false, kiezerIn = false;
+  function zet(){ fl.classList.toggle('show', heroUit && !kiezerIn); }
+  new IntersectionObserver(function(es){ heroUit = !es[0].isIntersecting; zet(); }, {threshold: 0}).observe($('#hero'));
+  new IntersectionObserver(function(es){ kiezerIn = es[0].isIntersecting; zet(); }, {threshold: .35}).observe($('#picker'));
+
+  /* ---------- Voortgangsbalk ---------- */
+  var prog = $('.prog');
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement; var p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+    prog.style.transform = 'scaleX(' + p + ')';
+  }, {passive: true});
+
+  /* ---------- Kop-onderstrepen ---------- */
+  var io2 = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('on'); io2.unobserve(e.target); } }); }, {threshold: .5});
+  $$('.h2').forEach(function(h){ io2.observe(h); });
+
+  /* ---------- GSAP: hero-impact, reveals, parallax ---------- */
+  window.addEventListener('DOMContentLoaded', function(){
+    if (reduce || !window.gsap) return;
+    gsap.registerPlugin(ScrollTrigger);
+    document.documentElement.classList.add('anim');
+
+    var hero = $('#hero'), burst = $('.burst'), ring = $('.ring');
+    function impact(el){
+      var hr = hero.getBoundingClientRect(), r = el.getBoundingClientRect();
+      var x = r.left - hr.left + Math.min(r.width, 300) * .82, y = r.top - hr.top + r.height * .5;
+      gsap.set(burst, {x: x - 130, y: y - 130, scale: .3, opacity: 1, rotate: gsap.utils.random(-20, 20)});
+      gsap.to(burst, {scale: 1.25, opacity: 0, duration: .5, ease: 'power2.out'});
+      gsap.set(ring, {x: x - 60, y: y - 60, scale: .2, opacity: 1});
+      gsap.to(ring, {scale: 2.6, opacity: 0, duration: .6, ease: 'power2.out'});
+    }
+
+    var tlH = gsap.timeline({defaults: {ease: 'power4.in'}});
+    tlH.from('.hero-photo', {scale: 1.25, duration: 1.4, ease: 'power3.out'}, 0)
+       .from('.slab', {xPercent: -110, duration: .7, ease: 'power3.out', stagger: .12}, 0)
+       .from('.eyebrow', {y: -20, opacity: 0, duration: .4, ease: 'power2.out'}, .2);
+    $$('.hero h1 .w').forEach(function(w, i){
+      tlH.from(w, {scale: 2.6, opacity: 0, filter: 'blur(10px)', duration: .32, transformOrigin: '20% 50%', onComplete: function(){ impact(w); }}, .45 + i * .38);
+    });
+    tlH.from('.hero .lead, .combo', {y: 18, opacity: 0, duration: .5, ease: 'power2.out', stagger: .08}, '+=.05')
+       .from('.hero-cta .btn', {y: 24, opacity: 0, duration: .5, ease: 'back.out(2)', stagger: .1}, '-=.3')
+       .from('.trust span', {x: -16, opacity: 0, duration: .35, ease: 'power2.out', stagger: .08}, '-=.3');
+
+
+    // Parallax foto + kop
+    gsap.to('.hero-photo', {yPercent: 14, ease: 'none', scrollTrigger: {trigger: hero, start: 'top top', end: 'bottom top', scrub: true}});
+    gsap.to('.hero-in', {yPercent: -10, opacity: .2, ease: 'none', scrollTrigger: {trigger: hero, start: 'center center', end: 'bottom top', scrub: true}});
+
+    // Marquee versnelt met scrollsnelheid
+    var mq = $('.marquee .track').getAnimations ? $('.marquee .track').getAnimations()[0] : null;
+    if (mq) ScrollTrigger.create({onUpdate: function(s){ var v = Math.min(4, 1 + Math.abs(s.getVelocity()) / 900); mq.playbackRate = v; gsap.delayedCall(.25, function(){ mq.playbackRate = 1; }); }});
+
+    // Reveals
+    $$('.rv').forEach(function(el){
+      gsap.to(el, {opacity: 1, y: 0, duration: .7, ease: 'power3.out', scrollTrigger: {trigger: el, start: 'top 90%', once: true}});
+    });
+    // Rooster schuift in, lijn tekent mee
+    gsap.set('.lesrow', {opacity: 0, x: 70});
+    gsap.to('.lesrow', {opacity: 1, x: 0, duration: .6, ease: 'back.out(1.6)', stagger: .14, scrollTrigger: {trigger: '#tl', start: 'top 80%', once: true}});
+    gsap.fromTo('#tl .fill', {scaleY: 0}, {scaleY: 1, ease: 'none', scrollTrigger: {trigger: '#tl', start: 'top 75%', end: 'bottom 55%', scrub: true}});
+    // Medailles draaien in
+    $$('.award .medal').forEach(function(m){
+      gsap.from(m, {rotate: -180, scale: 0, duration: .8, ease: 'back.out(2)', scrollTrigger: {trigger: m, start: 'top 88%', once: true}});
+    });
+    // Teamfoto's poppen
+    gsap.from('.member .ph2', {scale: .5, rotate: -8, duration: .7, ease: 'back.out(2)', stagger: .12, scrollTrigger: {trigger: '.team', start: 'top 85%', once: true}});
+    // Slot-kop slaat binnen
+    gsap.from('#finalH span', {scale: 2.2, opacity: 0, duration: .35, ease: 'power4.in', stagger: .3, scrollTrigger: {trigger: '#slot', start: 'top 70%', once: true}});
+    // Prijs-kaart kantelt licht mee
+    gsap.from('.pcard', {rotate: -3, scale: .94, duration: .8, ease: 'power3.out', scrollTrigger: {trigger: '.pcard', start: 'top 85%', once: true}});
+  });
+})();
+</script>
+</body>
+</html>
