@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Radha’s Bespoke Bakes – custom cakes in Den Haag</title>
+<meta name="description" content="Bespoke theme cakes, cupcakes, cake pops and more, made to order by Radha’s Bespoke Bakes in Den Haag (Ypenburg). Rated 4.9 from 39 Google reviews. Order via WhatsApp.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal-d:#06343d; --teal:#0b5563; --teal-2:#12707f;
+  --gold:#ffb627; --gold-d:#e09600; --rose:#e8457c; --rose-d:#c42b62; --rose-l:#ffe4ee;
+  --aqua:#7fd6cf; --aqua-l:#e0f6f3; --paper:#f7fcfb; --ink:#0a2a31; --soft:#46636b; --line:#cfe5e2;
+  --display:"Baloo 2", "Trebuchet MS", sans-serif; --sans:"Mulish", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+.sr{position:absolute;left:-9999px}
+.demo{background:var(--teal-d);color:#bfe0dc;font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--gold)}
+.notice{background:var(--gold);color:var(--teal-d);font-size:14.5px;text-align:center;padding:8px 16px;font-weight:800}
+
+header.top{background:var(--paper);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:84px}
+header.top .logo img{height:54px;width:auto;display:block}
+header.top nav{display:flex;align-items:center}
+header.top nav a{text-decoration:none;font-size:15.5px;font-weight:800;margin-left:26px;padding:10px 0}
+header.top nav a:hover{color:var(--rose-d)}
+header.top nav a.btn{padding:10px 20px;min-height:46px;font-size:15px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:13px 26px;border-radius:999px;font-family:var(--sans);font-weight:800;font-size:16.5px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .15s,color .15s,border-color .15s;line-height:1.2;text-align:center}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-gold{background:var(--gold);color:var(--teal-d)}
+.btn-gold:hover{background:#ffc552}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:var(--teal-2)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+/* hero */
+.hero{position:relative;background:linear-gradient(160deg,var(--teal) 0,var(--teal-d) 75%);color:#fff;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-top:72px;padding-bottom:130px}
+.kicker{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.1);color:var(--aqua);font-weight:800;font-size:14px;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--rose)}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,5.6vw,74px);line-height:1;margin:0 0 20px;letter-spacing:-.01em}
+.rot{display:block;color:var(--gold);min-height:1.05em}
+.hero p.sub{font-size:19px;max-width:30em;color:#d3ebe8;margin:0 0 30px}
+.hero p.sub b{color:#fff}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.trust{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15.5px;color:#bfe0dc;align-items:center}
+.trust .stars{color:var(--gold);letter-spacing:2px}
+.trust b{color:#fff}
+.cake{width:100%;max-width:430px;justify-self:center;overflow:visible}
+.cake .bob{animation:bob 6s ease-in-out infinite}
+.cake .flame{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.3s ease-in-out infinite}
+.cake .swing{transform-box:view-box;transform-origin:200px 40px;animation:swing 5s ease-in-out infinite}
+.cake .drip{transform-box:fill-box;transform-origin:50% 0;animation:drip 4.4s ease-in-out infinite;animation-delay:var(--d)}
+.cake .twk{transform-box:fill-box;transform-origin:50% 50%;animation:twk 2.6s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes bob{50%{transform:translateY(-7px)}}
+@keyframes flick{0%,100%{transform:scale(1,1) rotate(-3deg)}50%{transform:scale(.88,1.12) rotate(3deg)}}
+@keyframes swing{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@keyframes drip{0%,100%{transform:scaleY(.6)}50%{transform:scaleY(1.15)}}
+@keyframes twk{0%,100%{transform:scale(.4);opacity:.3}50%{transform:scale(1);opacity:1}}
+/* glazuur-golf onderaan de hero */
+.glaze{position:absolute;left:0;right:0;bottom:-1px;height:70px;z-index:3;pointer-events:none}
+.glaze svg{position:absolute;bottom:0;left:0;width:200%;height:100%}
+.glaze .g1{animation:wave 9s linear infinite}
+.glaze .g2{animation:wave 14s linear infinite reverse}
+@keyframes wave{to{transform:translateX(-50%)}}
+
+/* marquee */
+.band{background:var(--paper);overflow:hidden;white-space:nowrap;padding:8px 0 18px}
+.band .track{display:inline-block;animation:slide 42s linear infinite;font-family:var(--display);font-weight:700;font-size:24px;color:var(--teal)}
+.band span{margin:0 20px;display:inline-flex;align-items:center;gap:40px}
+.band span::after{content:"";width:12px;height:12px;transform:rotate(45deg);border-radius:3px;background:var(--gold)}
+.band span:nth-child(3n+2)::after{background:var(--rose)}
+.band span:nth-child(3n)::after{background:var(--aqua)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding:92px 0}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.4vw,54px);line-height:1.05;margin:0 0 14px;color:var(--teal-d);letter-spacing:-.01em}
+h2 span{color:var(--rose-d)}
+.lead{color:var(--soft);font-size:18px;max-width:36em;margin:0 0 42px}
+
+/* kiezer */
+.pick{background:var(--aqua-l)}
+.pick .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start}
+.dots{display:flex;gap:8px;margin-bottom:26px}
+.dots i{flex:1;height:8px;border-radius:8px;background:var(--line);transition:background .3s}
+.dots i.on{background:var(--rose)}
+.step{margin-bottom:30px}
+.step h3{font-family:var(--display);font-weight:700;font-size:21px;margin:0 0 12px;color:var(--teal-d)}
+.step h3 small{font-family:var(--sans);font-weight:400;font-size:15px;color:var(--soft)}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.opts.two{grid-template-columns:repeat(2,1fr)}
+.opt{position:relative;text-align:left;background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 14px 12px;font:inherit;color:var(--ink);cursor:pointer;min-height:48px;transition:border-color .15s,background .15s;min-width:0}
+.opt b{display:block;font-weight:800;font-size:16.5px;line-height:1.2;overflow-wrap:break-word}
+.opt small{display:block;color:var(--soft);font-size:13.5px;margin-top:3px;line-height:1.35}
+@media (hover:hover){.opt:not([aria-pressed="true"]):hover{border-color:var(--rose)}}
+.opt[aria-pressed="true"]{border-color:var(--teal);background:var(--teal);color:#fff}
+.opt[aria-pressed="true"] small{color:var(--aqua)}
+.field input{font:inherit;padding:12px 16px;border:2px solid var(--line);border-radius:16px;min-height:54px;background:#fff;color:var(--ink);width:100%;max-width:420px}
+.field input:focus{border-color:var(--teal)}
+.hint{font-size:14.5px;color:var(--soft);margin:8px 0 0}
+.summary{background:var(--teal-d);color:#fff;border-radius:28px;padding:30px;position:sticky;top:24px;overflow:hidden}
+.summary .bord{height:22px;margin:-30px -30px 22px;background:radial-gradient(12px 12px at 12px 0,var(--rose) 98%,transparent) 0 0/24px 22px repeat-x,var(--teal-d)}
+.summary .k{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:800}
+.summary h3{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.1;margin:6px 0 18px;overflow-wrap:break-word}
+.summary dl{margin:0 0 24px;font-size:15.5px}
+.summary dl div{display:grid;grid-template-columns:92px 1fr;gap:10px;padding:10px 0;border-top:1px solid rgba(255,255,255,.14)}
+.summary dt{color:#a9cfca}
+.summary dd{margin:0;font-weight:700;min-width:0;overflow-wrap:break-word}
+.summary .btn{width:100%}
+.summary .note{font-size:13.5px;color:#a9cfca;margin-top:12px;text-align:center}
+
+/* waarom */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--c);border-radius:26px;padding:30px 28px;min-width:0}
+.card svg{width:56px;height:56px;margin-bottom:16px;display:block}
+.card h3{font-family:var(--display);font-weight:700;margin:0 0 8px;font-size:clamp(21px,5.6vw,25px);line-height:1.15;color:var(--teal-d);overflow-wrap:break-word}
+.card p{margin:0;color:var(--soft)}
+
+/* reviews */
+.reviews{background:var(--teal-d);color:#fff}
+.reviews h2{color:#fff}
+.revhead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.score{text-align:right}
+.score b{font-family:var(--display);font-weight:800;font-size:88px;line-height:1;color:var(--gold);display:block}
+.score span{color:#a9cfca;font-size:15px}
+.score a{color:#fff;text-underline-offset:3px;display:inline-flex;align-items:center;min-height:44px;padding:0 2px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rv{margin:0;background:var(--teal);border-radius:24px;padding:26px 26px 28px;position:relative}
+.rv::before{content:"“";position:absolute;right:20px;top:-6px;font-family:var(--display);font-size:90px;line-height:1;color:var(--rose)}
+.rv blockquote{margin:0 0 18px;font-size:20px;line-height:1.4;color:#fff;font-weight:700}
+.rv figcaption{display:flex;align-items:center;gap:12px}
+.rv figcaption i{width:42px;height:42px;border-radius:50%;background:var(--gold);color:var(--teal-d);font-style:normal;font-family:var(--display);font-weight:800;font-size:20px;display:grid;place-items:center}
+.rv figcaption b{font-weight:800;font-size:17px;display:block}
+.rv figcaption small{display:block;color:#a9cfca;font-size:13.5px}
+.revnote{margin:24px 0 0;color:#a9cfca;font-size:14.5px}
+.revnote a{color:#fff;text-underline-offset:3px}
+
+/* stappen */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:18px;transform:rotate(-4deg);background:var(--gold);color:var(--teal-d);font-family:var(--display);font-weight:800;font-size:28px;margin-bottom:16px}
+.steps li:nth-child(2)::before{background:var(--rose);color:#fff;transform:rotate(3deg)}
+.steps li:nth-child(3)::before{background:var(--teal);color:#fff}
+.steps h3{margin:0 0 6px;font-size:20px;font-weight:800}
+.steps p{margin:0;color:var(--soft)}
+
+/* faq */
+.faq{background:var(--rose-l)}
+.faq .wrap{max-width:840px}
+details{background:#fff;border-radius:18px;margin-bottom:10px;padding:0 22px}
+summary{cursor:pointer;list-style:none;padding:18px 36px 18px 0;font-size:17.5px;font-weight:800;position:relative;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:0;top:12px;font-size:28px;color:var(--rose-d);font-weight:400}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 20px;color:var(--soft)}
+
+/* plaats */
+.visit .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.visit .place{font-family:var(--display);font-weight:800;font-size:clamp(30px,3.6vw,44px);line-height:1.1;margin:0 0 12px;color:var(--rose-d)}
+.visit p{color:var(--soft);margin:0 0 24px}
+.pickup{background:var(--aqua-l);border-radius:26px;padding:28px 30px}
+.pickup ul{margin:0;padding:0;list-style:none}
+.pickup li{padding:12px 0 12px 34px;border-top:1px solid var(--line);position:relative;font-weight:700}
+.pickup li:first-child{border-top:0}
+.pickup li::before{content:"";position:absolute;left:4px;top:20px;width:12px;height:12px;transform:rotate(45deg);border-radius:3px;background:var(--rose)}
+
+.final{background:var(--gold);color:var(--teal-d);text-align:center}
+.final h2{max-width:18ch;margin:0 auto 16px}
+.final h2 span{color:var(--teal-d)}
+.final .lead{color:var(--teal-d);margin:0 auto 30px}
+.final .date{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.final .date input{font:inherit;padding:12px 16px;border:2px solid var(--teal-d);border-radius:16px;min-height:54px;background:#fff;color:var(--ink);max-width:100%}
+
+footer{background:var(--teal-d);color:#a9cfca;padding:52px 0 100px;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer img{height:56px;width:auto;margin-bottom:14px}
+footer h4{color:var(--gold);margin:0 0 10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+footer p{margin:0;line-height:1.9}
+footer a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;margin-top:16px;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:10;display:none}
+.float.on{display:block}
+.float .btn{width:100%;box-shadow:0 12px 30px rgba(6,52,61,.45)}
+@media (min-width:861px){.float{display:none!important}}
+@media (max-width:860px){
+  header.top nav{display:none}
+  header.top .wrap{height:72px}
+  header.top .logo img{height:46px}
+  .hero .wrap{grid-template-columns:1fr;padding-top:50px;padding-bottom:104px}
+  .cake{display:none}
+  .pick .grid,.visit .wrap{grid-template-columns:1fr}
+  .cards,.quotes,.steps{grid-template-columns:1fr}
+  .opts{grid-template-columns:1fr 1fr}
+  .summary{position:relative;top:0}
+  .score{text-align:left}
+  footer .wrap{grid-template-columns:1fr}
+  section{padding:68px 0}
+  .btns .btn{width:100%}
+}
+@media (max-width:400px){.card svg{width:46px;height:46px}.opt b{font-size:15.5px}}
+@media (prefers-reduced-motion:reduce){
+  .band .track,.cake .bob,.cake .flame,.cake .swing,.cake .drip,.cake .twk,.glaze .g1,.glaze .g2{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="demo">This is a demo, made by <a href="https://mohamedia.nl">Mohamedia</a> · Dit is een demo, gemaakt door Mohamedia</div>
+<div class="notice">4.9 ★ from 39 Google reviews · Bespoke cakes in Den Haag</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Radha’s Bespoke Bakes, home"><img src="logo-dark.svg" alt="Radha’s Bespoke Bakes" width="158" height="54"></a>
+    <nav aria-label="Main menu"><a href="#order">Order</a><a href="#reviews">Reviews</a><a href="#faq">Questions</a><a href="#contact">Contact</a><a class="btn btn-teal js-wa-plain" href="#">WhatsApp</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="top">
+    <canvas id="confetti" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <span class="kicker">Theme cakes · Cupcakes · Cake pops</span>
+        <h1>Bespoke cakes <span class="rot" id="rot">for kids’ parties</span></h1>
+        <p class="sub">Theme cakes, cupcakes, cake pops and more, made to order in <b>Den Haag (Ypenburg)</b>. Share your idea on WhatsApp and Radha will tell you what’s possible.</p>
+        <div class="btns">
+          <a class="btn btn-gold js-wa-hero" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>Order on WhatsApp</a>
+          <a class="btn btn-ghost" href="#order">Design your cake</a>
+        </div>
+        <div class="trust"><span class="stars" aria-hidden="true">★★★★★</span><span><b>4.9</b> on Google · 39 reviews</span><span>Den Haag · Ypenburg</span></div>
+      </div>
+      <svg class="cake" viewBox="0 0 400 400" aria-hidden="true">
+        <!-- slinger -->
+        <g class="swing">
+          <path d="M10 40Q200 120 390 40" stroke="#7fd6cf" stroke-width="3" fill="none"/>
+          <path d="M40 52l14 30 14-25z" fill="#ffb627"/><path d="M92 70l12 30 16-24z" fill="#e8457c"/><path d="M148 82l10 31 18-22z" fill="#7fd6cf"/>
+          <path d="M224 82l18 22 10-31z" fill="#ffb627"/><path d="M280 70l16 24 12-30z" fill="#e8457c"/><path d="M332 57l14 25 14-30z" fill="#7fd6cf"/>
+        </g>
+        <ellipse cx="200" cy="378" rx="150" ry="13" fill="#021d22" opacity=".5"/>
+        <g class="bob">
+          <path d="M70 364h260l-24-12H94z" fill="#7fd6cf"/>
+          <!-- onderste laag -->
+          <rect x="76" y="258" width="248" height="96" rx="18" fill="#ffffff"/>
+          <rect x="76" y="318" width="248" height="10" fill="#7fd6cf" opacity=".55"/>
+          <path d="M76 274v-2c0-8 6-14 14-14h220c8 0 14 6 14 14v2z" fill="#e8457c"/>
+          <g fill="#e8457c">
+            <rect class="drip" style="--d:0s" x="92" y="270" width="13" height="28" rx="6.5"/>
+            <rect class="drip" style="--d:.8s" x="130" y="270" width="12" height="18" rx="6"/>
+            <rect class="drip" style="--d:1.5s" x="168" y="270" width="14" height="34" rx="7"/>
+            <rect class="drip" style="--d:.4s" x="210" y="270" width="12" height="22" rx="6"/>
+            <rect class="drip" style="--d:2s" x="250" y="270" width="14" height="32" rx="7"/>
+            <rect class="drip" style="--d:1.1s" x="290" y="270" width="12" height="20" rx="6"/>
+          </g>
+          <!-- bovenste laag -->
+          <rect x="118" y="178" width="164" height="84" rx="16" fill="#ffb627"/>
+          <path d="M118 194c0-9 7-16 16-16h132c9 0 16 7 16 16v4c-6 0-6 10-12 10s-6-8-12-8-6 12-12 12-6-9-12-9-6 7-12 7-6-11-12-11-6 9-12 9-6-7-12-7-6 11-12 11-6-8-12-8-6 6-12 6z" fill="#ffffff"/>
+          <g fill="#0b5563"><circle cx="142" cy="236" r="5"/><circle cx="174" cy="244" r="5"/><circle cx="206" cy="234" r="5"/><circle cx="238" cy="244" r="5"/><circle cx="262" cy="232" r="5"/></g>
+          <!-- kaars -->
+          <rect x="193" y="132" width="14" height="48" rx="5" fill="#ffffff"/>
+          <path d="M193 146l14-8M193 160l14-8M193 174l14-8" stroke="#e8457c" stroke-width="4"/>
+          <path class="flame" d="M200 96c9 11 13 18 13 24a13 13 0 0 1-26 0c0-6 4-13 13-24z" fill="#ffb627"/>
+          <path class="flame" d="M200 110c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z" fill="#fff4cf"/>
+          <g fill="#ffffff"><path class="twk" style="--d:0s" d="M110 150l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path class="twk" style="--d:1.2s" d="M300 140l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path class="twk" style="--d:.6s" d="M330 230l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5z"/></g>
+        </g>
+      </svg>
+    </div>
+    <div class="glaze" aria-hidden="true">
+      <svg class="g2" viewBox="0 0 2880 70" preserveAspectRatio="none"><path d="M0 30c120 0 120 26 240 26s120-26 240-26 120 26 240 26 120-26 240-26 120 26 240 26 120-26 240-26 120 26 240 26 120-26 240-26 120 26 240 26 120-26 240-26 120 26 240 26 120-26 240-26v40H0z" fill="#e8457c"/></svg>
+      <svg class="g1" viewBox="0 0 2880 70" preserveAspectRatio="none"><path d="M0 44c90 0 90 20 180 20s90-20 180-20 90 20 180 20 90-20 180-20 90 20 180 20 90-20 180-20 90 20 180 20 90-20 180-20 90 20 180 20 90-20 180-20 90 20 180 20 90-20 180-20 90 20 180 20 90-20 180-20 90 20 180 20 90-20 180-20v26H0z" fill="#f7fcfb"/></svg>
+    </div>
+  </div>
+
+  <div class="band" aria-hidden="true"><div class="track" id="track"><span>Theme cakes</span><span>Cupcakes</span><span>Cake pops</span><span>Sweet tables</span><span>Made to order</span><span>Den Haag</span></div></div>
+
+  <section class="pick" id="order">
+    <div class="wrap">
+      <h2>Design your <span>cake</span></h2>
+      <p class="lead">Choose what you’d like, the occasion and your date. One tap and your request is ready to send on WhatsApp, so you hear what’s possible.</p>
+      <div class="grid">
+        <div>
+          <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="step">
+            <h3>1. What would you like?</h3>
+            <div class="opts" data-group="soort">
+              <button class="opt" type="button" data-v="A designer cake"><b>Designer cake</b><small>Theme or custom design</small></button>
+              <button class="opt" type="button" data-v="Cupcakes"><b>Cupcakes</b><small>For the table or a treat</small></button>
+              <button class="opt" type="button" data-v="Cake pops"><b>Cake pops</b><small>Bite-sized</small></button>
+              <button class="opt" type="button" data-v="Cookies or doughnuts"><b>Cookies or doughnuts</b><small>Sweet extras</small></button>
+              <button class="opt" type="button" data-v="A sweet table or candy cart"><b>Sweet table</b><small>Or candy cart and party props</small></button>
+              <button class="opt" type="button" data-v="Not sure yet, I'd like some advice"><b>Not sure yet</b><small>Help me decide</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3>2. The occasion</h3>
+            <div class="opts two" data-group="variant">
+              <button class="opt" type="button" data-v="A kids' birthday"><b>Kids’ birthday</b><small>Dino, Sonic, a train…</small></button>
+              <button class="opt" type="button" data-v="A birthday"><b>Birthday</b><small>Any age</small></button>
+              <button class="opt" type="button" data-v="A wedding"><b>Wedding</b><small>The big day</small></button>
+              <button class="opt" type="button" data-v="Another celebration"><b>Something else</b><small>Tell Radha about it</small></button>
+            </div>
+          </div>
+          <div class="step">
+            <h3>3. Any dietary wishes?</h3>
+            <div class="opts two" data-group="dieet">
+              <button class="opt" type="button" data-v="None"><b>None</b><small>No special wishes</small></button>
+              <button class="opt" type="button" data-v="Eggless"><b>Eggless</b><small>Ask what's possible</small></button>
+              <button class="opt" type="button" data-v="Vegan"><b>Vegan</b><small>Ask what's possible</small></button>
+              <button class="opt" type="button" data-v="Another dietary need (I'll explain)"><b>Something else</b><small>For example lactose</small></button>
+            </div>
+          </div>
+          <div class="step field">
+            <h3>4. Theme or idea <small>(optional)</small></h3>
+            <label for="theme" class="sr">Theme or idea</label><input type="text" id="theme" maxlength="80" placeholder="For example: dinosaur, Sonic, a train" autocomplete="off">
+            <p class="hint">Got an example photo? Send it along in the chat.</p>
+          </div>
+          <div class="step field">
+            <h3>5. When do you need it?</h3>
+            <label for="d1" class="sr">Date</label><input type="date" id="d1" class="js-date">
+            <p class="hint">Short notice? Ask anyway, and you’ll hear if it’s possible.</p>
+          </div>
+        </div>
+        <aside class="summary" aria-live="polite">
+          <div class="bord" aria-hidden="true"></div>
+          <div class="k">Your request</div>
+          <h3 id="s-title">Choose what you’d like</h3>
+          <dl>
+            <div><dt>Occasion</dt><dd id="s-var">–</dd></div>
+            <div><dt>Dietary</dt><dd id="s-dieet">–</dd></div>
+            <div><dt>Theme</dt><dd id="s-theme">–</dd></div>
+            <div><dt>Date</dt><dd id="s-datum">–</dd></div>
+          </dl>
+          <a class="btn btn-gold js-ask" href="#">Send on WhatsApp</a>
+          <div class="note">No obligation. You’ll hear what’s possible and what it costs.</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <h2>Why <span>Radha’s</span></h2>
+      <p class="lead">What clients mention in their Google reviews.</p>
+      <div class="cards">
+        <div class="card" style="--c:var(--rose-l)">
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff"/><path d="M12 38c0-9 6-16 15-16 6 0 9 3 12 3l5-4 1 7c1 2 1 4 1 6v4z" fill="#0b5563"/><circle cx="38" cy="29" r="2" fill="#fff"/><path d="M16 38v5M24 38v5M34 38v5M40 38v5" stroke="#0b5563" stroke-width="4" stroke-linecap="round"/><path d="M20 22l2-5 3 4 2-6 3 6 2-4 1 5" fill="#e8457c"/></svg>
+          <h3>Theme cakes kids love</h3><p>Clients write about dino, Sonic, Lightning McQueen and train cakes for their children’s birthdays.</p>
+        </div>
+        <div class="card" style="--c:var(--aqua-l)">
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff"/><path d="M14 16h28v18H24l-8 7v-7h-2z" fill="#0b5563"/><circle cx="22" cy="25" r="2" fill="#ffb627"/><circle cx="28" cy="25" r="2" fill="#ffb627"/><circle cx="34" cy="25" r="2" fill="#ffb627"/></svg>
+          <h3>Happy to help</h3><p>Clients write that Radha helped with dietary needs, such as lactose intolerance, and with last-minute orders.</p>
+        </div>
+        <div class="card" style="--c:#fff1d1">
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff"/><path d="M28 42s-12-7.5-12-16a6.5 6.5 0 0 1 12-3.6A6.5 6.5 0 0 1 40 26c0 8.5-12 16-12 16Z" fill="#e8457c"/></svg>
+          <h3>Beautiful and tasty</h3><p>Clients write that their cakes looked great and tasted just as good.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="wrap">
+      <div class="revhead">
+        <h2>What clients say</h2>
+        <div class="score"><b>4.9</b><span>★★★★★ · <a href="https://www.google.com/maps/search/?api=1&amp;query=Radha%27s+Bespoke+Bakes+Den+Haag" target="_blank" rel="noopener">Google, 39 reviews</a></span></div>
+      </div>
+      <div class="quotes">
+        <figure class="rv"><blockquote>The cake was such a hit!!</blockquote><figcaption><i aria-hidden="true">S</i><span><b>Simona</b><small>Google review</small></span></figcaption></figure>
+        <figure class="rv"><blockquote>Amazing Sonic-themed cake that stole the show!</blockquote><figcaption><i aria-hidden="true">S</i><span><b>Shubham</b><small>Google review</small></span></figcaption></figure>
+        <figure class="rv"><blockquote>Absolutely loved my cake from Radha’s Bespoke Bakes!</blockquote><figcaption><i aria-hidden="true">P</i><span><b>Preethi</b><small>Google review</small></span></figcaption></figure>
+      </div>
+      <p class="revnote">Short quotes from reviews on <a href="https://www.google.com/maps/search/?api=1&amp;query=Radha%27s+Bespoke+Bakes+Den+Haag" target="_blank" rel="noopener">Google</a>.</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>How to order</h2>
+      <p class="lead">No complicated forms. Just send a message.</p>
+      <ol class="steps">
+        <li><h3>Share your idea</h3><p>Design your cake above, or send your theme or an example photo on WhatsApp.</p></li>
+        <li><h3>Talk it through</h3><p>Hear what’s possible for your date, your wishes and what it costs.</p></li>
+        <li><h3>Enjoy your cake</h3><p>The details of your order are arranged on WhatsApp.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <details><summary>What can I order?</summary><p>Radha’s social pages mention designer cakes, cupcakes, cake pops, doughnuts and cookies, plus party props and a candy cart to hire. Everything is made to order, so just ask what you have in mind.</p></details>
+      <details><summary>How much does a cake cost?</summary><p>That depends on what you’d like and the design. Send your request on WhatsApp and you’ll hear the price.</p></details>
+      <details><summary>Do you make eggless or vegan cakes?</summary><p>Eggless and vegan options are mentioned on Radha’s social pages. Ask on WhatsApp which designs work for you.</p></details>
+      <details><summary>Can you take a dietary need into account?</summary><p>Reviewers mention that Radha took lactose intolerance into account. Mention your dietary need in your message.</p></details>
+      <details><summary>Can I order at short notice?</summary><p>Reviewers mention last-minute orders. Send your date on WhatsApp and you’ll hear whether it’s possible.</p></details>
+      <details><summary>Where is Radha’s Bespoke Bakes?</summary><p>In Den Haag (Ypenburg). How and when you get your order is arranged when you order.</p></details>
+    </div>
+  </section>
+
+  <section class="visit" id="contact">
+    <div class="wrap">
+      <div>
+        <h2>Radha’s Bespoke Bakes</h2>
+        <div class="place">in Den Haag · Ypenburg</div>
+        <p>Radha bakes to order in Den Haag. How and when you get your order, you arrange on WhatsApp.</p>
+        <a class="btn btn-teal js-wa-plain" href="#">Ask about your order</a>
+      </div>
+      <div class="pickup">
+        <ul>
+          <li>Made to order</li>
+          <li>Theme cakes, cupcakes, cake pops and more</li>
+          <li>Orders and questions via WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <h2>Got a party coming up?</h2>
+      <p class="lead">Pick your date and ask straight away on WhatsApp if it works.</p>
+      <div class="date"><label for="d2" class="sr">Date</label><input type="date" id="d2" class="js-date"><a class="btn btn-teal js-ask" href="#">Check my date</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><img src="logo-light.svg" alt="Radha’s Bespoke Bakes" width="164" height="56"><p>Theme cakes, cupcakes, cake pops and more, made to order in Den Haag.</p></div>
+    <div><h4>Location</h4><p>Den Haag (Ypenburg)</p></div>
+    <div><h4>Contact</h4><p><a class="js-wa-plain" href="#">WhatsApp +31 6 85 77 61 40</a><br><a href="tel:+31685776140">Call +31 6 85 77 61 40</a><br><a href="https://www.instagram.com/radhasbespokebakes/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/radhasbespokebakes/" target="_blank" rel="noopener">Facebook</a></p></div>
+    <div class="fine"><span>© 2026 Radha’s Bespoke Bakes</span><span>Website by <a href="https://mohamedia.nl">Mohamedia</a> · Website door Mohamedia</span></div>
+  </div>
+</footer>
+
+<div class="float" id="float"><a class="btn btn-gold js-wa-float" href="#">Order on WhatsApp</a></div>
+
+<script>
+const WA = "31685776140";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = id => document.getElementById(id);
+const st = { soort: "", variant: "", dieet: "", theme: "", datum: "" };
+const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) : "";
+const label = v => v.startsWith("Not sure") ? "Not sure yet" : v.replace(/^A /, "").replace(/^./, c => c.toUpperCase());
+function render() {
+  const vals = [st.soort, st.variant, st.dieet, st.datum];
+  document.querySelectorAll(".dots i").forEach((i, k) => i.classList.toggle("on", !!vals[k]));
+  $("s-title").textContent = st.soort ? label(st.soort) : "Choose what you’d like";
+  $("s-var").textContent = st.variant ? label(st.variant) : "–";
+  $("s-dieet").textContent = st.dieet ? (st.dieet.startsWith("Another") ? "Something else" : st.dieet) : "–";
+  $("s-theme").textContent = st.theme || "–";
+  $("s-datum").textContent = st.datum ? fmt(st.datum) : "–";
+  const msg = [`Hi Radha! I'd like to order: ${st.soort || "not chosen yet"}`,
+    `Occasion: ${st.variant || "not chosen yet"}`,
+    `Dietary wishes: ${st.dieet || "not sure yet"}`,
+    `Theme/idea: ${st.theme || "not sure yet"}`,
+    `Date: ${st.datum ? fmt(st.datum) : "not sure yet"}`,
+    "Is this possible, and what would it cost?"].join("\n");
+  document.querySelectorAll(".js-ask").forEach(a => { a.href = wa(msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+document.querySelectorAll(".opts").forEach(g => {
+  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", "false"));
+  g.addEventListener("click", e => {
+    const b = e.target.closest(".opt"); if (!b) return;
+    g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b));
+    st[g.dataset.group] = b.dataset.v;
+    render();
+  });
+});
+$("theme").addEventListener("input", e => { st.theme = e.target.value.trim(); render(); });
+const today = new Date().toISOString().slice(0, 10);
+document.querySelectorAll(".js-date").forEach(i => { i.min = today; i.addEventListener("input", () => { st.datum = i.value; document.querySelectorAll(".js-date").forEach(j => j.value = i.value); render(); }); });
+const setWa = (sel, t) => document.querySelectorAll(sel).forEach(a => { a.href = wa(t); a.target = "_blank"; a.rel = "noopener"; });
+setWa(".js-wa-hero", "Hi Radha! I'd like to order a cake. Can we talk about the options?");
+setWa(".js-wa-float", "Hi Radha! I'd like to order a cake.");
+setWa(".js-wa-plain", "Hi Radha! I have a question about ordering.");
+render();
+
+const tr = $("track"); tr.innerHTML += tr.innerHTML;
+const words = ["for kids’ parties", "for birthdays", "for weddings", "for celebrations"]; let wi = 0;
+const rot = $("rot");
+if (!reduce) setInterval(() => { wi = (wi + 1) % words.length; rot.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 }).onfinish = () => { rot.textContent = words[wi]; rot.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 420 }); }; }, 2600);
+
+const fl = $("float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
+new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe($("top"));
+new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .1 }).observe($("order"));
+
+// bewegende hero: feestconfetti en hagelslag die langzaam naar beneden dwarrelen, plus een glazuur-golf (CSS)
+const c = $("confetti"), x = c.getContext("2d"); let W, H, ps = [];
+const cols = ["#ffb627", "#e8457c", "#7fd6cf", "#ffffff", "#ffd27a"];
+const mk = init => ({ x: Math.random() * W, y: init ? Math.random() * H : -12, v: .25 + Math.random() * .45, w: Math.random() * 6.28, a: Math.random() * 6.28, sp: (Math.random() - .5) * .04, c: cols[Math.floor(Math.random() * cols.length)], t: Math.floor(Math.random() * 3), r: 2.5 + Math.random() * 3 });
+function size() { const r = devicePixelRatio || 1; W = c.clientWidth; H = c.clientHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0); ps = Array.from({ length: W < 860 ? 26 : 50 }, () => mk(true)); }
+function frame() {
+  x.clearRect(0, 0, W, H);
+  for (let i = 0; i < ps.length; i++) {
+    const p = ps[i];
+    if (!reduce) { p.y += p.v; p.w += .01; p.a += p.sp; }
+    if (p.y > H + 12) ps[i] = mk(false);
+    const px = p.x + Math.sin(p.w) * 14;
+    x.globalAlpha = .45; x.save(); x.translate(px, p.y); x.rotate(p.a); x.fillStyle = p.c;
+    if (p.t === 0) { x.beginPath(); x.roundRect ? x.roundRect(-6, -2, 12, 4, 2) : x.rect(-6, -2, 12, 4); x.fill(); }
+    else if (p.t === 1) { x.fillRect(-p.r, -p.r, p.r * 2, p.r * 2); }
+    else { x.beginPath(); x.arc(0, 0, p.r, 0, 6.29); x.fill(); }
+    x.restore();
+  }
+  x.globalAlpha = 1;
+  if (!reduce) requestAnimationFrame(frame);
+}
+size(); addEventListener("resize", size); requestAnimationFrame(frame);
+</script>
+</body>
+</html>
