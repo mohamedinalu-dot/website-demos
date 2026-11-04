@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CLAVO Private Barber – private barber aan huis in Nederland</title>
+<meta name="description" content="CLAVO Private Barber: exclusieve service aan huis. Rust, klasse en vakmanschap, exclusief op afspraak. Plan je privé-afspraak via WhatsApp.">
+<meta name="theme-color" content="#0d0c0b">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0c0b;--bg2:#141210;--card:#181512;--line:rgba(226,189,85,.22);
+  --ink:#f3ecdc;--soft:#b9ae97;--gold:#e2bd55;--gold-l:#fbe9a6;--gold-d:#b08423;
+  --grad:linear-gradient(120deg,#fbe9a6 0%,#e2bd55 45%,#b08423 100%);
+  --serif:"Cinzel",Georgia,serif;--sans:"Nunito",system-ui,sans-serif;--r:14px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* mat zwart met een lichte glinstering, zoals het kaartje */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.09;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .9 0 0 0 0 .7 0 0 0 1.4 -.55'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+body>*{position:relative;z-index:1}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.demo{background:#000;color:var(--soft);font-size:12.5px;text-align:center;padding:6px 16px}
+.demo a{color:var(--gold)}
+.notice{border-bottom:1px solid var(--line);color:var(--gold-l);font-size:13.5px;text-align:center;padding:9px 16px;letter-spacing:.06em}
+header.bar .wrap{display:flex;justify-content:space-between;align-items:center;height:92px;gap:16px}
+header.bar .brand{display:flex;align-items:center;min-height:48px}
+header.bar .brand img{height:66px;width:auto;display:block}
+header.bar nav{display:flex;align-items:center;gap:6px}
+header.bar nav a.lnk{text-decoration:none;font-size:15px;padding:12px 10px;color:var(--soft);font-weight:600;min-height:44px;display:inline-flex;align-items:center}
+header.bar nav a.lnk:hover{color:var(--gold-l)}
+/* knoppen: GEEN transition op transform (GSAP animeert ze in de intro) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:999px;font-family:var(--sans);font-weight:800;font-size:16px;line-height:1.2;text-align:center;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .2s,box-shadow .25s,color .2s,border-color .2s}
+.btn svg{width:20px;height:20px;fill:currentColor;flex:none}
+.btn-gold{background:var(--grad);color:#15110a;box-shadow:0 6px 24px -10px rgba(226,189,85,.7)}
+.btn-gold:hover{box-shadow:0 10px 34px -8px rgba(251,233,166,.75)}
+.btn-line{background:transparent;color:var(--gold-l);border-color:rgba(226,189,85,.55)}
+.btn-line:hover{border-color:var(--gold-l);background:rgba(226,189,85,.08)}
+.btn-sm{min-height:44px;padding:10px 18px;font-size:15px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+/* hero */
+.hero{position:relative}
+.hgrid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding-top:28px;padding-bottom:72px}
+.eyebrow{font-family:var(--serif);font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin:0 0 18px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--grad)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;margin:0;overflow-wrap:break-word}
+h1{font-size:clamp(30px,6.6vw,66px);letter-spacing:.01em}
+h1 .g{display:inline;white-space:nowrap}
+.lead{font-size:clamp(17px,1.6vw,19px);color:var(--soft);max-width:34em;margin:22px 0 30px}
+.lead b{color:var(--ink);font-weight:700}
+.trust{margin:30px 0 0;font-family:var(--serif);font-size:14px;letter-spacing:.22em;color:var(--gold-l);text-transform:uppercase}
+.trust span{color:var(--gold-d);padding:0 .35em}
+.trust small{display:block;font-family:var(--sans);letter-spacing:.02em;text-transform:none;color:var(--soft);font-size:14.5px;margin-top:6px}
+.art{position:relative;width:100%;max-width:560px;justify-self:center}
+.art svg{display:block;width:100%;height:auto}
+/* marquee */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding:16px 0;background:linear-gradient(90deg,#0d0c0b,#15120d 50%,#0d0c0b)}
+.mtrack{display:flex;width:max-content;animation:mq 46s linear infinite}
+.mtrack span{font-family:var(--serif);font-size:15px;letter-spacing:.28em;text-transform:uppercase;white-space:nowrap;padding-right:34px;color:var(--gold-l)}
+.mtrack i{font-style:normal;color:var(--gold-d);padding-right:34px}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* secties */
+section{padding:88px 0}
+.kicker{font-family:var(--serif);font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+h2{font-size:clamp(26px,4.2vw,42px)}
+.sub{color:var(--soft);max-width:40em;margin:14px 0 0}
+.head{margin-bottom:40px}
+/* kiezer */
+#kiezer{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.kz{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:start}
+.step{border:1px solid var(--line);border-radius:var(--r);padding:22px;background:rgba(24,21,18,.7);margin:0 0 16px;min-width:0}
+.step legend{font-family:var(--serif);font-weight:600;color:var(--gold-l);font-size:16px;letter-spacing:.06em;padding:0 8px;margin-left:-8px}
+.step legend b{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);font-size:13px;margin-right:8px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.chip{min-height:48px;padding:10px 18px;border-radius:999px;border:1px solid rgba(226,189,85,.35);background:transparent;color:var(--ink);font:600 15.5px/1.2 var(--sans);cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
+.chip:hover{border-color:var(--gold)}
+.chip[aria-pressed=true]{background:var(--grad);color:#15110a;border-color:transparent}
+.hint{font-size:14px;color:var(--soft);margin:12px 0 0}
+.fld{display:block;margin-top:14px}
+.fld span{display:block;font-size:14px;color:var(--soft);margin-bottom:6px}
+.fld input,.fld textarea{width:100%;min-height:50px;padding:12px 16px;border-radius:12px;border:1px solid rgba(226,189,85,.35);background:#0f0d0b;color:var(--ink);font:500 16px/1.4 var(--sans)}
+.fld textarea{min-height:84px;resize:vertical}
+.fld input:focus,.fld textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sum{position:sticky;top:20px;border:1px solid var(--gold-d);border-radius:var(--r);padding:24px;background:radial-gradient(120% 80% at 0% 0%,rgba(226,189,85,.12),transparent 60%),var(--card)}
+.sum h3{font-size:19px;color:var(--gold-l)}
+.msg{white-space:pre-wrap;font-size:15px;line-height:1.55;background:#0f0d0b;border-radius:12px;padding:16px;margin:14px 0 20px;color:var(--ink);border:1px dashed rgba(226,189,85,.3);overflow-wrap:break-word}
+.sum .btn{width:100%}
+.sum .note{font-size:14px;color:var(--soft);margin:16px 0 0}
+/* waarom */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{border:1px solid var(--line);border-radius:var(--r);padding:28px 24px;background:linear-gradient(180deg,#171411,#100e0c);min-width:0}
+.card svg{width:44px;height:44px;margin-bottom:16px}
+.card h3{font-size:clamp(18px,5vw,21px);color:var(--gold-l);margin-bottom:10px}
+.card p{margin:0;color:var(--soft)}
+.card .tag{display:block;margin-top:14px;font-family:var(--serif);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+/* experience / instagram */
+.xp{text-align:center;border-block:1px solid var(--line);background:radial-gradient(60% 90% at 50% 0%,rgba(226,189,85,.1),transparent 70%)}
+.xp blockquote{margin:0 auto;max-width:22em;font-family:var(--serif);font-size:clamp(24px,4vw,40px);line-height:1.25}
+.xp .by{color:var(--soft);margin:18px 0 30px}
+.xp .btns{justify-content:center}
+/* stappen */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+.steps li{list-style:none;border-top:1px solid var(--gold-d);padding:22px 4px 0;min-width:0}
+.steps li::before{counter-increment:s;content:"0" counter(s);font-family:var(--serif);font-size:34px;display:block;margin-bottom:8px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.steps h3{font-size:clamp(18px,5vw,20px);color:var(--gold-l);margin-bottom:8px}
+.steps p{margin:0;color:var(--soft)}
+.steps ol{padding:0;margin:0}
+/* faq */
+.faq{max-width:820px}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;font-weight:700;font-size:17.5px;position:relative;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:14px;font-family:var(--serif);font-size:26px;color:var(--gold)}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 20px;color:var(--soft)}
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.clist{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.clist li{border:1px solid var(--line);border-radius:12px;background:var(--card);min-width:0}
+.clist a,.clist div{display:flex;align-items:center;gap:14px;padding:14px 18px;min-height:56px;text-decoration:none;overflow-wrap:anywhere}
+.clist svg{width:22px;height:22px;flex:none;fill:none;stroke:var(--gold);stroke-width:1.6}
+.clist small{display:block;color:var(--soft);font-size:13px}
+.clist a:hover{background:rgba(226,189,85,.06)}
+/* slot */
+.final{text-align:center;padding:100px 0;background:radial-gradient(70% 100% at 50% 100%,rgba(226,189,85,.14),transparent 70%)}
+.final h2{max-width:16em;margin:0 auto}
+.final .btns{justify-content:center;margin-top:30px}
+.final p.sm{color:var(--soft);margin:28px 0 0;font-size:15px}
+footer{border-top:1px solid var(--line);padding:44px 0 110px;color:var(--soft);font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px}
+footer img{height:56px;width:auto;display:block}
+footer p{margin:0}
+footer a{color:var(--gold-l)}
+/* zwevende CTA (mobiel) */
+.float{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:none;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.float.on{opacity:1;visibility:visible}
+.float a{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;border-radius:999px;background:var(--grad);color:#15110a;font-weight:800;text-decoration:none;box-shadow:0 10px 30px -8px rgba(0,0,0,.8)}
+.float svg{width:22px;height:22px;fill:currentColor}
+@media (max-width:900px){
+  .hgrid{grid-template-columns:1fr;gap:12px;padding-bottom:56px}
+  .art{max-width:420px}
+  .kz,.contact{grid-template-columns:1fr}
+  .sum{position:static}
+  .cards,.steps{grid-template-columns:1fr}
+  header.bar nav a.lnk{display:none}
+  .float{display:block}
+  section{padding:68px 0}
+}
+@media (max-width:480px){
+  .wrap{padding:0 18px}
+  .wrap.hgrid{padding-top:20px;padding-bottom:48px;gap:28px}
+  header.bar .wrap{height:80px}
+  header.bar .brand img{height:50px}
+  .two{grid-template-columns:1fr}
+  .btns .btn{flex:1 1 100%}
+  .step{padding:18px 16px}
+  .trust{letter-spacing:.14em;font-size:13px}
+  .eyebrow{letter-spacing:.22em;font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  .mtrack{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="notice">Exclusieve service aan huis · Exclusief op afspraak</div>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="CLAVO Private Barber, naar boven"><img src="logo-light.svg" alt="CLAVO Private Barber" width="164" height="60"></a>
+    <nav aria-label="Hoofdmenu">
+      <a class="lnk" href="#ervaring">De ervaring</a>
+      <a class="lnk" href="#werkwijze">Zo werkt het</a>
+      <a class="lnk" href="#faq">Vragen</a>
+      <a class="btn btn-gold btn-sm" href="#kiezer">Afspraak</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top" class="hero">
+  <div class="wrap hgrid">
+    <div class="htext">
+      <p class="eyebrow">Private barber · aan huis</p>
+      <h1>Exclusieve service <span class="g">aan huis</span></h1>
+      <p class="lead"><b>Voor mannen die weten wat ze waard zijn.</b> Strak. Schoon. Klasse. Dit is geen knipbeurt… dit is een ervaring.</p>
+      <div class="btns">
+        <a class="btn btn-gold" href="#kiezer">Plan je privé-afspraak</a>
+        <a class="btn btn-line" data-wa href="https://wa.me/31651250084?text=Hoi%20CLAVO%2C%20ik%20wil%20graag%20een%20priv%C3%A9-afspraak%20plannen."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>WhatsApp</a>
+        <a class="btn btn-line" href="https://www.instagram.com/clavoprivatebarber/" target="_blank" rel="noopener">Bekijk Instagram</a>
+      </div>
+      <p class="trust">Rust<span>•</span>Klasse<span>•</span>Vakmanschap<small>Private service, waar jij bent. Alles tot in detail verzorgd.</small></p>
+    </div>
+
+    <div class="art" aria-hidden="true">
+      <svg id="scene" viewBox="0 0 520 500">
+        <defs>
+          <linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbe9a6"/><stop offset=".45" stop-color="#e2bd55"/><stop offset="1" stop-color="#b08423"/></linearGradient>
+          <linearGradient id="gv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe9a6"/><stop offset="1" stop-color="#a87b1e"/></linearGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".0"/><stop offset=".3" stop-color="#fff" stop-opacity=".28"/><stop offset=".45" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#000" stop-opacity=".45"/></linearGradient>
+          <linearGradient id="body" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a251d"/><stop offset=".5" stop-color="#16130f"/><stop offset="1" stop-color="#0b0a08"/></linearGradient>
+          <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e2bd55" stop-opacity=".16"/><stop offset="1" stop-color="#e2bd55" stop-opacity="0"/></radialGradient>
+          <clipPath id="tube"><rect x="78" y="146" width="44" height="226" rx="6"/></clipPath>
+          <clipPath id="panelClip"><rect x="166" y="196" width="300" height="224" rx="18"/></clipPath>
+          <clipPath id="reveal"><rect id="revealRect" x="166" y="196" width="0" height="224"/></clipPath>
+          <linearGradient id="gl" gradientUnits="userSpaceOnUse" x1="176" y1="0" x2="456" y2="0"><stop offset="0" stop-color="#b08423"/><stop offset=".5" stop-color="#fbe9a6"/><stop offset="1" stop-color="#b08423"/></linearGradient>
+          <filter id="glow" filterUnits="userSpaceOnUse" x="160" y="284" width="312" height="32"><feGaussianBlur stdDeviation="3"/></filter>
+        </defs>
+
+        <circle cx="260" cy="250" r="240" fill="url(#halo)"/>
+        <circle cx="260" cy="250" r="226" fill="none" stroke="url(#gg)" stroke-opacity=".35" stroke-width="1"/>
+        <g id="ring"><circle cx="260" cy="250" r="238" fill="none" stroke="#e2bd55" stroke-opacity=".5" stroke-width="1.2" stroke-dasharray="2 10"/></g>
+
+        <!-- barberpaal -->
+        <g id="pole">
+          <path d="M88 120a12 12 0 0 1 24 0z" fill="url(#gg)"/>
+          <rect x="70" y="120" width="60" height="12" rx="3" fill="url(#gg)"/>
+          <rect x="74" y="132" width="52" height="10" rx="2" fill="#1a1712" stroke="url(#gg)" stroke-width="1.5"/>
+          <rect x="78" y="146" width="44" height="226" rx="6" fill="#0e0c0a"/>
+          <g clip-path="url(#tube)"><g id="stripes"></g><rect x="78" y="146" width="44" height="226" fill="url(#glass)"/></g>
+          <rect x="78" y="146" width="44" height="226" rx="6" fill="none" stroke="url(#gv)" stroke-width="2"/>
+          <rect x="74" y="376" width="52" height="10" rx="2" fill="#1a1712" stroke="url(#gg)" stroke-width="1.5"/>
+          <rect x="70" y="386" width="60" height="12" rx="3" fill="url(#gg)"/>
+          <path d="M88 398h24l-4 10h-16z" fill="url(#gg)"/>
+        </g>
+
+        <!-- fade-paneel -->
+        <g>
+          <rect x="166" y="196" width="300" height="224" rx="18" fill="#100e0b" stroke="url(#gg)" stroke-opacity=".6"/>
+          <g clip-path="url(#panelClip)">
+            <g id="messy"></g>
+            <g clip-path="url(#reveal)">
+              <rect x="166" y="196" width="300" height="224" fill="#100e0b"/>
+              <rect x="166" y="300" width="300" height="120" fill="#16120d"/>
+              <g id="clean"></g>
+              <path d="M176 300H456" stroke="#e2bd55" stroke-width="6" opacity=".55" filter="url(#glow)"/>
+            </g>
+            <path id="fadeLine" d="M176 300H456" stroke="url(#gl)" stroke-width="2" stroke-linecap="round" fill="none"/>
+          </g>
+          <text x="184" y="222" fill="#e2bd55" font-family="Cinzel,serif" font-size="12" letter-spacing="3.5">SIGNATURE FADE</text>
+          <text x="448" y="408" fill="#b9ae97" font-family="Nunito,sans-serif" font-size="10.5" letter-spacing="1.6" text-anchor="end">STRAK • VERZORGD • STIJLVOL</text>
+        </g>
+
+        <!-- tondeuse -->
+        <g id="clipper" transform="translate(150 300)" opacity="0">
+          <g id="buzz">
+            <rect x="-25" y="-2" width="50" height="9" rx="2" fill="url(#gg)"/>
+            <path d="M-23-2v-4h3v4zm6 0v-4h3v4zm6 0v-4h3v4zm6 0v-4h3v4zm6 0v-4h3v4zm6 0v-4h3v4zm6 0v-4h3v4zm6 0v-4h3v4z" fill="#fbe9a6"/>
+            <path d="M-22 8h44l-4 92a10 10 0 0 1-10 9h-16a10 10 0 0 1-10-9z" fill="url(#body)" stroke="url(#gg)" stroke-width="1.5"/>
+            <rect x="-4" y="30" width="8" height="20" rx="4" fill="none" stroke="url(#gg)" stroke-width="1.5"/>
+            <circle cx="0" cy="36" r="2.5" fill="url(#gg)"/>
+            <path d="M-12 66h24M-11 72h22M-10 78h20" stroke="#e2bd55" stroke-opacity=".5"/>
+          </g>
+        </g>
+
+        <!-- schaar -->
+        <g id="scissors" transform="translate(408 118) rotate(150)">
+          <g id="bladeA">
+            <path d="M-4-5 L96-1.5 Q101 0 96 1.5 L-4 6Z" fill="url(#gg)"/>
+            <path d="M-2 3 L-30 18" stroke="url(#gg)" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="-42" cy="24" r="13" fill="none" stroke="url(#gg)" stroke-width="4"/>
+          </g>
+          <g id="bladeB">
+            <path d="M-4 5 L96 1.5 Q101 0 96-1.5 L-4-6Z" fill="url(#gv)"/>
+            <path d="M-2-3 L-30-18" stroke="url(#gv)" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="-42" cy="-24" r="13" fill="none" stroke="url(#gv)" stroke-width="4"/>
+          </g>
+          <circle r="4.5" fill="#0d0c0b" stroke="url(#gg)" stroke-width="2"/>
+        </g>
+
+        <g id="snips"></g>
+        <g id="sparks"></g>
+      </svg>
+    </div>
+  </div>
+</main>
+
+<div class="marquee" aria-hidden="true"><div class="mtrack">
+  <span>Rust</span><i>✦</i><span>Klasse</span><i>✦</i><span>Vakmanschap</span><i>✦</i><span>Private</span><i>✦</i><span>Premium</span><i>✦</i><span>Precisie</span><i>✦</i><span>Service aan huis</span><i>✦</i><span>Exclusief op afspraak</span><i>✦</i>
+  <span>Rust</span><i>✦</i><span>Klasse</span><i>✦</i><span>Vakmanschap</span><i>✦</i><span>Private</span><i>✦</i><span>Premium</span><i>✦</i><span>Precisie</span><i>✦</i><span>Service aan huis</span><i>✦</i><span>Exclusief op afspraak</span><i>✦</i>
+</div></div>
+
+<section id="kiezer" aria-labelledby="kz-h">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Exclusief op afspraak</p>
+      <h2 id="kz-h">Plan je <span class="g">privé-afspraak</span></h2>
+      <p class="sub">Kies wat je wilt en wanneer het je uitkomt. Je bericht staat meteen klaar in WhatsApp.</p>
+    </div>
+    <div class="kz">
+      <div>
+        <fieldset class="step">
+          <legend><b>1</b>Wat wil je laten doen?</legend>
+          <div class="chips" data-group="dienst">
+            <button type="button" class="chip" aria-pressed="false">Knippen</button>
+            <button type="button" class="chip" aria-pressed="false">Signature fade</button>
+            <button type="button" class="chip" aria-pressed="false">Baard</button>
+            <button type="button" class="chip" aria-pressed="false">Combinatie: haar en baard</button>
+            <button type="button" class="chip" aria-pressed="false">Weet ik nog niet</button>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend><b>2</b>Wanneer komt het je uit?</legend>
+          <div class="chips" data-group="dag">
+            <button type="button" class="chip" aria-pressed="false">Zo snel mogelijk</button>
+            <button type="button" class="chip" aria-pressed="false">Doordeweeks</button>
+            <button type="button" class="chip" aria-pressed="false">In het weekend</button>
+          </div>
+          <div class="chips" data-group="dagdeel">
+            <button type="button" class="chip" aria-pressed="false">Ochtend</button>
+            <button type="button" class="chip" aria-pressed="false">Middag</button>
+            <button type="button" class="chip" aria-pressed="false">Avond</button>
+          </div>
+          <label class="fld"><span>Of een datum (mag leeg blijven)</span><input type="date" id="datum"></label>
+          <p class="hint">Dit is je voorkeur; de tijd spreek je samen af via WhatsApp.</p>
+        </fieldset>
+        <fieldset class="step">
+          <legend><b>3</b>Waar ben je?</legend>
+          <div class="two">
+            <label class="fld"><span>Plaats of regio</span><input type="text" id="plaats" autocomplete="address-level2" placeholder="Bijv. je woonplaats"></label>
+            <label class="fld"><span>Je voornaam (mag leeg blijven)</span><input type="text" id="naam" autocomplete="given-name"></label>
+          </div>
+          <label class="fld"><span>Nog iets dat goed is om te weten? (mag leeg blijven)</span><textarea id="extra"></textarea></label>
+        </fieldset>
+      </div>
+      <aside class="sum" aria-live="polite">
+        <h3>Je bericht aan CLAVO</h3>
+        <div class="msg" id="msg"></div>
+        <a class="btn btn-gold" id="send" data-wa href="https://wa.me/31651250084?text=Hoi%20CLAVO%2C%20ik%20wil%20graag%20een%20priv%C3%A9-afspraak%20plannen." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Verstuur via WhatsApp</a>
+        <p class="note">Liever een DM? Dat kan ook op <a href="https://www.instagram.com/clavoprivatebarber/" target="_blank" rel="noopener">Instagram</a>.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="ervaring" aria-labelledby="w-h">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Welcome to the CLAVO experience</p>
+      <h2 id="w-h">Waarom <span class="g">CLAVO</span></h2>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <svg viewBox="0 0 48 48" fill="none" stroke="url(#ic)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><defs><linearGradient id="ic" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbe9a6"/><stop offset="1" stop-color="#b08423"/></linearGradient></defs><path d="M6 22 24 7l18 15"/><path d="M11 18v22h26V18"/><path d="M20 40V28h8v12"/></svg>
+        <h3>Service aan huis</h3>
+        <p>Private service, waar jij bent. Exclusieve service aan huis, met rust en aandacht voor jou.</p>
+        <span class="tag">Private • Premium</span>
+      </article>
+      <article class="card">
+        <svg viewBox="0 0 48 48" fill="none" stroke="url(#ic)" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 12h32M10 18h28M12 24h24"/><path d="M6 31h36" stroke-width="2.6"/><path d="M16 37h16" opacity=".6"/></svg>
+        <h3>Signature fade</h3>
+        <p>Strak • Verzorgd • Stijlvol. De signature fade van CLAVO, op afspraak.</p>
+        <span class="tag">Strak. Schoon. Klasse.</span>
+      </article>
+      <article class="card">
+        <svg viewBox="0 0 48 48" fill="none" stroke="url(#ic)" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="13" cy="35" r="6"/><circle cx="13" cy="13" r="6"/><path d="M18 16 42 34M18 32 42 14"/></svg>
+        <h3>Tot in detail</h3>
+        <p>Alles tot in detail verzorgd, met professioneel materiaal.</p>
+        <span class="tag">Precisie</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="xp" aria-label="Instagram">
+  <div class="wrap">
+    <p class="kicker">Private session by CLAVO</p>
+    <blockquote><span class="g">CLAVO isn't just a haircut…</span> it's an experience.</blockquote>
+    <p class="by">Bekijk het werk en de sessies op Instagram: @clavoprivatebarber</p>
+    <div class="btns">
+      <a class="btn btn-line" href="https://www.instagram.com/clavoprivatebarber/" target="_blank" rel="noopener">Bekijk Instagram</a>
+      <a class="btn btn-gold" href="#kiezer">Plan je privé-afspraak</a>
+    </div>
+  </div>
+</section>
+
+<section id="werkwijze" aria-labelledby="s-h">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Zo werkt het</p>
+      <h2 id="s-h">In drie stappen <span class="g">geregeld</span></h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Kies je behandeling</h3><p>Geef in de kiezer aan wat je wilt en wanneer het je uitkomt.</p></li>
+      <li><h3>Stuur je bericht</h3><p>Je bericht gaat via WhatsApp naar CLAVO. Een DM op Instagram kan ook.</p></li>
+      <li><h3>Private session</h3><p>Je spreekt samen dag en tijd af. Daarna: private service, waar jij bent.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="f-h">
+  <div class="wrap faq">
+    <div class="head">
+      <p class="kicker">Vragen</p>
+      <h2 id="f-h">Goed om te <span class="g">weten</span></h2>
+    </div>
+    <details open><summary>Kom ik naar een zaak?</summary><p>Nee. CLAVO is een private barber met exclusieve service aan huis: private service, waar jij bent.</p></details>
+    <details><summary>Hoe plan ik een afspraak?</summary><p>CLAVO werkt exclusief op afspraak. Stuur een WhatsApp naar +31 6 51 25 00 84 (de kiezer hierboven zet je bericht klaar) of stuur een DM op Instagram.</p></details>
+    <details><summary>Wanneer kan het?</summary><p>Je plant je afspraak via WhatsApp. Zet je voorkeur voor dag en dagdeel in je bericht.</p></details>
+    <details><summary>Wat kost het?</summary><p>Vraag naar de prijs voor jouw behandeling via WhatsApp.</p></details>
+    <details><summary>Waar kom je?</summary><p>Op de plek die je samen afspreekt. Zet je plaats of regio in je bericht.</p></details>
+  </div>
+</section>
+
+<section aria-labelledby="c-h">
+  <div class="wrap contact">
+    <div>
+      <p class="kicker">Contact</p>
+      <h2 id="c-h">Rust. Klasse. <span class="g">Vakmanschap.</span></h2>
+      <p class="sub">Exclusieve service aan huis in Nederland. Je plant je afspraak via WhatsApp.</p>
+    </div>
+    <ul class="clist">
+      <li><a data-wa href="https://wa.me/31651250084?text=Hoi%20CLAVO%2C%20ik%20wil%20graag%20een%20priv%C3%A9-afspraak%20plannen." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>+31 6 51 25 00 84<small>WhatsApp of bellen</small></span></a></li>
+      <li><a href="https://www.instagram.com/clavoprivatebarber/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg><span>@clavoprivatebarber<small>DM voor afspraak</small></span></a></li>
+      <li><a href="mailto:clavopb@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>clavopb@gmail.com<small>E-mail</small></span></a></li>
+      <li><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Nederland<small>Service aan huis</small></span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="final" aria-labelledby="e-h">
+  <div class="wrap">
+    <p class="kicker">Private • Premium • Precisie</p>
+    <h2 id="e-h">Voor mannen die weten wat ze <span class="g">waard zijn.</span></h2>
+    <div class="btns">
+      <a class="btn btn-gold" href="#kiezer">Plan je privé-afspraak</a>
+      <a class="btn btn-line" data-wa href="https://wa.me/31651250084?text=Hoi%20CLAVO%2C%20ik%20wil%20graag%20een%20priv%C3%A9-afspraak%20plannen." target="_blank" rel="noopener">Direct via WhatsApp</a>
+    </div>
+    <p class="sm">Exclusief op afspraak · Service aan huis</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-light.svg" alt="CLAVO Private Barber" width="153" height="56">
+    <p>© CLAVO Private Barber · <a href="https://www.instagram.com/clavoprivatebarber/" target="_blank" rel="noopener">Instagram</a></p>
+    <p>Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="float" id="float"><a data-wa href="https://wa.me/31651250084?text=Hoi%20CLAVO%2C%20ik%20wil%20graag%20een%20priv%C3%A9-afspraak%20plannen." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Plan je afspraak via WhatsApp</a></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const NS = "http://www.w3.org/2000/svg", NUM = "31651250084";
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
+
+/* ---------- kiezer ---------- */
+const keuze = { dienst: "", dag: "", dagdeel: "" };
+$$(".chips").forEach(g => g.addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  const aan = b.getAttribute("aria-pressed") !== "true";
+  g.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+  b.setAttribute("aria-pressed", String(aan));
+  keuze[g.dataset.group] = aan ? b.textContent.trim() : "";
+  bouw();
+}));
+["plaats", "naam", "extra", "datum"].forEach(id => $("#" + id).addEventListener("input", bouw));
+function datumNL(v) { if (!v) return ""; const d = new Date(v + "T12:00"); return d.toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long" }); }
+function bouw() {
+  const naam = $("#naam").value.trim(), plaats = $("#plaats").value.trim(), extra = $("#extra").value.trim(), datum = datumNL($("#datum").value);
+  const r = [(naam ? `Hoi CLAVO, ik ben ${naam}. Ik` : "Hoi CLAVO, ik") + " wil graag een privé-afspraak plannen."];
+  if (keuze.dienst) r.push(`Behandeling: ${keuze.dienst}`);
+  const wanneer = [keuze.dag, keuze.dagdeel && keuze.dagdeel.toLowerCase(), datum].filter(Boolean).join(", ");
+  if (wanneer) r.push(`Voorkeur: ${wanneer}`);
+  if (plaats) r.push(`Plaats/regio: ${plaats}`);
+  if (extra) r.push(`Opmerking: ${extra}`);
+  const t = r.join("\n");
+  $("#msg").textContent = t;
+  $("#send").href = `https://wa.me/${NUM}?text=${encodeURIComponent(t)}`;
+}
+bouw();
+
+/* ---------- zwevende CTA ---------- */
+const fl = $("#float"); let heroUit = false, kiezerIn = false;
+const upd = () => fl.classList.toggle("on", heroUit && !kiezerIn);
+new IntersectionObserver(([e]) => { heroUit = !e.isIntersecting; upd(); }).observe($("#top"));
+new IntersectionObserver(([e]) => { kiezerIn = e.isIntersecting; upd(); }, { threshold: .15 }).observe($("#kiezer"));
+
+/* ---------- scène opbouwen ---------- */
+const rnd = (a, b) => a + Math.random() * (b - a);
+// barberpaal-strepen (schuine banden), periode 44px
+const stripes = $("#stripes"), P = 44;
+for (let i = -2; i < 9; i++) {
+  const y = 146 + i * P;
+  el("path", { d: `M70 ${y + 30}L130 ${y}v14L70 ${y + 44}z`, fill: "url(#gg)" }, stripes);
+}
+// rommelig haar vóór de fade
+const messy = $("#messy"); let md = "";
+for (let i = 0; i < 170; i++) {
+  const x = rnd(170, 462), y = rnd(232, 416), l = rnd(8, 22), a = rnd(-1.1, 1.1) - Math.PI / 2;
+  md += `M${x.toFixed(1)} ${y.toFixed(1)}l${(Math.cos(a) * l).toFixed(1)} ${(Math.sin(a) * l).toFixed(1)}`;
+}
+el("path", { d: md, stroke: "#7a6745", "stroke-opacity": ".55", "stroke-width": "1.4", "stroke-linecap": "round", fill: "none" }, messy);
+// strakke fade: boven vol, naar beneden korter en lichter, onder de lijn bijna kaal
+const clean = $("#clean");
+for (let row = 0; row < 26; row++) {
+  const y = 236 + row * 7, t = row / 25;
+  const len = y < 300 ? 9 - t * 3 : Math.max(.6, 5.2 - (y - 300) / 20);
+  const op = y < 300 ? .95 - t * .25 : Math.max(.05, .55 - (y - 300) / 150);
+  let d = "";
+  for (let x = 172 + (row % 2) * 3; x < 462; x += 6) d += `M${x} ${y}v${(-len).toFixed(1)}`;
+  el("path", { d, stroke: y < 300 ? "#c9a24a" : "#8f7a52", "stroke-opacity": op.toFixed(2), "stroke-width": "1.3", "stroke-linecap": "round" }, clean);
+}
+// glinsters
+const sparks = $("#sparks"), spots = [[40, 70], [160, 40], [300, 30], [470, 210], [488, 330], [440, 460], [300, 470], [150, 460], [30, 300], [210, 150], [140, 210], [480, 70], [250, 450], [60, 430]];
+const sparkEls = spots.map(([x, y]) => el("path", { d: "M0-6L1.3-1.3L6 0L1.3 1.3L0 6L-1.3 1.3L-6 0L-1.3-1.3Z", fill: "url(#gg)", transform: `translate(${x} ${y}) scale(.6)`, opacity: reduce ? ".55" : "0" }, sparks));
+
+const fadeLine = $("#fadeLine"), L = 280;
+fadeLine.setAttribute("stroke-dasharray", L); fadeLine.setAttribute("stroke-dashoffset", L);
+const revealRect = $("#revealRect"), clipper = $("#clipper"), bladeA = $("#bladeA"), bladeB = $("#bladeB");
+const setOpen = a => { bladeA.setAttribute("transform", `rotate(${-a})`); bladeB.setAttribute("transform", `rotate(${a})`); };
+
+if (reduce || !window.gsap) {
+  // stil eindbeeld: fade klaar, schaar open
+  revealRect.setAttribute("width", 300); fadeLine.setAttribute("stroke-dashoffset", 0); setOpen(12);
+  return;
+}
+
+/* ---------- intro (knoppen met clearProps, geen CSS-transition op transform) ---------- */
+gsap.from([".eyebrow", "h1", ".lead"], { y: 18, opacity: 0, duration: .9, stagger: .12, ease: "power2.out", clearProps: "transform,opacity" });
+gsap.from(".htext .btns .btn", { y: 14, opacity: 0, duration: .7, stagger: .08, delay: .45, ease: "power2.out", clearProps: "transform,opacity" });
+gsap.from(".trust", { opacity: 0, duration: .9, delay: .8, clearProps: "opacity" });
+gsap.from(".art", { opacity: 0, duration: 1.4, delay: .2, ease: "power1.out", clearProps: "opacity" });
+
+/* ---------- loops via proxy-objecten (attributen, geen CSS-transforms) ---------- */
+const ring = { r: 0 }, ringEl = $("#ring");
+gsap.to(ring, { r: 360, duration: 90, ease: "none", repeat: -1, onUpdate: () => ringEl.setAttribute("transform", `rotate(${ring.r} 260 250)`) });
+
+const pole = { y: 0 };
+gsap.to(pole, { y: -P, duration: 2.6, ease: "none", repeat: -1, onUpdate: () => stripes.setAttribute("transform", `translate(0 ${pole.y})`) });
+
+// tondeuse trekt de fade-lijn
+const c = { x: 150, o: 0, w: 0, d: L, j: 0 };
+const zet = () => {
+  clipper.setAttribute("transform", `translate(${c.x.toFixed(1)} ${(300 + c.j).toFixed(2)})`);
+  clipper.setAttribute("opacity", c.o.toFixed(2));
+  revealRect.setAttribute("width", Math.max(0, c.w).toFixed(1));
+  fadeLine.setAttribute("stroke-dashoffset", c.d.toFixed(1));
+};
+const cleanWrap = revealRect.closest("svg").querySelector("[clip-path='url(#reveal)']");
+const tl = gsap.timeline({ repeat: -1, delay: 1.2, onRepeat: () => { cleanWrap.setAttribute("opacity", 1); } });
+tl.set(c, { x: 150, o: 0, w: 0, d: L, onComplete: zet })
+  .to(c, { o: 1, x: 178, duration: .7, ease: "power1.out", onUpdate: zet })
+  .to(c, { x: 454, w: 292, d: 0, duration: 3.6, ease: "power1.inOut", onUpdate: zet })
+  .to(c, { x: 490, o: 0, w: 300, duration: .7, ease: "power1.in", onUpdate: zet })
+  .to({}, { duration: 2.6 })
+  .to(cleanWrap, { attr: { opacity: 0 }, duration: .9, ease: "power1.inOut" })
+  .to(c, { d: L, duration: .9, ease: "power1.inOut", onUpdate: zet }, "<");
+gsap.to(c, { j: .7, duration: .05, repeat: -1, yoyo: true, ease: "none" });
+
+// schaar knipt; bij elke knip vallen gouden haarsnippers
+const snips = $("#snips"), sc = { a: 16 };
+setOpen(16);
+const val = () => {
+  for (let i = 0; i < 4; i++) {
+    const s = el("path", { d: `M0 0l${rnd(-5, 5).toFixed(1)} ${rnd(3, 7).toFixed(1)}`, stroke: "url(#gg)", "stroke-width": "1.4", "stroke-linecap": "round", fill: "none" }, snips);
+    const p = { x: rnd(318, 350), y: rnd(150, 165), r: rnd(0, 180), o: 1 };
+    const ty = rnd(190, 215), tx = p.x + rnd(-16, 16);
+    gsap.to(p, { x: tx, y: ty, r: p.r + rnd(90, 260), o: 0, duration: rnd(1.4, 2.2), ease: "power1.in",
+      onUpdate: () => { s.setAttribute("transform", `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)}) rotate(${p.r.toFixed(0)})`); s.setAttribute("opacity", p.o.toFixed(2)); },
+      onComplete: () => s.remove() });
+  }
+};
+const st = gsap.timeline({ repeat: -1, repeatDelay: 1.8, delay: .8, onUpdate: () => setOpen(sc.a) });
+st.to(sc, { a: 2, duration: .16, ease: "power2.in", onComplete: val })
+  .to(sc, { a: 16, duration: .4, ease: "power2.out" })
+  .to(sc, { a: 2, duration: .16, ease: "power2.in", onComplete: val }, "+=.25")
+  .to(sc, { a: 16, duration: .45, ease: "power2.out" });
+
+// glinsters: rustig oplichten
+sparkEls.forEach((s, i) => {
+  const [x, y] = spots[i], p = { k: 0 };
+  gsap.to(p, { k: 1, duration: rnd(1.2, 2), ease: "sine.inOut", yoyo: true, repeat: -1, delay: rnd(0, 4), repeatDelay: rnd(.8, 3),
+    onUpdate: () => { s.setAttribute("opacity", (p.k * .9).toFixed(2)); s.setAttribute("transform", `translate(${x} ${y}) scale(${(.4 + p.k * .55).toFixed(2)}) rotate(${(p.k * 45).toFixed(0)})`); } });
+});
+})();
+</script>
+</body>
+</html>
