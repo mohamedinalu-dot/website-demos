@@ -1,594 +1,709 @@
 <!doctype html>
+<!--
+  L214 Bakkerij Alanya — demo door Mohamedia (opnieuw gebouwd 7 nov 2026)
+  Concept: "Elke dag vers, vanaf het eerste licht".
+  Lay-out-archetype: full-bleed fotoverhaal + tijdlijn van de dag (vroeg → ochtend → middag → hele week),
+  met een lucht die meekleurt tijdens het scrollen, een horizontale scroll-strook "Uit de vitrine" en
+  een ochtendlicht-animatie over hun eigen gevelfoto. Logo = hun eigen gevelbord (navy, witte serif) als SVG.
+  Volgende demo: kies iets anders dan fotoverhaal/tijdlijn.
+-->
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Bakkerij Alanya – Turkse bakkerij in Rotterdam-Zuid</title>
-<meta name="description" content="Bakkerij Alanya, Turkse warme bakker op Polderlaan 75A in Rotterdam-Zuid. Zacht Turks brood, simit en meer. 4,5 uit 210 reviews op Google. Elke dag open, ook op zondag.">
-<meta name="theme-color" content="#0B4F57">
+<title>Bakkerij Alanya – Turkse warme bakker in Rotterdam-Zuid</title>
+<meta name="description" content="Banket Bakkerij Alanya aan de Polderlaan 75A in Rotterdam-Zuid: vers zacht Turks brood, simit en gebak. Vanaf de vroege ochtend open, ook op zondag. 4,5 uit 210 Google-reviews.">
+<meta name="theme-color" content="#0A1626">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="img/gevel-ochtend.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
 <style>
 :root{
-  --teal:#0B4F57; --teal2:#0F6670; --diep:#073940; --turk:#1BA3A8; --turk-l:#BFE3E1;
-  --rood:#C8102E; --rood-d:#8E0B20; --goud:#E9B44C; --goud-d:#B9831F; --korst:#B86B1E;
-  --licht:#EEF7F6; --wit:#fff; --tekst:#14303A; --zacht:#4C656C;
-  --r:20px;
+  --nacht:#0A1626;--navy:#0F2236;--navy2:#17324D;--goud:#D9B46A;--goud-l:#EECF8E;--sesam:#F1DFB2;
+  --korst:#A2602C;--korst-d:#6B3A1C;--wit:#fff;--mist:#EEF2F6;--ink:#0F2236;--muted:#4A5868;
+  --serif:"Young Serif",Georgia,"Times New Roman",serif;--sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hh:64px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-[hidden]{display:none!important}
-html{scroll-behavior:smooth}
-body{font-family:'Nunito Sans',system-ui,sans-serif;color:var(--tekst);background:var(--licht);line-height:1.55;font-size:17px;overflow-x:hidden}
-h1,h2,h3{font-family:'Baloo 2',system-ui,sans-serif;font-weight:800;line-height:1.05;letter-spacing:-.2px}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);font-size:17px;line-height:1.6;color:var(--ink);background:var(--wit);overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-img{max-width:100%;display:block}
-.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:13px 24px;border-radius:14px;font-weight:800;text-decoration:none;font-size:17px;border:0;cursor:pointer;font-family:inherit;transition:background-color .2s,box-shadow .2s;text-align:center}
-.btn svg{width:22px;height:22px;flex:none}
-.btn-goud{background:var(--goud);color:var(--diep);box-shadow:0 5px 0 var(--goud-d)}
-.btn-goud:hover{background:#f3c364}
-.btn-rood{background:var(--rood);color:#fff;box-shadow:0 5px 0 var(--rood-d)}
-.btn-rood:hover{background:#d91d3b}
-.btn-rand{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.7)}
-.btn-rand:hover{background:rgba(255,255,255,.1)}
-.btn-teal{background:var(--teal);color:#fff;box-shadow:0 5px 0 var(--diep)}
+button{font:inherit}
+.wrap{width:min(1180px,100% - 40px);margin:0 auto}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--goud);outline-offset:3px}
+section[id]{scroll-margin-top:calc(var(--hh) + 8px)}
 
-/* demo + balk */
-.demo{background:var(--diep);color:#cfe7e5;font-size:13.5px;text-align:center;padding:8px 14px}
-.demo a{color:var(--goud);font-weight:700}
-.balk{background:var(--rood);color:#fff;font-weight:600;font-size:14.5px;text-align:center;padding:9px 14px}
-.balk b{color:#ffe08f}
+/* demo-strook + aankondiging */
+.demo-strip{background:#05101C;color:#C9D3DE;font-size:13px;display:flex;justify-content:center;align-items:center;gap:12px;padding:6px 52px;position:relative;text-align:center;min-height:34px}
+.demo-strip a{color:var(--goud-l)}
+.demo-strip .kort{display:none}
+.demo-mo{position:absolute;right:8px;top:calc(50% - 13px);width:26px;height:26px;border-radius:50%;border:1px solid rgba(238,207,142,.35);background:transparent;color:rgba(238,207,142,.75);font-size:10px;letter-spacing:.04em;cursor:pointer}
+.demo-mo:hover{background:rgba(238,207,142,.12)}
+.announce{background:var(--goud);color:var(--nacht);font-size:14px;font-weight:600;text-align:center;padding:7px 14px}
+.announce a{text-decoration:none;display:inline-block;padding:12px 2px;margin:-12px -2px}
+.announce .st{letter-spacing:.02em}
+@media(max-width:560px){.demo-strip .lang{display:none}.demo-strip .kort{display:inline}.announce .lang{display:none}}
 
 /* header */
-header.top{background:var(--teal);position:relative;z-index:5;border-bottom:1px solid rgba(255,255,255,.08)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:78px}
-.top .logo img{height:54px;width:auto}
-.top nav{display:flex;gap:22px;align-items:center}
-.top nav a{color:#fff;text-decoration:none;font-weight:700}
-.top nav a:hover{color:var(--goud)}
-.top nav .btn{min-height:46px;padding:10px 18px;font-size:15.5px}
-@media(max-width:860px){.top nav a:not(.btn){display:none}.top .logo img{height:44px}.top nav .btn{padding:10px 14px}}
-@media(max-width:400px){.top .logo img{height:38px}.top nav .btn{font-size:14.5px;padding:10px 12px}}
+header.site{position:sticky;top:0;z-index:40;background:rgba(10,22,38,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(217,180,106,.18)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:var(--hh);gap:16px}
+.brand{display:flex;align-items:center;min-height:44px}
+.brand img{width:154px;height:40px}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{color:#DCE4EC;text-decoration:none;font-size:15px;font-weight:500;padding:10px 12px;border-radius:999px;min-height:44px;display:inline-flex;align-items:center}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.nav .bel{background:var(--goud);color:var(--nacht);font-weight:700;gap:8px;padding:10px 16px}
+.nav .bel:hover{background:var(--goud-l);color:var(--nacht)}
+.nav .bel svg{width:17px;height:17px}
+@media(max-width:860px){.nav a:not(.bel){display:none}}
 
-/* hero */
-.hero{position:relative;background:radial-gradient(110% 90% at 78% 35%,#13808a 0%,var(--teal) 52%,var(--diep) 100%);color:#fff;overflow:hidden;padding:48px 0 0}
-.hero .patroon{position:absolute;inset:0;opacity:.11;pointer-events:none}
-.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:24px;align-items:center}
-.kicker{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-weight:700;font-size:14.5px}
-.kicker i{width:9px;height:9px;border-radius:50%;background:var(--goud);display:block}
-.hero h1{font-size:clamp(38px,10vw,78px);overflow-wrap:break-word;margin:18px 0 14px}
-.hero h1 .g{color:var(--goud)}
-.hero p.lead{font-size:clamp(17px,2.2vw,20px);max-width:32em;color:#dcefee}
-.hero .knoppen{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
-.hero .trust{margin-top:30px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:15px;color:#dcefee}
-.hero .trust span:last-child{flex:1 1 200px;min-width:0}
-.hero .trust .cijfer{display:inline-grid;place-items:center;min-width:46px;height:34px;padding:0 8px;border-radius:10px;background:var(--goud);color:var(--diep);font-weight:800}
-.scene{position:relative;aspect-ratio:1/1;max-width:500px;width:100%;justify-self:center}
-.scene svg{width:100%;height:100%;overflow:visible}
-.rand{display:block;width:100%;height:auto;margin-top:18px}
-@media(max-width:860px){
-  .hero{padding-top:30px}
-  .hero .wrap{grid-template-columns:minmax(0,1fr)}
-  .scene{max-width:310px;margin-top:4px}
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 22px;border-radius:999px;font-weight:700;font-size:16.5px;text-decoration:none;border:0;cursor:pointer;transition:background-color .2s,color .2s,box-shadow .2s;white-space:nowrap}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-goud{background:var(--goud);color:var(--nacht);box-shadow:0 10px 30px -10px rgba(217,180,106,.7)}
+.btn-goud:hover{background:var(--goud-l)}
+.btn-wit{background:#fff;color:var(--navy)}
+.btn-wit:hover{background:var(--sesam)}
+.btn-rand{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)}
+.btn-rand:hover{background:rgba(255,255,255,.1)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy2)}
+.btn-lijn{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 1.5px rgba(15,34,54,.35)}
+.btn-lijn:hover{background:var(--mist)}
+
+/* HERO: eigen gevelfoto, ochtendlicht komt op */
+.hero{position:relative;min-height:max(640px,calc(100svh - 118px));display:flex;align-items:flex-end;color:#fff;overflow:hidden;isolation:isolate;background:var(--nacht)}
+.hero-foto{position:absolute;inset:0;z-index:-4;overflow:hidden}
+.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:18% 30%;animation:pan 34s ease-in-out 1.2s infinite alternate;filter:saturate(1.05)}
+@keyframes pan{0%{object-position:18% 30%;transform:scale(1.04)}100%{object-position:82% 30%;transform:scale(1.1)}}
+@media(min-width:861px){
+  .hero-foto img{object-position:50% 6%;transform-origin:30% 0;animation:kb 26s ease-in-out infinite alternate}
+  @keyframes kb{0%{transform:scale(1)}100%{transform:scale(1.07) translate3d(-1.5%,0,0)}}
 }
-@media(max-width:420px){.hero .knoppen .btn{width:100%}}
+.nacht{position:absolute;inset:0;z-index:-3;background:linear-gradient(180deg,#0A1626 0%,#14284A 55%,#2A2F55 100%);mix-blend-mode:multiply;animation:dageraad 4.2s cubic-bezier(.4,0,.2,1) .2s both}
+@keyframes dageraad{0%{opacity:.97}100%{opacity:.2}}
+.zon{position:absolute;z-index:-2;width:130vmax;height:130vmax;right:-62vmax;top:-58vmax;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,226,160,.95) 0%,rgba(255,190,105,.55) 18%,rgba(245,155,85,.22) 38%,transparent 60%);
+  mix-blend-mode:screen;animation:opkomst 5.5s cubic-bezier(.2,.7,.2,1) .4s both, adem 9s ease-in-out 6s infinite alternate}
+@keyframes opkomst{0%{opacity:0;transform:translate3d(0,30%,0)}100%{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes adem{0%{opacity:1}100%{opacity:.78}}
+.warm{position:absolute;inset:0;z-index:-2;background:linear-gradient(205deg,rgba(255,176,92,.55) 0%,rgba(255,196,120,.18) 40%,transparent 65%);mix-blend-mode:soft-light;opacity:0;animation:fade 4s ease 1.4s forwards}
+.glans{position:absolute;inset:-20% -40%;z-index:-2;background:linear-gradient(105deg,transparent 40%,rgba(255,232,190,.22) 48%,rgba(255,240,210,.32) 50%,rgba(255,232,190,.22) 52%,transparent 60%);mix-blend-mode:screen;transform:translate3d(-60%,0,0);animation:glans 11s ease-in-out 2.4s infinite}
+@keyframes glans{0%{transform:translate3d(-60%,0,0)}35%,100%{transform:translate3d(60%,0,0)}}
+.leesbaar{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,22,38,0) 28%,rgba(10,22,38,.5) 52%,rgba(10,22,38,.93) 100%)}
+@media(min-width:861px){.leesbaar{background:linear-gradient(90deg,rgba(10,22,38,.88) 0%,rgba(10,22,38,.55) 42%,rgba(10,22,38,0) 70%),linear-gradient(180deg,transparent 60%,rgba(10,22,38,.6))}}
+.stof{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.stof i{position:absolute;bottom:-10px;width:var(--s,4px);height:calc(var(--s,4px)*1.7);border-radius:50%;background:var(--sesam);opacity:0;animation:zweef var(--d,14s) linear var(--w,0s) infinite;box-shadow:0 0 8px rgba(255,214,140,.6)}
+@keyframes zweef{0%{opacity:0;transform:translate3d(0,0,0) rotate(0)}12%{opacity:.75}85%{opacity:.5}100%{opacity:0;transform:translate3d(var(--x,30px),-78vh,0) rotate(220deg)}}
 
-/* hero-animaties */
-.draai{transform-origin:250px 250px;animation:draai 60s linear infinite}
-.draai-r{transform-origin:400px 112px;animation:draai 22s linear infinite}
+.hero-in{padding:56px 0 34px;width:min(1180px,100% - 40px);margin:0 auto;position:relative}
+.kicker{display:inline-flex;align-items:center;gap:10px;background:rgba(10,22,38,.62);padding:7px 14px 7px 12px;border-radius:999px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--goud-l)}
+@media(max-width:560px){.kicker .mw{display:none}.kicker{font-size:12px;letter-spacing:.15em}}
+@media(max-width:370px){.kicker{font-size:10.5px;letter-spacing:.1em}}
+.kicker::before{content:"";width:18px;height:1.5px;background:currentColor}
+.hero h1,.hero .sub{text-shadow:0 2px 18px rgba(5,16,28,.55)}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(42px,7.2vw,92px);line-height:1.02;letter-spacing:-.01em;margin:14px 0 18px;max-width:13ch;text-wrap:balance}
+.hero h1 .w{display:inline-block;opacity:0;transform:translateY(.45em);animation:woord .9s cubic-bezier(.2,.7,.2,1) calc(1.1s + var(--i)*.09s) forwards}
+.hero h1 em{font-style:normal;color:var(--goud-l)}
+@keyframes woord{to{opacity:1;transform:none}}
+.hero .sub{font-size:clamp(17px,2vw,20px);max-width:36ch;color:#E9EEF3;opacity:0;animation:fade .9s ease 2s forwards}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;opacity:0;animation:fade .9s ease 2.25s forwards}
+.hero-cta .btn{flex:1 1 auto}
+@media(min-width:561px){.hero-cta .btn{flex:0 0 auto}}
+.hero-onder{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:28px;font-size:15px;color:#D6DEE7;opacity:0;animation:fade .9s ease 2.5s forwards}
+.hero-onder a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;border-bottom:1px solid rgba(238,207,142,.6)}
+.hero-onder .sterren{color:var(--goud-l);letter-spacing:2px}
+@keyframes fade{to{opacity:1}}
+.stempel{position:absolute;right:0;bottom:34px;width:118px;height:118px;opacity:0;animation:fade 1s ease 2.8s forwards}
+.stempel svg{width:100%;height:100%;animation:draai 40s linear infinite}
+.stempel .kern{position:absolute;inset:30px;border-radius:50%;background:var(--goud);display:grid;place-items:center;color:var(--nacht);font-family:var(--serif);font-size:13px;line-height:1.05;text-align:center}
 @keyframes draai{to{transform:rotate(360deg)}}
-.zweef{animation:zweef 6s ease-in-out infinite}
-.zweef2{animation:zweef 7s ease-in-out -2s infinite}
-.zweef3{animation:zweef 6.5s ease-in-out -4s infinite}
-@keyframes zweef{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.stoom path{stroke-dasharray:64;animation:stoom 3.4s ease-in-out infinite;opacity:0}
-.stoom path:nth-child(2){animation-delay:1.1s}.stoom path:nth-child(3){animation-delay:2.2s}
-@keyframes stoom{0%{stroke-dashoffset:64;opacity:0;transform:translateY(8px)}35%{opacity:.85}100%{stroke-dashoffset:-64;opacity:0;transform:translateY(-24px)}}
-.sesam{animation:sesam 8s linear infinite;opacity:0}
-@keyframes sesam{0%{transform:translateY(-30px) rotate(0);opacity:0}12%{opacity:1}88%{opacity:1}100%{transform:translateY(420px) rotate(260deg);opacity:0}}
-.pulse{transform-origin:center;transform-box:fill-box;animation:pulse 2.8s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-.glans{animation:glans 4.5s ease-in-out infinite}
-@keyframes glans{0%,100%{opacity:.35}50%{opacity:.85}}
+@media(max-width:860px){.stempel{display:none}}
 
-/* marquee */
-.band{background:var(--goud);color:var(--diep);overflow:hidden;border-top:4px solid var(--rood);border-bottom:4px solid var(--turk)}
-.band .rij{display:flex;width:max-content;animation:band 34s linear infinite;padding:13px 0}
-.band span{font-family:'Baloo 2';font-weight:800;font-size:21px;white-space:nowrap;padding:0 22px;display:flex;align-items:center;gap:22px}
-.band span::after{content:"";width:16px;height:16px;border-radius:50%;border:4px solid var(--rood);display:block}
-.band span:nth-child(2n)::after{border-color:var(--teal)}
-@keyframes band{to{transform:translateX(-50%)}}
+/* USP-band */
+.band{background:var(--navy);color:#fff;overflow:hidden;border-top:1px solid rgba(217,180,106,.25);border-bottom:1px solid rgba(217,180,106,.25)}
+.band-rij{display:flex;width:max-content;animation:loop 38s linear infinite}
+.band span{font-family:var(--serif);font-size:20px;padding:16px 0;white-space:nowrap;display:flex;align-items:center}
+.band span::after{content:"";width:9px;height:14px;border-radius:50%;background:var(--goud);margin:0 26px;transform:rotate(30deg)}
+@keyframes loop{to{transform:translateX(-50%)}}
 
-section{padding:76px 0}
-.kop{max-width:720px;margin-bottom:34px}
-.kop .label{display:inline-block;font-weight:800;color:var(--rood);text-transform:uppercase;letter-spacing:1.6px;font-size:13.5px;margin-bottom:8px}
-.kop h2{font-size:clamp(32px,5vw,52px);color:var(--teal)}
-.kop p{margin-top:12px;color:var(--zacht);font-size:18px}
+/* sectiekoppen */
+.kop{max-width:720px;margin-bottom:36px}
+.label{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--korst)}
+.kop h2,.h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.6vw,56px);line-height:1.06;margin:10px 0 14px;text-wrap:balance}
+.kop p{color:var(--muted);font-size:18px}
 
-/* assortiment */
-.producten{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.prod{background:#fff;border-radius:var(--r);padding:22px 22px 24px;min-width:0;box-shadow:0 14px 34px -24px rgba(7,57,64,.55);position:relative;overflow:hidden}
-.prod .vorm{height:110px;display:grid;place-items:center;margin:-4px -8px 12px;border-radius:14px;background:var(--licht)}
-.prod .vorm svg{width:150px;height:96px}
-.prod h3{font-size:clamp(22px,2.6vw,26px);color:var(--teal);overflow-wrap:break-word}
-.prod .tr{font-weight:800;color:var(--rood);font-size:14px;letter-spacing:.6px;text-transform:uppercase}
-.prod p{color:var(--zacht);margin-top:6px;font-size:16px}
-.voorbehoud{margin-top:22px;font-size:15px;color:var(--zacht);max-width:56em}
-.tgtg{margin-top:26px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;background:#fff;border:2px dashed var(--turk);border-radius:var(--r);padding:20px 22px}
-.tgtg svg{width:46px;height:46px;flex:none}
-.tgtg div{flex:1 1 260px;min-width:0}
-.tgtg b{font-family:'Baloo 2';font-size:21px;color:var(--teal);display:block;line-height:1.2}
-.tgtg a{font-weight:800;color:var(--teal);display:inline-flex;align-items:center;min-height:44px}
-@media(max-width:980px){.producten{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.producten{grid-template-columns:minmax(0,1fr)}}
+/* TIJDLIJN VAN DE DAG */
+.dag{position:relative;padding:90px 0 110px;background:var(--lucht,#0A1626);transition:background-color .2s linear;color:#fff}
+.dag .kop p{color:inherit;opacity:.82}
+.dag .label{color:var(--goud-l)}
+.dag-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:56px;align-items:start}
+.zonklok{position:sticky;top:calc(var(--hh) + 30px);padding:6px 0}
+.zonklok svg{width:100%;max-width:420px;height:auto;overflow:visible}
+.zonklok .moment{font-family:var(--serif);font-size:clamp(40px,5vw,64px);line-height:1;margin-top:8px}
+.zonklok .moment-sub{opacity:.8;margin-top:10px;max-width:30ch}
+.beats{display:grid;gap:34px}
+.beat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:#fff;color:var(--ink);border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(5,16,28,.6)}
+.beat.donker{background:var(--navy);color:#fff}
+.beat .beeld{position:relative;min-height:300px;background:var(--mist)}
+.beat .beeld img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.beat .beeld svg{position:absolute;inset:0;width:100%;height:100%}
+.beat .tekst{padding:30px 28px;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.beat .tijd{font-size:12.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--korst)}
+.beat.donker .tijd{color:var(--goud-l)}
+.beat h3{font-family:var(--serif);font-weight:400;font-size:clamp(25px,3vw,34px);line-height:1.1;margin:8px 0 12px;overflow-wrap:break-word}
+.beat p{color:var(--muted)}
+.beat.donker p{color:#CDD7E1}
+.beat blockquote{margin-top:16px;padding-left:14px;border-left:3px solid var(--goud);font-family:var(--serif);font-size:19px;line-height:1.35}
+.beat blockquote cite{display:block;font-family:var(--sans);font-style:normal;font-size:13.5px;color:var(--muted);margin-top:6px}
+.beat blockquote cite a{color:inherit}
+.beat .onder{font-size:13px;color:var(--muted);margin-top:12px}
+.beat.breed{grid-template-columns:1fr}
+.beat.breed .beeld{min-height:220px}
+.beat .beeld.banier{min-height:0;aspect-ratio:464/135;background:#EDE7DC}
+.beat .beeld.banier img{object-fit:cover}
+.beat .knoppen{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.zonbalk{display:none}
+@media(max-width:860px){
+  .dag{padding:64px 0 80px}
+  .dag-grid{grid-template-columns:1fr;gap:0}
+  .zonklok{display:none}
+  .zonbalk{display:flex;align-items:center;gap:14px;position:sticky;top:var(--hh);z-index:5;margin:0 -20px 26px;padding:10px 20px;background:rgba(10,22,38,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff}
+  .zonbalk .spoor{position:relative;flex:1;height:2px;background:rgba(255,255,255,.22);border-radius:2px}
+  .zonbalk .spoor b{position:absolute;left:0;top:0;bottom:0;width:var(--p,0%);background:var(--goud);border-radius:2px}
+  .zonbalk .bol{position:absolute;top:50%;left:var(--p,0%);width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:radial-gradient(circle,#FFE6A8 0 40%,var(--goud) 41%);box-shadow:0 0 14px 4px rgba(238,207,142,.55)}
+  .zonbalk .wat{font-family:var(--serif);font-size:19px;min-width:96px}
+  .beat{grid-template-columns:1fr}
+  .beat .beeld{min-height:240px}
+  .beat .tekst{padding:24px 22px 26px}
+}
 
-/* kiezer */
-#kiezer{background:var(--teal);color:#fff;position:relative;overflow:hidden}
-#kiezer .kop h2{color:#fff}
-#kiezer .kop p{color:#cfe7e5}
-#kiezer .kop .label{color:var(--goud)}
-.kiezer{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);gap:22px;align-items:start}
-.stap{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:var(--r);padding:22px;min-width:0}
-.stap h3{font-size:22px;margin:4px 0 12px;display:flex;gap:10px;align-items:center}
-.stap h3 b{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--goud);color:var(--diep);font-size:17px;flex:none}
-.keus{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-.keus button{min-height:44px;padding:9px 16px;border-radius:12px;border:2px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-weight:800;font-family:inherit;font-size:15.5px;cursor:pointer}
-.keus button[aria-pressed=true]{background:var(--goud);border-color:var(--goud);color:var(--diep)}
-.veld label{display:block;font-weight:700;margin-bottom:6px}
-.veld input{width:100%;min-height:48px;border-radius:12px;border:2px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;font:inherit;padding:10px 14px}
-.veld input::placeholder{color:#a9cfcc}
-.bericht{background:#E7FFDB;color:#163a2a;border-radius:16px 16px 16px 4px;padding:16px 18px;font-size:16px;white-space:pre-line;min-height:120px;box-shadow:0 10px 24px -14px rgba(0,0,0,.6);overflow-wrap:break-word}
-.bericht-kop{font-weight:700;color:#cfe7e5;font-size:14.5px;margin-bottom:8px}
-.kiezer .btn{width:100%;margin-top:18px}
-.klein{font-size:13.5px;color:#cfe7e5;margin-top:14px}
-@media(max-width:860px){.kiezer{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:420px){.stap{padding:16px 12px}.stap h3{font-size:19px}}
+/* UIT DE VITRINE: horizontale strook */
+.vitrine{background:var(--nacht);color:#fff;padding:96px 0 90px;position:relative;overflow:hidden}
+.vitrine::before{content:"";position:absolute;inset:auto -10% -40% -10%;height:70%;background:radial-gradient(ellipse at 50% 100%,rgba(217,180,106,.22),transparent 65%);pointer-events:none}
+.vitrine .label{color:var(--goud-l)}
+.vitrine .kop p{color:#C5D0DB}
+.strook-kop{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.pijlen{display:flex;gap:10px}
+.pijlen button{width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(238,207,142,.5);background:transparent;color:var(--goud-l);cursor:pointer;font-size:22px}
+.pijlen button:hover{background:rgba(238,207,142,.12)}
+@media(max-width:860px){.pijlen{display:none}}
+.strook{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px max(20px,calc((100vw - 1180px)/2)) 26px;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.strook::-webkit-scrollbar{display:none}
+.kaart{flex:0 0 min(300px,78vw);scroll-snap-align:center;background:#fff;color:var(--ink);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.kaart .bord{aspect-ratio:3/2;background:radial-gradient(ellipse at 50% 85%,#FFF6E2 0 30%,#F4E3BC 70%,#EAD3A0);position:relative}
+.kaart .bord svg{position:absolute;inset:0;width:100%;height:100%}
+.kaart:nth-child(even) .bord{background:radial-gradient(ellipse at 50% 85%,#F3F6FA 0 30%,#DDE5EE 75%,#CFDAE6)}
+.kaart .nr{position:absolute;top:12px;left:14px;font-family:var(--serif);font-size:14px;color:var(--korst-d);background:rgba(255,255,255,.75);border-radius:999px;padding:2px 10px}
+.kaart .in{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.kaart h3{font-family:var(--serif);font-weight:400;font-size:25px;line-height:1.1}
+.kaart h3 small{display:block;font-family:var(--sans);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--korst);margin-bottom:4px}
+.kaart p{color:var(--muted);font-size:15.5px;flex:1}
+.kaart .acties{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.kaart .acties a{flex:1 1 auto;min-height:46px;padding:10px 14px;font-size:15px}
+.voortgang{width:min(1180px,100% - 40px);margin:0 auto;height:2px;background:rgba(255,255,255,.15);border-radius:2px;position:relative}
+.voortgang b{position:absolute;left:0;top:0;bottom:0;width:20%;background:var(--goud);border-radius:2px}
+.vitrine .noot{width:min(1180px,100% - 40px);margin:18px auto 0;font-size:14px;color:#AFC0D0}
 
-/* waarom */
-.kaarten{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.kaart{background:#fff;border-radius:var(--r);padding:26px;min-width:0;box-shadow:0 14px 34px -24px rgba(7,57,64,.55);border-top:6px solid var(--c)}
-.kaart .ico{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;background:var(--c);margin-bottom:16px}
-.kaart .ico svg{width:32px;height:32px}
-.kaart h3{font-size:clamp(21px,2.6vw,25px);color:var(--teal);margin-bottom:8px;overflow-wrap:break-word}
-.kaart p{color:var(--zacht)}
-@media(max-width:860px){.kaarten{grid-template-columns:minmax(0,1fr)}}
+/* KIEZER */
+.kies{background:var(--mist);padding:96px 0}
+.kies-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:28px;align-items:start}
+.kies-form{background:#fff;border-radius:24px;padding:30px;box-shadow:0 30px 60px -40px rgba(15,34,54,.5)}
+fieldset{border:0;margin-bottom:24px}
+legend{font-weight:700;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+legend b{width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--goud-l);display:grid;place-items:center;font-size:13px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.chips span{display:inline-flex;align-items:center;min-height:46px;padding:10px 16px;border-radius:999px;border:1.5px solid #CBD5E0;font-weight:600;font-size:15.5px;cursor:pointer;transition:background-color .15s,border-color .15s,color .15s;background:#fff}
+.chips input:checked+span{background:var(--navy);border-color:var(--navy);color:#fff}
+.chips input:focus-visible+span{outline:3px solid var(--goud);outline-offset:2px}
+.veld{display:grid;gap:6px;margin-top:12px}
+.veld label{font-size:14px;font-weight:600;color:var(--muted)}
+.veld input{min-height:48px;border:1.5px solid #CBD5E0;border-radius:12px;padding:10px 14px;font:inherit;font-size:16px;width:100%;background:#fff;color:var(--ink)}
+.veld input:focus{border-color:var(--navy);outline:none}
+.bericht{background:var(--navy);color:#fff;border-radius:24px;padding:28px;position:sticky;top:calc(var(--hh) + 20px)}
+.bericht h3{font-family:var(--serif);font-weight:400;font-size:26px;margin-bottom:14px}
+.bubbel{background:#fff;color:var(--ink);border-radius:18px 18px 18px 4px;padding:16px 18px;white-space:pre-line;font-size:16px;min-height:120px}
+.bericht .knoppen{display:grid;gap:10px;margin-top:18px}
+.bericht .klein{font-size:14px;color:#C2CEDA;margin-top:14px}
+.stappen{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px;counter-reset:s;list-style:none}
+.stappen li{background:#fff;border-radius:18px;padding:20px;counter-increment:s;min-width:0}
+.stappen li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--goud);color:var(--nacht);font-family:var(--serif);margin-bottom:10px}
+.stappen b{display:block;font-family:var(--serif);font-weight:400;font-size:21px;margin-bottom:4px}
+.stappen span{color:var(--muted);font-size:15.5px}
+@media(max-width:860px){
+  .kies{padding:70px 0}
+  .kies-grid{grid-template-columns:1fr}
+  .kies-form{padding:22px 18px}
+  .bericht{position:static}
+  .stappen{grid-template-columns:1fr}
+}
 
-/* reviews */
-#reviews{background:#fff}
-.score{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:30px}
-.score .groot{font-family:'Baloo 2';font-weight:800;font-size:66px;color:var(--teal);line-height:1}
-.score .groot small{font-size:28px;color:var(--zacht)}
-.score a{font-weight:800;color:var(--teal);display:inline-flex;align-items:center;min-height:44px}
-.reviews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.review{background:var(--licht);border-radius:var(--r);padding:26px 24px 22px;min-width:0;position:relative}
-.review::before{content:"";position:absolute;left:24px;top:-10px;width:44px;height:20px;border-radius:10px;background:var(--c)}
-.review blockquote{font-family:'Baloo 2';font-weight:700;font-size:23px;line-height:1.2;color:var(--teal)}
-.review p{font-size:17px}
-.review .wie{margin-top:14px;font-weight:800;color:var(--teal)}
-.review .bron{font-size:14px;color:var(--zacht);font-weight:600}
-.label-sam{margin-top:18px;font-size:14px;color:var(--zacht);max-width:56em}
-@media(max-width:860px){.reviews{grid-template-columns:minmax(0,1fr)}}
+/* REVIEWS */
+.reviews{padding:100px 0;background:#fff}
+.rev-top{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:end;margin-bottom:40px}
+.score{display:flex;align-items:flex-end;gap:16px}
+.score .getal{font-family:var(--serif);font-size:clamp(84px,11vw,140px);line-height:.85;color:var(--navy)}
+.score .uit{padding-bottom:8px}
+.score .sterren{color:var(--goud);font-size:22px;letter-spacing:3px}
+.score small{display:block;color:var(--muted);font-size:15px}
+.score a{color:var(--navy);font-weight:600}
+.citaten{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.citaat{background:var(--mist);border-radius:20px;padding:26px 24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.citaat:first-child{background:var(--navy);color:#fff}
+.citaat q{font-family:var(--serif);font-size:clamp(21px,2.3vw,26px);line-height:1.25;quotes:"\201C" "\201D"}
+.citaat .wie{font-size:14px;color:var(--muted);margin-top:auto}
+.citaat:first-child .wie{color:#BFCBD7}
+.citaat .wie a,.score small a,.beat cite a{color:inherit;display:inline-block;padding:14px 4px;margin:-14px -4px}
+.rev-noot{font-size:14px;color:var(--muted);margin-top:16px}
+.themas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.thema{border-top:2px solid var(--navy);padding-top:16px;min-width:0}
+.thema b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(21px,2.4vw,26px);line-height:1.15;margin-bottom:6px;overflow-wrap:break-word}
+.thema span{color:var(--muted);font-size:15.5px}
+@media(max-width:860px){.reviews{padding:72px 0}.rev-top{grid-template-columns:1fr;gap:18px}.citaten,.themas{grid-template-columns:1fr}}
 
-/* stappen */
-.stappen{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:s}
-.stapk{background:var(--teal);color:#fff;border-radius:var(--r);padding:26px;position:relative;overflow:hidden;min-width:0}
-.stapk::after{counter-increment:s;content:counter(s);position:absolute;right:16px;top:-14px;font-family:'Baloo 2';font-weight:800;font-size:110px;color:rgba(233,180,76,.2);line-height:1}
-.stapk h3{font-size:clamp(21px,2.6vw,25px);margin-bottom:8px;color:var(--goud);position:relative}
-.stapk p{color:#dcefee;position:relative}
-.stapk a{color:#fff;font-weight:800}
-@media(max-width:860px){.stappen{grid-template-columns:minmax(0,1fr)}}
+/* BEZOEK: panorama van de hoek */
+.bezoek{background:var(--navy);color:#fff}
+.pano{position:relative;height:clamp(260px,42vw,520px);overflow:hidden}
+.pano img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.pano::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,34,54,0) 55%,rgba(15,34,54,1))}
+.pano figcaption{position:absolute;left:0;right:0;bottom:16px;z-index:2;width:min(1180px,100% - 40px);margin:0 auto;font-size:14px;color:#DCE4EC}
+.bezoek-in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;padding:40px 0 90px}
+.bezoek h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.6vw,56px);line-height:1.05;margin:8px 0 18px}
+.bezoek .label{color:var(--goud-l)}
+.adres{font-size:20px;line-height:1.45}
+.adres a{color:#fff}
+.feiten{list-style:none;display:grid;gap:12px;margin-top:22px}
+.feiten li{display:flex;gap:12px;align-items:flex-start;color:#D6DEE7}
+.feiten svg{width:22px;height:22px;flex:none;color:var(--goud);margin-top:2px}
+.bezoek .knoppen{display:grid;gap:12px;align-content:start}
+.bezoek .knoppen .btn{width:100%}
+.bezoek .klein{font-size:14px;color:#AFC0D0}
+@media(max-width:860px){.bezoek-in{grid-template-columns:1fr;gap:28px;padding:30px 0 70px}}
 
-/* faq */
-#faq{background:#fff}
-.faq{max-width:820px}
-.faq details{border-bottom:2px solid #e3eeee}
-.faq summary{list-style:none;cursor:pointer;padding:18px 44px 18px 0;font-weight:800;font-size:18px;color:var(--teal);position:relative;min-height:44px}
+/* FAQ */
+.faq{background:var(--mist);padding:96px 0}
+.faq-lijst{max-width:820px;display:grid;gap:12px}
+.faq details{background:#fff;border-radius:16px;padding:0 22px}
+.faq summary{list-style:none;cursor:pointer;min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-weight:700;font-size:17.5px;padding:14px 0}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";position:absolute;right:6px;top:10px;font-family:'Baloo 2';font-weight:800;font-size:28px;color:var(--rood)}
-.faq details[open] summary::after{content:"–"}
-.faq details p{padding:0 0 18px;color:var(--zacht)}
+.faq summary::after{content:"+";font-family:var(--serif);font-size:28px;color:var(--korst);flex:none;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 18px;color:var(--muted)}
+.faq details a{color:var(--navy);font-weight:600}
+@media(max-width:860px){.faq{padding:70px 0}}
 
-/* info */
-.info{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.blok{background:#fff;border-radius:var(--r);padding:26px;box-shadow:0 14px 34px -24px rgba(7,57,64,.55);min-width:0}
-.blok h3{font-size:27px;color:var(--teal);margin-bottom:12px}
-.blok .groot{font-size:19px;font-weight:800;margin-bottom:6px}
-.blok p{color:var(--zacht)}
-.blok p.groot{color:var(--tekst)}
-.dagen{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}
-.dagen span{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--licht);color:var(--teal);font-weight:800;font-size:15px}
-.dagen span.zo{background:var(--goud);color:var(--diep)}
-.knoprij{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
-.tel{font-weight:800;color:var(--teal);text-decoration:none;white-space:nowrap}
-.kaartje{margin-top:20px;border-radius:16px;overflow:hidden;background:var(--teal)}
-.kaartje svg{display:block;width:100%;height:auto}
-@media(max-width:860px){.info{grid-template-columns:minmax(0,1fr)}}
+/* SLOT */
+.slot{position:relative;background:linear-gradient(180deg,#F3C987 0%,#E39B5E 45%,#2A2F55 100%);color:#fff;padding:110px 0 100px;text-align:center;overflow:hidden}
+.slot::before{content:"";position:absolute;left:50%;top:-30%;width:900px;height:900px;margin-left:-450px;border-radius:50%;background:radial-gradient(circle,rgba(255,240,200,.9),rgba(255,214,140,.35) 35%,transparent 65%)}
+.slot .wrap{position:relative}
+.slot h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,6vw,76px);line-height:1.03;max-width:15ch;margin:0 auto 18px;color:var(--nacht);text-wrap:balance}
+.slot p{color:var(--nacht);font-size:19px;max-width:38ch;margin:0 auto 28px;font-weight:500}
+.slot .knoppen{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 
-/* slot */
-.slot{background:var(--rood);color:#fff;text-align:center;position:relative;overflow:hidden}
-.slot h2{font-size:clamp(34px,5.6vw,60px)}
-.slot p{max-width:36em;margin:14px auto 26px;font-size:18px;color:#ffe1e5}
-.slot .knoppen{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.slot .btn-rand{box-shadow:inset 0 0 0 2px #fff}
+/* FOOTER */
+footer{background:var(--nacht);color:#AFC0D0;padding:54px 0 120px;font-size:15px}
+.voet{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:30px}
+footer img{width:154px;height:40px;margin-bottom:14px}
+footer h4{color:#fff;font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+footer a{color:#DCE4EC}
+footer ul{list-style:none;display:grid;gap:6px}
+.door{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:14px}
+.door a{color:var(--goud-l)}
+@media(max-width:860px){.voet{grid-template-columns:1fr}footer{padding-bottom:130px}}
 
-footer{background:var(--diep);color:#b9d6d4;padding:40px 0 112px;font-size:15px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
-footer img{height:46px;width:auto}
-footer a{color:var(--goud)}
-@media(min-width:861px){footer{padding-bottom:40px}}
+/* zwevende CTA (mobiel) */
+.float{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:50;display:none;grid-template-columns:1.3fr 1fr 1fr;gap:8px;padding:8px;border-radius:999px;background:rgba(10,22,38,.95);box-shadow:0 18px 40px -12px rgba(0,0,0,.55);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.float a{display:flex;align-items:center;justify-content:center;gap:7px;min-height:48px;border-radius:999px;color:#fff;text-decoration:none;font-weight:700;font-size:15px;background:rgba(255,255,255,.08)}
+.float a svg{width:18px;height:18px}
+.float a.hoofd{background:var(--goud);color:var(--nacht)}
+.float.toon{opacity:1;visibility:visible}
+@media(max-width:860px){.float{display:grid}}
 
-/* zwevende CTA */
-.zweef-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:flex;gap:10px;transform:translateY(140%);transition:transform .35s ease;pointer-events:none}
-.zweef-cta.aan{transform:none;pointer-events:auto}
-.zweef-cta .btn{min-height:54px;padding:12px 14px;font-size:16px;box-shadow:0 10px 26px -8px rgba(0,0,0,.5)}
-.zweef-cta .btn-rood{flex:1}
-.zweef-cta .btn-teal{flex:0 0 auto}
-@media(min-width:861px){.zweef-cta{display:none}}
+/* scroll-reveal (met vangnet in JS) */
+.stoom path{animation:stoom 3.2s ease-in-out infinite;opacity:0}.stoom path:nth-child(2){animation-delay:1s}.stoom path:nth-child(3){animation-delay:2s}
+@keyframes stoom{0%{opacity:0;transform:translateY(6px)}40%{opacity:.8}100%{opacity:0;transform:translateY(-10px)}}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
 
-.onthul{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
-.onthul.in{opacity:1;transform:none}
+/* PITCH-MODUS (alleen voor Mo) */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(5,16,28,.6);display:none;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.pitch.open{display:block}
+.pp{background:#fff;width:min(1000px,100%);margin:0 auto;min-height:100%;padding:22px 20px 60px}
+@media(min-width:861px){.pp{margin:30px auto;min-height:0;border-radius:24px;padding:34px 40px 44px}}
+.pp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.pp-top b{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--korst)}
+.pp-sluit{min-width:44px;min-height:44px;border-radius:50%;border:1px solid #CBD5E0;background:#fff;font-size:22px;cursor:pointer;color:var(--ink)}
+.pp h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,4vw,40px);line-height:1.1;margin:12px 0 22px}
+.vn{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;align-items:start}
+.vn figure{border:1px solid #DDE3EA;border-radius:16px;padding:12px;background:var(--mist)}
+.vn figcaption{margin:10px 4px 2px;font-size:14px}
+.zoek{background:#fff;border-radius:12px;padding:14px;font-family:Arial,Helvetica,sans-serif;color:#202124}
+.zoek .balk{display:flex;align-items:center;gap:10px;border:1px solid #DFE1E5;border-radius:24px;padding:10px 16px;font-size:15px;margin-bottom:14px}
+.zoek .balk i{width:14px;height:14px;border:2px solid #9AA0A6;border-radius:50%;position:relative;flex:none}
+.zoek .res{padding:10px 2px;border-top:1px solid #F1F3F4}
+.zoek .res small{display:block;font-size:12px;color:#4D5156}
+.zoek .res span{display:block;color:#1A0DAB;font-size:16px;line-height:1.3}
+.zoek .res em{font-style:normal;font-size:13px;color:#4D5156}
+.zoek .geen{margin-top:10px;font-size:13.5px;background:#FFF4E5;color:#7A4A12;border-radius:8px;padding:8px 10px}
+.tel{width:207px;height:428px;margin:0 auto;border-radius:30px;border:6px solid var(--nacht);overflow:hidden;background:var(--nacht);position:relative}
+.tel iframe{width:390px;height:810px;border:0;transform:scale(.5);transform-origin:0 0;position:absolute;left:0;top:0}
+.pp h3{font-family:var(--serif);font-weight:400;font-size:25px;margin:34px 0 8px}
+.reken{display:grid;grid-template-columns:1fr 1fr;gap:16px 26px;background:var(--mist);border-radius:16px;padding:20px}
+.reken label{display:flex;justify-content:space-between;font-size:15px;gap:10px}
+.reken label output{font-weight:700;color:var(--navy)}
+.reken input[type=range]{width:100%;accent-color:var(--navy);height:44px}
+.uitkomst{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.uitkomst div{background:#fff;border-radius:12px;padding:14px}
+.uitkomst small{display:block;font-size:12.5px;color:var(--muted)}
+.uitkomst strong{font-family:var(--serif);font-weight:400;font-size:clamp(22px,3vw,30px);color:var(--navy)}
+.disclaimer{grid-column:1/-1;font-size:13.5px;color:var(--muted)}
+.punten{list-style:none;counter-reset:p;display:grid;gap:10px}
+.punten li{counter-increment:p;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;background:var(--mist);border-radius:12px;padding:14px 16px}
+.punten li::before{content:counter(p);width:32px;height:32px;border-radius:50%;background:var(--navy);color:var(--goud-l);display:grid;place-items:center;font-family:var(--serif)}
+@media(max-width:860px){.vn{grid-template-columns:1fr}.reken{grid-template-columns:1fr}.uitkomst{grid-template-columns:1fr}}
 
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .onthul{opacity:1;transform:none}
-  .sesam{opacity:0!important}
-  .band .rij{transform:none}
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .nacht{opacity:.2}.zon,.warm{opacity:1}.glans,.stof{display:none}
+  .hero h1 .w,.hero .sub,.hero-cta,.hero-onder,.stempel{opacity:1;transform:none}
+  .rv{opacity:1;transform:none}
 }
 </style>
 </head>
-<body>
+<body id="top">
 
-<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> voor Bakkerij Alanya.</div>
-<div class="balk"><b>4,5</b> uit 210 Google-reviews · Polderlaan 75A, Rotterdam-Zuid · ook op zondag open</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-zon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6.5V4M5.6 9.6 4 8M18.4 9.6 20 8M2.8 14H1.5M22.5 14h-1.3"/></g></symbol>
+    <symbol id="i-kal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></g></symbol>
+    <symbol id="i-tas" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></g></symbol>
+    <radialGradient id="g-korst" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#E9B56C"/><stop offset=".55" stop-color="#C07A3A"/><stop offset="1" stop-color="#7E4419"/></radialGradient>
+    <linearGradient id="g-simit" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D08A45"/><stop offset=".6" stop-color="#A65E27"/><stop offset="1" stop-color="#7A3F16"/></linearGradient>
+    <radialGradient id="g-plat" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#F0C985"/><stop offset=".7" stop-color="#D19651"/><stop offset="1" stop-color="#A9662C"/></radialGradient>
+    <linearGradient id="g-zak" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D8B07A"/><stop offset="1" stop-color="#B98A52"/></linearGradient>
+  </defs>
+</svg>
 
-<header class="top">
+<div class="demo-strip"><span class="lang">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a>. Niet de officiële site van Bakkerij Alanya.</span><span class="kort">Demo door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a> · niet de officiële site</span><button class="demo-mo" id="pitch-knop" type="button" aria-label="Pitch-modus openen">Mo</button></div>
+<div class="announce"><a href="#reviews"><span class="st">★ 4,5</span> uit 210 Google-reviews</a> &nbsp;·&nbsp; <span class="lang">Polderlaan 75A &nbsp;·&nbsp; </span>Ook op zondag open</div>
+
+<header class="site">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="Bakkerij Alanya, naar boven"><img src="logo-light.svg" alt="Bakkerij Alanya" width="358" height="106"></a>
-    <nav aria-label="Hoofdmenu">
-      <a href="#brood">Uit de oven</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#info">Langskomen</a>
-      <a class="btn btn-goud wa" href="https://wa.me/31623587701" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
-        App ons</a>
+    <a class="brand" href="#top" aria-label="Bakkerij Alanya, naar boven"><img src="logo-light.svg" alt="Banket Bakkerij Alanya" width="154" height="40"></a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <a href="#dag">De dag</a>
+      <a href="#vitrine">Vitrine</a>
+      <a href="#kiezer">Vraag het</a>
+      <a href="#bezoek">Route</a>
+      <a class="bel" href="tel:+31623587701"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel</a>
     </nav>
   </div>
 </header>
 
-<main id="top">
-<section class="hero" id="hero" aria-label="Welkom">
-  <svg class="patroon" aria-hidden="true" width="100%" height="100%">
-    <defs>
-      <pattern id="tegel" width="72" height="72" patternUnits="userSpaceOnUse">
-        <path d="M36 6 44 22 60 14 52 30 66 36 52 42 60 58 44 50 36 66 28 50 12 58 20 42 6 36 20 30 12 14 28 22Z" fill="none" stroke="#BFE3E1" stroke-width="2"/>
-        <circle cx="36" cy="36" r="7" fill="#E9B44C"/>
-        <circle cx="0" cy="0" r="5" fill="#C8102E"/><circle cx="72" cy="0" r="5" fill="#C8102E"/><circle cx="0" cy="72" r="5" fill="#C8102E"/><circle cx="72" cy="72" r="5" fill="#C8102E"/>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#tegel)"/>
-  </svg>
-
-  <div class="wrap">
-    <div>
-      <span class="kicker"><i></i> Turkse warme bakker in Rotterdam-Zuid</span>
-      <h1>Zacht Turks brood op de <span class="g">Polderlaan</span></h1>
-      <p class="lead">Bakkerij Alanya is de Turkse bakker om de hoek: zacht ekmek, simit, platbrood en gebak. Gewoon langskomen op Polderlaan 75A, zeven dagen per week.</p>
-      <div class="knoppen">
-        <a class="btn btn-goud wa" href="https://wa.me/31623587701" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
-          App de bakkerij</a>
-        <a class="btn btn-rand" href="#kiezer">Stel je vraag samen</a>
-      </div>
-      <div class="trust"><span class="cijfer">4,5</span> <span>uit 210 reviews op Google · Polderlaan, Rotterdam-Zuid</span></div>
+<main>
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-titel">
+  <div class="hero-foto"><img src="img/gevel-ochtend.webp" alt="De gevel van Banket Bakkerij Alanya aan de Polderlaan, met de zwarte borden en simit op het raam" width="1104" height="812" fetchpriority="high"></div>
+  <div class="nacht" aria-hidden="true"></div>
+  <div class="zon" aria-hidden="true"></div>
+  <div class="warm" aria-hidden="true"></div>
+  <div class="glans" aria-hidden="true"></div>
+  <div class="leesbaar" aria-hidden="true"></div>
+  <div class="stof" id="stof" aria-hidden="true"></div>
+  <div class="hero-in">
+    <div class="stempel" aria-hidden="true">
+      <svg viewBox="0 0 120 120"><defs><path id="cirkel" d="M60 60m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs><circle cx="60" cy="60" r="58" fill="rgba(10,22,38,.55)" stroke="#EECF8E" stroke-width="1"/><text font-family="Hanken Grotesk, sans-serif" font-size="10.5" font-weight="700" letter-spacing="3.2" fill="#EECF8E"><textPath href="#cirkel">OOK OP ZONDAG OPEN · ELKE DAG VERS · </textPath></text></svg>
+      <div class="kern">7 dagen<br>per week</div>
     </div>
-
-    <div class="scene" aria-hidden="true">
-      <svg viewBox="0 0 500 500">
-        <defs>
-          <radialGradient id="gloed" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#E9B44C" stop-opacity=".5"/><stop offset="1" stop-color="#E9B44C" stop-opacity="0"/></radialGradient>
-          <linearGradient id="korst" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9A548"/><stop offset=".55" stop-color="#C9802A"/><stop offset="1" stop-color="#9A5A17"/></linearGradient>
-          <linearGradient id="simitkorst" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D98A3A"/><stop offset="1" stop-color="#94501A"/></linearGradient>
-        </defs>
-        <circle cx="250" cy="250" r="235" fill="url(#gloed)"/>
-
-        <!-- draaiende tegel-medaillon -->
-        <g class="draai" opacity=".55">
-          <path d="M250 40 282 140 382 118 330 206 420 250 330 294 382 382 282 360 250 460 218 360 118 382 170 294 80 250 170 206 118 118 218 140Z" fill="none" stroke="#BFE3E1" stroke-width="3"/>
-          <circle cx="250" cy="250" r="168" fill="none" stroke="#1BA3A8" stroke-width="2" stroke-dasharray="3 10"/>
-          <g fill="#C8102E"><circle cx="250" cy="62" r="7"/><circle cx="250" cy="438" r="7"/><circle cx="62" cy="250" r="7"/><circle cx="438" cy="250" r="7"/></g>
-        </g>
-
-        <!-- vallende sesamzaadjes -->
-        <g fill="#FFF3D6">
-          <ellipse class="sesam" cx="70" cy="30" rx="5" ry="2.6" style="animation-delay:0s"/>
-          <ellipse class="sesam" cx="150" cy="10" rx="4.5" ry="2.4" style="animation-delay:1.6s"/>
-          <ellipse class="sesam" cx="330" cy="20" rx="5" ry="2.6" style="animation-delay:3.1s"/>
-          <ellipse class="sesam" cx="455" cy="40" rx="4.5" ry="2.4" style="animation-delay:4.4s"/>
-          <ellipse class="sesam" cx="235" cy="0" rx="4.5" ry="2.4" style="animation-delay:5.7s"/>
-          <ellipse class="sesam" cx="30" cy="140" rx="4" ry="2.2" style="animation-delay:6.6s"/>
-        </g>
-
-        <!-- groot Turks brood (ekmek) -->
-        <g class="zweef">
-          <g class="stoom" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".9">
-            <path d="M200 176c-14-16 14-28 0-46"/><path d="M250 166c-14-16 14-28 0-46"/><path d="M300 176c-14-16 14-28 0-46"/>
-          </g>
-          <ellipse cx="250" cy="352" rx="170" ry="26" fill="#073940" opacity=".45"/>
-          <path d="M84 300c0-70 76-112 166-112s166 42 166 112c0 34-74 50-166 50S84 334 84 300Z" fill="url(#korst)"/>
-          <path d="M112 270c22-40 76-64 138-64s116 24 138 64" fill="none" stroke="#F6C77A" stroke-width="10" stroke-linecap="round" class="glans"/>
-          <!-- schuine insnijdingen -->
-          <g fill="none" stroke-linecap="round">
-            <g stroke="#7A4410" stroke-width="9"><path d="M160 284 196 230"/><path d="M232 286 268 222"/><path d="M304 284 340 232"/></g>
-            <g stroke="#F3D49A" stroke-width="3.5" opacity=".9"><path d="M166 282 199 233"/><path d="M238 284 271 225"/><path d="M310 282 343 235"/></g>
-          </g>
-        </g>
-
-        <!-- simit rechtsboven, draait -->
-        <g class="zweef2">
-          <g class="draai-r">
-            <circle cx="400" cy="112" r="56" fill="url(#simitkorst)"/>
-            <circle cx="400" cy="112" r="22" fill="#0F6670"/>
-            <g stroke="#6E3A10" stroke-opacity=".45" stroke-width="3" stroke-linecap="round">
-              <path d="M424 112 452 128"/><path d="M400 136 388 166"/><path d="M376 112 348 96"/><path d="M400 88 412 58"/><path d="M417 129 432 158"/><path d="M383 95 368 66"/>
-            </g>
-            <g fill="#FFF3D6">
-              <ellipse cx="436" cy="98" rx="4" ry="2" transform="rotate(30 436 98)"/><ellipse cx="444" cy="120" rx="4" ry="2" transform="rotate(-20 444 120)"/>
-              <ellipse cx="420" cy="146" rx="4" ry="2" transform="rotate(60 420 146)"/><ellipse cx="394" cy="154" rx="4" ry="2"/>
-              <ellipse cx="368" cy="138" rx="4" ry="2" transform="rotate(-40 368 138)"/><ellipse cx="358" cy="112" rx="4" ry="2" transform="rotate(80 358 112)"/>
-              <ellipse cx="366" cy="84" rx="4" ry="2" transform="rotate(30 366 84)"/><ellipse cx="392" cy="70" rx="4" ry="2" transform="rotate(-10 392 70)"/>
-              <ellipse cx="418" cy="74" rx="4" ry="2" transform="rotate(50 418 74)"/><ellipse cx="428" cy="132" rx="3.5" ry="1.8"/>
-            </g>
-          </g>
-        </g>
-
-        <!-- platbrood linksboven -->
-        <g class="zweef3">
-          <ellipse cx="96" cy="128" rx="62" ry="22" fill="#073940" opacity=".3" transform="translate(0 16)"/>
-          <ellipse cx="96" cy="122" rx="62" ry="22" fill="#E3A85A"/>
-          <g fill="#B8732B"><circle cx="68" cy="118" r="4"/><circle cx="90" cy="112" r="4"/><circle cx="112" cy="118" r="4"/><circle cx="130" cy="126" r="4"/><circle cx="80" cy="130" r="4"/><circle cx="104" cy="132" r="4"/></g>
-        </g>
-
-        <!-- badge -->
-        <g class="pulse">
-          <circle cx="104" cy="404" r="60" fill="#C8102E"/>
-          <circle cx="104" cy="404" r="51" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="4 6"/>
-          <text x="104" y="398" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="19" fill="#fff">Ook op</text>
-          <text x="104" y="422" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="22" fill="#E9B44C">zondag</text>
-        </g>
-      </svg>
+    <span class="kicker">Turkse <span class="mw">warme </span>bakker · Rotterdam-Zuid</span>
+    <h1 id="hero-titel"><span class="w" style="--i:0">Elke</span> <span class="w" style="--i:1">dag</span> <span class="w" style="--i:2"><em>vers,</em></span> <span class="w" style="--i:3">vanaf</span> <span class="w" style="--i:4">het</span> <span class="w" style="--i:5">eerste</span> <span class="w" style="--i:6">licht.</span></h1>
+    <p class="sub">Zacht Turks brood, simit en gebak van de Polderlaan. Vroeg open, zeven dagen per week.</p>
+    <div class="hero-cta">
+      <a class="btn btn-goud" id="wa-hero" href="https://wa.me/31623587701?text=Hoi%20Bakkerij%20Alanya%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Stuur een appje</a>
+      <a class="btn btn-rand" href="tel:+31623587701"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel 06 23 58 77 01</a>
+    </div>
+    <div class="hero-onder">
+      <span><span class="sterren" aria-hidden="true">★★★★★</span> <b>4,5</b> uit 210 Google-reviews</span>
+      <a href="#kiezer">Wat is er vandaag? →</a>
     </div>
   </div>
-
-  <!-- tegelrand -->
-  <svg class="rand" viewBox="0 0 1400 60" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <defs>
-      <pattern id="randtegel" width="70" height="60" patternUnits="userSpaceOnUse">
-        <rect width="70" height="60" fill="#EEF7F6"/>
-        <path d="M35 8 45 30 35 52 25 30Z" fill="#1BA3A8"/>
-        <path d="M0 30 10 18 20 30 10 42Z M50 30 60 18 70 30 60 42Z" fill="#C8102E"/>
-        <circle cx="35" cy="30" r="5" fill="#E9B44C"/>
-      </pattern>
-    </defs>
-    <path d="M0 18q35-18 70 0t70 0 70 0 70 0 70 0 70 0 70 0 70 0 70 0 70 0 70 0 70 0 70 0 70 0 70 0 70 0 70 0 70 0 70 0 70 0V60H0Z" fill="url(#randtegel)"/>
-  </svg>
 </section>
 
-<div class="band" aria-label="In het kort">
-  <div class="rij">
-    <span>Turks brood</span><span>Simit</span><span>Platbrood</span><span>Gebak</span><span>4,5 op Google</span><span>Polderlaan 75A</span><span>Ook op zondag open</span><span>Op Too Good To Go</span>
-    <span aria-hidden="true">Turks brood</span><span aria-hidden="true">Simit</span><span aria-hidden="true">Platbrood</span><span aria-hidden="true">Gebak</span><span aria-hidden="true">4,5 op Google</span><span aria-hidden="true">Polderlaan 75A</span><span aria-hidden="true">Ook op zondag open</span><span aria-hidden="true">Op Too Good To Go</span>
+<div class="band" aria-label="Wat je bij Alanya vindt">
+  <div class="band-rij">
+    <span>Zacht Turks brood</span><span>Simit</span><span>Pide</span><span>Platbrood</span><span>Gebak</span><span>Ook op zondag open</span><span>Polderlaan 75A</span><span>Op Too Good To Go</span>
+    <span aria-hidden="true">Zacht Turks brood</span><span aria-hidden="true">Simit</span><span aria-hidden="true">Pide</span><span aria-hidden="true">Platbrood</span><span aria-hidden="true">Gebak</span><span aria-hidden="true">Ook op zondag open</span><span aria-hidden="true">Polderlaan 75A</span><span aria-hidden="true">Op Too Good To Go</span>
   </div>
 </div>
 
-<section id="brood">
+<!-- TIJDLIJN VAN DE DAG -->
+<section class="dag" id="dag" aria-labelledby="dag-titel">
   <div class="wrap">
-    <div class="kop onthul">
-      <span class="label">Uit de oven</span>
-      <h2>Brood, simit en meer</h2>
-      <p>Waar klanten voor komen, in het kort.</p>
+    <div class="kop rv">
+      <span class="label">Een dag bij Alanya</span>
+      <h2 id="dag-titel">Van het eerste licht tot de avond.</h2>
+      <p>Scroll mee door een dag op de hoek van de Polderlaan.</p>
     </div>
-    <div class="producten">
-      <article class="prod onthul">
-        <div class="vorm"><svg viewBox="0 0 150 96" aria-hidden="true"><ellipse cx="75" cy="80" rx="62" ry="8" fill="#0B4F57" opacity=".15"/><path d="M14 62c0-26 28-42 61-42s61 16 61 42c0 13-27 18-61 18S14 75 14 62Z" fill="#D18F3C"/><path d="M28 60c16-10 78-10 94 0" stroke="#7A4410" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M30 46c10-14 26-20 45-20" stroke="#F3C982" stroke-width="5" fill="none" stroke-linecap="round"/></svg></div>
-        <span class="tr">Ekmek</span>
-        <h3>Turks brood</h3>
-        <p>Zacht, vers brood, zoals klanten het in hun reviews beschrijven.</p>
-      </article>
-      <article class="prod onthul">
-        <div class="vorm"><svg viewBox="0 0 150 96" aria-hidden="true"><ellipse cx="75" cy="86" rx="40" ry="6" fill="#0B4F57" opacity=".15"/><circle cx="75" cy="46" r="36" fill="#B8692A"/><circle cx="75" cy="46" r="14" fill="#EEF7F6"/><g fill="#FFF3D6"><ellipse cx="52" cy="34" rx="3" ry="1.5" transform="rotate(30 52 34)"/><ellipse cx="66" cy="20" rx="3" ry="1.5"/><ellipse cx="90" cy="22" rx="3" ry="1.5" transform="rotate(-30 90 22)"/><ellipse cx="102" cy="42" rx="3" ry="1.5" transform="rotate(80 102 42)"/><ellipse cx="96" cy="66" rx="3" ry="1.5" transform="rotate(40 96 66)"/><ellipse cx="74" cy="74" rx="3" ry="1.5"/><ellipse cx="52" cy="64" rx="3" ry="1.5" transform="rotate(-40 52 64)"/><ellipse cx="46" cy="48" rx="3" ry="1.5" transform="rotate(90 46 48)"/></g></svg></div>
-        <span class="tr">Simit</span>
-        <h3>Simit</h3>
-        <p>De ronde Turkse broodring met sesam, in reviews ook "bagel" genoemd.</p>
-      </article>
-      <article class="prod onthul">
-        <div class="vorm"><svg viewBox="0 0 150 96" aria-hidden="true"><ellipse cx="75" cy="78" rx="62" ry="8" fill="#0B4F57" opacity=".15"/><ellipse cx="75" cy="56" rx="62" ry="22" fill="#E3A85A"/><g fill="#B8732B"><circle cx="44" cy="52" r="3.5"/><circle cx="66" cy="46" r="3.5"/><circle cx="88" cy="50" r="3.5"/><circle cx="108" cy="58" r="3.5"/><circle cx="56" cy="64" r="3.5"/><circle cx="82" cy="66" r="3.5"/></g></svg></div>
-        <span class="tr">Meestal ook pide</span>
-        <h3>Platbrood</h3>
-        <p>Plat Turks brood, en meestal ook pide.</p>
-      </article>
-      <article class="prod onthul">
-        <div class="vorm"><svg viewBox="0 0 150 96" aria-hidden="true"><ellipse cx="75" cy="82" rx="54" ry="7" fill="#0B4F57" opacity=".15"/><path d="M30 76 46 40h58l16 36Z" fill="#E9B44C"/><path d="M30 76h90" stroke="#B9831F" stroke-width="5" stroke-linecap="round"/><path d="M42 52h66M37 64h76" stroke="#C8102E" stroke-width="4" stroke-linecap="round" opacity=".8"/><path d="M46 40c6-10 52-10 58 0" fill="#F6D58E"/></svg></div>
-        <span class="tr">Tatlı</span>
-        <h3>Gebak</h3>
-        <p>Ook voor iets zoets kun je hier terecht.</p>
-      </article>
-    </div>
-    <p class="voorbehoud onthul">Wat er vandaag ligt, zie je in de zaak. Iets speciaals nodig? <a href="#kiezer">Stel je vraag hier samen</a> en stuur hem in één tik.</p>
-    <div class="tgtg onthul">
-      <svg viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="22" fill="#1BA3A8"/><path d="M12 20h22l-2 16H14Z" fill="#fff"/><path d="M17 20c0-6 3-9 6-9s6 3 6 9" fill="none" stroke="#fff" stroke-width="3"/></svg>
-      <div><b>Ook op Too Good To Go</b>Bakkerij Alanya biedt een verrassingspakket aan via de app van Too Good To Go.</div>
-      <a href="https://www.toogoodtogo.com/nl/find/rotterdam/bakkerijalanya-rotterdamverrassingspakket/bakedgoods/70623879773947104" target="_blank" rel="noopener">Bekijk het pakket →</a>
-    </div>
-  </div>
-</section>
-
-<section id="kiezer">
-  <div class="wrap">
-    <div class="kop onthul">
-      <span class="label">Stel je vraag samen</span>
-      <h2>Wat zoek je, en voor wanneer?</h2>
-      <p>Kies wat je zoekt, hoeveel en welke dag. Je bericht staat meteen klaar in WhatsApp.</p>
-    </div>
-    <div class="kiezer">
-      <div class="stap">
-        <h3><b>1</b> Wat zoek je?</h3>
-        <div class="keus" id="kProduct" role="group" aria-label="Product"></div>
-        <h3><b>2</b> Hoeveel?</h3>
-        <div class="keus" id="kAantal" role="group" aria-label="Aantal"></div>
-        <h3><b>3</b> Voor welke dag?</h3>
-        <div class="keus" id="kDag" role="group" aria-label="Dag"></div>
-        <div class="veld">
-          <label for="naam">Je naam (mag leeg)</label>
-          <input id="naam" type="text" autocomplete="given-name" placeholder="Bijvoorbeeld je voornaam">
+    <div class="dag-grid">
+      <aside class="zonklok" aria-hidden="true">
+        <svg viewBox="0 0 420 230">
+          <path d="M20 210 A190 190 0 0 1 400 210" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="2" stroke-dasharray="3 8" stroke-linecap="round"/>
+          <path id="boog-af" d="M20 210 A190 190 0 0 1 400 210" fill="none" stroke="#D9B46A" stroke-width="3" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+          <line x1="0" y1="210" x2="420" y2="210" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+          <g id="zonbol" transform="translate(20 210)"><circle r="30" fill="rgba(255,214,140,.22)"/><circle r="18" fill="#FFE2A0"/><circle r="18" fill="none" stroke="#D9B46A" stroke-width="3"/></g>
+        </svg>
+        <div class="moment" id="moment">Vroeg</div>
+        <p class="moment-sub" id="moment-sub">De lichten gaan aan op de Polderlaan.</p>
+      </aside>
+      <div>
+        <div class="zonbalk" aria-hidden="true"><span class="wat" id="moment-m">Vroeg</span><span class="spoor" id="spoor"><b></b><i class="bol"></i></span></div>
+        <div class="beats">
+          <article class="beat rv" data-moment="Vroeg" data-sub="De lichten gaan aan op de Polderlaan.">
+            <div class="beeld"><img loading="lazy" decoding="async" src="img/hoek-bord.webp" alt="Het uithangbord 'Banket Bakkerij ALANYA' op de hoek, met de ingang ernaast" width="290" height="650" style="object-position:50% 4%"></div>
+            <div class="tekst">
+              <span class="tijd">Vroeg</span>
+              <h3>Als de straat nog stil is, gaat Alanya open.</h3>
+              <p>De bakkerij opent vroeg in de ochtend, elke dag van de week. Ook op zaterdag en zondag.</p>
+            </div>
+          </article>
+          <article class="beat donker rv" data-moment="Ochtend" data-sub="Zacht Turks brood, vers voor de dag.">
+            <div class="beeld" style="background:radial-gradient(ellipse at 50% 70%,#2A4363,#0F2236 70%)">
+              <svg viewBox="0 0 240 180" role="img" aria-label="Illustratie van een Turks brood"><ellipse cx="120" cy="140" rx="88" ry="10" fill="rgba(0,0,0,.35)"/><path d="M30 112C30 72 70 50 120 50S210 72 210 112c0 18-22 28-90 28S30 130 30 112z" fill="url(#g-korst)"/><path d="M66 86q18-14 38-8M104 76q20-14 40-8M142 80q18-12 34-4" fill="none" stroke="#F6DDA9" stroke-width="5" stroke-linecap="round" opacity=".85"/><path d="M58 120q62 10 124 0" fill="none" stroke="#6B3A1C" stroke-width="2" opacity=".35"/><ellipse cx="96" cy="66" rx="30" ry="7" fill="#fff" opacity=".18"/><g fill="none" stroke="#F6DDA9" stroke-width="2" stroke-linecap="round" opacity=".55" class="stoom"><path d="M96 40c-6-8 6-12 0-22"/><path d="M122 36c-6-8 6-12 0-22"/><path d="M148 40c-6-8 6-12 0-22"/></g></svg>
+            </div>
+            <div class="tekst">
+              <span class="tijd">Ochtend</span>
+              <h3>Zacht Turks brood.</h3>
+              <p>Het brood waar klanten over schrijven: vers, zacht en vertrouwd. Turks ekmek, zoals je het kent.</p>
+              <blockquote>"Altijd super lekker zacht brood."<cite>Esra, via <a href="https://verkenrotterdam.nl/places/bakkerij-alanya-authentiek-turkse-bakker-in-rotterdam-zuid/" target="_blank" rel="noopener">Verken Rotterdam</a></cite></blockquote>
+            </div>
+          </article>
+          <article class="beat breed rv" data-moment="Ochtend" data-sub="Simit met sesam: groot op het raam.">
+            <div class="beeld banier"><img loading="lazy" decoding="async" src="img/raam-simit.webp" alt="Het raam van de bakkerij met grote simit-afbeeldingen" width="464" height="135"></div>
+            <div class="tekst">
+              <span class="tijd">Op het raam</span>
+              <h3>Simit, de sesamring.</h3>
+              <p>Je ziet hem al van ver: simit staat groot op het raam. De ring met sesam rondom; in reviews heet hij soms ook bagel.</p>
+              <div class="knoppen"><a class="btn btn-navy" href="#kiezer" data-kies="Simit">Vraag naar simit</a></div>
+            </div>
+          </article>
+          <article class="beat donker rv" data-moment="Gedurende de dag" data-sub="Pide, platbrood en gebak: vraag wat er ligt.">
+            <div class="beeld" style="background:radial-gradient(ellipse at 50% 70%,#2A4363,#0F2236 70%)">
+              <svg viewBox="0 0 240 180" role="img" aria-label="Illustratie van pide en platbrood"><ellipse cx="120" cy="150" rx="96" ry="9" fill="rgba(0,0,0,.35)"/><circle cx="150" cy="92" r="58" fill="url(#g-plat)"/><circle cx="150" cy="92" r="46" fill="none" stroke="#B87735" stroke-width="2" opacity=".6"/><g stroke="#A8662B" stroke-width="2.4" stroke-linecap="round" opacity=".55"><path d="M118 72l64 40M118 92l50 32M126 58l58 36M112 112l64-40M120 126l58-36M134 136l46-28"/></g><g class="ses" data-cx="150" data-cy="92" data-r1="8" data-r2="44" data-n="26" data-kleur="#3B2414"></g><path d="M18 128c30-26 120-30 150 0c-30 22-120 22-150 0z" fill="url(#g-korst)"/><path d="M44 128c22-12 76-14 98 0c-22 10-76 10-98 0z" fill="#F3D59C"/><g class="ses" data-cx="93" data-cy="128" data-r1="2" data-r2="10" data-n="10" data-kleur="#FFF4D8" data-plat="5"></g></svg>
+            </div>
+            <div class="tekst">
+              <span class="tijd">En verder</span>
+              <h3>Pide, platbrood en gebak.</h3>
+              <p>Vaak ligt er ook pide, en platbrood voor bij het eten. En "Banket" staat niet voor niets op het bord: er is ook gebak.</p>
+              <div class="knoppen"><a class="btn btn-goud" href="#kiezer" data-kies="Pide">Is er vandaag pide?</a></div>
+            </div>
+          </article>
+          <article class="beat breed rv" data-moment="Hele week" data-sub="Zeven dagen per week, ook op zondag.">
+            <div class="tekst" style="background:linear-gradient(120deg,#FFF3D6,#F6D79A)">
+              <span class="tijd">De hele week</span>
+              <h3>Ook op zondag open.</h3>
+              <p style="color:#5B4A2E">Zeven dagen per week vers brood op de Polderlaan. En staat er aan het eind nog wat? Alanya doet mee met <a href="https://www.toogoodtogo.com/nl/find/rotterdam/bakkerijalanya-rotterdamverrassingspakket/bakedgoods/70623879773947104" target="_blank" rel="noopener" style="color:#6B3A1C;font-weight:700">Too Good To Go</a>, met een verrassingspakket.</p>
+              <div class="knoppen"><a class="btn btn-navy" href="#bezoek"><svg aria-hidden="true"><use href="#i-pin"/></svg>Route naar de bakkerij</a></div>
+            </div>
+          </article>
         </div>
       </div>
-      <div class="stap" aria-live="polite">
-        <div class="bericht-kop">Je bericht aan Bakkerij Alanya</div>
-        <div class="bericht" id="bericht"></div>
-        <a class="btn btn-rood" id="kWa" href="https://wa.me/31623587701" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
-          Stuur via WhatsApp</a>
-        <p class="klein">Liever bellen? <a class="tel" style="color:#fff" href="tel:+31623587701">06 23 58 77 01</a></p>
-      </div>
     </div>
   </div>
 </section>
 
-<section id="waarom">
-  <div class="wrap">
-    <div class="kop onthul">
-      <span class="label">Waarom Bakkerij Alanya</span>
-      <h2>Wat klanten erover schrijven</h2>
-      <p>Uit de reviews op Google.</p>
+<!-- UIT DE VITRINE -->
+<section class="vitrine" id="vitrine" aria-labelledby="vit-titel">
+  <div class="wrap strook-kop">
+    <div class="kop rv" style="margin-bottom:26px">
+      <span class="label">Uit de vitrine</span>
+      <h2 id="vit-titel">Wat je bij Alanya haalt.</h2>
+      <p>Veeg door het assortiment. Zin in iets? Vraag even of het er vandaag is.</p>
     </div>
-    <div class="kaarten">
-      <div class="kaart onthul" style="--c:var(--goud)">
-        <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="#073940" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M10 12c-3-3 3-5 0-8M16 12c-3-3 3-5 0-8M22 12c-3-3 3-5 0-8"/><path d="M4 22c0-4 5-7 12-7s12 3 12 7c0 3-5 4-12 4S4 25 4 22Z" fill="#fff"/></svg></div>
-        <h3>Vers brood</h3>
-        <p>Klanten schrijven dat het brood vers en lekker is.</p>
+    <div class="pijlen"><button type="button" id="terug" aria-label="Vorige">←</button><button type="button" id="verder" aria-label="Volgende">→</button></div>
+  </div>
+  <div class="strook" id="strook" tabindex="0" aria-label="Producten, horizontaal scrollen">
+    <article class="kaart">
+      <div class="bord"><span class="nr">01</span><svg viewBox="0 0 240 160" aria-hidden="true"><ellipse cx="120" cy="134" rx="88" ry="9" fill="rgba(107,58,28,.22)"/><path d="M30 106C30 66 70 44 120 44S210 66 210 106c0 18-22 28-90 28S30 124 30 106z" fill="url(#g-korst)"/><path d="M66 80q18-14 38-8M104 70q20-14 40-8M142 74q18-12 34-4" fill="none" stroke="#F6DDA9" stroke-width="5" stroke-linecap="round" opacity=".85"/><ellipse cx="96" cy="60" rx="30" ry="7" fill="#fff" opacity=".2"/></svg></div>
+      <div class="in"><h3><small>Ekmek</small>Turks brood</h3><p>Zacht en vers, zo schrijven klanten erover.</p>
+        <div class="acties"><a class="btn btn-navy" data-vraag="Turks brood" href="https://wa.me/31623587701?text=Hoi%20Bakkerij%20Alanya%2C%20hebben%20jullie%20vandaag%20Turks%20brood%20voor%20me%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Vraag het</a></div></div>
+    </article>
+    <article class="kaart">
+      <div class="bord"><span class="nr">02</span><svg viewBox="0 0 240 160" aria-hidden="true"><ellipse cx="120" cy="138" rx="70" ry="8" fill="rgba(107,58,28,.22)"/><circle cx="120" cy="80" r="44" fill="none" stroke="url(#g-simit)" stroke-width="28"/><circle cx="120" cy="80" r="44" fill="none" stroke="#6B3A1C" stroke-width="2" stroke-dasharray="4 12" opacity=".45"/><path d="M92 58a40 40 0 0 1 40-18" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".22"/><g class="ses" data-cx="120" data-cy="80" data-r1="32" data-r2="57" data-n="70" data-kleur="#FFF1CF"></g></svg></div>
+      <div class="in"><h3><small>Sesamring</small>Simit</h3><p>De bekende ring met sesam. Staat groot op het raam.</p>
+        <div class="acties"><a class="btn btn-navy" data-vraag="simit" href="https://wa.me/31623587701?text=Hoi%20Bakkerij%20Alanya%2C%20hebben%20jullie%20vandaag%20simit%20voor%20me%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Vraag het</a></div></div>
+    </article>
+    <article class="kaart">
+      <div class="bord"><span class="nr">03</span><svg viewBox="0 0 240 160" aria-hidden="true"><ellipse cx="120" cy="124" rx="100" ry="8" fill="rgba(107,58,28,.22)"/><path d="M14 92c34-40 178-40 212 0c-34 34-178 34-212 0z" fill="url(#g-korst)"/><path d="M44 92c26-22 126-22 152 0c-26 18-126 18-152 0z" fill="#F3D59C"/><path d="M44 92c26-14 126-14 152 0" fill="none" stroke="#fff" stroke-width="3" opacity=".25"/><g class="ses" data-cx="120" data-cy="92" data-r1="4" data-r2="16" data-n="14" data-kleur="#FFF4D8" data-plat="5"></g></svg></div>
+      <div class="in"><h3><small>Vaak ook</small>Pide</h3><p>Turks bootjesbrood. Er is vaak pide; vraag even of er vandaag is.</p>
+        <div class="acties"><a class="btn btn-navy" data-vraag="pide" href="https://wa.me/31623587701?text=Hoi%20Bakkerij%20Alanya%2C%20hebben%20jullie%20vandaag%20pide%20voor%20me%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Vraag het</a></div></div>
+    </article>
+    <article class="kaart">
+      <div class="bord"><span class="nr">04</span><svg viewBox="0 0 240 160" aria-hidden="true"><ellipse cx="120" cy="142" rx="80" ry="8" fill="rgba(107,58,28,.22)"/><circle cx="120" cy="80" r="60" fill="url(#g-plat)"/><circle cx="120" cy="80" r="48" fill="none" stroke="#B87735" stroke-width="2" opacity=".6"/><g stroke="#A8662B" stroke-width="2.4" stroke-linecap="round" opacity=".5"><path d="M86 58l66 42M84 80l52 34M96 46l58 36M84 100l66-42M92 114l58-36M106 124l46-28"/></g><g class="ses" data-cx="120" data-cy="80" data-r1="6" data-r2="46" data-n="30" data-kleur="#3B2414"></g></svg></div>
+      <div class="in"><h3><small>Om bij te eten</small>Platbrood</h3><p>Plat Turks brood, voor bij het eten of om te delen.</p>
+        <div class="acties"><a class="btn btn-navy" data-vraag="platbrood" href="https://wa.me/31623587701?text=Hoi%20Bakkerij%20Alanya%2C%20hebben%20jullie%20vandaag%20platbrood%20voor%20me%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Vraag het</a></div></div>
+    </article>
+    <article class="kaart">
+      <div class="bord"><span class="nr">05</span><svg viewBox="0 0 240 160" aria-hidden="true"><ellipse cx="120" cy="120" rx="96" ry="22" fill="#fff" stroke="#0F2236" stroke-width="3"/><ellipse cx="120" cy="116" rx="80" ry="15" fill="none" stroke="#D9B46A" stroke-width="1.5"/><path d="M58 112c0-26 16-40 34-40s34 14 34 40z" fill="url(#g-korst)"/><path d="M110 112c0-30 18-46 38-46s38 16 38 46z" fill="url(#g-korst)"/><path d="M70 92q22-12 44 0M124 86q24-14 48 0" fill="none" stroke="#F6DDA9" stroke-width="3" stroke-linecap="round" opacity=".7"/><ellipse cx="84" cy="82" rx="12" ry="4" fill="#fff" opacity=".3"/><ellipse cx="140" cy="76" rx="14" ry="4" fill="#fff" opacity=".3"/></svg></div>
+      <div class="in"><h3><small>Banket</small>Gebak</h3><p>"Banket" staat op het bord. Benieuwd wat er vandaag ligt? Vraag het.</p>
+        <div class="acties"><a class="btn btn-navy" data-vraag="gebak" href="https://wa.me/31623587701?text=Hoi%20Bakkerij%20Alanya%2C%20wat%20voor%20gebak%20hebben%20jullie%20vandaag%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Vraag het</a></div></div>
+    </article>
+    <article class="kaart">
+      <div class="bord"><span class="nr">06</span><svg viewBox="0 0 240 160" aria-hidden="true"><ellipse cx="120" cy="146" rx="62" ry="7" fill="rgba(107,58,28,.22)"/><path d="M150 34c18-6 30 8 26 22l-14 6z" fill="url(#g-korst)"/><path d="M78 50h84l-6 94H84z" fill="url(#g-zak)"/><path d="M78 50l8-12h68l8 12z" fill="#C79A60"/><path d="M78 50h84" stroke="#9C7140" stroke-width="2"/><circle cx="120" cy="96" r="20" fill="#FFF6E2"/><text x="120" y="105" text-anchor="middle" font-family="Young Serif, Georgia, serif" font-size="26" fill="#0F2236">?</text></svg></div>
+      <div class="in"><h3><small>Too Good To Go</small>Verrassingspakket</h3><p>Alanya staat op Too Good To Go, met een verrassingspakket.</p>
+        <div class="acties"><a class="btn btn-lijn" href="https://www.toogoodtogo.com/nl/find/rotterdam/bakkerijalanya-rotterdamverrassingspakket/bakedgoods/70623879773947104" target="_blank" rel="noopener">Bekijk het pakket</a></div></div>
+    </article>
+  </div>
+  <div class="voortgang" aria-hidden="true"><b id="voortgang"></b></div>
+  <p class="noot">Illustraties, geen foto's van het eigen assortiment. Wat er ligt verschilt per dag.</p>
+</section>
+
+<!-- KIEZER -->
+<section class="kies" id="kiezer" aria-labelledby="kies-titel">
+  <div class="wrap">
+    <div class="kop rv">
+      <span class="label">Vraag het even</span>
+      <h2 id="kies-titel">"Hebben jullie … voor me?"</h2>
+      <p>Kies wat je zoekt en wanneer. Je appje staat meteen klaar; liever bellen kan natuurlijk ook.</p>
+    </div>
+    <div class="kies-grid">
+      <form class="kies-form" id="kiesform" onsubmit="return false">
+        <fieldset>
+          <legend><b>1</b>Wat zoek je?</legend>
+          <div class="chips" id="c-wat">
+            <label><input type="radio" name="wat" value="Turks brood" checked><span>Turks brood</span></label>
+            <label><input type="radio" name="wat" value="simit"><span>Simit</span></label>
+            <label><input type="radio" name="wat" value="pide"><span>Pide</span></label>
+            <label><input type="radio" name="wat" value="platbrood"><span>Platbrood</span></label>
+            <label><input type="radio" name="wat" value="gebak"><span>Gebak</span></label>
+            <label><input type="radio" name="wat" value="anders"><span>Iets anders</span></label>
+          </div>
+          <div class="veld" id="v-anders-veld" hidden><label for="v-anders">Wat zoek je?</label><input id="v-anders" type="text" maxlength="60" autocomplete="off"></div>
+        </fieldset>
+        <fieldset>
+          <legend><b>2</b>Hoeveel ongeveer?</legend>
+          <div class="chips">
+            <label><input type="radio" name="hoeveel" value="1"><span>1</span></label>
+            <label><input type="radio" name="hoeveel" value="2" checked><span>2</span></label>
+            <label><input type="radio" name="hoeveel" value="3 tot 5"><span>3 tot 5</span></label>
+            <label><input type="radio" name="hoeveel" value="6 tot 10"><span>6 tot 10</span></label>
+            <label><input type="radio" name="hoeveel" value="meer dan 10"><span>Meer dan 10</span></label>
+          </div>
+        </fieldset>
+        <fieldset style="margin-bottom:8px">
+          <legend><b>3</b>Voor wanneer?</legend>
+          <div class="chips">
+            <label><input type="radio" name="wanneer" value="vandaag" checked><span>Vandaag</span></label>
+            <label><input type="radio" name="wanneer" value="morgen"><span>Morgen</span></label>
+            <label><input type="radio" name="wanneer" value="datum"><span>Andere dag</span></label>
+          </div>
+          <div class="veld" id="v-datum-veld" hidden><label for="v-datum">Welke dag?</label><input id="v-datum" type="date"></div>
+          <div class="veld"><label for="v-naam">Je naam (mag leeg)</label><input id="v-naam" type="text" maxlength="40" autocomplete="given-name"></div>
+        </fieldset>
+      </form>
+      <div class="bericht" aria-live="polite">
+        <h3>Je appje</h3>
+        <div class="bubbel" id="bubbel"></div>
+        <div class="knoppen">
+          <a class="btn btn-goud" id="wa-kies" href="https://wa.me/31623587701" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Stuur dit als appje</a>
+          <a class="btn btn-rand" href="tel:+31623587701"><svg aria-hidden="true"><use href="#i-tel"/></svg>Of bel 06 23 58 77 01</a>
+        </div>
+        <p class="klein">Een vraag, geen bestelling. Zo weet je of het er is voordat je langskomt.</p>
       </div>
-      <div class="kaart onthul" style="--c:var(--turk)">
-        <div class="ico"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="#B8692A"/><circle cx="16" cy="16" r="5" fill="#1BA3A8"/><g fill="#FFF3D6"><ellipse cx="9" cy="12" rx="2" ry="1"/><ellipse cx="16" cy="7" rx="2" ry="1"/><ellipse cx="23" cy="12" rx="2" ry="1"/><ellipse cx="22" cy="21" rx="2" ry="1"/><ellipse cx="11" cy="22" rx="2" ry="1"/></g></svg></div>
-        <h3>Echt Turks</h3>
-        <p>Turks brood, platbrood, simit en gebak: klanten noemen het een echte Turkse bakkerij.</p>
+    </div>
+    <ol class="stappen rv">
+      <li><b>Vraag het</b><span>App of bel even: hebben jullie het vandaag?</span></li>
+      <li><b>Kom langs</b><span>Polderlaan 75A in Rotterdam-Zuid, ook op zondag.</span></li>
+      <li><b>Afiyet olsun</b><span>Eet smakelijk, zoals ze in het Turks zeggen.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews" aria-labelledby="rev-titel">
+  <div class="wrap">
+    <div class="rev-top rv">
+      <div class="score">
+        <span class="getal">4,5</span>
+        <span class="uit"><span class="sterren" aria-hidden="true">★★★★★</span><small>uit 210 reviews op <a href="https://www.google.com/maps/search/?api=1&amp;query=Bakkerij+Alanya+Polderlaan+75A+Rotterdam" target="_blank" rel="noopener">Google</a></small></span>
       </div>
-      <div class="kaart onthul" style="--c:var(--rood)">
-        <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 14 16 5l11 9v13H5Z"/><path d="M13 27v-7h6v7"/></svg></div>
-        <h3>Vertrouwd</h3>
-        <p>Klanten omschrijven de bakkerij als ouderwets en vertrouwd, en noemen het betaalbaar.</p>
+      <div class="kop" style="margin:0">
+        <span class="label">Wat klanten zeggen</span>
+        <h2 id="rev-titel">Vers, zacht en vertrouwd.</h2>
       </div>
+    </div>
+    <div class="citaten">
+      <figure class="citaat rv"><q>Altijd super lekker zacht brood.</q><figcaption class="wie">Esra · <a href="https://verkenrotterdam.nl/places/bakkerij-alanya-authentiek-turkse-bakker-in-rotterdam-zuid/" target="_blank" rel="noopener">Verken Rotterdam</a></figcaption></figure>
+      <figure class="citaat rv"><q>Altijd vers. Dank je wel.</q><figcaption class="wie">Kursad · vertaald, Google</figcaption></figure>
+      <figure class="citaat rv"><q>Een top Turkse bakkerij, heerlijk brood en nog meer.</q><figcaption class="wie">Peter · vertaald, Google</figcaption></figure>
+    </div>
+    <p class="rev-noot">De andere twee zijn vertaald uit de Engelse weergave van reviews op Google.</p>
+    <div class="themas">
+      <div class="thema rv"><b>Klanten schrijven: altijd vers.</b><span>En lekker, vooral over het brood.</span></div>
+      <div class="thema rv"><b>Ouderwets en vertrouwd.</b><span>Zo omschrijven klanten de bakkerij.</span></div>
+      <div class="thema rv"><b>Betaalbaar.</b><span>Ook dat noemen klanten in hun reviews.</span></div>
     </div>
   </div>
 </section>
 
-<section id="reviews">
-  <div class="wrap">
-    <div class="kop onthul">
-      <span class="label">Reviews</span>
-      <h2>4,5 op Google</h2>
-    </div>
-    <div class="score onthul">
-      <span class="groot">4,5<small> / 5</small></span>
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=Bakkerij+Alanya+Polderlaan+75A+Rotterdam" target="_blank" rel="noopener">uit 210 reviews op Google →</a>
-    </div>
-    <div class="reviews">
-      <div class="review onthul" style="--c:var(--goud)">
-        <blockquote>“Altijd super lekker zacht brood.”</blockquote>
-        <div class="wie">Esra</div>
-        <div class="bron">letterlijk, via Verken Rotterdam</div>
-      </div>
-      <div class="review onthul" style="--c:var(--turk)">
-        <p>Altijd vers. Dank je wel.</p>
-        <div class="wie">Kursad</div>
-        <div class="bron">vertaald, Google</div>
-      </div>
-      <div class="review onthul" style="--c:var(--rood)">
-        <p>Een top Turkse bakkerij, heerlijk brood en nog meer.</p>
-        <div class="wie">Peter</div>
-        <div class="bron">vertaald, Google</div>
-      </div>
-    </div>
-    <p class="label-sam">Het citaat van Esra is letterlijk overgenomen van <a href="https://verkenrotterdam.nl/places/bakkerij-alanya-authentiek-turkse-bakker-in-rotterdam-zuid/" target="_blank" rel="noopener">Verken Rotterdam</a>. De andere twee zijn vertaald uit de Engelse weergave van reviews op Google.</p>
-  </div>
-</section>
-
-<section id="hoe">
-  <div class="wrap">
-    <div class="kop onthul">
-      <span class="label">Zo werkt het</span>
-      <h2>In drie stappen vers brood op tafel</h2>
-    </div>
-    <div class="stappen">
-      <div class="stapk onthul"><h3>Kies of vraag</h3><p>Weet je wat je zoekt? <a href="#kiezer">Stel je vraag samen</a> en stuur hem via WhatsApp.</p></div>
-      <div class="stapk onthul"><h3>Kom langs</h3><p>Op Polderlaan 75A in Rotterdam-Zuid. Ook op zondag open.</p></div>
-      <div class="stapk onthul"><h3>Afiyet olsun</h3><p>Eet smakelijk, met zacht Turks brood of een simit erbij.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="kop onthul">
-      <span class="label">Vragen</span>
-      <h2>Goed om te weten</h2>
-    </div>
-    <div class="faq">
-      <details><summary>Waar zit Bakkerij Alanya?</summary><p>Op Polderlaan 75A, 3074 MC Rotterdam, in Rotterdam-Zuid.</p></details>
-      <details><summary>Wat kan ik er halen?</summary><p>Vooral zacht Turks brood (ekmek). Daarnaast simit, platbrood, meestal ook pide, en gebak.</p></details>
-      <details><summary>Zijn jullie op zondag open?</summary><p>Ja, de bakkerij is zeven dagen per week open, ook op zondag.</p></details>
-      <details><summary>Hoe laat gaan jullie open?</summary><p>Elke dag vroeg in de ochtend. Wil je het precies weten? Vraag het even in de zaak of stuur een <a href="https://wa.me/31623587701" target="_blank" rel="noopener">appje</a>.</p></details>
-      <details><summary>Zitten jullie op Too Good To Go?</summary><p>Ja. In de app van Too Good To Go vind je het verrassingspakket van Bakkerij Alanya.</p></details>
-    </div>
-  </div>
-</section>
-
-<section id="info">
-  <div class="wrap">
-    <div class="kop onthul">
+<!-- BEZOEK -->
+<section class="bezoek" id="bezoek" aria-labelledby="bez-titel">
+  <figure class="pano">
+    <img loading="lazy" decoding="async" src="img/gevel-hoek.webp" alt="De hele hoek van Bakkerij Alanya aan de Polderlaan, met drie borden 'Banket Bakkerij ALANYA'" width="1098" height="462">
+    <figcaption>Drie borden op de hoek: hier vind je Alanya.</figcaption>
+  </figure>
+  <div class="wrap bezoek-in">
+    <div class="rv">
       <span class="label">Langskomen</span>
-      <h2>Adres en openingsdagen</h2>
+      <h2 id="bez-titel">Polderlaan 75A, Rotterdam-Zuid.</h2>
+      <p class="adres">Banket Bakkerij Alanya<br>Polderlaan 75A<br>3074 MC Rotterdam<br><a href="tel:+31623587701">06 23 58 77 01</a></p>
+      <ul class="feiten">
+        <li><svg aria-hidden="true"><use href="#i-zon"/></svg><span>Open vanaf de vroege ochtend</span></li>
+        <li><svg aria-hidden="true"><use href="#i-kal"/></svg><span>Zeven dagen per week, ook op zondag</span></li>
+        <li><svg aria-hidden="true"><use href="#i-tas"/></svg><span>Ook op <a href="https://www.toogoodtogo.com/nl/find/rotterdam/bakkerijalanya-rotterdamverrassingspakket/bakedgoods/70623879773947104" target="_blank" rel="noopener" style="color:#fff">Too Good To Go</a></span></li>
+      </ul>
     </div>
-    <div class="info">
-      <div class="blok onthul">
-        <h3>Elke dag open</h3>
-        <p>Maandag tot en met zondag, vanaf de vroege ochtend.</p>
-        <div class="dagen" aria-label="Open op maandag tot en met zondag"><span>ma</span><span>di</span><span>wo</span><span>do</span><span>vr</span><span>za</span><span class="zo">zo</span></div>
-        <p>Precieze tijden? Vraag ze even in de zaak, of app of bel <a class="tel" href="tel:+31623587701">06 23 58 77 01</a>.</p>
-      </div>
-      <div class="blok onthul">
-        <h3>Adres</h3>
-        <p class="groot">Polderlaan 75A<br>3074 MC Rotterdam</p>
-        <p>Rotterdam-Zuid</p>
-        <div class="knoprij">
-          <a class="btn btn-teal" href="https://www.google.com/maps/search/?api=1&amp;query=Bakkerij+Alanya+Polderlaan+75A+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
-          <a class="btn btn-goud wa" href="https://wa.me/31623587701" target="_blank" rel="noopener">App de bakkerij</a>
-        </div>
-        <div class="kaartje" aria-hidden="true">
-          <svg viewBox="0 0 400 130">
-            <rect width="400" height="130" fill="#0F6670"/>
-            <g stroke="#1d7f88" stroke-width="10" fill="none"><path d="M-10 44H410"/><path d="M-10 104H410"/><path d="M120-10V140"/><path d="M300-10V140"/></g>
-            <rect x="140" y="56" width="140" height="36" rx="10" fill="#0B4F57" stroke="#E9B44C" stroke-width="2"/>
-            <text x="210" y="79" text-anchor="middle" font-family="Nunito Sans, sans-serif" font-weight="800" font-size="13" fill="#fff">Polderlaan 75A</text>
-            <g class="pulse"><path d="M262 24a12 12 0 0 0-12 12c0 9 12 22 12 22s12-13 12-22a12 12 0 0 0-12-12Z" fill="#C8102E"/><circle cx="262" cy="36" r="4.5" fill="#fff"/></g>
-          </svg>
-        </div>
-      </div>
+    <div class="knoppen rv">
+      <a class="btn btn-goud" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bakkerij+Alanya,+Polderlaan+75A,+3074+MC+Rotterdam" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Route naar de bakkerij</a>
+      <a class="btn btn-wit" href="tel:+31623587701"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel 06 23 58 77 01</a>
+      <a class="btn btn-rand" href="https://wa.me/31623587701?text=Hoi%20Bakkerij%20Alanya%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Stuur een appje</a>
+      <p class="klein">Wil je precies weten hoe laat ze op een bepaalde dag opengaan? Bel of app even.</p>
     </div>
   </div>
 </section>
 
-<section class="slot">
+<!-- FAQ -->
+<section class="faq" id="faq" aria-labelledby="faq-titel">
   <div class="wrap">
-    <h2>Zin in vers Turks brood?</h2>
-    <p>Kom langs op Polderlaan 75A, of app de bakkerij als je iets wilt vragen.</p>
+    <div class="kop rv"><span class="label">Vragen</span><h2 id="faq-titel">Goed om te weten.</h2></div>
+    <div class="faq-lijst">
+      <details><summary>Zijn jullie op zondag open?</summary><p>Ja. Alanya is zeven dagen per week open, ook op zondag.</p></details>
+      <details><summary>Hoe laat gaan jullie open?</summary><p>Vroeg in de ochtend, elke dag. Wil je het precies weten voor een bepaalde dag? <a href="tel:+31623587701">Bel 06 23 58 77 01</a> of stuur een appje.</p></details>
+      <details><summary>Hebben jullie simit en pide?</summary><p>Simit en zacht Turks brood horen bij Alanya; pide is er vaak ook. Wat er precies ligt verschilt per dag, dus <a href="#kiezer">vraag het even</a>.</p></details>
+      <details><summary>Zitten jullie op Too Good To Go?</summary><p>Ja, met een verrassingspakket. <a href="https://www.toogoodtogo.com/nl/find/rotterdam/bakkerijalanya-rotterdamverrassingspakket/bakedgoods/70623879773947104" target="_blank" rel="noopener">Bekijk het in de app</a>.</p></details>
+      <details><summary>Waar zitten jullie precies?</summary><p>Polderlaan 75A, 3074 MC Rotterdam, in Rotterdam-Zuid. Je herkent de zaak aan de zwarte borden met "Banket Bakkerij ALANYA". <a href="#bezoek">Route</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- SLOT -->
+<section class="slot" aria-labelledby="slot-titel">
+  <div class="wrap">
+    <h2 id="slot-titel">Morgen vroeg weer vers.</h2>
+    <p>Kom langs op de Polderlaan, of vraag even wat er vandaag is.</p>
     <div class="knoppen">
-      <a class="btn btn-goud wa" href="https://wa.me/31623587701" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
-        App de bakkerij</a>
-      <a class="btn btn-rand" href="https://www.google.com/maps/search/?api=1&amp;query=Bakkerij+Alanya+Polderlaan+75A+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
+      <a class="btn btn-navy" href="https://wa.me/31623587701?text=Hoi%20Bakkerij%20Alanya%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Stuur een appje</a>
+      <a class="btn btn-wit" href="tel:+31623587701"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel 06 23 58 77 01</a>
     </div>
   </div>
 </section>
@@ -596,76 +711,195 @@ footer a{color:var(--goud)}
 
 <footer>
   <div class="wrap">
-    <img src="logo-light.svg" alt="Bakkerij Alanya" width="358" height="106">
-    <div>Polderlaan 75A, 3074 MC Rotterdam · <a href="tel:+31623587701">06 23 58 77 01</a></div>
-    <div>Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></div>
+    <div class="voet">
+      <div><img src="logo-light.svg" alt="Banket Bakkerij Alanya" width="154" height="40"><p>Turkse warme bakker in Rotterdam-Zuid. Elke dag vers, ook op zondag.</p></div>
+      <div><h4>Adres</h4><ul><li>Polderlaan 75A</li><li>3074 MC Rotterdam</li><li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Bakkerij+Alanya,+Polderlaan+75A,+3074+MC+Rotterdam" target="_blank" rel="noopener">Route</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="tel:+31623587701">06 23 58 77 01</a></li><li><a href="https://wa.me/31623587701" target="_blank" rel="noopener">Appje sturen</a></li><li><a href="https://www.facebook.com/p/Bakkerij-Alanya-100066690428580" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+    </div>
+    <div class="door"><span>Dit is een demo, niet de officiële site van Bakkerij Alanya.</span><span>Website door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a></span></div>
   </div>
 </footer>
 
-<div class="zweef-cta" id="zweef">
-  <a class="btn btn-rood wa" href="https://wa.me/31623587701" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
-    App de bakkerij</a>
-  <a class="btn btn-teal" href="tel:+31623587701" aria-label="Bel Bakkerij Alanya">Bel</a>
+<nav class="float" id="float" aria-label="Snel contact">
+  <a class="hoofd" href="https://wa.me/31623587701?text=Hoi%20Bakkerij%20Alanya%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Appje</a>
+  <a href="tel:+31623587701"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Bakkerij+Alanya,+Polderlaan+75A,+3074+MC+Rotterdam" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Route</a>
+</nav>
+
+<!-- Pitch-modus: alleen voor Mo in het gesprek. Openen via het kleine "Mo"-knopje in de demo-strook of ?pitch in de URL. -->
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-labelledby="pp-titel">
+  <div class="pp">
+    <div class="pp-top"><b>Pitch · Bakkerij Alanya</b><button class="pp-sluit" id="pp-sluit" type="button" aria-label="Sluiten">×</button></div>
+    <h2 id="pp-titel">210 reviews, maar geen eigen website.</h2>
+    <div class="vn">
+      <figure>
+        <div class="zoek" aria-label="Voorbeeld van zoekresultaten">
+          <div class="balk"><i></i>Bakkerij Alanya</div>
+          <div class="res"><small>tripadvisor.nl</small><span>Bakkerij Alanya, Rotterdam</span><em>Gids</em></div>
+          <div class="res"><small>bottin.nl</small><span>Bakkerij Alanya – Rotterdam</span><em>Gids · open 05:00</em></div>
+          <div class="res"><small>restaurantguru.com</small><span>Bakkerij Alanya Rotterdam</span><em>Gids · open 06:00</em></div>
+          <div class="res"><small>facebook.com</small><span>Bakkerij Alanya</span><em>50 volgers</em></div>
+          <div class="geen" style="margin-bottom:6px">Geen eigen website. Bij Verken Rotterdam staat: website "Niet beschikbaar".</div><small style="display:block;font-size:12px;color:#6b7280">Schets van wat je online over Alanya vindt (7 nov 2026).</small>
+        </div>
+        <figcaption><b>Voor:</b> wie "Bakkerij Alanya" zoekt, vindt alleen gidsen en een Facebook-pagina met 50 volgers.</figcaption>
+      </figure>
+      <figure><div class="tel"><iframe id="pp-frame" title="De nieuwe site op een telefoon" loading="lazy"></iframe></div><figcaption><b>Na:</b> jullie eigen site, met jullie eigen gevel.</figcaption></figure>
+    </div>
+
+    <h3>Rekenvoorbeeld (vul samen in)</h3>
+    <div class="reken">
+      <div><label for="r-klanten">Extra klanten per week <output id="o-klanten">3</output></label><input type="range" id="r-klanten" min="0" max="40" step="1" value="3"></div>
+      <div><label for="r-besteding">Gemiddelde besteding per klant <output id="o-besteding">€ 5</output></label><input type="range" id="r-besteding" min="2" max="30" step="1" value="5"></div>
+      <div class="uitkomst">
+        <div><small>Extra omzet per week</small><strong id="u-week">€ 15</strong></div>
+        <div><small>Extra omzet per jaar</small><strong id="u-jaar">€ 780</strong></div>
+        <div><small>€ 595 is de omzet van</small><strong id="u-klanten">119 klanten</strong></div>
+      </div>
+      <p class="disclaimer">Voorbeeld, geen belofte. Jullie kiezen de getallen; het gaat om omzet, niet om winst.</p>
+    </div>
+
+    <h3>Wat er concreet beter is</h3>
+    <ol class="punten">
+      <li><span><b>Gevonden worden met een eigen site.</b> Nu zie je bij zoeken alleen gidsen. Straks staat jullie eigen pagina er, met jullie eigen gevel en bord.</span></li>
+      <li><span><b>Eén plek met de juiste tijden.</b> De gidsen spreken elkaar tegen (05:00 of 06:00). Op een eigen site zet je zelf de tijden, en desnoods ook de prijzen.</span></li>
+      <li><span><b>Bellen, appen en route in 1 tik.</b> Op de telefoon blijft de knop altijd in beeld, en klanten kunnen vooraf vragen of er simit of pide is.</span></li>
+    </ol>
+  </div>
 </div>
 
 <script>
-const WA_NUMMER = "31623587701";
-const algemeen = "Hoi Bakkerij Alanya, ik heb een vraag:";
-document.querySelectorAll("a.wa").forEach(a => a.href = "https://wa.me/" + WA_NUMMER + "?text=" + encodeURIComponent(algemeen));
+const WA_NUMMER = "31623587701"; /* +31 6 23587701, door de zaak bevestigd op Facebook */
+const wa = t => "https://wa.me/" + WA_NUMMER + "?text=" + encodeURIComponent(t);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* kiezer: product -> aantal -> dag */
-const PRODUCTEN = ["Turks brood", "Simit", "Pide", "Platbrood", "Gebak", "Iets anders"];
-const AANTALLEN = ["1", "2", "3", "4", "5", "Meer"];
-const DAGNAAM = ["zondag","maandag","dinsdag","woensdag","donderdag","vrijdag","zaterdag"];
-const MAAND = ["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"];
-const DAGEN = [];
-const nu = new Date();
-for (let i = 0; i < 7; i++) {
-  const d = new Date(nu.getFullYear(), nu.getMonth(), nu.getDate() + i);
-  const kort = DAGNAAM[d.getDay()].slice(0,2) + " " + d.getDate() + " " + MAAND[d.getMonth()];
-  const lang = DAGNAAM[d.getDay()] + " " + d.getDate() + " " + MAAND[d.getMonth()];
-  DAGEN.push({knop: i === 0 ? "Vandaag" : i === 1 ? "Morgen" : kort, tekst: i === 0 ? "vandaag" : i === 1 ? "morgen (" + lang + ")" : lang});
-}
-const keuze = {product: "Turks brood", aantal: "1", dag: 0};
+/* sesamzaadjes in de illustraties */
+document.querySelectorAll(".ses").forEach(g => {
+  const cx = +g.dataset.cx, cy = +g.dataset.cy, r1 = +g.dataset.r1, r2 = +g.dataset.r2, n = +g.dataset.n, plat = +(g.dataset.plat || 1);
+  let s = 7 + n, html = "";
+  const rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+  for (let i = 0; i < n; i++){
+    const a = rnd() * Math.PI * 2, r = r1 + rnd() * (r2 - r1);
+    const x = (cx + Math.cos(a) * r * (plat > 1 ? plat : 1)).toFixed(1), y = (cy + Math.sin(a) * r / (plat > 1 ? 1 : 1) * (plat > 1 ? .9 : 1)).toFixed(1);
+    html += '<ellipse cx="' + x + '" cy="' + y + '" rx="2.2" ry="1.2" transform="rotate(' + Math.round(rnd() * 180) + ' ' + x + ' ' + y + ')"/>';
+  }
+  g.setAttribute("fill", g.dataset.kleur); g.innerHTML = html;
+});
 
-function knoppen(el, lijst, sleutel, label) {
-  el.innerHTML = "";
-  lijst.forEach((v, i) => {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.textContent = label ? label(v) : v;
-    const waarde = sleutel === "dag" ? i : v;
-    b.setAttribute("aria-pressed", keuze[sleutel] === waarde);
-    b.onclick = () => { keuze[sleutel] = waarde; [...el.children].forEach(x => x.setAttribute("aria-pressed", x === b)); bouw(); };
-    el.appendChild(b);
-  });
-}
-const berichtEl = document.getElementById("bericht"), kWa = document.getElementById("kWa"), naamEl = document.getElementById("naam");
-function bouw() {
-  const p = keuze.product, a = keuze.aantal, dag = DAGEN[keuze.dag].tekst;
-  let wat;
-  if (p === "Iets anders") wat = a === "Meer" ? "een grotere hoeveelheid van iets anders dan brood of simit" : "iets anders (" + a + (a === "1" ? " stuk)" : " stuks)");
-  else wat = (a === "Meer" ? "een grotere hoeveelheid " : a + "x ") + p.toLowerCase().replace("turks", "Turks");
-  const naam = naamEl.value.trim();
-  const tekst = "Hoi Bakkerij Alanya,\nik heb een vraag: hebben jullie " + dag + " " + wat + " voor me?" + (p === "Iets anders" ? "\nHet gaat om: " : "") + (naam ? "\n\nGroet, " + naam : "");
-  berichtEl.textContent = tekst;
-  kWa.href = "https://wa.me/" + WA_NUMMER + "?text=" + encodeURIComponent(tekst);
-}
-knoppen(document.getElementById("kProduct"), PRODUCTEN, "product");
-knoppen(document.getElementById("kAantal"), AANTALLEN, "aantal");
-knoppen(document.getElementById("kDag"), DAGEN, "dag", d => d.knop);
-naamEl.addEventListener("input", bouw);
-bouw();
-
-/* zwevende CTA zodra de hero uit beeld is */
-const zweef = document.getElementById("zweef");
-new IntersectionObserver(([e]) => zweef.classList.toggle("aan", !e.isIntersecting)).observe(document.getElementById("hero"));
+/* zwevend sesam/meelstof in het ochtendlicht */
+(function(){
+  if (reduce) return;
+  const box = document.getElementById("stof"); let h = "";
+  for (let i = 0; i < 16; i++){
+    const l = (Math.random() * 100).toFixed(1), d = (12 + Math.random() * 12).toFixed(1), w = (Math.random() * 10).toFixed(1), x = Math.round(Math.random() * 120 - 60), s = (2.5 + Math.random() * 3).toFixed(1);
+    h += '<i style="left:' + l + '%;--d:' + d + 's;--w:' + w + 's;--x:' + x + 'px;--s:' + s + 'px"></i>';
+  }
+  box.innerHTML = h;
+})();
 
 /* scroll-reveal met vangnet */
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
-document.querySelectorAll(".onthul").forEach(el => io.observe(el));
-setTimeout(() => document.querySelectorAll(".onthul").forEach(el => el.classList.add("in")), 3500);
+(function(){
+  const els = document.querySelectorAll(".rv");
+  if ("IntersectionObserver" in window && !reduce){
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin:"0px 0px -8% 0px"});
+    els.forEach(el => io.observe(el));
+  } else els.forEach(el => el.classList.add("in"));
+  setTimeout(() => els.forEach(el => el.classList.add("in")), 3500);
+})();
+
+/* tijdlijn: lucht kleurt mee, zon loopt over de boog */
+(function(){
+  const sec = document.getElementById("dag"), beats = [...sec.querySelectorAll(".beat")];
+  const stops = [[10,22,38],[26,42,84],[92,74,128],[214,132,104],[236,178,112],[120,160,200]];
+  const mix = (a,b,t) => a.map((v,i) => Math.round(v + (b[i]-v)*t));
+  const boog = document.getElementById("boog-af"), bol = document.getElementById("zonbol"), spoor = document.getElementById("spoor");
+  const mom = document.getElementById("moment"), momSub = document.getElementById("moment-sub"), momM = document.getElementById("moment-m");
+  let ticking = false, laatst = "";
+  function update(){
+    ticking = false;
+    const r = sec.getBoundingClientRect(), vh = innerHeight;
+    let p = (vh * .55 - r.top) / (r.height - vh * .4); p = Math.max(0, Math.min(1, p));
+    const f = p * (stops.length - 1), i = Math.min(stops.length - 2, Math.floor(f));
+    const c = mix(stops[i], stops[i+1], f - i);
+    sec.style.setProperty("--lucht", "rgb(" + c.join(",") + ")");
+    const a = Math.PI * (1 - p), x = 210 + Math.cos(a) * 190, y = 210 - Math.sin(a) * 190;
+    bol.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ")");
+    boog.setAttribute("stroke-dashoffset", (100 - p * 100).toFixed(1));
+    spoor.style.setProperty("--p", (p * 100).toFixed(1) + "%");
+    let actief = beats[0];
+    beats.forEach(b => { if (b.getBoundingClientRect().top < vh * .6) actief = b; });
+    if (actief.dataset.moment + actief.dataset.sub !== laatst){
+      laatst = actief.dataset.moment + actief.dataset.sub;
+      mom.textContent = actief.dataset.moment; momSub.textContent = actief.dataset.sub; momM.textContent = actief.dataset.moment;
+    }
+  }
+  addEventListener("scroll", () => { if (!ticking){ ticking = true; requestAnimationFrame(update); } }, {passive:true});
+  addEventListener("resize", update); update();
+})();
+
+/* vitrine-strook: pijlen + voortgang */
+(function(){
+  const s = document.getElementById("strook"), bar = document.getElementById("voortgang");
+  const stap = () => (s.querySelector(".kaart").offsetWidth + 18) * (innerWidth > 860 ? 2 : 1);
+  document.getElementById("verder").addEventListener("click", () => s.scrollBy({left: stap(), behavior: reduce ? "auto" : "smooth"}));
+  document.getElementById("terug").addEventListener("click", () => s.scrollBy({left: -stap(), behavior: reduce ? "auto" : "smooth"}));
+  function bij(){ const max = s.scrollWidth - s.clientWidth; const zicht = s.clientWidth / s.scrollWidth; const p = max > 0 ? s.scrollLeft / max : 0;
+    bar.style.width = (zicht * 100).toFixed(1) + "%"; bar.style.left = (p * (1 - zicht) * 100).toFixed(1) + "%"; }
+  s.addEventListener("scroll", bij, {passive:true}); addEventListener("resize", bij); bij();
+})();
+
+/* kiezer */
+(function(){
+  const form = document.getElementById("kiesform"), bubbel = document.getElementById("bubbel"), knop = document.getElementById("wa-kies");
+  const $ = id => document.getElementById(id);
+  const v = n => form.querySelector("input[name=" + n + "]:checked").value;
+  const d0 = new Date(); d0.setMinutes(d0.getMinutes() - d0.getTimezoneOffset()); $("v-datum").min = d0.toISOString().slice(0,10);
+  const fmt = s => s ? new Date(s + "T12:00:00").toLocaleDateString("nl-NL",{weekday:"long",day:"numeric",month:"long"}) : "";
+  function bouw(){
+    const wat = v("wat"), hoeveel = v("hoeveel"), wanneer = v("wanneer");
+    $("v-anders-veld").hidden = wat !== "anders"; $("v-datum-veld").hidden = wanneer !== "datum";
+    const ding = wat === "anders" ? ($("v-anders").value.trim() || "iets") : wat;
+    const dag = wanneer === "vandaag" ? "vandaag" : wanneer === "morgen" ? "morgen" : (fmt($("v-datum").value) ? "op " + fmt($("v-datum").value) : "binnenkort");
+    const naam = $("v-naam").value.trim();
+    const r = ["Hoi Bakkerij Alanya,", "hebben jullie " + dag + " " + ding + " voor me?", "Het gaat om " + hoeveel + (hoeveel === "1" ? " stuk." : " stuks."), naam ? "Groet, " + naam : "Groet!"];
+    const t = r.join("\n"); bubbel.textContent = t; knop.href = wa(t); return t;
+  }
+  form.addEventListener("input", bouw); form.addEventListener("change", bouw); bouw();
+  document.querySelectorAll("[data-kies]").forEach(a => a.addEventListener("click", () => {
+    const w = a.dataset.kies.toLowerCase() === "simit" ? "simit" : a.dataset.kies.toLowerCase();
+    const inp = form.querySelector('input[name=wat][value="' + w + '"]'); if (inp){ inp.checked = true; bouw(); }
+  }));
+})();
+
+/* zwevende cta zodra de hero uit beeld is */
+(function(){
+  const f = document.getElementById("float"), hero = document.querySelector(".hero");
+  if (!("IntersectionObserver" in window)) { f.classList.add("toon"); return; }
+  new IntersectionObserver(([e]) => f.classList.toggle("toon", !e.isIntersecting), {threshold:0}).observe(hero);
+})();
+
+/* pitch-modus */
+(function(){
+  const p = document.getElementById("pitch"), frame = document.getElementById("pp-frame");
+  const euro = n => "€ " + Math.round(n).toLocaleString("nl-NL");
+  function open(){ p.classList.add("open"); document.body.style.overflow = "hidden"; if (!frame.src) frame.src = location.href.split("#")[0].split("?")[0]; }
+  function dicht(){ p.classList.remove("open"); document.body.style.overflow = ""; }
+  document.getElementById("pitch-knop").addEventListener("click", open);
+  document.getElementById("pp-sluit").addEventListener("click", dicht);
+  p.addEventListener("click", e => { if (e.target === p) dicht(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") dicht(); });
+  const k = document.getElementById("r-klanten"), b = document.getElementById("r-besteding");
+  function reken(){
+    const kl = +k.value, be = +b.value;
+    document.getElementById("o-klanten").textContent = kl;
+    document.getElementById("o-besteding").textContent = euro(be);
+    document.getElementById("u-week").textContent = euro(kl * be);
+    document.getElementById("u-jaar").textContent = euro(kl * be * 52);
+    document.getElementById("u-klanten").textContent = Math.ceil(595 / be) + " klanten";
+  }
+  k.addEventListener("input", reken); b.addEventListener("input", reken); reken();
+  if (/[?&]pitch\b/.test(location.search)) open();
+  if (window.self !== window.top) document.getElementById("pitch-knop").hidden = true;
+})();
 </script>
 </body>
 </html>
