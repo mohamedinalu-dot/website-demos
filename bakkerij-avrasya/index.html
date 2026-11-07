@@ -1,0 +1,851 @@
+<!doctype html>
+<!--
+  Bakkerij Avrasya (L222) — demo door Mohamedia.
+  Concept: "Twee werelddelen, één toonbank": Avrasya is Turks voor Eurazië; croissants liggen hier naast simit en börek.
+  Lay-out-archetype: OVENREK — lichte, gele warme-bakker-pagina; de hero is een ovendeur (stalen kader, greep, gloed,
+  hittetrilling) met hun eigen pide-foto erachter, plus een draaiende sesam-stempel. Het assortiment staat op
+  "bakplaten" (donkere geperforeerde platen met rails), de kiezer is een bestel-/vraagbriefje op donkere korst.
+  Bewust anders dan bakkerij-alanya (donkere full-bleed gevelfoto + witte serif) en dunya-doner (poster-hoofdletters).
+  Geen marquee in het eerste scherm. Palet: eigeel, broodrood, korstbruin. Fonts: Gluten (koppen) + Onest (tekst).
+  Volgende demo: kies iets anders dan ovenrek/ovendeur.
+  Beeld: pide-foto's van hun eigen Instagram (@bakkerij_avrasya, via Restaurant Guru "Photo from Instagram");
+  kapsalon = klantfoto bij een Google-review (gelabeld). Overige producten: illustraties (gelabeld).
+  WhatsApp op 06 24 21 79 99 is niet bevestigd: de kiezer vraagt alleen iets na, belooft geen bestellingen.
+-->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Bakkerij Avrasya – Turkse bakkerij in Rotterdam-Noord</title>
+<meta name="description" content="Bakkerij Avrasya aan de Zwart Janstraat 142-B in Rotterdam-Noord: vers brood, simit, börek, Turkse pizza en croissants. 4,6 uit 43 Google-reviews. Bel of app even.">
+<meta name="theme-color" content="#ffc83a">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gluten:wght@500;700;800&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/pide-ovenrek.webp">
+<style>
+:root{
+  --geel:#ffc83a; --geel-2:#ffd968; --geel-licht:#fff6da;
+  --rood:#c41f2e; --rood-d:#9e1724;
+  --korst:#2b1810; --korst-2:#3d241a; --staal:#1c1512;
+  --sesam:#fff4d6; --tekst:#2b1810; --zacht:#6b5446;
+  --r:22px;
+  --kop:"Gluten", "Trebuchet MS", system-ui, sans-serif;
+  --body:"Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+.nw{white-space:nowrap}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--tekst);background:#fffdf7;font-size:17px;line-height:1.55;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:800;line-height:1.02;margin:0;letter-spacing:-.01em;overflow-wrap:break-word}
+p{margin:0}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+svg.i{width:20px;height:20px;flex:none;fill:currentColor}
+
+/* demo-strook */
+.demo-strip{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--korst);color:#f4e7d6;font-size:13px;padding:7px 12px;text-align:center}
+.demo-strip a{color:var(--geel);font-weight:600}
+.demo-strip .kort{display:none}
+.demo-mo{border:1px solid rgba(255,255,255,.25);background:transparent;color:#cdb9a8;border-radius:99px;font:600 11px/1 var(--body);width:26px;height:26px;cursor:pointer;flex:none}
+@media (max-width:560px){.demo-strip .lang{display:none}.demo-strip .kort{display:inline}}
+
+/* aankondiging */
+.aank{background:var(--rood);color:#fff;font-size:14px;font-weight:600;text-align:center;padding:0 14px}
+.aank a{color:#fff;text-decoration:none;display:block;padding:12px 0;min-height:44px;line-height:20px}
+.aank b{color:var(--geel)}
+@media (max-width:560px){.aank-x{display:none}}
+
+/* header */
+.kop{background:var(--geel);position:relative;z-index:5}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+.kop .logo img{height:46px;width:auto}
+.kop nav{display:flex;align-items:center;gap:22px;font-weight:600;font-size:15px}
+.kop nav a.l{text-decoration:none;padding:12px 0}
+.kop nav a.l:hover{color:var(--rood)}
+.belknop{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 18px;border-radius:99px;background:var(--korst);color:#fff;text-decoration:none;font-weight:700;font-size:15px}
+@media (max-width:860px){.kop nav a.l{display:none}.kop .logo img{height:40px}}
+
+/* knoppen (geen transition op transform) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:99px;font:700 16px/1.1 var(--body);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s;text-align:center}
+.btn-rood{background:var(--rood);color:#fff}
+.btn-rood:hover{background:var(--rood-d)}
+.btn-korst{background:var(--korst);color:#fff}
+.btn-korst:hover{background:#000}
+.btn-rand{border-color:var(--korst);color:var(--korst);background:transparent}
+.btn-rand:hover{background:var(--korst);color:#fff}
+.btn-geel{background:var(--geel);color:var(--korst)}
+.btn-geel:hover{background:var(--geel-2)}
+.btn-licht{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}
+.btn-licht:hover{background:#fff;color:var(--korst)}
+
+/* ===== HERO: de ovendeur ===== */
+.hero{background:var(--geel);position:relative;overflow:hidden;padding:16px 0 46px}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 12% 18%,rgba(255,255,255,.35) 0 2px,transparent 3px) 0 0/34px 34px;opacity:.55;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1fr;gap:22px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--korst);background:rgba(255,255,255,.55);padding:7px 14px;border-radius:99px;justify-self:start}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--rood);display:block}
+.hero h1{font-size:clamp(40px,11.4vw,82px);color:var(--korst);margin-top:12px}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .w > span{display:inline-block;animation:op .9s cubic-bezier(.2,.8,.2,1) backwards}
+.hero h1 .rood{color:var(--rood)}
+@keyframes op{from{transform:translateY(105%)}}
+.hero .sub{font-size:18px;max-width:30em;margin-top:16px;color:#3d2a1f}
+.cta-rij{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.cta-rij .btn{flex:1 1 150px}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:0 14px;margin-top:20px;font-size:15px;font-weight:600}
+.trust .st{color:var(--rood);letter-spacing:2px}
+.trust a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.trust a > u{text-decoration:none;border-bottom:2px solid rgba(43,24,16,.25)}
+
+.oven{position:relative;background:linear-gradient(160deg,#4a3a33,#1c1512 60%);border-radius:30px;padding:46px 14px 14px;box-shadow:0 30px 60px -20px rgba(80,30,0,.55),inset 0 1px 0 rgba(255,255,255,.18)}
+.oven .greep{position:absolute;top:14px;left:50%;width:58%;height:14px;margin-left:-29%;border-radius:99px;background:linear-gradient(#e9e2dc,#8f8680 55%,#5b524d);box-shadow:0 3px 6px rgba(0,0,0,.45)}
+.oven .greep::before,.oven .greep::after{content:"";position:absolute;top:8px;width:10px;height:16px;background:#5b524d;border-radius:3px}
+.oven .greep::before{left:12%}.oven .greep::after{right:12%}
+.oven .lampje{position:absolute;top:18px;right:22px;width:9px;height:9px;border-radius:50%;background:#ff8a2b;box-shadow:0 0 10px 3px rgba(255,138,43,.7);animation:knip 3s ease-in-out infinite}
+@keyframes knip{50%{opacity:.45}}
+.glas{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/4.3;background:#2a1a10;isolation:isolate}
+.glas img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;animation:kb 22s ease-in-out infinite alternate;transform-origin:50% 60%}
+@keyframes kb{from{transform:scale(1.12) translateY(-5%)}to{transform:scale(1.02) translateY(4%)}}
+.glas::before{content:"";position:absolute;inset:-20% 0;z-index:1;pointer-events:none;mix-blend-mode:soft-light;
+  background:repeating-linear-gradient(0deg,rgba(255,170,60,0) 0 18px,rgba(255,170,60,.35) 26px,rgba(255,170,60,0) 34px);
+  animation:hitte 3.2s linear infinite;opacity:.8}
+@keyframes hitte{from{transform:translateY(0)}to{transform:translateY(-34px)}}
+.glas::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:20px;
+  background:linear-gradient(115deg,rgba(255,255,255,.22) 0 14%,transparent 14.5% 30%,rgba(255,255,255,.08) 30.5% 35%,transparent 35.5%),
+  radial-gradient(120% 80% at 50% 110%,rgba(255,120,20,.45),transparent 60%);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.08),inset 0 0 50px rgba(0,0,0,.55)}
+.oven figcaption{color:#cdb9a8;font-size:12.5px;padding:10px 6px 0;display:flex;justify-content:space-between;gap:10px}
+.oven figcaption{align-items:center}
+.oven figcaption a{color:var(--geel);text-decoration:none;font-weight:600;display:inline-flex;align-items:center;min-height:44px;margin:-12px 0 -8px}
+.stempel{position:absolute;right:-18px;bottom:44px;width:118px;height:118px;z-index:3}
+.stempel .ring{width:100%;height:100%;animation:draai 16s linear infinite}
+@keyframes draai{to{transform:rotate(360deg)}}
+.stempel .mid{position:absolute;inset:30px;border-radius:50%;background:var(--geel);display:grid;place-items:center;box-shadow:0 0 0 3px var(--rood)}
+.stempel .mid svg{width:40px;height:40px}
+
+.tekst-b{display:flex;flex-direction:column}
+@media (min-width:900px){
+  .hero{padding:40px 0 80px}
+  .hero .wrap{grid-template-columns:1.05fr .95fr;grid-template-areas:"a oven" "b oven";column-gap:60px;row-gap:0;align-items:end}
+  .tekst-a{grid-area:a}.tekst-b{grid-area:b;align-self:start}.hero .oven{grid-area:oven;align-self:center;transform:rotate(1.5deg)}
+  .hero h1{font-size:clamp(56px,5.6vw,80px)}
+  .glas{aspect-ratio:4/4.6}
+  .stempel{right:-34px;bottom:70px;width:150px;height:150px}
+  .stempel .mid{inset:38px}
+}
+@media (max-width:899px){
+  .hero .wrap{gap:18px}
+  .hero h1{font-size:clamp(34px,9.6vw,44px)}
+  .hero .oven{margin:0 6px 0 0;padding:38px 10px 10px}
+  .oven .greep{top:11px;height:12px}
+  .glas{aspect-ratio:4/3.3}
+  .oven figcaption{padding-top:8px}
+  .tekst-b .sub{order:3;margin-top:26px;font-size:17px}
+  .tekst-b .cta-rij{margin-top:0}
+  .stempel{width:104px;height:104px;bottom:30px;right:-12px}
+  .stempel .mid{inset:27px}
+}
+
+/* ===== band (rail) ===== */
+.rail{background:var(--rood);color:#fff;overflow:hidden;border-block:6px solid var(--korst)}
+.rail .loop{display:flex;width:max-content;animation:loop 38s linear infinite}
+.rail span{display:inline-flex;align-items:center;gap:14px;padding:14px 0 14px 14px;font-family:var(--kop);font-weight:700;font-size:21px;white-space:nowrap}
+.rail span svg{width:26px;height:26px}
+@keyframes loop{to{transform:translateX(-50%)}}
+
+/* ===== secties ===== */
+section{position:relative}
+.sec{padding:76px 0}
+.label{font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--rood)}
+.sec h2{font-size:clamp(34px,8.6vw,60px);margin-top:10px;color:var(--korst)}
+.lead{font-size:18px;color:var(--zacht);max-width:36em;margin-top:14px}
+
+/* toonbank / bakplaten */
+.toonbank{background:#fffdf7}
+.plaat{margin-top:44px}
+.plaat-kop{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.plaat-kop h3{font-size:clamp(24px,6vw,32px);color:var(--korst)}
+.plaat-kop span{font-size:14px;color:var(--zacht);font-weight:600}
+.rek{position:relative;background:#262019 radial-gradient(circle,rgba(255,255,255,.07) 1.2px,transparent 1.6px) 0 0/9px 9px;border-radius:18px;padding:16px;box-shadow:inset 0 2px 0 rgba(255,255,255,.08),0 18px 30px -18px rgba(43,24,16,.6)}
+.rek::before{content:"";position:absolute;left:-6px;right:-6px;top:-9px;height:10px;border-radius:6px;background:linear-gradient(#6b625c,#3a332e)}
+.items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.item{background:#fffdf7;border-radius:16px;padding:16px 14px 14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.item .ill{width:76px;height:76px;border-radius:50%;background:var(--geel-licht);display:grid;place-items:center;margin-bottom:4px}
+.item .ill svg{width:58px;height:58px}
+.item h4{font-family:var(--kop);font-weight:800;font-size:clamp(17px,4.6vw,24px);line-height:1.05;margin:0;color:var(--korst);overflow-wrap:break-word}
+.item p{font-size:14.5px;color:var(--zacht);line-height:1.45}
+.item .vraag{margin-top:auto;display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:99px;border:2px solid var(--korst);font-weight:700;font-size:14px;text-decoration:none;padding:0 10px;text-align:center}
+.item .vraag:hover{background:var(--korst);color:#fff}
+.item.foto{grid-column:1/-1;padding:0;overflow:hidden;display:grid;grid-template-columns:1fr}
+.item.foto .beeld{position:relative;aspect-ratio:16/10;overflow:hidden}
+.item.foto .beeld img{width:100%;height:100%;object-fit:cover}
+.item.foto .beeld small{position:absolute;left:10px;bottom:10px;background:rgba(28,21,18,.78);color:#fff;font-size:12px;padding:5px 10px;border-radius:99px}
+.item.foto .txt{padding:16px 16px 16px;display:flex;flex-direction:column;gap:8px}
+.item.foto .txt h4{font-size:clamp(24px,6.6vw,30px)}
+@media (max-width:369px){.items{grid-template-columns:1fr}}
+@media (min-width:720px){
+  .items{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .item.foto{grid-column:span 2;grid-template-columns:1fr 1fr}
+  .item.foto .beeld{aspect-ratio:auto;min-height:100%}
+  .plaat-a .item.foto{grid-row:span 2;grid-template-columns:1fr;grid-template-rows:1fr auto}
+  .plaat-a .item.foto .beeld{min-height:300px}
+}
+.noot{font-size:13px;color:var(--zacht);margin-top:16px}
+.ramadan{margin-top:34px;display:flex;gap:16px;align-items:center;background:var(--geel-licht);border-radius:var(--r);padding:18px 20px}
+.ramadan svg{width:44px;height:44px;flex:none}
+.ramadan p{font-size:16px}
+
+/* kiezer */
+.kiezer{background:var(--korst);color:#f8ecdc;overflow:hidden}
+.kiezer::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 90% 0%,rgba(255,200,58,.16),transparent 70%);pointer-events:none}
+.kiezer .wrap{position:relative;display:grid;gap:30px}
+.kiezer h2{color:#fff}
+.kiezer .lead{color:#d9c6b5}
+.briefje{background:#fffdf7;color:var(--tekst);border-radius:24px;padding:24px 20px;box-shadow:0 30px 60px -30px rgba(0,0,0,.7);position:relative}
+.briefje::before{content:"";position:absolute;left:0;right:0;top:-8px;height:16px;background:radial-gradient(circle at 8px 0,transparent 8px,#fffdf7 8.5px) -8px 0/16px 16px repeat-x}
+.stap{border:0;margin:0 0 22px;padding:0}
+.stap legend{font-family:var(--kop);font-weight:800;font-size:21px;margin-bottom:12px;display:flex;align-items:center;gap:10px;padding:0}
+.stap legend b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--rood);color:#fff;font:700 15px/1 var(--body)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chips span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:99px;border:2px solid #e3d5c4;font-weight:600;font-size:15px;background:#fff;cursor:pointer}
+.chips input:checked + span{background:var(--korst);border-color:var(--korst);color:#fff}
+.chips input:focus-visible + span{outline:3px solid var(--rood);outline-offset:2px}
+.teller{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.teller button{width:48px;height:48px;border-radius:50%;border:2px solid var(--korst);background:#fff;font:700 22px/1 var(--body);cursor:pointer;color:var(--korst)}
+.teller output{min-width:44px;text-align:center;font-family:var(--kop);font-weight:800;font-size:30px}
+.teller .los{margin-left:6px}
+.veld{display:grid;gap:6px;margin-top:12px}
+.veld label{font-weight:600;font-size:14px}
+.veld input{min-height:48px;border-radius:14px;border:2px solid #e3d5c4;padding:0 14px;font:500 16px var(--body);background:#fff;color:var(--tekst);width:100%}
+.voorbeeld{display:grid;gap:14px}
+.bubbel{background:#e6f6d8;border-radius:18px 18px 4px 18px;padding:16px 18px;white-space:pre-line;font-size:15.5px;color:#1d2a16;min-height:120px;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.voorbeeld h3{font-size:24px;color:#fff}
+.voorbeeld .knoppen{display:grid;gap:10px}
+.voorbeeld small{color:#cdb9a8;font-size:13.5px}
+@media (min-width:900px){.kiezer .wrap{grid-template-columns:1fr 1fr;grid-template-areas:"intro form" "vb form";column-gap:60px;row-gap:30px;align-items:start}.k-intro{grid-area:intro}.briefje{grid-area:form}.voorbeeld{grid-area:vb;max-width:460px}}
+
+/* waarom */
+.waarom{background:var(--geel)}
+.waarom h2{color:var(--korst)}
+.kaarten{display:grid;gap:14px;margin-top:34px}
+.kaart{background:#fffdf7;border-radius:var(--r);padding:24px 22px;display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:start;box-shadow:0 10px 0 -2px rgba(43,24,16,.12)}
+.kaart .ic{width:56px;height:56px;border-radius:50%;background:var(--rood);display:grid;place-items:center;color:#fff}
+.kaart .ic svg{width:28px;height:28px}
+.kaart small{font-weight:700;color:var(--rood);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.kaart h3{font-size:clamp(22px,6vw,27px);margin:4px 0 6px;color:var(--korst)}
+.kaart p{color:var(--zacht);font-size:15.5px}
+@media (min-width:860px){.kaarten{grid-template-columns:repeat(3,1fr)}}
+
+/* reviews */
+.reviews{background:#fffdf7}
+.score{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:28px}
+.score .getal{font-family:var(--kop);font-weight:800;font-size:92px;line-height:.9;color:var(--rood)}
+.score .st{color:var(--rood);font-size:24px;letter-spacing:3px}
+.score a{font-weight:600;display:inline-flex;align-items:center;min-height:44px}
+.rv-lijst{display:grid;gap:14px;margin-top:30px}
+.rv-kaart{border:2px solid var(--korst);border-radius:var(--r);padding:22px;background:#fff;position:relative}
+.rv-kaart p{font-size:17px}
+.rv-kaart .naam{display:flex;align-items:center;gap:10px;margin-top:14px;font-weight:700}
+.rv-kaart .naam i{width:36px;height:36px;border-radius:50%;background:var(--geel);display:grid;place-items:center;font-style:normal;font-family:var(--kop);font-weight:800}
+@media (min-width:860px){.rv-lijst{grid-template-columns:repeat(3,1fr)}}
+
+/* stappen */
+.stappen{background:var(--geel-licht)}
+.st-lijst{display:grid;gap:14px;margin-top:30px;counter-reset:s;list-style:none;padding:0}
+.st-lijst li{background:#fffdf7;border-radius:var(--r);padding:22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center}
+.st-lijst li::before{counter-increment:s;content:counter(s);font-family:var(--kop);font-weight:800;font-size:44px;color:var(--rood);width:58px;height:58px;border-radius:50%;border:3px dashed var(--rood);display:grid;place-items:center;line-height:1}
+.st-lijst b{display:block;font-size:18px}
+.st-lijst span{color:var(--zacht);font-size:15.5px}
+@media (min-width:860px){.st-lijst{grid-template-columns:repeat(3,1fr)}}
+
+/* faq */
+.faq{background:#fffdf7}
+.faq details{border-bottom:2px solid #eadcca;padding:4px 0}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:60px;font-weight:700;font-size:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--kop);font-size:30px;color:var(--rood);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 18px;color:var(--zacht)}
+.faq .lijst{margin-top:24px;max-width:820px}
+
+/* adres */
+.adres{background:var(--korst);color:#f8ecdc}
+.adres .wrap{display:grid;gap:30px}
+.adres h2{color:#fff}
+.adres .straat{font-family:var(--kop);font-weight:800;font-size:clamp(32px,8.4vw,54px);line-height:1;color:var(--geel);margin-top:14px}
+.adres .pc{font-size:19px;margin-top:8px}
+.adres .knoppen{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.adres .knoppen .btn{flex:1 1 170px}
+.adres .tijden{margin-top:28px;padding:18px 20px;border-radius:18px;background:rgba(255,255,255,.07);font-size:16px}
+.adres .tijden b{color:#fff}
+.kaartje{background:#3a2419;border-radius:24px;padding:10px;overflow:hidden}
+.kaartje svg{width:100%;height:auto;display:block}
+@media (min-width:900px){.adres .wrap{grid-template-columns:1fr 1fr;align-items:center;gap:60px}}
+
+/* slot */
+.slot{background:var(--rood);color:#fff;text-align:center;overflow:hidden}
+.slot h2{color:#fff;font-size:clamp(38px,10vw,74px)}
+.slot p{font-size:19px;margin:14px auto 0;max-width:30em;color:#ffe3e3}
+.slot .knoppen{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
+.slot .knoppen .btn{flex:0 1 260px}
+.slot .ring-bg{position:absolute;width:520px;height:520px;right:-180px;top:-160px;opacity:.12;pointer-events:none}
+
+/* footer */
+footer{background:var(--staal);color:#cdb9a8;padding:46px 0 120px;font-size:15px}
+footer .wrap{display:grid;gap:26px}
+footer img{height:46px;width:auto}
+footer h4{color:#fff;font-size:15px;margin:0 0 8px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+footer a{color:#fff}
+footer .door{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;font-size:14px}
+footer .door a{color:var(--geel);font-weight:700}
+@media (min-width:860px){footer .wrap{grid-template-columns:1.4fr 1fr 1fr}footer .door{grid-column:1/-1}footer{padding-bottom:46px}}
+
+/* zwevende cta (mobiel) */
+.float{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:60;display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:6px;background:var(--korst);padding:6px;border-radius:20px;box-shadow:0 14px 30px rgba(0,0,0,.35);opacity:0;visibility:hidden;transform:translateY(130%);transition:opacity .3s,visibility .3s,transform .3s}
+.float.toon{opacity:1;visibility:visible;transform:none}
+.float a{display:flex;align-items:center;justify-content:center;gap:7px;min-height:50px;border-radius:15px;color:#fff;text-decoration:none;font-weight:700;font-size:15px}
+.float a.hoofd{background:var(--geel);color:var(--korst)}
+@media (min-width:861px){.float{display:none}}
+
+/* scroll-reveal met vangnet */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+
+/* pitch-modus (alleen voor Mo) */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(28,21,18,.6);display:none;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.pitch.open{display:block}
+.pp{background:#fff;max-width:1000px;margin:20px auto;border-radius:24px;padding:22px;color:#1f1712}
+.pp-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px;color:#6b5446}
+.pp-sluit{width:44px;height:44px;border-radius:50%;border:0;background:#f1e7da;font-size:24px;cursor:pointer}
+.pp h2{font-size:clamp(26px,6vw,38px);margin:8px 0 18px;color:var(--korst)}
+.pp h3{font-family:var(--body);font-weight:700;font-size:18px;margin:26px 0 12px}
+.vn{display:grid;gap:18px}
+@media (min-width:760px){.vn{grid-template-columns:1fr 1fr}}
+.vn figure{margin:0}
+.vn figcaption{font-size:14px;color:#6b5446;margin-top:8px}
+.zoek{border:1px solid #e5e7eb;border-radius:16px;padding:14px;background:#fafafa;font-family:Arial,sans-serif}
+.zoek .balk{display:flex;align-items:center;gap:8px;border:1px solid #dfe1e5;border-radius:99px;padding:10px 14px;background:#fff;font-size:15px}
+.zoek .balk i{width:14px;height:14px;border:2px solid #9aa0a6;border-radius:50%;display:block}
+.zoek .res{padding:10px 4px;border-bottom:1px solid #eee;display:grid;gap:2px}
+.zoek .res small{color:#5f6368;font-size:12px}
+.zoek .res span{color:#1a0dab;font-size:15px}
+.zoek .res em{font-style:normal;font-size:13px;color:#3c4043}
+.zoek .res em b{color:#b3261e}
+.zoek .geen{margin-top:10px;font-size:14px;color:#b3261e;font-weight:700}
+.tel{border:10px solid #1c1512;border-radius:34px;overflow:hidden;height:560px;background:#000;max-width:300px;margin:0 auto}
+.tel iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+.reken{background:#fff8e3;border-radius:18px;padding:18px;display:grid;gap:16px}
+.reken label{display:flex;justify-content:space-between;font-weight:600;font-size:15px}
+.reken input[type=range]{width:100%;accent-color:var(--rood);height:32px}
+.uitkomst{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.uitkomst div{background:#fff;border-radius:14px;padding:12px;text-align:center}
+.uitkomst small{display:block;font-size:12.5px;color:#6b5446}
+.uitkomst strong{font-family:var(--kop);font-size:24px;color:var(--rood)}
+@media (max-width:520px){.uitkomst{grid-template-columns:1fr}}
+.disclaimer{font-size:13px;color:#6b5446}
+.punten{padding-left:22px;display:grid;gap:10px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1 1.7.7 2.4.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1 0-.2-.1-.5-.2z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></symbol>
+    <symbol id="i-ster" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9z"/></symbol>
+    <symbol id="i-hart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 3 4.5 6.6 4.5c2 0 3.6 1.1 5.4 3 1.8-1.9 3.4-3 5.4-3 3.6 0 5.7 3.7 4.2 7.2C19.5 16.4 12 21 12 21z"/></symbol>
+    <symbol id="i-munt" viewBox="0 0 24 24"><path d="M16.5 6.6A6 6 0 0 0 7.2 9H5.5v1.8h1.4v1.4H5.5V14h1.7a6 6 0 0 0 9.3 2.4l-1.2-1.5A4 4 0 0 1 9.3 14H13v-1.8H8.9v-1.4H13V9H9.3a4 4 0 0 1 6-1.9z"/></symbol>
+    <symbol id="i-blad" viewBox="0 0 24 24"><path d="M5 21c0-8 4-14 15-16-1 11-7 15-15 16zm2-2.5c3-3.5 6-6.5 9.5-9-4 1.5-7 4.5-9.5 9z"/></symbol>
+    <!-- illustraties (zonder fill op de paden waar <use> kleur meekrijgt) -->
+    <symbol id="ill-simit" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="20" fill="none" stroke="#c97a26" stroke-width="13"/>
+      <circle cx="32" cy="32" r="20" fill="none" stroke="#e39a3b" stroke-width="7" stroke-dasharray="2 5" opacity=".9"/>
+      <g fill="#fff4d6"><ellipse cx="32" cy="10" rx="1.4" ry="2.6"/><ellipse cx="47" cy="16" rx="1.4" ry="2.6" transform="rotate(45 47 16)"/><ellipse cx="54" cy="31" rx="1.4" ry="2.6" transform="rotate(90 54 31)"/><ellipse cx="48" cy="47" rx="1.4" ry="2.6" transform="rotate(135 48 47)"/><ellipse cx="32" cy="54" rx="1.4" ry="2.6"/><ellipse cx="16" cy="48" rx="1.4" ry="2.6" transform="rotate(45 16 48)"/><ellipse cx="10" cy="32" rx="1.4" ry="2.6" transform="rotate(90 10 32)"/><ellipse cx="17" cy="16" rx="1.4" ry="2.6" transform="rotate(135 17 16)"/><ellipse cx="40" cy="12" rx="1.2" ry="2.2" transform="rotate(20 40 12)"/><ellipse cx="24" cy="52" rx="1.2" ry="2.2" transform="rotate(20 24 52)"/><ellipse cx="52" cy="40" rx="1.2" ry="2.2" transform="rotate(110 52 40)"/><ellipse cx="12" cy="24" rx="1.2" ry="2.2" transform="rotate(110 12 24)"/></g>
+    </symbol>
+    <symbol id="ill-borek" viewBox="0 0 64 64">
+      <circle cx="32" cy="34" r="24" fill="#e7a447"/>
+      <path d="M32 34m0 0c0-3 4-4 6-2s1 7-3 8-9-2-9-7 5-10 11-9 11 7 9 13-9 11-15 10-13-6-13-13" fill="none" stroke="#b86a1e" stroke-width="3.4" stroke-linecap="round"/>
+      <g fill="#fff4d6" opacity=".9"><circle cx="22" cy="24" r="1.4"/><circle cx="44" cy="44" r="1.4"/><circle cx="46" cy="26" r="1.2"/></g>
+    </symbol>
+    <symbol id="ill-baklava" viewBox="0 0 64 64">
+      <path d="M32 8l22 22-22 22L10 30z" fill="#e9b04c"/>
+      <path d="M32 14l16 16-16 16-16-16z" fill="#d48f2c"/>
+      <path d="M14 34l18 18 18-18" fill="none" stroke="#a8641a" stroke-width="2.4"/>
+      <path d="M17 38l15 15 15-15" fill="none" stroke="#a8641a" stroke-width="2" opacity=".7"/>
+      <g fill="#6aa84f"><circle cx="30" cy="27" r="2.6"/><circle cx="35" cy="31" r="2.2"/><circle cx="31" cy="33" r="1.8"/></g>
+    </symbol>
+    <symbol id="ill-brood" viewBox="0 0 64 64">
+      <path d="M8 40c0-12 11-22 24-22s24 10 24 22c0 4-3 6-6 6H14c-3 0-6-2-6-6z" fill="#d98a2b"/>
+      <path d="M8 40c0-12 11-22 24-22s24 10 24 22" fill="none" stroke="#a8641a" stroke-width="2"/>
+      <g stroke="#fff1d0" stroke-width="3" stroke-linecap="round"><path d="M20 26l4 6"/><path d="M30 22l3 7"/><path d="M41 24l2 7"/></g>
+    </symbol>
+    <symbol id="ill-croissant" viewBox="0 0 64 64">
+      <path d="M8 40c4-14 14-22 24-22s20 8 24 22c-5 2-9 0-11-3-2 5-8 7-13 7s-11-2-13-7c-2 3-6 5-11 3z" fill="#e3a043"/>
+      <g fill="none" stroke="#b06a1f" stroke-width="2.2" stroke-linecap="round"><path d="M22 22c2 6 3 13 2 20"/><path d="M32 18v24"/><path d="M42 22c-2 6-3 13-2 20"/></g>
+    </symbol>
+    <symbol id="ill-maan" viewBox="0 0 48 48">
+      <path d="M30 6a18 18 0 1 0 12 30A16 16 0 0 1 30 6z" fill="#c41f2e"/>
+      <path d="M36 14l1.8 3.7 4 .6-2.9 2.8.7 4L36 23.2l-3.6 1.9.7-4-2.9-2.8 4-.6z" fill="#c41f2e"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="demo-strip"><span class="lang">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a>. Niet de officiële site van Bakkerij Avrasya.</span><span class="kort">Demo door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a> · niet de officiële site</span><button class="demo-mo" id="pitch-knop" type="button" aria-label="Pitch-modus openen">Mo</button></div>
+
+<div class="aank"><a href="#reviews"><b>4,6 ★</b> uit 43 Google-reviews<span class="aank-x"> · Zwart Janstraat 142-B, Rotterdam-Noord</span></a></div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Bakkerij Avrasya, naar boven"><img src="logo-dark.svg" alt="Bakkerij Avrasya" width="332" height="74"></a>
+    <nav aria-label="Hoofdmenu">
+      <a class="l" href="#toonbank">Toonbank</a>
+      <a class="l" href="#kiezer">Even vragen</a>
+      <a class="l" href="#reviews">Reviews</a>
+      <a class="l" href="#adres">Route</a>
+      <a class="belknop" href="tel:+31624217999"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>Bel</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="hero-titel">
+  <div class="wrap">
+    <div class="tekst tekst-a">
+      <span class="eyebrow"><i></i>Turkse bakker · Oude Noorden</span>
+      <h1 id="hero-titel">
+        <span class="w"><span>Brood,</span></span> <span class="w"><span style="animation-delay:.08s">simit</span></span> <span class="w"><span style="animation-delay:.16s">&amp;</span></span> <span class="w"><span class="rood" style="animation-delay:.24s">pide</span></span><br>
+        <span class="w"><span style="animation-delay:.34s">van</span></span> <span class="w"><span style="animation-delay:.42s">de</span></span> <span class="w"><span style="animation-delay:.5s">Zwart</span></span> <span class="w"><span style="animation-delay:.58s">Janstraat.</span></span>
+      </h1>
+    </div>
+
+    <figure class="oven" aria-label="Turkse pizza's op het ovenrek">
+      <span class="greep" aria-hidden="true"></span><span class="lampje" aria-hidden="true"></span>
+      <div class="glas"><img src="img/pide-ovenrek.webp" alt="Rijen Turkse pizza (pide) met gehakt op bakplaten in het ovenrek" width="760" height="1098" fetchpriority="high"></div>
+      <figcaption><span>Turkse pizza's op het ovenrek</span><a href="https://www.instagram.com/bakkerij_avrasya/" target="_blank" rel="noopener">@bakkerij_avrasya</a></figcaption>
+      <div class="stempel" aria-hidden="true">
+        <svg class="ring" viewBox="0 0 120 120"><defs><path id="cirkel" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs>
+          <circle cx="60" cy="60" r="58" fill="#c41f2e"/>
+          <text font-family="Gluten, sans-serif" font-weight="700" font-size="13" fill="#ffc83a" letter-spacing="2.4"><textPath href="#cirkel">BROOD · SIMIT · BÖREK · PIDE ·</textPath></text>
+        </svg>
+        <div class="mid"><svg viewBox="0 0 64 64"><use href="#ill-simit"/></svg></div>
+      </div>
+    </figure>
+
+    <div class="tekst tekst-b">
+      <p class="sub">Avrasya is Turks voor Eurazië. Zo ligt het ook op de toonbank: croissants naast simit, börek en Turkse pizza.</p>
+      <div class="cta-rij">
+        <a class="btn btn-rood" href="tel:+31624217999"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>Bel ons</a>
+        <a class="btn btn-korst" href="https://wa.me/31624217999?text=Hoi%20Bakkerij%20Avrasya%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>App ons</a>
+      </div>
+      <div class="trust">
+        <span><span class="st" aria-hidden="true">★★★★★</span> <a href="https://www.google.com/maps/search/?api=1&amp;query=Bakkerij+Avrasya+Zwart+Janstraat+142-B+Rotterdam" target="_blank" rel="noopener"><u>4,6 uit 43 Google-reviews</u></a></span>
+        <a href="#kiezer"><u>Vraag of het er is →</u></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rail" aria-hidden="true">
+  <div class="loop">
+    <span><svg viewBox="0 0 64 64"><use href="#ill-simit"/></svg>Vers brood</span><span>Simit</span><span><svg viewBox="0 0 64 64"><use href="#ill-borek"/></svg>Börek</span><span>Turkse pizza</span><span><svg viewBox="0 0 64 64"><use href="#ill-croissant"/></svg>Croissants</span><span>Baklava</span><span><svg viewBox="0 0 64 64"><use href="#ill-brood"/></svg>Small Kapsalon</span><span>4,6 ★ op Google</span>
+    <span><svg viewBox="0 0 64 64"><use href="#ill-simit"/></svg>Vers brood</span><span>Simit</span><span><svg viewBox="0 0 64 64"><use href="#ill-borek"/></svg>Börek</span><span>Turkse pizza</span><span><svg viewBox="0 0 64 64"><use href="#ill-croissant"/></svg>Croissants</span><span>Baklava</span><span><svg viewBox="0 0 64 64"><use href="#ill-brood"/></svg>Small Kapsalon</span><span>4,6 ★ op Google</span>
+  </div>
+</div>
+
+<!-- TOONBANK: bakplaten -->
+<section class="sec toonbank" id="toonbank" aria-labelledby="tb-titel">
+  <div class="wrap">
+    <p class="label rv">Op de toonbank</p>
+    <h2 id="tb-titel" class="rv">Twee werelddelen, één toonbank.</h2>
+    <p class="lead rv">Dit noemen klanten in hun reviews. Zoek je iets speciaals? Vraag het even, dan weet je het zeker.</p>
+
+    <div class="plaat plaat-a rv">
+      <div class="plaat-kop"><h3>Van de Turkse kant</h3><span>Anadolu</span></div>
+      <div class="rek">
+        <div class="items">
+          <article class="item foto">
+            <div class="beeld"><img src="img/pide-dichtbij.webp" alt="Close-up van een Turkse pizza (pide) met gehakt op de bakplaat" width="480" height="600" loading="lazy"><small>Foto: @bakkerij_avrasya</small></div>
+            <div class="txt">
+              <h4>Turkse pizza</h4>
+              <p>Pide in bootvorm, zoals hier op het ovenrek. Klanten noemen de Turkse pizza's heerlijk.</p>
+              <a class="vraag" href="#kiezer" data-kies="Turkse pizza">Vraag naar Turkse pizza</a>
+            </div>
+          </article>
+          <article class="item">
+            <div class="ill"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#ill-simit"/></svg></div>
+            <h4>Simit</h4>
+            <p>Sesamringen. Volgens een klant de lekkerste die je ooit hebt gegeten.</p>
+            <a class="vraag" href="#kiezer" data-kies="Simit">Vraag naar simit</a>
+          </article>
+          <article class="item">
+            <div class="ill"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#ill-borek"/></svg></div>
+            <h4>Börek</h4>
+            <p>Hartig bladerdeeg uit de Turkse keuken.</p>
+            <a class="vraag" href="#kiezer" data-kies="Börek">Vraag naar börek</a>
+          </article>
+          <article class="item">
+            <div class="ill"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#ill-baklava"/></svg></div>
+            <h4>Baklava</h4>
+            <p>Zoet gebak uit de Turkse keuken.</p>
+            <a class="vraag" href="#kiezer" data-kies="Baklava">Vraag naar baklava</a>
+          </article>
+          <article class="item">
+            <div class="ill"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#ill-brood"/></svg></div>
+            <h4>Vers brood</h4>
+            <p>Klanten schrijven: vers, lekker en goed geprijsd.</p>
+            <a class="vraag" href="#kiezer" data-kies="Brood">Vraag naar brood</a>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="plaat rv">
+      <div class="plaat-kop"><h3>Van de Europese kant</h3><span>Europa</span></div>
+      <div class="rek">
+        <div class="items">
+          <article class="item foto">
+            <div class="beeld"><img src="img/kapsalon-klantfoto.webp" alt="Small Kapsalon in een aluminium bakje, met vlees, sla, ui, tomaat en saus" width="760" height="632" loading="lazy"><small>Foto van een klant bij een Google-review</small></div>
+            <div class="txt">
+              <h4>Small Kapsalon</h4>
+              <p>De Rotterdamse klassieker, in het klein. Een klant vond hem super lekker en lekker pittig.</p>
+              <a class="vraag" href="#kiezer" data-kies="Small Kapsalon">Vraag naar Small Kapsalon</a>
+            </div>
+          </article>
+          <article class="item">
+            <div class="ill"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#ill-croissant"/></svg></div>
+            <h4>Croissants</h4>
+            <p>Ook de croissants worden in de reviews genoemd.</p>
+            <a class="vraag" href="#kiezer" data-kies="Croissants">Vraag naar croissants</a>
+          </article>
+          <article class="item">
+            <div class="ill"><span aria-hidden="true" style="font:800 40px/1 var(--kop);color:var(--rood)">?</span></div>
+            <h4>Iets anders?</h4>
+            <p>Staat het hier niet bij? Vraag het gewoon.</p>
+            <a class="vraag" href="#kiezer" data-kies="Iets anders">Stel je vraag</a>
+          </article>
+        </div>
+      </div>
+      <p class="noot">Ronde tekeningen zijn illustraties, geen foto's van het eigen assortiment.</p>
+    </div>
+
+    <div class="ramadan rv">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#ill-maan"/></svg>
+      <p><b>In de ramadan:</b> klanten schrijven dat het verse brood dan extra lekker is.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KIEZER -->
+<section class="sec kiezer" id="kiezer" aria-labelledby="kies-titel">
+  <div class="wrap">
+    <div class="k-intro">
+      <p class="label" style="color:var(--geel)">Even vragen</p>
+      <h2 id="kies-titel">Is het er nog? Vraag het voor je komt.</h2>
+      <p class="lead">Kies wat je zoekt en wanneer. Je bericht staat meteen klaar. Liever bellen? Dat kan natuurlijk ook: <a href="tel:+31624217999" style="color:#fff;font-weight:700">06 24 21 79 99</a>.</p>
+    </div>
+      <form class="briefje" id="kiesform" onsubmit="return false">
+        <fieldset class="stap">
+          <legend><b>1</b>Wat zoek je?</legend>
+          <div class="chips" id="c-product">
+            <label><input type="radio" name="product" value="Brood" checked><span>Brood</span></label>
+            <label><input type="radio" name="product" value="Simit"><span>Simit</span></label>
+            <label><input type="radio" name="product" value="Börek"><span>Börek</span></label>
+            <label><input type="radio" name="product" value="Turkse pizza"><span>Turkse pizza</span></label>
+            <label><input type="radio" name="product" value="Croissants"><span>Croissants</span></label>
+            <label><input type="radio" name="product" value="Baklava"><span>Baklava</span></label>
+            <label><input type="radio" name="product" value="Small Kapsalon"><span>Small Kapsalon</span></label>
+            <label><input type="radio" name="product" value="Iets anders"><span>Iets anders</span></label>
+          </div>
+          <div class="veld" id="anders-veld" hidden><label for="v-anders">Wat zoek je?</label><input id="v-anders" type="text" autocomplete="off" maxlength="80"></div>
+        </fieldset>
+        <fieldset class="stap">
+          <legend><b>2</b>Hoeveel?</legend>
+          <div class="teller">
+            <button type="button" id="min" aria-label="Eén minder">−</button>
+            <output id="aantal" aria-live="polite">1</output>
+            <button type="button" id="plus" aria-label="Eén meer">+</button>
+            <div class="chips los"><label><input type="checkbox" id="weetniet"><span>Weet ik nog niet</span></label></div>
+          </div>
+        </fieldset>
+        <fieldset class="stap">
+          <legend><b>3</b>Wanneer?</legend>
+          <div class="chips">
+            <label><input type="radio" name="dag" value="vandaag" checked><span>Vandaag</span></label>
+            <label><input type="radio" name="dag" value="morgen"><span>Morgen</span></label>
+            <label><input type="radio" name="dag" value="anders"><span>Andere dag</span></label>
+          </div>
+          <div class="veld" id="datum-veld" hidden><label for="v-datum">Welke dag?</label><input id="v-datum" type="date"></div>
+        </fieldset>
+        <div class="veld" style="margin-top:0"><label for="v-naam">Je naam (mag leeg)</label><input id="v-naam" type="text" autocomplete="given-name" maxlength="40"></div>
+      </form>
+      <div class="voorbeeld">
+        <h3>Je bericht</h3>
+        <div class="bubbel" id="bericht" aria-live="polite"></div>
+        <div class="knoppen">
+          <a class="btn btn-geel" id="wa-kies" href="https://wa.me/31624217999" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>Stuur als appje</a>
+          <a class="btn btn-licht" href="tel:+31624217999"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg><span class="nw">Of bel 06 24 21 79 99</span></a>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- WAAROM -->
+<section class="sec waarom" aria-labelledby="wa-titel">
+  <div class="wrap">
+    <p class="label rv">Waarom Avrasya</p>
+    <h2 id="wa-titel" class="rv">Wat klanten erover schrijven.</h2>
+    <div class="kaarten">
+      <article class="kaart rv"><span class="ic"><svg aria-hidden="true"><use href="#i-blad"/></svg></span><div><small>Klanten schrijven</small><h3>Vers en lekker</h3><p>Vers en lekker: dat lees je steeds weer, van het brood tot de Turkse pizza.</p></div></article>
+      <article class="kaart rv"><span class="ic"><svg aria-hidden="true"><use href="#i-hart"/></svg></span><div><small>Klanten schrijven</small><h3>Aardige mensen</h3><p>Vriendelijk en behulpzaam achter de toonbank, zo lees je in de reviews.</p></div></article>
+      <article class="kaart rv"><span class="ic"><svg aria-hidden="true"><use href="#i-munt"/></svg></span><div><small>Klanten schrijven</small><h3>Waar voor je geld</h3><p>Goede prijs-kwaliteit, en er zijn vaste klanten die elke week langskomen.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec reviews" id="reviews" aria-labelledby="rv-titel">
+  <div class="wrap">
+    <p class="label rv">Reviews</p>
+    <h2 id="rv-titel" class="rv">De beste bakkerij van de Zwart Janstraat, vindt Has.</h2>
+    <div class="score rv">
+      <span class="getal">4,6</span>
+      <div><div class="st" aria-hidden="true">★★★★★</div><a href="https://www.google.com/maps/search/?api=1&amp;query=Bakkerij+Avrasya+Zwart+Janstraat+142-B+Rotterdam" target="_blank" rel="noopener">uit 43 reviews op Google</a></div>
+    </div>
+    <div class="rv-lijst">
+      <article class="rv-kaart rv"><p>Super lekker en vers, de beste bakkerij van de Zwart Janstraat. En goede prijs-kwaliteit.</p><div class="naam"><i>H</i>Has</div></article>
+      <article class="rv-kaart rv"><p>Aardige mensen, lekker brood en heerlijke Turkse pizza's.</p><div class="naam"><i>M</i>Marco</div></article>
+      <article class="rv-kaart rv"><p>De beste bakkerij die Songul kent. Vriendelijk personeel en de lekkerste sesamringen die je ooit hebt gegeten.</p><div class="naam"><i>S</i>Songul</div></article>
+    </div>
+    <p class="noot">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<!-- ZO WERKT HET -->
+<section class="sec stappen" aria-labelledby="st-titel">
+  <div class="wrap">
+    <p class="label rv">Zo werkt het</p>
+    <h2 id="st-titel" class="rv">In drie stappen aan de toonbank.</h2>
+    <ol class="st-lijst">
+      <li class="rv"><div><b>Kies wat je zoekt</b><span>Brood, simit, börek, Turkse pizza of iets anders.</span></div></li>
+      <li class="rv"><div><b>App of bel even</b><span>Dan weet je of het er is: <a class="nw" href="tel:+31624217999">06 24 21 79 99</a></span></div></li>
+      <li class="rv"><div><b>Loop binnen</b><span>Zwart Janstraat 142-B, in het Oude Noorden.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec faq" aria-labelledby="faq-titel">
+  <div class="wrap">
+    <p class="label rv">Vragen</p>
+    <h2 id="faq-titel" class="rv">Goed om te weten.</h2>
+    <div class="lijst">
+      <details><summary>Waar zitten jullie?</summary><p>Aan de Zwart Janstraat 142-B, 3035 AZ Rotterdam, in het Oude Noorden. <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Bakkerij+Avrasya,+Zwart+Janstraat+142-B,+3035+AZ+Rotterdam" target="_blank" rel="noopener">Route plannen</a>.</p></details>
+      <details><summary>Hoe laat kan ik langskomen?</summary><p>Bel of app even voor je komt, dan weet je het zeker: <a href="tel:+31624217999">06 24 21 79 99</a>.</p></details>
+      <details><summary>Wat ligt er op de toonbank?</summary><p>Klanten noemen vers brood, simit, börek, Turkse pizza's, croissants, baklava en de Small Kapsalon. Zoek je iets speciaals? <a href="#kiezer">Vraag het even</a>.</p></details>
+      <details><summary>Wat betekent Avrasya?</summary><p>Avrasya is Turks voor Eurazië: Europa en Azië samen.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ADRES -->
+<section class="sec adres" id="adres" aria-labelledby="ad-titel">
+  <div class="wrap">
+    <div>
+      <p class="label" style="color:var(--geel)">Langskomen</p>
+      <h2 id="ad-titel">Je vindt ons hier.</h2>
+      <p class="straat">Zwart Janstraat <span class="nw">142-B</span></p>
+      <p class="pc">3035 AZ Rotterdam · Oude Noorden</p>
+      <div class="knoppen">
+        <a class="btn btn-geel" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bakkerij+Avrasya,+Zwart+Janstraat+142-B,+3035+AZ+Rotterdam" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Route plannen</a>
+        <a class="btn btn-licht" href="tel:+31624217999"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>Bel 06 24 21 79 99</a>
+      </div>
+      <p class="tijden"><b>Openingstijden:</b> bel of app even voor je komt, dan weet je het zeker.</p>
+    </div>
+    <div class="kaartje rv" aria-hidden="true">
+      <svg viewBox="0 0 480 340">
+        <rect width="480" height="340" fill="#3a2419"/>
+        <g fill="#47301f"><rect x="20" y="20" width="130" height="110" rx="10"/><rect x="170" y="20" width="140" height="110" rx="10"/><rect x="330" y="20" width="130" height="110" rx="10"/><rect x="20" y="210" width="130" height="110" rx="10"/><rect x="170" y="210" width="140" height="110" rx="10"/><rect x="330" y="210" width="130" height="110" rx="10"/></g>
+        <rect x="0" y="146" width="480" height="48" fill="#ffc83a"/>
+        <path d="M0 170H480" stroke="#2b1810" stroke-width="2" stroke-dasharray="14 12" opacity=".5"/>
+        <text x="24" y="177" font-family="Gluten, sans-serif" font-weight="800" font-size="20" fill="#2b1810">ZWART JANSTRAAT</text>
+        <g transform="translate(360 112)">
+          <circle r="34" fill="#c41f2e" opacity=".25"><animate attributeName="r" values="18;40;18" dur="2.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".45;0;.45" dur="2.6s" repeatCount="indefinite"/></circle>
+          <path d="M0-38c-12 0-21 9-21 21 0 16 21 38 21 38s21-22 21-38c0-12-9-21-21-21z" fill="#c41f2e"/>
+          <circle cy="-17" r="8" fill="#ffc83a"/>
+        </g>
+        <text x="360" y="232" text-anchor="middle" font-family="Onest, sans-serif" font-weight="700" font-size="16" fill="#fff4d6">142-B · Avrasya</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- SLOT -->
+<section class="sec slot" aria-labelledby="slot-titel">
+  <svg class="ring-bg" viewBox="0 0 64 64" aria-hidden="true"><use href="#ill-simit"/></svg>
+  <div class="wrap">
+    <h2 id="slot-titel">Zin in iets vers?</h2>
+    <p>Vraag even of het er is, of loop gewoon binnen aan de Zwart Janstraat.</p>
+    <div class="knoppen">
+      <a class="btn btn-geel" href="https://wa.me/31624217999?text=Hoi%20Bakkerij%20Avrasya%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>Stuur een appje</a>
+      <a class="btn btn-licht" href="tel:+31624217999"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>Bel 06 24 21 79 99</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="logo-light.svg" alt="Bakkerij Avrasya" width="332" height="74">
+      <p style="margin-top:12px;max-width:26em">Turkse bakkerij in het Oude Noorden. Brood, simit, börek, Turkse pizza en croissants.</p>
+    </div>
+    <div><h4>Adres</h4><ul><li>Zwart Janstraat 142-B</li><li>3035 AZ Rotterdam</li><li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Bakkerij+Avrasya,+Zwart+Janstraat+142-B,+3035+AZ+Rotterdam" target="_blank" rel="noopener">Route plannen</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li><a href="tel:+31624217999">06 24 21 79 99</a></li><li><a href="https://wa.me/31624217999?text=Hoi%20Bakkerij%20Avrasya%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener">Appje sturen</a></li><li><a href="https://www.instagram.com/bakkerij_avrasya/" target="_blank" rel="noopener">Instagram @bakkerij_avrasya</a></li></ul></div>
+    <p class="door">Website door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a> · Dit is een demo, niet de officiële site van Bakkerij Avrasya.</p>
+  </div>
+</footer>
+
+<nav class="float" id="float" aria-label="Snel contact">
+  <a href="tel:+31624217999"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>Bel</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Bakkerij+Avrasya,+Zwart+Janstraat+142-B,+3035+AZ+Rotterdam" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Route</a>
+  <a class="hoofd" href="#kiezer"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>Even vragen</a>
+</nav>
+
+<!-- Pitch-modus: alleen voor Mo in het gesprek. Openen via het kleine "Mo"-knopje of ?pitch in de URL. -->
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-labelledby="pp-titel">
+  <div class="pp">
+    <div class="pp-top"><b>Pitch · Bakkerij Avrasya</b><button class="pp-sluit" id="pp-sluit" type="button" aria-label="Sluiten">×</button></div>
+    <h2 id="pp-titel">4,6 op Google, maar geen eigen website.</h2>
+    <div class="vn">
+      <figure>
+        <div class="zoek" aria-label="Schets van zoekresultaten">
+          <div class="balk"><i></i>Bakkerij Avrasya</div>
+          <div class="res"><small>restaurantguru.com</small><span>Bakkerij Avrasya, Rotterdam</span><em>Gids · maandag <b>gesloten</b></em></div>
+          <div class="res"><small>bottin.nl</small><span>Bakkerij Avrasya – Rotterdam</span><em>Gids · maandag <b>gesloten</b></em></div>
+          <div class="res"><small>cylex</small><span>Bakkerij Avrasya Rotterdam</span><em>Gids · maandag <b>08:00–18:00</b></em></div>
+          <div class="geen">Geen eigen website. Google-profiel zonder website-veld.</div>
+          <small style="display:block;font-size:12px;color:#6b7280;margin-top:6px">Schets van wat je online over Avrasya vindt (7 nov 2026).</small>
+        </div>
+        <figcaption><b>Voor:</b> wie "Bakkerij Avrasya" zoekt, vindt alleen gidsen, en die zeggen elk iets anders over maandag.</figcaption>
+      </figure>
+      <figure><div class="tel"><iframe id="pp-frame" title="De nieuwe site op een telefoon" loading="lazy"></iframe></div><figcaption><b>Na:</b> jullie eigen site, met jullie eigen pide-foto's.</figcaption></figure>
+    </div>
+
+    <h3>Rekenvoorbeeld (vul samen in)</h3>
+    <div class="reken">
+      <div><label for="r-klanten">Extra klanten per week <output id="o-klanten">3</output></label><input type="range" id="r-klanten" min="0" max="40" step="1" value="3"></div>
+      <div><label for="r-besteding">Gemiddelde besteding per klant <output id="o-besteding">€ 5</output></label><input type="range" id="r-besteding" min="2" max="30" step="1" value="5"></div>
+      <div class="uitkomst">
+        <div><small>Extra omzet per week</small><strong id="u-week">€ 15</strong></div>
+        <div><small>Extra omzet per jaar</small><strong id="u-jaar">€ 780</strong></div>
+        <div><small>€ 595 is de omzet van</small><strong id="u-klanten">119 klanten</strong></div>
+      </div>
+      <p class="disclaimer">Voorbeeld, geen belofte. Jullie kiezen de getallen; het gaat om omzet, niet om winst.</p>
+    </div>
+
+    <h3>Wat er concreet beter is</h3>
+    <ol class="punten">
+      <li><span><b>Eén plek met de juiste tijden.</b> Nu zeggen twee gidsen dat jullie maandag dicht zijn en één dat jullie open zijn. Op een eigen site zetten jullie zelf de tijden.</span></li>
+      <li><span><b>Laten zien wat er ligt, met jullie eigen foto's.</b> Pide van het ovenrek, simit, börek, croissants: klanten zien vooraf wat ze kunnen halen.</span></li>
+      <li><span><b>Bellen, appen en route in 1 tik.</b> Op de telefoon blijft de knop altijd in beeld, en de 4,6 uit 43 reviews staat bovenaan.</span></li>
+    </ol>
+  </div>
+</div>
+
+<script>
+const WA_NUMMER = "31624217999";
+
+/* scroll-reveal met vangnet */
+(function(){
+  const els = document.querySelectorAll(".rv");
+  if ("IntersectionObserver" in window){
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin:"0px 0px -8% 0px"});
+    els.forEach(el => io.observe(el));
+  }
+  setTimeout(() => els.forEach(el => el.classList.add("in")), 3500);
+})();
+
+/* zwevende cta zodra de hero uit beeld is */
+(function(){
+  const f = document.getElementById("float"), hero = document.querySelector(".hero");
+  if (!("IntersectionObserver" in window)) { f.classList.add("toon"); return; }
+  new IntersectionObserver(([e]) => f.classList.toggle("toon", !e.isIntersecting), {threshold:0}).observe(hero);
+})();
+
+/* kiezer */
+(function(){
+  const form = document.getElementById("kiesform"), out = document.getElementById("bericht"), wa = document.getElementById("wa-kies");
+  const $ = id => document.getElementById(id);
+  let n = 1;
+  const vandaag = new Date(); vandaag.setMinutes(vandaag.getMinutes() - vandaag.getTimezoneOffset());
+  $("v-datum").min = vandaag.toISOString().slice(0,10);
+  const fmt = v => { if(!v) return ""; const d = new Date(v + "T12:00:00"); return d.toLocaleDateString("nl-NL",{weekday:"long",day:"numeric",month:"long"}); };
+  function bouw(){
+    const product = form.querySelector("input[name=product]:checked").value;
+    const dag = form.querySelector("input[name=dag]:checked").value;
+    $("anders-veld").hidden = product !== "Iets anders";
+    $("datum-veld").hidden = dag !== "anders";
+    const weetniet = $("weetniet").checked;
+    $("aantal").textContent = weetniet ? "?" : n;
+    const namen = {"Brood":"brood","Simit":"simit","Börek":"börek","Turkse pizza":"Turkse pizza","Croissants":"croissants","Baklava":"baklava","Small Kapsalon":"Small Kapsalon"};
+    const wat = product === "Iets anders" ? ($("v-anders").value.trim() || "iets anders") : namen[product];
+    const hoeveel = weetniet ? "" : n + "× ";
+    let wanneer = dag === "vandaag" ? "vandaag" : dag === "morgen" ? "morgen" : (fmt($("v-datum").value) ? "op " + fmt($("v-datum").value) : "binnenkort");
+    const naam = $("v-naam").value.trim();
+    const tekst = "Hoi Bakkerij Avrasya,\nhebben jullie " + wanneer + " " + hoeveel + wat + "?\n" + (naam ? "Groet, " + naam : "Groet!");
+    out.textContent = tekst;
+    wa.href = "https://wa.me/" + WA_NUMMER + "?text=" + encodeURIComponent(tekst);
+    return tekst;
+  }
+  $("min").addEventListener("click", () => { n = Math.max(1, n - 1); $("weetniet").checked = false; bouw(); });
+  $("plus").addEventListener("click", () => { n = Math.min(50, n + 1); $("weetniet").checked = false; bouw(); });
+  form.addEventListener("input", bouw); form.addEventListener("change", bouw);
+  document.querySelectorAll("[data-kies]").forEach(a => a.addEventListener("click", () => {
+    const r = form.querySelector('input[name=product][value="' + a.dataset.kies + '"]');
+    if (r){ r.checked = true; bouw(); }
+  }));
+  bouw();
+})();
+
+/* pitch-modus */
+(function(){
+  const p = document.getElementById("pitch"), frame = document.getElementById("pp-frame");
+  const euro = n => "€ " + Math.round(n).toLocaleString("nl-NL");
+  function open(){ p.classList.add("open"); document.body.style.overflow = "hidden"; if (!frame.src) frame.src = location.href.split("#")[0].split("?")[0]; }
+  function dicht(){ p.classList.remove("open"); document.body.style.overflow = ""; }
+  document.getElementById("pitch-knop").addEventListener("click", open);
+  document.getElementById("pp-sluit").addEventListener("click", dicht);
+  p.addEventListener("click", e => { if (e.target === p) dicht(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") dicht(); });
+  const k = document.getElementById("r-klanten"), b = document.getElementById("r-besteding");
+  function reken(){
+    const kl = +k.value, best = +b.value;
+    document.getElementById("o-klanten").textContent = kl;
+    document.getElementById("o-besteding").textContent = euro(best);
+    document.getElementById("u-week").textContent = euro(kl * best);
+    document.getElementById("u-jaar").textContent = euro(kl * best * 52);
+    document.getElementById("u-klanten").textContent = Math.ceil(595 / best) + " klanten";
+  }
+  k.addEventListener("input", reken); b.addEventListener("input", reken); reken();
+  if (/[?&]pitch\b/.test(location.search)) open();
+  if (window.self !== window.top) { document.getElementById("pitch-knop").hidden = true; }
+})();
+</script>
+</body>
+</html>
