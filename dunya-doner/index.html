@@ -1,527 +1,821 @@
-<!doctype html>
+<!DOCTYPE html>
+<!--
+  Demo L215 – Dunya Döner (v2, 7 nov 2026, vanaf nul)
+  Concept: "street-food poster / verlicht menubord boven de toonbank" — de Beijerlandselaan als affiche.
+  Lay-out-archetype: brutale poster-typografie over full-bleed eigen food-foto, gekruiste ticker-tapes,
+  een menubord-sectie die eruitziet als een lichtbak (tegels gaan aan als je erlangs scrolt), bestelbon-als-kiezer,
+  poster-split "zelf bellen & ophalen" vs. "bezorgd via Thuisbezorgd", reuze-telefoonnummer als slot.
+  Volgende demo: kies iets anders dan poster/lichtbak.
+  Feiten: alleen dossier L215 (+ aanvulling Ops 7 nov). Geen prijzen, geen openingstijden-tabel (bronnen spreken elkaar tegen),
+  geen Instagram (account bestaat niet meer). WhatsApp op dit nummer is niet bevestigd: WhatsApp alleen als knop/optie,
+  nooit als bestaande bestelroute in lopende tekst.
+-->
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Dunya Doner – Turkse pizza en döner in Rotterdam-Zuid</title>
-<meta name="description" content="Dunya Doner aan de Beijerlandselaan 169-A in Rotterdam-Zuid: Turkse pizza en döner, 100% halal. 4,7 uit 215 Google-reviews. Bel 06 45 86 46 90.">
-<meta name="theme-color" content="#0c3f3a">
+<title>Dunya Döner – Turkse pizza en döner in Rotterdam-Zuid</title>
+<meta name="description" content="Dunya Döner aan de Beijerlandselaan 169-A in Rotterdam-Zuid (Hillesluis): Turkse pizza, döner en dürüm, 100% halal. 4,7 uit 215 Google-reviews. Bel 06 45 86 46 90.">
+<meta name="theme-color" content="#120E0D">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-flatlay.webp">
 <style>
 :root{
-  --petrol:#0c3f3a;--petrol2:#12534c;--petrol3:#08302c;--tomaat:#d9442b;--tomaat2:#b8341e;--deeg:#f2cf8f;--peterselie:#3f8f4c;
-  --bg:#f2f6f2;--wit:#fff;--ink:#10302c;--grijs:#4d6460;--lijn:#d8e3dd;
-  --kop:'Bricolage Grotesque','Arial Narrow',system-ui,sans-serif;--tekst:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --r:20px;
+  --zwart:#120E0D;--zwart2:#1D1614;--zwart3:#2A201D;
+  --rood:#E0291B;--knop:#C41F17;--logo:#D9202E;--rood-d:#7C0F18;
+  --wit:#FFF6EA;--wit2:#F3E6D3;--goud:#E7B54A;--goud-d:#B9862A;
+  --grijs:#B9ADA2;
+  --kop:"Big Shoulders Display",Impact,"Arial Narrow",sans-serif;
+  --tekst:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--tekst);color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px;overflow-x:hidden}
-img,svg{display:block;max-width:100%}
+body{font-family:var(--tekst);background:var(--zwart);color:var(--wit);font-size:17px;line-height:1.55;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-h1,h2,h3{font-family:var(--kop);font-weight:800;line-height:1.02;letter-spacing:-.01em;overflow-wrap:break-word;font-stretch:88%}
-h2{font-size:clamp(34px,6.2vw,58px)}
-h3{font-size:clamp(20px,5.2vw,24px);line-height:1.15}
-.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--tomaat);margin-bottom:12px}
-.eyebrow::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor;box-shadow:0 0 0 3px var(--deeg)}
-.lead{font-size:clamp(17px,2.2vw,19px);color:var(--grijs);max-width:620px;margin-top:14px}
-section{padding:clamp(64px,9vw,110px) 0}
+.wrap{width:min(1200px,100% - 40px);margin:0 auto}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--goud);outline-offset:3px}
 
-/* demo + aankondiging */
-.demo{font-size:12.5px;text-align:center;padding:6px 14px;background:var(--petrol3);color:#a9c4be;line-height:1.4}
-.demo a{color:#fff}
-.bar{background:var(--deeg);color:var(--petrol);text-align:center;font-weight:700;font-size:14px;padding:9px 14px;line-height:1.35}
-.bar a{color:var(--petrol);text-underline-offset:3px}
-.bar .st{color:var(--tomaat)}
+/* demo-strook + aankondiging */
+.demo-strip{background:var(--wit);color:var(--zwart);font-size:13px;display:flex;align-items:center;justify-content:center;gap:10px;padding:5px 10px;min-height:34px;text-align:center}
+.demo-strip a{font-weight:700}
+.demo-strip .kort{display:none}
+.demo-mo{border:0;background:transparent;color:rgba(18,14,13,.38);font:600 11px var(--tekst);letter-spacing:.06em;cursor:pointer;padding:4px 6px;border-radius:6px}
+.demo-mo:hover{color:var(--zwart)}
+.announce{background:var(--knop);color:#fff;font-size:13.5px;text-align:center;padding:7px 12px;letter-spacing:.02em}
+.announce a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px;margin:-12px 0}
+.announce b{color:#fff}
+@media(max-width:560px){.demo-strip .lang{display:none}.demo-strip .kort{display:inline}}
 
-/* header */
-.top{background:var(--wit);border-bottom:1px solid var(--lijn);position:sticky;top:0;z-index:40}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:74px}
-.brand{display:flex;align-items:center;text-decoration:none;min-height:44px}
-.brand img{height:50px;width:auto}
-nav.menu{display:flex;gap:4px;align-items:center}
-nav.menu a{text-decoration:none;font-weight:500;font-size:15px;padding:12px;border-radius:10px;min-height:44px;display:inline-flex;align-items:center}
-nav.menu a:hover{background:var(--bg)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:16px;font-weight:700;font-size:16.5px;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:var(--tekst);transition:background-color .2s,color .2s,border-color .2s;white-space:nowrap}
-.btn svg{width:22px;height:22px;flex:none}
-.btn-tomaat{background:var(--tomaat);color:#fff}
-.btn-tomaat:hover{background:var(--tomaat2)}
-.btn-deeg{background:var(--deeg);color:var(--petrol)}
-.btn-deeg:hover{background:#f7dca8}
-.btn-petrol{background:var(--petrol);color:#fff}
-.btn-petrol:hover{background:var(--petrol2)}
-.btn-rand{background:#fff;color:var(--petrol);border-color:var(--petrol)}
-.btn-rand:hover{background:var(--petrol);color:#fff}
-.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
-.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
-.top .btn{min-height:46px;padding:0 16px;font-size:15px}
-@media(max-width:900px){nav.menu{display:none}}
-@media(max-width:420px){.brand img{height:42px}.top .btn{padding:0 13px}.top .btn .lang{display:none}}
+/* header (ligt over de hero) */
+.top{position:relative}
+header.site{position:absolute;left:0;right:0;top:0;z-index:20;background:linear-gradient(rgba(18,14,13,.82),rgba(18,14,13,0))}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0 26px}
+.brand img{height:40px;width:auto}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{text-decoration:none;font:700 15px var(--tekst);letter-spacing:.06em;text-transform:uppercase;padding:10px 12px;min-height:44px;display:inline-flex;align-items:center;border-radius:8px}
+.nav a:hover{background:rgba(255,246,234,.1)}
+.nav .bel{background:var(--knop);color:#fff;gap:8px;padding:10px 16px}
+.nav .bel:hover{background:var(--rood)}
+@media(max-width:860px){.nav .los{display:none}.brand img{height:30px}.nav .bel{padding:10px 14px}}
 
 /* hero */
-.hero{position:relative;background:var(--petrol);color:#fff;overflow:hidden;padding:clamp(44px,7vw,90px) 0 clamp(60px,8vw,104px)}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 46%,rgba(242,207,143,.16),transparent 52%),radial-gradient(circle at 10% 100%,rgba(217,68,43,.22),transparent 45%)}
-.raster{position:absolute;inset:0;opacity:.09;background-image:radial-gradient(circle,#f2cf8f 1.4px,transparent 1.6px);background-size:26px 26px}
-.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,64px);align-items:center}
-.hero .eyebrow{color:var(--deeg)}
-.hero .eyebrow::before{box-shadow:0 0 0 3px rgba(242,207,143,.25)}
-.hero h1{font-size:clamp(44px,8.2vw,92px)}
-.hero h1 .accent{color:var(--deeg)}
-.hero p.sub{font-size:clamp(17px,2.3vw,20px);color:#cfe1dc;max-width:540px;margin-top:18px}
-.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;margin-bottom:12px}
-.hero-cta .btn{min-height:60px;font-size:18px;padding:0 26px}
-.hero .naar{display:inline-flex;align-items:center;min-height:44px;margin-top:16px;color:#fff;font-weight:700;text-underline-offset:4px}
-.trust{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:15px;color:#cfe1dc}
-.trust .sterren{color:var(--deeg);letter-spacing:2px;font-size:18px}
-.trust b{color:#fff}
-.trust a{color:#fff;text-underline-offset:3px}
-.globe{width:100%;max-width:440px;margin-inline:auto;overflow:visible}
-.globe .ring{transform-origin:220px 220px;animation:draai 26s linear infinite}
-@keyframes draai{to{transform:rotate(360deg)}}
-.globe .land{animation:spin 9s linear infinite}
-@keyframes spin{to{transform:translateX(-200px)}}
-.globe .stoom path{opacity:0;animation:stoom 4.2s ease-out infinite;transform-box:fill-box}
-.globe .stoom path:nth-child(2){animation-delay:1.4s}
-.globe .stoom path:nth-child(3){animation-delay:2.8s}
-@keyframes stoom{0%{opacity:0;transform:translateY(16px)}30%{opacity:.7}100%{opacity:0;transform:translateY(-34px)}}
-.globe .glans{animation:glans 5s ease-in-out infinite alternate}
-@keyframes glans{from{opacity:.25}to{opacity:.5}}
-.globe text{font-family:var(--kop);font-weight:800;font-size:17px;letter-spacing:.2em;fill:var(--deeg)}
-@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.globe{max-width:220px;order:-1;margin:0 auto -6px}}
-@media(max-width:420px){.hero-cta .btn{width:100%}}
+.hero{position:relative;min-height:calc(100svh - 64px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;background:var(--zwart)}
+.hero-foto{position:absolute;inset:0;z-index:-2}
+.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:52% 60%;animation:kenburns 18s ease-in-out infinite alternate;transform-origin:55% 60%}
+@keyframes kenburns{from{transform:scale(1.12) translate(0,0)}to{transform:scale(1) translate(-1%,1%)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(180deg,rgba(18,14,13,.25) 0%,rgba(18,14,13,.05) 22%,rgba(18,14,13,.55) 48%,rgba(18,14,13,.94) 74%,var(--zwart) 100%),
+  linear-gradient(90deg,rgba(18,14,13,.55),rgba(18,14,13,0) 60%)}
+.hero .wrap{padding:120px 0 40px;position:relative}
+.kicker{display:inline-flex;align-items:center;gap:10px;font:700 13px var(--tekst);letter-spacing:.18em;text-transform:uppercase;color:var(--goud)}
+.kicker::before{content:"";width:28px;height:2px;background:var(--goud)}
+.kicker .kort{display:none}
+@media(max-width:600px){.kicker .lang{display:none}.kicker .kort{display:inline}.kicker{letter-spacing:.14em}}
+h1.poster{font-family:var(--kop);font-weight:900;text-transform:uppercase;line-height:.84;letter-spacing:-.005em;font-size:clamp(84px,11.2vw,170px);margin:14px 0 0}
+h1.poster .r{display:block;overflow:hidden;padding-top:.1em;margin-top:-.1em}
+h1.poster .r>span{display:block;animation:omhoog .9s cubic-bezier(.2,.75,.2,1) both}
+h1.poster .r:nth-child(2)>span{animation-delay:.12s}
+h1.poster .r:nth-child(3)>span{animation-delay:.24s}
+h1.poster .r:nth-child(3){margin-top:.07em}
+h1.poster .rood{color:var(--rood);-webkit-text-stroke:0}
+h1.poster .hol{color:transparent;-webkit-text-stroke:2px var(--wit)}
+@keyframes omhoog{from{transform:translateY(105%)}to{transform:translateY(0)}}
+.stempel{display:inline-flex;align-items:center;gap:8px;margin-top:16px;border:2px solid var(--goud);color:var(--goud);font:800 15px var(--kop);letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:4px;transform:rotate(-2deg)}
+.hero .sub{font-size:clamp(17px,1.6vw,20px);max-width:34em;margin-top:16px;color:var(--wit2)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;align-items:stretch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 22px;border-radius:12px;font:700 17px var(--tekst);text-decoration:none;border:2px solid transparent;cursor:pointer;background:transparent;color:inherit}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-bel{background:var(--knop);color:#fff;font-size:19px}
+.btn-bel:hover{background:var(--rood)}
+.btn-bel .nr{font-family:var(--kop);font-weight:900;font-size:26px;letter-spacing:.03em;line-height:1}
+.btn-rand{border-color:rgba(255,246,234,.55);color:var(--wit)}
+.btn-rand:hover{border-color:var(--wit);background:rgba(255,246,234,.08)}
+.btn-goud{background:var(--goud);color:var(--zwart)}
+.btn-goud:hover{background:#F1C766}
+.trust{margin-top:28px;font-size:14.5px;color:var(--grijs);display:flex;flex-wrap:wrap;gap:6px 16px}
+.trust b{color:var(--goud)}
+.trust a{text-decoration:none}
+@media(max-width:600px){
+  .hero{min-height:calc(100svh - 64px)}
+  .hero .wrap{padding:150px 0 30px}
+  h1.poster{font-size:21.5vw}
+  .hero-cta .btn-bel{flex:1 1 100%}
+  .hero-cta .btn-rand{flex:1 1 0}
+  .btn-bel .nr{font-size:24px}
+}
 
-/* marquee */
-.marquee{background:var(--tomaat);color:#fff;overflow:hidden}
-.marquee .baan{display:flex;width:max-content;animation:loop 36s linear infinite}
-.marquee span{font-family:var(--kop);font-weight:800;font-stretch:88%;font-size:22px;letter-spacing:.01em;padding:14px 0;white-space:nowrap;display:flex;align-items:center}
-.marquee span::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--deeg);margin:0 26px;box-shadow:inset -3px -2px 0 rgba(143,36,20,.6)}
+/* draaiende spies-badge */
+.hero .wrap{position:relative}
+.badge{position:absolute;right:0;top:96px;width:176px;height:176px;z-index:3}
+.badge::before{content:"";position:absolute;inset:0;border-radius:50%;background:rgba(18,14,13,.72);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.badge .ring{position:absolute;inset:0;animation:rond 22s linear infinite}
+.badge .ring text{font:800 15.5px var(--kop);letter-spacing:.22em;fill:var(--wit);text-transform:uppercase}
+.badge .kern{position:absolute;inset:22px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#2c1d18,#0d0908 72%);box-shadow:0 0 0 2px var(--goud),0 12px 40px rgba(0,0,0,.5);display:grid;place-items:center;overflow:hidden}
+.badge .kern svg{width:62%;height:auto}
+@keyframes rond{to{transform:rotate(360deg)}}
+.spies .vlees{animation:draai 1.6s linear infinite}
+@keyframes draai{to{transform:translateX(-24px)}}
+.spies .gloed{animation:gloei 2.4s ease-in-out infinite alternate}
+@keyframes gloei{from{opacity:.55}to{opacity:1}}
+@media(max-width:860px){.badge{width:100px;height:100px;top:194px;right:-4px}.badge .ring text{font-size:15px}.badge .kern{inset:14px}}
+@media(min-width:601px) and (max-width:860px){.badge{top:100px}}
+
+/* ticker-tapes */
+.tapes{position:relative;height:150px;overflow:hidden;background:var(--zwart);margin-top:-1px}
+.tape{position:absolute;left:-5%;width:110%;overflow:hidden;white-space:nowrap;padding:12px 0;font:900 30px/1 var(--kop);text-transform:uppercase;letter-spacing:.04em}
+.tape .loop{display:inline-flex;gap:0;animation:loop 28s linear infinite}
+.tape span{padding:0 22px;display:inline-flex;align-items:center;gap:22px}
+.tape span::after{content:"✦";font-size:.7em}
+.tape.een{top:30px;background:var(--rood);color:#fff;transform:rotate(-3deg);z-index:2;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.tape.twee{top:70px;background:var(--goud);color:var(--zwart);transform:rotate(2.2deg)}
+.tape.twee .loop{animation-direction:reverse;animation-duration:34s}
 @keyframes loop{to{transform:translateX(-50%)}}
+@media(max-width:600px){.tapes{height:118px}.tape{font-size:24px;padding:10px 0}.tape.een{top:20px}.tape.twee{top:60px}}
 
-/* aanbod */
-.kaarten{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
-.kaart{background:#fff;border:1px solid var(--lijn);border-radius:var(--r);padding:28px 24px;min-width:0;position:relative;overflow:hidden}
-.kaart .ic{width:64px;height:64px;margin-bottom:16px}
-.kaart p{color:var(--grijs);margin-top:8px;font-size:16px}
-.kaart .tag{position:absolute;top:18px;right:18px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--bg);color:var(--petrol);padding:5px 10px;border-radius:999px}
-.noot{margin-top:24px;color:var(--grijs);font-size:16px}
-.noot a{color:var(--tomaat2);font-weight:700}
-@media(max-width:860px){.kaarten{grid-template-columns:1fr}}
+/* secties algemeen */
+section{position:relative}
+.sec{padding:96px 0}
+.label{font:700 13px var(--tekst);letter-spacing:.2em;text-transform:uppercase;color:var(--goud)}
+h2.kop{font-family:var(--kop);font-weight:900;text-transform:uppercase;line-height:.9;font-size:clamp(52px,8vw,112px);letter-spacing:-.005em;margin:10px 0 18px;overflow-wrap:break-word}
+h2.kop em{font-style:normal;color:var(--rood)}
+.lead{font-size:clamp(17px,1.5vw,19px);color:var(--wit2);max-width:36em}
+@media(max-width:600px){.sec{padding:72px 0}}
 
-/* kiezer */
-#kiezer{background:var(--petrol);color:#fff;position:relative;overflow:hidden}
-#kiezer .wrap{position:relative}
-#kiezer .lead{color:#cfe1dc}
-#kiezer .eyebrow{color:var(--deeg)}
-.kiezer{margin-top:34px;background:var(--petrol2);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:clamp(20px,4vw,36px);display:grid;gap:28px}
-.stap h3{font-family:var(--tekst);font-weight:700;font-size:17px;letter-spacing:0;display:flex;align-items:center;gap:10px;margin-bottom:14px;font-stretch:100%}
-.stap h3 i{font-style:normal;width:28px;height:28px;border-radius:50%;background:var(--deeg);color:var(--petrol);display:grid;place-items:center;font-size:14px;flex:none}
-.opties{display:flex;flex-wrap:wrap;gap:10px}
-.optie{min-height:50px;padding:10px 18px;border-radius:14px;border:2px solid rgba(255,255,255,.24);background:transparent;color:#fff;font:500 16px var(--tekst);cursor:pointer;transition:background-color .2s,border-color .2s,color .2s;text-align:left}
-.optie small{display:block;font-weight:400;font-size:13px;color:#a9c4be}
-.optie:hover{border-color:#fff}
-.optie[aria-pressed=true]{background:var(--deeg);color:var(--petrol);border-color:var(--deeg)}
-.optie[aria-pressed=true] small{color:var(--petrol2)}
-#dagen{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
-.stap[hidden]{display:none}
-.uitkomst{background:#fff;color:var(--ink);border-radius:18px;padding:22px}
-.uitkomst .kop{font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--grijs)}
-.uitkomst blockquote{margin-top:10px;background:#e7f4ea;border-radius:14px 14px 14px 4px;padding:14px 16px;font-size:16.5px;color:#123}
-.uitkomst .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-@media(max-width:420px){.uitkomst .btns .btn{width:100%}}
+/* menubord */
+.bord-sec{background:radial-gradient(120% 70% at 50% 0%,#2b1d18 0%,var(--zwart) 62%)}
+.bord-kop{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:70px}
+.bord{position:relative;border-radius:18px;padding:16px;background:linear-gradient(#34302e,#191513);box-shadow:0 0 0 1px #4a4542 inset,0 0 0 6px #0b0908,0 40px 90px rgba(0,0,0,.55),0 0 120px rgba(224,41,27,.12)}
+.bord::before,.bord::after{content:"";position:absolute;top:-46px;width:2px;height:46px;background:linear-gradient(#5c5652,#2c2826)}
+.bord::before{left:18%}.bord::after{right:18%}
+.bord-titel{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px 16px;flex-wrap:wrap}
+.bord-titel .neon{font:900 clamp(30px,4vw,44px)/1 var(--kop);letter-spacing:.14em;text-transform:uppercase;color:#ffd9d4;text-shadow:0 0 6px rgba(255,80,60,.9),0 0 18px rgba(224,41,27,.85),0 0 40px rgba(224,41,27,.6)}
+.bord-titel small{font:700 13px var(--tekst);letter-spacing:.16em;text-transform:uppercase;color:var(--grijs)}
+.tegels{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tegel{position:relative;border-radius:10px;overflow:hidden;background:#0c0908;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;opacity:.18;filter:saturate(.3) brightness(.5)}
+.bord.aan .tegel{animation:aan 1.1s steps(1,end) forwards}
+.bord.aan .tegel:nth-child(2){animation-delay:.25s}
+.bord.aan .tegel:nth-child(3){animation-delay:.5s}
+.bord.aan .tegel:nth-child(4){animation-delay:.75s}
+@keyframes aan{0%{opacity:.18;filter:saturate(.3) brightness(.5)}12%{opacity:1;filter:none}20%{opacity:.35;filter:saturate(.5) brightness(.6)}30%{opacity:1;filter:none}38%{opacity:.6}46%,100%{opacity:1;filter:none}}
+.tegel::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,246,234,.12),inset 0 0 50px rgba(255,214,160,.10);border-radius:inherit}
+.tegel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tegel .tekst{position:relative;padding:20px 18px 20px;background:linear-gradient(rgba(12,9,8,0),rgba(12,9,8,.88) 38%)}
+.tegel .nr{font:800 14px var(--kop);letter-spacing:.18em;color:var(--goud)}
+.tegel h3{font:900 clamp(34px,3.2vw,46px)/.9 var(--kop);text-transform:uppercase;margin:4px 0 8px;overflow-wrap:break-word}
+.tegel p{font-size:15px;color:var(--wit2)}
+.tegel .halal{display:inline-block;margin-top:10px;font:700 12px var(--tekst);letter-spacing:.14em;text-transform:uppercase;color:var(--zwart);background:var(--goud);padding:4px 8px;border-radius:4px}
+.tegel.typo{background:radial-gradient(circle at 50% 35%,#3a1410 0%,#160c0a 70%)}
+.tegel.typo{justify-content:space-between}
+.tegel.typo .icoon{flex:1;display:grid;place-items:center;padding:26px 26px 0}
+.tegel.typo .icoon svg{width:min(70%,190px);height:auto;filter:drop-shadow(0 0 6px rgba(231,181,74,.9)) drop-shadow(0 0 18px rgba(231,181,74,.45))}
+.tegel q{quotes:"\201C" "\201D"}
+.bord-voet{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:12px;padding:16px 18px;border-radius:10px;background:#0c0908;box-shadow:inset 0 0 0 1px rgba(231,181,74,.35)}
+.bord-voet p{font-size:16px;color:var(--wit2);max-width:40em}
+.bord-voet b{color:var(--goud)}
+@media(max-width:1020px){.tegels{grid-template-columns:repeat(2,1fr)}.tegel{min-height:380px}}
+@media(max-width:600px){.tegels{grid-template-columns:1fr}.tegel{min-height:340px}.tegel.typo{min-height:0}.tegel.typo .icoon svg{width:120px}.bord{padding:10px}.bord-titel{padding:8px 8px 12px}}
 
-/* waarom */
-.waarom{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
-.w{background:#fff;border-radius:var(--r);padding:28px 24px;border:1px solid var(--lijn);min-width:0}
-.w .nr{width:52px;height:52px;border-radius:50%;background:var(--deeg);color:var(--petrol);display:grid;place-items:center;font-family:var(--kop);font-weight:800;font-size:20px}
-.w:nth-child(2) .nr{background:var(--tomaat);color:#fff}
-.w:nth-child(3) .nr{background:var(--petrol);color:#fff}
-.w h3{margin-top:16px}
-.w p{color:var(--grijs);margin-top:10px;font-size:16px}
-@media(max-width:860px){.waarom{grid-template-columns:1fr}}
+/* twee manieren */
+.split{display:grid;grid-template-columns:1.15fr 1fr;min-height:520px}
+.split>div{padding:72px max(28px,calc((100vw - 1200px)/2));padding-right:48px;display:flex;flex-direction:column;justify-content:center}
+.split .zelf{background:var(--knop);color:#fff}
+.split .bezorg{background:var(--zwart2);padding-left:48px}
+.split h2{font:900 clamp(48px,6.4vw,92px)/.88 var(--kop);text-transform:uppercase;margin:10px 0 18px;overflow-wrap:break-word}
+.split p{font-size:18px;max-width:30em}
+.split .zelf .label{color:#ffe3b0}
+.split .knoppen{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.split .zelf .btn-wit{background:#fff;color:var(--knop)}
+.split .zelf .btn-wit .nr{font-family:var(--kop);font-weight:900;font-size:24px;line-height:1}
+.split .zelf .btn-rand{border-color:rgba(255,255,255,.7);color:#fff}
+.split .bezorg p{color:var(--wit2)}
+.split .klein{font-size:14px;color:var(--grijs);margin-top:16px}
+@media(max-width:860px){.split{grid-template-columns:1fr}.split>div,.split .bezorg{padding:64px 20px}}
 
-/* reviews */
-#reviews{background:#fff;border-block:1px solid var(--lijn)}
-.score{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:26px}
-.score .getal{font-family:var(--kop);font-weight:800;font-size:clamp(64px,12vw,96px);line-height:1;color:var(--petrol)}
-.score .st{color:var(--tomaat);font-size:26px;letter-spacing:3px}
-.score a{font-weight:700;color:var(--tomaat2);text-underline-offset:3px}
-.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
-.rev{background:var(--bg);border-radius:var(--r);padding:26px 24px;min-width:0;position:relative}
-.rev::before{content:"";display:block;width:36px;height:6px;border-radius:3px;background:var(--tomaat);margin-bottom:16px}
-.rev:nth-child(2)::before{background:var(--deeg)}
-.rev:nth-child(3)::before{background:var(--petrol)}
-.rev p{font-size:17px}
-.rev .wie{margin-top:14px;font-weight:700;font-size:15px}
-.rev .wie span{font-weight:400;color:var(--grijs)}
-.label{margin-top:18px;font-size:14px;color:var(--grijs)}
-.label a{color:var(--tomaat2)}
-@media(max-width:860px){.revs{grid-template-columns:1fr}}
+/* bestelbon (kiezer) */
+.bon-sec{background:var(--zwart)}
+.bon-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:start}
+.bon{position:relative;background:var(--wit);color:var(--zwart);padding:30px 26px 34px;border-radius:4px;box-shadow:0 30px 70px rgba(0,0,0,.5);transform:rotate(.6deg)}
+.bon::before,.bon::after{content:"";position:absolute;left:0;right:0;height:14px;background:radial-gradient(circle at 7px -1px,transparent 7px,var(--wit) 7.5px) 0 0/14px 14px repeat-x}
+.bon::before{top:-13px;transform:rotate(180deg)}
+.bon::after{bottom:-13px}
+.bon-kop{text-align:center;border-bottom:2px dashed rgba(18,14,13,.25);padding-bottom:14px;margin-bottom:18px}
+.bon-kop img{margin:0 auto 6px;height:30px;width:auto}
+.bon-kop small{font:600 12px var(--tekst);letter-spacing:.16em;text-transform:uppercase;color:#6b5f57}
+.bon fieldset{border:0;margin:0 0 20px}
+.bon legend{font:900 22px var(--kop);text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
+.rij{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid rgba(18,14,13,.1)}
+.rij .naam{font-weight:600;font-size:17px;min-width:0;overflow-wrap:break-word}
+.teller{display:flex;align-items:center;gap:6px;flex:none}
+.teller button{width:44px;height:44px;border-radius:10px;border:2px solid var(--zwart);background:#fff;font:700 22px/1 var(--tekst);cursor:pointer;color:var(--zwart)}
+.teller button:hover{background:var(--zwart);color:#fff}
+.teller output{min-width:28px;text-align:center;font:900 24px var(--kop)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0}
+.chips span{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border-radius:999px;border:2px solid var(--zwart);font-weight:600;font-size:15.5px;cursor:pointer}
+.chips input:checked+span{background:var(--zwart);color:var(--wit)}
+.chips input:focus-visible+span{outline:3px solid var(--goud);outline-offset:2px}
+.veld{display:block;margin-top:10px}
+.veld input,.veld textarea{width:100%;min-height:46px;border:2px solid rgba(18,14,13,.3);border-radius:10px;padding:10px 12px;font:500 16px var(--tekst);background:#fff;color:var(--zwart)}
+.veld textarea{min-height:70px;resize:vertical}
+.veld span{display:block;font-size:14px;font-weight:600;margin-bottom:4px}
+.uitvoer{background:#f6ead7;border-radius:8px;padding:14px 16px;font:500 15px/1.5 ui-monospace,"Cascadia Mono",Consolas,monospace;white-space:pre-wrap;color:#2a201d;margin-top:6px}
+.bon .knoppen{display:grid;gap:10px;margin-top:16px}
+.bon .btn-bel{width:100%}
+.bon .btn-wa{width:100%;border-color:var(--zwart);color:var(--zwart)}
+.bon .btn-wa:hover{background:var(--zwart);color:var(--wit)}
+.bon .hint{font-size:13.5px;color:#6b5f57;margin-top:10px;text-align:center}
+.bon-uitleg h2{margin-top:6px}
+.bon-uitleg h2.kop{font-size:clamp(52px,6vw,84px)}
+.stappen{list-style:none;display:grid;gap:14px;margin-top:30px;counter-reset:s}
+.stappen li{counter-increment:s;display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start}
+.stappen li::before{content:counter(s);font:900 64px/.8 var(--kop);color:var(--rood)}
+.stappen h3{font:900 28px/1 var(--kop);text-transform:uppercase;margin-bottom:4px}
+.stappen p{color:var(--wit2)}
+.stappen a{color:var(--goud);font-weight:700}
+@media(max-width:960px){.bon-grid{grid-template-columns:1fr;gap:48px}.bon{transform:none}}
+@media(max-width:400px){.bon{padding:26px 16px 30px}.rij .naam{font-size:16px}}
 
-/* stappen */
-.stappen{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;counter-reset:s}
-.st3{background:#fff;border:1px solid var(--lijn);border-radius:var(--r);padding:26px 24px;min-width:0}
-.st3::before{counter-increment:s;content:counter(s);font-family:var(--kop);font-weight:800;font-size:22px;width:48px;height:48px;border-radius:50%;background:var(--tomaat);color:#fff;display:grid;place-items:center;margin-bottom:16px}
-.st3 p{color:var(--grijs);margin-top:8px;font-size:16px}
-@media(max-width:860px){.stappen{grid-template-columns:1fr}}
+/* bewijs / reviews */
+.bewijs{background:var(--wit);color:var(--zwart)}
+.bewijs .label{color:var(--knop)}
+.bewijs h2.kop em{color:var(--knop)}
+.score-rij{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
+.score{font:900 clamp(150px,22vw,300px)/.78 var(--kop);color:var(--knop);letter-spacing:-.02em}
+.score small{display:block;font:700 18px var(--tekst);letter-spacing:.02em;color:var(--zwart);margin-top:14px}
+.score .sterren{display:flex;gap:4px;margin-top:16px;color:var(--goud-d)}
+.score .sterren svg{width:28px;height:28px}
+.score a{text-decoration:underline;text-underline-offset:3px;display:inline-flex;align-items:center;min-height:44px}
+.themas{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.thema{border:2px solid var(--zwart);border-radius:14px;padding:22px 20px;min-width:0}
+.thema b{display:block;font:900 clamp(28px,2.6vw,36px)/.95 var(--kop);text-transform:uppercase;margin-bottom:8px;overflow-wrap:break-word}
+.thema p{font-size:15.5px;color:#43372f}
+.thema.rood{background:var(--knop);border-color:var(--knop);color:#fff}
+.thema.rood p{color:#ffe9e4}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.review{background:#fff;border-radius:14px;padding:22px 20px;box-shadow:0 1px 0 rgba(18,14,13,.12),0 10px 30px rgba(18,14,13,.08)}
+.review p{font-size:17px}
+.review .wie{margin-top:12px;font-size:14px;color:#6b5f57;font-weight:600}
+.label-sam{font-size:13.5px;color:#6b5f57;margin-top:14px}
+@media(max-width:960px){.score-rij{grid-template-columns:1fr;gap:24px}.themas,.reviews{grid-template-columns:1fr}}
 
 /* faq */
-.faq{margin-top:30px;display:grid;gap:12px;max-width:820px}
-.faq details{background:#fff;border:1px solid var(--lijn);border-radius:16px}
-.faq summary{list-style:none;cursor:pointer;padding:18px 54px 18px 20px;font-weight:700;font-size:17px;position:relative;min-height:56px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:26px;color:var(--tomaat);font-weight:500}
-.faq details[open] summary::after{content:"–"}
-.faq details p{padding:0 20px 18px;color:var(--grijs)}
-.faq a{color:var(--tomaat2);font-weight:700}
+.faq{background:var(--zwart2)}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
+details{border-bottom:1px solid rgba(255,246,234,.16)}
+summary{list-style:none;cursor:pointer;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:14px;font:800 clamp(22px,2.2vw,28px)/1.1 var(--kop);text-transform:uppercase;letter-spacing:.02em;padding:14px 0}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:900 30px var(--kop);color:var(--rood);flex:none}
+details[open] summary::after{content:"–"}
+details p{padding:0 0 20px;color:var(--wit2);max-width:40em}
+details a{color:var(--goud);font-weight:700}
+@media(max-width:860px){.faq-grid{grid-template-columns:1fr;gap:16px}}
 
-/* contact */
-#contact{background:var(--bg)}
-.info{display:grid;grid-template-columns:1fr 1.1fr;gap:20px;margin-top:34px}
-.blok{background:#fff;border:1px solid var(--lijn);border-radius:var(--r);padding:26px 24px;min-width:0}
-.blok h3{margin-bottom:10px}
-.blok address{font-style:normal;font-size:18px;font-weight:500}
-.blok .tel{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;font-size:22px;font-weight:700;color:var(--petrol);text-decoration:none;font-variant-numeric:tabular-nums}
-.blok p.open{color:var(--grijs)}
-.blok .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.kaartframe{border-radius:var(--r);overflow:hidden;border:1px solid var(--lijn);min-height:340px;background:#e3ece7}
-.kaartframe iframe{width:100%;height:100%;min-height:340px;border:0;display:block}
-@media(max-width:860px){.info{grid-template-columns:1fr}}
-@media(max-width:420px){.blok .btns .btn{width:100%}}
+/* bezoek */
+.bezoek-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:18px;overflow:hidden;background:var(--zwart2)}
+.bezoek-grid figure{position:relative;min-height:440px}
+.bezoek-grid figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.bezoek-grid figcaption{position:absolute;left:14px;bottom:14px;background:rgba(18,14,13,.8);font-size:13px;padding:6px 10px;border-radius:6px;color:var(--wit2)}
+.bezoek-info{padding:44px 40px}
+.bezoek-info dl{display:grid;gap:18px;margin:22px 0 26px}
+.bezoek-info dt{font:700 12.5px var(--tekst);letter-spacing:.18em;text-transform:uppercase;color:var(--goud)}
+.bezoek-info dd{font-size:19px;margin-top:2px}
+.bezoek-info dd a{text-decoration:none;font-weight:700;display:inline-flex;align-items:center;min-height:44px}
+.bezoek-info .knoppen{display:flex;flex-wrap:wrap;gap:12px}
+@media(max-width:860px){.bezoek-grid{grid-template-columns:1fr}.bezoek-grid figure{min-height:300px}.bezoek-info{padding:32px 22px}}
 
 /* slot */
-.slot{background:var(--tomaat);color:#fff;text-align:center;position:relative;overflow:hidden}
-.slot h2{font-size:clamp(38px,7.4vw,72px)}
-.slot p{color:#ffe4dc;margin:14px auto 0;max-width:560px;font-size:18px}
-.slot .btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
-.slot .btn-ghost{border-color:rgba(255,255,255,.7)}
-@media(max-width:420px){.slot .btns .btn{width:100%}}
+.slot{background:var(--knop);color:#fff;text-align:center;overflow:hidden}
+.slot .sec{padding:90px 0 96px}
+.slot .honger{font:900 clamp(30px,4vw,48px)/1 var(--kop);text-transform:uppercase;letter-spacing:.06em;color:#ffe3b0}
+.slot .groot{display:block;white-space:nowrap;font:900 clamp(44px,12.4vw,200px)/.9 var(--kop);letter-spacing:-.01em;text-decoration:none;margin:14px 0 6px;padding:6px 0;color:#fff}
+.slot .groot:hover{color:var(--zwart)}
+.slot p{font-size:18px;max-width:34em;margin:10px auto 0;color:#fff}
+.slot .knoppen{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:28px}
+.slot .btn-zwart{background:var(--zwart);color:var(--wit)}
+.slot .btn-zwart:hover{background:#000}
+.slot .btn-rand{border-color:rgba(255,255,255,.75);color:#fff}
 
 /* footer */
-footer.site{background:var(--petrol3);color:#cfe1dc;padding:48px 0 116px;font-size:15px}
-footer.site .wrap{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:28px}
-footer.site h4{color:#fff;font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
-footer.site a{color:#fff}
-footer.site .by{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.14);padding-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:14px}
-@media(max-width:760px){footer.site .wrap{grid-template-columns:1fr}}
-@media(min-width:861px){footer.site{padding-bottom:48px}}
+footer{background:var(--zwart);padding:56px 0 40px;font-size:15px;color:var(--grijs)}
+.foot{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px}
+.foot img{height:34px;width:auto;margin-bottom:12px}
+.foot b{display:block;color:var(--wit);font:800 18px var(--kop);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.foot a{color:var(--wit)}
+.foot-onder{border-top:1px solid rgba(255,246,234,.12);margin-top:36px;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:14px}
+.foot-onder a{color:var(--goud)}
+@media(max-width:760px){.foot{grid-template-columns:1fr}}
 
-/* zwevende cta */
-.fbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;gap:10px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
-.fbar.show{opacity:1;visibility:visible}
-.fbar .btn{flex:1;min-height:56px;box-shadow:0 10px 30px rgba(8,48,44,.35);padding:0 12px}
-@media(max-width:860px){.fbar{display:flex}}
+/* zwevende cta (mobiel) */
+.float{position:fixed;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));z-index:50;display:none;grid-template-columns:1.5fr 1fr 1fr;gap:8px;padding:8px;border-radius:16px;background:rgba(18,14,13,.94);box-shadow:0 12px 30px rgba(0,0,0,.45),0 0 0 1px rgba(255,246,234,.12);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.float a{display:flex;align-items:center;justify-content:center;gap:7px;min-height:50px;border-radius:11px;text-decoration:none;font:700 15px var(--tekst);background:var(--zwart3);color:var(--wit)}
+.float a svg{width:18px;height:18px}
+.float a.hoofd{background:var(--knop);color:#fff}
+.float.toon{opacity:1;visibility:visible}
+@media(max-width:860px){.float{display:grid}body.float-aan footer{padding-bottom:110px}}
 
 /* reveal */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
-.reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}.globe .stoom path{opacity:.5}}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+
+/* pitch-modus (alleen voor Mo) */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.7);display:none;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.pitch.open{display:block}
+.pp{background:var(--wit);color:var(--zwart);width:min(1000px,100%);margin:0 auto;min-height:100%;padding:22px 20px 60px}
+@media(min-width:861px){.pp{margin:30px auto;min-height:0;border-radius:20px;padding:34px 40px 44px}}
+.pp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.pp-top b{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--knop)}
+.pp-sluit{min-width:44px;min-height:44px;border-radius:50%;border:2px solid var(--zwart);background:#fff;font-size:22px;cursor:pointer;color:var(--zwart)}
+.pp h2{font:900 clamp(34px,5vw,56px)/.92 var(--kop);text-transform:uppercase;margin:12px 0 22px}
+.pp h2 em{font-style:normal;color:var(--knop)}
+.vn{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.vn figure{text-align:center}
+.vn figcaption{margin:10px auto 0;font-size:14px;max-width:26em;text-align:left}
+.tel{width:207px;height:428px;margin:0 auto;border-radius:30px;border:6px solid var(--zwart);overflow:hidden;background:#fff;position:relative}
+.tel img{width:100%;height:100%;object-fit:cover;object-position:top}
+.tel iframe{width:390px;height:810px;border:0;transform:scale(.5);transform-origin:0 0;position:absolute;left:0;top:0}
+.tel.voor{border-color:#8f857e}
+.pp h3{font:900 30px/1 var(--kop);text-transform:uppercase;margin:36px 0 10px}
+.reken{display:grid;grid-template-columns:1fr 1fr;gap:16px 26px;background:#fff;border:2px solid var(--zwart);border-radius:14px;padding:20px}
+.reken label{display:flex;justify-content:space-between;font-size:15px;gap:10px}
+.reken label output{font-weight:700}
+.reken input[type=range]{width:100%;accent-color:var(--knop);height:44px}
+.uitkomst{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
+.uitkomst div{background:var(--wit);border-radius:12px;padding:14px}
+.uitkomst small{display:block;font-size:12.5px;color:#6b5f57;letter-spacing:.04em}
+.uitkomst strong{font:900 clamp(28px,3.4vw,38px) var(--kop);color:var(--knop)}
+.disclaimer{grid-column:1/-1;font-size:13.5px;color:#6b5f57}
+.punten{list-style:none;counter-reset:p;display:grid;gap:10px}
+.punten li{counter-increment:p;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;background:#fff;border:2px solid var(--zwart);border-radius:12px;padding:14px 16px}
+.punten li::before{content:counter(p);width:34px;height:34px;border-radius:50%;background:var(--knop);color:#fff;display:grid;place-items:center;font:900 20px var(--kop)}
+@media(max-width:700px){.vn{grid-template-columns:1fr 1fr;gap:10px}.tel{width:150px;height:310px;border-radius:22px;border-width:5px}.tel iframe{transform:scale(.3615)}.reken{grid-template-columns:1fr}.uitkomst{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+  .tegel{opacity:1;filter:none}
+}
 </style>
 </head>
-<body>
-<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>.</div>
-<p class="bar"><span class="st">★</span> 4,7 uit 215 <a href="https://www.google.com/maps/search/?api=1&amp;query=Dunya+Doner+Beijerlandselaan+169A+Rotterdam" target="_blank" rel="noopener">Google-reviews</a> · 100% halal · Beijerlandselaan 169-A, Rotterdam</p>
+<body id="top">
 
-<header class="top">
- <div class="wrap">
-  <a class="brand" href="#top" aria-label="Dunya Doner, naar boven"><img src="logo-dark.svg" alt="Dunya Doner" width="156" height="50"></a>
-  <nav class="menu" aria-label="Hoofdmenu">
-   <a href="#aanbod">Kaart</a>
-   <a href="#kiezer">Bestellen</a>
-   <a href="#reviews">Reviews</a>
-   <a href="#contact">Route</a>
-  </nav>
-  <a class="btn btn-tomaat" href="tel:+31645864690"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span>Bel<span class="lang"> 06 45 86 46 90</span></span></a>
- </div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></symbol>
+    <symbol id="i-ster" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></symbol>
+    <symbol id="i-fiets" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M5.5 17l4-8h6l3 8M9.5 9l-1.5-3H6M15.5 9l-2 8h-4"/></g></symbol>
+    <!-- spies: vleespatroon voor de draai-animatie -->
+    <pattern id="vleespatroon" width="24" height="10" patternUnits="userSpaceOnUse">
+      <rect width="24" height="10" fill="#B8662C"/>
+      <rect x="5" width="5" height="10" fill="#8C4519"/>
+      <rect x="13" width="6" height="10" fill="#CF8240"/>
+      <rect x="19" width="3" height="10" fill="#9E521F"/>
+      <path d="M0 3.5h24M0 8h24" stroke="#E7A764" stroke-width=".9" opacity=".55"/>
+    </pattern>
+    <linearGradient id="cilinder" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#1a0a04" stop-opacity=".85"/>
+      <stop offset=".3" stop-color="#1a0a04" stop-opacity=".1"/>
+      <stop offset=".45" stop-color="#ffe2b8" stop-opacity=".28"/>
+      <stop offset=".62" stop-color="#1a0a04" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#1a0a04" stop-opacity=".9"/>
+    </linearGradient>
+    <radialGradient id="hitte" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFB347"/>
+      <stop offset=".5" stop-color="#E0291B" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#E0291B" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="kegel"><path d="M27 24Q50 15 73 24L78 62Q76 100 62 130Q50 137 38 130Q24 100 22 62Z"/></clipPath>
+  </defs>
+</svg>
+
+<div class="demo-strip"><span class="lang">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a>. Niet de officiële site van Dunya Döner.</span><span class="kort">Demo door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a> · niet de officiële site</span><button class="demo-mo" id="pitch-knop" type="button" aria-label="Pitch-modus openen">Mo</button></div>
+<div class="announce"><a href="#bewijs"><b>★ 4,7</b>&nbsp;uit 215 Google-reviews</a> · 100% halal</div>
+
+<div class="top">
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Dunya Döner, naar boven"><img src="logo-light.svg" alt="Dunya Döner" width="377" height="62"></a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <a class="los" href="#kaart">Kaart</a>
+      <a class="los" href="#bestel">Bestelbon</a>
+      <a class="los" href="#bezoek">Route</a>
+      <a class="bel" href="tel:+31645864690"><svg width="18" height="18" aria-hidden="true"><use href="#i-tel"/></svg>Bel</a>
+    </nav>
+  </div>
 </header>
 
-<main id="top">
-<section class="hero" id="hero">
- <div class="raster" aria-hidden="true"></div>
- <div class="wrap">
-  <div>
-   <span class="eyebrow">Turkse pizza &amp; döner · Hillesluis</span>
-   <h1>Turkse pizza en döner, <span class="accent">100% halal</span></h1>
-   <p class="sub">Op de Beijerlandselaan in Rotterdam-Zuid. Bestellen of iets vragen regel je met een belletje of via WhatsApp.</p>
-   <div class="hero-cta">
-    <a class="btn btn-tomaat" href="https://wa.me/31645864690?text=Hoi%20Dunya%20Doner%2C%20ik%20wil%20graag%20iets%20bestellen%20om%20af%20te%20halen." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>Bestel via WhatsApp</a>
-    <a class="btn btn-deeg" href="tel:+31645864690"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Bel 06 45 86 46 90</a>
-   </div>
-   <a class="naar" href="#kiezer">Of stel je bestelling samen →</a>
-   <p class="trust"><span class="sterren" aria-hidden="true">★★★★★</span><span><b>4,7</b> uit <a href="https://www.google.com/maps/search/?api=1&amp;query=Dunya+Doner+Beijerlandselaan+169A+Rotterdam" target="_blank" rel="noopener">215 Google-reviews</a></span><span>· Rotterdam-Zuid</span></p>
-  </div>
-  <svg class="globe" viewBox="0 0 440 440" role="img" aria-label="Illustratie: een Turkse pizza als draaiende wereldbol">
-   <defs>
-    <clipPath id="bol"><circle cx="220" cy="220" r="118"/></clipPath>
-    <path id="baan" d="M220 220m-178 0a178 178 0 1 1 356 0a178 178 0 1 1-356 0"/>
-    <radialGradient id="schaduw" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".7" stop-color="#000" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".38"/></radialGradient>
-    <g id="vlekken">
-     <path d="M20 70c18-14 46-12 54 6 7 15-8 26-24 22-17-4-38 6-40-8-1-8 3-15 10-20zM104 150c18-8 46 2 48 22 3 22-18 38-36 32-14-5-4-22-14-30-8-8-12-19 2-24zM6 160c11-3 22 4 22 15s-10 21-22 18c-8-3-11-26 0-33zM120 42c9-5 24-1 26 9 2 9-8 15-17 13-10-2-18-16-9-22zM58 214c12-4 26 4 24 14s-18 12-26 6c-6-5-6-17 2-20z"/>
-     <circle cx="88" cy="110" r="5"/><circle cx="164" cy="102" r="4"/><circle cx="40" cy="128" r="4"/>
-    </g>
-   </defs>
-   <g class="stoom" fill="none" stroke="#f2cf8f" stroke-width="5" stroke-linecap="round">
-    <path d="M186 74c-9-11 9-18 0-31"/>
-    <path d="M220 66c-9-11 9-18 0-31"/>
-    <path d="M254 74c-9-11 9-18 0-31"/>
-   </g>
-   <g class="ring"><text><textPath href="#baan" textLength="1105" lengthAdjust="spacing">100% HALAL · TURKSE PIZZA · DÖNER · BEIJERLANDSELAAN · HILLESLUIS · </textPath></text></g>
-   <circle cx="220" cy="220" r="140" fill="#f2cf8f"/>
-   <circle cx="220" cy="220" r="140" fill="none" stroke="#d9a75a" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
-   <circle cx="220" cy="220" r="118" fill="#d9442b"/>
-   <g clip-path="url(#bol)">
-    <g class="land" fill="#8f2414">
-     <use href="#vlekken" x="100" y="100"/><use href="#vlekken" x="300" y="100"/><use href="#vlekken" x="500" y="100"/>
-    </g>
-    <g class="land" fill="#3f8f4c" style="animation-duration:9s">
-     <circle cx="150" cy="170" r="5"/><circle cx="230" cy="290" r="5"/><circle cx="300" cy="150" r="5"/><circle cx="350" cy="250" r="5"/><circle cx="420" cy="170" r="5"/><circle cx="500" cy="300" r="5"/><circle cx="560" cy="200" r="5"/>
-    </g>
-    <circle cx="220" cy="220" r="118" fill="url(#schaduw)"/>
-   </g>
-   <ellipse cx="220" cy="220" rx="48" ry="118" fill="none" stroke="#f2cf8f" stroke-width="3" opacity=".7"/>
-   <ellipse cx="220" cy="220" rx="96" ry="118" fill="none" stroke="#f2cf8f" stroke-width="2" opacity=".35"/>
-   <path d="M102 220h236M118 160h204M118 280h204" stroke="#f2cf8f" stroke-width="2.4" opacity=".55"/>
-   <ellipse class="glans" cx="178" cy="160" rx="40" ry="22" fill="#fff" transform="rotate(-30 178 160)"/>
-  </svg>
- </div>
-</section>
+<section class="hero" aria-labelledby="hero-kop">
+  <div class="hero-foto"><img src="img/hero-flatlay.webp" alt="Turkse pizza met döner en salade, met friet, döner en sausjes eromheen" width="1000" height="750" fetchpriority="high"></div>
 
-<div class="marquee" aria-hidden="true">
- <div class="baan">
-  <span>Turkse pizza</span><span>Döner</span><span>Dürüm</span><span>100% halal</span><span>Beijerlandselaan 169-A</span><span>4,7 ★ uit 215 Google-reviews</span><span>Hillesluis, Rotterdam-Zuid</span>
-  <span>Turkse pizza</span><span>Döner</span><span>Dürüm</span><span>100% halal</span><span>Beijerlandselaan 169-A</span><span>4,7 ★ uit 215 Google-reviews</span><span>Hillesluis, Rotterdam-Zuid</span>
- </div>
+
+  <div class="wrap">
+    <div class="badge" aria-hidden="true">
+      <svg class="ring" viewBox="0 0 176 176">
+        <defs><path id="cirkel" d="M88 88m-74 0a74 74 0 1 1 148 0a74 74 0 1 1-148 0"/></defs>
+        <text><textPath href="#cirkel">100% halal ✦ Turkse pizza ✦ Döner ✦ Dürüm ✦</textPath></text>
+      </svg>
+      <div class="kern">
+        <svg class="spies" viewBox="0 0 100 150">
+          <ellipse class="gloed" cx="88" cy="76" rx="22" ry="60" fill="url(#hitte)"/>
+          <rect x="48.6" y="4" width="2.8" height="142" rx="1.4" fill="#9a948f"/>
+          <rect x="40" y="10" width="20" height="5" rx="2" fill="#6f6964"/>
+          <g clip-path="url(#kegel)">
+            <rect class="vlees" x="0" y="10" width="150" height="130" fill="url(#vleespatroon)"/>
+            <rect x="20" y="10" width="60" height="130" fill="url(#cilinder)"/>
+          </g>
+          <ellipse cx="50" cy="140" rx="20" ry="4" fill="#3b3532"/>
+        </svg>
+      </div>
+    </div>
+    <span class="kicker"><span class="lang">Beijerlandselaan · Rotterdam-Zuid</span><span class="kort">Hillesluis · Rotterdam-Zuid</span></span>
+    <h1 class="poster" id="hero-kop">
+      <span class="r"><span>Turkse</span></span>
+      <span class="r"><span>pizza <span class="hol">&amp;</span></span></span>
+      <span class="r"><span class="rood">döner.</span></span>
+    </h1>
+    <span class="stempel">100% halal</span>
+    <p class="sub">Uit Hillesluis. Bestellen of iets vragen regel je met een belletje. Ophalen doe je aan de Beijerlandselaan 169-A.</p>
+    <div class="hero-cta">
+      <a class="btn btn-bel" href="tel:+31645864690"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel <span class="nr">06 45 86 46 90</span></a>
+      <a class="btn btn-rand" href="https://wa.me/31645864690?text=Hoi%20Dunya%20D%C3%B6ner%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+      <a class="btn btn-rand" href="#bestel">Bestelbon</a>
+    </div>
+    <p class="trust"><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunya+Doner+Beijerlandselaan+169A+Rotterdam" target="_blank" rel="noopener"><b>★ 4,7</b>&nbsp;uit 215 Google-reviews</a><span>Elke dag open</span></p>
+  </div>
+</section>
 </div>
 
-<section id="aanbod">
- <div class="wrap">
-  <span class="eyebrow">Op de kaart</span>
-  <h2 class="reveal">Turkse pizza, döner en dürüm</h2>
-  <p class="lead reveal">Alles 100% halal. Benieuwd naar de hele kaart? Bel even of stuur een WhatsApp.</p>
-  <div class="kaarten">
-   <article class="kaart reveal">
-    <svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#f2cf8f"/><circle cx="32" cy="32" r="22" fill="#d9442b"/><path d="M20 26c4-4 10-3 11 1s-3 5-6 4-7 0-5-5zM35 36c4-2 9 0 9 4s-4 6-7 5-5-7-2-9z" fill="#8f2414"/><circle cx="38" cy="22" r="2.4" fill="#3f8f4c"/><circle cx="24" cy="42" r="2.4" fill="#3f8f4c"/></svg>
-    <h3>Turkse pizza</h3>
-    <p>Uit de oven, en net als de rest 100% halal.</p>
-   </article>
-   <article class="kaart reveal">
-    <svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect x="30" y="4" width="4" height="56" rx="2" fill="#4d6460"/><path d="M18 12h28l-5 38H23z" fill="#b8642a"/><path d="M19 22h26M20 32h24M21.5 42h21" stroke="#8a4519" stroke-width="2.4"/></svg>
-    <h3>Döner</h3>
-    <p>Van de draaiende spies.</p>
-   </article>
-   <article class="kaart reveal">
-    <svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="22" width="44" height="22" rx="11" fill="#f2cf8f" transform="rotate(-25 32 33)"/><path d="M20 38 44 27" stroke="#d9442b" stroke-width="4" stroke-linecap="round"/><path d="M22 33l22-10" stroke="#3f8f4c" stroke-width="3" stroke-linecap="round"/></svg>
-    <h3>Dürüm</h3>
-    <p>Opgerold in dun brood, om mee te nemen.</p>
-   </article>
-  </div>
-  <p class="noot reveal">Vraag over de kaart of iets speciaals? <a href="https://wa.me/31645864690?text=Hoi%20Dunya%20Doner%2C%20ik%20heb%20een%20vraag%20over%20de%20kaart." target="_blank" rel="noopener">Stuur een WhatsApp</a> of <a href="tel:+31645864690">bel 06 45 86 46 90</a>.</p>
- </div>
-</section>
+<div class="tapes" aria-hidden="true">
+  <div class="tape een marquee"><div class="loop">
+    <span>100% halal</span><span>Turkse pizza</span><span>Döner</span><span>Dürüm</span><span>100% halal</span><span>Turkse pizza</span><span>Döner</span><span>Dürüm</span>
+    <span>100% halal</span><span>Turkse pizza</span><span>Döner</span><span>Dürüm</span><span>100% halal</span><span>Turkse pizza</span><span>Döner</span><span>Dürüm</span>
+  </div></div>
+  <div class="tape twee marquee"><div class="loop">
+    <span>Beijerlandselaan 169-A</span><span>Hillesluis</span><span>Elke dag open</span><span>★ 4,7 op Google</span><span>Beijerlandselaan 169-A</span><span>Hillesluis</span><span>Elke dag open</span><span>★ 4,7 op Google</span>
+    <span>Beijerlandselaan 169-A</span><span>Hillesluis</span><span>Elke dag open</span><span>★ 4,7 op Google</span><span>Beijerlandselaan 169-A</span><span>Hillesluis</span><span>Elke dag open</span><span>★ 4,7 op Google</span>
+  </div></div>
+</div>
 
-<section id="kiezer">
- <div class="wrap">
-  <span class="eyebrow">Bestellen</span>
-  <h2 class="reveal">Stel je bestelling samen</h2>
-  <p class="lead reveal">Kies wat, hoeveel en wanneer. Dan staat je bericht klaar in WhatsApp en hoef je alleen nog op verzenden te drukken.</p>
-  <div class="kiezer" id="kz">
-   <div class="stap">
-    <h3><i>1</i>Waar heb je trek in?</h3>
-    <div class="opties" data-groep="wat">
-     <button class="optie" type="button" data-v="Turkse pizza" aria-pressed="false">Turkse pizza</button>
-     <button class="optie" type="button" data-v="döner" aria-pressed="false">Döner</button>
-     <button class="optie" type="button" data-v="dürüm" aria-pressed="false">Dürüm</button>
-     <button class="optie" type="button" data-v="anders" aria-pressed="false">Iets anders<small>ik vraag naar de kaart</small></button>
+<!-- MENUBORD -->
+<section class="bord-sec sec" id="kaart" aria-labelledby="kaart-kop">
+  <div class="wrap">
+    <div class="bord-kop rv">
+      <div>
+        <span class="label">De kaart</span>
+        <h2 class="kop" id="kaart-kop">Kies je <em>favoriet.</em></h2>
+      </div>
+      <p class="lead">Alles 100% halal. Benieuwd naar de hele kaart of de prijzen? Bel even of stuur een WhatsApp.</p>
     </div>
-   </div>
-   <div class="stap" id="stap2" hidden>
-    <h3><i>2</i>Hoeveel?</h3>
-    <div class="opties" data-groep="aantal">
-     <button class="optie" type="button" data-v="1" aria-pressed="false">1</button>
-     <button class="optie" type="button" data-v="2" aria-pressed="false">2</button>
-     <button class="optie" type="button" data-v="3" aria-pressed="false">3</button>
-     <button class="optie" type="button" data-v="4+" aria-pressed="false">4 of meer</button>
+
+    <div class="bord" id="bord">
+      <div class="bord-titel"><span class="neon">Menu</span><small>Dunya Döner · Beijerlandselaan 169-A</small></div>
+      <div class="tegels">
+        <article class="tegel typo">
+          <div class="icoon" aria-hidden="true">
+            <svg viewBox="0 0 200 200" fill="none" stroke="#F6D38A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="100" cy="100" r="78"/><circle cx="100" cy="100" r="64" stroke-width="3" opacity=".7"/>
+              <path d="M52 92q14-12 28 0t28 0 28 0 22-4M50 120q14-10 30 0t28 0 28 0 20-2" stroke-width="4"/>
+              <path d="M70 66l6 6M120 62l-5 8M138 140l-8-4M78 146l6-7M100 78v8" stroke-width="4"/>
+            </svg>
+          </div>
+          <div class="tekst">
+            <span class="nr">01</span>
+            <h3>Turkse pizza</h3>
+            <p>Met döner en salade, zoals bovenaan op de foto.</p>
+            <span class="halal">100% halal</span>
+          </div>
+        </article>
+        <article class="tegel">
+          <img src="img/doner-spiezen.webp" alt="Drie döner-spiezen in de keuken" width="638" height="792" loading="lazy">
+          <div class="tekst">
+            <span class="nr">02</span>
+            <h3>Döner</h3>
+            <p>Van de spies.</p>
+            <span class="halal">100% halal</span>
+          </div>
+        </article>
+        <article class="tegel">
+          <img src="img/doner-schotel.webp" alt="Dönerschotel met friet en salade op een rood dienblad" width="638" height="795" loading="lazy">
+          <div class="tekst">
+            <span class="nr">03</span>
+            <h3>Döner&shy;schotel</h3>
+            <p>Döner met friet en salade.</p>
+            <span class="halal">100% halal</span>
+          </div>
+        </article>
+        <article class="tegel typo">
+          <div class="icoon" aria-hidden="true">
+            <svg viewBox="0 0 200 200" fill="none" stroke="#F6D38A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M62 40l76 0-10 128q-28 12-56 0z"/>
+              <path d="M62 40q38 22 76 0" stroke-width="4"/>
+              <path d="M70 72q30 10 60 0M72 100q28 9 56 0M74 128q26 8 52 0" stroke-width="3.5" opacity=".75"/>
+              <path d="M84 30q4-10 0-18M100 30q4-10 0-18M116 30q4-10 0-18" stroke-width="3.5" opacity=".7"/>
+            </svg>
+          </div>
+          <div class="tekst">
+            <span class="nr">04</span>
+            <h3>Dürüm</h3>
+            <p>Mich op Restaurant Guru: <q>Really tasty durum.</q></p>
+            <span class="halal">100% halal</span>
+          </div>
+        </article>
+      </div>
+      <div class="bord-voet">
+        <p><b>Gratis drankje?</b> Klanten schrijven in hun reviews dat ze er een drankje bij kregen.</p>
+        <a class="btn btn-goud" href="tel:+31645864690"><svg aria-hidden="true"><use href="#i-tel"/></svg>Vraag de hele kaart</a>
+      </div>
     </div>
-   </div>
-   <div class="stap" id="stap3" hidden>
-    <h3><i>3</i>Wanneer haal je het op?</h3>
-    <div class="opties" data-groep="dag" id="dagen"></div>
-   </div>
-   <div class="uitkomst" id="uitkomst" hidden aria-live="polite"></div>
   </div>
- </div>
 </section>
 
-<section id="waarom">
- <div class="wrap">
-  <span class="eyebrow">Waarom Dunya Doner</span>
-  <h2 class="reveal">Wat klanten erover schrijven</h2>
-  <div class="waarom">
-   <article class="w reveal"><div class="nr">01</div><h3>Een drankje erbij</h3><p>Klanten schrijven dat er bij hun bestelling een gratis drankje zat.</p></article>
-   <article class="w reveal"><div class="nr">02</div><h3>Een vriendelijke eigenaar</h3><p>Klanten schrijven over een vriendelijke, aardige eigenaar.</p></article>
-   <article class="w reveal"><div class="nr">03</div><h3>Lekker en schoon</h3><p>Klanten noemen het eten lekker en de zaak schoon.</p></article>
-  </div>
- </div>
-</section>
-
-<section id="reviews">
- <div class="wrap">
-  <span class="eyebrow">Reviews</span>
-  <h2 class="reveal">215 Google-reviews, gemiddeld 4,7</h2>
-  <div class="score reveal">
-   <div class="getal">4,7</div>
-   <div><div class="st" aria-label="4,7 van 5 sterren">★★★★★</div><p>uit 215 reviews op <a href="https://www.google.com/maps/search/?api=1&amp;query=Dunya+Doner+Beijerlandselaan+169A+Rotterdam" target="_blank" rel="noopener">Google</a></p></div>
-  </div>
-  <div class="revs">
-   <article class="rev reveal"><p>Heel lekker, een gratis drankje bij de bestelling en een vriendelijke meneer.</p><div class="wie">Annick <span>· Google</span></div></article>
-   <article class="rev reveal"><p>Aardige eigenaar, en het eten is top.</p><div class="wie">ghina <span>· Google</span></div></article>
-   <article class="rev reveal"><p>Erg lekkere dürüm, en bij elke bestelling een gratis drankje.</p><div class="wie">Mich <span>· Restaurant Guru</span></div></article>
-  </div>
-  <p class="label">Samengevat uit reviews op <a href="https://www.google.com/maps/search/?api=1&amp;query=Dunya+Doner+Beijerlandselaan+169A+Rotterdam" target="_blank" rel="noopener">Google</a> en <a href="https://restaurantguru.com/Dunya-doner-Rotterdam" target="_blank" rel="noopener">Restaurant Guru</a>, niet letterlijk geciteerd.</p>
- </div>
-</section>
-
-<section id="zo">
- <div class="wrap">
-  <span class="eyebrow">Zo werkt het</span>
-  <h2 class="reveal">In drie stappen aan je eten</h2>
-  <div class="stappen">
-   <article class="st3 reveal"><h3>Kies je eten</h3><p>Turkse pizza, döner of dürüm. Gebruik de kiezer hierboven of zeg het gewoon zelf.</p></article>
-   <article class="st3 reveal"><h3>Bel of app</h3><p>Bel 06 45 86 46 90, of regel het via WhatsApp.</p></article>
-   <article class="st3 reveal"><h3>Haal het op</h3><p>Beijerlandselaan 169-A, in Hillesluis op Rotterdam-Zuid.</p></article>
-  </div>
- </div>
-</section>
-
-<section id="faq" style="padding-top:0">
- <div class="wrap">
-  <span class="eyebrow">Vragen</span>
-  <h2 class="reveal">Goed om te weten</h2>
-  <div class="faq">
-   <details><summary>Is alles halal?</summary><p>Ja, alles is 100% halal.</p></details>
-   <details><summary>Wat staat er op de kaart?</summary><p>Turkse pizza en döner, ook als dürüm. Voor de hele kaart: <a href="https://wa.me/31645864690?text=Hoi%20Dunya%20Doner%2C%20ik%20heb%20een%20vraag%20over%20de%20kaart." target="_blank" rel="noopener">app even</a> of bel <a href="tel:+31645864690">06 45 86 46 90</a>.</p></details>
-   <details><summary>Kan ik ook laten bezorgen?</summary><p>Ja, Dunya Doner bezorgt via Thuisbezorgd.</p></details>
-   <details><summary>Wanneer zijn jullie open?</summary><p>Elke dag. De tijden verschillen per site, dus bel even als je zeker wilt weten of het nu open is.</p></details>
-   <details><summary>Waar zitten jullie?</summary><p>Beijerlandselaan 169-A, 3074 EH Rotterdam. <a href="#contact">Route plannen</a></p></details>
-  </div>
- </div>
-</section>
-
-<section id="contact">
- <div class="wrap">
-  <span class="eyebrow">Route</span>
-  <h2 class="reveal">Langs op de Beijerlandselaan</h2>
-  <div class="info">
-   <div class="blok reveal">
-    <h3>Adres</h3>
-    <address>Beijerlandselaan 169-A<br>3074 EH Rotterdam</address>
-    <h3 style="margin-top:24px">Bellen</h3>
-    <a class="tel" href="tel:+31645864690">06 45 86 46 90</a>
-    <h3 style="margin-top:24px">Open</h3>
-    <p class="open">Elke dag. Bel even voor de tijden van vandaag.</p>
-    <div class="btns">
-     <a class="btn btn-tomaat" href="https://wa.me/31645864690?text=Hoi%20Dunya%20Doner%2C%20ik%20wil%20graag%20iets%20bestellen%20om%20af%20te%20halen." target="_blank" rel="noopener">WhatsApp</a>
-     <a class="btn btn-rand" href="https://www.google.com/maps/dir/?api=1&amp;destination=Beijerlandselaan+169A%2C+3074+EH+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
+<!-- TWEE MANIEREN -->
+<section class="split" aria-label="Bellen en ophalen of laten bezorgen">
+  <div class="zelf">
+    <span class="label">Zelf bellen &amp; ophalen</span>
+    <h2>Bel de zaak.<br>Haal het op.</h2>
+    <p>Direct de zaak aan de lijn op 06 45 86 46 90. Ophalen doe je aan de Beijerlandselaan 169-A, midden in Hillesluis.</p>
+    <div class="knoppen">
+      <a class="btn btn-wit" href="tel:+31645864690"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel <span class="nr">06 45 86 46 90</span></a>
+      <a class="btn btn-rand" href="#bestel">Maak eerst je bestelbon</a>
     </div>
-   </div>
-   <div class="kaartframe reveal">
-    <iframe title="Kaart: Beijerlandselaan 169-A, Rotterdam" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Beijerlandselaan+169A,+3074+EH+Rotterdam&amp;output=embed"></iframe>
-   </div>
   </div>
- </div>
+  <div class="bezorg">
+    <span class="label">Liever bezorgd?</span>
+    <h2>Thuis&shy;bezorgd</h2>
+    <p>Dunya Döner bezorgt ook via Thuisbezorgd. Daar zie je de bezorgtijden en bestel je online.</p>
+    <div class="knoppen">
+      <a class="btn btn-rand" href="https://www.dunyadonerrotterdam.nl/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fiets"/></svg>Naar de bezorgpagina</a>
+    </div>
+    <p class="klein">Zelf ophalen? Eén belletje naar 06 45 86 46 90.</p>
+  </div>
 </section>
 
-<section class="slot">
- <div class="wrap">
-  <h2 class="reveal">Trek in Turkse pizza?</h2>
-  <p class="reveal">Bel even of regel het via WhatsApp. Ophalen doe je aan de Beijerlandselaan 169-A.</p>
-  <div class="btns">
-   <a class="btn btn-petrol" href="https://wa.me/31645864690?text=Hoi%20Dunya%20Doner%2C%20ik%20wil%20graag%20iets%20bestellen%20om%20af%20te%20halen." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>Bestel via WhatsApp</a>
-   <a class="btn btn-ghost" href="tel:+31645864690">Bel 06 45 86 46 90</a>
-  </div>
- </div>
-</section>
-</main>
+<!-- BESTELBON (kiezer) -->
+<section class="bon-sec sec" id="bestel" aria-labelledby="bon-kop">
+  <div class="wrap bon-grid">
+    <div class="bon-uitleg rv">
+      <span class="label">De bestelbon</span>
+      <h2 class="kop" id="bon-kop">Schrijf het op.<br><em>Bel het door.</em></h2>
+      <p class="lead">Tik aan wat je wilt en wanneer. Dan heb je alles bij de hand als je belt, of je stuurt de bon als WhatsApp.</p>
+      <ol class="stappen">
+        <li><div><h3>Kies</h3><p>Turkse pizza, döner, dönerschotel of dürüm, zoveel als je wilt.</p></div></li>
+        <li><div><h3>Bel of app</h3><p>Bel <a href="tel:+31645864690">06 45 86 46 90</a>, of regel het via WhatsApp.</p></div></li>
+        <li><div><h3>Ophalen</h3><p>Aan de Beijerlandselaan 169-A in Hillesluis.</p></div></li>
+      </ol>
+    </div>
 
-<footer class="site">
- <div class="wrap">
-  <div>
-   <img src="logo-light.svg" alt="Dunya Doner" width="188" height="60">
-   <p style="margin-top:14px">Turkse pizza en döner, 100% halal, in Rotterdam-Zuid.</p>
+    <form class="bon" id="bonform" onsubmit="return false" aria-label="Bestelbon">
+      <div class="bon-kop"><img src="logo-dark.svg" alt="Dunya Döner" width="377" height="62"><small>Bestelbon · ophalen</small></div>
+      <fieldset>
+        <legend>1. Wat wil je?</legend>
+        <div class="rij"><span class="naam">Turkse pizza</span><span class="teller" data-item="Turkse pizza"><button type="button" data-d="-1" aria-label="Turkse pizza minder">−</button><output>1</output><button type="button" data-d="1" aria-label="Turkse pizza meer">+</button></span></div>
+        <div class="rij"><span class="naam">Döner</span><span class="teller" data-item="Döner"><button type="button" data-d="-1" aria-label="Döner minder">−</button><output>0</output><button type="button" data-d="1" aria-label="Döner meer">+</button></span></div>
+        <div class="rij"><span class="naam">Dönerschotel</span><span class="teller" data-item="Dönerschotel"><button type="button" data-d="-1" aria-label="Dönerschotel minder">−</button><output>0</output><button type="button" data-d="1" aria-label="Dönerschotel meer">+</button></span></div>
+        <div class="rij"><span class="naam">Dürüm</span><span class="teller" data-item="Dürüm"><button type="button" data-d="-1" aria-label="Dürüm minder">−</button><output>0</output><button type="button" data-d="1" aria-label="Dürüm meer">+</button></span></div>
+        <label class="veld"><span>Iets anders of een wens? (mag leeg)</span><textarea id="b-extra" rows="2"></textarea></label>
+      </fieldset>
+      <fieldset>
+        <legend>2. Wanneer ophalen?</legend>
+        <div class="chips">
+          <label><input type="radio" name="wanneer" value="snel" checked><span>Zo snel mogelijk</span></label>
+          <label><input type="radio" name="wanneer" value="later"><span>Later vandaag</span></label>
+          <label><input type="radio" name="wanneer" value="dag"><span>Andere dag</span></label>
+        </div>
+        <label class="veld" id="v-tijd-l" hidden><span>Rond hoe laat?</span><input type="time" id="b-tijd"></label>
+        <label class="veld" id="v-datum-l" hidden><span>Welke dag?</span><input type="date" id="b-datum"></label>
+      </fieldset>
+      <fieldset>
+        <legend>3. Jouw naam</legend>
+        <label class="veld"><span class="sr">Naam</span><input type="text" id="b-naam" autocomplete="given-name" placeholder="Je voornaam"></label>
+      </fieldset>
+      <div class="uitvoer" id="bon-tekst" aria-live="polite"></div>
+      <div class="knoppen">
+        <a class="btn btn-bel" href="tel:+31645864690"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel <span class="nr">06 45 86 46 90</span></a>
+        <a class="btn btn-wa" id="wa-bon" href="https://wa.me/31645864690?text=Hoi%20Dunya%20D%C3%B6ner" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Stuur de bon via WhatsApp</a>
+      </div>
+      <p class="hint">Bellen? Lees de bon gewoon voor.</p>
+    </form>
   </div>
-  <div>
-   <h4>Adres</h4>
-   <p>Beijerlandselaan 169-A<br>3074 EH Rotterdam</p>
+</section>
+
+<!-- BEWIJS -->
+<section class="bewijs sec" id="bewijs" aria-labelledby="bewijs-kop">
+  <div class="wrap">
+    <div class="score-rij">
+      <div class="score rv">4,7
+        <span class="sterren" aria-hidden="true"><svg><use href="#i-ster"/></svg><svg><use href="#i-ster"/></svg><svg><use href="#i-ster"/></svg><svg><use href="#i-ster"/></svg><svg><use href="#i-ster"/></svg></span>
+        <small>uit <a href="https://www.google.com/maps/search/?api=1&amp;query=Dunya+Doner+Beijerlandselaan+169A+Rotterdam" target="_blank" rel="noopener">215 reviews op Google</a></small>
+      </div>
+      <div class="rv">
+        <span class="label">Wat klanten schrijven</span>
+        <h2 class="kop" id="bewijs-kop">Dit zeggen <em>de reviews.</em></h2>
+        <div class="themas">
+          <div class="thema rood"><b>Gratis drankje</b><p>Meerdere reviews noemen een gratis drankje bij de bestelling.</p></div>
+          <div class="thema"><b>Aardige eigenaar</b><p>Klanten schrijven over een vriendelijke, aardige eigenaar.</p></div>
+          <div class="thema"><b>Lekker &amp; schoon</b><p>Lekker eten en een schone zaak: dat komt terug in de reviews.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews">
+      <div class="review rv"><p>Heel lekker, een gratis drankje bij de bestelling, en een vriendelijke meneer.</p><div class="wie">Annick · Google</div></div>
+      <div class="review rv"><p>Aardige eigenaar, en het eten is top.</p><div class="wie">ghina · Google</div></div>
+      <div class="review rv"><p>Echt lekkere dürüm, en bij elke bestelling een gratis drankje.</p><div class="wie">Mich · Restaurant Guru</div></div>
+    </div>
+    <p class="label-sam">Samengevat uit reviews op Google en Restaurant Guru, niet letterlijk geciteerd.</p>
   </div>
-  <div>
-   <h4>Contact</h4>
-   <p><a href="tel:+31645864690">06 45 86 46 90</a><br><a href="https://wa.me/31645864690?text=Hoi%20Dunya%20Doner%2C%20ik%20wil%20graag%20iets%20bestellen%20om%20af%20te%20halen." target="_blank" rel="noopener">WhatsApp</a></p>
+</section>
+
+<!-- FAQ -->
+<section class="faq sec" aria-labelledby="faq-kop">
+  <div class="wrap faq-grid">
+    <div class="rv"><span class="label">Vragen</span><h2 class="kop" id="faq-kop">Kort <em>gezegd.</em></h2></div>
+    <div class="rv">
+      <details open><summary>Is alles halal?</summary><p>Ja, alles is 100% halal.</p></details>
+      <details><summary>Wanneer zijn jullie open?</summary><p>Elke dag. De tijden verschillen per site, dus bel even als je zeker wilt weten of het nu open is: <a href="tel:+31645864690">06 45 86 46 90</a>.</p></details>
+      <details><summary>Kan ik het laten bezorgen?</summary><p>Ja, Dunya Döner bezorgt via Thuisbezorgd. Zelf ophalen kan aan de Beijerlandselaan 169-A.</p></details>
+      <details><summary>Wat staat er op de kaart?</summary><p>Onder meer Turkse pizza, döner, dönerschotel en dürüm. Voor de hele kaart en de prijzen bel je even.</p></details>
+      <details><summary>Waar zitten jullie?</summary><p>Beijerlandselaan 169-A, 3074 EH Rotterdam, in Hillesluis (Rotterdam-Zuid).</p></details>
+    </div>
   </div>
-  <div class="by"><span>© Dunya Doner</span><span>Website door <a href="https://mohamedia.nl">Mohamedia</a></span></div>
- </div>
+</section>
+
+<!-- BEZOEK -->
+<section class="sec" id="bezoek" aria-labelledby="bezoek-kop">
+  <div class="wrap">
+    <div class="bezoek-grid rv">
+      <figure><img src="img/gevel.webp" alt="De gevel van Dunya Döner met rode letters aan de Beijerlandselaan" width="520" height="542" loading="lazy"><figcaption>De gevel aan de Beijerlandselaan</figcaption></figure>
+      <div class="bezoek-info">
+        <span class="label">Kom langs</span>
+        <h2 class="kop" id="bezoek-kop">Je ziet de <em>rode letters</em> al.</h2>
+        <dl>
+          <div><dt>Adres</dt><dd>Beijerlandselaan 169-A<br>3074 EH Rotterdam (Hillesluis)</dd></div>
+          <div><dt>Open</dt><dd>Elke dag open. Bel voor de tijden van vandaag.</dd></div>
+          <div><dt>Bellen</dt><dd><a href="tel:+31645864690">06 45 86 46 90</a></dd></div>
+        </dl>
+        <div class="knoppen">
+          <a class="btn btn-bel" href="tel:+31645864690"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel</a>
+          <a class="btn btn-rand" href="https://www.google.com/maps/dir/?api=1&amp;destination=Beijerlandselaan+169A,+3074+EH+Rotterdam" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Route</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLOT -->
+<section class="slot" aria-labelledby="slot-kop">
+  <div class="wrap sec">
+    <h2 class="honger" id="slot-kop">Honger? Eén belletje.</h2>
+    <a class="groot" href="tel:+31645864690">06 45 86 46 90</a>
+    <p>Bel even of regel het via WhatsApp. Ophalen doe je aan de Beijerlandselaan 169-A.</p>
+    <div class="knoppen">
+      <a class="btn btn-zwart" href="tel:+31645864690"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel nu</a>
+      <a class="btn btn-rand" href="https://wa.me/31645864690?text=Hoi%20Dunya%20D%C3%B6ner%2C%20ik%20wil%20graag%20bestellen%3A%20" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><img src="logo-light.svg" alt="Dunya Döner" width="377" height="62"><p>Turkse pizza, döner en dürüm. 100% halal. Hillesluis, Rotterdam-Zuid.</p></div>
+      <div><b>Adres</b>Beijerlandselaan 169-A<br>3074 EH Rotterdam</div>
+      <div><b>Contact</b><a href="tel:+31645864690">06 45 86 46 90</a><br><a href="https://wa.me/31645864690?text=Hoi%20Dunya%20D%C3%B6ner" target="_blank" rel="noopener">WhatsApp</a><br>Elke dag open</div>
+    </div>
+    <div class="foot-onder"><span>© Dunya Döner</span><span>Website door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a></span></div>
+  </div>
 </footer>
 
-<div class="fbar" id="fbar">
- <a class="btn btn-tomaat" href="https://wa.me/31645864690?text=Hoi%20Dunya%20Doner%2C%20ik%20wil%20graag%20iets%20bestellen%20om%20af%20te%20halen." target="_blank" rel="noopener">WhatsApp</a>
- <a class="btn btn-petrol" href="tel:+31645864690">Bel</a>
+<nav class="float" id="float" aria-label="Snel contact">
+  <a class="hoofd" href="tel:+31645864690"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel</a>
+  <a href="https://wa.me/31645864690?text=Hoi%20Dunya%20D%C3%B6ner%2C%20ik%20wil%20graag%20bestellen%3A%20" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Beijerlandselaan+169A,+3074+EH+Rotterdam" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Route</a>
+</nav>
+
+<!-- Pitch-modus: alleen voor Mo in het gesprek. Openen via het kleine "Mo"-knopje of ?pitch in de URL. -->
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-labelledby="pp-titel">
+  <div class="pp">
+    <div class="pp-top"><b>Pitch · Dunya Döner</b><button class="pp-sluit" id="pp-sluit" type="button" aria-label="Sluiten">×</button></div>
+    <h2 id="pp-titel">4,7 uit 215 reviews. <em>Maar op je site staat geen telefoonnummer.</em></h2>
+    <div class="vn">
+      <figure><div class="tel voor"><img src="img/voor-site.png" loading="lazy" alt="Huidige site dunyadonerrotterdam.nl/contact op een telefoon: adres en bezorgtijden, geen telefoonnummer" width="390" height="844"></div><figcaption><b>Voor:</b> dunyadonerrotterdam.nl/contact nu. Een Thuisbezorgd-sjabloon met adres en bezorgtijden; geen telefoonnummer, geen WhatsApp.</figcaption></figure>
+      <figure><div class="tel"><iframe id="pp-frame" title="De nieuwe site op een telefoon" loading="lazy"></iframe></div><figcaption><b>Na:</b> je eigen site, met je eigen eten en je nummer groot in beeld.</figcaption></figure>
+    </div>
+
+    <h3>Rekenvoorbeeld (vul samen in)</h3>
+    <div class="reken">
+      <div><label for="r-best">Extra eigen bestellingen per week <output id="o-best">5</output></label><input type="range" id="r-best" min="0" max="60" step="1" value="5"></div>
+      <div><label for="r-bedrag">Gemiddeld bedrag per bestelling <output id="o-bedrag">€ 10</output></label><input type="range" id="r-bedrag" min="5" max="40" step="1" value="10"></div>
+      <div class="uitkomst">
+        <div><small>Extra omzet per week</small><strong id="u-week">€ 50</strong></div>
+        <div><small>Extra omzet per jaar</small><strong id="u-jaar">€ 2.600</strong></div>
+        <div><small>€ 595 is de omzet van</small><strong id="u-aantal">60 bestellingen</strong></div>
+      </div>
+      <p class="disclaimer">Voorbeeld, geen belofte. Jij kiest de getallen; het gaat om omzet, niet om winst. Bestellingen die rechtstreeks bij jou binnenkomen (bellen, ophalen) lopen niet via een platform, dus daarover betaal je geen platformcommissie.</p>
+    </div>
+
+    <h3>Wat er concreet beter is</h3>
+    <ol class="punten">
+      <li><span><b>Je nummer staat er groot op.</b> Nu staat er op je site geen telefoonnummer. Straks bellen klanten in 1 tik, en op de telefoon blijft de belknop in beeld.</span></li>
+      <li><span><b>Je eigen eten, groot in beeld.</b> Turkse pizza, döner, dönerschotel en je gevel met de rode letters, met je eigen foto's in plaats van een platform-sjabloon.</span></li>
+      <li><span><b>Wat klanten al zeggen, staat erop.</b> 4,7 uit 215 reviews en het gratis drankje waar klanten over schrijven, plus route en "elke dag open" in 1 tik.</span></li>
+    </ol>
+  </div>
 </div>
 
 <script>
+const TEL = "06 45 86 46 90", WA = "31645864690";
+
+/* scroll-reveal + menubord aan, met vangnet voor screenshots */
 (function(){
-var WA='https://wa.me/31645864690?text=', TEL='tel:+31645864690', NUM='06 45 86 46 90';
-var DAGEN=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
-var MND=['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'];
-function nuNL(){try{return new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Amsterdam'}));}catch(e){return new Date();}}
-var nu=nuNL();
-var keuze={wat:null,aantal:null,dag:null};
-var stap2=document.getElementById('stap2'), stap3=document.getElementById('stap3'), uit=document.getElementById('uitkomst'), dagenEl=document.getElementById('dagen');
-var opties=[{v:'nu',t:'Vandaag',s:'zo snel mogelijk',w:'vandaag, zo snel mogelijk'},{v:'later',t:'Vandaag',s:'later op de dag',w:'vandaag, later op de dag'}];
-for(var i=1;i<5;i++){
-  var d=new Date(nu.getFullYear(),nu.getMonth(),nu.getDate()+i);
-  var naam=i===1?'Morgen':DAGEN[d.getDay()].charAt(0).toUpperCase()+DAGEN[d.getDay()].slice(1);
-  opties.push({v:'d'+i,t:naam,s:d.getDate()+' '+MND[d.getMonth()],w:(i===1?'morgen':DAGEN[d.getDay()])+' '+d.getDate()+' '+MND[d.getMonth()]});
-}
-var dagTekst={};
-opties.forEach(function(o){
-  var b=document.createElement('button');b.type='button';b.className='optie';b.setAttribute('aria-pressed','false');b.dataset.v=o.v;
-  b.innerHTML=o.t+'<small>'+o.s+'</small>';dagenEl.appendChild(b);dagTekst[o.v]=o.w;
-});
-function knop(cls,href,tekst,ext){return '<a class="btn '+cls+'" href="'+href+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+tekst+'</a>';}
-function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
-function toon(){
-  stap2.hidden=!keuze.wat;
-  stap3.hidden=!(keuze.wat&&keuze.aantal);
-  if(!(keuze.wat&&keuze.aantal&&keuze.dag)){uit.hidden=true;return;}
-  var a=keuze.aantal==='4+'?'4 of meer':keuze.aantal;
-  var wat=keuze.wat==='anders'?'iets van de kaart, voor '+a+(a==='1'?' persoon':' personen')+'. Wat raden jullie aan?':a+'x '+keuze.wat+'.';
-  var msg='Hoi Dunya Doner, ik wil graag bestellen om af te halen: '+wat+' Ophalen: '+dagTekst[keuze.dag]+'. Kan dat?';
-  uit.hidden=false;
-  uit.innerHTML='<div class="kop">Je bericht staat klaar</div><blockquote>'+esc(msg)+'</blockquote><div class="btns">'+knop('btn-tomaat',WA+encodeURIComponent(msg),'Verstuur via WhatsApp',true)+knop('btn-rand',TEL,'Of bel '+NUM)+'</div>';
-}
-document.getElementById('kz').addEventListener('click',function(e){
-  var b=e.target.closest('.optie'); if(!b) return;
-  var g=b.parentElement.dataset.groep;
-  [].forEach.call(b.parentElement.children,function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
-  keuze[g]=b.dataset.v; toon();
-});
+  const els = document.querySelectorAll(".rv"), bord = document.getElementById("bord");
+  if ("IntersectionObserver" in window){
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting){ e.target.classList.add(e.target === bord ? "aan" : "in"); io.unobserve(e.target); }
+    }), {rootMargin:"0px 0px -12% 0px"});
+    els.forEach(el => io.observe(el)); io.observe(bord);
+  }
+  setTimeout(() => { els.forEach(el => el.classList.add("in")); bord.classList.add("aan"); }, 3500);
+})();
 
-// reveal met vangnet
-var els=document.querySelectorAll('.reveal');
-if('IntersectionObserver' in window){
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
-  els.forEach(function(el){io.observe(el);});
-}
-setTimeout(function(){els.forEach(function(el){el.classList.add('in');});},3500);
+/* zwevende cta zodra de hero uit beeld is */
+(function(){
+  const f = document.getElementById("float"), hero = document.querySelector(".hero");
+  if (!("IntersectionObserver" in window)) { f.classList.add("toon"); return; }
+  new IntersectionObserver(([e]) => {
+    const aan = !e.isIntersecting;
+    f.classList.toggle("toon", aan);
+    document.body.classList.toggle("float-aan", aan && matchMedia("(max-width:860px)").matches);
+  }, {threshold:0}).observe(hero);
+})();
 
-// zwevende cta zodra de hero uit beeld is
-var fbar=document.getElementById('fbar'), hero=document.getElementById('hero');
-if('IntersectionObserver' in window){
-  new IntersectionObserver(function(es){fbar.classList.toggle('show',!es[0].isIntersecting);}).observe(hero);
-}
+/* bestelbon */
+(function(){
+  const form = document.getElementById("bonform"), out = document.getElementById("bon-tekst"), wa = document.getElementById("wa-bon");
+  const $ = id => document.getElementById(id);
+  const vandaag = new Date(); vandaag.setMinutes(vandaag.getMinutes() - vandaag.getTimezoneOffset());
+  $("b-datum").min = vandaag.toISOString().slice(0,10);
+  const fmt = v => { if(!v) return ""; const d = new Date(v + "T12:00:00"); return d.toLocaleDateString("nl-NL",{weekday:"long",day:"numeric",month:"long"}); };
+  form.querySelectorAll(".teller").forEach(t => {
+    const o = t.querySelector("output");
+    t.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+      o.textContent = Math.max(0, Math.min(20, +o.textContent + +b.dataset.d)); bouw();
+    }));
+  });
+  function bouw(){
+    const w = form.querySelector("input[name=wanneer]:checked").value;
+    $("v-tijd-l").hidden = w !== "later"; $("v-datum-l").hidden = w !== "dag";
+    const regels = [];
+    form.querySelectorAll(".teller").forEach(t => { const n = +t.querySelector("output").textContent; if (n) regels.push("- " + n + "× " + t.dataset.item); });
+    const extra = $("b-extra").value.trim();
+    if (extra) regels.push("- " + extra);
+    let wanneer = "zo snel mogelijk";
+    if (w === "later") wanneer = "later vandaag" + ($("b-tijd").value ? ", rond " + $("b-tijd").value : "");
+    if (w === "dag") wanneer = fmt($("b-datum").value) || "een andere dag";
+    const naam = $("b-naam").value.trim();
+    const r = ["Hoi Dunya Döner,", "ik wil graag bestellen om op te halen:"];
+    r.push(...(regels.length ? regels : ["- (nog niets gekozen)"]));
+    r.push("Ophalen: " + wanneer + ".", "Kan dat?", naam ? "Groet, " + naam : "Groet!");
+    const tekst = r.join("\n");
+    out.textContent = tekst;
+    wa.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(tekst);
+  }
+  form.addEventListener("input", bouw); form.addEventListener("change", bouw); bouw();
+})();
+
+/* pitch-modus */
+(function(){
+  const p = document.getElementById("pitch"), frame = document.getElementById("pp-frame");
+  const euro = n => "€ " + Math.round(n).toLocaleString("nl-NL");
+  function open(){
+    p.classList.add("open"); document.body.style.overflow = "hidden";
+    if (!frame.src) frame.src = location.href.split("#")[0].split("?")[0];
+  }
+  function dicht(){ p.classList.remove("open"); document.body.style.overflow = ""; }
+  document.getElementById("pitch-knop").addEventListener("click", open);
+  document.getElementById("pp-sluit").addEventListener("click", dicht);
+  p.addEventListener("click", e => { if (e.target === p) dicht(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") dicht(); });
+  const a = document.getElementById("r-best"), b = document.getElementById("r-bedrag");
+  function reken(){
+    const n = +a.value, bed = +b.value;
+    document.getElementById("o-best").textContent = n;
+    document.getElementById("o-bedrag").textContent = euro(bed);
+    document.getElementById("u-week").textContent = euro(n * bed);
+    document.getElementById("u-jaar").textContent = euro(n * bed * 52);
+    document.getElementById("u-aantal").textContent = Math.ceil(595 / bed) + " bestellingen";
+  }
+  a.addEventListener("input", reken); b.addEventListener("input", reken); reken();
+  if (/[?&]pitch\b/.test(location.search)) open();
+  if (window.self !== window.top) { document.getElementById("pitch-knop").hidden = true; }
 })();
 </script>
 </body>
