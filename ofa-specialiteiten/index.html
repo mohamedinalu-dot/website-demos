@@ -1,0 +1,732 @@
+<!doctype html>
+<!--
+  L223 O'fa Afro-Surinaams Specialiteitenrestaurant (demo door Mohamedia, 7 nov 2026)
+  Concept: "De keukentafel van O'fa": alles ligt op hun eigen houten tafel met sopropo, oker en madame jeanette
+  (de achtergrond uit hun eigen site en flyers), als losse objecten die je oppakt.
+  Lay-out-archetype: tafelblad met recht liggende objecten: de etalagefoto recht in een witte rand en een
+  afhaalbonnetje (gekartelde onderrand) met gerechten uit hun keuken; geen schuine fotokaart, geen stempel, geen band. Daarna een menukaart-als-object (tik een gerecht = bestelvraag),
+  etalage-foto als "zo herken je ons", stempelkaarten. Geen full-bleed foto met smalle hoofdletters, geen ticker in het eerste scherm.
+  Fonts: Bricolage Grotesque (koppen) + Montserrat (tekst, zoals de ondertitel in hun logo).
+  Kleuren: hun logo-geel #F4B608, tafelbruin, sopropo-groen, pepertjesrood als klein accent.
+  Foto's: 2 gevelfoto's uit hun Google Maps-vermelding (poster van derden en een persoon vervaagd), tafelachtergrond van ofa-rotterdam.nl.
+-->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>O'fa – Afro-Surinaams afhaalrestaurant in Rotterdam-West</title>
+<meta name="description" content="O'fa Afro-Surinaams Specialiteitenrestaurant aan de 2e Middellandstraat 25 in Rotterdam-West: Surinaamse thuiskost om mee te nemen. 4,7 uit 78 Google-reviews. Bel 06 57 78 44 47.">
+<meta name="theme-color" content="#2B190E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/tafel-staand.jpg" media="(max-width: 860px)">
+<style>
+:root{
+  --hout:#2B190E; --hout2:#3A2416; --hout3:#4B2F1C;
+  --geel:#F4B608; --geel2:#FFD34D;
+  --groen:#2E6B35; --groen2:#1F4D26;
+  --rood:#C4161C;
+  --papier:#FFFCF4; --inkt:#24160D; --grijs:#6B5A4C; --lijn:#E6DCCB;
+  --kop:"Bricolage Grotesque", system-ui, sans-serif;
+  --tekst:"Montserrat", system-ui, sans-serif;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html,body{overflow-x:clip}
+body{font-family:var(--tekst);color:var(--inkt);background:var(--hout);line-height:1.6;font-size:16px}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--kop);line-height:1.05;letter-spacing:-.01em;font-weight:800}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:0 22px;border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap;transition:background-color .2s,color .2s,border-color .2s,box-shadow .2s}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-geel{background:var(--geel);color:var(--inkt);box-shadow:0 6px 0 #B7860A}
+.btn-geel:hover{background:var(--geel2)}
+.btn-geel:active{box-shadow:0 2px 0 #B7860A}
+.btn-lijn{border-color:rgba(255,255,255,.75);color:#fff;background:rgba(43,25,14,.35)}
+.btn-lijn:hover{background:#fff;color:var(--inkt)}
+.btn-groen{background:var(--groen);color:#fff;box-shadow:0 6px 0 var(--groen2)}
+.btn-groen:hover{background:#357A3D}
+.btn-donker{border-color:var(--inkt);color:var(--inkt);background:transparent}
+.btn-donker:hover{background:var(--inkt);color:#fff}
+
+/* demo-strook + aankondiging */
+.demo{position:relative;background:#140B05;color:rgba(255,255,255,.82);font-size:13px;text-align:center;padding:7px 44px}
+.demo a{color:#fff;font-weight:600}
+.pitch-knop{position:absolute;right:6px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;border:0;background:transparent;color:#fff;font:700 10px var(--tekst);opacity:.3;cursor:pointer}
+.pitch-knop:hover{opacity:1}
+.balk{background:var(--geel);color:var(--inkt);font-size:13.5px;font-weight:600;text-align:center;padding:0 14px}
+.balk a{text-decoration:none;display:inline-block;padding:12px 0;line-height:1.45}
+.balk b{font-weight:800}
+
+/* header */
+.kop-header{position:relative;z-index:5;background:var(--hout)}
+.kop-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.kop-header .logo{display:block;text-decoration:none;padding:6px 0}
+.kop-header .logo img{height:46px;width:auto}
+.kop-header nav{display:none;gap:26px}
+.kop-header nav a{color:rgba(255,255,255,.86);text-decoration:none;font-weight:600;font-size:14.5px}
+.kop-header nav a:hover{color:var(--geel)}
+.belrond{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 16px;border-radius:999px;background:var(--geel);color:var(--inkt);font-weight:700;text-decoration:none;font-size:14.5px}
+.belrond svg{width:18px;height:18px}
+@media (min-width:900px){.kop-header nav{display:flex}}
+
+/* HERO: tafelblad */
+.hero{position:relative;overflow:hidden;color:#fff;isolation:isolate}
+.tafel{position:absolute;inset:-4%;z-index:-2;background:url(img/tafel-staand.jpg) center/cover no-repeat;animation:kenburns 26s ease-in-out infinite alternate}
+@media (min-width:861px){.tafel{background-image:url(img/tafel-breed.jpg)}}
+@keyframes kenburns{from{transform:scale(1) translate(0,0)}to{transform:scale(1.08) translate(-1.5%,1%)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(120% 70% at 50% 62%,rgba(30,17,9,.78) 0%,rgba(30,17,9,.55) 45%,rgba(30,17,9,.15) 100%)}
+.hero .wrap{display:grid;gap:8px;padding:22px 0 40px}
+.collage{position:relative;height:318px;margin:0 auto;width:min(360px,100%)}
+.polaroid{position:absolute;right:0;top:0;width:64%;background:#fff;padding:8px 8px 34px;border-radius:4px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.polaroid img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 34%;border-radius:2px}
+.polaroid figcaption{position:absolute;left:0;right:12px;bottom:7px;text-align:right;font:600 12.5px var(--tekst);color:var(--inkt)}
+.briefje{position:absolute;left:0;top:64px;width:52%;background:var(--papier);color:var(--inkt);padding:14px 14px 18px;box-shadow:0 14px 30px rgba(0,0,0,.4);
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,conic-gradient(from -45deg at 50% 100%,#000 90deg,#0000 0) bottom/14px 8px repeat-x;
+  mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,conic-gradient(from -45deg at 50% 100%,#000 90deg,#0000 0) bottom/14px 8px repeat-x}
+.briefje .bonkop{display:flex;justify-content:space-between;align-items:baseline;gap:6px;border-bottom:2px solid var(--inkt);padding-bottom:6px;margin-bottom:6px}
+.briefje small{font:700 10.5px var(--tekst);letter-spacing:.12em;text-transform:uppercase;color:var(--rood)}
+.briefje .bonkop span{font:800 13px var(--kop)}
+.briefje ul{list-style:none;font:700 14px/1.55 var(--kop)}
+.briefje li{display:flex;align-items:center;gap:8px;border-bottom:1px dashed #D9CBB2}
+.briefje li::before{content:"";flex:none;width:11px;height:11px;border:1.5px solid var(--inkt);border-radius:2px}
+.briefje li:last-child{border:0}
+.briefje .bonvoet{margin-top:8px;font:600 11.5px var(--tekst);color:var(--grijs)}
+.hero-tekst{text-align:left}
+.hero .kicker{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--geel)}
+.hero .kicker::before{content:"";width:22px;height:3px;border-radius:2px;background:var(--geel)}
+.hero h1{font-size:clamp(34px,9.6vw,64px);margin:10px 0 10px;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--geel)}
+.slogan{font-style:italic;font-weight:500;color:rgba(255,255,255,.9);font-size:15px;margin-bottom:20px}
+.slogan span{color:rgba(255,255,255,.62);font-style:normal;font-size:13px}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap}
+.hero-cta .btn{flex:1 1 150px}
+.vertrouwen{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:28px;font-size:14px;color:rgba(255,255,255,.9)}
+.vertrouwen a{text-decoration:none}
+.vertrouwen .st{color:var(--geel);letter-spacing:1px}
+.vertrouwen b{font-weight:700}
+@media (min-width:861px){
+  .hero .wrap{grid-template-columns:1.02fr .98fr;align-items:center;gap:40px;padding:72px 0 88px;min-height:640px}
+  .hero-tekst{order:-1}
+  .collage{height:520px;width:100%}
+  .polaroid{width:60%;right:2%;top:0}
+  .briefje{top:130px;width:44%;padding:20px 20px 26px}
+  .briefje ul{font-size:17px}
+  .slogan{font-size:17px}
+}
+@media (max-width:360px){.collage{height:290px}.briefje ul{font-size:13px}}
+
+/* secties */
+section{scroll-margin-top:12px}
+.sectie{padding:76px 0}
+.label{display:inline-block;font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rood);margin-bottom:10px}
+.sectie h2{font-size:clamp(30px,6.6vw,48px);margin-bottom:14px;text-wrap:balance}
+.intro{max-width:620px;color:var(--grijs);font-size:16.5px}
+.licht{background:var(--papier)}
+.donker{background:var(--hout);color:#fff}
+.donker .intro{color:rgba(255,255,255,.78)}
+.donker .label{color:var(--geel)}
+
+/* menukaart-als-object */
+.menu-sectie{background:var(--hout2) url(img/tafel-breed.jpg) center/cover;position:relative;isolation:isolate;overflow:hidden}
+.menu-sectie::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(36,20,10,.84)}
+.menu-grid{display:grid;gap:34px;margin-top:34px}
+.kaart{background:var(--papier);color:var(--inkt);border-radius:10px;padding:26px 20px 22px;box-shadow:0 26px 50px rgba(0,0,0,.45);transform:rotate(-1.2deg);position:relative;max-width:560px}
+.kaart::before{content:"";position:absolute;left:50%;top:-11px;width:90px;height:24px;margin-left:-45px;background:rgba(244,182,8,.8);transform:rotate(2deg)}
+.kaart .kaartkop{display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--inkt);padding-bottom:14px;margin-bottom:6px}
+.kaart .kaartkop img{width:92px;height:auto}
+.kaart .kaartkop p{font:800 19px/1.15 var(--kop)}
+.kaart .kaartkop p small{display:block;font:600 12px var(--tekst);color:var(--rood);letter-spacing:.06em;text-transform:uppercase;margin-top:3px}
+.gerechten{list-style:none}
+.gerechten li{border-bottom:1px dashed #D5C6AC}
+.gerecht{display:flex;align-items:center;gap:10px;width:100%;min-height:52px;padding:8px 2px;background:none;border:0;text-align:left;cursor:pointer}
+.gerecht .naam{font:700 17px var(--kop);flex:1;min-width:0;overflow-wrap:break-word}
+.gerecht .prijs{font-weight:700;font-variant-numeric:tabular-nums;color:var(--inkt)}
+.gerecht .plus{flex:none;width:30px;height:30px;border-radius:50%;background:var(--geel);display:grid;place-items:center;font-weight:800;font-size:18px;line-height:1;transition:background-color .2s}
+.gerecht:hover .plus,.gerecht:focus-visible .plus{background:var(--groen);color:#fff}
+.groente{margin-top:16px;background:#F7EED9;border-radius:10px;padding:12px 14px;font-size:14.5px}
+.groente b{display:block;font-family:var(--kop);font-size:16px}
+.bron{font-size:12.5px;color:var(--grijs);margin-top:14px;line-height:1.5}
+.bron a{color:var(--inkt)}
+.keuken h3{font-size:24px;color:#fff;margin-bottom:10px}
+.keuken p{color:rgba(255,255,255,.8);margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{display:inline-block;padding:8px 14px;border-radius:999px;border:1.5px solid rgba(244,182,8,.6);color:var(--geel2);font-weight:600;font-size:14.5px}
+.keuken .btn{margin-top:26px}
+@media (min-width:861px){.menu-grid{grid-template-columns:1.1fr .9fr;align-items:center}.kaart{padding:34px 34px 28px}}
+
+/* kiezer */
+.kiezer{display:grid;gap:22px;margin-top:30px}
+.stap{background:#fff;border:1px solid var(--lijn);border-radius:var(--r);padding:20px 18px}
+.stap h3{font-size:19px;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.stap h3 span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--inkt);color:var(--geel);font:800 15px var(--kop);flex:none}
+.opties{display:flex;flex-wrap:wrap;gap:8px}
+.optie{min-height:46px;min-width:46px;padding:8px 15px;border-radius:999px;border:1.5px solid #CFC2AC;background:var(--papier);font-weight:600;font-size:14.5px;cursor:pointer;transition:background-color .15s,border-color .15s,color .15s;text-align:left}
+.optie:hover{border-color:var(--inkt)}
+.optie[aria-pressed="true"]{background:var(--inkt);border-color:var(--inkt);color:#fff}
+.optie small{font-weight:500;opacity:.7}
+.datum{min-height:46px;padding:8px 12px;border-radius:12px;border:1.5px solid #CFC2AC;font:600 15px var(--tekst);background:var(--papier);color:var(--inkt)}
+.bericht{background:var(--hout);color:#fff;border-radius:var(--r);padding:22px 18px}
+.bericht h3{font-size:19px;margin-bottom:12px;color:var(--geel)}
+.bubbel{background:#E8F7DF;color:#14240F;border-radius:16px 16px 4px 16px;padding:14px 16px;font-size:15px;line-height:1.5;margin-bottom:18px;min-height:76px;overflow-wrap:break-word}
+.bericht .btns{display:flex;flex-wrap:wrap;gap:10px}
+.bericht .btns .btn{flex:1 1 180px}
+.bericht .alt{font-size:13.5px;color:rgba(255,255,255,.75);margin-top:30px}
+.bericht .alt a{color:var(--geel);font-weight:700;white-space:nowrap}
+@media (min-width:861px){.kiezer{grid-template-columns:1fr 1fr;align-items:start}.kiezer .stappen{display:grid;gap:16px}.bericht{position:sticky;top:20px}}
+.kiezer .stappen{display:grid;gap:14px}
+
+/* waarom: stempelkaarten */
+.stempels{display:grid;gap:16px;margin-top:30px}
+.sk{position:relative;background:#fff;border-radius:var(--r);padding:24px 20px 22px;border:1px solid var(--lijn);overflow:hidden}
+.sk .ico{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;margin-bottom:14px}
+.sk .ico svg{width:28px;height:28px}
+.sk:nth-child(1) .ico{background:#FDEBB3}
+.sk:nth-child(2) .ico{background:#D9EBD5}
+.sk:nth-child(3) .ico{background:#F8D3CF}
+.sk h3{font-size:clamp(19px,5.2vw,22px);margin-bottom:8px;overflow-wrap:break-word}
+.sk p{color:var(--grijs);font-size:15px}
+@media (min-width:861px){.stempels{grid-template-columns:repeat(3,1fr)}}
+
+/* etalage */
+.etalage{display:grid;gap:26px;align-items:center}
+.etalage figure{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 24px 50px rgba(0,0,0,.35)}
+.etalage figure img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.etalage figcaption{position:absolute;left:12px;bottom:12px;background:rgba(43,25,14,.86);color:#fff;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px}
+.adres{font:800 clamp(24px,6vw,34px)/1.15 var(--kop);margin:6px 0 12px}
+.info-lijst{list-style:none;display:grid;gap:10px;margin:16px 0 0}
+.info-lijst li{display:flex;gap:12px;align-items:flex-start;color:rgba(255,255,255,.86)}
+.info-lijst svg{width:20px;height:20px;flex:none;margin-top:3px;color:var(--geel)}
+.info-lijst a{color:#fff;font-weight:700;white-space:nowrap}
+.etalage .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.etalage .btns .btn{flex:1 1 160px}
+.na-btns{margin-top:28px;font-size:13.5px;color:rgba(255,255,255,.62)}
+@media (min-width:861px){.etalage{grid-template-columns:1.15fr .85fr;gap:54px}}
+
+/* reviews */
+.score{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:22px 0 28px}
+.score .groot{font:800 64px/1 var(--kop)}
+.score .st{color:var(--geel);font-size:22px;letter-spacing:2px;-webkit-text-stroke:.5px #B7860A}
+.score a{font-weight:600;color:var(--inkt);display:inline-flex;align-items:center;min-height:44px}
+.reviews{display:grid;gap:16px}
+.rv-kaart{background:#fff;border-radius:var(--r);padding:22px 20px;border-left:6px solid var(--geel)}
+.rv-kaart:nth-child(2){border-left-color:var(--groen)}
+.rv-kaart:nth-child(3){border-left-color:var(--rood)}
+.rv-kaart p{font-size:15.5px;margin-bottom:12px}
+.rv-kaart b{font-family:var(--kop);font-size:16px}
+.noot{font-size:13px;color:var(--grijs);margin-top:16px}
+@media (min-width:861px){.reviews{grid-template-columns:repeat(3,1fr)}}
+
+/* zo werkt het */
+.stappen3{list-style:none;display:grid;gap:14px;margin-top:28px;counter-reset:s}
+.stappen3 li{counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:18px}
+.stappen3 li::before{content:counter(s);display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--geel);color:var(--inkt);font:800 22px var(--kop)}
+.stappen3 h3{font-size:19px;margin-bottom:4px}
+.stappen3 p{color:rgba(255,255,255,.78);font-size:15px}
+.stappen3 div{min-width:0}
+@media (min-width:861px){.stappen3{grid-template-columns:repeat(3,1fr)}}
+
+/* faq */
+.faq{display:grid;gap:10px;margin-top:26px;max-width:820px}
+.faq details{background:#fff;border:1px solid var(--lijn);border-radius:14px;padding:0 18px}
+.faq summary{cursor:pointer;list-style:none;font:700 17px var(--kop);min-height:58px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:24px;color:var(--rood);flex:none}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 0 16px;color:var(--grijs)}
+
+/* slot */
+.slot{text-align:center;padding:84px 0 92px;background:var(--hout2) url(img/tafel-staand.jpg) center/cover;position:relative;isolation:isolate;color:#fff}
+.slot::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(36,20,10,.8)}
+.slot img{width:min(300px,72%);height:auto;margin:0 auto 18px}
+.slot h2{font-size:clamp(30px,7vw,50px);margin-bottom:10px}
+.slot p{color:rgba(255,255,255,.82);max-width:520px;margin:0 auto 26px}
+.slot .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.slot .btns .btn{flex:0 1 240px}
+.slot .onder{margin-top:30px;font-size:14px;color:rgba(255,255,255,.7)}
+
+/* footer */
+footer{background:#140B05;color:rgba(255,255,255,.75);padding:44px 0 110px;font-size:14px}
+footer .wrap{display:grid;gap:22px}
+footer img{height:40px;width:auto}
+footer a{color:#fff}
+footer .door{border-top:1px solid rgba(255,255,255,.12);padding-top:18px;font-size:13px}
+@media (min-width:861px){footer .wrap{grid-template-columns:1.2fr 1fr 1fr;align-items:start}footer .door{grid-column:1/-1}footer{padding-bottom:44px}}
+
+/* zwevende CTA */
+.zweef{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;display:none;gap:8px;padding:8px;background:rgba(43,25,14,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:999px;box-shadow:0 12px 30px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .25s}
+.zweef .btn{flex:1;min-height:48px;padding:0 12px;font-size:15px;box-shadow:none}
+.zweef .btn-lijn{border-color:rgba(255,255,255,.5)}
+.zweef.aan{opacity:1;pointer-events:auto}
+@media (max-width:860px){.zweef{display:flex}}
+
+/* reveal met vangnet */
+.rv{opacity:0;translate:0 22px;transition:opacity .6s ease,translate .6s ease}
+.rv.in{opacity:1;translate:none}
+
+/* pitch-modus (alleen voor Mo) */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(20,11,5,.6);display:none;align-items:flex-end;justify-content:center}
+.pitch.open{display:flex}
+.pitch .vel{background:#fff;width:min(1100px,100%);max-height:94svh;overflow:auto;border-radius:26px 26px 0 0;padding:24px clamp(16px,3vw,40px) 40px}
+.pitch .pkop{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.pitch .pkop h3{font-size:22px}
+.pitch .sluit{width:44px;height:44px;border-radius:50%;border:1px solid var(--lijn);background:#fff;font-size:22px;cursor:pointer}
+.vn{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px}
+.vn figure{background:#F5EEE2;border-radius:20px;padding:18px;text-align:center}
+.vn figcaption{font-weight:700;margin-bottom:12px;font-size:15px}
+.vn figcaption span{display:block;font-weight:500;color:var(--grijs);font-size:13.5px}
+.voorbeeld-img{width:100%;max-width:440px;margin:0 auto;border-radius:12px;border:6px solid var(--inkt)}
+.tel{width:240px;max-width:100%;height:480px;margin:0 auto;border:8px solid var(--inkt);border-radius:30px;overflow:hidden;background:#fff;position:relative}
+.tel iframe{width:390px;height:844px;border:0;transform:scale(.5949);transform-origin:0 0;position:absolute;left:0;top:0}
+.fouten{list-style:none;display:grid;gap:8px;margin-top:14px;text-align:left}
+.fouten li{background:#fff;border-radius:12px;padding:10px 12px;font-size:14px;display:flex;gap:10px}
+.fouten li b{color:var(--rood)}
+.reken{background:var(--hout);color:#fff;border-radius:22px;padding:24px;margin-bottom:28px}
+.reken h4,.beter h4{font-family:var(--kop);font-size:20px;margin-bottom:4px}
+.reken .vb{font-size:13px;color:rgba(255,255,255,.68);margin-bottom:16px}
+.reken label{display:block;font-size:14.5px;margin:14px 0 6px}
+.reken label output{float:right;font-weight:700}
+.reken input[type=range]{width:100%;accent-color:var(--geel);height:32px}
+.reken .uit{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.reken .uit div{background:rgba(255,255,255,.08);border-radius:14px;padding:14px}
+.reken .uit small{display:block;font-size:12.5px;color:rgba(255,255,255,.68)}
+.reken .uit strong{font-family:var(--kop);font-size:clamp(20px,3vw,28px)}
+.beter ol{margin:10px 0 0 20px;display:grid;gap:8px}
+@media (max-width:700px){.vn{grid-template-columns:1fr}.reken .uit{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;translate:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="i-tel" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/>
+    <path id="i-wa" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.12-.17.25-.64.8-.79.97-.14.16-.29.19-.54.06a6.7 6.7 0 0 1-3.3-2.9c-.25-.43.25-.4.71-1.33.08-.16.04-.3-.02-.43l-.77-1.85c-.2-.48-.4-.42-.56-.42h-.48a.92.92 0 0 0-.66.31 2.8 2.8 0 0 0-.87 2.07 4.8 4.8 0 0 0 1 2.56 11 11 0 0 0 4.2 3.7c1.56.68 2.18.73 2.96.62.48-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/>
+    <path id="i-pin" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/>
+    <path id="i-ig" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM17.5 5.8a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </defs>
+</svg>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a>, voor O'fa. Niet de officiële site. <button class="pitch-knop" id="pitchKnop" aria-label="Presentatie openen">Mo</button></div>
+<div class="balk"><a href="https://maps.google.com/?cid=7961156370208164849" target="_blank" rel="noopener"><b>4,7 ★</b> uit 78 Google-reviews · Afro-Surinaamse keuken in Rotterdam-West</a></div>
+
+<header class="kop-header">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="O'fa, naar boven"><img src="logo-light.svg" alt="O'FA Afro-Surinaams Specialiteitenrestaurant" width="114" height="46"></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#menu">Menu</a>
+      <a href="#bestel">Bestellen</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#route">Route</a>
+    </nav>
+    <a class="belrond" href="tel:+31657784447"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-tel"/></svg>Bel</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="tafel" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="collage">
+      <figure class="polaroid">
+        <img src="img/gevel-staand.jpg" alt="Etalage van O'fa met de gele raambelettering 'Afhaal restaurant, Afro-Surinaamse specialiteiten'" width="760" height="1123" fetchpriority="high">
+        <figcaption>2e Middellandstraat 25</figcaption>
+      </figure>
+      <div class="briefje" aria-label="Uit de keuken van O'fa">
+        <div class="bonkop"><small>Afhaalbon</small><span>O'fa</span></div>
+        <ul>
+          <li>Okersoep</li>
+          <li>Heri-heri</li>
+          <li>Moksi alesi</li>
+          <li>Pom</li>
+          <li>Pastei</li>
+        </ul>
+        <p class="bonvoet">Uit de Surinaamse keuken</p>
+      </div>
+    </div>
+    <div class="hero-tekst">
+      <span class="kicker">Afhaal · Rotterdam-West</span>
+      <h1>Afro-Surinaamse <em>thuiskost</em>, om mee te nemen.</h1>
+      <p class="slogan">"Pe a njang e tesi fa mus tesi" <span>· de slogan van O'fa</span></p>
+      <div class="hero-cta">
+        <a class="btn btn-geel" href="tel:+31657784447"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-tel"/></svg>Bel O'fa</a>
+        <a class="btn btn-lijn" href="#bestel">Kies je gerecht</a>
+      </div>
+      <p class="vertrouwen"><a href="https://maps.google.com/?cid=7961156370208164849" target="_blank" rel="noopener"><span class="st">★★★★★</span> <b>4,7</b> uit 78 Google-reviews</a><span>2e Middellandstraat 25</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="sectie menu-sectie donker" id="menu">
+  <div class="wrap">
+    <span class="label">Op tafel</span>
+    <h2>Wat de pot schaft.</h2>
+    <p class="intro">Tik op een gerecht en je vraag staat klaar. Het menu wisselt: hieronder staat als voorbeeld het menu van 29 december 2025, met de prijzen van toen.</p>
+    <div class="menu-grid">
+      <div class="kaart rv">
+        <div class="kaartkop">
+          <img src="logo-dark.svg" alt="" width="92" height="37">
+          <p>Voorbeeld: menu van 29 december 2025<small>Dagmenu wisselt · prijzen van toen</small></p>
+        </div>
+        <ul class="gerechten">
+          <li><button class="gerecht" data-gerecht="Gebakken vis"><span class="naam">Gebakken vis</span><span class="prijs">€ 19,50</span><span class="plus" aria-hidden="true">+</span></button></li>
+          <li><button class="gerecht" data-gerecht="Geroosterde kip"><span class="naam">Geroosterde kip</span><span class="prijs">€ 17,50</span><span class="plus" aria-hidden="true">+</span></button></li>
+          <li><button class="gerecht" data-gerecht="Erwtensoep"><span class="naam">Erwtensoep</span><span class="prijs">€ 16</span><span class="plus" aria-hidden="true">+</span></button></li>
+          <li><button class="gerecht" data-gerecht="Gele pesi moksi alesi"><span class="naam">Gele pesi moksi alesi</span><span class="prijs">€ 17,50</span><span class="plus" aria-hidden="true">+</span></button></li>
+          <li><button class="gerecht" data-gerecht="Bami"><span class="naam">Bami</span><span class="prijs">€ 15,50</span><span class="plus" aria-hidden="true">+</span></button></li>
+          <li><button class="gerecht" data-gerecht="Nasi"><span class="naam">Nasi</span><span class="prijs">€ 16,50</span><span class="plus" aria-hidden="true">+</span></button></li>
+        </ul>
+        <p class="groente"><b>Kies uit de volgende groente</b>Kousenband, amsoi &amp; mixgroenten</p>
+        <p class="bron">Bron: het menu op <a href="http://ofa-rotterdam.nl/" target="_blank" rel="noopener">ofa-rotterdam.nl</a> (29 december 2025). Geen actuele prijslijst: vraag wat er vandaag op het menu staat.</p>
+      </div>
+      <div class="keuken rv">
+        <h3>Uit de Surinaamse keuken</h3>
+        <p>Okersoep, kousenband, heri-heri of moksi alesi met rijst. Of pom, pastei, bruine bonen en vis, met Surinaamse groente erbij.</p>
+        <div class="chips">
+          <span>Okersoep</span><span>Kousenband</span><span>Heri-heri</span><span>Moksi alesi</span><span>Pom</span><span>Pastei</span><span>Bruine bonen</span><span>Vis</span>
+        </div>
+        <a class="btn btn-geel" href="#bestel">Stel je bestelling samen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie licht" id="bestel">
+  <div class="wrap">
+    <span class="label">Bestellen</span>
+    <h2>Zo staat je vraag klaar.</h2>
+    <p class="intro">Kies wat je wilt, voor hoeveel personen en wanneer. Je bericht wordt vanzelf ingevuld; je stuurt het met één tik, of je belt.</p>
+    <div class="kiezer">
+      <div class="stappen">
+        <div class="stap">
+          <h3><span>1</span>Wat wil je?</h3>
+          <div class="opties" data-groep="gerecht">
+            <button class="optie" aria-pressed="true" data-v="het dagmenu">Wat is het dagmenu?</button>
+            <button class="optie" aria-pressed="false" data-v="Gebakken vis">Gebakken vis</button>
+            <button class="optie" aria-pressed="false" data-v="Geroosterde kip">Geroosterde kip</button>
+            <button class="optie" aria-pressed="false" data-v="Erwtensoep">Erwtensoep</button>
+            <button class="optie" aria-pressed="false" data-v="Gele pesi moksi alesi">Gele pesi moksi alesi</button>
+            <button class="optie" aria-pressed="false" data-v="Bami">Bami</button>
+            <button class="optie" aria-pressed="false" data-v="Nasi">Nasi</button>
+            <button class="optie" aria-pressed="false" data-v="Heri-heri">Heri-heri</button>
+            <button class="optie" aria-pressed="false" data-v="Pom">Pom</button>
+            <button class="optie" aria-pressed="false" data-v="Okersoep">Okersoep</button>
+          </div>
+        </div>
+        <div class="stap" id="stapGroente">
+          <h3><span>2</span>Welke groente?</h3>
+          <div class="opties" data-groep="groente">
+            <button class="optie" aria-pressed="true" data-v="">Geen voorkeur</button>
+            <button class="optie" aria-pressed="false" data-v="kousenband">Kousenband</button>
+            <button class="optie" aria-pressed="false" data-v="amsoi">Amsoi</button>
+            <button class="optie" aria-pressed="false" data-v="mixgroenten">Mixgroenten</button>
+          </div>
+        </div>
+        <div class="stap">
+          <h3><span>3</span>Voor hoeveel personen?</h3>
+          <div class="opties" data-groep="aantal">
+            <button class="optie" aria-pressed="true" data-v="1">1</button>
+            <button class="optie" aria-pressed="false" data-v="2">2</button>
+            <button class="optie" aria-pressed="false" data-v="3">3</button>
+            <button class="optie" aria-pressed="false" data-v="4">4</button>
+            <button class="optie" aria-pressed="false" data-v="5 of meer">5+</button>
+          </div>
+        </div>
+        <div class="stap">
+          <h3><span>4</span>Wanneer?</h3>
+          <div class="opties" data-groep="dag">
+            <button class="optie" aria-pressed="true" data-v="vandaag">Vandaag</button>
+            <button class="optie" aria-pressed="false" data-v="morgen">Morgen</button>
+            <button class="optie" aria-pressed="false" data-v="datum">Andere dag</button>
+          </div>
+          <label class="sr" for="datum">Kies een datum</label>
+          <input class="datum" type="date" id="datum" hidden>
+        </div>
+      </div>
+      <div class="bericht">
+        <h3>Jouw bericht aan O'fa</h3>
+        <p class="bubbel" id="bubbel" aria-live="polite">Hoi O'fa! Wat staat er vandaag op het dagmenu?</p>
+        <div class="btns">
+          <a class="btn btn-geel" id="waKnop" href="https://wa.me/31657784447?text=Hoi%20O'fa!%20Wat%20staat%20er%20vandaag%20op%20het%20dagmenu%3F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>App dit naar O'fa</a>
+          <a class="btn btn-lijn" href="tel:+31657784447"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-tel"/></svg>Of bel</a>
+        </div>
+        <p class="alt">Opent WhatsApp met je bericht klaar. Liever bellen? <a href="tel:+31657784447">06 57 78 44 47</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie licht" id="waarom" style="padding-top:0">
+  <div class="wrap">
+    <span class="label">Waarom O'fa</span>
+    <h2>Wat klanten erover schrijven.</h2>
+    <div class="stempels">
+      <article class="sk rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#2B190E" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 12h18a9 9 0 0 1-18 0zM7 8c0-2 2-2 2-4M12 8c0-2 2-2 2-4M17 8c0-2 2-2 2-4"/></svg></div>
+        <h3>Grote porties</h3>
+        <p>Klanten schrijven dat de porties royaal zijn: een volle bak, met veel smaak.</p>
+      </article>
+      <article class="sk rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#1F4D26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></div>
+        <h3>Echte thuiskost</h3>
+        <p>Klanten schrijven over Creools-Surinaamse thuiskost, met een dagmenu dat wisselt.</p>
+      </article>
+      <article class="sk rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#C4161C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/></svg></div>
+        <h3>Een hartelijke kok</h3>
+        <p>Klanten schrijven over een vriendelijke kok en eigenaar, die je eten met zorg inpakt.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sectie donker" id="route">
+  <div class="wrap etalage">
+    <figure class="rv">
+      <img src="img/gevel-breed.jpg" alt="De etalage van O'fa aan de 2e Middellandstraat: geel raambord met 'Afhaal restaurant' en 'Afro-Surinaamse specialiteiten'" width="1000" height="672">
+      <figcaption>Zoek het gele raambord</figcaption>
+    </figure>
+    <div>
+      <span class="label">Zo vind je ons</span>
+      <p class="adres">2e Middellandstraat 25<br>3021 BL Rotterdam</p>
+      <p class="intro">Het afhaalrestaurant met het gele raambord, in Middelland, Rotterdam-West.</p>
+      <ul class="info-lijst">
+        <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-tel"/></svg><span>Bel of app even voor je komt: <a href="tel:+31657784447">06 57 78 44 47</a></span></li>
+        <li><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-ig"/></svg><span>Instagram: <a href="https://www.instagram.com/o.fa_specialiteiten/" target="_blank" rel="noopener">@o.fa_specialiteiten</a></span></li>
+      </ul>
+      <div class="btns">
+        <a class="btn btn-geel" href="https://www.google.com/maps/dir/?api=1&amp;destination=O'fa+Afro-Surinaams+Specialiteitenrestaurant,+2e+Middellandstraat+25,+3021+BL+Rotterdam" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-pin"/></svg>Route</a>
+        <a class="btn btn-lijn" href="#bestel">Eerst bestellen</a>
+      </div>
+      <p class="na-btns">Route opent in Google Maps.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sectie licht" id="reviews">
+  <div class="wrap">
+    <span class="label">Reviews</span>
+    <h2>Wat Rotterdam ervan vindt.</h2>
+    <div class="score">
+      <span class="groot">4,7</span>
+      <div><div class="st" aria-hidden="true">★★★★★</div><a href="https://maps.google.com/?cid=7961156370208164849" target="_blank" rel="noopener">uit 78 reviews op Google</a></div>
+    </div>
+    <div class="reviews">
+      <article class="rv-kaart rv"><p>Heel royale porties, en het eten wordt met zoveel zorg ingepakt dat het voelt alsof familie het voor je klaarmaakt.</p><b>Talib</b></article>
+      <article class="rv-kaart rv"><p>Heerlijk eten, en een vriendelijke eigenaar en kok die extra moeite doet.</p><b>Sofie</b></article>
+      <article class="rv-kaart rv"><p>Zo lekker: een enorme portie met heel veel smaak.</p><b>Nadja</b></article>
+    </div>
+    <p class="noot">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="sectie donker" id="werkwijze">
+  <div class="wrap">
+    <span class="label">Zo werkt het</span>
+    <h2>In drie stappen aan tafel.</h2>
+    <ol class="stappen3">
+      <li><div><h3>Kies je gerecht</h3><p>Tik op het menu of in de kiezer wat je wilt, voor hoeveel personen en wanneer.</p></div></li>
+      <li><div><h3>Stuur of bel</h3><p>Je bericht staat klaar. Verstuur het, of bel 06 57 78 44 47.</p></div></li>
+      <li><div><h3>Haal het op</h3><p>Aan de 2e Middellandstraat 25 in Rotterdam-West, bij het gele raambord.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sectie licht" id="faq">
+  <div class="wrap">
+    <span class="label">Vragen</span>
+    <h2>Goed om te weten.</h2>
+    <div class="faq">
+      <details><summary>Wat staat er vandaag op het menu?</summary><p>Het menu wisselt. Bel of app even, dan hoor je wat er vandaag is. Hierboven staat als voorbeeld het menu van 29 december 2025.</p></details>
+      <details><summary>Kan ik mijn eten afhalen?</summary><p>Ja. O'fa is een afhaalrestaurant aan de 2e Middellandstraat 25 in Rotterdam-West.</p></details>
+      <details><summary>Welke groente kan ik kiezen?</summary><p>Op het menu van december 2025 waren dat kousenband, amsoi en mixgroenten. Vraag gerust wat er vandaag is.</p></details>
+      <details><summary>Kan het ook bezorgd worden?</summary><p>Vraag het als je bestelt, dan hoor je of bezorgen die dag kan.</p></details>
+      <details><summary>Wanneer kan ik langskomen?</summary><p>Bel of app even voordat je komt: <a href="tel:+31657784447">06 57 78 44 47</a>. Dan weet je zeker dat de keuken open is.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <div class="wrap">
+    <img src="logo-light.svg" alt="O'FA Afro-Surinaams Specialiteitenrestaurant" width="300" height="121" loading="lazy">
+    <h2>Trek in Surinaamse thuiskost?</h2>
+    <p>Bel even, of stel je bestelling samen en stuur hem met één tik.</p>
+    <div class="btns">
+      <a class="btn btn-geel" href="tel:+31657784447"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-tel"/></svg>Bel 06 57 78 44 47</a>
+      <a class="btn btn-lijn" href="https://wa.me/31657784447?text=Hoi%20O'fa!%20Wat%20staat%20er%20vandaag%20op%20het%20menu%3F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>App O'fa</a>
+    </div>
+    <p class="onder">2e Middellandstraat 25 · Rotterdam-West</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="logo-light.svg" alt="O'FA Afro-Surinaams Specialiteitenrestaurant" width="99" height="40" loading="lazy">
+      <p style="margin-top:12px">Afro-Surinaams afhaalrestaurant in Rotterdam-West.</p>
+    </div>
+    <div>
+      <p><b style="color:#fff">Adres</b><br>2e Middellandstraat 25<br>3021 BL Rotterdam</p>
+    </div>
+    <div>
+      <p><b style="color:#fff">Contact</b><br><a href="tel:+31657784447">06 57 78 44 47</a><br><a href="https://www.instagram.com/o.fa_specialiteiten/" target="_blank" rel="noopener">@o.fa_specialiteiten</a></p>
+    </div>
+    <p class="door">Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> · Dit is een demo, niet de officiële site van O'fa.</p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef">
+  <a class="btn btn-geel" href="tel:+31657784447"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-tel"/></svg>Bel</a>
+  <a class="btn btn-lijn" href="#bestel">Bestellen</a>
+</div>
+
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-label="Presentatie">
+  <div class="vel">
+    <div class="pkop"><h3>O'fa: nu en straks</h3><button class="sluit" id="pitchSluit" aria-label="Sluiten">×</button></div>
+    <div class="vn">
+      <figure>
+        <figcaption>Nu<span>ofa-rotterdam.nl op een telefoon, met het menu geopend</span></figcaption>
+        <img class="voorbeeld-img" src="img/voor-site.jpg" alt="Huidige site van O'fa: logo, introtekst en het menu van 29 december 2025" width="597" height="570" loading="lazy">
+        <ul class="fouten">
+          <li><b>1</b>Het menu op de site is van 29 december 2025.</li>
+          <li><b>2</b>Nergens een telefoonnummer, openingstijden of bel-knop.</li>
+          <li><b>3</b>Google Maps stuurt mensen naar Facebook, niet naar je site.</li>
+        </ul>
+      </figure>
+      <figure>
+        <figcaption>Straks<span>Deze site, op dezelfde telefoon</span></figcaption>
+        <div class="tel"><iframe id="naFrame" title="Nieuwe site op een telefoon" loading="lazy"></iframe></div>
+      </figure>
+    </div>
+    <div class="reken">
+      <h4>Wat dit kan opleveren</h4>
+      <p class="vb">Voorbeeld om samen in te vullen. Geen belofte: vul je eigen cijfers in.</p>
+      <label for="r-klant">Extra bestellingen per week via de site <output id="o-klant">3</output></label>
+      <input type="range" id="r-klant" min="0" max="30" step="1" value="3">
+      <label for="r-best">Gemiddeld bedrag per bestelling <output id="o-best">€ 17</output></label>
+      <input type="range" id="r-best" min="10" max="80" step="1" value="17">
+      <div class="uit">
+        <div><small>Extra per week</small><strong id="u-week">€ 51</strong></div>
+        <div><small>Extra per jaar (× 52)</small><strong id="u-jaar">€ 2.652</strong></div>
+        <div><small>€ 595 aan omzet na</small><strong id="u-terug">35 bestellingen</strong></div>
+      </div>
+    </div>
+    <div class="beter">
+      <h4>Wat er concreet beter is</h4>
+      <ol>
+        <li>Je nummer en een bel-knop op elk scherm; nu staat je nummer nergens op je site.</li>
+        <li>Elk gerecht in één tik naar een ingevuld bericht of een belletje, en het menu met datum erbij.</li>
+        <li>Adres, route en je 4,7 uit 78 Google-reviews op één plek, zodat Google naar je eigen site kan verwijzen in plaats van naar Facebook.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var WA = "31657784447";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* kiezer */
+  var keuze = {gerecht:"het dagmenu", groente:"", aantal:"1", dag:"vandaag"};
+  var bubbel = document.getElementById("bubbel"), waKnop = document.getElementById("waKnop");
+  var datum = document.getElementById("datum"), stapGroente = document.getElementById("stapGroente");
+  function datumTekst(){
+    if (!datum.value) return "een andere dag";
+    var d = new Date(datum.value + "T12:00:00");
+    return d.toLocaleDateString("nl-NL", {weekday:"long", day:"numeric", month:"long"});
+  }
+  function bouw(){
+    var wanneer = keuze.dag === "datum" ? datumTekst() : keuze.dag;
+    var t;
+    if (keuze.gerecht === "het dagmenu"){
+      t = "Hoi O'fa! Wat staat er " + (keuze.dag === "datum" ? "op " + wanneer : wanneer) + " op het dagmenu?" + (keuze.aantal !== "1" ? " Het is voor " + keuze.aantal + " personen." : "");
+    } else {
+      var n = keuze.aantal === "5 of meer" ? "5 of meer porties" : keuze.aantal + "× ";
+      var g = keuze.aantal === "5 of meer" ? n + " " + keuze.gerecht.toLowerCase() : n + keuze.gerecht.toLowerCase();
+      t = "Hoi O'fa! Ik wil graag " + g + (keuze.groente ? " met " + keuze.groente : "") + " bestellen voor " + wanneer + ". Kan dat, en hoe laat kan ik het ophalen?";
+    }
+    bubbel.textContent = t;
+    waKnop.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(t);
+  }
+  function kies(groep, v){
+    var box = document.querySelector('.opties[data-groep="' + groep + '"]');
+    box.querySelectorAll(".optie").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.v === v ? "true" : "false"); });
+    keuze[groep] = v;
+    if (groep === "dag"){ datum.hidden = v !== "datum"; if (v === "datum") datum.focus(); }
+    bouw();
+  }
+  document.querySelectorAll(".opties").forEach(function(box){
+    box.addEventListener("click", function(e){
+      var b = e.target.closest(".optie"); if (!b) return;
+      kies(box.dataset.groep, b.dataset.v);
+    });
+  });
+  datum.addEventListener("change", bouw);
+  var vandaag = new Date(); datum.min = vandaag.toISOString().slice(0,10);
+
+  /* menukaart: tik = gerecht kiezen */
+  document.querySelectorAll(".gerecht").forEach(function(b){
+    b.addEventListener("click", function(){
+      kies("gerecht", b.dataset.gerecht);
+      document.getElementById("bestel").scrollIntoView({behavior: reduce ? "auto" : "smooth"});
+    });
+  });
+  bouw();
+
+  /* zwevende CTA zodra de hero uit beeld is */
+  var zweef = document.getElementById("zweef"), hero = document.getElementById("hero");
+  if ("IntersectionObserver" in window){
+    new IntersectionObserver(function(e){ zweef.classList.toggle("aan", !e[0].isIntersecting); }).observe(hero);
+  } else { zweef.classList.add("aan"); }
+
+  /* reveal + vangnet */
+  var rv = document.querySelectorAll(".rv");
+  if ("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); }, {rootMargin:"0px 0px -8% 0px"});
+    rv.forEach(function(el){ io.observe(el); });
+  }
+  setTimeout(function(){ rv.forEach(function(el){ el.classList.add("in"); }); }, reduce ? 0 : 3500);
+
+  /* pitch-modus */
+  var pitch = document.getElementById("pitch"), naFrame = document.getElementById("naFrame");
+  function openPitch(){ if (!naFrame.src) naFrame.src = location.pathname.split("/").pop() || "index.html"; pitch.classList.add("open"); }
+  function sluitPitch(){ pitch.classList.remove("open"); if (/[?&]pitch/.test(location.search)) history.replaceState(null, "", location.pathname); }
+  document.getElementById("pitchKnop").addEventListener("click", openPitch);
+  document.getElementById("pitchSluit").addEventListener("click", sluitPitch);
+  pitch.addEventListener("click", function(e){ if (e.target === pitch) sluitPitch(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") sluitPitch(); });
+  if (/[?&]pitch/.test(location.search)) openPitch();
+  if (window.self !== window.top){ document.getElementById("pitchKnop").hidden = true; }
+
+  var rK = document.getElementById("r-klant"), rB = document.getElementById("r-best");
+  function eur(n){ return "€ " + Math.round(n).toLocaleString("nl-NL"); }
+  function reken(){
+    var k = +rK.value, b = +rB.value;
+    document.getElementById("o-klant").textContent = k;
+    document.getElementById("o-best").textContent = eur(b);
+    document.getElementById("u-week").textContent = eur(k*b);
+    document.getElementById("u-jaar").textContent = eur(k*b*52);
+    var n = Math.ceil(595 / b);
+    document.getElementById("u-terug").textContent = n + (n === 1 ? " bestelling" : " bestellingen");
+  }
+  rK.addEventListener("input", reken); rB.addEventListener("input", reken); reken();
+})();
+</script>
+</body>
+</html>
