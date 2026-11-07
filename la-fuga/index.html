@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<!--
+  Demo L218 – La Fuga Rotterdam
+  Concept: "de hotel-lobby van een patisserie" (Japandi + hotel chic, zoals hun eigen interieur).
+  Lay-out-archetype: editorial hotel-brochure / magazine — split-hero met boogvenster (desktop) of full-bleed (mobiel),
+  concierge-kaart "Kom langs vandaag", menukaart-als-object, grote fotoverhalen, concierge-balie als kiezer.
+  Volgende demo: kies iets anders dan editorial/brochure.
+  WhatsApp: alleen het vaste nummer 010 203 5909 is bekend. De kiezer eindigt daarom op "Bel ons".
+  Zodra Mo hun 06 heeft: zet WA_NUMMER (bijv. "316xxxxxxxx") in het script onderaan, dan verschijnt de WhatsApp-knop
+  met het ingevulde bericht vanzelf.
+-->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>La Fuga – patisserie en dessertzaak in Rotterdam</title>
+<meta name="description" content="La Fuga, patisserie aan de West-Kruiskade 59B in Rotterdam. Dagelijks open van 13:00 tot 23:00. Signature matcha, fresh cakes en desserts in een Japandi en hotel-chic interieur. Bel om te reserveren.">
+<meta name="theme-color" content="#F5EFE6">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/interieur.webp">
+<style>
+:root{
+  --linen:#FBF8F3; --cream:#F5EFE6; --sand:#E9DFCF; --sand2:#DCCDB5;
+  --onyx:#1F3A30; --onyx2:#2B4D40; --jade:#BCD0B6; --jade2:#DCE7D6;
+  --gold:#B8955A; --gold-l:#D9BC86; --gold-d:#7A5B2A;
+  --ink:#1E2722; --muted:#5B625C;
+  --serif:"Bodoni Moda", "Didot", Georgia, serif;
+  --sans:"Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);font-size:17px;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* demo-strook + aankondiging */
+.demo-strip{background:var(--ink);color:#E9E2D6;font-size:13px;text-align:center;padding:7px 14px;letter-spacing:.02em}
+.demo-strip{position:relative;padding-right:44px;padding-left:44px}.demo-strip a{color:var(--gold-l)}
+.demo-strip .kort,.announce .kort{display:none}
+@media(max-width:600px){.demo-strip .lang,.announce .lang{display:none}.demo-strip .kort,.announce .kort{display:inline}}
+.demo-mo{position:absolute;right:8px;top:50%;margin-top:-11px;width:28px;height:22px;border-radius:999px;border:1px solid rgba(233,226,214,.25);background:transparent;color:rgba(233,226,214,.55);font:500 10px var(--sans);cursor:pointer}
+.demo-mo:hover{color:var(--gold-l)}
+.announce{background:var(--onyx);color:var(--jade2);font-size:13.5px;text-align:center;padding:0 14px;letter-spacing:.04em;line-height:44px}
+.announce a{color:#fff;text-decoration:none;display:inline-block;min-height:44px}
+.announce b{color:var(--gold-l);font-weight:500}
+
+/* header */
+.site{position:sticky;top:0;z-index:40;background:rgba(245,239,230,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(184,149,90,.25)}
+.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px}
+.brand{display:flex;align-items:center;min-height:44px}
+.brand img{height:40px;width:auto}
+.nav{display:flex;align-items:center;gap:26px;font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+.nav a{text-decoration:none;color:var(--ink);padding:12px 0}
+.nav a:hover{color:var(--gold-d)}
+.nav .call{background:var(--onyx);color:var(--cream);padding:12px 20px;border-radius:999px;letter-spacing:.08em;display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.nav .call:hover{background:var(--onyx2);color:#fff}
+@media(max-width:860px){.nav a:not(.call){display:none}.brand img{height:34px}.nav .call{padding:10px 16px}}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:999px;font-family:var(--sans);font-size:15px;font-weight:500;letter-spacing:.06em;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s,box-shadow .25s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-onyx{background:var(--onyx);color:var(--cream)}
+.btn-onyx:hover{background:var(--onyx2);box-shadow:0 10px 30px -12px rgba(31,58,48,.6)}
+.btn-line{border-color:rgba(31,58,48,.4);color:var(--onyx);background:rgba(251,248,243,.6)}
+.btn-line:hover{border-color:var(--onyx);background:var(--linen)}
+.btn-gold{background:var(--gold-l);color:var(--ink)}
+.btn-gold:hover{background:#E6CB98}
+.btn-ghost-l{border-color:rgba(241,230,210,.45);color:var(--cream);background:transparent}
+.btn-ghost-l:hover{border-color:var(--gold-l);color:#fff}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--cream)}
+.hero-grid{display:grid;grid-template-columns:1.02fr 1fr;align-items:end;min-height:calc(100vh - 136px);min-height:calc(100svh - 136px)}
+.hero-copy{position:relative;z-index:3;padding:clamp(40px,7vh,90px) 0 64px clamp(20px,6vw,90px)}
+.status{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--onyx);background:rgba(251,248,243,.75);border:1px solid rgba(184,149,90,.4);padding:8px 14px;border-radius:999px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.status.open i{background:#3E8A62;box-shadow:0 0 0 0 rgba(62,138,98,.6);animation:puls 2.4s infinite}
+@keyframes puls{70%{box-shadow:0 0 0 9px rgba(62,138,98,0)}100%{box-shadow:0 0 0 0 rgba(62,138,98,0)}}
+.wm{display:block;width:min(560px,100%);height:auto;margin:26px 0 8px;overflow:visible}
+.wm .p{fill:var(--onyx);stroke:var(--gold);stroke-width:10;stroke-linejoin:round;fill-opacity:0;stroke-dasharray:1;stroke-dashoffset:1;animation:teken 2.6s cubic-bezier(.6,.1,.3,1) .3s forwards,vul 1.1s ease 2.1s forwards}
+@keyframes teken{to{stroke-dashoffset:0}}
+@keyframes vul{to{fill-opacity:1;stroke-width:0}}
+.hero h1{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(26px,3.1vw,42px);line-height:1.15;color:var(--onyx);letter-spacing:-.005em}
+.hero .sub{margin-top:14px;max-width:470px;color:var(--muted);font-size:clamp(16px,1.3vw,18px)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.trust{margin-top:20px;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;color:var(--muted);align-items:center}
+.trust a{color:var(--onyx);text-decoration:underline;text-decoration-color:rgba(184,149,90,.7);text-underline-offset:4px;display:inline-flex;align-items:center;min-height:44px}
+.trust .st{color:var(--gold)}
+.hero-photo{position:relative;height:100%;min-height:560px;padding:28px clamp(20px,4vw,60px) 0 0;display:flex}
+.arch{position:relative;flex:1;border-radius:999px 999px 0 0;overflow:hidden;box-shadow:0 40px 80px -40px rgba(60,45,20,.45)}
+.arch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 30%;animation:kb 22s ease-in-out infinite alternate;transform-origin:30% 20%}
+@keyframes kb{from{transform:scale(1.12) translate(1.5%,1%)}to{transform:scale(1.0) translate(0,0)}}
+.arch::after{content:"";position:absolute;inset:-20%;background:linear-gradient(105deg,transparent 40%,rgba(255,236,196,.55) 50%,transparent 60%);mix-blend-mode:soft-light;animation:veeg 7s ease-in-out 2.4s infinite;transform:translateX(-70%)}
+@keyframes veeg{0%{transform:translateX(-70%)}55%,100%{transform:translateX(70%)}}
+.golf{position:absolute;left:0;right:0;top:0;width:100%;height:auto;z-index:2;pointer-events:none}
+.golf .basis{fill:none;stroke:url(#goudlijn);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:teken 3.2s ease .2s forwards}
+.golf .licht{fill:none;stroke:#FFF3D6;stroke-width:5;stroke-linecap:round;stroke-dasharray:.07 .93;stroke-dashoffset:1;filter:url(#gloed);animation:reis 6s linear 2.6s infinite;opacity:0}
+@keyframes reis{0%{stroke-dashoffset:1.07;opacity:0}8%{opacity:1}92%{opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@media(max-width:860px){.golf{height:130px;top:36px}.golf .basis{stroke-width:3;stroke:#B8955A}}
+.scroll-hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+
+@media(max-width:860px){
+  .hero-grid{display:block;min-height:0}
+  .hero-photo{position:absolute;inset:0;padding:0;min-height:0}
+  .arch{border-radius:0;box-shadow:none}
+  .arch img{object-position:38% 0%}
+  .hero-photo::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(245,239,230,0) 38%,rgba(245,239,230,.6) 52%,rgba(245,239,230,.93) 66%,var(--cream) 78%)}
+  .hero-copy{min-height:calc(100svh - 132px);display:flex;flex-direction:column;justify-content:flex-end;padding:120px 20px 30px}
+  .wm{width:min(330px,88%);margin:18px 0 4px}
+  .hero .cta{flex-wrap:nowrap;gap:10px;margin-top:22px}.hero .cta .btn{padding:12px 16px;font-size:14.5px;min-height:52px}.hero .cta .btn-onyx{flex:1 1 auto}.hero .cta .btn-line{flex:0 0 auto}
+  .hero .sub{font-size:15.5px;margin-top:10px}.trust{margin-top:14px}.trust .adr{display:none}
+  .scroll-hint{display:none}
+}
+
+/* concierge-kaart */
+.concierge{position:relative;z-index:5;margin-top:-64px;padding:0 0 80px}
+@media(min-width:861px){.hero-copy{padding-bottom:110px}}
+.ckaart{display:grid;grid-template-columns:repeat(3,1fr);background:var(--linen);border:1px solid rgba(184,149,90,.35);border-radius:var(--r);box-shadow:0 30px 60px -40px rgba(60,45,20,.35);overflow:hidden}
+.ckaart>div{padding:26px 28px;min-width:0}
+.ckaart>div+div{border-left:1px solid rgba(184,149,90,.25)}
+.ck-label{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d)}
+.ck-big{font-family:var(--serif);font-size:clamp(22px,2.2vw,28px);line-height:1.2;margin:6px 0 12px;color:var(--onyx);overflow-wrap:break-word}
+.ck-txt{font-size:15px;color:var(--muted);margin-bottom:14px}
+.ckaart .btn{min-height:46px;padding:10px 20px;font-size:14px}
+@media(max-width:860px){.concierge{margin-top:0;padding:4px 0 56px}.ckaart{grid-template-columns:1fr}.ckaart>div+div{border-left:0;border-top:1px solid rgba(184,149,90,.25)}
+ .ckaart>div{padding:16px 18px;display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:12px}
+ .ck-label{grid-column:1}.ck-big{grid-column:1;margin:2px 0 0;font-size:21px}.ck-txt{grid-column:1;margin:2px 0 0;font-size:14px}
+ .ckaart .btn{grid-column:2;grid-row:1/4;width:48px;height:48px;min-height:48px;padding:0;border-radius:50%}.ckaart .btn .t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+
+/* marquee */
+.marquee{background:var(--onyx);color:var(--jade2);overflow:hidden;padding:18px 0;border-block:1px solid rgba(217,188,134,.3)}
+.mq-track{display:flex;width:max-content;animation:mq 40s linear infinite}
+.mq-track span{font-family:var(--serif);font-style:italic;font-size:22px;padding:0 26px;white-space:nowrap}
+.mq-track span::after{content:"";display:inline-block;width:6px;height:6px;margin-left:52px;transform:rotate(45deg) translateY(-4px);background:var(--gold-l)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* secties algemeen */
+section{position:relative}
+.kicker{font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-d);display:flex;align-items:center;gap:14px}
+.kicker::before{content:"";width:34px;height:1px;background:var(--gold)}
+.h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5vw,64px);line-height:1.04;letter-spacing:-.015em;color:var(--onyx);margin-top:14px;overflow-wrap:break-word}
+.h2 em{font-style:italic;color:var(--gold-d)}
+.lead{font-size:clamp(17px,1.4vw,19px);color:var(--muted);max-width:560px;margin-top:18px}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* must-try: menukaart */
+.musttry{padding:110px 0 120px;background:var(--cream)}
+.mt-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,5vw,80px);align-items:center;margin-top:50px}
+.menukaart{position:relative;background:var(--linen);border-radius:4px;padding:clamp(28px,4vw,54px) clamp(22px,4vw,54px);box-shadow:0 1px 0 rgba(184,149,90,.4),0 40px 70px -45px rgba(60,45,20,.45)}
+.menukaart::before{content:"";position:absolute;inset:10px;border:1px solid rgba(184,149,90,.55);border-radius:2px;pointer-events:none}
+.mk-kop{text-align:center;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-d);margin-bottom:12px}
+.mk-kop img{margin:0 auto 6px;height:46px;width:auto}
+.menukaart ol{list-style:none}
+.menukaart li{display:grid;grid-template-columns:54px 1fr;gap:6px 14px;padding:20px 0;border-top:1px solid rgba(184,149,90,.28);min-width:0}
+.menukaart li:first-child{border-top:0}
+.mk-n{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--gold-d);padding-top:9px}
+.mk-naam{font-family:var(--serif);font-size:clamp(22px,2.4vw,30px);line-height:1.15;color:var(--onyx);min-width:0;overflow-wrap:break-word}
+.mk-d{grid-column:2;font-size:15px;color:var(--muted);margin-top:-2px}
+.mk-voet{margin-top:22px;padding-top:18px;border-top:1px solid rgba(184,149,90,.28);font-size:15px;color:var(--muted);text-align:center}
+.mk-voet a{color:var(--onyx);font-weight:500}
+.mt-foto{position:relative}
+.mt-foto figure{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:803/570;box-shadow:0 40px 80px -45px rgba(40,30,15,.6)}
+.mt-foto img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s ease}
+.mt-foto figure:hover img{transform:scale(1.04)}
+figcaption{font-size:13px;letter-spacing:.08em;color:var(--muted);margin-top:12px}
+.stempel{position:absolute;right:-14px;top:-26px;width:112px;height:112px;border-radius:50%;background:var(--onyx);color:var(--gold-l);display:grid;place-items:center;text-align:center;font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.2;box-shadow:0 14px 30px -12px rgba(31,58,48,.6);animation:draai 30s linear infinite}
+.stempel span{display:block;transform:rotate(-8deg)}
+@keyframes draai{50%{transform:rotate(8deg)}}
+@media(max-width:860px){.musttry{padding:80px 0 90px}.mt-grid{grid-template-columns:1fr;margin-top:34px}.mt-foto{order:-1}.stempel{right:8px;top:-22px;width:92px;height:92px;font-size:13px}.menukaart li{grid-template-columns:40px 1fr}}
+
+/* verhaal (editorial) */
+.verhaal{background:var(--onyx);color:var(--jade2);padding:120px 0;overflow:hidden}
+.vh-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,6vw,96px);align-items:center}
+.vh-foto{position:relative}
+.vh-foto .raam{border-radius:999px 999px 6px 6px;overflow:hidden;aspect-ratio:657/1000;border:1px solid rgba(217,188,134,.45);padding:8px;background:rgba(0,0,0,.12)}
+.vh-foto .raam img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;border-radius:999px 999px 2px 2px}
+.verhaal .kicker{color:var(--gold-l)}
+.verhaal .kicker::before{background:var(--gold-l)}
+.verhaal .h2{color:var(--cream)}
+.verhaal .h2 em{color:var(--gold-l)}
+.verhaal p{color:#C9D6C4;max-width:560px;margin-top:20px}
+.pull{margin-top:40px;padding:28px 0 0;border-top:1px solid rgba(217,188,134,.35);font-family:var(--serif);font-style:italic;font-size:clamp(26px,3vw,38px);line-height:1.2;color:var(--cream)}
+.pull small{display:block;margin-top:12px;font-family:var(--sans);font-style:normal;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-l)}
+.sfeer{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.sfeer span{border:1px solid rgba(217,188,134,.4);border-radius:999px;padding:8px 16px;font-size:14px;color:var(--cream)}
+@media(max-width:860px){.verhaal{padding:84px 0}.vh-grid{grid-template-columns:1fr}.vh-foto{max-width:340px;margin:0 auto 10px}}
+
+/* reviews */
+.bewijs{padding:110px 0;background:var(--sand);text-align:center;overflow:hidden}
+.score{font-family:var(--serif);font-size:clamp(110px,18vw,220px);line-height:.9;color:var(--onyx);letter-spacing:-.04em;margin-top:18px}
+.score small{font-size:.3em;color:var(--gold-d);letter-spacing:0}
+.sterren{display:flex;justify-content:center;gap:6px;margin:14px 0 4px}
+.sterren svg{width:26px;height:26px}
+.bewijs .lead{margin-inline:auto}
+.bewijs .kicker{justify-content:center}
+.bewijs .kicker::after{content:"";width:34px;height:1px;background:var(--gold)}
+.bewijs .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
+
+/* kiezer / concierge-balie */
+.balie{padding:120px 0;background:var(--linen)}
+.bl-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,5vw,80px);align-items:start}
+.bl-foto figure{border-radius:var(--r);overflow:hidden;aspect-ratio:612/838;box-shadow:0 40px 80px -45px rgba(40,30,15,.5)}
+.bl-foto img{width:100%;height:100%;object-fit:cover}
+.kiezer{margin-top:34px;background:var(--cream);border:1px solid rgba(184,149,90,.35);border-radius:var(--r);padding:clamp(20px,3vw,34px)}
+.stap{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);margin-bottom:12px}
+.keuzes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.keuze{position:relative}
+.keuze input{position:absolute;opacity:0;pointer-events:none}
+.keuze label{display:flex;flex-direction:column;gap:2px;min-height:86px;padding:14px 16px;border:1px solid rgba(31,58,48,.22);border-radius:14px;background:var(--linen);cursor:pointer;transition:border-color .2s,background-color .2s,box-shadow .2s}
+.keuze b{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--onyx);line-height:1.2}
+.keuze small{font-size:13.5px;color:var(--muted);line-height:1.35}
+.keuze input:checked+label{border-color:var(--onyx);background:#fff;box-shadow:inset 0 0 0 1px var(--onyx)}
+.keuze input:focus-visible+label{outline:2px solid var(--gold);outline-offset:2px}
+.velden{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.veld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.veld.breed{grid-column:1/-1}
+.veld label{font-size:13.5px;color:var(--muted)}
+.veld input,.veld select,.veld textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--linen);border:1px solid rgba(31,58,48,.25);border-radius:12px;padding:12px 14px;min-height:48px;width:100%}
+.veld textarea{min-height:96px;resize:vertical}
+.groep[hidden]{display:none}
+.bericht{margin-top:24px;background:var(--onyx);color:var(--jade2);border-radius:14px;padding:20px 22px}
+.bericht .stap{color:var(--gold-l)}
+.bericht pre{white-space:pre-wrap;font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.45;color:var(--cream)}
+.bericht .acties{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.bericht .acties .btn{flex:1 1 180px}
+.bericht p{font-size:14px;color:#BFD0BB;margin-top:14px}
+@media(max-width:860px){.balie{padding:84px 0}.bl-grid{grid-template-columns:1fr}.bl-foto{max-width:420px;order:2}.keuzes{grid-template-columns:1fr}.keuze label{min-height:64px}.velden{grid-template-columns:1fr}}
+
+/* bezoek */
+.bezoek{background:var(--onyx);color:var(--jade2);padding:110px 0 90px;overflow:hidden}
+.bz-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,80px);align-items:end}
+.bezoek .kicker{color:var(--gold-l)}.bezoek .kicker::before{background:var(--gold-l)}
+.uren{white-space:nowrap;font-family:var(--serif);font-size:clamp(44px,6.4vw,92px);line-height:.95;color:var(--cream);letter-spacing:-.03em;margin-top:18px}
+.uren span{color:var(--gold-l);font-style:italic}
+.uren-sub{font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-l);margin-top:14px}
+.adres{border-top:1px solid rgba(217,188,134,.35);padding-top:26px}
+.adres address{font-style:normal;font-family:var(--serif);font-size:clamp(24px,2.6vw,32px);line-height:1.25;color:var(--cream)}
+.adres p{margin-top:10px;color:#C9D6C4}
+.adres .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.socials{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;font-size:15px}
+.socials a{color:var(--gold-l);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;border-bottom:1px solid transparent}
+.socials a:hover{border-color:var(--gold-l)}
+.slot{text-align:center;padding:110px 0 120px;background:var(--cream);overflow:hidden}
+.slot .wm2{width:min(520px,86%);height:auto;margin:20px auto 0;display:block}
+.slot .wm2 use{fill:var(--onyx)}
+.slot .h2{font-size:clamp(28px,4vw,48px);font-style:italic}
+.slot .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
+@media(max-width:860px){.bezoek{padding:84px 0 70px}.bz-grid{grid-template-columns:1fr}.slot{padding:84px 0 100px}}
+
+footer{background:var(--ink);color:#B9BDB6;padding:56px 0 110px;font-size:14px}
+.ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-start}
+footer img{height:44px;width:auto;margin-bottom:12px}
+footer a{color:#E9E2D6}
+footer .made{margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+@media(min-width:861px){footer{padding-bottom:56px}}
+
+/* zwevende cta (mobiel) */
+.float{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;display:none;grid-template-columns:1fr 1fr 1.2fr;gap:6px;padding:6px;background:rgba(31,58,48,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:999px;box-shadow:0 18px 40px -14px rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.float a{display:flex;align-items:center;justify-content:center;gap:7px;min-height:48px;border-radius:999px;text-decoration:none;color:var(--cream);font-size:14.5px;font-weight:500;letter-spacing:.03em}
+.float a svg{width:17px;height:17px}
+.float a.hoofd{background:var(--gold-l);color:var(--ink)}
+.float.toon{opacity:1;visibility:visible}
+@media(max-width:860px){.float{display:grid}}
+
+/* pitch-modus (alleen voor Mo) */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(20,28,24,.55);display:none;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.pitch.open{display:block}
+.pp{background:var(--linen);width:min(980px,100%);margin:0 auto;min-height:100%;padding:24px 20px 60px}
+@media(min-width:861px){.pp{margin:30px auto;min-height:0;border-radius:22px;padding:36px 40px 44px}}
+.pp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.pp-top b{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-d)}
+.pp-sluit{min-width:44px;min-height:44px;border-radius:50%;border:1px solid rgba(31,58,48,.25);background:#fff;font-size:22px;cursor:pointer;color:var(--ink)}
+.pp h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,4vw,40px);line-height:1.1;color:var(--onyx);margin:12px 0 22px}
+.vn{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;align-items:start}
+.vn figure{background:#fff;border:1px solid rgba(31,58,48,.15);border-radius:14px;padding:10px}
+.vn figcaption{margin:8px 4px 2px;font-size:13.5px;color:var(--ink);letter-spacing:0}
+.vn .voor img{border-radius:8px;border:1px solid #e5e7eb}
+.tel{width:207px;height:428px;margin:0 auto;border-radius:30px;border:6px solid var(--ink);overflow:hidden;background:var(--cream);position:relative}
+.tel iframe{width:390px;height:810px;border:0;transform:scale(.5);transform-origin:0 0;position:absolute;left:0;top:0}
+.pp h3{font-family:var(--serif);font-weight:500;font-size:24px;color:var(--onyx);margin:34px 0 6px}
+.reken{display:grid;grid-template-columns:1fr 1fr;gap:16px 26px;background:#fff;border:1px solid rgba(31,58,48,.15);border-radius:14px;padding:20px}
+.reken label{display:flex;justify-content:space-between;font-size:15px;color:var(--ink);gap:10px}
+.reken label output{font-weight:600;color:var(--onyx)}
+.reken input[type=range]{width:100%;accent-color:var(--onyx);height:44px}
+.uitkomst{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
+.uitkomst div{background:var(--cream);border-radius:12px;padding:14px}
+.uitkomst small{display:block;font-size:12.5px;color:var(--muted);letter-spacing:.04em}
+.uitkomst strong{font-family:var(--serif);font-size:clamp(22px,3vw,30px);color:var(--onyx);font-weight:500}
+.disclaimer{grid-column:1/-1;font-size:13px;color:var(--muted)}
+.punten{list-style:none;counter-reset:p;display:grid;gap:10px}
+.punten li{counter-increment:p;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;background:#fff;border:1px solid rgba(31,58,48,.15);border-radius:12px;padding:14px 16px}
+.punten li::before{content:counter(p);width:32px;height:32px;border-radius:50%;background:var(--onyx);color:var(--gold-l);display:grid;place-items:center;font-family:var(--serif)}
+.punten b{color:var(--onyx)}
+@media(max-width:860px){.vn{grid-template-columns:1fr}.reken{grid-template-columns:1fr}.uitkomst{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .wm .p{fill-opacity:1;stroke-width:0;stroke-dashoffset:0}
+  .golf .basis{stroke-dashoffset:0}
+  .golf .licht{display:none}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="wmpad" d="M555 -125Q369 41 111 41Q-45 41 -112 -25Q-150 -61 -150 -152Q-150 -292 63 -333Q130 -346 224 -346Q318 -346 481 -311Q568 -408 688.5 -596.5Q809 -785 879 -887Q949 -989 1038 -1095.5Q1127 -1202 1224 -1288Q1421 -1464 1614 -1464Q1700 -1464 1738 -1420.5Q1776 -1377 1776 -1317.5Q1776 -1258 1721.5 -1179Q1667 -1100 1595.5 -1039Q1524 -978 1454.5 -935.5Q1385 -893 1345 -893Q1305 -893 1276 -927Q1247 -961 1247 -992.5Q1247 -1024 1255.5 -1036.5Q1264 -1049 1273 -1049Q1282 -1049 1284 -1038Q1316 -1048 1386.5 -1100.5Q1457 -1153 1515 -1210Q1573 -1267 1573 -1281.5Q1573 -1296 1555.5 -1296Q1538 -1296 1508 -1284Q1478 -1272 1428 -1234.5Q1378 -1197 1320 -1138Q1180 -998 1008 -741Q968 -683 895 -572Q746 -347 682 -264Q1195 -129 1415 -129Q1517 -129 1558 -155Q1573 -164 1578 -164Q1583 -164 1583 -156Q1583 -148 1574 -132Q1565 -116 1529.5 -64Q1494 -12 1477 -2Q1428 27 1310.5 27Q1193 27 1086.5 10Q980 -7 915 -23.5Q850 -40 722.5 -77Q595 -114 555 -125ZM190 -186Q59 -186 59 -155Q59 -143 81.5 -134Q104 -125 135 -125Q232 -125 322 -176Q245 -186 190 -186ZM2281 -760Q2357 -760 2357 -708Q2357 -680 2344 -667Q2331 -654 2288.5 -580.5Q2246 -507 2194.5 -392.5Q2143 -278 2128 -197Q2125 -187 2125 -169Q2125 -114 2155 -114Q2185 -114 2226 -142.5Q2267 -171 2299 -203.5Q2331 -236 2361.5 -270Q2392 -304 2398 -309Q2404 -314 2416 -314Q2435 -314 2439 -285Q2443 -256 2443 -225Q2443 -194 2437 -182Q2408 -125 2309.5 -45Q2211 35 2130.5 35Q2050 35 2012 -14Q1974 -63 1974 -122.5Q1974 -182 1994 -227Q1911 -119 1803.5 -44Q1696 31 1628 31Q1560 31 1517 -10Q1462 -61 1462 -151.5Q1462 -242 1502.5 -333.5Q1543 -425 1609 -500.5Q1675 -576 1754 -638Q1920 -768 2060 -768Q2114 -768 2148 -750Q2182 -732 2191 -705Q2215 -741 2231.5 -750.5Q2248 -760 2281 -760ZM2148 -649Q1977 -649 1794 -459Q1729 -391 1674.5 -296Q1620 -201 1620 -166Q1620 -131 1640 -131Q1668 -131 1796 -241.5Q1924 -352 1966 -404Q2012 -462 2148 -649ZM3063 -547Q3035 -547 3035 -582Q3035 -608 3058.5 -639Q3082 -670 3087 -680Q3092 -690 3113.5 -711Q3135 -732 3151.5 -736Q3168 -740 3219 -745Q3375 -760 3559 -762Q3759 -1065 3885 -1212Q3698 -1178 3426 -1178Q3057 -1178 3057 -1343Q3057 -1390 3104.5 -1425Q3152 -1460 3224.5 -1460Q3297 -1460 3297 -1443Q3297 -1434 3274.5 -1434Q3252 -1434 3232.5 -1417.5Q3213 -1401 3213 -1386Q3213 -1363 3311 -1352Q3409 -1341 3613.5 -1341Q3818 -1341 4057 -1378Q4136 -1443 4205.5 -1476Q4275 -1509 4347 -1509Q4419 -1509 4441 -1477Q4463 -1445 4463.5 -1429Q4464 -1413 4440 -1387Q4416 -1361 4373 -1334Q4272 -1272 4108 -1260Q3933 -1039 3747 -760Q3824 -757 3891 -748.5Q3958 -740 3958 -696Q3958 -678 3901 -627Q3895 -620 3886 -606Q3870 -582 3854.5 -582Q3839 -582 3819 -586Q3741 -589 3702 -589L3637 -588Q3285 -40 3273.5 -18.5Q3262 3 3248.5 14Q3235 25 3215 25Q3195 25 3159 18.5Q3123 12 3105 2.5Q3087 -7 3087 -21.5Q3087 -36 3096 -63Q3120 -130 3432 -580Q3229 -570 3110 -559ZM4333 -1450Q4317 -1445 4294 -1434ZM4753 -314Q4772 -314 4776 -285Q4780 -256 4780 -225Q4780 -194 4774 -182Q4745 -126 4647 -45.5Q4549 35 4461 35Q4407 35 4361 2.5Q4315 -30 4315 -111Q4315 -192 4358 -270Q4110 41 3969 41Q3913 41 3878.5 1Q3844 -39 3844 -81.5Q3844 -124 3856 -169.5Q3868 -215 3881.5 -251Q3895 -287 3921.5 -340Q3948 -393 3961 -417Q3974 -441 4002.5 -489.5Q4031 -538 4077.5 -620Q4124 -702 4154.5 -741.5Q4185 -781 4214 -781.5Q4243 -782 4265 -758Q4287 -734 4287 -719Q4287 -704 4220 -584Q4022 -226 4022 -167Q4022 -152 4033 -152Q4081 -152 4272 -360Q4463 -568 4493 -626.5Q4523 -685 4551.5 -725Q4580 -765 4594 -774Q4637 -802 4705 -804Q4716 -804 4722 -803Q4728 -802 4736 -786Q4744 -770 4744 -761Q4735 -733 4664.5 -612Q4594 -491 4586 -475Q4468 -231 4468 -157Q4468 -115 4500 -115Q4558 -123 4640 -208Q4670 -239 4699.5 -271Q4729 -303 4736 -308.5Q4743 -314 4753 -314ZM5445 -764Q5484 -809 5542 -812Q5559 -813 5584 -813Q5609 -813 5615 -806.5Q5621 -800 5626 -782Q5631 -764 5632 -762Q5633 -760 5633 -755.5Q5633 -751 5628 -744.5Q5623 -738 5616.5 -732Q5610 -726 5609 -725Q5388 -408 5157 -2Q5395 -213 5583 -305Q5595 -311 5606 -311Q5622 -311 5627 -290.5Q5632 -270 5632 -232Q5632 -194 5627.5 -185Q5623 -176 5581 -149Q5539 -122 5472 -79Q5405 -36 5330 16Q5150 141 5034 279Q4884 460 4819 571Q4795 614 4738 614Q4625 614 4625 507Q4625 398 4732 284Q4812 199 4879 145Q4946 91 4952 84Q5026 -27 5153 -231Q5045 -118 4943.5 -51Q4842 16 4792 16Q4639 16 4639 -115Q4639 -219 4692 -325Q4745 -431 4828 -514.5Q4911 -598 5007.5 -664.5Q5104 -731 5197 -767Q5290 -803 5358 -803Q5426 -803 5445 -764ZM5388 -690Q5272 -665 5170 -607.5Q5068 -550 5002 -484.5Q4936 -419 4888 -350Q4798 -221 4798 -150Q4798 -133 4806.5 -133Q4815 -133 4844.5 -151Q4874 -169 4928 -212.5Q4982 -256 5048 -316Q5201 -457 5388 -690ZM6296 -760Q6372 -760 6372 -708Q6372 -680 6359 -667Q6346 -654 6303.5 -580.5Q6261 -507 6209.5 -392.5Q6158 -278 6143 -197Q6140 -187 6140 -169Q6140 -114 6170 -114Q6200 -114 6241 -142.5Q6282 -171 6314 -203.5Q6346 -236 6376.5 -270Q6407 -304 6413 -309Q6419 -314 6431 -314Q6450 -314 6454 -285Q6458 -256 6458 -225Q6458 -194 6452 -182Q6423 -125 6324.5 -45Q6226 35 6145.5 35Q6065 35 6027 -14Q5989 -63 5989 -122.5Q5989 -182 6009 -227Q5926 -119 5818.5 -44Q5711 31 5643 31Q5575 31 5532 -10Q5477 -61 5477 -151.5Q5477 -242 5517.5 -333.5Q5558 -425 5624 -500.5Q5690 -576 5769 -638Q5935 -768 6075 -768Q6129 -768 6163 -750Q6197 -732 6206 -705Q6230 -741 6246.5 -750.5Q6263 -760 6296 -760ZM6163 -649Q5992 -649 5809 -459Q5744 -391 5689.5 -296Q5635 -201 5635 -166Q5635 -131 5655 -131Q5683 -131 5811 -241.5Q5939 -352 5981 -404Q6027 -462 6163 -649Z"/>
+    <linearGradient id="goudlijn" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1440" y2="0">
+      <stop offset="0" stop-color="#D9BC86" stop-opacity="0"/>
+      <stop offset=".18" stop-color="#C9A56A"/>
+      <stop offset=".82" stop-color="#C9A56A"/>
+      <stop offset="1" stop-color="#D9BC86" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="gloed" filterUnits="userSpaceOnUse" x="-50" y="-100" width="1540" height="420">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-taart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 21h16M5 21v-7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7M5 16c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0M12 12V8M12 4.5c.8.9.8 1.8 0 2.5-.8-.7-.8-1.6 0-2.5z"/></symbol>
+    <symbol id="i-ster" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></symbol>
+  </defs>
+</svg>
+
+<div class="demo-strip"><span class="lang">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a>. Niet de officiële site van La Fuga.</span><span class="kort">Demo door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a> · niet de officiële site</span><button class="demo-mo" id="pitch-knop" type="button" aria-label="Pitch-modus openen">Mo</button></div>
+<div class="announce"><a href="#bewijs"><b>★ 4,3</b> uit 564 Google-reviews</a> &nbsp;·&nbsp; <span class="lang">Dagelijks open </span><span class="kort">Dagelijks </span>13:00–23:00</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="La Fuga, naar boven"><img src="logo-dark.svg" alt="La Fuga" width="122" height="40"></a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <a href="#musttry">Must-try</a>
+      <a href="#verhaal">De zaak</a>
+      <a href="#kiezer">Reserveren of groep</a>
+      <a href="#bezoek">Bezoek</a>
+      <a class="call" href="tel:+31102035909"><svg width="16" height="16" aria-hidden="true"><use href="#i-tel"/></svg>Bel</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <svg class="golf" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+    <path class="basis" vector-effect="non-scaling-stroke" pathLength="1" d="M-10,70 C200,30 330,150 560,138 C780,126 860,34 1060,46 C1230,56 1320,140 1450,118"/>
+    <path class="licht" vector-effect="non-scaling-stroke" pathLength="1" d="M-10,70 C200,30 330,150 560,138 C780,126 860,34 1060,46 C1230,56 1320,140 1450,118"/>
+  </svg>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div><span class="status" id="status"><i></i><span id="status-t">Dagelijks open 13:00–23:00</span></span></div>
+      <svg class="wm" viewBox="-180 -1539 6668 2183" role="img" aria-labelledby="wm-t"><title id="wm-t">La Fuga</title><path class="p" pathLength="1" d="M555 -125Q369 41 111 41Q-45 41 -112 -25Q-150 -61 -150 -152Q-150 -292 63 -333Q130 -346 224 -346Q318 -346 481 -311Q568 -408 688.5 -596.5Q809 -785 879 -887Q949 -989 1038 -1095.5Q1127 -1202 1224 -1288Q1421 -1464 1614 -1464Q1700 -1464 1738 -1420.5Q1776 -1377 1776 -1317.5Q1776 -1258 1721.5 -1179Q1667 -1100 1595.5 -1039Q1524 -978 1454.5 -935.5Q1385 -893 1345 -893Q1305 -893 1276 -927Q1247 -961 1247 -992.5Q1247 -1024 1255.5 -1036.5Q1264 -1049 1273 -1049Q1282 -1049 1284 -1038Q1316 -1048 1386.5 -1100.5Q1457 -1153 1515 -1210Q1573 -1267 1573 -1281.5Q1573 -1296 1555.5 -1296Q1538 -1296 1508 -1284Q1478 -1272 1428 -1234.5Q1378 -1197 1320 -1138Q1180 -998 1008 -741Q968 -683 895 -572Q746 -347 682 -264Q1195 -129 1415 -129Q1517 -129 1558 -155Q1573 -164 1578 -164Q1583 -164 1583 -156Q1583 -148 1574 -132Q1565 -116 1529.5 -64Q1494 -12 1477 -2Q1428 27 1310.5 27Q1193 27 1086.5 10Q980 -7 915 -23.5Q850 -40 722.5 -77Q595 -114 555 -125ZM190 -186Q59 -186 59 -155Q59 -143 81.5 -134Q104 -125 135 -125Q232 -125 322 -176Q245 -186 190 -186ZM2281 -760Q2357 -760 2357 -708Q2357 -680 2344 -667Q2331 -654 2288.5 -580.5Q2246 -507 2194.5 -392.5Q2143 -278 2128 -197Q2125 -187 2125 -169Q2125 -114 2155 -114Q2185 -114 2226 -142.5Q2267 -171 2299 -203.5Q2331 -236 2361.5 -270Q2392 -304 2398 -309Q2404 -314 2416 -314Q2435 -314 2439 -285Q2443 -256 2443 -225Q2443 -194 2437 -182Q2408 -125 2309.5 -45Q2211 35 2130.5 35Q2050 35 2012 -14Q1974 -63 1974 -122.5Q1974 -182 1994 -227Q1911 -119 1803.5 -44Q1696 31 1628 31Q1560 31 1517 -10Q1462 -61 1462 -151.5Q1462 -242 1502.5 -333.5Q1543 -425 1609 -500.5Q1675 -576 1754 -638Q1920 -768 2060 -768Q2114 -768 2148 -750Q2182 -732 2191 -705Q2215 -741 2231.5 -750.5Q2248 -760 2281 -760ZM2148 -649Q1977 -649 1794 -459Q1729 -391 1674.5 -296Q1620 -201 1620 -166Q1620 -131 1640 -131Q1668 -131 1796 -241.5Q1924 -352 1966 -404Q2012 -462 2148 -649ZM3063 -547Q3035 -547 3035 -582Q3035 -608 3058.5 -639Q3082 -670 3087 -680Q3092 -690 3113.5 -711Q3135 -732 3151.5 -736Q3168 -740 3219 -745Q3375 -760 3559 -762Q3759 -1065 3885 -1212Q3698 -1178 3426 -1178Q3057 -1178 3057 -1343Q3057 -1390 3104.5 -1425Q3152 -1460 3224.5 -1460Q3297 -1460 3297 -1443Q3297 -1434 3274.5 -1434Q3252 -1434 3232.5 -1417.5Q3213 -1401 3213 -1386Q3213 -1363 3311 -1352Q3409 -1341 3613.5 -1341Q3818 -1341 4057 -1378Q4136 -1443 4205.5 -1476Q4275 -1509 4347 -1509Q4419 -1509 4441 -1477Q4463 -1445 4463.5 -1429Q4464 -1413 4440 -1387Q4416 -1361 4373 -1334Q4272 -1272 4108 -1260Q3933 -1039 3747 -760Q3824 -757 3891 -748.5Q3958 -740 3958 -696Q3958 -678 3901 -627Q3895 -620 3886 -606Q3870 -582 3854.5 -582Q3839 -582 3819 -586Q3741 -589 3702 -589L3637 -588Q3285 -40 3273.5 -18.5Q3262 3 3248.5 14Q3235 25 3215 25Q3195 25 3159 18.5Q3123 12 3105 2.5Q3087 -7 3087 -21.5Q3087 -36 3096 -63Q3120 -130 3432 -580Q3229 -570 3110 -559ZM4333 -1450Q4317 -1445 4294 -1434ZM4753 -314Q4772 -314 4776 -285Q4780 -256 4780 -225Q4780 -194 4774 -182Q4745 -126 4647 -45.5Q4549 35 4461 35Q4407 35 4361 2.5Q4315 -30 4315 -111Q4315 -192 4358 -270Q4110 41 3969 41Q3913 41 3878.5 1Q3844 -39 3844 -81.5Q3844 -124 3856 -169.5Q3868 -215 3881.5 -251Q3895 -287 3921.5 -340Q3948 -393 3961 -417Q3974 -441 4002.5 -489.5Q4031 -538 4077.5 -620Q4124 -702 4154.5 -741.5Q4185 -781 4214 -781.5Q4243 -782 4265 -758Q4287 -734 4287 -719Q4287 -704 4220 -584Q4022 -226 4022 -167Q4022 -152 4033 -152Q4081 -152 4272 -360Q4463 -568 4493 -626.5Q4523 -685 4551.5 -725Q4580 -765 4594 -774Q4637 -802 4705 -804Q4716 -804 4722 -803Q4728 -802 4736 -786Q4744 -770 4744 -761Q4735 -733 4664.5 -612Q4594 -491 4586 -475Q4468 -231 4468 -157Q4468 -115 4500 -115Q4558 -123 4640 -208Q4670 -239 4699.5 -271Q4729 -303 4736 -308.5Q4743 -314 4753 -314ZM5445 -764Q5484 -809 5542 -812Q5559 -813 5584 -813Q5609 -813 5615 -806.5Q5621 -800 5626 -782Q5631 -764 5632 -762Q5633 -760 5633 -755.5Q5633 -751 5628 -744.5Q5623 -738 5616.5 -732Q5610 -726 5609 -725Q5388 -408 5157 -2Q5395 -213 5583 -305Q5595 -311 5606 -311Q5622 -311 5627 -290.5Q5632 -270 5632 -232Q5632 -194 5627.5 -185Q5623 -176 5581 -149Q5539 -122 5472 -79Q5405 -36 5330 16Q5150 141 5034 279Q4884 460 4819 571Q4795 614 4738 614Q4625 614 4625 507Q4625 398 4732 284Q4812 199 4879 145Q4946 91 4952 84Q5026 -27 5153 -231Q5045 -118 4943.5 -51Q4842 16 4792 16Q4639 16 4639 -115Q4639 -219 4692 -325Q4745 -431 4828 -514.5Q4911 -598 5007.5 -664.5Q5104 -731 5197 -767Q5290 -803 5358 -803Q5426 -803 5445 -764ZM5388 -690Q5272 -665 5170 -607.5Q5068 -550 5002 -484.5Q4936 -419 4888 -350Q4798 -221 4798 -150Q4798 -133 4806.5 -133Q4815 -133 4844.5 -151Q4874 -169 4928 -212.5Q4982 -256 5048 -316Q5201 -457 5388 -690ZM6296 -760Q6372 -760 6372 -708Q6372 -680 6359 -667Q6346 -654 6303.5 -580.5Q6261 -507 6209.5 -392.5Q6158 -278 6143 -197Q6140 -187 6140 -169Q6140 -114 6170 -114Q6200 -114 6241 -142.5Q6282 -171 6314 -203.5Q6346 -236 6376.5 -270Q6407 -304 6413 -309Q6419 -314 6431 -314Q6450 -314 6454 -285Q6458 -256 6458 -225Q6458 -194 6452 -182Q6423 -125 6324.5 -45Q6226 35 6145.5 35Q6065 35 6027 -14Q5989 -63 5989 -122.5Q5989 -182 6009 -227Q5926 -119 5818.5 -44Q5711 31 5643 31Q5575 31 5532 -10Q5477 -61 5477 -151.5Q5477 -242 5517.5 -333.5Q5558 -425 5624 -500.5Q5690 -576 5769 -638Q5935 -768 6075 -768Q6129 -768 6163 -750Q6197 -732 6206 -705Q6230 -741 6246.5 -750.5Q6263 -760 6296 -760ZM6163 -649Q5992 -649 5809 -459Q5744 -391 5689.5 -296Q5635 -201 5635 -166Q5635 -131 5655 -131Q5683 -131 5811 -241.5Q5939 -352 5981 -404Q6027 -462 6163 -649Z"/></svg>
+      <h1>Where cakes &amp; class meet.</h1>
+      <p class="sub">Patisserie aan de West-Kruiskade in Rotterdam. Signature matcha, fresh cakes en desserts, in een interieur van Japandi en hotel chic.</p>
+      <div class="cta">
+        <a class="btn btn-onyx" href="tel:+31102035909"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel om te reserveren</a>
+        <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=La+Fuga,+West-Kruiskade+59B,+3014+AL+Rotterdam" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Route</a>
+      </div>
+      <div class="trust">
+        <span><span class="st">★</span> <a href="https://www.google.com/maps/search/?api=1&amp;query=La+Fuga+West-Kruiskade+59B+Rotterdam" target="_blank" rel="noopener">4,3 uit 564 Google-reviews</a></span>
+        <span class="adr">West-Kruiskade 59B, Rotterdam</span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="arch"><img src="img/interieur.webp" alt="Het interieur van La Fuga: golvend plafond met lichtlijn, beige banken en onyx-tafels met goud" width="952" height="1272" fetchpriority="high"></div>
+    </div>
+  </div>
+</section>
+
+<section class="concierge" aria-label="Kom langs vandaag">
+  <div class="wrap">
+    <div class="ckaart rv">
+      <div>
+        <div class="ck-label">Vandaag</div>
+        <div class="ck-big" id="ck-open">Open 13:00–23:00</div>
+        <p class="ck-txt">Elke dag van de week, ook in het weekend.</p>
+      </div>
+      <div>
+        <div class="ck-label">Adres</div>
+        <div class="ck-big">West-Kruiskade 59B</div>
+        <p class="ck-txt">3014 AL Rotterdam</p>
+        <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=La+Fuga,+West-Kruiskade+59B,+3014+AL+Rotterdam" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg><span class="t">Plan je route</span></a>
+      </div>
+      <div>
+        <div class="ck-label">Reserveren</div>
+        <div class="ck-big">010 203 5909</div>
+        <p class="ck-txt">Bel om te reserveren. Met een groep? <a href="#kiezer">Vraag het hier</a>.</p>
+        <a class="btn btn-onyx" href="tel:+31102035909"><svg aria-hidden="true"><use href="#i-tel"/></svg><span class="t">Bel nu</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track">
+    <span>Where cakes &amp; class meet</span><span>Signature matcha</span><span>Fresh cakes</span><span>Dubai Crêpe</span><span>Lotus Mini Cheesecake</span><span>#CoffeewithClass</span><span>Dagelijks 13:00–23:00</span>
+    <span>Where cakes &amp; class meet</span><span>Signature matcha</span><span>Fresh cakes</span><span>Dubai Crêpe</span><span>Lotus Mini Cheesecake</span><span>#CoffeewithClass</span><span>Dagelijks 13:00–23:00</span>
+  </div>
+</div>
+
+<section class="musttry" id="musttry">
+  <div class="wrap">
+    <div class="rv">
+      <div class="kicker">De kaart</div>
+      <h2 class="h2">Must-try bij <em>La Fuga</em></h2>
+    </div>
+    <div class="mt-grid">
+      <div class="menukaart rv">
+        <div class="mk-kop"><img src="logo-dark.svg" alt="" width="140" height="46">Must-try</div>
+        <ol>
+          <li><span class="mk-n">No. 1</span><span class="mk-naam">Dubai Crêpe</span><span class="mk-d">Crêpe in Dubai-stijl.</span></li>
+          <li><span class="mk-n">No. 2</span><span class="mk-naam">Lotus Mini Cheesecake</span><span class="mk-d">Mini-cheesecake met Lotus.</span></li>
+          <li><span class="mk-n">No. 3</span><span class="mk-naam">Cinnamon Bun Cake</span><span class="mk-d">Ook wel cinnamon roll cheesecake.</span></li>
+          <li><span class="mk-n">No. 4</span><span class="mk-naam">Pistachio Cookie</span><span class="mk-d">Cookie met pistache.</span></li>
+          <li><span class="mk-n">No. 5</span><span class="mk-naam">Signature Matcha</span><span class="mk-d">De signature van het huis.</span></li>
+        </ol>
+        <p class="mk-voet">Benieuwd wat er vandaag in de vitrine ligt? Kom kijken of <a href="tel:+31102035909">bel even</a>.</p>
+      </div>
+      <div class="mt-foto rv">
+        <figure><img src="img/desserts-tafel.webp" alt="Een tafel bij La Fuga vol desserts: mini-cheesecakes, een crêpe, cookies, taart en drankjes" width="803" height="570"></figure>
+        <div class="stempel" aria-hidden="true"><span>Fresh<br>cakes</span></div>
+        <figcaption>Een tafel vol desserts, op de onyx-tafels van La Fuga.</figcaption>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="verhaal" id="verhaal">
+  <div class="wrap vh-grid">
+    <div class="vh-foto rv">
+      <div class="raam"><img src="img/gevel-avond.webp" alt="De verlichte gevel van La Fuga aan de West-Kruiskade, 's avonds, met boogramen" width="657" height="1100"></div>
+    </div>
+    <div class="rv">
+      <div class="kicker">Het verhaal</div>
+      <h2 class="h2">Terug en <em>beter dan ooit.</em></h2>
+      <p>Na drie maanden van intensieve verbouwing opende La Fuga met een vernieuwde look: een combinatie van Japandi-stijl en een hotel-chique interieur. Met een vernieuwd concept, vernieuwde recepten en trends als matcha en Dubai-chocolade.</p>
+      <div class="sfeer"><span>Soft curves</span><span>Warm lights</span><span>Beige luxury</span><span>Matcha</span><span>Pastries</span></div>
+      <blockquote class="pull">“Where minimal meets magic.”<small>La Fuga op Instagram</small></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="bewijs" id="bewijs">
+  <div class="wrap rv">
+    <div class="kicker">Op Google</div>
+    <div class="score">4,3<small>/5</small></div>
+    <div class="sterren" aria-hidden="true">
+      <svg fill="#B8955A"><use href="#i-ster"/></svg><svg fill="#B8955A"><use href="#i-ster"/></svg><svg fill="#B8955A"><use href="#i-ster"/></svg><svg fill="#B8955A"><use href="#i-ster"/></svg><svg fill="#D8C9AE"><use href="#i-ster"/></svg>
+    </div>
+    <p class="lead">Uit 564 Google-reviews. Lees zelf wat gasten over La Fuga schrijven.</p>
+    <div class="cta">
+      <a class="btn btn-onyx" href="https://www.google.com/maps/search/?api=1&amp;query=La+Fuga+West-Kruiskade+59B+Rotterdam" target="_blank" rel="noopener">Lees de reviews op Google</a>
+      <a class="btn btn-line" href="https://www.instagram.com/lafuga.rotterdam/" target="_blank" rel="noopener">Volg @lafuga.rotterdam</a>
+    </div>
+  </div>
+</section>
+
+<section class="balie" id="kiezer">
+  <div class="wrap bl-grid">
+    <div class="bl-foto rv">
+      <figure><img src="img/vitrine.webp" alt="De vitrine van La Fuga met mini-cheesecakes, taartjes en cakepops, met het groen verlichte logo erboven" width="612" height="838"></figure>
+      <figcaption>De vitrine, met het La Fuga-logo erboven.</figcaption>
+    </div>
+    <div class="rv">
+      <div class="kicker">De balie</div>
+      <h2 class="h2">Tafel, groep of <em>een vraag?</em></h2>
+      <p class="lead">Kies wat je zoekt en vul het kort in. Je krijgt meteen een bericht dat je kunt noemen als je belt, dan weten we direct waar het over gaat.</p>
+
+      <form class="kiezer" id="kiesform" onsubmit="return false">
+        <div class="stap">1 · Waarmee kunnen we helpen?</div>
+        <div class="keuzes" role="radiogroup">
+          <div class="keuze"><input type="radio" name="soort" id="k-taart" value="taart" checked><label for="k-taart"><b>Een tafel</b><small>Bel om te reserveren.</small></label></div>
+          <div class="keuze"><input type="radio" name="soort" id="k-groep" value="groep"><label for="k-groep"><b>Met een groep</b><small>Met meer mensen langskomen.</small></label></div>
+          <div class="keuze"><input type="radio" name="soort" id="k-vraag" value="vraag"><label for="k-vraag"><b>Iets vragen</b><small>Over de kaart, de zaak of iets anders.</small></label></div>
+        </div>
+
+        <div class="stap" style="margin-top:26px">2 · Even kort</div>
+        <div class="velden">
+          <div class="veld groep" data-voor="taart groep"><label for="v-pers">Voor hoeveel personen?</label><input id="v-pers" type="number" inputmode="numeric" min="1" max="200" placeholder="bijv. 8"></div>
+          <div class="veld groep" data-voor="taart groep"><label for="v-datum">Welke datum?</label><input id="v-datum" type="date"></div>
+          <div class="veld groep" data-voor="groep" hidden><label for="v-tijd">Hoe laat ongeveer?</label>
+            <select id="v-tijd"><option value="">Kies een tijd</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option><option>22:00</option></select></div>
+          
+          <div class="veld groep breed" data-voor="vraag" hidden><label for="v-vraag">Je vraag</label><textarea id="v-vraag" placeholder="Typ je vraag"></textarea></div>
+          <div class="veld breed"><label for="v-naam">Je naam (optioneel)</label><input id="v-naam" type="text" autocomplete="given-name"></div>
+        </div>
+
+        <div class="bericht" aria-live="polite">
+          <div class="stap">3 · Je bericht</div>
+          <pre id="bericht-tekst"></pre>
+          <div class="acties">
+            <a class="btn btn-gold" href="tel:+31102035909"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel 010 203 5909</a>
+            <a class="btn btn-gold" id="wa-knop" href="#kiezer" hidden>Stuur via WhatsApp</a>
+            <button class="btn btn-ghost-l" type="button" id="kopieer">Kopieer bericht</button>
+          </div>
+          <p id="wa-plek">Bellen gaat het snelst. Liever langskomen? We zijn er dagelijks van 13:00 tot 23:00.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="bezoek" id="bezoek">
+  <div class="wrap bz-grid">
+    <div class="rv">
+      <div class="kicker">Bezoek</div>
+      <div class="uren">13:00 <span>—</span> 23:00</div>
+      <div class="uren-sub">Dagelijks geopend</div>
+    </div>
+    <div class="adres rv">
+      <address>West-Kruiskade 59B<br>3014 AL Rotterdam</address>
+      <p>Bel om te reserveren: <a href="tel:+31102035909" style="color:#fff">010 203 5909</a></p>
+      <div class="cta">
+        <a class="btn btn-gold" href="https://www.google.com/maps/dir/?api=1&amp;destination=La+Fuga,+West-Kruiskade+59B,+3014+AL+Rotterdam" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Route</a>
+        <a class="btn btn-ghost-l" href="tel:+31102035909"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel</a>
+      </div>
+      <div class="socials">
+        <a href="https://www.instagram.com/lafuga.rotterdam/" target="_blank" rel="noopener">Instagram @lafuga.rotterdam</a>
+        <a href="https://www.facebook.com/LaFugaRotterdam" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <div class="wrap rv">
+    <div class="kicker" style="justify-content:center">Tot zo</div>
+    <svg class="wm2" viewBox="-180 -1539 6668 2183" role="img" aria-label="La Fuga"><use href="#wmpad"/></svg>
+    <h2 class="h2">Zin in iets zoets vandaag?</h2>
+    <div class="cta">
+      <a class="btn btn-onyx" href="tel:+31102035909"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel om te reserveren</a>
+      <a class="btn btn-line" href="#kiezer"><svg aria-hidden="true"><use href="#i-taart"/></svg>Reserveren of groep</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <img src="logo-light.svg" alt="La Fuga" width="134" height="44">
+        <div>West-Kruiskade 59B, 3014 AL Rotterdam<br>Dagelijks 13:00–23:00 · <a href="tel:+31102035909">010 203 5909</a></div>
+      </div>
+      <div>
+        <a href="https://www.instagram.com/lafuga.rotterdam/" target="_blank" rel="noopener">Instagram</a> &nbsp;·&nbsp; <a href="https://www.facebook.com/LaFugaRotterdam" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="made">
+      <span>Demo, niet de officiële site van La Fuga.</span>
+      <span>Website door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a></span>
+    </div>
+  </div>
+</footer>
+
+<nav class="float" id="float" aria-label="Snel contact">
+  <a href="tel:+31102035909"><svg aria-hidden="true"><use href="#i-tel"/></svg>Bel</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=La+Fuga,+West-Kruiskade+59B,+3014+AL+Rotterdam" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Route</a>
+  <a class="hoofd" href="#kiezer"><svg aria-hidden="true"><use href="#i-taart"/></svg>Reserveren</a>
+</nav>
+
+<!-- Pitch-modus: alleen voor Mo in het gesprek. Openen via het kleine "Mo"-knopje of ?pitch in de URL. -->
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-labelledby="pp-titel">
+  <div class="pp">
+    <div class="pp-top"><b>Pitch · La Fuga</b><button class="pp-sluit" id="pp-sluit" type="button" aria-label="Sluiten">×</button></div>
+    <h2 id="pp-titel">564 reviews, maar wie op jullie site klikt, ziet dit.</h2>
+    <div class="vn">
+      <figure class="voor"><img src="img/voor-site-offline.webp" alt="Huidige site lafugarotterdam.nl: 'Deze website is tijdelijk offline'" width="630" height="330"><figcaption><b>Voor:</b> zo ziet lafugarotterdam.nl er nu uit.</figcaption></figure>
+      <figure><div class="tel"><iframe id="pp-frame" title="De nieuwe site op een telefoon" loading="lazy"></iframe></div><figcaption><b>Na:</b> zo kan jullie site eruitzien.</figcaption></figure>
+    </div>
+
+    <h3>Rekenvoorbeeld (vul samen in)</h3>
+    <div class="reken">
+      <div><label for="r-gasten">Extra gasten per week <output id="o-gasten">5</output></label><input type="range" id="r-gasten" min="0" max="50" step="1" value="5"></div>
+      <div><label for="r-besteding">Gemiddelde besteding per gast <output id="o-besteding">€ 10</output></label><input type="range" id="r-besteding" min="4" max="40" step="1" value="10"></div>
+      <div class="uitkomst">
+        <div><small>Extra omzet per week</small><strong id="u-week">€ 50</strong></div>
+        <div><small>Extra omzet per jaar</small><strong id="u-jaar">€ 2.600</strong></div>
+        <div><small>€ 595 is de omzet van</small><strong id="u-terug">60 gasten</strong></div>
+      </div>
+      <p class="disclaimer">Voorbeeld, geen belofte. Jullie kiezen de getallen; het gaat om omzet, niet om winst.</p>
+    </div>
+
+    <h3>Wat er concreet beter is</h3>
+    <ol class="punten">
+      <li><span><b>De site is weer online en snel.</b> Nu ziet wie op jullie site klikt "tijdelijk offline". Straks jullie zaak, groot en mooi.</span></li>
+      <li><span><b>Must-try met jullie eigen foto's.</b> Dubai Crêpe, Lotus Mini Cheesecake, matcha: gasten zien vooraf wat ze kunnen halen.</span></li>
+      <li><span><b>Bellen en route in 1 tik.</b> Open-tijden, adres en reserveren staan bovenaan, en op de telefoon blijft de knop altijd in beeld.</span></li>
+    </ol>
+  </div>
+</div>
+
+<script>
+/* WhatsApp: leeg zolang alleen het vaste nummer bekend is. Zodra Mo hun 06 heeft, hier invullen (bijv. "316xxxxxxxx"). */
+const WA_NUMMER = "";
+const TEL = "010 203 5909";
+
+/* open-status (Amsterdamse tijd, dagelijks 13:00–23:00 volgens hun Instagram-bio) */
+(function(){
+  try{
+    const u = +new Intl.DateTimeFormat("nl-NL",{timeZone:"Europe/Amsterdam",hour:"numeric",hour12:false}).format(new Date());
+    const s = document.getElementById("status"), t = document.getElementById("status-t"), ck = document.getElementById("ck-open");
+    if (u >= 13 && u < 23){ s.classList.add("open"); t.textContent = "Nu open · tot 23:00"; ck.textContent = "Nu open, tot 23:00"; }
+    else if (u < 13){ t.textContent = "Vandaag open vanaf 13:00"; ck.textContent = "Open vanaf 13:00"; }
+    else { t.textContent = "Morgen weer open vanaf 13:00"; ck.textContent = "Morgen vanaf 13:00"; }
+  }catch(e){}
+})();
+
+/* scroll-reveal met vangnet */
+(function(){
+  const els = document.querySelectorAll(".rv");
+  if ("IntersectionObserver" in window){
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin:"0px 0px -8% 0px"});
+    els.forEach(el => io.observe(el));
+  }
+  setTimeout(() => els.forEach(el => el.classList.add("in")), 3500);
+})();
+
+/* zwevende cta zodra de hero uit beeld is */
+(function(){
+  const f = document.getElementById("float"), hero = document.querySelector(".hero");
+  if (!("IntersectionObserver" in window)) { f.classList.add("toon"); return; }
+  new IntersectionObserver(([e]) => {
+    const aan = !e.isIntersecting;
+    f.classList.toggle("toon", aan);
+    document.body.classList.toggle("float-aan", aan && matchMedia("(max-width:860px)").matches);
+  }, {threshold:0}).observe(hero);
+})();
+
+/* kiezer */
+(function(){
+  const form = document.getElementById("kiesform"), out = document.getElementById("bericht-tekst");
+  const wa = document.getElementById("wa-knop"), waPlek = document.getElementById("wa-plek");
+  const $ = id => document.getElementById(id);
+  const vandaag = new Date(); vandaag.setMinutes(vandaag.getMinutes() - vandaag.getTimezoneOffset());
+  $("v-datum").min = vandaag.toISOString().slice(0,10);
+  const fmt = v => { if(!v) return ""; const d = new Date(v + "T12:00:00"); return d.toLocaleDateString("nl-NL",{weekday:"long",day:"numeric",month:"long"}); };
+  function bouw(){
+    const soort = form.querySelector("input[name=soort]:checked").value;
+    form.querySelectorAll(".groep").forEach(g => g.hidden = !g.dataset.voor.split(" ").includes(soort));
+    const naam = $("v-naam").value.trim(), pers = $("v-pers").value, datum = fmt($("v-datum").value);
+    let r = ["Hoi La Fuga,"];
+    if (soort === "taart"){
+      r.push("ik wil graag een tafel reserveren" + (pers ? " voor " + pers + " personen" : "") + (datum ? ", voor " + datum : "") + ".");
+      
+      r.push("Kan dat, en wat zijn de mogelijkheden?");
+    } else if (soort === "groep"){
+      r.push("we willen graag met een groep komen" + (pers ? " van " + pers + " personen" : "") + (datum ? " op " + datum : "") + ($("v-tijd").value ? " rond " + $("v-tijd").value : "") + ".");
+      r.push("Kunnen we reserveren?");
+    } else {
+      r.push($("v-vraag").value.trim() || "ik heb een vraag.");
+    }
+    r.push(naam ? "Groet, " + naam : "Groet!");
+    const tekst = r.join("\n");
+    out.textContent = tekst;
+    if (WA_NUMMER){ wa.href = "https://wa.me/" + WA_NUMMER + "?text=" + encodeURIComponent(tekst); }
+    return tekst;
+  }
+  if (WA_NUMMER){ wa.hidden = false; wa.target = "_blank"; wa.rel = "noopener"; waPlek.hidden = true; }
+  form.addEventListener("input", bouw); form.addEventListener("change", bouw); bouw();
+  $("kopieer").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(bouw()); $("kopieer").textContent = "Gekopieerd"; setTimeout(() => $("kopieer").textContent = "Kopieer bericht", 1800); } catch(e){}
+  });
+})();
+
+/* pitch-modus */
+(function(){
+  const p = document.getElementById("pitch"), frame = document.getElementById("pp-frame");
+  const euro = n => "€ " + Math.round(n).toLocaleString("nl-NL");
+  function open(){
+    p.classList.add("open"); document.body.style.overflow = "hidden";
+    if (!frame.src) frame.src = location.href.split("#")[0].split("?")[0];
+  }
+  function dicht(){ p.classList.remove("open"); document.body.style.overflow = ""; }
+  document.getElementById("pitch-knop").addEventListener("click", open);
+  document.getElementById("pp-sluit").addEventListener("click", dicht);
+  p.addEventListener("click", e => { if (e.target === p) dicht(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") dicht(); });
+  const g = document.getElementById("r-gasten"), b = document.getElementById("r-besteding");
+  function reken(){
+    const gasten = +g.value, best = +b.value;
+    document.getElementById("o-gasten").textContent = gasten;
+    document.getElementById("o-besteding").textContent = euro(best);
+    document.getElementById("u-week").textContent = euro(gasten * best);
+    document.getElementById("u-jaar").textContent = euro(gasten * best * 52);
+    document.getElementById("u-terug").textContent = Math.ceil(595 / best) + " gasten";
+  }
+  g.addEventListener("input", reken); b.addEventListener("input", reken); reken();
+  if (/[?&]pitch\b/.test(location.search)) open();
+  if (window.self !== window.top) { document.getElementById("pitch-knop").hidden = true; }
+})();
+</script>
+</body>
+</html>
