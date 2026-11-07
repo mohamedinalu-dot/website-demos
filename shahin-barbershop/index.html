@@ -1,385 +1,806 @@
 <!doctype html>
+<!--
+  Demo L216 Shahin Barbershop (Mohamedia, 7 nov 2026, versie 2)
+  Concept: "Zwart, wit en scherp: het werk spreekt."
+  Archetype: donker luxe portfolio met verticale 'reel'-kaarten (9:16, zoals TikTok) en een reel-viewer;
+  grote typografische hero waarin hun eigen vleugel-logo (nagetekend van TikTok @shahin.kapper) openvouwt.
+  Palet: zwart, gebroken wit, koel staal als enige accent. Fonts: Bodoni Moda (koppen) + Manrope (tekst).
+  Beeld: stills uit hun eigen TikTok-video's (cursor en stickers weg, TikTok-balk weggesneden, geen klantgezicht).
+  Weggelaten: openingstijden (alleen Fresha, onzeker), prijzen, namen van kappers/eigenaar, "op afspraak".
+-->
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Shahin Barbershop – barbershop in Rotterdam-Zuid</title>
-<meta name="description" content="Knippen, wassen en baard bij Shahin Barbershop, Groene Hilledijk 230B in Rotterdam-Zuid. 4,9 op Google uit 108 reviews. Vraag je afspraak aan via WhatsApp.">
-<meta name="theme-color" content="#172230">
+<meta name="description" content="Shahin Barbershop aan de Groene Hilledijk 230B in Rotterdam-Zuid: knippen, knippen + wassen en baard. 4,9 op Google uit 108 reviews. App of bel 06 42 08 29 66.">
+<meta name="theme-color" content="#0b0b0c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="img/hero-styling.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#eef2f5;--ink:#141c26;--soft:#4d5968;--slate:#1f2d3d;--slate-2:#2d4057;--deep:#141d29;--amber:#f2a516;--amber-d:#8a5800;--mist:#b6c3d1;--kicker:#8a5800;--panel:#e1e7ee;--card:#fafbfc;--line:#cbd4de;--sel-bg:#fbf1dd;--r:12px;--display:"Sora",system-ui,sans-serif;--sans:"Work Sans",system-ui,sans-serif}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+:root{
+  --zwart:#0b0b0c;--zwart-2:#131315;--zwart-3:#1b1c1f;--wit:#f2f0eb;--wit-2:#d9d6cf;--grijs:#a3a19b;
+  --staal:#9fb2c3;--staal-l:#c9d6e2;--staal-d:#5f7385;--lijn:rgba(242,240,235,.14);
+  --serif:"Bodoni Moda","Times New Roman",serif;--sans:"Manrope",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--zwart);color:var(--wit);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
-.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
-.demo{background:var(--deep);color:var(--mist);font-size:12.5px;text-align:center;padding:6px 16px}
-.demo a{color:var(--amber)}
-.notice{background:var(--amber);color:var(--deep);font-size:14px;text-align:center;padding:9px 16px;font-weight:600}
-header.bar .wrap>a{display:flex;align-items:center;min-height:48px}
-header.bar .wrap{display:flex;justify-content:space-between;align-items:center;height:84px;gap:16px}
-header.bar img{height:48px;width:auto;display:block;max-width:100%}
-header.bar nav{display:flex;align-items:center}
-header.bar nav a{text-decoration:none;font-size:15px;margin-left:14px;padding:12px 6px;opacity:.82;font-weight:600;min-height:44px;display:inline-flex;align-items:center}
-header.bar nav a:hover{opacity:1}
-header.bar nav a.btn{opacity:1;margin-left:18px;min-height:44px;padding:10px 18px}
-/* knoppen: geen transition op transform */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:16px;line-height:1.2;text-align:center;text-decoration:none;border:2px solid var(--slate);cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
-.btn-fill{background:var(--slate);color:#fff}
-.btn-fill:hover{background:var(--slate-2);border-color:var(--slate-2)}
-.btn-line{background:transparent;color:var(--slate);border-color:currentColor}
-.btn-line:hover{background:rgba(31,45,61,.06)}
-.btn-amber{background:var(--amber);color:var(--deep);border-color:var(--amber)}
-.btn-amber:hover{background:#ffc04a;border-color:#ffc04a}
-.btn-ghost{background:transparent;color:#eef2f6;border-color:rgba(238,242,246,.6)}
-.btn-ghost:hover{border-color:#fff}
-.btn svg{width:20px;height:20px;fill:currentColor;flex:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--staal-l);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+
+/* demo-strook + aankondiging */
+.demo{position:relative;background:#000;color:var(--grijs);font-size:12.5px;text-align:center;padding:6px 40px}
+.demo a{color:var(--wit)}
+.pitch-knop{position:absolute;right:4px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;border:0;background:transparent;color:var(--wit);font:700 10px var(--sans);opacity:.25;cursor:pointer}
+.pitch-knop:hover{opacity:1}
+.notice{background:var(--wit);color:var(--zwart);font-size:13.5px;font-weight:700;text-align:center;padding:8px 16px;letter-spacing:.01em}
+.notice .st{color:var(--staal-d)}
+
+/* header */
+.bar{position:relative;z-index:5;border-bottom:1px solid var(--lijn)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:16px}
+.bar .logo{display:flex;align-items:center;min-height:48px}
+.bar .logo img{height:58px;width:auto}
+.bar nav{display:flex;align-items:center;gap:6px}
+.bar nav a{text-decoration:none;font-size:14.5px;font-weight:600;letter-spacing:.02em;padding:12px 10px;min-height:44px;display:inline-flex;align-items:center;color:var(--wit-2)}
+.bar nav a:hover{color:var(--wit)}
+.bar nav a.btn{color:var(--zwart)}
+
+/* Bodoni: lagere optische grootte, anders verdwijnen de haarlijnen op groot formaat */
+.naam,h2,.cijfer,.band span,.drie h3,.drie .nr,.citaat p,.stappen h3,summary,.opt b,.bon .keuze,.bon .nr strong,.bord strong,.kaart .cap-t,.viewer .cap-t,.stap h3 span,.reken strong,.pitch .kop h3,.reken h4,.beter h4,.hero h1 em,.stappen li::before{font-optical-sizing:none;font-variation-settings:"opsz" 14}
+
+/* knoppen (geen transition op transform) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 24px;border-radius:2px;font-family:var(--sans);font-weight:700;font-size:15.5px;letter-spacing:.02em;line-height:1.2;text-align:center;text-decoration:none;border:1px solid var(--wit);cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.btn svg{width:19px;height:19px;fill:currentColor;flex:none}
+.btn-wit{background:var(--wit);color:var(--zwart)}
+.btn-wit:hover{background:#fff}
+.btn-lijn{background:transparent;color:var(--wit);border-color:rgba(242,240,235,.5)}
+.btn-lijn:hover{border-color:var(--wit);background:rgba(242,240,235,.06)}
+.btn-staal{background:var(--staal-l);border-color:var(--staal-l);color:var(--zwart)}
+.btn-staal:hover{background:#e1e9f0}
+.btn-zwart{background:var(--zwart);color:var(--wit);border-color:var(--zwart)}
+.btn-zwart:hover{background:#26272b}
+.btn-sm{min-height:44px;padding:10px 18px;font-size:14.5px}
 .btns{display:flex;flex-wrap:wrap;gap:12px}
+
 /* hero */
-.hero{position:relative;overflow:hidden}
-.hgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:44px;align-items:center;padding-top:36px;padding-bottom:90px}
-.tag{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--kicker);font-weight:700;margin-bottom:20px}
-.tag::before{content:"";width:28px;height:3px;border-radius:2px;background:var(--amber)}
-.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(38px,5vw,64px);line-height:1.04;margin:0 0 24px;letter-spacing:-.025em}
-.rot{display:block;color:var(--kicker);min-height:1.1em;font-size:.86em;white-space:nowrap;margin-top:.12em}
-.sub{font-size:19px;color:var(--soft);max-width:30em;margin:0 0 32px}
-.trust{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px;color:var(--soft)}
-.trust b{color:var(--ink)}
-.vis{position:relative;height:480px;border-radius:24px;background:radial-gradient(120% 90% at 25% 10%,#2d4057 0%,#1f2d3d 45%,#141d29 100%);overflow:hidden}
-.vis::before{content:"";position:absolute;inset:0;opacity:.07;background-image:repeating-linear-gradient(135deg,#fff 0 1px,transparent 1px 22px)}
-.vis canvas{position:absolute;inset:0;width:100%;height:100%}
-.pill{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.02em;color:var(--deep);background:var(--amber);border-radius:999px;padding:7px 22px;white-space:nowrap}
-.vis .lbl-top{position:absolute;left:22px;top:20px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);font-weight:600}
+.hero{position:relative;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 55% at 30% 20%,rgba(159,178,195,.12),transparent 70%),radial-gradient(60% 60% at 90% 90%,rgba(159,178,195,.06),transparent 70%)}
+.hero .ghost{position:absolute;right:-2vw;bottom:-4vw;font-family:var(--serif);font-weight:700;font-size:26vw;line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(242,240,235,.06);pointer-events:none;user-select:none;letter-spacing:-.02em;z-index:-1}
+.hgrid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center;padding-top:44px;padding-bottom:84px}
+.links{min-width:0}
+.merk{display:flex;flex-direction:column;align-items:flex-start}
+.embleem{width:min(300px,62vw);height:auto;overflow:visible;margin-left:-6px}
+.embleem path{fill:var(--wit)}
+.embleem .s{animation:sIn 1s ease-out .9s both}
+@keyframes sIn{from{opacity:0}to{opacity:1}}
+.naam{font-family:var(--serif);font-weight:500;font-size:clamp(64px,9.6vw,148px);line-height:.86;letter-spacing:.04em;margin:10px 0 0 -4px;
+  background:linear-gradient(105deg,var(--wit) 0 38%,#fff 45%,var(--staal) 50%,var(--wit) 57% 100%);background-size:260% 100%;background-position:100% 0;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:glans 7s ease-in-out 1.6s infinite}
+@keyframes glans{0%{background-position:100% 0}35%,100%{background-position:0 0}}
+.naam-sub{font-size:12.5px;letter-spacing:.62em;text-transform:uppercase;color:var(--staal-l);margin:14px 0 0;font-weight:600}
+.hero h1{font-family:var(--sans);font-weight:700;font-size:clamp(22px,2.3vw,30px);line-height:1.25;letter-spacing:-.01em;margin:34px 0 12px;max-width:22em}
+.hero h1 em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--staal-l)}
+.hero .sub{color:var(--wit-2);max-width:32em;margin:0 0 28px;font-size:16.5px}
+.trust{margin-top:24px;display:flex;flex-wrap:wrap;gap:6px 20px;font-size:14.5px;color:var(--grijs)}
+.trust b{color:var(--wit)}
+.trust .ster{color:var(--staal-l);letter-spacing:.1em}
+.trust a{color:var(--grijs);display:inline-flex;align-items:center;min-height:44px}
+.trust > span{display:inline-flex;align-items:center;gap:6px}
+
+/* reel-frame in de hero */
+.reel{position:relative;aspect-ratio:9/16;max-height:78vh;width:100%;margin-left:auto;border-radius:22px;overflow:hidden;background:var(--zwart-3);box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 1px var(--lijn)}
+.reel img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08) brightness(.92);animation:kb 18s ease-in-out infinite alternate;transform-origin:50% 30%}
+@keyframes kb{from{scale:1.02}to{scale:1.14}}
+.reel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0,transparent 18%,transparent 62%,rgba(0,0,0,.85) 100%);pointer-events:none}
+.balkjes{position:absolute;left:12px;right:12px;top:12px;display:flex;gap:4px;z-index:2}
+.balkjes i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.3);overflow:hidden;position:relative}
+.balkjes i::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;scale:0 1}
+.balkjes i.vol::after{scale:1 1}
+.balkjes i.loopt::after{animation:loop 6s linear infinite}
+@keyframes loop{from{scale:0 1}to{scale:1 1}}
+.reel .handle{position:absolute;left:14px;top:24px;z-index:2;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700}
+.reel .handle img{width:28px;height:28px;border-radius:50%;filter:none;animation:none;background:#000;padding:3px;border:1px solid rgba(255,255,255,.35)}
+.reel .onder{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;font-size:13.5px;color:var(--wit-2)}
+.reel .onder b{display:block;color:var(--wit);font-size:15px}
+
 /* band */
-.band{overflow:hidden;white-space:nowrap;background:var(--slate);color:#eef2f6}
-.band .track{display:inline-block;padding:16px 0;animation:slide 42s linear infinite;font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.06em;text-transform:uppercase}
-.band span{margin:0 22px}
-.band span::after{content:"";display:inline-block;width:18px;height:3px;border-radius:2px;background:var(--amber);margin-left:44px;vertical-align:middle;transform:skewX(-30deg)}
-@keyframes slide{to{transform:translateX(-50%)}}
-section{padding:100px 0}
-h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.2vw,52px);line-height:1.06;margin:0 0 16px;letter-spacing:-.02em;overflow-wrap:break-word}
-h2 em{font-style:normal;color:var(--kicker)}
-.lead{color:var(--soft);font-size:18px;max-width:36em;margin:0 0 44px}
-.kicker{display:block;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--kicker);margin-bottom:14px}
+.band{overflow:hidden;white-space:nowrap;border-block:1px solid var(--lijn);background:var(--zwart-2)}
+.band .track{display:inline-block;padding:20px 0;animation:schuif 46s linear infinite}
+.band span{font-family:var(--serif);font-size:clamp(22px,2.6vw,32px);font-weight:500;margin:0 26px;vertical-align:middle}
+.band span:nth-child(even){font-style:italic;color:transparent;-webkit-text-stroke:1px var(--staal-l)}
+.band span::after{content:"";display:inline-block;width:7px;height:7px;background:var(--staal);transform:rotate(45deg);margin-left:52px;vertical-align:middle}
+@keyframes schuif{to{transform:translateX(-50%)}}
+
+/* secties */
+section{padding:110px 0}
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:12.5px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--staal-l);margin-bottom:18px}
+.kicker::before{content:"";width:30px;height:1px;background:var(--staal)}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(38px,5.4vw,72px);line-height:1;letter-spacing:-.01em;margin:0 0 18px;overflow-wrap:break-word}
+h2 em{font-style:italic;color:var(--staal-l)}
+.lead{color:var(--wit-2);font-size:17.5px;max-width:36em;margin:0 0 48px}
+
+/* fade-galerij: reel-kaarten */
+.werk{background:var(--zwart);overflow:hidden}
+.werk-kop{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.werk-kop .lead{margin-bottom:0}
+.reels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:56px;align-items:start}
+.kaart{position:relative;display:block;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:var(--zwart-3);border:0;padding:0;cursor:pointer;text-align:left;width:100%;box-shadow:0 0 0 1px var(--lijn)}
+.reels .kaart:nth-child(even){margin-top:64px}
+.kaart img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08);transition:filter .6s,scale 1.2s cubic-bezier(.2,.7,.2,1);scale:1.04}
+.kaart:hover img,.kaart.actief img{filter:grayscale(0) contrast(1.02);scale:1.12}
+.kaart::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 22%,transparent 55%,rgba(0,0,0,.88));pointer-events:none}
+.kaart .balkjes{top:10px;left:10px;right:10px}
+.kaart .cap{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;display:block}
+.kaart .cap-t{display:block;font-family:var(--serif);font-size:clamp(22px,2.2vw,28px);line-height:1.05;color:var(--wit);overflow-wrap:break-word}
+.kaart .cap-s{display:block;font-size:13px;color:var(--wit-2);margin-top:6px}
+.kaart .play{position:absolute;right:14px;top:26px;z-index:2;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.4);display:grid;place-items:center}
+.kaart .play svg{width:14px;height:14px;fill:#fff;margin-left:2px}
+.kaart.tiktok{background:linear-gradient(160deg,#1d2024,#0b0b0c 60%);display:flex;flex-direction:column;justify-content:space-between;padding:22px;text-decoration:none}
+.kaart.tiktok::after{display:none}
+.kaart.tiktok img{width:96px;height:auto;filter:none;scale:1;transition:none}
+.kaart.tiktok .cap{position:static}
+.kaart.tiktok .pijl{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-weight:700;font-size:14.5px;color:var(--staal-l)}
+.werk-noot{margin-top:30px;font-size:13.5px;color:var(--grijs)}
+.werk-noot a{color:var(--wit-2)}
+
+/* reel-viewer */
+.viewer{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center}
+.viewer.open{display:flex}
+.viewer .scherm{position:relative;height:min(92svh,860px);aspect-ratio:9/16;max-width:100vw;border-radius:18px;overflow:hidden;background:#000}
+.viewer .slide{position:absolute;inset:0;opacity:0;transition:opacity .45s}
+.viewer .slide.nu{opacity:1}
+.viewer .slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.viewer .slide img.bg{object-fit:cover;filter:blur(22px) brightness(.45);scale:1.15}
+.plus{font-family:var(--sans);font-weight:300;font-style:normal;-webkit-text-stroke:0;color:inherit}
+.viewer .slide.nu img:not(.bg){animation:kb 9s ease-out both}
+.viewer .slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),transparent 20%,transparent 60%,rgba(0,0,0,.85));pointer-events:none}
+.viewer .vcap{position:absolute;left:18px;right:18px;bottom:22px;z-index:3}
+.viewer .vcap .cap-t{font-family:var(--serif);font-size:30px;line-height:1.05;display:block}
+.viewer .vcap .cap-s{display:block;color:var(--wit-2);font-size:14px;margin-top:6px}
+.viewer .slide.eind{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:28px;background:linear-gradient(160deg,#1d2024,#0b0b0c 65%)}
+.viewer .slide.eind::after{display:none}
+.viewer .slide.eind img{position:static;width:150px;height:auto;margin-bottom:22px;animation:none}
+.viewer .slide.eind .cap-t{font-family:var(--serif);font-size:32px;line-height:1.05;margin-bottom:8px}
+.viewer .slide.eind .btns{flex-direction:column;width:100%;max-width:280px;margin-top:22px;position:relative;z-index:4}
+.viewer .slide.eind .btns .btn{flex:0 0 auto;width:100%}
+.viewer .vbalk{position:absolute;left:12px;right:12px;top:12px;z-index:4;display:flex;gap:4px}
+.viewer .vbalk i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.3);position:relative;overflow:hidden}
+.viewer .vbalk i b{position:absolute;inset:0;background:#fff;transform-origin:left;scale:0 1}
+.viewer .vbalk i.vol b{scale:1 1}
+.viewer .nav-l,.viewer .nav-r{position:absolute;top:0;bottom:0;width:38%;z-index:3;background:transparent;border:0;cursor:pointer}
+.viewer .nav-l{left:0}.viewer .nav-r{right:0}
+.viewer .slide.eind.nu ~ .nav-r,.viewer .slide.eind.nu ~ .nav-l{bottom:62%}
+.viewer .sluit{position:absolute;right:10px;top:24px;z-index:5;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.45);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+
 /* kiezer */
-.pick{background:var(--panel)}
-.pick .grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:44px;align-items:start}
-.steps-k{counter-reset:k}
-.step{margin-bottom:30px;counter-increment:k}
-.step h3{font-size:15px;font-weight:700;margin:0 0 12px;color:var(--soft)}
-.step h3::before{content:counter(k) ". "}
-.step h3 i{font-style:normal;font-weight:400}
-.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.opts.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kies{background:var(--wit);color:var(--zwart)}
+.kies .kicker{color:var(--staal-d)}
+.kies .kicker::before{background:var(--staal-d)}
+.kies h2 em{color:var(--staal-d)}
+.kies .lead{color:#45474c}
+.kgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:start}
+.stap{margin-bottom:34px}
+.stap h3{font-size:13px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 14px;color:#45474c;display:flex;gap:12px;align-items:baseline}
+.stap h3 span{font-family:var(--serif);font-size:24px;letter-spacing:0;color:var(--zwart);font-weight:500}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .opts.chips{display:flex;flex-wrap:wrap;gap:8px}
-.opt{position:relative;text-align:left;background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:15px 15px 13px;font:inherit;color:var(--ink);cursor:pointer;min-height:48px;min-width:0;transition:border-color .15s,background-color .15s}
-.opt:hover{border-color:var(--kicker)}
-.opt b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(17px,4.6vw,19px);line-height:1.15;overflow-wrap:break-word}
-.opt small{display:block;color:var(--soft);font-size:13.5px;margin-top:4px;line-height:1.35}
-.opt[aria-pressed="true"]{border-color:var(--slate);background:var(--sel-bg)}
-.chips .opt{padding:10px 18px;border-radius:999px;font-weight:600}
-.chips .opt[aria-pressed="true"]{background:var(--slate);color:#fff;border-color:var(--slate)}
-.date input{font:inherit;padding:12px 14px;border:2px solid var(--line);border-radius:var(--r);min-height:52px;background:var(--card);color:var(--ink);max-width:100%}
-.hint{font-size:14px;color:var(--soft);margin:8px 0 0;min-height:1em}
-.summary{background:var(--slate);color:#fff;border-radius:22px;padding:32px;position:sticky;top:24px}
-.summary .k{font-size:13px;color:var(--mist);margin-bottom:4px;letter-spacing:.08em;text-transform:uppercase}
-.summary h3{font-family:var(--display);font-weight:800;font-size:clamp(24px,6vw,30px);line-height:1.1;margin:0 0 20px;overflow-wrap:break-word}
-.summary dl{margin:0 0 26px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 18px;font-size:15.5px}
-.summary dt{color:var(--mist)}
-.summary dd{margin:0;overflow-wrap:break-word}
-.summary .btn{width:100%}
-.summary .note{font-size:13.5px;color:var(--mist);margin-top:14px;text-align:center}
-.summary .note a{color:#fff;display:inline-flex;align-items:center;min-height:44px;padding:0 6px;font-weight:600}
+.opt{position:relative;text-align:left;background:#fff;border:1px solid #cfccc4;border-radius:2px;padding:16px 16px 14px;color:var(--zwart);cursor:pointer;min-height:48px;min-width:0;transition:border-color .15s,background-color .15s,color .15s}
+.opt:hover{border-color:var(--zwart)}
+.opt b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(20px,5vw,24px);line-height:1.1;overflow-wrap:break-word}
+.opt small{display:block;color:#5d5f64;font-size:13.5px;margin-top:4px;line-height:1.35}
+.opt[aria-pressed="true"]{background:var(--zwart);color:var(--wit);border-color:var(--zwart)}
+.opt[aria-pressed="true"] small{color:var(--staal-l)}
+.chips .opt{padding:11px 18px;font-weight:600;font-size:15px}
+.bon{background:var(--zwart);color:var(--wit);padding:34px 30px;position:sticky;top:24px;border-radius:2px}
+.bon .k{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--staal-l);margin-bottom:10px;font-weight:700}
+.bon .keuze{font-family:var(--serif);font-size:clamp(28px,6.4vw,40px);line-height:1.05;margin:0 0 6px;overflow-wrap:break-word}
+.bon .wanneer{color:var(--wit-2);margin:0 0 26px}
+.bon .nr{border-top:1px solid var(--lijn);padding-top:22px;margin-bottom:18px}
+.bon .nr small{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--grijs);font-weight:700}
+.bon .nr strong{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(30px,7.4vw,42px);letter-spacing:.02em;line-height:1.15}
+.bon .btns .btn{flex:1 1 200px}
+.bon .klein{margin-top:16px;font-size:13.5px;color:var(--grijs)}
+
 /* waarom */
-.why-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.wcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;min-width:0}
-.why-g h3{font-family:var(--display);margin:0 0 8px;font-size:clamp(18px,5vw,21px);font-weight:700;overflow-wrap:break-word}
-.why-g p{margin:0;color:var(--soft)}
-.why-g svg{width:36px;height:36px;stroke:var(--slate);fill:none;stroke-width:1.7;margin-bottom:14px;stroke-linecap:round;stroke-linejoin:round}
-.why-g svg .a{stroke:var(--amber)}
+.waarom{background:var(--zwart-2)}
+.drie{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--lijn)}
+.drie > div{padding:34px 30px 10px 0;min-width:0}
+.drie > div + div{padding-left:30px;border-left:1px solid var(--lijn)}
+.drie .nr{font-family:var(--serif);font-style:italic;font-size:54px;line-height:1;color:var(--staal);display:block;margin-bottom:18px}
+.drie h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,5.6vw,30px);line-height:1.1;margin:0 0 12px;overflow-wrap:break-word}
+.drie p{color:var(--wit-2);font-size:16px}
+
 /* reviews */
-.reviews{background:var(--deep);color:#eef2f6}
-.reviews .kicker{color:var(--mist)}
-.reviews h2 em{color:var(--amber)}
-.reviews a{color:#fff}
-.score{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-bottom:50px}
-.score b{font-family:var(--display);font-weight:800;font-size:104px;line-height:.9;color:var(--amber);letter-spacing:-.04em}
-.score span{color:var(--mist);font-size:16px;max-width:16em}
-.themes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
-.theme{border-left:3px solid var(--amber);padding-left:20px;min-width:0}
-.theme h3{font-family:var(--display);font-weight:700;font-size:clamp(20px,5vw,24px);line-height:1.15;margin:0 0 10px;overflow-wrap:break-word}
-.theme p{margin:0;color:var(--mist);font-size:16px}
-.also{margin:40px 0 0;color:var(--mist);font-size:14.5px}
+.reviews{background:var(--zwart)}
+.rgrid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start}
+.cijfer{font-family:var(--serif);font-weight:500;font-size:clamp(120px,15vw,210px);line-height:.85;letter-spacing:-.03em}
+.sterren{display:flex;gap:6px;margin:18px 0 10px}
+.sterren svg{width:26px;height:26px;fill:var(--staal-l)}
+.cijfer-sub{color:var(--wit-2)}
+.cijfer-sub a{color:var(--wit)}
+.citaten{display:grid;gap:0}
+.citaat{border-top:1px solid var(--lijn);padding:26px 0}
+.citaat:last-child{border-bottom:1px solid var(--lijn)}
+.citaat p{font-family:var(--serif);font-size:clamp(22px,2.4vw,28px);line-height:1.25}
+.citaat span{display:block;margin-top:10px;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--staal-l);font-weight:700}
+.label{margin-top:22px;font-size:14px;color:var(--grijs)}
+.label a{color:var(--wit-2)}
+
 /* stappen */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;counter-reset:s}
-.steps li{counter-increment:s;min-width:0}
-.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;background:var(--amber);color:var(--deep);font-family:var(--display);font-weight:800;font-size:24px;margin-bottom:16px}
-.steps h3{font-family:var(--display);margin:0 0 6px;font-size:20px;font-weight:700}
-.steps p{margin:0;color:var(--soft)}
+.stappen{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;counter-reset:s}
+.stappen li{counter-increment:s;min-width:0;border-top:1px solid var(--wit);padding-top:22px}
+.stappen li::before{content:"0" counter(s);font-family:var(--serif);font-style:italic;font-size:22px;color:var(--staal-l);display:block;margin-bottom:12px}
+.stappen h3{font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.1;margin:0 0 8px}
+.stappen p{color:var(--wit-2)}
+.stappen a{color:var(--wit)}
+
 /* faq */
-.faq .wrap{max-width:840px}
-details{border-bottom:1px solid var(--line);padding:4px 0}
-summary{cursor:pointer;list-style:none;padding:17px 40px 17px 0;font-size:18px;font-weight:700;position:relative;min-height:44px}
+.faq{background:var(--zwart-2)}
+.faq .wrap{max-width:880px}
+details{border-bottom:1px solid var(--lijn)}
+summary{cursor:pointer;list-style:none;padding:22px 44px 22px 0;font-family:var(--serif);font-size:clamp(21px,4.8vw,25px);position:relative;min-height:44px}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";position:absolute;right:6px;top:12px;font-size:26px;font-weight:400;color:var(--kicker)}
-details[open] summary::after{content:"–"}
-details p{margin:0 0 18px;color:var(--soft)}
+summary::after{content:"";position:absolute;right:10px;top:50%;width:14px;height:14px;margin-top:-10px;border-right:1.5px solid var(--staal-l);border-bottom:1.5px solid var(--staal-l);transform:rotate(45deg);transition:transform .25s}
+details[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
+details p{color:var(--wit-2);padding:0 0 22px}
+details a{color:var(--wit)}
+
 /* bezoek */
-.visit{background:var(--panel)}
-.visit .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
-.addr{font-size:19px;margin:0 0 26px}
-.hbox{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;min-width:0}
-.hbox h3{font-family:var(--display);font-weight:800;font-size:clamp(22px,5.4vw,28px);margin:0 0 10px;overflow-wrap:break-word}
-.hbox p{color:var(--soft);margin:0 0 22px}
-.hbox .btns .btn{flex:1 1 200px}
-.final{background:var(--slate);color:#eef2f6;text-align:center}
-.final h2{max-width:16ch;margin:0 auto 16px}
-.final h2 em{color:var(--amber)}
-.final .lead{color:var(--mist);margin:0 auto 32px}
-.final .btns{justify-content:center}
-footer{background:var(--deep);color:var(--mist);padding:56px 0 96px;font-size:15px}
+.bezoek .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.bord{background:var(--wit);color:var(--zwart);border-radius:6px;padding:28px 30px;box-shadow:inset 0 0 0 5px var(--wit),inset 0 0 0 7px var(--zwart);max-width:460px}
+.bord small{display:block;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--staal-d)}
+.bord strong{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(34px,8vw,52px);line-height:1;margin:10px 0 6px;overflow-wrap:break-word}
+.bord span{font-size:15px;color:#45474c}
+.bezoek h2{margin-bottom:14px}
+.bezoek p.lead{margin-bottom:28px}
+
+/* slot */
+.slot{text-align:center;background:radial-gradient(60% 70% at 50% 40%,rgba(159,178,195,.12),transparent 70%),var(--zwart);border-top:1px solid var(--lijn)}
+.slot img{width:min(260px,64vw);height:auto;margin:0 auto 34px}
+.slot h2{max-width:14ch;margin:0 auto 16px}
+.slot .lead{margin:0 auto 34px}
+.slot .btns{justify-content:center}
+
+footer{background:#000;color:var(--grijs);padding:64px 0 110px;font-size:15px}
 footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px}
-footer img{height:48px;width:auto;margin-bottom:14px;max-width:100%}
-footer h4{color:var(--amber);font-weight:700;margin:0 0 10px;font-size:15px}
-footer p{margin:0}
-footer a{display:inline-block;padding:10px 0}
-.fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;margin-top:20px;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.fine a{padding:0;color:#eef2f6}
-.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:9;display:none}
-.float.on{display:block}
-.float .btn{width:100%;min-height:56px;box-shadow:0 12px 30px rgba(20,29,41,.4)}
-.sr{position:absolute;left:-9999px}
-@media (min-width:861px){.float{display:none!important}}
+footer img{width:170px;height:auto;margin-bottom:16px}
+footer h4{color:var(--wit);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:12px}
+footer a{display:inline-block;padding:9px 0;color:var(--wit-2)}
+.fine{grid-column:1/-1;border-top:1px solid var(--lijn);padding-top:20px;margin-top:12px;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.fine a{padding:0;color:var(--wit)}
+
+/* zwevende CTA (mobiel) */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:none;gap:8px;padding:8px;background:rgba(11,11,12,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--lijn);border-radius:6px;box-shadow:0 16px 40px rgba(0,0,0,.6)}
+.zweef.on{display:flex}
+.zweef .btn{flex:1;min-height:50px}
+.zweef .btn:last-child{flex:0 0 auto}
+
+/* scroll-onthulling met vangnet */
+.rv{opacity:0;translate:0 26px;transition:opacity .8s,translate .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;translate:0 0}
+
+/* pitch-modus (alleen voor Mo) */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.6);display:none;align-items:flex-end;justify-content:center}
+.pitch.open{display:flex}
+.pitch .vel{background:var(--wit);color:var(--zwart);width:min(1100px,100%);max-height:94svh;overflow:auto;border-radius:18px 18px 0 0;padding:26px clamp(18px,3vw,40px) 40px}
+.pitch .kop{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.pitch .kop h3{font-family:var(--serif);font-weight:500;font-size:26px}
+.pitch .psluit{width:44px;height:44px;border-radius:50%;border:1px solid #cfccc4;background:#fff;font-size:22px;cursor:pointer;color:var(--zwart)}
+.vn{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:26px}
+.vn figure{background:#e6e3dc;border-radius:16px;padding:18px;text-align:center}
+.vn figcaption{font-weight:800;margin-bottom:12px;font-size:15px}
+.vn figcaption span{display:block;font-weight:500;color:#5d5f64;font-size:13.5px}
+.tel{width:240px;max-width:100%;height:480px;margin:0 auto;border:8px solid var(--zwart);border-radius:30px;overflow:hidden;background:#fff;position:relative;text-align:left}
+.tel iframe{width:390px;height:844px;border:0;transform:scale(.5949);transform-origin:0 0;position:absolute;left:0;top:0}
+.gnu{padding:14px 12px;font-size:12.5px;color:#202124;font-family:Arial,sans-serif}
+.gnu .zoek{border:1px solid #dadce0;border-radius:20px;padding:8px 12px;color:#5f6368;margin-bottom:14px}
+.gnu .t{font-size:17px;color:#202124;margin-bottom:2px}
+.gnu .r{color:#5f6368;margin-bottom:10px}
+.gnu .r b{color:#e37400}
+.gnu .knoppen{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.gnu .knoppen span{border:1px solid #dadce0;border-radius:16px;padding:5px 10px;color:#1a73e8}
+.gnu .knoppen span.hl{border:2px solid #d93025;color:#d93025;font-weight:700}
+.gnu .pijl{text-align:center;font-size:20px;color:#d93025;margin:-6px 0 6px}
+.gnu .tt{background:#121212;color:#fff;border-radius:10px;padding:14px;text-align:center}
+.gnu .tt .h{font-weight:700;font-size:14px}
+.gnu .tt .s{color:#aaa;font-size:11.5px;margin-top:3px}
+.gnu .tt .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:10px}
+.gnu .tt .grid i{aspect-ratio:3/4;background:#2a2a2a;border-radius:2px}
+.fouten{list-style:none;display:grid;gap:8px;margin-top:14px;text-align:left}
+.fouten li{background:#fff;border-radius:10px;padding:10px 12px;font-size:14px;display:flex;gap:10px}
+.fouten li b{color:#b3261e}
+.reken{background:var(--zwart);color:var(--wit);border-radius:16px;padding:24px;margin-bottom:26px}
+.reken h4,.beter h4{font-family:var(--serif);font-weight:500;font-size:22px;margin-bottom:4px}
+.reken .vb{font-size:13px;color:var(--grijs);margin-bottom:16px}
+.reken label{display:block;font-size:14.5px;margin:14px 0 6px}
+.reken label output{float:right;font-weight:800}
+.reken input[type=range]{width:100%;accent-color:var(--staal-l);height:32px}
+.reken .uit{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.reken .uit div{background:rgba(255,255,255,.07);border-radius:12px;padding:14px}
+.reken .uit small{display:block;font-size:12.5px;color:var(--grijs)}
+.reken .uit strong{font-family:var(--serif);font-weight:500;font-size:clamp(22px,3vw,30px)}
+.beter ol{margin:10px 0 0 20px;display:grid;gap:8px}
+
+@media (max-width:980px){
+  .reels{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .reels .kaart:nth-child(even){margin-top:0}
+}
+@media (min-width:861px){.zweef{display:none!important}}
 @media (max-width:860px){
-  header.bar nav a:not(.btn){display:none}
-  header.bar img{height:42px}
-  .hgrid{grid-template-columns:minmax(0,1fr);padding-bottom:60px;gap:36px}
-  .vis{height:320px}
-  .hero h1{font-size:clamp(34px,9.6vw,52px)}
-  .pick .grid,.visit .wrap{grid-template-columns:minmax(0,1fr)}
-  .why-g,.themes,.steps{grid-template-columns:minmax(0,1fr)}
-  .opts,.opts.four{grid-template-columns:minmax(0,1fr)}
-  .opt{padding:14px 12px 12px;overflow-wrap:anywhere}
-  .summary{position:static}
+  .bar nav a:not(.btn){display:none}
+  .bar .wrap{height:68px}
+  .bar .logo img{height:50px}
+  .hgrid{grid-template-columns:minmax(0,1fr);gap:0;padding-top:14px;padding-bottom:56px}
+  .links{display:contents}
+  .merk{order:1}
+  .merk{align-items:center;text-align:center}
+  .embleem{width:min(210px,54vw);margin:0}
+  .naam{font-size:clamp(58px,21vw,96px);margin:6px 0 0;letter-spacing:.03em}
+  .naam-sub{margin-top:8px;letter-spacing:.5em;font-size:11.5px}
+  .hero .tekst{order:3;position:relative;z-index:2;margin-top:-128px;padding:0 4px}
+  .hero h1{margin-top:0;font-size:clamp(22px,6.2vw,27px)}
+  .hero .sub{display:none}
+  .hero h1{margin-bottom:22px}
+  .notice .lang,.hero .btns .lang{display:none}
+  .hero .reel-wrap{order:2;margin:-36px -28px 0;position:relative;z-index:0}
+  .merk{position:relative;z-index:1}
+  .reel{border-radius:0;max-height:none;aspect-ratio:auto;height:min(108vw,420px);box-shadow:none}
+  .reel .handle{top:64px}
+  .reel img{object-position:50% 22%}
+  .reel{background:transparent}
+  .reel img{-webkit-mask-image:linear-gradient(180deg,transparent 0,transparent 7%,rgba(0,0,0,.3) 20%,#000 40%,#000 52%,rgba(0,0,0,.25) 80%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,transparent 7%,rgba(0,0,0,.3) 20%,#000 40%,#000 52%,rgba(0,0,0,.25) 80%,transparent 100%)}
+  .reel::after{display:none}
+  .reel .onder{display:none}
+  .reel .balkjes{top:auto;bottom:14px;display:none}
+  .hero .ghost{display:none}
+  .kgrid,.bezoek .wrap,.rgrid{grid-template-columns:minmax(0,1fr)}
+  .rgrid{gap:36px}
+  .bon{position:static}
+  .drie,.stappen{grid-template-columns:minmax(0,1fr)}
+  .drie > div + div{padding-left:0;border-left:0;border-top:1px solid var(--lijn)}
+  .drie > div{padding-right:0}
   footer .wrap{grid-template-columns:1fr}
-  section{padding:72px 0}
-  .score b{font-size:84px}
+  section{padding:80px 0}
+  .reels{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:40px -28px 0;padding:0 28px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .reels::-webkit-scrollbar{display:none}
+  .reels .kaart{flex:0 0 68vw;max-width:300px;scroll-snap-align:center}
+  .vn{grid-template-columns:1fr}
+  .reken .uit{grid-template-columns:1fr}
 }
 @media (max-width:480px){
-  .wrap{padding:0 18px}
+  .wrap{padding:0 20px}
+  .hero .reel-wrap{margin:-36px -20px 0}
+  .reels{margin:36px -20px 0;padding:0 20px 8px}
   .btns .btn{flex:1 1 100%}
-  header.bar .wrap{height:76px}
-  header.bar nav a.btn{padding:10px 14px;font-size:14.5px}
-  .summary{padding:26px 20px}
+  .hero .btns .btn{flex:1 1 140px}
+  .opts{grid-template-columns:minmax(0,1fr)}
+  .bon{padding:28px 20px}
+  .demo{font-size:12px}
 }
-@media (prefers-reduced-motion:reduce){.band .track{animation:none}html{scroll-behavior:auto}*{animation-duration:.001s!important;animation-iteration-count:1!important}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;translate:none}
+  .naam{background:none;color:var(--wit)}
+}
 </style>
 </head>
 <body>
-<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
-<div class="notice">4,9 ★ uit 108 Google-reviews · Groene Hilledijk 230B, Rotterdam-Zuid</div>
-<header class="bar"><div class="wrap"><a href="#top" aria-label="Shahin Barbershop, naar boven"><img src="logo-dark.svg" alt="Shahin Barbershop" width="207" height="78"></a><nav aria-label="Hoofdmenu"><a href="#waarom">Waarom Shahin</a><a href="#ervaringen">Ervaringen</a><a href="#adres">Adres</a><a class="btn btn-fill" href="#kiezer">Afspraak</a></nav></div></header>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> <button class="pitch-knop" id="pitchKnop" type="button" aria-label="Presentatie openen">Mo</button></div>
+<div class="notice"><span class="st">★</span> 4,9 uit 108 Google-reviews<span class="lang"> · Groene Hilledijk 230B, Rotterdam-Zuid</span></div>
+
+<header class="bar"><div class="wrap">
+  <a class="logo" href="#top" aria-label="Shahin Barbershop, naar boven"><img src="logo-light.svg" alt="Shahin Barbershop" width="82" height="58"></a>
+  <nav aria-label="Hoofdmenu"><a href="#werk">Het werk</a><a href="#ervaringen">Reviews</a><a href="#adres">Adres</a><a class="btn btn-wit btn-sm" href="#kiezer">App of bel</a></nav>
+</div></header>
+
 <main>
-<div class="hero" id="top">
-<div class="wrap hgrid">
-  <div>
-    <span class="tag">Barbershop · Rotterdam-Zuid</span>
-    <h1>Je barber aan de Groene Hilledijk <span class="rot" id="rot">Knippen</span></h1>
-    <p class="sub">Knippen, wassen en baard op Groene Hilledijk 230B. Klanten noemen de zaak schoon en verzorgd, en schrijven dat er de tijd wordt genomen voor wat je wilt.</p>
-    <div class="btns"><a class="btn btn-fill js-wa-plain" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>App via WhatsApp</a><a class="btn btn-line" href="#kiezer">Kies je knipbeurt</a></div>
-    <div class="trust"><span><b>4,9</b> op Google</span><span><b>108</b> reviews</span><span>Groene Hilledijk, Rotterdam-Zuid</span></div>
-  </div>
-  <div class="vis" aria-hidden="true"><span class="lbl-top">Shahin · Groene Hilledijk</span><canvas id="anim"></canvas><span class="pill" id="pill">Verse cut</span></div>
-</div>
-</div>
-<div class="band" aria-hidden="true"><div class="track" id="track"><span>Knippen</span><span>Knippen + wassen</span><span>Baard</span><span>4,9 uit 108 Google-reviews</span><span>Groene Hilledijk 230B</span><span>Rotterdam-Zuid</span></div></div>
-<section class="pick" id="kiezer">
-  <div class="wrap">
-    <span class="kicker">Afspraak aanvragen</span>
-    <h2>Kies je <em>knipbeurt</em></h2>
-    <p class="lead">Kies wat je wilt en wanneer het je uitkomt. Je bericht staat klaar, je stuurt het in één tik via WhatsApp.</p>
-    <div class="grid"><div class="steps-k">
-      <div class="step"><h3>Wat wil je laten doen?</h3><div class="opts four" data-group="t">
-        <button class="opt" type="button" data-v="Knippen" aria-pressed="true"><b>Knippen</b><small>Je kapsel bijwerken of iets nieuws</small></button>
-        <button class="opt" type="button" data-v="Knippen + wassen" aria-pressed="false"><b>Knippen + wassen</b><small>Knipbeurt met wassen erbij</small></button>
-        <button class="opt" type="button" data-v="Baard" aria-pressed="false"><b>Baard</b><small>Je baard laten doen</small></button>
-        <button class="opt" type="button" data-v="Iets anders, ik leg het uit" aria-pressed="false"><b>Iets anders</b><small>Je legt het in je bericht uit</small></button>
-      </div></div>
-      <div class="step"><h3>Hoe wil je het?</h3><div class="opts" data-group="v">
-        <button class="opt" type="button" data-v="Zoals altijd" aria-pressed="true"><b>Zoals altijd</b><small>Je vaste model</small></button>
-        <button class="opt" type="button" data-v="Iets nieuws, ik leg het uit" aria-pressed="false"><b>Iets nieuws</b><small>Je vertelt wat je wilt</small></button>
-        <button class="opt" type="button" data-v="Ik stuur een foto mee" aria-pressed="false"><b>Met foto</b><small>Je stuurt een voorbeeld mee</small></button>
-      </div></div>
-      <div class="step"><h3>Wanneer past het je?</h3><div class="opts chips" data-group="dag"><button class="opt" type="button" data-v="Vandaag" aria-pressed="false">Vandaag</button><button class="opt" type="button" data-v="Zo snel mogelijk" aria-pressed="false">Zo snel mogelijk</button><button class="opt" type="button" data-v="Deze week" aria-pressed="false">Deze week</button><button class="opt" type="button" data-v="In het weekend" aria-pressed="false">In het weekend</button><button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button></div></div>
-      <div class="step"><h3>Welk dagdeel?</h3><div class="opts chips" data-group="deel"><button class="opt" type="button" data-v="Ochtend" aria-pressed="false">Ochtend</button><button class="opt" type="button" data-v="Middag" aria-pressed="false">Middag</button><button class="opt" type="button" data-v="Later op de dag" aria-pressed="false">Later op de dag</button><button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button></div></div>
-      <div class="step date"><h3>Heb je al een datum in gedachten? <i>(optioneel)</i></h3><label class="sr" for="d1">Datum</label><input type="date" id="d1" class="js-date"><p class="hint" id="hint" aria-live="polite"></p></div>
-    </div><aside class="summary" aria-live="polite">
-      <div class="k">Jouw afspraakverzoek</div>
-      <h3 id="s-title"></h3>
-      <dl><dt>Dienst</dt><dd id="s-t">–</dd><dt>Wens</dt><dd id="s-v">–</dd><dt>Voorkeur</dt><dd id="s-dag">–</dd><dt>Datum</dt><dd id="s-datum">–</dd></dl>
-      <a class="btn btn-amber js-ask" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>Vraag je afspraak aan via WhatsApp</a>
-      <div class="note">Vrijblijvend. Liever bellen? <a href="tel:+31642082966">06 42 08 29 66</a></div>
-    </aside></div>
-  </div>
-</section>
-<section class="why" id="waarom">
-  <div class="wrap">
-    <span class="kicker">Wat klanten noemen</span>
-    <h2>Waarom klanten voor <em>Shahin</em> kiezen</h2>
-    <p class="lead">Drie dingen die terugkomen in de Google-reviews.</p>
-    <div class="why-g">
-      <div class="wcard"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M10 14h16l-2 16H12z"/><path class="a" d="M14 9c0-2 2-2 2-4M20 9c0-2 2-2 2-4"/><path d="M26 17h2.5a3 3 0 0 1 0 6H25"/></svg><h3>Schoon en verzorgd</h3><p>Klanten schrijven dat de zaak schoon en verzorgd is, en dat je bij binnenkomst een drankje krijgt.</p></div>
-      <div class="wcard"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="12"/><path class="a" d="M18 10v8l5 3"/></svg><h3>Tijd voor jouw wensen</h3><p>Klanten schrijven dat er de tijd wordt genomen en dat er goed geluisterd wordt naar wat je wilt.</p></div>
-      <div class="wcard"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="10" cy="26" r="4.5"/><circle cx="10" cy="10" r="4.5"/><path class="a" d="M13.5 12.5L30 26M13.5 23.5L30 10"/></svg><h3>Goed knipwerk, redelijke prijs</h3><p>Klanten schrijven dat elke kapper hier goed knipt, voor een redelijke prijs.</p></div>
+<section class="hero" id="top" style="padding:0">
+  <div class="ghost" aria-hidden="true">SHAHIN</div>
+  <div class="wrap hgrid">
+    <div class="links">
+      <div class="merk">
+        <svg id="embleem" class="embleem" viewBox="-200 18 400 176" width="300" height="132" aria-hidden="true" focusable="false"><g class="vleugel" data-s="-1"><path d="M-124 56L-110 70L-103.2 81.8L-96.7 93.6L-90.5 105.4L-84.9 117.2L-80 129L-75.7 140.8L-72.1 152.6L-69.1 164.4L-66.4 176.2L-64 188L-58.5 188L-60.9 176.2L-63.6 164.4L-66.6 152.6L-70.2 140.8L-74.5 129L-79.4 117.2L-85 105.4L-91.2 93.6L-97.7 81.8L-103 66Z"/><path class="veer" data-i="0" data-s="-1" data-ox="-113.8" data-oy="73.2" d="M-111.5 70.2C-135.6 43.8 -162.7 26.6 -176 26C-169.5 35.5 -145 56.2 -116 76.2Z"/><path class="veer" data-i="1" data-s="-1" data-ox="-107.6" data-oy="84.1" d="M-106 80.7C-139.8 57 -174.3 42.9 -189 44C-179.2 52.8 -146.5 70.7 -109.3 87.4Z"/><path class="veer" data-i="2" data-s="-1" data-ox="-101.7" data-oy="94.9" d="M-100.5 91.4C-140.5 71.5 -179.6 61.3 -195 64C-183 71.6 -145.2 85.8 -102.8 98.5Z"/><path class="veer" data-i="3" data-s="-1" data-ox="-96.1" data-oy="105.8" d="M-95.3 102.1C-137.6 86.8 -177.9 80.8 -193 85C-180.1 91.2 -140.7 101.2 -96.9 109.5Z"/><path class="veer" data-i="4" data-s="-1" data-ox="-91" data-oy="116.6" d="M-90.6 112.9C-132.6 101.8 -171.8 99.5 -186 105C-173.1 109.9 -134.3 116.1 -91.5 120.4Z"/><path class="veer" data-i="5" data-s="-1" data-ox="-86.5" data-oy="127.5" d="M-86.4 123.8C-125.5 116.3 -161.5 117.4 -174 124C-161.9 127.7 -126.1 130.6 -86.6 131.2Z"/><path class="veer" data-i="6" data-s="-1" data-ox="-82.6" data-oy="138.4" d="M-82.7 134.6C-116.8 130.1 -147.7 133.7 -158 141C-147.3 143.8 -116.3 144.1 -82.4 142.1Z"/><path class="veer" data-i="7" data-s="-1" data-ox="-79.2" data-oy="149.2" d="M-79.7 145.5C-107.3 143.5 -131.5 149.1 -139 157C-130.2 158.9 -105.5 157.1 -78.7 152.9Z"/><path class="veer" data-i="8" data-s="-1" data-ox="-76.3" data-oy="160.1" d="M-77.2 156.4C-97.4 156.1 -113.9 163 -118 171C-111.4 172.4 -94 169.1 -75.3 163.7Z"/><path class="veer" data-i="9" data-s="-1" data-ox="-73.8" data-oy="170.9" d="M-75.7 167.7C-88.4 169 -96.2 176.5 -96 184C-91.4 184.7 -81.7 180.4 -71.9 174.2Z"/></g><g class="vleugel" data-s="1"><path d="M124 56L110 70L103.2 81.8L96.7 93.6L90.5 105.4L84.9 117.2L80 129L75.7 140.8L72.1 152.6L69.1 164.4L66.4 176.2L64 188L58.5 188L60.9 176.2L63.6 164.4L66.6 152.6L70.2 140.8L74.5 129L79.4 117.2L85 105.4L91.2 93.6L97.7 81.8L103 66Z"/><path class="veer" data-i="0" data-s="1" data-ox="113.8" data-oy="73.2" d="M111.5 70.2C135.6 43.8 162.7 26.6 176 26C169.5 35.5 145 56.2 116 76.2Z"/><path class="veer" data-i="1" data-s="1" data-ox="107.6" data-oy="84.1" d="M106 80.7C139.8 57 174.3 42.9 189 44C179.2 52.8 146.5 70.7 109.3 87.4Z"/><path class="veer" data-i="2" data-s="1" data-ox="101.7" data-oy="94.9" d="M100.5 91.4C140.5 71.5 179.6 61.3 195 64C183 71.6 145.2 85.8 102.8 98.5Z"/><path class="veer" data-i="3" data-s="1" data-ox="96.1" data-oy="105.8" d="M95.3 102.1C137.6 86.8 177.9 80.8 193 85C180.1 91.2 140.7 101.2 96.9 109.5Z"/><path class="veer" data-i="4" data-s="1" data-ox="91" data-oy="116.6" d="M90.6 112.9C132.6 101.8 171.8 99.5 186 105C173.1 109.9 134.3 116.1 91.5 120.4Z"/><path class="veer" data-i="5" data-s="1" data-ox="86.5" data-oy="127.5" d="M86.4 123.8C125.5 116.3 161.5 117.4 174 124C161.9 127.7 126.1 130.6 86.6 131.2Z"/><path class="veer" data-i="6" data-s="1" data-ox="82.6" data-oy="138.4" d="M82.7 134.6C116.8 130.1 147.7 133.7 158 141C147.3 143.8 116.3 144.1 82.4 142.1Z"/><path class="veer" data-i="7" data-s="1" data-ox="79.2" data-oy="149.2" d="M79.7 145.5C107.3 143.5 131.5 149.1 139 157C130.2 158.9 105.5 157.1 78.7 152.9Z"/><path class="veer" data-i="8" data-s="1" data-ox="76.3" data-oy="160.1" d="M77.2 156.4C97.4 156.1 113.9 163 118 171C111.4 172.4 94 169.1 75.3 163.7Z"/><path class="veer" data-i="9" data-s="1" data-ox="73.8" data-oy="170.9" d="M75.7 167.7C88.4 169 96.2 176.5 96 184C91.4 184.7 81.7 180.4 71.9 174.2Z"/></g><path class="s" d="M-29.5 161.2H-25.1L-22.7 173.7Q-20.1 176.9 -13.9 179.3Q-7.7 181.8 -1.7 181.8Q7.9 181.8 13.3 176.9Q18.7 172 18.7 163.4Q18.7 158.4 16.6 155.2Q14.5 152 11.1 149.7Q7.7 147.5 3.4 146Q-0.9 144.4 -5.5 142.8Q-10.1 141.3 -14.4 139.3Q-18.7 137.4 -22.1 134.5Q-25.5 131.5 -27.6 127.2Q-29.7 122.8 -29.7 116.4Q-29.7 105.5 -21.4 99.2Q-13.2 93 1.4 93Q12.5 93 25.6 95.9V115.1H21.1L18.7 103.8Q11.7 98.7 1.4 98.7Q-7.8 98.7 -13 102.5Q-18.1 106.2 -18.1 112.8Q-18.1 117.3 -16.1 120.2Q-14 123.2 -10.6 125.2Q-7.2 127.3 -2.8 128.9Q1.5 130.4 6.1 132Q10.7 133.6 15 135.6Q19.4 137.6 22.8 140.8Q26.2 143.9 28.3 148.4Q30.4 152.9 30.4 159.4Q30.4 172.8 22.2 180.1Q14 187.4 -1.3 187.4Q-8.7 187.4 -16.2 186.1Q-23.7 184.8 -29.5 182.5Z" stroke="#f2f0eb" stroke-width="2.2"/></svg>
+        <p class="naam" aria-hidden="true">SHAHIN</p>
+        <p class="naam-sub" aria-hidden="true">Barbershop · Rotterdam-Zuid</p>
+      </div>
+      <div class="tekst">
+        <h1>Knippen en baard aan de Groene Hilledijk. <em>Het werk spreekt.</em></h1>
+        <p class="sub">Knippen, knippen + wassen en baard in Rotterdam-Zuid. Klanten geven de zaak een 4,9 op Google, uit 108 reviews.</p>
+        <div class="btns">
+          <a class="btn btn-wit js-wa" href="https://wa.me/31642082966?text=Hoi%20Shahin%20Barbershop!%20Wanneer%20kan%20ik%20langskomen%3F"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>App ons</a>
+          <a class="btn btn-lijn" href="tel:+31642082966" aria-label="Bel 06 42 08 29 66">Bel<span class="lang"> 06 42 08 29 66</span></a>
+        </div>
+        <div class="trust"><span><span class="ster">★★★★★</span> <b>4,9</b> uit <a href="https://www.google.com/maps/search/?api=1&amp;query=Shahin+Barbershop+Groene+Hilledijk+230B+Rotterdam" target="_blank" rel="noopener">108 Google-reviews</a></span><span><a href="#kiezer">Kies je knipbeurt ↓</a></span></div>
+      </div>
+    </div>
+    <div class="reel-wrap">
+      <div class="reel">
+        <img src="img/hero-styling.webp" alt="Barber van Shahin Barbershop, in een shirt met het vleugel-logo, styled het haar van een klant" width="480" height="780" fetchpriority="high">
+        <div class="balkjes" aria-hidden="true"><i class="vol"></i><i class="loopt"></i><i></i><i></i></div>
+        <div class="handle" aria-hidden="true"><img src="favicon.svg" alt="" width="28" height="28">@shahin.kapper</div>
+        <div class="onder" aria-hidden="true"><b>Styling, in de zaak</b>Still uit een eigen video van de zaak</div>
+      </div>
     </div>
   </div>
 </section>
+
+<div class="band" aria-hidden="true"><div class="track" id="track"><span>Knippen</span><span>Knippen <span class="plus">+</span> wassen</span><span>Baard</span><span>Het werk op TikTok</span><span>4,9 ★ op Google</span><span>Groene Hilledijk 230B</span><span>Rotterdam-Zuid</span></div></div>
+
+<section class="werk" id="werk">
+  <div class="wrap">
+    <div class="werk-kop rv">
+      <div>
+        <span class="kicker">Fade-galerij</span>
+        <h2>Zwart, wit <em>en scherp.</em></h2>
+        <p class="lead">Geen stockfoto's: dit is werk uit de eigen video's van Shahin Barbershop. Tik op een kaart om hem groot te bekijken.</p>
+      </div>
+      <a class="btn btn-lijn" href="https://www.tiktok.com/@shahin.kapper" target="_blank" rel="noopener">Bekijk meer werk op TikTok</a>
+    </div>
+    <div class="reels" id="reels">
+      <button class="kaart rv" type="button" data-i="0">
+        <img src="img/taper.webp" alt="Achteraanzicht van een taper fade met strak achterover gekamd haar, in de zaak" width="640" height="860" loading="lazy">
+        <span class="balkjes" aria-hidden="true"><i class="vol"></i><i></i><i></i></span>
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+        <span class="cap"><span class="cap-t">Taper fade</span><span class="cap-s">Strak de nek in, haar naar achteren</span></span>
+      </button>
+      <button class="kaart rv" type="button" data-i="1">
+        <img src="img/fade-tondeuse.webp" alt="Close-up van een fade in de nek, gezet met de tondeuse, krullen bovenop" width="656" height="610" loading="lazy">
+        <span class="balkjes" aria-hidden="true"><i class="vol"></i><i class="vol"></i><i></i></span>
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+        <span class="cap"><span class="cap-t">Fade met krullen</span><span class="cap-s">Met de tondeuse, kort in de nek</span></span>
+      </button>
+      <button class="kaart rv" type="button" data-i="2">
+        <img src="img/afwerken.webp" alt="Barber van Shahin Barbershop werkt een kapsel af met haarspray" width="476" height="600" loading="lazy">
+        <span class="balkjes" aria-hidden="true"><i class="vol"></i><i class="vol"></i><i class="vol"></i></span>
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>
+        <span class="cap"><span class="cap-t">Afwerken</span><span class="cap-s">De laatste styling met spray</span></span>
+      </button>
+      <a class="kaart tiktok rv" href="https://www.tiktok.com/@shahin.kapper" target="_blank" rel="noopener">
+        <img src="logo-light.svg" alt="" width="96" height="68">
+        <span class="cap"><span class="cap-t">Bekijk meer werk</span><span class="cap-s">Alle video's staan op TikTok</span><span class="pijl">@shahin.kapper →</span></span>
+      </a>
+    </div>
+    <p class="werk-noot">Stills uit video's op <a href="https://www.tiktok.com/@shahin.kapper" target="_blank" rel="noopener">TikTok @shahin.kapper</a>.</p>
+  </div>
+</section>
+
+<section class="kies" id="kiezer">
+  <div class="wrap">
+    <span class="kicker">Wat mag het zijn?</span>
+    <h2>Kies je <em>knipbeurt.</em></h2>
+    <p class="lead">Drie keuzes, dan staat je bericht klaar. Appen of bellen, wat jij wilt.</p>
+    <div class="kgrid">
+      <div>
+        <div class="stap"><h3><span>01</span>Wat wil je laten doen?</h3><div class="opts" data-group="dienst">
+          <button class="opt" type="button" data-v="Knippen" aria-pressed="true"><b>Knippen</b><small>Bijwerken of iets nieuws</small></button>
+          <button class="opt" type="button" data-v="Knippen + wassen" aria-pressed="false"><b>Knippen <span class="plus">+</span> wassen</b><small>Knipbeurt met wassen erbij</small></button>
+          <button class="opt" type="button" data-v="Baard" aria-pressed="false"><b>Baard</b><small>Je baard laten doen</small></button>
+          <button class="opt" type="button" data-v="Iets anders" aria-pressed="false"><b>Iets anders</b><small>Je legt het in je bericht uit</small></button>
+        </div></div>
+        <div class="stap"><h3><span>02</span>Welke dag?</h3><div class="opts chips" data-group="dag">
+          <button class="opt" type="button" data-v="Vandaag" aria-pressed="false">Vandaag</button>
+          <button class="opt" type="button" data-v="Morgen" aria-pressed="false">Morgen</button>
+          <button class="opt" type="button" data-v="Deze week" aria-pressed="false">Deze week</button>
+          <button class="opt" type="button" data-v="In het weekend" aria-pressed="false">In het weekend</button>
+          <button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button>
+        </div></div>
+        <div class="stap"><h3><span>03</span>Welk dagdeel?</h3><div class="opts chips" data-group="deel">
+          <button class="opt" type="button" data-v="Ochtend" aria-pressed="false">Ochtend</button>
+          <button class="opt" type="button" data-v="Middag" aria-pressed="false">Middag</button>
+          <button class="opt" type="button" data-v="Later op de dag" aria-pressed="false">Later op de dag</button>
+          <button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button>
+        </div></div>
+      </div>
+      <aside class="bon" aria-live="polite">
+        <div class="k">Jouw keuze</div>
+        <p class="keuze" id="b-keuze">Knippen</p>
+        <p class="wanneer" id="b-wanneer">Dag en dagdeel: maakt niet uit</p>
+        <div class="nr"><small>App of bel</small><strong>06 42 08 29 66</strong></div>
+        <div class="btns">
+          <a class="btn btn-staal js-kies" href="https://wa.me/31642082966?text=Hoi%20Shahin%20Barbershop!"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>Stuur via WhatsApp</a>
+          <a class="btn btn-lijn" href="tel:+31642082966">Bel nu</a>
+        </div>
+        <p class="klein">Je bericht staat klaar met je keuze erin. Liever bellen? Noem dan even wat je wilt.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="waarom" id="waarom">
+  <div class="wrap">
+    <span class="kicker">Waarom Shahin</span>
+    <h2>Wat klanten <em>terugschrijven.</em></h2>
+    <p class="lead">Drie dingen die steeds terugkomen in de Google-reviews.</p>
+    <div class="drie">
+      <div class="rv"><span class="nr">01</span><h3>Schoon en verzorgd</h3><p>Klanten schrijven dat de zaak schoon en verzorgd is, en dat je bij binnenkomst een drankje krijgt.</p></div>
+      <div class="rv"><span class="nr">02</span><h3>Tijd voor jouw wens</h3><p>Klanten schrijven dat er de tijd wordt genomen en goed wordt geluisterd naar wat je wilt.</p></div>
+      <div class="rv"><span class="nr">03</span><h3>Elke kapper knipt goed</h3><p>Klanten schrijven dat elke kapper hier goed knipt, voor een redelijke prijs.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="reviews" id="ervaringen">
-  <div class="wrap">
-    <span class="kicker">Ervaringen</span>
-    <h2>108 Google-reviews, gemiddeld een <em>4,9</em></h2>
-    <div class="score"><b>4,9</b><span>gemiddeld op Google, uit 108 reviews</span></div>
-    <div class="themes">
-      <div class="theme"><h3>Vriendelijk en professioneel</h3><p>Furqan noemt het een topzaak, met vriendelijk en professioneel personeel.</p></div>
-      <div class="theme"><h3>Topkwaliteit</h3><p>Michel spreekt van een supergoede behandeling en topkwaliteit.</p></div>
-      <div class="theme"><h3>Altijd goed</h3><p>Voor Sander is het hier altijd goed.</p></div>
+  <div class="wrap rgrid">
+    <div class="rv">
+      <span class="kicker">Google-reviews</span>
+      <div class="cijfer">4,9</div>
+      <div class="sterren" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"/></svg></div>
+      <p class="cijfer-sub">gemiddeld uit <a href="https://www.google.com/maps/search/?api=1&amp;query=Shahin+Barbershop+Groene+Hilledijk+230B+Rotterdam" target="_blank" rel="noopener">108 reviews op Google</a></p>
     </div>
-    <p class="also">Samengevat uit <a href="https://www.google.com/maps/search/?api=1&query=Shahin+Barbershop+Groene+Hilledijk+230B+Rotterdam" target="_blank" rel="noopener">reviews op Google</a>, niet letterlijk geciteerd.</p>
+    <div class="rv">
+      <div class="citaten">
+        <div class="citaat"><p>Een topzaak, met vriendelijk en professioneel personeel.</p><span>Furqan</span></div>
+        <div class="citaat"><p>Een supergoede behandeling en topkwaliteit.</p><span>Michel</span></div>
+        <div class="citaat"><p>Het is hier altijd goed.</p><span>Sander</span></div>
+      </div>
+      <p class="label">Samengevat uit <a href="https://www.google.com/maps/search/?api=1&amp;query=Shahin+Barbershop+Groene+Hilledijk+230B+Rotterdam" target="_blank" rel="noopener">reviews op Google</a>, niet letterlijk geciteerd.</p>
+    </div>
   </div>
 </section>
-<section class="how" id="werkwijze">
+
+<section class="hoe" id="werkwijze">
   <div class="wrap">
     <span class="kicker">Zo werkt het</span>
-    <h2>In drie stappen geregeld</h2>
+    <h2>In drie stappen <em>in de stoel.</em></h2>
     <p class="lead">Appen of bellen, wat jij wilt.</p>
-    <ol class="steps"><li><h3>Kies je knipbeurt</h3><p>Knippen, knippen met wassen of je baard, en wanneer het je uitkomt.</p></li><li><h3>Stuur het via WhatsApp</h3><p>Je bericht staat al klaar, je drukt alleen op verzenden. Bellen kan ook.</p></li><li><h3>Kom langs</h3><p>Groene Hilledijk 230B in Rotterdam-Zuid.</p></li></ol>
+    <ol class="stappen">
+      <li class="rv"><h3>Kies wat je wilt</h3><p>Knippen, knippen + wassen of je baard, plus de dag en het dagdeel dat jou uitkomt.</p></li>
+      <li class="rv"><h3>App of bel</h3><p>Je WhatsApp-bericht staat al klaar. Bellen kan ook: <a href="tel:+31642082966">06 42 08 29 66</a>.</p></li>
+      <li class="rv"><h3>Kom langs</h3><p>Groene Hilledijk 230B in Rotterdam-Zuid.</p></li>
+    </ol>
   </div>
 </section>
+
 <section class="faq" id="vragen">
   <div class="wrap">
     <span class="kicker">Vragen</span>
-    <h2>Veelgestelde vragen</h2>
-    <details><summary>Hoe vraag ik een afspraak aan?</summary><p>Via WhatsApp met de kiezer hierboven, of bel naar 06 42 08 29 66.</p></details>
+    <h2>Goed om <em>te weten.</em></h2>
+    <details><summary>Hoe laat ik weten dat ik wil komen?</summary><p>Kies hierboven wat je wilt en stuur het via WhatsApp, of bel naar <a href="tel:+31642082966">06 42 08 29 66</a>.</p></details>
     <details><summary>Wanneer kan ik terecht?</summary><p>Stuur een appje of bel even naar 06 42 08 29 66, dan hoor je wanneer je terecht kunt.</p></details>
     <details><summary>Wat kost een knipbeurt?</summary><p>Stuur een appje of bel even, dan hoor je de prijs voor wat je wilt laten doen.</p></details>
-    <details><summary>Doen jullie ook baarden?</summary><p>Ja. Naast knippen en knippen met wassen kun je ook voor je baard terecht.</p></details>
+    <details><summary>Kan ik ook voor mijn baard komen?</summary><p>Ja. Naast knippen en knippen + wassen kun je ook voor je baard terecht.</p></details>
+    <details><summary>Waar zie ik meer van jullie werk?</summary><p>Op TikTok: <a href="https://www.tiktok.com/@shahin.kapper" target="_blank" rel="noopener">@shahin.kapper</a>.</p></details>
     <details><summary>Waar zit Shahin Barbershop?</summary><p>Groene Hilledijk 230B, 3074 AC Rotterdam (Rotterdam-Zuid).</p></details>
   </div>
 </section>
-<section class="visit" id="adres">
+
+<section class="bezoek" id="adres">
   <div class="wrap">
-    <div>
+    <div class="rv">
       <span class="kicker">Langskomen</span>
-      <h2>Groene Hilledijk 230B</h2>
-      <p class="addr">Groene Hilledijk 230B<br>3074 AC Rotterdam</p>
-      <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=Shahin+Barbershop+Groene+Hilledijk+230B+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
+      <h2>Aan de <em>Groene Hilledijk.</em></h2>
+      <p class="lead">Stuur een appje of bel, dan hoor je wanneer je terecht kunt.</p>
+      <div class="btns">
+        <a class="btn btn-wit" href="https://www.google.com/maps/dir/?api=1&amp;destination=Groene+Hilledijk+230B,+3074+AC+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
+        <a class="btn btn-lijn js-wa" href="https://wa.me/31642082966?text=Hoi%20Shahin%20Barbershop!%20Wanneer%20kan%20ik%20langskomen%3F">App ons</a>
+        <a class="btn btn-lijn" href="tel:+31642082966">Bel</a>
+      </div>
     </div>
-    <div class="hbox"><h3>Wanneer kun je terecht?</h3>
-      <p>Stuur een appje of bel, dan hoor je wanneer je terecht kunt.</p>
-      <div class="btns"><a class="btn btn-fill js-wa-plain" href="#">App via WhatsApp</a><a class="btn btn-line" href="tel:+31642082966">Bel 06 42 08 29 66</a></div>
-    </div>
+    <div class="bord rv"><small>Shahin Barbershop</small><strong>Groene Hilledijk 230B</strong><span>3074 AC Rotterdam · Rotterdam-Zuid</span></div>
   </div>
 </section>
-<section class="final">
+
+<section class="slot">
   <div class="wrap">
+    <img src="logo-light.svg" alt="Shahin Barbershop" width="260" height="183" loading="lazy">
     <h2>Tijd voor een <em>verse cut?</em></h2>
-    <p class="lead">Kies wat je wilt en stuur je aanvraag in één tik via WhatsApp.</p>
-    <div class="btns"><a class="btn btn-amber" href="#kiezer">Plan je knipbeurt</a><a class="btn btn-ghost js-wa-plain" href="#">App direct</a></div>
+    <p class="lead">Kies wat je wilt, of app of bel direct.</p>
+    <div class="btns">
+      <a class="btn btn-wit js-wa" href="https://wa.me/31642082966?text=Hoi%20Shahin%20Barbershop!%20Wanneer%20kan%20ik%20langskomen%3F"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>App ons</a>
+      <a class="btn btn-lijn" href="#kiezer">Kies je knipbeurt</a>
+    </div>
   </div>
 </section>
 </main>
+
 <footer>
   <div class="wrap">
-    <div><img src="logo-light.svg" alt="Shahin Barbershop" width="207" height="78"><p>Knippen, wassen en baard in Rotterdam-Zuid.</p></div>
+    <div><img src="logo-light.svg" alt="Shahin Barbershop" width="170" height="120" loading="lazy"><p>Knippen, knippen + wassen en baard in Rotterdam-Zuid.</p></div>
     <div><h4>Adres</h4><p>Groene Hilledijk 230B<br>3074 AC Rotterdam</p></div>
-    <div><h4>Contact</h4><p><a class="js-wa-plain" href="#">WhatsApp 06 42 08 29 66</a><br><a href="tel:+31642082966">Bel 06 42 08 29 66</a><br><a href="https://www.tiktok.com/@shahin.kapper" target="_blank" rel="noopener">TikTok @shahin.kapper</a></p></div>
-    <div class="fine"><span>© 2026 Shahin Barbershop</span><span>Website door <a href="https://mohamedia.nl">Mohamedia</a></span></div>
+    <div><h4>Contact</h4><p><a class="js-wa" href="https://wa.me/31642082966?text=Hoi%20Shahin%20Barbershop!%20Wanneer%20kan%20ik%20langskomen%3F">WhatsApp 06 42 08 29 66</a><br><a href="tel:+31642082966">Bel 06 42 08 29 66</a><br><a href="https://www.tiktok.com/@shahin.kapper" target="_blank" rel="noopener">TikTok @shahin.kapper</a></p></div>
+    <div class="fine"><span>© 2026 Shahin Barbershop</span><span>Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></span></div>
   </div>
 </footer>
-<div class="float" id="float"><a class="btn btn-amber" href="#kiezer">Plan je knipbeurt</a></div>
+
+<div class="zweef" id="zweef">
+  <a class="btn btn-wit js-wa" href="https://wa.me/31642082966?text=Hoi%20Shahin%20Barbershop!%20Wanneer%20kan%20ik%20langskomen%3F"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>App via WhatsApp</a>
+  <a class="btn btn-lijn" href="tel:+31642082966" aria-label="Bel 06 42 08 29 66">Bel</a>
+</div>
+
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Het werk van Shahin Barbershop">
+  <div class="scherm">
+    <div class="vbalk" id="vbalk"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+    <div class="slide"><img class="bg" src="img/taper.webp" alt="" aria-hidden="true" loading="lazy"><img src="img/taper.webp" alt="Taper fade, achteraanzicht" width="640" height="860" loading="lazy"><div class="vcap"><span class="cap-t">Taper fade</span><span class="cap-s">Strak de nek in, haar naar achteren</span></div></div>
+    <div class="slide"><img class="bg" src="img/fade-tondeuse.webp" alt="" aria-hidden="true" loading="lazy"><img src="img/fade-tondeuse.webp" alt="Fade met de tondeuse, krullen bovenop" width="656" height="610" loading="lazy"><div class="vcap"><span class="cap-t">Fade met krullen</span><span class="cap-s">Met de tondeuse, kort in de nek</span></div></div>
+    <div class="slide"><img class="bg" src="img/afwerken.webp" alt="" aria-hidden="true" loading="lazy"><img src="img/afwerken.webp" alt="Afwerken met haarspray" width="476" height="600" loading="lazy"><div class="vcap"><span class="cap-t">Afwerken</span><span class="cap-s">De laatste styling met spray</span></div></div>
+    <div class="slide eind"><img src="logo-light.svg" alt="" width="150" height="106"><span class="cap-t">Meer werk?</span><span class="cap-s" style="color:var(--wit-2)">Alle video's staan op TikTok.</span>
+      <div class="btns"><a class="btn btn-wit" href="https://www.tiktok.com/@shahin.kapper" target="_blank" rel="noopener">@shahin.kapper op TikTok</a><a class="btn btn-lijn js-wa" href="https://wa.me/31642082966?text=Hoi%20Shahin%20Barbershop!%20Wanneer%20kan%20ik%20langskomen%3F">App ons</a></div></div>
+    <button class="nav-l" type="button" aria-label="Vorige"></button>
+    <button class="nav-r" type="button" aria-label="Volgende"></button>
+    <button class="sluit" type="button" aria-label="Sluiten">×</button>
+  </div>
+</div>
+
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-label="Presentatie">
+  <div class="vel">
+    <div class="kop"><h3>Shahin Barbershop: nu en straks</h3><button class="psluit" id="pitchSluit" type="button" aria-label="Sluiten">×</button></div>
+    <div class="vn">
+      <figure>
+        <figcaption>Nu: geen website<span>Wie op Google klikt, komt op TikTok uit</span></figcaption>
+        <div class="tel"><div class="gnu">
+          <div class="zoek">shahin barbershop rotterdam</div>
+          <div class="t">Shahin Barbershop</div>
+          <div class="r"><b>4,9 ★★★★★</b> (108) · Barbershop</div>
+          <div class="knoppen"><span class="hl">Website</span><span>Route</span><span>Bellen</span></div>
+          <div class="pijl">↓</div>
+          <div class="tt"><div class="h">@shahin.kapper</div><div class="s">TikTok-profiel · 269 volgers</div><div class="grid"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        </div></div>
+        <ul class="fouten">
+          <li><b>1</b>De knop "Website" op Google opent een TikTok-profiel.</li>
+          <li><b>2</b>Op Fresha staat een automatisch aangemaakte pagina over de zaak met damesdiensten en een ander TikTok-account.</li>
+        </ul>
+      </figure>
+      <figure>
+        <figcaption>Straks<span>Deze site, op dezelfde telefoon</span></figcaption>
+        <div class="tel"><iframe id="naFrame" title="Nieuwe site op een telefoon" loading="lazy"></iframe></div>
+      </figure>
+    </div>
+    <div class="reken">
+      <h4>Wat dit kan opleveren</h4>
+      <p class="vb">Voorbeeld om samen in te vullen, geen belofte. Vul je eigen cijfers in.</p>
+      <label for="r-knip">Extra knipbeurten per week via de site <output id="o-knip">2</output></label>
+      <input type="range" id="r-knip" min="0" max="20" step="1" value="2">
+      <label for="r-prijs">Prijs van een gemiddelde knipbeurt <output id="o-prijs">€ 20</output></label>
+      <input type="range" id="r-prijs" min="10" max="60" step="1" value="20">
+      <div class="uit">
+        <div><small>Extra per maand</small><strong id="u-maand">€ 173</strong></div>
+        <div><small>Extra per jaar</small><strong id="u-jaar">€ 2.080</strong></div>
+        <div><small>€ 595 is de omzet van</small><strong id="u-knip">30 knipbeurten</strong></div>
+      </div>
+    </div>
+    <div class="beter">
+      <h4>Wat er concreet beter is</h4>
+      <ol>
+        <li>Wie op Google op "Website" tikt, ziet je eigen werk, je 4,9 uit 108 reviews en je nummer, in plaats van alleen een TikTok-profiel.</li>
+        <li>Klanten kiezen knippen, knippen + wassen of baard, plus dag en dagdeel, en appen of bellen met alles al ingevuld.</li>
+        <li>Je eigen logo, een route-knop naar Groene Hilledijk 230B en één duidelijke plek, los van de Fresha-pagina met damesdiensten.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
 <script>
-const WA = "31642082966";
-const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
-const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long" }) : "";
-const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-const pressed = g => { const b = g && g.querySelector('.opt[aria-pressed="true"]'); return b ? b.dataset.v : ""; };
-let datum = "";
-function render() {
-  const t = pressed($('[data-group="t"]')), v = pressed($('[data-group="v"]'));
-  const dag = pressed($('[data-group="dag"]')), deel = pressed($('[data-group="deel"]'));
-  const kort = t.replace(/, ik leg het uit$/, "");
-  $("#s-title").textContent = kort;
-  $("#s-t").textContent = kort;
-  $("#s-v").textContent = v;
-  const pref = [dag, deel].filter(p => p && !/^maakt niet uit$/i.test(p)).join(", ");
-  $("#s-dag").textContent = pref || "Maakt niet uit";
-  $("#s-datum").textContent = datum ? fmt(datum) : "Flexibel";
-  const lines = ["Hoi! Ik wil graag een afspraak maken bij Shahin Barbershop.", `Dienst: ${t}`, `Wens: ${v}`, `Voorkeur: ${pref || "maakt niet uit"}`, `Datum: ${datum ? fmt(datum) : "flexibel"}`, "Wanneer kan ik terecht? Dank je!"];
-  $$(".js-ask").forEach(a => { a.href = wa(lines.join("\n")); a.target = "_blank"; a.rel = "noopener"; });
-}
-$$(".opts[data-group]").forEach(g => g.addEventListener("click", e => {
-  const b = e.target.closest(".opt"); if (!b) return;
-  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b)); render();
-}));
-const today = new Date();
-const iso = d => new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
-$$(".js-date").forEach(i => { i.min = iso(today); i.addEventListener("input", () => {
-  datum = i.value; $("#hint").textContent = i.value ? "Je hoort via WhatsApp of die dag past." : ""; render(); }); });
-$$(".js-wa-plain").forEach(a => { a.href = wa("Hoi! Ik wil graag een afspraak maken bij Shahin Barbershop. Wanneer kan ik terecht?"); a.target = "_blank"; a.rel = "noopener"; });
-render();
-const track = $("#track"); track.innerHTML += track.innerHTML;
-const fl = $("#float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
-new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe($("#top"));
-new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .12 }).observe($("#kiezer"));
-(function rotate(el, words, ms) { let i = 0; if (reduce || !el) return; setInterval(() => { i = (i + 1) % words.length;
-  el.animate([{ opacity: 1 }, { opacity: 0, transform: "translateY(-6px)" }], { duration: 240 }).onfinish = () => { el.textContent = words[i];
-  el.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 420, easing: "cubic-bezier(.2,.8,.3,1)" }); }; }, ms); })
-  ($("#rot"), ["Knippen", "Knippen + wassen", "Baard"], 2800);
-// schaar: knipt een veld lokken van links naar rechts op lengte, de afgeknipte puntjes dwarrelen naar beneden
-(() => { const c = $("#anim"), x = c.getContext("2d"); let W, H, locks = [];
-  const pill = $("#pill"), names = ["Verse cut", "Op lengte", "Strak afgewerkt"]; let lastLap = -1;
-  const amber = "#f2a516", mist = "#b6c3d1", steel = "#eef2f6", bits = [];
-  function size() { const r = devicePixelRatio || 1; W = c.clientWidth; H = c.clientHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0);
-    locks = []; const n = Math.floor((W - 48) / 9); for (let i = 0; i <= n; i++) locks.push({ x: 24 + i * 9, ph: Math.random() * 6.28, l: .85 + Math.random() * .35, cut: -1 }); }
-  const base = () => H * .8;
-  const target = px => { const u = (px - 24) / (W - 48); return H * (.2 + .2 * Math.cos((u - .5) * Math.PI) ); };
-  function scissors(cx, cy, open) {
-    x.save(); x.translate(cx, cy); x.rotate(.06); x.scale(1.25, 1.25); x.lineCap = "round";
-    for (const s of [1, -1]) { x.save(); x.rotate(s * open);
-      x.fillStyle = steel; x.beginPath(); x.moveTo(-4, s * -3); x.lineTo(62, s * -1); x.quadraticCurveTo(66, 0, 62, s * 1.2); x.lineTo(-4, s * 4); x.closePath(); x.fill();
-      x.strokeStyle = amber; x.lineWidth = 4; x.beginPath(); x.moveTo(-2, s * 3); x.lineTo(-22, s * 13); x.stroke();
-      x.lineWidth = 3.4; x.beginPath(); x.arc(-31, s * 18, 9.5, 0, 6.29); x.stroke(); x.restore(); }
-    x.fillStyle = "#141d29"; x.strokeStyle = amber; x.lineWidth = 2; x.beginPath(); x.arc(0, 0, 3.6, 0, 6.29); x.fill(); x.stroke(); x.restore(); }
-  function f(t) {
-    const T = reduce ? 6000 : t; x.clearRect(0, 0, W, H);
-    const span = W + 160, lap = Math.floor(T * .09 / span), sx = (T * .09) % span - 50;
-    if (lap !== lastLap) { lastLap = lap; pill.textContent = names[lap % names.length]; for (const l of locks) l.cut = -1; }
-    const b = base(); x.lineCap = "round";
-    for (const l of locks) {
-      const done = l.x < sx;
-      if (done && l.cut < 0) { l.cut = T; if (!reduce) for (let k = 0; k < 2; k++) bits.push({ x: l.x, y: b - target(l.x) - 4, vx: (Math.random() - .5) * 1.2, vy: -.4 - Math.random() * .6, a: 1, r: Math.random() * 6 }); }
-      const wild = H * .56 * l.l + Math.sin(T * .002 + l.ph) * 9;
-      const len = done ? target(l.x) : wild;
-      const sway = done ? Math.sin(T * .0012 + l.ph) * 1.5 : Math.sin(T * .0017 + l.ph) * 12;
-      x.strokeStyle = done ? amber : mist; x.globalAlpha = done ? 1 : .5; x.lineWidth = done ? 3.2 : 2.2;
-      x.beginPath(); x.moveTo(l.x, b); x.quadraticCurveTo(l.x + sway * .3, b - len * .5, l.x + sway, b - len); x.stroke();
-    }
-    x.globalAlpha = 1;
-    x.strokeStyle = "rgba(182,195,209,.3)"; x.lineWidth = 2; x.beginPath(); x.moveTo(16, b + 7); x.lineTo(W - 16, b + 7); x.stroke();
-    for (let k = bits.length - 1; k >= 0; k--) { const p = bits[k]; p.x += p.vx; p.y += p.vy; p.vy += .045; p.a -= .011; p.r += .06;
-      if (p.a <= 0 || p.y > b) { bits.splice(k, 1); continue; }
-      x.globalAlpha = p.a; x.strokeStyle = mist; x.lineWidth = 1.6; x.beginPath(); x.moveTo(p.x, p.y); x.lineTo(p.x + Math.cos(p.r) * 7, p.y + Math.sin(p.r) * 7); x.stroke(); x.globalAlpha = 1; }
-    const px = Math.max(24, Math.min(W - 24, sx));
-    if (sx > -20 && sx < W + 20) scissors(sx + 4, b - target(px) - 2, .08 + Math.abs(Math.sin(T * .012)) * .32);
-    if (!reduce) requestAnimationFrame(f); }
-  size(); addEventListener("resize", size); requestAnimationFrame(f); })();
+(function(){
+  "use strict";
+  var WA = "31642082966";
+  var wa = function(t){ return "https://wa.me/" + WA + "?text=" + encodeURIComponent(t); };
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function(s){ return document.querySelector(s); }, $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  /* vleugels vouwen open (SVG-attributen, geen CSS-transforms) */
+  var veren = $$("#embleem .veer"), vleugels = $$("#embleem .vleugel");
+  function zet(p){ // p: 0 dicht .. 1 open
+    vleugels.forEach(function(g){ var s = +g.dataset.s, a = s * -38 * (1 - p); g.setAttribute("transform", "rotate(" + a.toFixed(2) + " " + (s * 64) + " 188)"); });
+    veren.forEach(function(v){
+      var i = +v.dataset.i, s = +v.dataset.s, t = Math.min(1, Math.max(0, p * 1.5 - i * 0.05));
+      var e = 1 - Math.pow(1 - t, 3), a = s * -(62 + i * 3) * (1 - e);
+      v.setAttribute("transform", "rotate(" + a.toFixed(2) + " " + v.dataset.ox + " " + v.dataset.oy + ")");
+      v.style.opacity = Math.min(1, t * 2.2).toFixed(2);
+    });
+  }
+  if (!reduce && veren.length){
+    zet(0);
+    var start = null, DUUR = 1900;
+    var stap = function(ts){ if (start === null) start = ts + 250; var p = Math.max(0, (ts - start) / DUUR);
+      zet(Math.min(1, 1 - Math.pow(1 - Math.min(1, p), 2))); if (p < 1) requestAnimationFrame(stap); else klapper(); };
+    requestAnimationFrame(stap);
+    // af en toe een rustige vleugelslag
+    var klapper = function(){ var t0 = null; var slag = function(ts){ if (t0 === null) t0 = ts; var q = (ts - t0) / 1400;
+        var a = Math.sin(Math.min(1, q) * Math.PI) * 5;
+        vleugels.forEach(function(g){ var s = +g.dataset.s; g.setAttribute("transform", "rotate(" + (s * a).toFixed(2) + " " + (s * 64) + " 188)"); });
+        if (q < 1) requestAnimationFrame(slag); else setTimeout(klapper, 6500); };
+      setTimeout(function(){ requestAnimationFrame(slag); }, 2500); };
+  }
+
+  /* kiezer */
+  var pressed = function(g){ var b = document.querySelector('[data-group="' + g + '"] .opt[aria-pressed="true"]'); return b ? b.dataset.v : ""; };
+  function render(){
+    var d = pressed("dienst"), dag = pressed("dag"), deel = pressed("deel");
+    var wanneer = [dag, deel].filter(function(x){ return x && x !== "Maakt niet uit"; }).join(", ").toLowerCase();
+    $("#b-keuze").textContent = d;
+    $("#b-wanneer").textContent = wanneer ? "Voorkeur: " + wanneer : "Dag en dagdeel: maakt niet uit";
+    var regels = ["Hoi Shahin Barbershop!", "Ik wil graag: " + (d === "Iets anders" ? "iets anders, namelijk ..." : d.toLowerCase()),
+      "Wanneer: " + (wanneer || "maakt niet uit"), "Wanneer kan ik terecht?"];
+    $$(".js-kies").forEach(function(a){ a.href = wa(regels.join("\n")); a.target = "_blank"; a.rel = "noopener"; });
+  }
+  $$(".opts[data-group]").forEach(function(g){ g.addEventListener("click", function(e){
+    var b = e.target.closest(".opt"); if (!b) return;
+    g.querySelectorAll(".opt").forEach(function(o){ o.setAttribute("aria-pressed", o === b ? "true" : "false"); }); render(); }); });
+  render();
+  $$(".js-wa").forEach(function(a){ a.target = "_blank"; a.rel = "noopener"; });
+
+  /* marquee verdubbelen */
+  var track = $("#track"); track.innerHTML += track.innerHTML;
+
+  /* zwevende CTA: zodra de hero uit beeld is, niet bij de kiezer */
+  var zw = $("#zweef"), heroUit = false, kiesIn = false, upd = function(){ zw.classList.toggle("on", heroUit && !kiesIn); };
+  new IntersectionObserver(function(e){ heroUit = !e[0].isIntersecting; upd(); }).observe($("#top"));
+  new IntersectionObserver(function(e){ kiesIn = e[0].isIntersecting; upd(); }, {threshold: .15}).observe($("#kiezer"));
+
+  /* scroll-onthulling met vangnet */
+  var rv = $$(".rv");
+  if ("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); }, {rootMargin: "0px 0px -8% 0px"});
+    rv.forEach(function(el){ io.observe(el); });
+  }
+  setTimeout(function(){ rv.forEach(function(el){ el.classList.add("in"); }); }, reduce ? 0 : 3500);
+
+  /* kaarten: in kleur zodra ze midden in beeld staan (mobiel) */
+  var kaarten = $$(".kaart:not(.tiktok)");
+  if (matchMedia("(hover: none)").matches){
+    var kio = new IntersectionObserver(function(es){ es.forEach(function(e){ e.target.classList.toggle("actief", e.intersectionRatio > .6); }); }, {threshold: [0, .6, 1]});
+    kaarten.forEach(function(k){ kio.observe(k); });
+  }
+
+  /* reel-viewer */
+  var viewer = $("#viewer"), slides = $$("#viewer .slide"), balk = $$("#vbalk i"), nu = 0, timer = null, laatstFocus = null;
+  function toon(i){
+    nu = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach(function(s, k){ s.classList.toggle("nu", k === nu); });
+    balk.forEach(function(b, k){ b.classList.toggle("vol", k < nu); var f = b.querySelector("b"); if (f.getAnimations) f.getAnimations().forEach(function(a){ a.cancel(); }); });
+    clearTimeout(timer);
+    if (!reduce && nu < slides.length - 1){
+      var f = balk[nu].querySelector("b");
+      f.animate([{scale: "0 1"}, {scale: "1 1"}], {duration: 5000, easing: "linear", fill: "forwards"});
+      timer = setTimeout(function(){ toon(nu + 1); }, 5000);
+    } else { balk[nu].classList.add("vol"); }
+  }
+  function openV(i){ laatstFocus = document.activeElement; viewer.classList.add("open"); document.body.style.overflow = "hidden"; toon(i); viewer.querySelector(".sluit").focus(); }
+  function sluitV(){ viewer.classList.remove("open"); document.body.style.overflow = ""; clearTimeout(timer); if (laatstFocus) laatstFocus.focus(); }
+  $$(".kaart[data-i]").forEach(function(k){ k.addEventListener("click", function(){ openV(+k.dataset.i); }); });
+  viewer.querySelector(".nav-r").addEventListener("click", function(){ if (nu < slides.length - 1) toon(nu + 1); else sluitV(); });
+  viewer.querySelector(".nav-l").addEventListener("click", function(){ toon(nu - 1); });
+  viewer.querySelector(".sluit").addEventListener("click", sluitV);
+  viewer.addEventListener("click", function(e){ if (e.target === viewer) sluitV(); });
+  var tx = null;
+  viewer.addEventListener("touchstart", function(e){ tx = e.touches[0].clientX; }, {passive: true});
+  viewer.addEventListener("touchend", function(e){ if (tx === null) return; var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 50) toon(nu + (dx < 0 ? 1 : -1)); }, {passive: true});
+
+  /* pitch-modus */
+  var pitch = $("#pitch"), naFrame = $("#naFrame");
+  function openPitch(){ if (!naFrame.src) naFrame.src = location.pathname.split("/").pop() || "index.html"; pitch.classList.add("open"); }
+  function sluitPitch(){ pitch.classList.remove("open"); if (/[?&]pitch/.test(location.search)) history.replaceState(null, "", location.pathname); }
+  $("#pitchKnop").addEventListener("click", openPitch);
+  $("#pitchSluit").addEventListener("click", sluitPitch);
+  pitch.addEventListener("click", function(e){ if (e.target === pitch) sluitPitch(); });
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape"){ sluitPitch(); if (viewer.classList.contains("open")) sluitV(); }
+    if (viewer.classList.contains("open") && e.key === "ArrowRight") toon(nu + 1);
+    if (viewer.classList.contains("open") && e.key === "ArrowLeft") toon(nu - 1);
+  });
+  if (/[?&]pitch/.test(location.search)) openPitch();
+  if (window.self !== window.top) $("#pitchKnop").hidden = true;
+
+  var eur = function(n){ return "€ " + Math.round(n).toLocaleString("nl-NL"); };
+  function reken(){
+    var k = +$("#r-knip").value, p = +$("#r-prijs").value;
+    $("#o-knip").textContent = k; $("#o-prijs").textContent = eur(p);
+    $("#u-maand").textContent = eur(k * p * 52 / 12);
+    $("#u-jaar").textContent = eur(k * p * 52);
+    var n = Math.ceil(595 / p); $("#u-knip").textContent = n + " knipbeurten";
+  }
+  $("#r-knip").addEventListener("input", reken); $("#r-prijs").addEventListener("input", reken); reken();
+})();
 </script>
 </body>
 </html>
