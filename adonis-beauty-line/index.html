@@ -1,0 +1,740 @@
+<!doctype html>
+<!--
+  Demo L221 Adonis Beauty Line (Mohamedia, 7 nov 2026)
+  Concept: "de salon als galerie": de lila salon aan de Spanjaardstraat getoond als museumzaal, met de Adonis-buste van hun gevelbord als beschermheer.
+  Lay-out-archetype: galerie / museumzaal: eigen salonfoto's in boogvormige lijsten met museumlabels (Romeinse cijfers),
+  Griekse meanderfries als band, lila wand als achtergrond, sierschrift "Adonis" dat zich uitschrijft als held.
+  Afwijkend van de laatste demo's (grill-house, bakkerij-ochtendlicht, posterbord, zwart-wit barber, modecampagne, hotel-lobby).
+  Foto's: hun eigen salonfoto's van hun Treatwell-profiel (geen personen; merknaam op trolley weggesneden, vast nummer op deurbordje vervaagd).
+-->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Adonis Beauty Line – kapsalon en threading in Rotterdam</title>
+<meta name="description" content="Adonis Beauty Line aan de Spanjaardstraat 133D in Rotterdam-West: kapsalon voor dames en kinderen, wenkbrauwen threading en gezichtsbehandelingen. 4,8 uit 53 Google-reviews.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#c9bce3">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/salon-wasbakken.jpg">
+<style>
+:root{
+  --lila:#c9bce3; --lila-licht:#e9e3f4; --lila-diep:#6f5a9e; --inkt:#17121f; --inkt-2:#2b2336;
+  --wit:#fbfaff; --tegel:#f1eff4; --lijn:#d8d2e3; --grijs:#5d5668;
+  --kop:"Marcellus", "Times New Roman", serif; --tekst:"Albert Sans", system-ui, sans-serif;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--tekst);color:var(--inkt);background:var(--wit);line-height:1.55;font-size:16.5px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--kop);font-weight:400;line-height:1.12;letter-spacing:.005em}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* demo-strook + aankondiging */
+.demo{position:relative;background:var(--inkt);color:#e9e3f4;font-size:13px;text-align:center;padding:8px 44px}
+.demo a{color:#fff;font-weight:600}
+.pitch-knop{position:absolute;right:6px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;border:0;background:transparent;color:#fff;font:600 10px var(--tekst);opacity:.3;cursor:pointer}
+.pitch-knop:hover{opacity:1}
+@media (max-width:520px){.nm{display:none}.demo{font-size:12.5px}}
+.balk{background:var(--lila-diep);color:#fff;font-size:13.5px;text-align:center;padding:8px 14px}
+.balk b{font-weight:700}
+.balk .st{display:inline-flex;align-items:center;gap:6px;margin-left:6px}
+.dot{width:8px;height:8px;border-radius:50%;background:#9ff0c2;display:inline-block}
+.dot.dicht{background:#ffb4b4}
+
+/* header */
+header{position:sticky;top:0;z-index:40;background:rgba(251,250,255,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--lijn)}
+.hrow{display:flex;align-items:center;justify-content:space-between;gap:14px;height:68px}
+.brand{display:flex;align-items:center;min-height:44px}
+.brand img{height:46px;width:auto}
+nav.hoofd{display:flex;gap:26px;font-size:15px}
+nav.hoofd a{text-decoration:none;padding:10px 0;color:var(--grijs)}
+nav.hoofd a:hover{color:var(--inkt)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:0 24px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15.5px;border:1.5px solid var(--inkt);background:var(--inkt);color:#fff;cursor:pointer;font-family:var(--tekst)}
+.btn:hover{background:var(--inkt-2)}
+.btn.licht{background:transparent;color:var(--inkt)}
+.btn.licht:hover{background:rgba(23,18,31,.06)}
+.btn.wit{background:#fff;color:var(--inkt);border-color:#fff}
+.btn.rand-wit{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
+.btn svg{width:18px;height:18px;flex:none}
+.hbel{min-height:44px;padding:0 18px;font-size:14.5px}
+@media (max-width:860px){nav.hoofd{display:none}}
+@media (max-width:420px){.hbel .lang{display:none}.brand img{height:42px}}
+
+/* HERO: lila wand, boog met eigen salonfoto */
+.hero{position:relative;background:var(--lila);overflow:hidden;padding:26px 0 46px}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(120% 70% at 80% 0%,rgba(255,255,255,.45),transparent 60%),
+  radial-gradient(90% 60% at 0% 100%,rgba(111,90,158,.35),transparent 70%);pointer-events:none}
+.hgrid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.boog-wrap{position:relative;justify-self:center;width:min(440px,100%)}
+.boog{position:relative;aspect-ratio:4/4.7;border-radius:999px 999px 14px 14px;overflow:hidden;background:var(--inkt);
+  box-shadow:0 0 0 8px rgba(255,255,255,.55),0 0 0 9px rgba(23,18,31,.25),0 30px 60px -20px rgba(43,35,54,.55)}
+.boog img{width:100%;height:100%;object-fit:cover;object-position:50% 70%;animation:kenburns 22s ease-in-out infinite alternate;transform-origin:50% 60%}
+@keyframes kenburns{from{transform:scale(1.02) translateY(0)}to{transform:scale(1.14) translateY(-2.5%)}}
+.boog::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.28) 46%,transparent 60%);transform:translateX(-120%);animation:glans 7s ease-in-out 1.2s infinite}
+@keyframes glans{0%{transform:translateX(-120%)}35%,100%{transform:translateX(120%)}}
+.label{position:absolute;left:-14px;bottom:26px;background:#fff;border-radius:6px;padding:10px 14px 11px;box-shadow:0 12px 30px -12px rgba(23,18,31,.45);max-width:220px;font-size:12.5px;line-height:1.35;color:var(--grijs)}
+.label b{display:block;font-family:var(--kop);font-weight:400;font-size:15px;color:var(--inkt)}
+.label i{font-style:normal;font-family:var(--kop);color:var(--lila-diep);margin-right:6px}
+.zegel{position:absolute;right:-10px;top:-8px;width:118px;height:118px}
+.zegel .ring{animation:draai 32s linear infinite;transform-origin:60px 60px}
+@keyframes draai{to{transform:rotate(360deg)}}
+.zegel text{font:600 10px var(--tekst);fill:var(--inkt)}
+.htekst{position:relative}
+.naam{display:block;width:min(540px,100%);margin:0 0 4px -6px}
+.naam svg{width:100%;height:auto;overflow:visible}
+.naam .pen{transform-box:fill-box;transform-origin:left center;animation:schrijf 2.6s cubic-bezier(.6,.05,.3,1) .3s backwards}
+@keyframes schrijf{from{transform:scaleX(0)}}
+.naam .sub{font:500 21px var(--kop);letter-spacing:.42em;fill:var(--inkt-2)}
+.naam .subg{animation:vervaag 1.4s ease 1.9s backwards}
+@keyframes vervaag{from{opacity:0}}
+.hero h1{font-size:clamp(25px,3.2vw,40px);margin:14px 0 12px;max-width:17em}
+.hero .lead{font-size:17px;color:var(--inkt-2);max-width:34em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin-top:28px;font-size:14.5px;color:var(--inkt-2)}
+.trust .sterren{color:var(--inkt);letter-spacing:2px}
+.trust a{font-weight:600}
+@media (max-width:860px){
+  .hero{padding:18px 0 40px}
+  .hgrid{grid-template-columns:1fr;gap:0}
+  .boog-wrap{order:-1;width:min(270px,74%)}
+  .boog{aspect-ratio:4/4.3}
+  .label{left:-18px;bottom:16px;max-width:176px;padding:8px 11px 9px;font-size:11.5px}
+  .label b{font-size:13.5px}
+  .zegel{width:92px;height:92px;right:-22px;top:-12px}
+  .naam{width:min(300px,84%);margin:-28px auto 0;position:relative;z-index:2}
+  .naam .sub{font-size:22px}
+  .hero h1{text-align:center;margin:6px auto 6px;font-size:clamp(22px,6.2vw,27px)}
+  .hero .lead{text-align:center;margin:0 auto;font-size:15.5px}
+  .cta{justify-content:center;margin-top:18px}
+  .cta{flex-direction:column;gap:10px}
+  .cta .btn{width:100%;min-height:50px}
+  .trust{justify-content:center;margin-top:16px;font-size:13.5px}
+  .hero .lead .weg{display:none}
+}
+
+/* meanderfries + marquee */
+.fries{background:var(--inkt);color:var(--lila-licht);overflow:hidden;position:relative}
+.fries::before,.fries::after{content:"";display:block;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14' viewBox='0 0 28 14'%3E%3Cpath d='M0 12.5H24V1.5H6.5V9H17.5V5H13' fill='none' stroke='%23c9bce3' stroke-width='1.6'/%3E%3C/svg%3E") repeat-x;opacity:.75}
+.fries::after{transform:scaleY(-1)}
+.loop{display:flex;width:max-content;animation:loop 38s linear infinite;padding:12px 0}
+.loop span{font-family:var(--kop);font-size:19px;white-space:nowrap;padding:0 22px;display:inline-flex;align-items:center;gap:22px}
+.loop span::after{content:"";width:7px;height:7px;transform:rotate(45deg);background:var(--lila)}
+@keyframes loop{to{transform:translateX(-50%)}}
+
+/* secties */
+section{padding:84px 0}
+.kicker{font:600 12.5px var(--tekst);letter-spacing:.2em;text-transform:uppercase;color:var(--lila-diep);display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.kicker::before{content:"";width:26px;height:1px;background:currentColor}
+h2{font-size:clamp(28px,4vw,46px);margin-bottom:14px;max-width:18em}
+.intro{color:var(--grijs);max-width:38em;font-size:17px}
+
+/* galerie */
+.galerie{background:var(--tegel)}
+.hang{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto;gap:34px 38px;margin-top:44px}
+.werk{margin:0}
+.lijst{background:#fff;padding:12px;box-shadow:0 1px 0 var(--lijn),0 24px 40px -26px rgba(23,18,31,.45);border-radius:4px}
+.lijst .bin{overflow:hidden;border-radius:2px}
+.lijst img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+.werk:hover img{transform:scale(1.04)}
+.werk.a{grid-row:span 2}.werk.a .bin{aspect-ratio:4/3.6}
+.werk.b .bin,.werk.c .bin{aspect-ratio:16/10}
+.werk.b .lijst{border-radius:999px 999px 4px 4px}.werk.b .bin{border-radius:999px 999px 2px 2px;aspect-ratio:4/3.4}
+.bordje{display:flex;gap:12px;margin-top:14px;font-size:14px;color:var(--grijs);max-width:30em}
+.bordje i{font-style:normal;font-family:var(--kop);font-size:20px;color:var(--lila-diep);line-height:1;min-width:26px}
+.bordje .t{display:block;font-family:var(--kop);font-weight:400;font-size:18px;color:var(--inkt);margin-bottom:2px}
+@media (max-width:860px){
+  .hang{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin:30px -20px 0;padding:4px 20px 18px;scrollbar-width:none}
+  .hang::-webkit-scrollbar{display:none}
+  .werk{flex:0 0 82%;scroll-snap-align:center}
+  .werk.a .bin,.werk.b .bin,.werk.c .bin{aspect-ratio:4/3.4}
+  .swipe{display:block!important}
+}
+.swipe{display:none;font-size:13.5px;color:var(--grijs);margin-top:4px}
+
+/* behandelingen */
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:40px}
+.kaart{background:#fff;border:1px solid var(--lijn);border-radius:var(--r);padding:28px 26px 22px;min-width:0}
+.kaart h3{font-size:clamp(21px,5.4vw,26px);display:flex;align-items:baseline;gap:12px;overflow-wrap:break-word}
+.kaart h3 i{font-style:normal;color:var(--lila-diep);font-size:.8em}
+.kaart .bron{font-size:13px;color:var(--grijs);margin:4px 0 14px}
+.kaart ul{list-style:none}
+.kaart li{border-top:1px solid var(--lijn)}
+.kies{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:54px;padding:8px 2px;background:none;border:0;font:500 16.5px var(--tekst);color:var(--inkt);cursor:pointer;text-align:left}
+.kies span{min-width:0;overflow-wrap:break-word}
+.kies em{font-style:normal;font-size:13.5px;color:var(--lila-diep);font-weight:600;white-space:nowrap}
+.kies:hover em{text-decoration:underline}
+@media (max-width:760px){.menu{grid-template-columns:1fr}}
+
+/* kiezer */
+.kiezer-sec{background:var(--lila-licht)}
+.kiezer{display:grid;grid-template-columns:1fr 360px;gap:30px;margin-top:38px;align-items:start}
+.stap{background:#fff;border-radius:var(--r);padding:24px;border:1px solid var(--lijn)}
+.stap+.stap{margin-top:16px}
+.stap h3{font-size:20px;margin-bottom:14px;display:flex;gap:10px;align-items:baseline}
+.stap h3 i{font-style:normal;color:var(--lila-diep);font-size:15px}
+.opties{display:flex;flex-wrap:wrap;gap:10px}
+.optie{min-height:46px;padding:0 18px;border-radius:999px;border:1.5px solid var(--lijn);background:var(--wit);font:500 15px var(--tekst);color:var(--inkt);cursor:pointer}
+.optie:hover{border-color:var(--lila-diep)}
+.optie[aria-pressed=true]{background:var(--inkt);border-color:var(--inkt);color:#fff}
+.optie:disabled{opacity:.35;cursor:not-allowed}
+.optie small{display:block;font-size:11.5px;opacity:.75;line-height:1}
+.dagen .optie{padding:6px 14px;min-width:74px;line-height:1.2}
+.samen{position:sticky;top:92px;background:var(--inkt);color:#fff;border-radius:var(--r);padding:26px 24px}
+.samen h3{font-size:22px;margin-bottom:6px}
+.zin{font-size:17px;min-height:52px;color:var(--lila-licht);margin-bottom:6px}
+.zin em{font-style:normal;color:#fff;font-weight:600}
+.tip{font-size:13.5px;color:rgba(255,255,255,.66);margin-bottom:18px}
+.samen .btn{width:100%;margin-top:10px}
+.samen .klein{font-size:12.5px;color:rgba(255,255,255,.55);margin-top:14px}
+@media (max-width:900px){.kiezer{grid-template-columns:1fr}.samen{position:static}}
+
+/* waarom */
+.waarom{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.waarom article{border-top:2px solid var(--inkt);padding-top:20px;min-width:0}
+.waarom i{font-style:normal;font-family:var(--kop);font-size:40px;color:var(--lila);line-height:1;display:block;margin-bottom:12px}
+.waarom h3{font-size:clamp(20px,5vw,23px);margin-bottom:8px;overflow-wrap:break-word}
+.waarom p{color:var(--grijs)}
+@media (max-width:860px){.waarom{grid-template-columns:1fr}}
+
+/* reviews */
+.reviews{background:var(--inkt);color:#fff}
+.reviews .kicker{color:var(--lila)}
+.rgrid{display:grid;grid-template-columns:320px 1fr;gap:40px;align-items:start}
+.score{border:1px solid rgba(255,255,255,.18);border-radius:var(--r);padding:28px;text-align:center}
+.score .getal{font-family:var(--kop);font-size:84px;line-height:1}
+.score .st{color:var(--lila);letter-spacing:4px;font-size:20px;margin:6px 0}
+.score p{color:rgba(255,255,255,.75);font-size:15px}
+.score a{display:inline-flex;align-items:center;min-height:44px;color:#fff;font-weight:600}
+.quotes{display:grid;gap:16px}
+.quote{background:var(--inkt-2);border-radius:var(--r);padding:22px 24px}
+.quote p{font-size:17px}
+.quote b{display:block;margin-top:10px;font-weight:600;color:var(--lila);font-size:14.5px}
+.noot{font-size:13px;color:rgba(255,255,255,.6);margin-top:6px}
+@media (max-width:860px){.rgrid{grid-template-columns:1fr}}
+
+/* stappen */
+.stappen{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px;counter-reset:s}
+.stappen li{list-style:none;background:#fff;border:1px solid var(--lijn);border-radius:var(--r);padding:26px 24px;min-width:0}
+.stappen li::before{counter-increment:s;content:counter(s,upper-roman);font-family:var(--kop);font-size:30px;color:var(--lila-diep);display:block;margin-bottom:10px}
+.stappen h3{font-size:21px;margin-bottom:6px}
+.stappen p{color:var(--grijs)}
+@media (max-width:860px){.stappen{grid-template-columns:1fr}}
+
+/* faq */
+.faq{max-width:820px}
+details{border-bottom:1px solid var(--lijn)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;padding:12px 0;font-family:var(--kop);font-size:20px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--tekst);font-size:24px;color:var(--lila-diep);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 18px;color:var(--grijs);max-width:40em}
+
+/* bezoek */
+.bezoek{background:var(--tegel)}
+.bgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.gevel .bin{aspect-ratio:1000/650}
+.info h2{margin-bottom:10px}
+.adres{font-size:19px;margin-bottom:18px}
+.uren{width:100%;border-collapse:collapse;margin:8px 0 22px;font-size:15.5px}
+.uren td{padding:9px 0;border-bottom:1px solid var(--lijn)}
+.uren td:last-child{text-align:right}
+.uren tr.vandaag td{font-weight:700}
+.uren tr.vandaag td:first-child::after{content:" · vandaag";font-weight:500;color:var(--lila-diep)}
+.info .bron{font-size:13px;color:var(--grijs);margin-top:-12px;margin-bottom:20px}
+.info .btns{display:flex;flex-wrap:wrap;gap:12px}
+@media (max-width:860px){.bgrid{grid-template-columns:1fr}}
+
+/* slot */
+.slot{background:var(--lila);text-align:center;position:relative;overflow:hidden}
+.slot h2{margin:0 auto 12px}
+.slot p{max-width:34em;margin:0 auto;color:var(--inkt-2)}
+.slot .cta{justify-content:center;margin-top:26px}
+.slot .buste{width:74px;margin:0 auto 18px}
+
+footer{background:var(--inkt);color:rgba(255,255,255,.75);padding:44px 0 110px;font-size:14.5px}
+.frow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center}
+footer img{height:56px;width:auto}
+footer a{color:#fff}
+footer .door{margin-top:20px;border-top:1px solid rgba(255,255,255,.14);padding-top:18px}
+
+/* zwevende CTA (mobiel) */
+.zweef{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;display:none;gap:10px;opacity:0;transform:translateY(16px);transition:opacity .3s,transform .3s;pointer-events:none}
+.zweef.aan{opacity:1;transform:none;pointer-events:auto}
+.zweef .btn{flex:1;min-height:52px;box-shadow:0 12px 28px -10px rgba(23,18,31,.6)}
+.zweef .btn.licht{background:#fff;border-color:#fff;flex:0 0 auto}
+@media (max-width:860px){.zweef{display:flex}}
+
+/* reveal */
+.rv{opacity:0;translate:0 18px;transition:opacity .8s ease,translate .8s ease}
+.rv.in{opacity:1;translate:none}
+
+/* pitch-modus (alleen voor Mo) */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(23,18,31,.6);display:none;align-items:flex-end;justify-content:center}
+.pitch.open{display:flex}
+.pitch .vel{background:#fff;width:min(1100px,100%);max-height:94svh;overflow:auto;border-radius:26px 26px 0 0;padding:24px clamp(16px,3vw,40px) 40px}
+.pitch .pkop{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.pitch .pkop h3{font-size:24px}
+.pitch .sluit{width:44px;height:44px;border-radius:50%;border:1px solid var(--lijn);background:#fff;font-size:22px;cursor:pointer}
+.vn{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:26px}
+.vn figure{background:var(--tegel);border-radius:20px;padding:18px;text-align:center}
+.vn figcaption{font-weight:700;margin-bottom:12px;font-size:15px}
+.vn figcaption span{display:block;font-weight:500;color:var(--grijs);font-size:13.5px}
+.tel{width:240px;max-width:100%;height:480px;margin:0 auto;border:8px solid var(--inkt);border-radius:30px;overflow:hidden;background:#fff;position:relative}
+.tel img{width:100%;height:100%;object-fit:cover;object-position:top}
+.tel iframe{width:390px;height:844px;border:0;transform:scale(.5949);transform-origin:0 0;position:absolute;left:0;top:0}
+.fouten{list-style:none;display:grid;gap:8px;margin-top:14px;text-align:left}
+.fouten li{background:#fff;border-radius:12px;padding:10px 12px;font-size:14px;display:flex;gap:10px}
+.fouten li b{color:#b3261e}
+.reken{background:var(--inkt);color:#fff;border-radius:22px;padding:24px;margin-bottom:26px}
+.reken h4,.beter h4{font-size:21px;margin-bottom:4px}
+.reken .vb{font-size:13px;color:rgba(255,255,255,.65);margin-bottom:16px}
+.reken label{display:block;font-size:14.5px;margin:14px 0 6px}
+.reken label output{float:right;font-weight:700}
+.reken input[type=range]{width:100%;accent-color:var(--lila);height:32px}
+.reken .uit{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.reken .uit div{background:rgba(255,255,255,.08);border-radius:14px;padding:14px}
+.reken .uit small{display:block;font-size:12.5px;color:rgba(255,255,255,.65)}
+.reken .uit strong{font-weight:700;font-size:clamp(20px,3vw,28px)}
+.beter ol{margin:10px 0 0 20px;display:grid;gap:8px}
+@media (max-width:700px){.vn{grid-template-columns:1fr}.reken .uit{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;translate:none}
+}
+</style>
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a><span class="nm">, voor Adonis Beauty Line</span>. <button class="pitch-knop" id="pitchKnop" aria-label="Presentatie openen">Mo</button></div>
+<div class="balk"><b>4,8 ★</b> uit 53 Google-reviews<span class="nm"> · Spanjaardstraat 133D</span> <span class="st" id="balkStatus"></span></div>
+
+<header>
+  <div class="wrap hrow">
+    <a class="brand" href="#top" aria-label="Adonis Beauty Line, naar boven"><img src="logo-dark.svg" alt="Adonis Beautyline" width="195" height="48"></a>
+    <nav class="hoofd" aria-label="Hoofdmenu">
+      <a href="#salon">De salon</a><a href="#behandelingen">Behandelingen</a><a href="#reviews">Reviews</a><a href="#bezoek">Route &amp; tijden</a>
+    </nav>
+    <a class="btn hbel" href="tel:+31614454537"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Bel<span class="lang">&nbsp;06 14 45 45 37</span></a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="wrap hgrid">
+    <div class="htekst">
+      <span class="naam" role="img" aria-label="Adonis Beautyline">
+        <svg viewBox="-4 -82 258 122" aria-hidden="true">
+          <defs><clipPath id="schrijf"><rect class="pen" x="-8" y="-100" width="275" height="150"/></clipPath></defs>
+          <g clip-path="url(#schrijf)"><path fill="#17121f" stroke="#17121f" stroke-width="1.4" stroke-linejoin="round" d="M10.3 2.9Q6.6 2.9 4.3 0.8Q2 -1.3 2.5 -5.5Q2.6 -7.1 3.2 -8.8Q3.9 -10.5 4.7 -12.2Q5.4 -13.8 6.1 -13.8Q6.7 -13.8 6.3 -12.9Q4.7 -9.7 4.7 -7.2Q4.7 -4.6 6.5 -3.3Q8.4 -2 11.3 -2Q17.1 -2 24.1 -5.7Q31 -9.4 38.5 -15.3Q45.9 -21.1 52.7 -27.5Q48.1 -27.7 44.1 -28Q40.1 -28.2 37.1 -28.2Q34.5 -28.2 30.8 -27.7Q27.1 -27.3 25.1 -25.3Q24.3 -24.4 23.7 -22.8Q23 -21.2 23 -19.6Q23 -19.1 23.1 -18.7Q23.1 -18.3 23.2 -17.8Q22.8 -18.1 21.5 -18.2Q20.3 -18.4 19.9 -19.7Q19.8 -20.1 19.8 -20.9Q19.8 -22.8 21.2 -24Q22.7 -25.3 24.7 -26.2Q26.7 -27.1 28.3 -27.8Q32.2 -29.5 36.3 -30.6Q40.5 -31.6 44.7 -31.6Q49.6 -31.6 56.8 -31.3Q62.3 -36.7 67 -41.5Q71.7 -46.4 74.7 -49.6Q78.8 -53.9 83.5 -57.1Q88.1 -60.2 93 -61.5H86.5Q82.4 -61.5 77.5 -61.1Q72.7 -60.8 68.4 -59.6Q64.2 -58.4 61.4 -56Q59.6 -54.5 58.7 -52.6Q57.8 -50.6 57.8 -49Q57.8 -46.7 59.1 -45.9Q59.2 -45.9 59.2 -45.8Q59.2 -45.8 59.2 -45.8Q59.2 -45.4 58.4 -45Q57.6 -44.6 57.2 -44.8Q56 -45.7 55.2 -48.2Q54.3 -50.7 54.5 -52.3Q55.1 -55.9 57.8 -58.2Q60.4 -60.5 64.4 -61.8Q68.3 -63.1 72.7 -63.6Q77.2 -64.1 81.2 -64.2Q85.3 -64.3 88.1 -64.3H101Q101.2 -64.3 101.1 -64.2Q104.1 -65.5 107.3 -66.8Q110.6 -68.1 112.9 -68.1Q113.5 -68.1 114.2 -67.7Q114.8 -67.4 114.8 -67Q114.8 -66.4 112.5 -66.4Q111.3 -66.4 110 -66Q108.8 -65.6 106.8 -63.5Q105.1 -61.8 102.7 -58.2Q100.2 -54.5 97.2 -49.6Q94.3 -44.7 91.3 -39.2Q88.4 -33.7 85.7 -28.4Q83 -23.1 80.9 -18.6Q80.7 -17.9 79.6 -15.4Q78.6 -12.9 77.6 -9.9Q76.7 -6.8 76.7 -4.5Q76.7 -1.3 78.9 -1.3Q80 -1.3 81.1 -1.8Q82.6 -2.4 84.3 -3.5Q85.9 -4.7 87.4 -6.3Q90.5 -9.2 92.6 -12Q94.8 -14.8 95.2 -15.3Q95.6 -15.9 96.1 -15.9Q96.5 -15.9 96.5 -15.3Q96.5 -15 96.2 -14.4Q95.3 -13.2 93.1 -10.3Q90.9 -7.4 87.9 -4.5Q84.8 -1.5 81.4 0Q80.4 0.5 79.2 0.8Q78 1.1 76.8 1.1Q74.5 1.1 72.5 -0.6Q70.6 -2.2 70.6 -6Q70.6 -9.4 71.9 -13.4Q73.3 -17.3 74.5 -19.8Q76.8 -24.9 80.1 -31.2Q83.3 -37.4 86.8 -43.7Q90.3 -49.9 93.2 -55Q96.2 -60.1 98.1 -62.5Q96.2 -62.5 93 -61.1Q89.8 -59.6 86.2 -57.2Q82.6 -54.8 79.5 -51.6Q75.9 -47.8 71.1 -42.4Q66.3 -36.9 60.8 -31Q63.5 -30.9 66.2 -30.9Q68.9 -30.8 71.6 -30.8Q73.5 -30.8 75.8 -31.2Q78.1 -31.6 80.1 -32.6Q80.1 -32.6 79.5 -31.3Q78.8 -30.1 77.3 -28.9Q75.9 -27.6 73.4 -27.4Q71.2 -27.3 68.9 -27.2Q66.7 -27.1 64.4 -27.1Q62.5 -27.1 60.7 -27.1Q58.9 -27.1 57.1 -27.3Q51.7 -21.6 45.8 -16.2Q39.9 -10.9 33.9 -6.5Q27.8 -2.1 21.9 0.4Q15.9 2.9 10.3 2.9ZM110.7 0.4Q109.5 0.4 108.7 -0.1Q107.9 -0.6 107.9 -1.9Q107.9 -3.5 108.7 -5.7Q109.5 -7.8 110.6 -9.9Q111.6 -11.9 112.5 -13.2Q108.3 -8.8 103.8 -5Q101.6 -3.1 98.9 -1.4Q96.2 0.2 93.1 0.2Q91.9 0.2 91.4 -0.5Q91 -1.3 91 -2.4Q91 -2.9 91.1 -3.2Q91.7 -7.8 94 -12.7Q96.4 -17.7 99.8 -22.1Q103.2 -26.4 106.8 -29.1Q109.5 -31.2 112 -31.7Q114.5 -32.2 117.4 -32.2H121.3Q123.2 -35.4 125.3 -39.4Q127.3 -43.3 129.4 -47.2Q131.5 -51.1 133.2 -54Q138.1 -62.3 143.9 -67.3Q149.7 -72.2 156.9 -72.2Q158.5 -72.2 159.8 -71.3Q161.1 -70.4 161 -68.7L160.7 -64.4Q160.7 -64.3 160.5 -64.1Q160.2 -64 160.1 -64Q160 -64 159.8 -64.2Q159.4 -66.3 157.6 -67.4Q155.9 -68.6 153.3 -68.6Q152.5 -68.6 151.5 -68.4Q150.4 -68.3 149.5 -68Q146.2 -66.8 143.3 -63.2Q140.3 -59.6 136.9 -53.7Q135.7 -51.4 133.8 -47.8Q131.9 -44.2 129.9 -40.1Q127.8 -36 126 -32.1Q124.1 -28.2 122.8 -25.5Q122.2 -24.1 120.8 -21.2Q119.4 -18.3 117.8 -14.9Q116.2 -11.6 115.1 -8.7Q114 -5.9 114 -4.7Q114 -3.1 115.4 -3.1Q116.8 -3.1 119.2 -4.8Q121.5 -6.5 124.1 -9Q126.6 -11.6 128.7 -13.9Q130.7 -16.3 131.6 -17.5Q131.9 -17.1 131.9 -16.6Q131.9 -15.8 131.3 -15Q130.6 -14.2 130.2 -13.6Q128 -10.7 124.9 -7.5Q121.8 -4.2 118.1 -1.9Q114.5 0.4 110.7 0.4ZM97.9 -3.8Q99.4 -3.8 101.9 -5.8Q104.4 -7.9 107.4 -11Q110.3 -14.2 112.9 -17.6Q115.5 -21.1 117.2 -24Q118.9 -26.9 118.9 -28.4Q118.9 -29.7 118.2 -30.2Q117.4 -30.7 116.2 -30.7Q114.3 -30.7 112.2 -29.3Q110 -28 108.7 -26.7Q107.3 -25.4 105.3 -22.6Q103.4 -19.8 101.5 -16.5Q99.6 -13.2 98.3 -10.1Q97 -7.1 97 -5.2Q97 -3.8 97.9 -3.8ZM131.2 0.2Q129.3 0.2 127.9 -0.5Q126.4 -1.3 126.4 -3.9Q126.4 -8 128.5 -12.2Q130.6 -16.4 132.9 -19.6Q134.9 -22.3 137.4 -24.7Q139.9 -27.1 142.9 -28.9Q144.8 -30.1 148 -31.4Q151.3 -32.8 153.5 -32.8Q155.4 -32.8 156.8 -31.8Q158.2 -30.8 158.2 -28.2Q158.2 -24.2 156.2 -20Q154.1 -15.8 151.9 -12.6Q150.8 -11.2 149.7 -10Q148.7 -8.7 147.4 -7.4Q151.7 -7.4 155.4 -10Q159.1 -12.5 161.8 -16.2L162 -16.4Q162.4 -16.4 162.4 -15.7Q162.4 -14.9 161.9 -14.2Q159.5 -10.9 156 -8.3Q152.5 -5.8 148 -5.8Q147.5 -5.8 147 -5.8Q146.6 -5.8 146.1 -5.9Q139.5 0.2 131.2 0.2ZM134.3 -1.8Q135.9 -1.8 137.9 -3Q139.8 -4.1 140.9 -5.2Q142.9 -7.2 144.6 -9.5Q146.2 -11.8 147.6 -14.2Q149.3 -17 150.9 -20.9Q152.6 -24.8 152.6 -28.2Q152.6 -30.9 150.7 -30.9Q149.2 -30.9 147 -29.6Q144.8 -28.3 143.7 -27.3Q139.7 -23.1 137 -18.3Q135.5 -15.6 133.7 -11.9Q131.9 -8.3 131.9 -5.2Q131.9 -4.7 132 -4.3Q132 -3.9 132.2 -3.4Q132.6 -1.8 134.3 -1.8ZM161.3 1.8Q160.8 1.8 161.3 0.7Q161.9 -0.4 162.4 -1.7Q163 -2.9 163.5 -4.5Q164.7 -7.3 166.1 -10.9Q167.6 -14.4 168.9 -17.8Q170.2 -21.1 171.2 -23.5Q172.2 -26 172.5 -26.7Q170.9 -24.9 168.6 -22.2Q166.3 -19.6 164.3 -17.1Q162.2 -14.6 161.2 -13.2Q160.8 -12.7 160.6 -12.7Q160.4 -12.7 160.4 -13.3Q160.4 -14.3 161 -15.1Q163.2 -17.9 166 -21.5Q168.7 -25 171 -28Q173.2 -31 173.8 -32Q175.1 -32.2 177.6 -32.7Q180.2 -33.2 181.1 -34Q181.5 -34.3 181.8 -34.3Q182.1 -34.3 182.1 -33.9Q182.2 -33.5 181.8 -33Q181.1 -32.2 179.4 -29.2Q177.7 -26.2 175.8 -22.5Q173.8 -18.9 172.2 -15.9Q173.6 -17.8 175.2 -19.6Q176.9 -21.4 178.4 -23Q179.8 -24.4 182.3 -26.5Q184.8 -28.7 187.5 -30.4Q190.2 -32.2 192.2 -32.4Q192.7 -32.6 193.1 -32.6Q193.5 -32.6 193.8 -32.6Q196.4 -32.6 196.4 -30.7Q196.4 -29.3 194.8 -26.9Q194 -25.6 192.3 -22.6Q190.6 -19.6 188.9 -16.1Q187.1 -12.6 185.9 -9.6Q184.7 -6.6 184.7 -5.2Q184.7 -3.5 186.3 -3.5Q188.3 -3.5 190.7 -5.5Q193.2 -7.6 196 -10.7Q198.8 -13.8 201.7 -17.3Q201.9 -17.1 201.9 -16.5Q201.9 -15.7 201.4 -14.9Q200.8 -14.2 200.4 -13.6Q199.2 -12 197.2 -9.7Q195.3 -7.4 193.3 -5.3Q191.3 -3.1 189.6 -1.8Q188.4 -0.9 186.6 0Q184.7 0.9 182.8 0.9Q180.7 0.9 179.8 -0.2Q179 -1.3 179 -2.9Q179 -4.8 179.7 -7Q180.4 -9.1 181.3 -11Q182.2 -13 182.7 -13.9Q184.8 -18.1 186.6 -21.7Q188.3 -25.4 189 -26.9Q189.4 -27.6 189.4 -28.1Q189.4 -28.9 188.1 -28.2Q186.8 -27.5 185 -26.1Q183.1 -24.7 181.6 -23.3Q180.1 -21.9 179.6 -21.5Q175.2 -16.9 172 -11.3Q168.7 -5.7 166.5 0.2Q165 0.4 163.4 1.1Q161.9 1.8 161.3 1.8ZM224.1 -45.1Q222.4 -45.1 221.7 -46.1Q221.2 -46.7 221.2 -47.7Q221.2 -49.6 223 -50.7Q224.3 -51.4 225.4 -51.4Q227.2 -51.4 227.9 -50.4Q228.3 -49.8 228.3 -48.9Q228.3 -47 226.4 -45.8Q225.4 -45.1 224.1 -45.1ZM203.6 0.4Q202.4 0.4 201.6 -0.1Q200.8 -0.6 200.8 -1.9Q200.8 -3.5 201.7 -5.8Q202.6 -8 203.7 -10.3Q204.8 -12.5 205.4 -13.9Q206.3 -15.6 207.5 -18.2Q208.7 -20.9 209.9 -23.3Q211 -25.7 211.5 -26.7Q209.8 -24.9 207.5 -22.2Q205.2 -19.6 203.2 -17.1Q201.2 -14.6 200.1 -13.2Q199.8 -12.7 199.5 -12.7Q199.3 -12.7 199.3 -13.3Q199.3 -14.3 199.9 -15.1Q202.1 -17.9 204.9 -21.5Q207.7 -25 209.9 -28Q212.2 -31 212.8 -32Q214.1 -32.2 216.6 -32.7Q219.1 -33.2 220.1 -34Q220.4 -34.3 220.8 -34.3Q221 -34.3 221.1 -33.9Q221.1 -33.5 220.8 -33Q220.1 -32.2 218.3 -29Q216.5 -25.8 214.6 -22Q212.6 -18.2 211 -15.1Q209.3 -11.9 208.2 -9Q207 -6 207 -4.7Q207 -3.1 208.6 -3.1Q210.2 -3.1 212.6 -5Q215 -6.8 217.5 -9.5Q220 -12.2 221.8 -14.4Q222.4 -15.1 223.3 -16.1Q224.2 -17.1 224.4 -17.3Q224.7 -17.1 224.7 -16.5Q224.6 -15.7 224.1 -14.9Q223.6 -14.2 223.1 -13.6Q220.7 -10.5 217.7 -7.3Q214.8 -4 211.2 -1.8Q207.7 0.4 203.6 0.4ZM229.3 1.9Q227.2 1.9 224.8 1.3Q222.4 0.7 220.6 -0.6Q218.8 -2 218.2 -4.4Q218.1 -4.7 218.1 -5.4Q218.1 -7.1 218.8 -9.1Q219.6 -11.1 220.8 -11.9Q221.3 -12.2 221.5 -11.9Q221.8 -11.7 221.6 -11.4Q221.5 -11.1 221.2 -10.6Q221 -10 220.9 -9.4Q220.5 -6.4 222.2 -4Q222.9 -3.1 223.9 -2.2Q224.9 -1.4 225.9 -0.8Q226.7 -0.4 227.9 -0.2Q229 0 230.2 0Q232.1 0 233.9 -0.5Q235.6 -0.9 236.5 -2Q238 -3.9 238 -6.3Q238 -8 237.1 -10Q236.1 -12 234.1 -14.3Q232.8 -15.7 231.6 -17.3Q230.5 -19 230.1 -20.9Q230 -21.2 229.9 -21.6Q229.9 -21.9 229.9 -22.3Q228.3 -20.1 226.7 -18.1Q225.1 -16.2 224 -14.8Q223.5 -14 223.1 -14Q222.9 -14 222.9 -14.5Q222.9 -15.6 223.8 -16.8Q224.8 -17.8 226 -19.4Q227.2 -21 227.9 -21.9Q229.9 -24.9 230.9 -26.6Q231.9 -28.3 233.1 -29.7Q234.3 -31.3 236.3 -32.2Q238.2 -33.2 240.4 -33.2Q242.8 -33.2 244.9 -32.4Q247 -31.6 247.1 -28.6Q247.1 -27.1 246.6 -25.7Q246 -24.2 245.4 -22.9Q245.1 -22.2 244.4 -21.9Q243.8 -21.6 243.8 -22.1Q243.8 -22.5 243.9 -23.1Q244 -23.7 244 -24.2Q244 -26.2 243.3 -27.7Q242.7 -29.4 241.5 -30.1Q240.4 -30.9 239.1 -30.9Q237.2 -30.9 235.4 -29.4Q233.6 -28 233.6 -25.6Q233.6 -25.4 233.6 -25Q233.6 -24.7 233.8 -24.4Q234.2 -22.5 236.6 -20.2Q239 -17.8 240.2 -16Q242.5 -13 242.5 -9.8Q242.5 -6.6 240.7 -4Q238.8 -1.3 235.8 0.3Q232.8 1.9 229.3 1.9Z"/></g>
+          <g class="subg"><text class="sub" x="125" y="32" text-anchor="middle">BEAUTYLINE</text></g>
+        </svg>
+      </span>
+      <h1>Kapsalon voor dames en kinderen in Rotterdam-West</h1>
+      <p class="lead">Knippen en kleuren, plus wenkbrauwen threading en gezichtsbehandelingen.<span class="weg"> Aan de Spanjaardstraat, in Bospolder.</span></p>
+      <div class="cta">
+        <a class="btn" href="tel:+31614454537"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Bel voor een afspraak</a>
+        <a class="btn licht" href="#afspraak">Stel je afspraak samen</a>
+      </div>
+      <p class="trust"><span class="sterren" aria-hidden="true">★★★★★</span><span><b>4,8</b> uit <a href="https://www.google.com/maps/search/?api=1&amp;query=Adonis+Beauty+Line+Spanjaardstraat+133D+Rotterdam" target="_blank" rel="noopener">53 Google-reviews</a></span><span>Delfshaven, Rotterdam</span></p>
+    </div>
+    <div class="boog-wrap">
+      <div class="boog"><img src="img/salon-wasbakken.jpg" alt="De wasbakken van Adonis Beauty Line voor de lila wand, met een kroonluchter achterin" width="720" height="800" fetchpriority="high"></div>
+      <div class="label"><b><i>I</i>De wasbakken</b>Lila wand, twee wasstoelen, Spanjaardstraat 133D</div>
+      <svg class="zegel" viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="58" fill="#fbfaff"/>
+        <g class="ring"><defs><path id="cirkel" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs>
+        <text><textPath href="#cirkel" textLength="276" lengthAdjust="spacing">4,8 ★ UIT 53 GOOGLE-REVIEWS ·</textPath></text></g>
+        <g transform="translate(43 38) scale(.34)"><g fill="#17121f" stroke="#fbfaff" stroke-width="1.8"><circle cx="50" cy="19" r="7.5"/><circle cx="39" cy="21" r="7.5"/><circle cx="61" cy="21" r="7.5"/><circle cx="30" cy="27" r="7"/><circle cx="70" cy="27" r="7"/><circle cx="25" cy="37" r="6.5"/><circle cx="75" cy="37" r="6.5"/><circle cx="24" cy="48" r="6"/><circle cx="76" cy="48" r="6"/><circle cx="27" cy="58" r="5.5"/><circle cx="73" cy="58" r="5.5"/><circle cx="44" cy="29" r="5.5"/><circle cx="56" cy="29" r="5.5"/><circle cx="34" cy="33" r="5"/><circle cx="66" cy="33" r="5"/></g><g fill="none" stroke="#fbfaff" stroke-width="1.3" stroke-linecap="round"><path d="M46.6 19.0a3.4 3.4 0 1 1 3.4 3.4"/><path d="M35.6 21.0a3.4 3.4 0 1 1 3.4 3.4"/><path d="M57.6 21.0a3.4 3.4 0 1 1 3.4 3.4"/><path d="M26.9 27.0a3.1 3.1 0 1 1 3.1 3.1"/><path d="M66.8 27.0a3.1 3.1 0 1 1 3.1 3.1"/><path d="M22.1 37.0a2.9 2.9 0 1 1 2.9 2.9"/><path d="M72.1 37.0a2.9 2.9 0 1 1 2.9 2.9"/><path d="M21.3 48.0a2.7 2.7 0 1 1 2.7 2.7"/><path d="M73.3 48.0a2.7 2.7 0 1 1 2.7 2.7"/><path d="M24.5 58.0a2.5 2.5 0 1 1 2.5 2.5"/><path d="M70.5 58.0a2.5 2.5 0 1 1 2.5 2.5"/><path d="M41.5 29.0a2.5 2.5 0 1 1 2.5 2.5"/><path d="M53.5 29.0a2.5 2.5 0 1 1 2.5 2.5"/><path d="M31.8 33.0a2.2 2.2 0 1 1 2.2 2.2"/><path d="M63.8 33.0a2.2 2.2 0 1 1 2.2 2.2"/></g><path fill="#17121f" d="M40 80L39 94H61L60 80Z"/><path fill="#17121f" d="M16 120C18 102 32 93 50 93C68 93 82 102 84 120Z"/><path fill="#17121f" stroke="#fbfaff" stroke-width="1.5" d="M32 47C32 34 68 34 68 47L67 63C66 76 58 85 50 85C42 85 34 76 33 63Z"/><g fill="none" stroke="#fbfaff" stroke-width="1.7" stroke-linecap="round"><path d="M37 50Q42.5 46.5 48 50M52 50Q57.5 46.5 63 50"/><path d="M39 56.5Q43.2 54 47 56.6M53 56.6Q56.8 54 61 56.5"/><path d="M50.5 52L48.4 66Q50.2 68.4 52.6 66.8"/><path d="M44.5 73.5Q50 76.6 55.5 73.5M45.8 73.3Q50 71.8 54.2 73.3"/><path d="M41 94Q50 99 59 94M30 104Q34 100 38 101M70 104Q66 100 62 101"/></g></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="fries" aria-hidden="true">
+  <div class="loop">
+    <span>Knippen</span><span>Kinderen knippen</span><span>Kleuren</span><span>Wenkbrauwen threading</span><span>Gezichtsbehandeling</span><span>Gezichtsbehandeling voor heren</span><span>Spanjaardstraat 133D</span>
+    <span>Knippen</span><span>Kinderen knippen</span><span>Kleuren</span><span>Wenkbrauwen threading</span><span>Gezichtsbehandeling</span><span>Gezichtsbehandeling voor heren</span><span>Spanjaardstraat 133D</span>
+  </div>
+</div>
+
+<section class="galerie" id="salon">
+  <div class="wrap">
+    <p class="kicker rv">De salon</p>
+    <h2 class="rv">Kom binnen aan de Spanjaardstraat</h2>
+    <p class="intro rv">Een lange, lichte salon met lila wanden, witte tegels en daglicht van de straat. Zo ziet het eruit als je binnenstapt.</p>
+    <div class="hang">
+      <figure class="werk a rv">
+        <div class="lijst"><div class="bin"><img src="img/salon-stoelen.jpg" alt="Kappersstoelen voor spiegels tot het plafond, met het raam naar de straat achterin" width="570" height="480" loading="lazy"></div></div>
+        <figcaption class="bordje"><i>II</i><span><span class="t">De stoelen</span>Spiegels tot het plafond en een rij kappersstoelen, met het raam naar de straat achterin.</span></figcaption>
+      </figure>
+      <figure class="werk b rv">
+        <div class="lijst"><div class="bin"><img src="img/wachthoek.jpg" alt="Wachthoek met zwarte stoelen, drie droogkappen en planten voor de lila wand" width="720" height="480" loading="lazy"></div></div>
+        <figcaption class="bordje"><i>III</i><span><span class="t">De wachthoek</span>Drie droogkappen, een salontafel en planten voor het lila raam.</span></figcaption>
+      </figure>
+      <figure class="werk c rv">
+        <div class="lijst"><div class="bin"><img src="img/kapstoel.jpg" alt="Een kappersstoel vooraan, met de lange salon en de lila achterwand erachter" width="720" height="390" loading="lazy"></div></div>
+        <figcaption class="bordje"><i>IV</i><span><span class="t">De lange zaal</span>Van de eerste stoel tot de lila achterwand.</span></figcaption>
+      </figure>
+    </div>
+    <p class="swipe">Veeg voor meer →</p>
+  </div>
+</section>
+
+<section id="behandelingen">
+  <div class="wrap">
+    <p class="kicker rv">Behandelingen</p>
+    <h2 class="rv">Haar, wenkbrauwen en gezicht onder één dak</h2>
+    <p class="intro rv">Tik op een behandeling en je afspraak staat meteen half klaar.</p>
+    <div class="menu">
+      <div class="kaart rv">
+        <h3><i>A</i>Haar</h3>
+        <p class="bron">Kapsalon voor dames en kinderen</p>
+        <ul>
+          <li><button class="kies" data-kies="Knippen"><span>Knippen</span><em>Kies →</em></button></li>
+          <li><button class="kies" data-kies="Kinderen knippen"><span>Kinderen knippen</span><em>Kies →</em></button></li>
+          <li><button class="kies" data-kies="Kleuren"><span>Kleuren</span><em>Kies →</em></button></li>
+        </ul>
+      </div>
+      <div class="kaart rv">
+        <h3><i>B</i>Wenkbrauwen &amp; gezicht</h3>
+        <p class="bron">Threading en gezichtsbehandelingen</p>
+        <ul>
+          <li><button class="kies" data-kies="Wenkbrauwen threading"><span>Wenkbrauwen threading</span><em>Kies →</em></button></li>
+          <li><button class="kies" data-kies="Threading"><span>Threading</span><em>Kies →</em></button></li>
+          <li><button class="kies" data-kies="Gezichtsbehandeling"><span>Gezichtsbehandeling</span><em>Kies →</em></button></li>
+          <li><button class="kies" data-kies="Gezichtsbehandeling voor heren"><span>Gezichtsbehandeling voor heren</span><em>Kies →</em></button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kiezer-sec" id="afspraak">
+  <div class="wrap">
+    <p class="kicker rv">Afspraak</p>
+    <h2 class="rv">Stel je afspraak samen in drie tikken</h2>
+    <p class="intro rv">Kies wat je wilt, voor wie en wanneer. Daarna bel je en noem je je keuze, of je stuurt hem als bericht.</p>
+    <div class="kiezer">
+      <div>
+        <div class="stap">
+          <h3><i>I</i>Wat wil je laten doen?</h3>
+          <div class="opties" id="oWat">
+            <button class="optie" aria-pressed="false">Knippen</button>
+            <button class="optie" aria-pressed="false">Kinderen knippen</button>
+            <button class="optie" aria-pressed="false">Kleuren</button>
+            <button class="optie" aria-pressed="false">Wenkbrauwen threading</button>
+            <button class="optie" aria-pressed="false">Threading</button>
+            <button class="optie" aria-pressed="false">Gezichtsbehandeling</button>
+            <button class="optie" aria-pressed="false">Gezichtsbehandeling voor heren</button>
+          </div>
+        </div>
+        <div class="stap">
+          <h3><i>II</i>Voor wie?</h3>
+          <div class="opties" id="oWie">
+            <button class="optie" aria-pressed="false">Voor mezelf</button>
+            <button class="optie" aria-pressed="false">Voor mijn kind</button>
+            <button class="optie" aria-pressed="false">Voor ons allebei</button>
+          </div>
+        </div>
+        <div class="stap">
+          <h3><i>III</i>Welke dag en welk dagdeel?</h3>
+          <div class="opties dagen" id="oDag"></div>
+          <div class="opties" id="oDeel" style="margin-top:12px">
+            <button class="optie" aria-pressed="false" data-s="09:30–12:00">Ochtend</button>
+            <button class="optie" aria-pressed="false" data-s="12:00–18:00">Middag</button>
+            <button class="optie" aria-pressed="false" data-s="18:00–21:00" disabled>Avond <small>alleen vrijdag</small></button>
+          </div>
+        </div>
+      </div>
+      <aside class="samen" aria-live="polite">
+        <h3>Jouw afspraak</h3>
+        <p class="zin" id="zin">Kies eerst een behandeling.</p>
+        <p class="tip" id="tip">Daarna nog voor wie en wanneer.</p>
+        <a class="btn wit" href="tel:+31614454537" id="kBel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Bel 06 14 45 45 37</a>
+        <a class="btn rand-wit" id="kWa" href="https://wa.me/31614454537?text=Hoi%20Adonis%20Beauty%20Line%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4.9 2.9.8 3.4.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2C2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2C18.2 1.3 15.2.1 12 .1 5.5.1.1 5.4.1 12c0 2.1.5 4.1 1.6 5.9L0 24l6.3-1.6c1.7.9 3.7 1.4 5.7 1.4 6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.4z"/></svg>Stuur als bericht</a>
+        <p class="klein">Je keuze staat al in het bericht. Open dinsdag tot en met zaterdag vanaf 09:30.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker rv">Waarom Adonis</p>
+    <h2 class="rv">Waarom klanten blijven terugkomen</h2>
+    <div class="waarom">
+      <article class="rv"><i>I</i><h3>Geduld en goed advies</h3><p>Klanten schrijven dat ze vriendelijk en geduldig geholpen worden, en dat ze goed advies krijgen.</p></article>
+      <article class="rv"><i>II</i><h3>Kinderen zijn welkom</h3><p>Adonis is een kapsalon voor dames én kinderen. Een ouder schrijft dat de kinderen heel vriendelijk en lief geholpen werden.</p></article>
+      <article class="rv"><i>III</i><h3>Klanten die blijven</h3><p>Eén klant schrijft al 15 jaar te komen. De reviews lopen door sinds 2017.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap rgrid">
+    <div class="score rv">
+      <p class="kicker" style="justify-content:center">Google-reviews</p>
+      <div class="getal">4,8</div>
+      <div class="st" aria-hidden="true">★★★★★</div>
+      <p>uit 53 reviews op Google<br>de laatste 20: gemiddeld 5,0</p>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Adonis+Beauty+Line+Spanjaardstraat+133D+Rotterdam" target="_blank" rel="noopener">Bekijk ze op Google →</a>
+    </div>
+    <div>
+      <div class="quotes">
+        <div class="quote rv"><p>Een heel vriendelijke en geduldige kapper, met goed advies, en super blij met het resultaat.</p><b>Sabrina</b></div>
+        <div class="quote rv"><p>Liet de meiden knippen. Ze werden ontzettend vriendelijk en lief geholpen. Echt een aanrader.</p><b>Nicky</b></div>
+        <div class="quote rv"><p>Al 15 jaar klant. Elke afspraak voelt welkom en je gaat er met een goed gevoel vandaan.</p><b>Charissa</b></div>
+      </div>
+      <p class="noot">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker rv">Zo werkt het</p>
+    <h2 class="rv">Zo maak je een afspraak</h2>
+    <ol class="stappen">
+      <li class="rv"><h3>Kies je behandeling</h3><p>Knippen, kleuren, threading of een gezichtsbehandeling: stel het samen in de <a href="#afspraak">afspraakkiezer</a>.</p></li>
+      <li class="rv"><h3>Bel of stuur je keuze</h3><p>Bel 06 14 45 45 37 en noem je keuze, of stuur hem in één tik als bericht.</p></li>
+      <li class="rv"><h3>Kom langs</h3><p>Spanjaardstraat 133D in Bospolder. Zoek het bord met de twee bustes.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap faq">
+    <p class="kicker rv">Vragen</p>
+    <h2 class="rv">Voor je langskomt</h2>
+    <details><summary>Wanneer zijn jullie open?</summary><p>Dinsdag tot en met donderdag 09:30–18:00, vrijdag 09:30–21:00 en zaterdag 09:30–18:00. Zondag en maandag dicht.</p></details>
+    <details><summary>Knippen jullie ook kinderen?</summary><p>Ja. Adonis Beauty Line is een kapsalon voor dames en kinderen.</p></details>
+    <details><summary>Doen jullie ook wenkbrauwen?</summary><p>Ja: threading, waaronder wenkbrauwen threading. Daarnaast zijn er gezichtsbehandelingen, ook voor heren.</p></details>
+    <details><summary>Hoe maak ik een afspraak?</summary><p>Bel <a href="tel:+31614454537">06 14 45 45 37</a>. Handig: stel je afspraak eerst samen in de <a href="#afspraak">kiezer</a>, dan heb je alles bij de hand.</p></details>
+    <details><summary>Waar zit de salon?</summary><p>Spanjaardstraat 133D, 3025 TN Rotterdam, in Bospolder (Delfshaven). Op de gevel hangt het bord met de twee bustes.</p></details>
+  </div>
+</section>
+
+<section class="bezoek" id="bezoek">
+  <div class="wrap bgrid">
+    <figure class="werk gevel rv" style="margin:0">
+      <div class="lijst"><div class="bin"><img src="img/gevel.jpg" alt="De gevel van Adonis Beauty Line aan de Spanjaardstraat: het bord met twee bustes boven het raam en nummer 133D" width="1000" height="650" loading="lazy"></div></div>
+      <figcaption class="bordje"><i>V</i><span><span class="t">De gevel</span>Het bord met de twee bustes, boven het raam van nummer 133D.</span></figcaption>
+    </figure>
+    <div class="info rv">
+      <p class="kicker">Route &amp; tijden</p>
+      <h2>Kom langs</h2>
+      <p class="adres">Spanjaardstraat 133D<br>3025 TN Rotterdam</p>
+      <table class="uren" id="uren">
+        <tr data-d="2"><td>Dinsdag</td><td>09:30 – 18:00</td></tr>
+        <tr data-d="3"><td>Woensdag</td><td>09:30 – 18:00</td></tr>
+        <tr data-d="4"><td>Donderdag</td><td>09:30 – 18:00</td></tr>
+        <tr data-d="5"><td>Vrijdag</td><td>09:30 – 21:00</td></tr>
+        <tr data-d="6"><td>Zaterdag</td><td>09:30 – 18:00</td></tr>
+        <tr data-d="0"><td>Zondag</td><td>dicht</td></tr>
+        <tr data-d="1"><td>Maandag</td><td>dicht</td></tr>
+      </table>
+      <div class="btns">
+        <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Spanjaardstraat+133D+3025+TN+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
+        <a class="btn licht" href="tel:+31614454537">Bel 06 14 45 45 37</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <div class="wrap">
+    <svg class="buste" viewBox="0 0 100 120" aria-hidden="true"><rect x="1" y="1" width="98" height="118" rx="3" fill="#17121f"/><g fill="#fff" stroke="#17121f" stroke-width="1.8"><circle cx="50" cy="19" r="7.5"/><circle cx="39" cy="21" r="7.5"/><circle cx="61" cy="21" r="7.5"/><circle cx="30" cy="27" r="7"/><circle cx="70" cy="27" r="7"/><circle cx="25" cy="37" r="6.5"/><circle cx="75" cy="37" r="6.5"/><circle cx="24" cy="48" r="6"/><circle cx="76" cy="48" r="6"/><circle cx="27" cy="58" r="5.5"/><circle cx="73" cy="58" r="5.5"/><circle cx="44" cy="29" r="5.5"/><circle cx="56" cy="29" r="5.5"/><circle cx="34" cy="33" r="5"/><circle cx="66" cy="33" r="5"/></g><g fill="none" stroke="#17121f" stroke-width="1.3" stroke-linecap="round"><path d="M46.6 19.0a3.4 3.4 0 1 1 3.4 3.4"/><path d="M35.6 21.0a3.4 3.4 0 1 1 3.4 3.4"/><path d="M57.6 21.0a3.4 3.4 0 1 1 3.4 3.4"/><path d="M26.9 27.0a3.1 3.1 0 1 1 3.1 3.1"/><path d="M66.8 27.0a3.1 3.1 0 1 1 3.1 3.1"/><path d="M22.1 37.0a2.9 2.9 0 1 1 2.9 2.9"/><path d="M72.1 37.0a2.9 2.9 0 1 1 2.9 2.9"/><path d="M21.3 48.0a2.7 2.7 0 1 1 2.7 2.7"/><path d="M73.3 48.0a2.7 2.7 0 1 1 2.7 2.7"/><path d="M24.5 58.0a2.5 2.5 0 1 1 2.5 2.5"/><path d="M70.5 58.0a2.5 2.5 0 1 1 2.5 2.5"/><path d="M41.5 29.0a2.5 2.5 0 1 1 2.5 2.5"/><path d="M53.5 29.0a2.5 2.5 0 1 1 2.5 2.5"/><path d="M31.8 33.0a2.2 2.2 0 1 1 2.2 2.2"/><path d="M63.8 33.0a2.2 2.2 0 1 1 2.2 2.2"/></g><path fill="#fff" d="M40 80L39 94H61L60 80Z"/><path fill="#fff" d="M16 120C18 102 32 93 50 93C68 93 82 102 84 120Z"/><path fill="#fff" stroke="#17121f" stroke-width="1.5" d="M32 47C32 34 68 34 68 47L67 63C66 76 58 85 50 85C42 85 34 76 33 63Z"/><g fill="none" stroke="#17121f" stroke-width="1.7" stroke-linecap="round"><path d="M37 50Q42.5 46.5 48 50M52 50Q57.5 46.5 63 50"/><path d="M39 56.5Q43.2 54 47 56.6M53 56.6Q56.8 54 61 56.5"/><path d="M50.5 52L48.4 66Q50.2 68.4 52.6 66.8"/><path d="M44.5 73.5Q50 76.6 55.5 73.5M45.8 73.3Q50 71.8 54.2 73.3"/><path d="M41 94Q50 99 59 94M30 104Q34 100 38 101M70 104Q66 100 62 101"/></g></svg>
+    <h2 class="rv">Tijd voor je volgende afspraak?</h2>
+    <p class="rv">Stel hem samen of bel direct. Open dinsdag tot en met zaterdag vanaf 09:30.</p>
+    <div class="cta">
+      <a class="btn" href="tel:+31614454537">Bel voor een afspraak</a>
+      <a class="btn licht" href="#afspraak">Stel je afspraak samen</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="frow">
+      <img src="logo-light.svg" alt="Adonis Beautyline" width="227" height="56" loading="lazy">
+      <p>Spanjaardstraat 133D, 3025 TN Rotterdam<br><a href="tel:+31614454537">06 14 45 45 37</a></p>
+    </div>
+    <p class="door">Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef">
+  <a class="btn" href="tel:+31614454537">Bel voor een afspraak</a>
+  <a class="btn licht" href="#afspraak" aria-label="Stel je afspraak samen">Kies</a>
+</div>
+
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-label="Presentatie">
+  <div class="vel">
+    <div class="pkop"><h3>Adonis Beauty Line: nu en straks</h3><button class="sluit" id="pitchSluit" aria-label="Sluiten">×</button></div>
+    <div class="vn">
+      <figure>
+        <figcaption>Nu<span>Geen eigen site. Online staan jullie alleen op boekingsplatforms, zoals Fresha</span></figcaption>
+        <div class="tel"><img src="img/voor-fresha.png" alt="De Fresha-pagina van Adonis Beauty Line op een telefoon" width="414" height="900" loading="lazy"></div>
+        <ul class="fouten">
+          <li><b>1</b>Bovenaan een standaardfoto van een model, niet jullie salon.</li>
+          <li><b>2</b>Alleen threading en gezichtsbehandelingen staan erop. Knippen en kleuren, waar de reviews over gaan, niet.</li>
+        </ul>
+      </figure>
+      <figure>
+        <figcaption>Straks<span>Deze site, op dezelfde telefoon</span></figcaption>
+        <div class="tel"><iframe id="naFrame" title="Nieuwe site op een telefoon" loading="lazy"></iframe></div>
+      </figure>
+    </div>
+    <div class="reken">
+      <h4>Wat dit kan opleveren</h4>
+      <p class="vb">Voorbeeld om samen in te vullen. Geen belofte: vul je eigen cijfers in.</p>
+      <label for="r-klant">Extra klanten per week via de site <output id="o-klant">1</output></label>
+      <input type="range" id="r-klant" min="0" max="10" step="1" value="1">
+      <label for="r-best">Gemiddelde besteding per klant <output id="o-best">€ 30</output></label>
+      <input type="range" id="r-best" min="10" max="150" step="5" value="30">
+      <div class="uit">
+        <div><small>Extra per week</small><strong id="u-week">€ 30</strong></div>
+        <div><small>Extra per jaar (× 52)</small><strong id="u-jaar">€ 1.560</strong></div>
+        <div><small>€ 595 terugverdiend na</small><strong id="u-terug">20 klanten</strong></div>
+      </div>
+    </div>
+    <div class="beter">
+      <h4>Wat er concreet beter is</h4>
+      <ol>
+        <li>Wie Adonis zoekt, vindt een eigen site met knippen, kleuren én threading, niet alleen het lijstje van Fresha.</li>
+        <li>Jullie eigen salon en gevel in beeld, met 4,8 uit 53 Google-reviews als bewijs, in plaats van een standaardfoto.</li>
+        <li>Bellen in één tik en een afspraakkiezer, met live "nu open" volgens jullie eigen tijden.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var TEL = "+31614454537", WA = "31614454537";
+  var UREN = {2:[9.5,18],3:[9.5,18],4:[9.5,18],5:[9.5,21],6:[9.5,18]};
+  var DAGNAAM = ["zondag","maandag","dinsdag","woensdag","donderdag","vrijdag","zaterdag"];
+  var MAAND = ["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"];
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function hm(x){ var h = Math.floor(x), m = Math.round((x-h)*60); return (h<10?"0":"")+h+":"+(m<10?"0":"")+m; }
+
+  /* open-status */
+  var nu = new Date(), u = UREN[nu.getDay()], h = nu.getHours() + nu.getMinutes()/60, st = document.getElementById("balkStatus");
+  var open = !!u && h >= u[0] && h < u[1];
+  var tekst;
+  if (open) tekst = "nu open tot " + hm(u[1]);
+  else if (u && h < u[0]) tekst = "vandaag open vanaf " + hm(u[0]);
+  else { var d = new Date(nu); for (var i=1;i<8;i++){ d.setDate(nu.getDate()+i); if (UREN[d.getDay()]) break; } tekst = "weer open " + (i===1?"morgen":DAGNAAM[d.getDay()]) + " om " + hm(UREN[d.getDay()][0]); }
+  st.innerHTML = '· <span class="dot' + (open?"":" dicht") + '"></span>' + tekst;
+  var rij = document.querySelector('#uren tr[data-d="' + nu.getDay() + '"]'); if (rij) rij.classList.add("vandaag");
+
+  /* kiezer */
+  var keuze = {wat:"", wie:"", dag:null, deel:null};
+  var oWat = document.getElementById("oWat"), oWie = document.getElementById("oWie"), oDag = document.getElementById("oDag"), oDeel = document.getElementById("oDeel");
+  var zin = document.getElementById("zin"), tip = document.getElementById("tip"), kWa = document.getElementById("kWa");
+  // komende 6 open dagen
+  var dagen = [], d2 = new Date(); d2.setHours(12,0,0,0);
+  while (dagen.length < 6){ if (UREN[d2.getDay()]) dagen.push(new Date(d2)); d2.setDate(d2.getDate()+1); }
+  function dagTxt(d){ return DAGNAAM[d.getDay()] + " " + d.getDate() + " " + MAAND[d.getMonth()]; }
+  dagen.forEach(function(d, i){
+    var b = document.createElement("button"); b.className = "optie"; b.setAttribute("aria-pressed","false");
+    var vandaag = d.toDateString() === new Date().toDateString();
+    b.innerHTML = (vandaag ? "Vandaag" : DAGNAAM[d.getDay()].charAt(0).toUpperCase() + DAGNAAM[d.getDay()].slice(1,2)) + "<small>" + d.getDate() + " " + MAAND[d.getMonth()] + "</small>";
+    if (!vandaag) b.innerHTML = ["Zo","Ma","Di","Wo","Do","Vr","Za"][d.getDay()] + "<small>" + d.getDate() + " " + MAAND[d.getMonth()] + "</small>";
+    b._dag = d; oDag.appendChild(b);
+  });
+  function groep(el, cb){
+    el.addEventListener("click", function(e){
+      var b = e.target.closest(".optie"); if (!b || b.disabled) return;
+      var aan = b.getAttribute("aria-pressed") !== "true";
+      el.querySelectorAll(".optie").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+      if (aan) b.setAttribute("aria-pressed","true");
+      cb(aan ? b : null); werkBij();
+    });
+  }
+  groep(oWat, function(b){ keuze.wat = b ? b.textContent.trim() : "";
+    if (b && keuze.wat === "Kinderen knippen" && !keuze.wie){ var k = oWie.children[1]; k.setAttribute("aria-pressed","true"); keuze.wie = k.textContent; } });
+  groep(oWie, function(b){ keuze.wie = b ? b.textContent.trim() : ""; });
+  groep(oDag, function(b){ keuze.dag = b ? b._dag : null;
+    var avond = oDeel.children[2], vrij = keuze.dag && keuze.dag.getDay() === 5;
+    avond.disabled = !vrij; if (!vrij && avond.getAttribute("aria-pressed") === "true"){ avond.setAttribute("aria-pressed","false"); keuze.deel = null; } });
+  groep(oDeel, function(b){ keuze.deel = b ? {n:b.firstChild.textContent.trim(), s:b.getAttribute("data-s")} : null; });
+
+  function werkBij(){
+    if (!keuze.wat){ zin.textContent = "Kies eerst een behandeling."; tip.textContent = "Daarna nog voor wie en wanneer."; }
+    else {
+      var html = "<em>" + keuze.wat + "</em>";
+      if (keuze.wie) html += ", " + keuze.wie.toLowerCase();
+      if (keuze.dag) html += ", " + dagTxt(keuze.dag);
+      if (keuze.deel) html += ", " + keuze.deel.n.toLowerCase();
+      zin.innerHTML = html;
+      tip.textContent = (keuze.dag && keuze.deel) ? "Klaar. Bel en noem je keuze, of stuur hem als bericht." : "Kies ook een dag en dagdeel, of bel meteen.";
+    }
+    var t = "Hoi Adonis Beauty Line, ik wil graag een afspraak maken.\n\nWat: " + (keuze.wat || "nog niet gekozen") +
+      "\nVoor wie: " + (keuze.wie ? keuze.wie.toLowerCase() : "-") +
+      "\nDag: " + (keuze.dag ? dagTxt(keuze.dag) : "maakt niet uit") +
+      "\nDagdeel: " + (keuze.deel ? keuze.deel.n.toLowerCase() + " (" + keuze.deel.s + ")" : "maakt niet uit") +
+      "\n\nMijn naam:";
+    kWa.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(t);
+  }
+  werkBij();
+
+  document.querySelectorAll("[data-kies]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var w = b.getAttribute("data-kies");
+      var k = [].find.call(oWat.querySelectorAll(".optie"), function(x){ return x.textContent.trim() === w; });
+      if (k && k.getAttribute("aria-pressed") !== "true") k.click();
+      document.getElementById("afspraak").scrollIntoView({behavior: reduce ? "auto" : "smooth"});
+    });
+  });
+
+  /* zwevende CTA zodra de hero uit beeld is */
+  var zweef = document.getElementById("zweef");
+  new IntersectionObserver(function(e){ zweef.classList.toggle("aan", !e[0].isIntersecting); }).observe(document.getElementById("hero"));
+
+  /* reveal + vangnet */
+  var rv = document.querySelectorAll(".rv");
+  if ("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); }, {rootMargin:"0px 0px -8% 0px"});
+    rv.forEach(function(el){ io.observe(el); });
+  }
+  setTimeout(function(){ rv.forEach(function(el){ el.classList.add("in"); }); }, reduce ? 0 : 3500);
+
+  /* pitch-modus */
+  var pitch = document.getElementById("pitch"), naFrame = document.getElementById("naFrame");
+  function openPitch(){ if (!naFrame.src) naFrame.src = location.pathname.split("/").pop() || "index.html"; pitch.classList.add("open"); }
+  function sluitPitch(){ pitch.classList.remove("open"); if (/[?&]pitch/.test(location.search)) history.replaceState(null, "", location.pathname); }
+  document.getElementById("pitchKnop").addEventListener("click", openPitch);
+  document.getElementById("pitchSluit").addEventListener("click", sluitPitch);
+  pitch.addEventListener("click", function(e){ if (e.target === pitch) sluitPitch(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") sluitPitch(); });
+  if (/[?&]pitch/.test(location.search)) openPitch();
+  if (window.self !== window.top){ document.getElementById("pitchKnop").hidden = true; zweef.style.display = "none"; }
+
+  var rK = document.getElementById("r-klant"), rB = document.getElementById("r-best");
+  function eur(n){ return "€ " + Math.round(n).toLocaleString("nl-NL"); }
+  function reken(){
+    var k = +rK.value, b = +rB.value;
+    document.getElementById("o-klant").textContent = k;
+    document.getElementById("o-best").textContent = eur(b);
+    document.getElementById("u-week").textContent = eur(k*b);
+    document.getElementById("u-jaar").textContent = eur(k*b*52);
+    var n = Math.ceil(595 / b);
+    document.getElementById("u-terug").textContent = n + (n === 1 ? " klant" : " klanten");
+  }
+  rK.addEventListener("input", reken); rB.addEventListener("input", reken); reken();
+})();
+</script>
+</body>
+</html>
