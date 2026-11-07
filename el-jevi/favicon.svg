@@ -1,9 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0B2A63"/><g>
-<circle cx="32" cy="32" r="27" fill="#D21034"/>
-<circle cx="32" cy="32" r="24.0" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="2.2 2.7"/>
-<path d="M17.0 31.2L47.0 31.2L44.8 41.0Q32.0 47.8 19.2 41.0Z" fill="#fff"/>
-<rect x="15.5" y="28.2" width="33.0" height="4.5" rx="2.2" fill="#fff"/>
-<path d="M17.0 33.5h-4.5M47.0 33.5h4.5" stroke="#fff" stroke-width="3.0" stroke-linecap="round"/>
-<path d="M26.0 24.5c-3.0 -3.0 3.0 -5.2 0 -9.8M32.0 23.8c-3.0 -3.0 3.0 -5.2 0 -9.8M38.0 24.5c-3.0 -3.0 3.0 -5.2 0 -9.8" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
-<rect x="23.0" y="35.8" width="18.0" height="3.0" rx="1.5" fill="#0B2A63"/>
-</g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<defs><linearGradient id="f" gradientUnits="userSpaceOnUse" x1="0" y1="56" x2="0" y2="6"><stop offset="0" stop-color="#d93a14"/><stop offset=".55" stop-color="#f27a1f"/><stop offset="1" stop-color="#ffc247"/></linearGradient></defs>
+<rect width="64" height="64" rx="14" fill="#111"/>
+<g transform="translate(32 33) scale(.2) translate(-200 -150)"><path d="M164.0 190C155.4 122.8 194.6 120.0 196 50C217.6 92.0 244.6 131.2 236.0 190ZM210.0 200C203.3 145.3 246.9 143.0 248 86C264.8 120.2 272.7 152.1 266.0 200ZM134.0 205C127.3 158.4 150.9 156.5 152 108C168.8 137.1 196.7 164.3 190.0 205ZM248.0 222C243.2 180.7 278.2 179.0 279 136C291.0 161.8 292.8 185.9 288.0 222ZM112.0 226C107.2 193.4 121.2 192.0 122 158C134.0 178.4 156.8 197.4 152.0 226ZM108 246C108 182 150 150 200 150C250 150 292 182 292 246Z" fill="url(#f)"/></g>
+</svg>
