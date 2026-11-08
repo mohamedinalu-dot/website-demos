@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<!--
+  Garage StarLine (L225) — concept: "strak, nieuw, eerlijk".
+  Lay-out-archetype: KENTEKEN-INVOER ALS HELD. Het eerste scherm draait om een groot geel Nederlands
+  kentekenplaatje (invoerveld, geen echt kenteken) onder hun eigen gevelfoto. Daarna kiest de bezoeker
+  uit de diensten van hún eigen bord (chips) en een dag, en gaat alles in één WhatsApp-bericht.
+  Hero-beweging: hun gevelfoto (meteen helder, stil) zit achter een rolluik-garagedeur die bij het laden
+  één keer oprolt, en daarna gaat één glans over het kentekenplaatje. Geen "licht gaat aan", geen letters
+  één voor één, geen Ken Burns, geen stoom, geen schuine fotokaart, geen ronde stempel, geen lopende band.
+  Werkplaatsfoto verderop: gewone, stilstaande foto.
+  Kleuren: asfaltzwart, hun rood, wit, kentekengeel als accent. Fonts: Archivo (koppen/plaat) + Barlow.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Garage StarLine – garage, APK en onderhoud in Rotterdam-Zuidwijk</title>
+<meta name="description" content="Garage StarLine aan de Sluzenkamp 13 in Rotterdam-Zuidwijk: APK, onderhoud, reparaties voor alle merken, banden, airco en diagnose. Typ je kenteken en regel het via WhatsApp.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --asfalt:#121315;--asfalt2:#1b1d21;--asfalt3:#25282d;--lijn:#33373e;
+  --rood:#d9150c;--rood2:#ff3b30;--geel:#f5b800;--eu:#1d3c9a;
+  --wit:#f5f5f3;--grijs:#a9adb5;--licht:#eceef1;--inkt:#16181b;
+  --r:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--asfalt);color:var(--wit);font:400 17px/1.55 Barlow,system-ui,sans-serif;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:Archivo,system-ui,sans-serif;font-weight:800;line-height:1.05;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(30px,7.4vw,52px);font-variation-settings:"wdth" 88}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.kicker{font:700 13px/1.2 Archivo,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--geel);margin:0 0 12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* demo-strook + aankondiging */
+.demo{background:var(--geel);color:#111;text-align:center;font:600 13px/1.3 Barlow,sans-serif;padding:7px 12px}
+.demo a{font-weight:700}
+.bar{background:#000;color:var(--grijs);font-size:14px;text-align:center;padding:8px 12px;border-bottom:1px solid var(--lijn)}
+.bar b{color:var(--wit)}
+@media (max-width:520px){.bar .lang{display:none}.bar{font-size:13.5px}}
+.bar .st{color:var(--geel);letter-spacing:1px}
+
+/* header */
+header{position:sticky;top:0;z-index:40;background:rgba(18,19,21,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--lijn)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:64px}
+.hd .logo img{height:auto;width:clamp(200px,58vw,290px)}
+.hd nav{display:none;gap:24px;font-weight:600;font-size:15px}
+.hd nav a{text-decoration:none;color:var(--grijs)}
+.hd nav a:hover{color:var(--wit)}
+.wa-ic{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:12px;background:var(--rood);color:#fff;flex:none}
+.wa-ic svg{width:24px;height:24px}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:12px;font:700 16px/1 Archivo,sans-serif;font-variation-settings:"wdth" 100;text-decoration:none;border:0;cursor:pointer;transition:background-color .2s,color .2s,box-shadow .2s}
+.btn svg{width:22px;height:22px;flex:none}
+.btn-rood{background:var(--rood);color:#fff;box-shadow:0 8px 22px -10px rgba(255,59,48,.8)}
+.btn-rood:hover{background:#b80f07}
+.btn-lijn{background:transparent;color:var(--wit);box-shadow:inset 0 0 0 2px #4a4f57}
+.btn-lijn:hover{box-shadow:inset 0 0 0 2px var(--wit)}
+.btn-geel{background:var(--geel);color:#111}
+
+/* ===== HERO ===== */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 60% at 50% 0%,#202329 0%,var(--asfalt) 60%),var(--asfalt)}
+.hero-in{display:grid;gap:0;grid-template-columns:minmax(0,1fr)}
+.hero-in>*{min-width:0}
+.gevel{position:relative;aspect-ratio:587/410;overflow:hidden;background:#000;margin:0 -20px}
+.gevel img{width:100%;height:100%;object-fit:cover}
+.rolluik{position:absolute;inset:0;z-index:1;background:
+  repeating-linear-gradient(180deg,#c9ccd1 0 3px,#aeb2b8 3px 20px,#8d9198 20px 22px,#d6d8dc 22px 24px);
+  transform:translateY(0);transition:transform 2s cubic-bezier(.65,.05,.25,1);box-shadow:inset 0 -10px 0 #6f737a}
+.rolluik::after{content:"";position:absolute;left:50%;bottom:16px;width:70px;height:10px;margin-left:-35px;border-radius:5px;background:#5c6067}
+.gevel.open .rolluik{transform:translateY(-101%)}
+.gevel::after{content:"";position:absolute;z-index:2;inset:auto 0 0 0;height:38%;background:linear-gradient(transparent,var(--asfalt));pointer-events:none}
+.hero-tekst{position:relative;z-index:2;padding:4px 0 34px}
+.eyebrow{display:flex;align-items:center;gap:10px;font:700 12.5px/1.2 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--grijs);margin:0 0 12px}
+.eyebrow i{display:inline-block;width:26px;height:3px;background:var(--rood2);border-radius:2px}
+.hero h1{font-size:clamp(33px,8.9vw,64px);font-variation-settings:"wdth" 82;font-weight:850;text-transform:none}
+.hero h1 em{font-style:normal;color:var(--geel)}
+.hero .sub{color:var(--grijs);margin:10px 0 16px;font-size:17px;max-width:34em}
+
+/* kentekenplaat */
+.plaat{position:relative;display:flex;align-items:stretch;height:clamp(70px,19vw,96px);background:var(--geel);border-radius:10px;
+  box-shadow:0 0 0 3px #111 inset,0 0 0 5px var(--geel) inset,0 18px 40px -16px rgba(245,184,0,.45);overflow:hidden;max-width:520px}
+.plaat .eu{flex:none;width:clamp(34px,9vw,46px);background:var(--eu);margin:5px 0 5px 5px;border-radius:6px 0 0 6px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:7px 0 6px}
+.plaat .eu svg{width:70%;height:auto}
+.plaat .eu span{font:800 clamp(13px,3.6vw,17px)/1 Archivo,sans-serif;color:#fff}
+.plaat input{flex:1;min-width:0;border:0;background:transparent;color:#111;text-align:center;text-transform:uppercase;
+  font:800 clamp(34px,10.5vw,58px)/1 Archivo,sans-serif;font-variation-settings:"wdth" 72;letter-spacing:.06em;padding:0 12px 0 6px;outline:none;caret-color:#111}
+.plaat input::placeholder{color:rgba(17,17,17,.32);letter-spacing:.08em}
+.plaat:focus-within{box-shadow:0 0 0 3px #111 inset,0 0 0 5px var(--geel) inset,0 0 0 4px rgba(255,255,255,.55),0 18px 40px -16px rgba(245,184,0,.45)}
+.plaat .glans{position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.7) 50%,transparent 65%);transform:translateX(-120%);animation:glans 1.3s 2.3s ease-out both;pointer-events:none}
+@keyframes glans{to{transform:translateX(120%)}}
+.plaat-hulp{font-size:14px;color:var(--grijs);margin:8px 2px 0}
+.hero-knoppen{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin-top:28px;font-size:15px;color:var(--grijs)}
+.trust b{color:var(--wit)}
+.trust .st{color:var(--geel);letter-spacing:1px}
+.trust a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+
+/* ===== KIEZER ===== */
+.kiezer{background:var(--asfalt2);border-top:1px solid var(--lijn);padding:56px 0 64px}
+.kz{display:grid;gap:28px}
+.kz-kop p{color:var(--grijs);margin:12px 0 0}
+.mini{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:var(--geel);color:#111;border-radius:7px;padding:6px 14px 6px 6px;font:800 22px/1 Archivo,sans-serif;font-variation-settings:"wdth" 72;letter-spacing:.06em;min-height:44px;text-decoration:none}
+.mini .b{background:var(--eu);color:#fff;font-size:12px;border-radius:4px;padding:8px 6px;letter-spacing:0}
+.mini.leeg{opacity:.75}
+.stap{margin:0 0 22px}
+.stap h3{font-size:18px;font-variation-settings:"wdth" 100;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+.stap h3 .n{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--rood);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{min-height:46px;padding:0 16px;border-radius:999px;border:1.5px solid #474c55;background:transparent;color:var(--wit);font:600 16px/1 Barlow,sans-serif;cursor:pointer;transition:background-color .15s,border-color .15s,color .15s}
+.chip:hover{border-color:var(--wit)}
+.chip[aria-pressed="true"]{background:var(--wit);color:#111;border-color:var(--wit)}
+.chip[aria-pressed="true"]::before{content:"✓ ";font-weight:700}
+.bericht{background:#0b141a;border-radius:var(--r);padding:18px;border:1px solid var(--lijn)}
+.bericht .lbl{font-size:13px;color:var(--grijs);margin:0 0 10px;letter-spacing:.04em}
+.bubbel{background:#005c4b;color:#e9edef;border-radius:12px 12px 2px 12px;padding:12px 14px;font-size:16px;line-height:1.45;margin-left:auto;max-width:94%;white-space:pre-wrap;overflow-wrap:break-word}
+.bericht .btn{width:100%;margin-top:16px}
+.bericht small{display:block;color:var(--grijs);font-size:13px;margin-top:10px}
+
+/* ===== GARAGEDEUR ===== */
+.deur-sec{background:var(--asfalt);padding:64px 0}
+.deur-kop{display:grid;gap:12px;margin-bottom:24px}
+.deur-kop p{color:var(--grijs);margin:0;max-width:36em}
+.deur{margin:0;position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:762/935;background:#222}
+.deur img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.deur figcaption{position:absolute;left:12px;right:12px;bottom:12px;background:rgba(18,19,21,.82);backdrop-filter:blur(4px);border-radius:10px;padding:10px 14px;font-size:15px;color:var(--wit)}
+
+/* ===== BORD / DIENSTEN ===== */
+.bord-sec{background:var(--licht);color:var(--inkt);padding:64px 0}
+.bord-sec .kicker{color:var(--rood)}
+.bord{display:grid;gap:28px}
+.bord figure{margin:0;border-radius:var(--r);overflow:hidden;background:#ccc}
+.bord figure img{width:100%;height:auto}
+.bord figure figcaption{background:#fff;padding:10px 14px;font-size:14px;color:#555}
+.bord-lijst{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bord-lijst button{width:100%;min-height:48px;text-align:left;border:0;border-radius:10px;background:#fff;color:var(--inkt);font:700 15.5px/1.15 Archivo,sans-serif;font-variation-settings:"wdth" 90;padding:10px 12px;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 1px 0 rgba(0,0,0,.06);overflow-wrap:anywhere;min-width:0}
+.bord-lijst button::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--rood)}
+.bord-lijst button:hover{background:var(--inkt);color:#fff}
+.uitgelicht{display:grid;gap:12px;margin-top:22px}
+.uit{background:#fff;border-radius:12px;padding:16px 18px;border-left:5px solid var(--rood)}
+.uit h3{font-size:19px;font-variation-settings:"wdth" 95;margin:0 0 4px}
+.uit p{margin:0;color:#444}
+.uit a.btn{margin-top:12px;min-height:46px;font-size:15px}
+.uit.inkoop{border-left-color:var(--geel)}
+
+/* ===== WAAROM ===== */
+.waarom{padding:64px 0;background:var(--asfalt2)}
+.kaarten{display:grid;gap:14px;margin-top:26px}
+.kaart{background:var(--asfalt3);border-radius:var(--r);padding:22px;border-top:4px solid var(--rood2);min-width:0}
+.kaart .lbl{font-size:13px;color:var(--grijs);letter-spacing:.05em;margin:0 0 6px}
+.kaart h3{font-size:clamp(22px,6vw,28px);font-variation-settings:"wdth" 85;overflow-wrap:break-word}
+.kaart p{color:var(--grijs);margin:10px 0 0}
+
+/* ===== REVIEWS ===== */
+.reviews{padding:64px 0;background:var(--asfalt)}
+.score{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-top:18px}
+.score .getal{font:900 clamp(72px,20vw,120px)/.85 Archivo,sans-serif;font-variation-settings:"wdth" 75;color:var(--geel)}
+.score .st{color:var(--geel);font-size:22px;letter-spacing:2px}
+.score a{color:var(--wit);font-weight:600;display:inline-flex;align-items:center;min-height:44px}
+.rev{display:grid;gap:12px;margin-top:26px}
+.rev blockquote{margin:0;background:var(--asfalt2);border:1px solid var(--lijn);border-radius:var(--r);padding:20px}
+.rev blockquote p{margin:0 0 10px;font-size:18px}
+.rev cite{font-style:normal;color:var(--grijs);font-weight:600}
+.label{font-size:14px;color:var(--grijs);margin-top:14px}
+
+/* ===== STAPPEN ===== */
+.stappen{padding:64px 0;background:var(--licht);color:var(--inkt)}
+.stappen .kicker{color:var(--rood)}
+.st3{display:grid;gap:14px;margin:26px 0 0;padding:0;list-style:none;counter-reset:s}
+.st3 li{background:#fff;border-radius:var(--r);padding:20px 20px 20px 74px;position:relative;min-height:84px}
+.st3 li::before{counter-increment:s;content:counter(s);position:absolute;left:18px;top:18px;width:40px;height:40px;border-radius:8px;background:var(--geel);color:#111;display:grid;place-items:center;font:900 22px/1 Archivo,sans-serif;box-shadow:inset 0 0 0 2px #111}
+.st3 h3{font-size:19px;font-variation-settings:"wdth" 95;margin:0 0 4px}
+.st3 p{margin:0;color:#444}
+
+/* ===== FAQ ===== */
+.faq{padding:64px 0;background:var(--asfalt2)}
+.faq details{border-bottom:1px solid var(--lijn)}
+.faq summary{cursor:pointer;list-style:none;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;font:700 18px/1.25 Archivo,sans-serif;font-variation-settings:"wdth" 95;padding:12px 0}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:26px;color:var(--geel);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0 0 18px;color:var(--grijs)}
+.faq-lijst{margin-top:20px;max-width:820px}
+
+/* ===== CONTACT ===== */
+.contact{padding:64px 0;background:var(--asfalt)}
+.ct{display:grid;gap:16px;margin-top:24px}
+.ct .blok{background:var(--asfalt2);border:1px solid var(--lijn);border-radius:var(--r);padding:22px}
+.ct h3{font-size:20px;font-variation-settings:"wdth" 95;margin:0 0 10px}
+.uren{width:100%;border-collapse:collapse;font-size:17px}
+.uren td{padding:8px 0;border-bottom:1px solid var(--lijn)}
+.uren td:last-child{text-align:right;font-weight:600}
+.ct .knoppen{display:grid;gap:10px;margin-top:14px}
+.ct address{font-style:normal;font-size:18px;line-height:1.5}
+
+/* ===== SLOT ===== */
+.slot{padding:64px 0 72px;background:var(--rood);color:#fff;text-align:center}
+.slot h2{font-variation-settings:"wdth" 80}
+.slot p{margin:12px auto 24px;max-width:30em;color:#ffe3e1}
+.slot .btn{background:#fff;color:var(--rood)}
+
+/* ===== FOOTER ===== */
+footer{background:#000;color:var(--grijs);padding:36px 0 110px;font-size:15px}
+.ft{display:grid;gap:18px}
+.ft img{width:240px;height:auto}
+.ft a{color:var(--wit)}
+.ft .rij{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between}
+.mo-knop{width:44px;height:44px;border-radius:50%;border:1px solid #333;background:#0d0d0e;color:#666;font:700 13px/1 Archivo,sans-serif;cursor:pointer}
+
+/* zwevende CTA */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:flex;transform:translateY(140%);transition:transform .35s ease;pointer-events:none}
+.zweef.aan{transform:none;pointer-events:auto}
+.zweef .btn{flex:1;min-height:56px;box-shadow:0 12px 30px -8px rgba(0,0,0,.7)}
+
+/* pitch-paneel */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.72);display:none;overflow:auto;padding:16px}
+.pitch.open{display:block}
+.pp{background:#fff;color:var(--inkt);max-width:980px;margin:0 auto;border-radius:16px;padding:22px}
+.pp h2{font-size:26px;font-variation-settings:"wdth" 90}
+.pp h3{font-size:18px;margin:22px 0 10px}
+.pp .sluit{float:right;min-width:44px;min-height:44px;border-radius:10px;border:0;background:#eee;font-size:22px;cursor:pointer}
+.vn{display:grid;gap:14px}
+.vn .k{border-radius:12px;padding:14px;background:#f4f4f4}
+.vn .k.na{background:#111;color:#fff}
+.vn img{width:100%;max-width:260px;height:auto;border-radius:8px;border:1px solid #ddd;margin-bottom:10px}
+.kapot{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:15px}
+.kapot li{background:#fff;border:1px solid #e3e3e3;border-radius:8px;padding:9px 11px}
+.kapot code{background:#ffe9e8;color:#a40c05;padding:1px 5px;border-radius:4px;font-size:13.5px;word-break:break-all}
+.kapot .x{color:#c40d05;font-weight:700}
+.rek label{display:block;font-weight:600;margin:12px 0 4px}
+.rek input[type=range]{width:100%;height:44px;accent-color:var(--rood)}
+.rek .uit2{background:#111;color:#fff;border-radius:12px;padding:16px;margin-top:12px;font-size:17px}
+.rek .uit2 b{color:var(--geel);font-size:22px}
+.rek small{display:block;color:#666;margin-top:8px}
+.beter{padding-left:20px;margin:0}
+.beter li{margin-bottom:8px}
+
+/* breder */
+@media (min-width:860px){
+  .hd nav{display:flex}
+  .hero{padding:40px 0 56px}
+  .hero-in{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:48px;align-items:center}
+  .gevel{order:2;margin:0;border-radius:18px;box-shadow:0 30px 60px -30px #000}
+  .gevel::after{display:none}
+  .hero-tekst{padding:0}
+  .kz{grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+  .kz-kop{grid-column:1/-1}
+  .deur{aspect-ratio:16/9;max-width:960px;margin-inline:auto}
+  .deur img{object-position:50% 72%}
+  .deur-kop{grid-template-columns:1fr 1fr;align-items:end}
+  .bord{grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+  .bord-lijst{grid-template-columns:repeat(3,1fr)}
+  .kaarten,.rev{grid-template-columns:repeat(3,1fr)}
+  .st3{grid-template-columns:repeat(3,1fr)}
+  .ct{grid-template-columns:1.1fr 1fr 1fr}
+  .zweef{display:none}
+  .vn{grid-template-columns:1fr 1fr}
+  footer{padding-bottom:36px}
+}
+@media (max-width:400px){
+  .bord-lijst button{font-size:14.5px;padding:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rolluik{transform:translateY(-101%)!important}
+}
+@media print{.rolluik{display:none}}
+</style>
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></div>
+<div class="bar"><span class="st">★★★★★</span> <b>4,9</b> uit 33 Google-reviews<span class="lang"> · Sluzenkamp 13</span> · Zuidwijk</div>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="#top" aria-label="Garage StarLine, naar boven"><img src="logo-light.svg" alt="Garage StarLine – autobedrijf en reparatie" width="290" height="39"></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#kiezer">Afspraak</a><a href="#diensten">Diensten</a><a href="#reviews">Reviews</a><a href="#contact">Langskomen</a>
+    </nav>
+    <a class="wa-ic js-wa" data-basis="afspraak" href="https://wa.me/31648127342?text=Hoi%20StarLine%2C%20ik%20wil%20graag%20een%20afspraak%20maken." aria-label="App Garage StarLine via WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3Z"/></svg>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="wrap hero-in">
+    <div class="gevel js-gevel">
+      <img src="img/gevel-band.jpg" alt="De gevel van Garage StarLine aan de Sluzenkamp, met het verlichte bord en de open werkplaats" width="587" height="410" fetchpriority="high">
+      <span class="rolluik" aria-hidden="true"></span>
+    </div>
+    <div class="hero-tekst">
+      <p class="eyebrow"><i></i>Autobedrijf · Rotterdam-Zuidwijk</p>
+      <h1>APK, beurt of reparatie? <em>Begin bij je kenteken.</em></h1>
+      <p class="sub">Onderhoud, APK en diagnose, en reparaties voor alle merken. In Rotterdam-Zuidwijk.</p>
+      <label class="sr" for="kenteken">Je kenteken</label>
+      <div class="plaat">
+        <span class="eu" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><g fill="#f5b800"><circle cx="20" cy="6" r="2.3"/><circle cx="27" cy="7.9" r="2.3"/><circle cx="32.1" cy="13" r="2.3"/><circle cx="34" cy="20" r="2.3"/><circle cx="32.1" cy="27" r="2.3"/><circle cx="27" cy="32.1" r="2.3"/><circle cx="20" cy="34" r="2.3"/><circle cx="13" cy="32.1" r="2.3"/><circle cx="7.9" cy="27" r="2.3"/><circle cx="6" cy="20" r="2.3"/><circle cx="7.9" cy="13" r="2.3"/><circle cx="13" cy="7.9" r="2.3"/></g></svg>
+          <span>NL</span>
+        </span>
+        <input id="kenteken" class="js-kenteken" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="10" placeholder="KENTEKEN">
+        <span class="glans" aria-hidden="true"></span>
+      </div>
+      <p class="plaat-hulp">Typ je kenteken, kies je klus en stuur het in één WhatsApp-bericht.</p>
+      <div class="hero-knoppen">
+        <a class="btn btn-rood js-wa" data-basis="afspraak" href="https://wa.me/31648127342?text=Hoi%20StarLine%2C%20ik%20wil%20graag%20een%20afspraak%20maken.">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3Z"/></svg>
+          App StarLine
+        </a>
+        <a class="btn btn-lijn" href="#kiezer">Kies je klus ↓</a>
+      </div>
+      <div class="trust">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Garage+StarLine+Sluzenkamp+13+Rotterdam" target="_blank" rel="noopener"><span class="st">★★★★★</span> <b>4,9</b> · 33 reviews op Google</a>
+        <span>Ma–za 09:00–18:00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KIEZER -->
+<section class="kiezer" id="kiezer" aria-labelledby="kz-titel">
+  <div class="wrap kz">
+    <div class="kz-kop">
+      <p class="kicker">Afspraak in één bericht</p>
+      <h2 id="kz-titel">Wat moet er aan je auto gebeuren?</h2>
+      <p>Kies alles wat van toepassing is. Onderaan staat je bericht klaar.</p>
+      <a class="mini leeg js-mini" href="#hero" aria-label="Kenteken aanpassen"><span class="b">NL</span><span class="js-mini-t">KENTEKEN</span></a>
+    </div>
+    <div>
+      <div class="stap">
+        <h3><span class="n">1</span>Klus</h3>
+        <div class="chips js-diensten" role="group" aria-label="Kies je klus">
+          <button type="button" class="chip" aria-pressed="false" data-d="APK">APK</button>
+          <button type="button" class="chip" aria-pressed="false" data-d="onderhoud">Onderhoud</button>
+          <button type="button" class="chip" aria-pressed="false" data-d="een reparatie">Reparatie</button>
+          <button type="button" class="chip" aria-pressed="false" data-d="banden">Banden</button>
+          <button type="button" class="chip" aria-pressed="false" data-d="vloeistoffen bijvullen/verversen">Vloeistoffen</button>
+          <button type="button" class="chip" aria-pressed="false" data-d="een diagnose">Diagnose</button>
+          <button type="button" class="chip" aria-pressed="false" data-d="een grote beurt">Grote beurt</button>
+          <button type="button" class="chip" aria-pressed="false" data-d="een kleine beurt">Kleine beurt</button>
+          <button type="button" class="chip" aria-pressed="false" data-d="airco">Airco</button>
+          <button type="button" class="chip" aria-pressed="false" data-d="full service">Full service</button>
+          <button type="button" class="chip" aria-pressed="false" data-d="mijn auto verkopen (inkoop)">Auto verkopen</button>
+        </div>
+      </div>
+      <div class="stap">
+        <h3><span class="n">2</span>Welke dag past?</h3>
+        <div class="chips js-dagen" role="group" aria-label="Kies een dag"></div>
+      </div>
+    </div>
+    <div class="bericht" aria-live="polite">
+      <p class="lbl">Je bericht aan Garage StarLine</p>
+      <div class="bubbel js-bubbel"></div>
+      <a class="btn btn-rood js-stuur" href="https://wa.me/31648127342?text=Hoi%20StarLine%2C%20ik%20wil%20graag%20een%20afspraak%20maken.">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3Z"/></svg>
+        Verstuur via WhatsApp
+      </a>
+      <small>Gaat naar 06 48 12 73 42. Je kunt het bericht nog aanpassen voordat je het verstuurt.</small>
+    </div>
+  </div>
+</section>
+
+<!-- GARAGEDEUR -->
+<section class="deur-sec" aria-labelledby="deur-titel">
+  <div class="wrap">
+    <div class="deur-kop">
+      <div><p class="kicker">Kijk even binnen</p><h2 id="deur-titel">Licht, strak en opgeruimd.</h2></div>
+      <p>Zo ziet de werkplaats aan de Sluzenkamp eruit: auto op de brug, banden in het rek, vloer schoon.</p>
+    </div>
+    <figure class="deur">
+      <img src="img/werkplaats.jpg" alt="Een witte SUV op de brug in de lichte werkplaats van Garage StarLine, met banden in het rek" width="762" height="935" loading="lazy" decoding="async">
+      <figcaption>De werkplaats van Garage StarLine: brug en bandenrek.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- DIENSTEN / BORD -->
+<section class="bord-sec" id="diensten" aria-labelledby="bord-titel">
+  <div class="wrap bord">
+    <figure>
+      <img src="img/dienstenbord.jpg" alt="Het zwarte dienstenbord van Garage StarLine op de bakstenen pilaar naast de werkplaatsdeur" width="519" height="645" loading="lazy" decoding="async">
+      <figcaption>Het bord naast de deur, foto van de zaak zelf.</figcaption>
+    </figure>
+    <div>
+      <p class="kicker">Diensten</p>
+      <h2 id="bord-titel">Wat op het bord staat, doen we binnen.</h2>
+      <ul class="bord-lijst" aria-label="Tik een dienst om hem in je bericht te zetten">
+        <li><button type="button" data-kies="APK">APK</button></li>
+        <li><button type="button" data-kies="onderhoud">Onderhoud</button></li>
+        <li><button type="button" data-kies="een reparatie">Reparaties</button></li>
+        <li><button type="button" data-kies="banden">Banden</button></li>
+        <li><button type="button" data-kies="vloeistoffen bijvullen/verversen">Vloeistoffen</button></li>
+        <li><button type="button" data-kies="een diagnose">Diagnose</button></li>
+        <li><button type="button" data-kies="een grote beurt">Grote beurt</button></li>
+        <li><button type="button" data-kies="een kleine beurt">Kleine beurt</button></li>
+        <li><button type="button" data-kies="airco">Airco</button></li>
+        <li><button type="button" data-kies="full service">Full service</button></li>
+      </ul>
+      <div class="uitgelicht">
+        <div class="uit"><h3>Diagnose: gratis</h3><p>Storingslampje of een raar geluid? De diagnose is gratis.</p></div>
+        <div class="uit"><h3>Reparaties voor alle merken</h3><p>Autoreparaties, ongeacht het merk van je auto.</p></div>
+        <div class="uit inkoop"><h3>Auto verkopen?</h3><p>Garage StarLine koopt auto's in tegen een eerlijke prijs, en heeft zelf occasions.</p>
+          <a class="btn btn-geel js-wa" data-basis="inkoop" href="https://wa.me/31648127342?text=Hoi%20StarLine%2C%20ik%20wil%20graag%20mijn%20auto%20verkopen.">Stuur je kenteken</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAAROM -->
+<section class="waarom" aria-labelledby="waarom-titel">
+  <div class="wrap">
+    <p class="kicker">Waarom StarLine</p>
+    <h2 id="waarom-titel">Wat klanten erover zeggen.</h2>
+    <div class="kaarten">
+      <div class="kaart"><p class="lbl">Klanten schrijven dat het</p><h3>snel geregeld is</h3><p>Meerdere reviewers noemen hoe snel ze geholpen werden.</p></div>
+      <div class="kaart"><p class="lbl">Klanten schrijven over een</p><h3>vriendelijke monteur</h3><p>Ook dat staat in de reviews: een heel vriendelijke monteur.</p></div>
+      <div class="kaart"><p class="lbl">Klanten schrijven over</p><h3>eerlijke service</h3><p>Reviewers noemen de service professioneel en eerlijk.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews" aria-labelledby="rev-titel">
+  <div class="wrap">
+    <p class="kicker">Reviews</p>
+    <h2 id="rev-titel">Wat er op Google staat.</h2>
+    <div class="score">
+      <span class="getal">4,9</span>
+      <div><div class="st">★★★★★</div><a href="https://www.google.com/maps/search/?api=1&amp;query=Garage+StarLine+Sluzenkamp+13+Rotterdam" target="_blank" rel="noopener">33 reviews op Google</a></div>
+    </div>
+    <div class="rev">
+      <blockquote><p>Kreeg snelle en professionele service.</p><cite>Danaja</cite></blockquote>
+      <blockquote><p>Altijd snel geholpen, en bedankt daarvoor.</p><cite>Gijs</cite></blockquote>
+      <blockquote><p>Topservice, met een heel vriendelijke monteur.</p><cite>Karim</cite></blockquote>
+    </div>
+    <p class="label">Samengevat uit Google-reviews, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<!-- STAPPEN -->
+<section class="stappen" aria-labelledby="st-titel">
+  <div class="wrap">
+    <p class="kicker">Zo regel je het</p>
+    <h2 id="st-titel">Kenteken, klus, versturen.</h2>
+    <ol class="st3">
+      <li><h3>Typ je kenteken</h3><p>Bovenaan in het gele plaatje. Dan weet de garage meteen om welke auto het gaat.</p></li>
+      <li><h3>Kies klus en dag</h3><p>APK, beurt, banden, airco of iets anders van het bord, en een dag die je past.</p></li>
+      <li><h3>Verstuur via WhatsApp</h3><p>Je bericht staat klaar. Versturen, en je spreekt de tijd af met de garage.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" aria-labelledby="faq-titel">
+  <div class="wrap">
+    <p class="kicker">Vragen</p>
+    <h2 id="faq-titel">Vragen aan de garage.</h2>
+    <div class="faq-lijst">
+      <details><summary>Werken jullie aan alle merken?</summary><p>Ja, reparaties doet Garage StarLine voor alle merken.</p></details>
+      <details><summary>Kost een diagnose geld?</summary><p>Nee, de diagnose is gratis.</p></details>
+      <details><summary>Zijn jullie ook op zondag open?</summary><p>Ja, op zondag is de garage open vanaf 12:00.</p></details>
+      <details><summary>Kopen jullie ook auto's in?</summary><p>Ja. Garage StarLine koopt auto's in tegen een eerlijke prijs. Stuur je kenteken via WhatsApp en kies "Auto verkopen".</p></details>
+      <details><summary>Waar zitten jullie precies?</summary><p>Aan de Sluzenkamp 13, 3085 GV Rotterdam, in Zuidwijk. Kijk bij Langskomen voor de routeknop.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact" aria-labelledby="ct-titel">
+  <div class="wrap">
+    <p class="kicker">Langskomen</p>
+    <h2 id="ct-titel">Sluzenkamp 13, Zuidwijk.</h2>
+    <div class="ct">
+      <div class="blok">
+        <h3>Adres</h3>
+        <address>Garage StarLine<br>Sluzenkamp 13<br>3085 GV Rotterdam</address>
+        <div class="knoppen">
+          <a class="btn btn-geel" href="https://www.google.com/maps/dir/?api=1&amp;destination=Sluzenkamp+13+3085+GV+Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+        </div>
+      </div>
+      <div class="blok">
+        <h3>Openingstijden</h3>
+        <table class="uren">
+          <tr><td>Maandag t/m zaterdag</td><td>09:00 – 18:00</td></tr>
+          <tr><td>Zondag</td><td>vanaf 12:00</td></tr>
+        </table>
+      </div>
+      <div class="blok">
+        <h3>Direct contact</h3>
+        <div class="knoppen">
+          <a class="btn btn-rood js-wa" data-basis="afspraak" href="https://wa.me/31648127342?text=Hoi%20StarLine%2C%20ik%20wil%20graag%20een%20afspraak%20maken.">WhatsApp</a>
+          <a class="btn btn-lijn" href="tel:+31648127342">Bel 06 48 12 73 42</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLOT -->
+<section class="slot">
+  <div class="wrap">
+    <h2>Kenteken bij de hand?</h2>
+    <p>Dan staat je bericht zo klaar. Klus en dag erbij, en versturen.</p>
+    <a class="btn js-wa" data-basis="afspraak" href="https://wa.me/31648127342?text=Hoi%20StarLine%2C%20ik%20wil%20graag%20een%20afspraak%20maken.">App Garage StarLine</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap ft">
+    <img src="logo-light.svg" alt="Garage StarLine" width="240" height="32" loading="lazy">
+    <p>Sluzenkamp 13, 3085 GV Rotterdam · <a href="tel:+31648127342">06 48 12 73 42</a> · <a href="https://instagram.com/garagestarline" target="_blank" rel="noopener">Instagram</a></p>
+    <div class="rij">
+      <p>Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> · demo</p>
+      <button type="button" class="mo-knop js-pitch-open" aria-label="Pitch-paneel">Mo</button>
+    </div>
+  </div>
+</footer>
+
+<div class="zweef js-zweef">
+  <a class="btn btn-rood js-wa" data-basis="afspraak" href="https://wa.me/31648127342?text=Hoi%20StarLine%2C%20ik%20wil%20graag%20een%20afspraak%20maken.">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3Z"/></svg>
+    App je kenteken naar StarLine
+  </a>
+</div>
+
+<!-- PITCH-MODUS (alleen voor Mo; standaard dicht; openen via de Mo-knop of ?pitch) -->
+<div class="pitch js-pitch" role="dialog" aria-modal="true" aria-labelledby="pp-titel">
+  <div class="pp">
+    <button type="button" class="sluit js-pitch-dicht" aria-label="Sluiten">×</button>
+    <h2 id="pp-titel">Garage StarLine: nu en straks</h2>
+
+    <h3>Voor / na</h3>
+    <div class="vn">
+      <div class="k">
+        <strong>Nu: garagestarline.nl</strong>
+        <img src="img/voor-site.jpg" alt="Schermafbeelding van de huidige site op een telefoon" width="390" height="844" loading="lazy" style="margin-top:10px">
+        <ul class="kapot">
+          <li><span class="x">✗</span> Knop <b>"Bel ons direct"</b> belt <code>tel:+31031648127342</code>: een "0" en "31" te veel, komt niet bij 06 48 12 73 42 uit.</li>
+          <li><span class="x">✗</span> Knop <b>"Stuur een app"</b> opent WhatsApp met <code>+31031648127342</code>.</li>
+          <li><span class="x">✗</span> Er staat <b>info@garagestarline.nl</b>, maar de link opent een mail naar een ander (hotmail)adres.</li>
+          <li><span class="x">✗</span> Een <b>winkelwagen</b> op een garagesite, en "Bekijk alle occasions" linkt naar een andere pagina dan het menu.</li>
+        </ul>
+      </div>
+      <div class="k na">
+        <strong>Straks: deze site</strong>
+        <ul class="kapot" style="margin-top:10px;color:#111">
+          <li>✓ Elke bel- en app-knop gaat naar <b>06 48 12 73 42</b>.</li>
+          <li>✓ De klant stuurt <b>kenteken, klus en dag</b> in één bericht.</li>
+          <li>✓ Eigen gevel, werkplaats en dienstenbord, geen winkelwagen.</li>
+          <li>✓ 4,9 uit 33 Google-reviews bovenaan, route in één tik.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Wat dit oplevert (voorbeeld, geen belofte)</h3>
+    <div class="rek">
+      <label for="r-klus">Extra klussen per maand via de site: <span class="js-r-klus-t">2</span></label>
+      <input id="r-klus" class="js-r-klus" type="range" min="0" max="20" step="1" value="2">
+      <label for="r-bedrag">Gemiddeld bedrag per klus: € <span class="js-r-bedrag-t">120</span></label>
+      <input id="r-bedrag" class="js-r-bedrag" type="range" min="40" max="800" step="10" value="120">
+      <div class="uit2">
+        Extra omzet per maand: <b class="js-r-maand">€ 240</b><br>
+        Per jaar: <b class="js-r-jaar">€ 2.880</b><br>
+        €595 is de omzet van <b class="js-r-aantal">5</b> klussen.
+      </div>
+      <small>Voorbeeldgetallen. Vul ze samen met de eigenaar in met zijn eigen cijfers; dit is geen voorspelling.</small>
+    </div>
+
+    <h3>3 dingen die concreet beter zijn</h3>
+    <ol class="beter">
+      <li><b>Elke bel- en app-knop klopt.</b> Nu sturen "Bel ons direct" en "Stuur een app" naar +31 031 648127342; hier gaat alles naar 06 48 12 73 42.</li>
+      <li><b>Kenteken + klus + dag in één bericht.</b> De garage weet meteen om welke auto en welke klus het gaat.</li>
+      <li><b>Eigen beeld en eigen diensten.</b> De tien diensten van hun bord, hun gevel en werkplaats, in plaats van een winkelwagen en een mailknop naar een ander adres.</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NUM='31648127342';
+  var plaatIn=document.querySelector('.js-kenteken');
+  var miniT=document.querySelector('.js-mini-t'), mini=document.querySelector('.js-mini');
+  var bubbel=document.querySelector('.js-bubbel'), stuur=document.querySelector('.js-stuur');
+  var diensten=[].slice.call(document.querySelectorAll('.js-diensten .chip'));
+  var dagenBox=document.querySelector('.js-dagen');
+  var gekozenDag='';
+  function wa(t){return 'https://wa.me/'+NUM+'?text='+encodeURIComponent(t);}
+  function kenteken(){return (plaatIn.value||'').toUpperCase().replace(/[^A-Z0-9-]/g,'').slice(0,10);}
+  function lijst(a){if(a.length<2)return a.join('');return a.slice(0,-1).join(', ')+' en '+a[a.length-1];}
+
+  // dagen: komende 7 dagen (zondag vanaf 12:00) + "zo snel mogelijk"
+  var dn=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+  var mn=['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'];
+  function knop(lbl,val){var b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('aria-pressed','false');b.textContent=lbl;b.dataset.v=val;dagenBox.appendChild(b);}
+  knop('Zo snel mogelijk','zsm');
+  var d=new Date(),n=0;
+  while(n<7){d.setDate(d.getDate()+1);
+    var lbl=dn[d.getDay()]+' '+d.getDate()+' '+mn[d.getMonth()];
+    var zo=d.getDay()===0;
+    knop(lbl.charAt(0).toUpperCase()+lbl.slice(1)+(zo?' (vanaf 12:00)':''),zo?lbl+' (vanaf 12:00)':lbl);n++;}
+  dagenBox.addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;
+    [].forEach.call(dagenBox.children,function(c){c.setAttribute('aria-pressed',c===b&&c.getAttribute('aria-pressed')!=='true'?'true':'false');});
+    gekozenDag=b.getAttribute('aria-pressed')==='true'?b.dataset.v:'';update();});
+  diensten.forEach(function(b){b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');update();});});
+  document.querySelectorAll('[data-kies]').forEach(function(b){b.addEventListener('click',function(){
+    var c=diensten.filter(function(x){return x.dataset.d===b.dataset.kies;})[0];
+    if(c){c.setAttribute('aria-pressed','true');update();}
+    document.getElementById('kiezer').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});});});
+
+  function bericht(){
+    var k=kenteken();
+    var ds=diensten.filter(function(b){return b.getAttribute('aria-pressed')==='true';}).map(function(b){return b.dataset.d;});
+    var t='Hoi StarLine, ';
+    t+=k?'mijn kenteken is '+k+', ':'';
+    t+=ds.length?'ik wil graag '+lijst(ds)+'.':'ik wil graag een afspraak maken.';
+    if(gekozenDag==='zsm')t+=' Wanneer kan ik zo snel mogelijk langskomen?';
+    else if(gekozenDag)t+=' Kan dat op '+gekozenDag+'?';
+    return t;
+  }
+  function basis(soort){var k=kenteken();
+    if(soort==='inkoop')return 'Hoi StarLine, '+(k?'mijn kenteken is '+k+', ':'')+'ik wil graag mijn auto verkopen.';
+    return bericht();}
+  function update(){
+    var k=kenteken();
+    miniT.textContent=k||'KENTEKEN';mini.classList.toggle('leeg',!k);
+    var t=bericht();bubbel.textContent=t;stuur.href=wa(t);
+    document.querySelectorAll('.js-wa').forEach(function(a){a.href=wa(basis(a.dataset.basis));});
+  }
+  plaatIn.addEventListener('input',function(){var p=plaatIn.selectionStart,v=plaatIn.value.toUpperCase().replace(/[^A-Z0-9-]/g,'');if(v!==plaatIn.value){plaatIn.value=v;try{plaatIn.setSelectionRange(p,p);}catch(e){}}update();});
+  plaatIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();document.getElementById('kiezer').scrollIntoView({behavior:'smooth'});}});
+  update();
+
+  // garagedeur in de hero rolt één keer op
+  var gevel=document.querySelector('.js-gevel');
+  setTimeout(function(){gevel.classList.add('open');},450);
+
+  // zwevende CTA zodra de hero uit beeld is
+  var zweef=document.querySelector('.js-zweef');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){zweef.classList.toggle('aan',!e.isIntersecting);});},{threshold:0,rootMargin:'-90px 0px 0px 0px'}).observe(document.getElementById('hero'));
+  }
+
+  // pitch-paneel
+  var pitch=document.querySelector('.js-pitch');
+  function pOpen(){pitch.classList.add('open');document.body.style.overflow='hidden';}
+  function pDicht(){pitch.classList.remove('open');document.body.style.overflow='';}
+  document.querySelector('.js-pitch-open').addEventListener('click',pOpen);
+  document.querySelector('.js-pitch-dicht').addEventListener('click',pDicht);
+  pitch.addEventListener('click',function(e){if(e.target===pitch)pDicht();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')pDicht();});
+  if(/[?&]pitch\b/.test(location.search))pOpen();
+  var rk=document.querySelector('.js-r-klus'),rb=document.querySelector('.js-r-bedrag');
+  function eur(v){return '€ '+Math.round(v).toLocaleString('nl-NL');}
+  function reken(){var k=+rk.value,b=+rb.value;
+    document.querySelector('.js-r-klus-t').textContent=k;document.querySelector('.js-r-bedrag-t').textContent=b;
+    document.querySelector('.js-r-maand').textContent=eur(k*b);document.querySelector('.js-r-jaar').textContent=eur(k*b*12);
+    document.querySelector('.js-r-aantal').textContent=Math.ceil(595/b);}
+  rk.addEventListener('input',reken);rb.addEventListener('input',reken);reken();
+})();
+</script>
+</body>
+</html>
