@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="nl">
+<!--
+  L233 Kapsalon La Vie (Zaagmolenstraat 143-A, Rotterdam-Noord)
+  Concept: "de oranje pui": bovenaan hun eigen pui (Maps-foto mei 2020) recht en breed; het oranje lint uit
+  hun logo loopt als een snijlijn over de volle breedte en de schaar knipt hem één keer door; daarna loop je
+  swipend langs raam, deur en uithangbord.
+  Lay-out-archetype: HORIZONTALE SCROLL-GALERIJ (swipe-rij met snap, voortgangsbalk en pijlen) onder een
+  full-bleed fotohero. Geen kader, geen schuine kaart, geen stempel, geen lopende band, geen zoom, geen lus:
+  de enige hero-beweging is één keer knippen (1,8 s, eindigt stil).
+  Kleuren uit hun gevel (leigrijs + raamoranje), logo nagetekend van hun raam (Lobster + Damion naar paden).
+  Foto's: alleen hun eigen Google Maps-foto van de gevel (mei 2020), uitgesneden; personen, oude tijden op de deur
+  en het bord van de buren vervaagd.
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kapsalon La Vie – kapper in Rotterdam-Noord</title>
+<meta name="description" content="Kapsalon La Vie aan de Zaagmolenstraat 143-A in Rotterdam-Noord. Knippen en baard, 4,8 uit 123 Google-reviews. Bel of app 06 47 14 84 19.">
+<meta name="theme-color" content="#3A3E45">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lei:#3A3E45; --lei-d:#25282D; --lei-l:#4A4F57;
+  --oranje:#F4791F; --oranje-d:#B9520F; --oranje-l:#FFE3CC;
+  --wit:#fff; --mist:#EEF0F2; --inkt:#1C1E22; --grijs:#565C65; --lijn:#D8DCE1;
+  --kop:"Bricolage Grotesque",system-ui,sans-serif; --tekst:"Figtree",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--tekst);font-size:17px;line-height:1.55;color:var(--inkt);background:var(--wit);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:800;line-height:1.05;letter-spacing:-.01em;overflow-wrap:break-word}
+h2{font-size:clamp(30px,7.4vw,52px)}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.oog{font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--oranje-d)}
+.oog.licht{color:var(--oranje)}
+
+/* knoppen (geen transition op transform) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 22px;border-radius:999px;font-weight:700;font-size:17px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s;white-space:nowrap}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.or{background:var(--oranje);color:var(--inkt)}
+.btn.or:hover{background:#ff8d3a}
+.btn.lijn{border-color:currentColor;background:transparent}
+.btn.lijn:hover{background:rgba(255,255,255,.1)}
+.btn.lei{background:var(--lei);color:#fff}
+.btn.lei:hover{background:var(--lei-d)}
+
+/* demo-strook + aankondiging */
+.demo{position:relative;background:var(--lei-d);color:#c9cdd3;font-size:13px;text-align:center;padding:8px 48px}
+.demo a{color:#fff;font-weight:600}
+.pitch-knop{position:absolute;right:6px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;border:0;background:transparent;color:#fff;font:700 10px var(--tekst);opacity:.28;cursor:pointer}
+.pitch-knop:hover{opacity:1}
+.balk{background:var(--oranje);color:var(--inkt);font-size:14px;font-weight:600;text-align:center;padding:0 16px}
+.balk a{text-decoration:none;display:inline-block;padding:12px 0;min-height:44px}
+.balk b{font-weight:800}
+
+/* header */
+.kop{background:var(--lei);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:72px}
+.kop .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.kop .logo img{width:62px;height:56px}
+.kop .logo span{font-family:var(--kop);font-weight:800;font-size:19px;line-height:1}
+.kop .logo small{display:block;font-family:var(--tekst);font-weight:500;font-size:12px;color:#b8bdc4;margin-top:3px}
+.kop nav{display:none;gap:26px;font-weight:600;font-size:15px}
+.kop nav a{text-decoration:none;opacity:.85}
+.kop nav a:hover{opacity:1;color:var(--oranje)}
+.kop .bel{min-height:44px;padding:8px 16px;font-size:15px;color:#fff}
+
+/* hero: de pui, recht en breed, met het oranje lint als snijlijn */
+.hero{background:var(--lei);color:#fff;position:relative;overflow:hidden;padding:0 0 36px}
+.pui{position:relative;margin:0;background:var(--lei-d)}
+.pui img{width:100%;height:clamp(290px,40vw,560px);object-fit:cover;object-position:50% 58%}
+.pui figcaption{position:absolute;right:10px;bottom:10px;background:rgba(28,30,34,.78);color:#fff;font-size:12px;font-weight:600;padding:4px 9px;border-radius:4px}
+.lint{position:relative;height:46px;background:var(--oranje);box-shadow:inset 0 -5px 0 var(--oranje-d)}
+.lint .stip{position:absolute;left:0;right:0;top:20px;height:3px;background:repeating-linear-gradient(90deg,var(--lei-d) 0 12px,transparent 12px 20px);opacity:.55}
+.lint .snede{position:absolute;left:0;top:19px;height:5px;width:calc(100% - 30px);background:var(--lei-d);border-radius:3px;transform-origin:0 50%;animation:snede 1.8s linear .5s both}
+.lint .schaar{position:absolute;top:2px;left:calc(100% - 52px);width:40px;height:40px;animation:knipweg 1.8s linear .5s both}
+.lint .schaar g{transform-origin:0 0}
+.lint .blad-a{animation:knipa .225s ease-in-out .5s 8 alternate}
+.lint .blad-b{animation:knipb .225s ease-in-out .5s 8 alternate}
+@keyframes snede{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes knipweg{from{left:-12px}to{left:calc(100% - 52px)}}
+@keyframes knipa{from{rotate:0deg}to{rotate:-16deg}}
+@keyframes knipb{from{rotate:0deg}to{rotate:16deg}}
+.hero .wrap{position:relative;display:grid;gap:8px;padding-top:26px}
+.hero h1{font-size:clamp(40px,11vw,76px)}
+.hero h1 em{font-style:normal;color:var(--oranje)}
+.hero .sub{font-size:clamp(17px,4.4vw,20px);color:#dfe2e6;max-width:36ch;margin-top:6px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.hero .ctas .btn{flex:1 1 auto}
+.hero .ctas .btn.lijn{color:#fff}
+.trust{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:15px;color:#d5d9de}
+.trust a{color:#fff;font-weight:700;text-underline-offset:3px}
+.sterren{color:var(--oranje);letter-spacing:2px}
+
+/* galerij: langs het raam */
+.galerij{background:var(--mist);padding:56px 0 52px}
+.gal-kop{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.gal-kop p{color:var(--grijs);max-width:46ch;margin-top:8px}
+.pijlen{display:flex;gap:10px}
+.pijlen button{width:48px;height:48px;border-radius:50%;border:2px solid var(--lei);background:#fff;color:var(--lei);font-size:22px;cursor:pointer;display:grid;place-items:center}
+.pijlen button:hover{background:var(--lei);color:#fff}
+.pijlen button:disabled{opacity:.3;cursor:default;background:#fff;color:var(--lei)}
+.rij{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:26px max(20px,calc((100% - 1180px)/2)) 18px;scrollbar-width:none;overscroll-behavior-x:contain;scroll-padding-inline:max(20px,calc((100% - 1180px)/2))}
+.rij::-webkit-scrollbar{display:none}
+.kaart{flex:0 0 min(78vw,340px);height:clamp(420px,62vh,500px);scroll-snap-align:start;border-radius:14px;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:flex-end}
+.kaart.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.kaart.foto::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,22,26,.78),transparent 45%)}
+.kaart.foto span{position:relative;z-index:1;color:#fff;font-weight:600;padding:18px 20px;font-size:16px}
+.kaart.foto span b{display:block;font-family:var(--kop);font-size:24px;font-weight:800;line-height:1.1;margin-bottom:2px}
+.kaart.tekst{padding:26px 24px;justify-content:space-between}
+.kaart.tekst .nr{font-family:var(--kop);font-weight:800;font-size:64px;line-height:1;opacity:.9}
+.kaart.tekst h3{font-size:clamp(24px,6.6vw,30px);margin:14px 0 10px}
+.kaart.tekst span{display:block;font-size:16.5px}
+.kaart.oranje{background:var(--oranje);color:var(--inkt)}
+.kaart.lei{background:var(--lei);color:#fff}
+.kaart.lei .nr{color:var(--oranje)}
+.kaart.wit{background:#fff;color:var(--inkt);border:2px solid var(--lijn)}
+.kaart.wit .nr{color:var(--oranje)}
+.kaart .knoppen{display:grid;gap:10px;margin-top:18px}
+.voortgang{width:min(1180px,100% - 40px);margin:6px auto 0;height:4px;background:var(--lijn);border-radius:4px;overflow:hidden}
+.voortgang i{display:block;height:100%;width:30%;background:var(--oranje);border-radius:4px;transform-origin:0 50%}
+.fotobron{width:min(1180px,100% - 40px);margin:12px auto 0;font-size:13px;color:var(--grijs)}
+
+/* kiezer */
+.kiezer{padding:72px 0;background:#fff}
+.kiezer-grid{display:grid;gap:28px;margin-top:26px}
+.stap{margin-bottom:22px}
+.stap h3{font-size:19px;font-family:var(--tekst);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.stap h3 i{font-style:normal;width:30px;height:30px;border-radius:50%;background:var(--lei);color:#fff;font-size:14px;display:grid;place-items:center;flex:none}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{min-height:48px;padding:10px 16px;border-radius:10px;border:2px solid var(--lijn);background:#fff;font:600 16px var(--tekst);color:var(--inkt);cursor:pointer;text-align:left;transition:border-color .15s,background-color .15s}
+.opt:hover{border-color:var(--lei-l)}
+.opt[aria-pressed="true"]{border-color:var(--oranje);background:var(--oranje-l)}
+.opt small{display:block;font-weight:500;font-size:13px;color:var(--grijs)}
+.briefje{background:var(--lei);color:#fff;border-radius:14px;padding:22px;position:relative}
+.briefje .lbl{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--oranje)}
+.briefje pre{white-space:pre-wrap;font:500 17px/1.5 var(--tekst);margin:12px 0 18px;background:rgba(255,255,255,.07);border-left:4px solid var(--oranje);padding:14px 16px;border-radius:4px;min-height:150px}
+.briefje .knoppen{display:grid;gap:10px}
+.briefje .btn.lijn{color:#fff}
+.briefje .noot{font-size:14px;color:#c4c9cf;margin-top:14px}
+
+/* reviews */
+.reviews{background:var(--lei-d);color:#fff;padding:72px 0}
+.score{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-top:18px}
+.score strong{font-family:var(--kop);font-size:clamp(84px,24vw,140px);line-height:.8;color:var(--oranje)}
+.score p{padding-bottom:6px}
+.score a{color:#fff;font-weight:600;text-underline-offset:3px}
+.rev{display:grid;gap:14px;margin-top:34px}
+.rev article{background:var(--lei);border-radius:12px;padding:22px;border-top:4px solid var(--oranje)}
+.rev p{font-size:17px}
+.rev b{display:block;margin-top:12px;color:var(--oranje);font-weight:700}
+.label{margin-top:16px;font-size:14px;color:#b8bdc4}
+
+/* stappen */
+.stappen{padding:72px 0;background:#fff}
+.stappen ol{list-style:none;display:grid;gap:14px;margin-top:26px;counter-reset:s}
+.stappen li{border:2px solid var(--lijn);border-radius:12px;padding:20px 20px 20px 74px;position:relative;counter-increment:s;min-width:0}
+.stappen li::before{content:counter(s);position:absolute;left:18px;top:16px;width:42px;height:42px;border-radius:50%;background:var(--oranje);color:var(--inkt);font:800 20px var(--kop);display:grid;place-items:center}
+.stappen h3{font-size:clamp(20px,5.4vw,24px);margin-bottom:4px}
+.stappen p{color:var(--grijs)}
+.stappen a{font-weight:700}
+
+/* faq */
+.faq{background:var(--mist);padding:72px 0}
+.faq details{background:#fff;border-radius:10px;margin-top:10px;border:1px solid var(--lijn)}
+.faq summary{list-style:none;cursor:pointer;padding:16px 52px 16px 18px;font-weight:700;font-size:17px;position:relative;min-height:52px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:18px;top:12px;font:800 24px var(--kop);color:var(--oranje-d)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 18px 18px;color:var(--grijs)}
+.faq .lijst{margin-top:20px;max-width:780px}
+
+/* route */
+.route{padding:72px 0;background:#fff}
+.route-grid{display:grid;gap:22px;margin-top:24px}
+.route figure{border-radius:14px;overflow:hidden;background:var(--mist)}
+.route figure img{width:100%;height:auto;aspect-ratio:1000/788}
+.route figcaption{font-size:13px;color:var(--grijs);padding:10px 14px}
+.adres{background:var(--lei);color:#fff;border-radius:14px;padding:26px}
+.adres h3{font-size:clamp(24px,6.6vw,32px)}
+.adres p{color:#dfe2e6;margin-top:8px}
+.adres .knoppen{display:grid;gap:10px;margin-top:20px}
+.adres .btn.lijn{color:#fff}
+.adres .tel{font-family:var(--kop);font-weight:800;font-size:24px;color:var(--oranje);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;margin-top:8px}
+
+/* slot */
+.slot{background:var(--oranje);color:var(--inkt);padding:64px 0;text-align:center}
+.slot h2{max-width:16ch;margin-inline:auto}
+.slot p{margin:12px auto 0;max-width:40ch;font-size:18px}
+.slot .ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px}
+.slot .btn.lijn{color:var(--inkt)}
+
+/* footer */
+footer{background:var(--lei-d);color:#c9cdd3;padding:44px 0 110px;font-size:15px}
+footer .wrap{display:grid;gap:22px}
+footer img{width:132px;height:120px}
+footer a{color:#fff}
+footer .door{border-top:1px solid rgba(255,255,255,.12);padding-top:18px;font-size:14px}
+
+/* zwevende CTA (mobiel) */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:grid;grid-template-columns:1fr auto;gap:8px;padding:8px;background:rgba(37,40,45,.94);border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.3);opacity:0;visibility:hidden;translate:0 20px;transition:opacity .25s,visibility .25s,translate .25s}
+.zweef.on{opacity:1;visibility:visible;translate:0 0}
+.zweef .btn{min-height:48px;font-size:16px;padding:10px 18px}
+.zweef .btn.lijn{color:#fff}
+
+/* scroll-onthulling met vangnet */
+.rv{opacity:0;translate:0 18px;transition:opacity .6s,translate .6s}
+.rv.in{opacity:1;translate:0 0}
+
+/* pitch-modus (alleen voor Mo) */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.6);display:none;align-items:flex-end;justify-content:center}
+.pitch.open{display:flex}
+.pitch .vel{background:#fff;width:min(1100px,100%);max-height:94svh;overflow:auto;border-radius:16px 16px 0 0;padding:24px clamp(18px,3vw,40px) 40px}
+.pitch .pk{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.pitch .pk h3{font-size:clamp(22px,5vw,30px)}
+.pitch .psluit{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--lijn);background:#fff;font-size:24px;cursor:pointer;flex:none}
+.vn{display:grid;gap:22px}
+.vn figure{display:grid;gap:10px;align-content:start}
+.vn figcaption{font-weight:700;font-size:17px}
+.vn figcaption span{display:block;font-weight:400;font-size:14px;color:var(--grijs)}
+.tel-frame{width:min(300px,100%);aspect-ratio:9/17;border:10px solid var(--inkt);border-radius:30px;overflow:hidden;background:#fff;margin-inline:auto;position:relative}
+.tel-frame > img{width:100%;height:100%;object-fit:cover;object-position:top}
+.tel-frame iframe{width:390px;height:737px;border:0;transform-origin:0 0;position:absolute;left:0;top:0}
+.fouten{list-style:none;display:grid;gap:8px;font-size:15px}
+.fouten li{display:grid;grid-template-columns:24px 1fr;gap:8px}
+.fouten b{width:24px;height:24px;border-radius:50%;background:var(--oranje-d);color:#fff;font-size:13px;display:grid;place-items:center}
+.reken,.beter{margin-top:26px;border-top:1px solid var(--lijn);padding-top:22px}
+.reken h4,.beter h4{font-family:var(--kop);font-weight:800;font-size:24px;margin-bottom:6px}
+.reken .vb{font-size:14px;color:var(--grijs);margin-bottom:14px}
+.reken label{display:flex;justify-content:space-between;gap:10px;font-weight:600;font-size:15px;margin-top:12px}
+.reken input[type=range]{width:100%;accent-color:var(--oranje-d);height:44px}
+.uit{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:14px}
+.uit div{background:var(--mist);border-radius:8px;padding:14px}
+.uit small{display:block;font-size:13px;color:var(--grijs)}
+.uit strong{font-family:var(--kop);font-weight:800;font-size:28px}
+.beter ol{padding-left:22px;display:grid;gap:8px}
+
+@media (max-width:959px){
+}
+@media (min-width:760px){
+  .vn{grid-template-columns:1fr 1fr}
+  .rev{grid-template-columns:repeat(3,1fr)}
+  .stappen ol{grid-template-columns:repeat(3,1fr)}
+  .briefje .knoppen,.adres .knoppen{grid-template-columns:1fr 1fr}
+}
+@media (min-width:960px){
+  .kop nav{display:flex}
+  .hero{padding-bottom:60px}
+  .hero .wrap{grid-template-columns:1.1fr .9fr;align-items:end;gap:20px 56px;padding-top:44px}
+  .hero .ctas .btn{flex:0 0 auto}
+  .kiezer-grid{grid-template-columns:1.2fr .8fr;align-items:start}
+  .briefje{position:sticky;top:20px}
+  .briefje .knoppen{grid-template-columns:1fr}
+  .route-grid{max-width:640px}
+  .zweef{display:none}
+  footer{padding-bottom:44px}
+  footer .wrap{grid-template-columns:auto 1fr 1fr;align-items:start}
+  footer .door{grid-column:1/-1}
+}
+@media (max-width:400px){
+  .hero .ctas .btn{width:100%}
+  .kop .logo small{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1!important;translate:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> <button class="pitch-knop" id="pitchKnop" type="button" aria-label="Presentatie openen">Mo</button></div>
+<div class="balk"><a href="https://www.google.com/maps/search/?api=1&amp;query=Kapsalon%20La%20Vie%20Zaagmolenstraat%20143-A%20Rotterdam" target="_blank" rel="noopener"><b>4,8 ★</b> uit 123 Google-reviews · Zaagmolenstraat 143-A</a></div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Kapsalon La Vie, naar boven">
+      <img src="logo-light.svg" alt="Logo Kapsalon La Vie" width="62" height="56">
+      <span>Kapsalon La Vie<small>Rotterdam-Noord</small></span>
+    </a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#raam">De zaak</a><a href="#kiezer">Plek vragen</a><a href="#reviews">Reviews</a><a href="#route">Route</a>
+    </nav>
+    <a class="btn lijn bel" href="tel:+31647148419" aria-label="Bel 06&nbsp;47&nbsp;14&nbsp;84&nbsp;19"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>Bel</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="h1">
+  <figure class="pui">
+    <img src="img/pui.webp" alt="De pui van Kapsalon La Vie: leigrijze gevel met oranje raamkozijn, het logo op het raam en de oranje deur" width="1200" height="692" fetchpriority="high">
+    <figcaption>Google Maps · mei 2020</figcaption>
+  </figure>
+  <div class="lint" aria-hidden="true">
+    <span class="stip"></span><span class="snede"></span>
+    <svg class="schaar" viewBox="-22 -22 44 44" width="40" height="40" focusable="false"><g transform="rotate(90)" fill="#25282D" stroke="#25282D">
+      <g class="blad-a"><path d="M-3-2L15-17L17-15L1 2Z"/><circle cx="-8" cy="5" r="6" fill="none" stroke-width="3"/></g>
+      <g class="blad-b"><path d="M3-2L-15-17L-17-15L-1 2Z"/><circle cx="8" cy="5" r="6" fill="none" stroke-width="3"/></g>
+    </g></svg>
+  </div>
+  <div class="wrap">
+    <div>
+      <p class="oog licht">Zaagmolenstraat 143-A</p>
+      <h1 id="h1">Even binnenlopen bij <em>La Vie.</em></h1>
+    </div>
+    <div>
+      <p class="sub">Kapsalon in Rotterdam-Noord voor knippen en baard. App of bel om te vragen wanneer er plek is.</p>
+      <div class="ctas">
+        <a class="btn or js-wa" href="https://wa.me/31647148419?text=Hoi%20La%20Vie%2C%20ik%20wil%20graag%20langskomen%20om%20geknipt%20te%20worden.%20Wanneer%20is%20er%20plek%3F"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>App La Vie</a>
+        <a class="btn lijn" href="#kiezer">Kies wat je wilt</a>
+      </div>
+      <p class="trust hero-voet"><span class="sterren" aria-hidden="true">★★★★★</span><span><a href="https://www.google.com/maps/search/?api=1&amp;query=Kapsalon%20La%20Vie%20Zaagmolenstraat%20143-A%20Rotterdam" target="_blank" rel="noopener">4,8 uit 123 reviews</a> op Google</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="galerij" id="raam" aria-labelledby="h-raam">
+  <div class="wrap gal-kop">
+    <div>
+      <p class="oog">De zaak</p>
+      <h2 id="h-raam">Even langs het raam.</h2>
+      <p>Swipe langs de pui en lees wat klanten over La Vie schrijven.</p>
+    </div>
+    <div class="pijlen" aria-label="Galerij bedienen">
+      <button type="button" id="terug" aria-label="Vorige">&larr;</button>
+      <button type="button" id="verder" aria-label="Volgende">&rarr;</button>
+    </div>
+  </div>
+  <div class="rij" id="rij" tabindex="0" aria-label="Galerij: de zaak en wat klanten schrijven">
+    <figure class="kaart foto"><img src="img/bord.webp" loading="lazy" decoding="async" alt="Het uithangbord van Kapsalon La Vie met schaar, kam en scheermes" width="400" height="600"><span><b>Het uithangbord</b>Zwart, oranje, met schaar en kam.</span></figure>
+    <article class="kaart tekst oranje"><span class="nr">01</span><div><h3>Klanten blijven komen</h3><span>Klanten schrijven dat ze hier al jaren komen, een van hen zelfs elke week.</span></div></article>
+    <figure class="kaart foto"><img src="img/raam.webp" loading="lazy" decoding="async" alt="Het etalageraam met het logo van Kapsalon La Vie" width="900" height="900"><span><b>Het raam</b>Met het logo op het glas.</span></figure>
+    <article class="kaart tekst lei"><span class="nr">02</span><div><h3>Er wordt geluisterd</h3><span>Klanten schrijven over goed advies, oog voor detail en een coupe die wordt zoals je hem wilde.</span></div></article>
+    <figure class="kaart foto"><img src="img/deur.webp" loading="lazy" decoding="async" alt="De oranje voordeur met huisnummer 143a" width="380" height="1160"><span><b>Nummer 143a</b>De oranje deur naast het raam.</span></figure>
+    <article class="kaart tekst oranje"><span class="nr">03</span><div><h3>Koffie en een praatje</h3><span>In reviews komen de koffie, een drankje en een praatje in de stoel steeds terug.</span></div></article>
+    <article class="kaart tekst wit"><span class="nr">04</span><div><h3>Bellen of binnenlopen</h3><span>Klanten schrijven dat je even kunt bellen of er plek is, of gewoon binnenloopt.</span>
+      <div class="knoppen"><a class="btn or js-wa" href="https://wa.me/31647148419?text=Hoi%20La%20Vie%2C%20ik%20wil%20graag%20langskomen%20om%20geknipt%20te%20worden.%20Wanneer%20is%20er%20plek%3F"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>App La Vie</a><a class="btn lei" href="tel:+31647148419"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>06 47 14 84 19</a></div></div></article>
+  </div>
+  <div class="voortgang" aria-hidden="true"><i id="balkje"></i></div>
+  <p class="fotobron">Foto's: de zaak op Google Maps (mei 2020).</p>
+</section>
+
+<section class="kiezer" id="kiezer" aria-labelledby="h-kies">
+  <div class="wrap">
+    <p class="oog">Plek vragen</p>
+    <h2 id="h-kies">Wat mag het worden?</h2>
+    <div class="kiezer-grid">
+      <div>
+        <div class="stap">
+          <h3><i>1</i>Wat wil je laten doen?</h3>
+          <div class="opts" data-group="dienst">
+            <button class="opt" type="button" data-v="Knippen" aria-pressed="true">Knippen</button>
+            <button class="opt" type="button" data-v="Baard" aria-pressed="false">Baard</button>
+            <button class="opt" type="button" data-v="Knippen en baard" aria-pressed="false">Knippen + baard</button>
+            <button class="opt" type="button" data-v="Iets anders" aria-pressed="false">Iets anders</button>
+          </div>
+        </div>
+        <div class="stap">
+          <h3><i>2</i>Hoe wil je het?</h3>
+          <div class="opts" data-group="stijl">
+            <button class="opt" type="button" data-v="Zoals altijd" aria-pressed="true">Zoals altijd</button>
+            <button class="opt" type="button" data-v="Iets nieuws, ik stuur een foto" aria-pressed="false">Iets nieuws<small>ik stuur een foto</small></button>
+            <button class="opt" type="button" data-v="Ik wil graag advies" aria-pressed="false">Graag advies</button>
+          </div>
+        </div>
+        <div class="stap">
+          <h3><i>3</i>Welke dag?</h3>
+          <div class="opts" data-group="dag" id="dagen"></div>
+        </div>
+      </div>
+      <aside class="briefje bericht" aria-live="polite">
+        <p class="lbl">Je bericht</p>
+        <pre id="voorbeeld">Hoi La Vie,</pre>
+        <div class="knoppen">
+          <a class="btn or js-kies" href="https://wa.me/31647148419?text=Hoi%20La%20Vie%2C%20ik%20wil%20graag%20langskomen%20om%20geknipt%20te%20worden.%20Wanneer%20is%20er%20plek%3F"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Stuur via WhatsApp</a>
+          <a class="btn lijn" href="tel:+31647148419"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>Liever bellen</a>
+        </div>
+        <p class="noot">Het bericht gaat naar 06&nbsp;47&nbsp;14&nbsp;84&nbsp;19. Wil je meteen weten of er plek is? Bel dan even.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" aria-labelledby="h-rev">
+  <div class="wrap">
+    <p class="oog licht">Reviews</p>
+    <h2 id="h-rev">123 keer beoordeeld, gemiddeld 4,8.</h2>
+    <div class="score"><strong>4,8</strong><p><span class="sterren" aria-hidden="true">★★★★★</span><br><a href="https://www.google.com/maps/search/?api=1&amp;query=Kapsalon%20La%20Vie%20Zaagmolenstraat%20143-A%20Rotterdam" target="_blank" rel="noopener">uit 123 reviews op Google</a></p></div>
+    <div class="rev">
+      <article class="rv"><p>Komt al een aantal jaren elke week. Er wordt goed geluisterd naar wat je wilt, en er is tijd voor een praatje en een kop koffie.</p><b>Raymond</b></article>
+      <article class="rv"><p>Kwam voor haar en baard. Strak en netjes afgewerkt, met oog voor detail, en het werd precies zoals gevraagd. Een aanrader.</p><b>F.</b></article>
+      <article class="rv"><p>Een afspraak maken via de telefoon ging makkelijk en de prijs viel mee. Zeer tevreden over de knipbeurt.</p><b>Mustapha</b></article>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="stappen" aria-labelledby="h-stap">
+  <div class="wrap">
+    <p class="oog">Zo regel je het</p>
+    <h2 id="h-stap">Van bericht naar stoel.</h2>
+    <ol>
+      <li><h3>Kies wat je wilt</h3><p>Knippen, baard of allebei, en een dag. <a href="#kiezer">Naar de kiezer</a>.</p></li>
+      <li><h3>App of bel</h3><p>Je bericht staat klaar voor WhatsApp. Liever praten? Bel 06&nbsp;47&nbsp;14&nbsp;84&nbsp;19.</p></li>
+      <li><h3>Kom langs</h3><p>Zaagmolenstraat 143-A, in het Oude Noorden van Rotterdam.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="h-faq">
+  <div class="wrap">
+    <p class="oog">Vragen</p>
+    <h2 id="h-faq">Vragen die je misschien hebt.</h2>
+    <div class="lijst">
+      <details><summary>Kan ik ook zonder afspraak binnenlopen?</summary><p>Klanten schrijven dat je kunt bellen of er plek is, maar ook gewoon kunt binnenlopen. Wil je het zeker weten, bel dan even: 06&nbsp;47&nbsp;14&nbsp;84&nbsp;19.</p></details>
+      <details><summary>Doen jullie ook baarden?</summary><p>Ja. In de reviews gaat het over knippen en over baard, ook allebei in één keer.</p></details>
+      <details><summary>Wat kost een knipbeurt?</summary><p>De prijzen staan nog niet online. In reviews noemen klanten de prijs goed en niet duur. Vraag het gerust even als je appt of belt.</p></details>
+      <details><summary>Kan ik een foto laten zien van wat ik wil?</summary><p>Ja, kies in de kiezer "Iets nieuws" en stuur je foto mee in WhatsApp, of neem hem mee op je telefoon.</p></details>
+      <details><summary>Waar zitten jullie precies?</summary><p>Zaagmolenstraat 143-A, 3036 HJ Rotterdam, in het Oude Noorden. <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Kapsalon%20La%20Vie%2C%20Zaagmolenstraat%20143-A%2C%203036%20HJ%20Rotterdam" target="_blank" rel="noopener">Open de route in Google Maps</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="route" id="route" aria-labelledby="h-route">
+  <div class="wrap">
+    <p class="oog">Route</p>
+    <h2 id="h-route">Zaagmolenstraat 143-A, Oude Noorden.</h2>
+    <div class="route-grid">
+      <div class="adres">
+        <h3>Kapsalon La Vie</h3>
+        <p>Zaagmolenstraat 143-A<br>3036 HJ Rotterdam</p>
+        <a class="tel" href="tel:+31647148419">06&nbsp;47&nbsp;14&nbsp;84&nbsp;19</a>
+        <p>Wanneer er plek is? Bel of app even, dan hoor je het.</p>
+        <div class="knoppen">
+          <a class="btn or" href="https://www.google.com/maps/dir/?api=1&amp;destination=Kapsalon%20La%20Vie%2C%20Zaagmolenstraat%20143-A%2C%203036%20HJ%20Rotterdam" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>Route</a>
+          <a class="btn lijn js-wa" href="https://wa.me/31647148419?text=Hoi%20La%20Vie%2C%20ik%20wil%20graag%20langskomen%20om%20geknipt%20te%20worden.%20Wanneer%20is%20er%20plek%3F"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>App</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="h-slot">
+  <div class="wrap">
+    <h2 id="h-slot">Haar te lang? App of bel La Vie.</h2>
+    <p>Knippen, baard of allebei, aan de Zaagmolenstraat 143-A.</p>
+    <div class="ctas">
+      <a class="btn lei js-wa" href="https://wa.me/31647148419?text=Hoi%20La%20Vie%2C%20ik%20wil%20graag%20langskomen%20om%20geknipt%20te%20worden.%20Wanneer%20is%20er%20plek%3F"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>App La Vie</a>
+      <a class="btn lijn" href="tel:+31647148419"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>06 47 14 84 19</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-light.svg" alt="Logo Kapsalon La Vie" width="132" height="120">
+    <div><strong style="color:#fff">Kapsalon La Vie</strong><br>Zaagmolenstraat 143-A<br>3036 HJ Rotterdam</div>
+    <div><a href="tel:+31647148419">06&nbsp;47&nbsp;14&nbsp;84&nbsp;19</a><br><a href="https://www.google.com/maps/search/?api=1&amp;query=Kapsalon%20La%20Vie%20Zaagmolenstraat%20143-A%20Rotterdam" target="_blank" rel="noopener">4,8 uit 123 reviews op Google</a></div>
+    <p class="door">Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-label="Snel contact">
+  <a class="btn or js-wa" href="https://wa.me/31647148419?text=Hoi%20La%20Vie%2C%20ik%20wil%20graag%20langskomen%20om%20geknipt%20te%20worden.%20Wanneer%20is%20er%20plek%3F"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>App La Vie</a>
+  <a class="btn lijn" href="tel:+31647148419" aria-label="Bel 06&nbsp;47&nbsp;14&nbsp;84&nbsp;19"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>Bel</a>
+</div>
+
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-label="Presentatie">
+  <div class="vel">
+    <div class="pk"><h3>Kapsalon La Vie: nu en straks</h3><button class="psluit" id="pitchSluit" type="button" aria-label="Sluiten">×</button></div>
+    <div class="vn">
+      <figure>
+        <figcaption>Nu<span>Wie op Google Maps op "Website" tikt</span></figcaption>
+        <div class="tel-frame"><img src="img/voor-gids.png" alt="Gidspagina nldirecmapi.com over Kapsalon La Vie" width="390" height="760" loading="lazy"></div>
+        <ul class="fouten">
+          <li><b>1</b>Bij "Website" staat nlcompanies.org. Dat stuurt door naar een Engelstalige gidspagina op nldirecmapi.com.</li>
+          <li><b>2</b>Daar staat 4,8 uit 114 reviews; op Google zijn het er inmiddels 123.</li>
+          <li><b>3</b>Gidsen als kappersalons.nl en haar.expert geven alleen het 010-nummer.</li>
+        </ul>
+      </figure>
+      <figure>
+        <figcaption>Straks<span>Deze site, op dezelfde telefoon</span></figcaption>
+        <div class="tel-frame" id="telNa"><iframe id="naFrame" title="Nieuwe site op een telefoon" loading="lazy"></iframe></div>
+      </figure>
+    </div>
+    <div class="reken">
+      <h4>Wat dit kan opleveren</h4>
+      <p class="vb">Voorbeeld om samen in te vullen, geen belofte. Vul je eigen cijfers in; het gaat om omzet, niet om winst.</p>
+      <label for="r-knip">Extra klanten per week via de site <output id="o-knip">1</output></label>
+      <input type="range" id="r-knip" min="0" max="15" step="1" value="1">
+      <label for="r-prijs">Wat een klant gemiddeld besteedt <output id="o-prijs">€ 20</output></label>
+      <input type="range" id="r-prijs" min="10" max="50" step="1" value="20">
+      <div class="uit">
+        <div><small>Extra per maand</small><strong id="u-maand">€ 87</strong></div>
+        <div><small>Extra per jaar</small><strong id="u-jaar">€ 1.040</strong></div>
+        <div><small>De site is terugverdiend na</small><strong id="u-knip">30 klanten</strong></div>
+      </div>
+    </div>
+    <div class="beter">
+      <h4>Wat er concreet beter is</h4>
+      <ol>
+        <li>De websiteknop op Google opent een eigen site met naam, adres, de 4,8 uit 123 reviews en het 06-nummer, in plaats van een Engelstalige gidspagina.</li>
+        <li>Bellen, appen en de route naar Zaagmolenstraat 143-A zitten overal één tik weg.</li>
+        <li>Een klant kiest knippen, baard of allebei en een dag, en het bericht staat al klaar.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var WA = "31647148419";
+  var wa = function(t){ return "https://wa.me/" + WA + "?text=" + encodeURIComponent(t); };
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function(s){ return document.querySelector(s); }, $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+  $$(".js-wa").forEach(function(a){ a.target = "_blank"; a.rel = "noopener"; });
+
+
+  /* galerij: pijlen + voortgang */
+  var rij = $("#rij"), balk = $("#balkje"), terug = $("#terug"), verder = $("#verder");
+  function stap(){ var k = rij.querySelector(".kaart"); return k ? k.getBoundingClientRect().width + 16 : 300; }
+  function voortgang(){
+    var max = rij.scrollWidth - rij.clientWidth, p = max > 0 ? rij.scrollLeft / max : 1;
+    var zicht = rij.clientWidth / rij.scrollWidth;
+    balk.style.width = (zicht * 100).toFixed(1) + "%";
+    balk.style.marginLeft = (p * (1 - zicht) * 100).toFixed(1) + "%";
+    terug.disabled = rij.scrollLeft < 4; verder.disabled = rij.scrollLeft > max - 4;
+  }
+  terug.addEventListener("click", function(){ rij.scrollBy({left: -stap(), behavior: reduce ? "auto" : "smooth"}); });
+  verder.addEventListener("click", function(){ rij.scrollBy({left: stap(), behavior: reduce ? "auto" : "smooth"}); });
+  rij.addEventListener("scroll", function(){ requestAnimationFrame(voortgang); }, {passive: true});
+  addEventListener("resize", voortgang); voortgang();
+
+  /* kiezer: dagen (zes werkdagen vooruit, zondag overgeslagen) */
+  var DAGEN = ["zo","ma","di","wo","do","vr","za"], MND = ["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"];
+  var nu = new Date(), html = "", n = 0, i = 0;
+  while (n < 6){
+    var d = new Date(nu.getFullYear(), nu.getMonth(), nu.getDate() + i); i++;
+    if (d.getDay() === 0) continue;
+    var datum = DAGEN[d.getDay()] + " " + d.getDate() + " " + MND[d.getMonth()];
+    var lab = i === 1 ? "Vandaag" : i === 2 ? "Morgen" : datum;
+    html += '<button class="opt" type="button" data-v="' + (i <= 2 ? lab.toLowerCase() + " (" + datum + ")" : datum) + '" aria-pressed="false">' + lab + (i <= 2 ? "<small>" + datum + "</small>" : "") + "</button>";
+    n++;
+  }
+  html += '<button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button>';
+  $("#dagen").innerHTML = html;
+
+  var pressed = function(g){ var b = document.querySelector('[data-group="' + g + '"] .opt[aria-pressed="true"]'); return b ? b.dataset.v : ""; };
+  function render(){
+    var dienst = pressed("dienst"), stijl = pressed("stijl"), dg = pressed("dag");
+    var regels = ["Hoi La Vie,", "Ik wil graag langskomen voor: " + (dienst === "Iets anders" ? "iets anders, namelijk ..." : dienst.toLowerCase()) + "."];
+    regels.push(stijl + ".");
+    regels.push(dg === "Maakt niet uit" ? "De dag maakt niet uit." : "Liefst " + dg + ".");
+    regels.push("Wanneer is er plek?");
+    var t = regels.join("\n");
+    $("#voorbeeld").textContent = t;
+    $$(".js-kies").forEach(function(a){ a.href = wa(t); a.target = "_blank"; a.rel = "noopener"; });
+  }
+  $$(".opts[data-group]").forEach(function(g){ g.addEventListener("click", function(e){
+    var b = e.target.closest(".opt"); if (!b) return;
+    $$('[data-group="' + g.dataset.group + '"] .opt').forEach(function(o){ o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+    render(); }); });
+  render();
+
+  /* zwevende CTA: na de hero, niet bij de kiezer */
+  var zw = $("#zweef"), heroUit = false, kiesIn = false, upd = function(){ zw.classList.toggle("on", heroUit && !kiesIn); };
+  new IntersectionObserver(function(e){ heroUit = !e[0].isIntersecting; upd(); }).observe($(".hero"));
+  new IntersectionObserver(function(e){ kiesIn = e[0].isIntersecting; upd(); }, {threshold: .2}).observe($(".bericht"));
+
+  /* scroll-onthulling met vangnet */
+  var rv = $$(".rv");
+  if ("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); }, {rootMargin: "0px 0px -8% 0px"});
+    rv.forEach(function(el){ io.observe(el); });
+  }
+  setTimeout(function(){ rv.forEach(function(el){ el.classList.add("in"); }); }, reduce ? 0 : 3500);
+
+  /* pitch-modus */
+  var pitch = $("#pitch"), naFrame = $("#naFrame"), telNa = $("#telNa");
+  function schaal(){ var w = telNa.clientWidth; naFrame.style.transform = "scale(" + (w / 390) + ")"; naFrame.style.height = (telNa.clientHeight * 390 / w) + "px"; }
+  function openPitch(){ if (!naFrame.src) naFrame.src = location.pathname.split("/").pop() || "index.html"; pitch.classList.add("open"); schaal(); }
+  function sluitPitch(){ pitch.classList.remove("open"); if (/[?&]pitch/.test(location.search)) history.replaceState(null, "", location.pathname); }
+  $("#pitchKnop").addEventListener("click", openPitch);
+  $("#pitchSluit").addEventListener("click", sluitPitch);
+  pitch.addEventListener("click", function(e){ if (e.target === pitch) sluitPitch(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") sluitPitch(); });
+  addEventListener("resize", function(){ if (pitch.classList.contains("open")) schaal(); });
+  if (/[?&]pitch/.test(location.search)) openPitch();
+  if (window.self !== window.top){ $("#pitchKnop").hidden = true; }
+
+  var eur = function(x){ return "€ " + Math.round(x).toLocaleString("nl-NL"); };
+  function reken(){
+    var k = +$("#r-knip").value, p = +$("#r-prijs").value;
+    $("#o-knip").textContent = k; $("#o-prijs").textContent = eur(p);
+    $("#u-maand").textContent = eur(k * p * 52 / 12);
+    $("#u-jaar").textContent = eur(k * p * 52);
+    $("#u-knip").textContent = Math.ceil(595 / p) + " klanten";
+  }
+  $("#r-knip").addEventListener("input", reken); $("#r-prijs").addEventListener("input", reken); reken();
+})();
+</script>
+</body>
+</html>
