@@ -1,405 +1,764 @@
 <!doctype html>
+<!--
+  Demo L126 Barbershop Maestro (Mohamedia, 8 nov 2026, versie 2, opnieuw vanaf nul)
+  Concept: "De Maestro van Delfshaven" - licht, helder en muzikaal (maestro = dirigent).
+  Lay-out-archetype: brede PANORAMA-hero van hun eigen zaak die bij scrollen langzaam door de ruimte pant
+  (mobiel horizontaal, desktop verticaal; gekoppeld aan scroll, GEEN Ken Burns-zoom), daarboven een notenbalk met
+  rode noten en een lopende afspeelstreep.
+  Daarna een "partituur"-dienstenlijst (notenbalk als ritme, elke dienst een noot: hoe hoger de noot, hoe hoger de prijs),
+  een programmablad als kiezer (deel 1-2-3) en een vergelijkschuif tussen twee fade-stills met een dirigeerstok als greep.
+  Bewust NIET: schuine fotokaart, ronde/draaiende stempel, lopende band onder de hero, donker luxe (Shahin), etalageraam (Schaars).
+  Palet: wit, inkt-zwart, rood van hun meubel (#d4202b); blauw alleen in het nagetekende logo (hun raamsticker).
+  Fonts: Instrument Serif (koppen) + Instrument Sans (tekst). Logo: raamsticker nagetekend (paal, snor, scheermes/kam,
+  boog BARBERSHOP, MAESTRO, schaarogen, paal), Arvo Bold naar paden.
+  Beeld: eigen Google Maps-foto's (interieur; twee stills uit hun video's, videobalk en "Google Maps" weggesneden,
+  merknamen vervaagd, klant alleen van achter/opzij).
+  Weggelaten: "op afspraak"/"inloop", WhatsApp als bevestigd kanaal (knoppen zeggen "app of bel"), achternaam eigenaar,
+  personeel bij naam, e-mail, Instagram. Prijzen/duur: alleen zoals in het dossier (Treatwell), met bronregel.
+-->
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Barbershop Maestro – barbershop in Rotterdam-Delfshaven</title>
-<meta name="description" content="Heren knippen, baard stylen en contouren bij Barbershop Maestro, Grote Visserijstraat 49a in Rotterdam-Delfshaven. 4,9 op Google uit 108 reviews. Elke dag open. Plan je afspraak via WhatsApp.">
-<link rel="icon" href="favicon.svg">
+<meta name="description" content="Barbershop Maestro aan de Grote Visserijstraat 49a in Delfshaven, Rotterdam: heren knippen, baard stylen, contouren en meer. 4,9 op Google uit 108 reviews. App of bel 06 87 32 69 70.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="img/zaak.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4f1f7;--ink:#1e1224;--soft:#5d5068;--plum:#2b1633;--plum-2:#4a2757;--deep:#1a0d20;--brass:#d9a441;--brass-d:#8a5a14;--lilac:#c9b6d6;--kicker:#7a4b86;--panel:#e9e3ef;--card:#fbfafc;--line:#d7cfe0;--sel-bg:#efe3f3;--r:14px;--display:"Syne",system-ui,sans-serif;--sans:"Manrope",system-ui,sans-serif}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
-.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
-.demo{background:var(--deep);color:#b9a9c4;font-size:12.5px;text-align:center;padding:6px 16px}
-.demo a{color:var(--brass)}
-.notice{background:var(--plum);color:#f4f1f7;font-size:14px;text-align:center;padding:9px 16px;font-weight:500}
-.notice b{color:var(--brass)}
-header.bar .wrap>a{display:flex;align-items:center;min-height:48px}
-header.bar .wrap{display:flex;justify-content:space-between;align-items:center;height:84px;gap:16px}
-header.bar img{height:44px;width:auto;display:block;max-width:100%}
-header.bar nav a{text-decoration:none;font-size:15px;margin-left:16px;padding:12px 6px;opacity:.8;font-weight:500}
-header.bar nav a:hover{opacity:1}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:16px;line-height:1.2;text-align:center;text-decoration:none;border:2px solid var(--plum);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
-.btn-fill{background:var(--plum);color:#fff}
-.btn-fill:hover{background:var(--plum-2);border-color:var(--plum-2)}
-.btn-line{background:transparent;color:var(--plum);border-color:currentColor}
-.btn-brass{background:var(--brass);color:var(--deep);border-color:var(--brass)}
-.btn-brass:hover{background:#f4f1f7;border-color:#f4f1f7}
-.btn svg{width:20px;height:20px;fill:currentColor;flex:none}
-.btns{display:flex;flex-wrap:wrap;gap:12px}
-/* hero */
-.hero{position:relative;overflow:hidden}
-.hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding-top:36px;padding-bottom:90px}
-.tag{display:inline-block;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--kicker);font-weight:700;margin-bottom:22px}
-.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(36px,4.1vw,56px);line-height:1.08;margin:0 0 24px;letter-spacing:-.02em}
-.rot{display:block;color:var(--kicker);min-height:1.08em}
-.sub{font-size:19px;color:var(--soft);max-width:30em;margin:0 0 32px}
-.trust{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px;color:var(--soft)}
-.trust b{color:var(--ink)}
-.trust .st{color:var(--brass-d);letter-spacing:2px}
-.vis{position:relative;height:480px;border-radius:28px;background:radial-gradient(120% 90% at 30% 20%,#3a1f45 0%,#2b1633 45%,#1a0d20 100%);overflow:hidden}
-.vis canvas{position:absolute;inset:0;width:100%;height:100%}
-.pill{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);font-family:var(--display);font-weight:700;font-size:18px;color:var(--plum);background:var(--brass);border-radius:999px;padding:6px 22px;white-space:nowrap}
-.vis .lbl-top{position:absolute;left:24px;top:22px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--lilac);font-weight:600}
-/* band */
-.band{overflow:hidden;white-space:nowrap;background:var(--deep);color:#f4f1f7}
-.band .track{display:inline-block;padding:16px 0;animation:slide 42s linear infinite;font-family:var(--display);font-weight:700;font-size:19px}
-.band span{margin:0 26px}
-.band span::after{content:"♪";margin-left:52px;color:var(--brass);font-size:16px}
-@keyframes slide{to{transform:translateX(-50%)}}
-section{padding:100px 0}
-h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,4.2vw,52px);line-height:1.06;margin:0 0 16px;letter-spacing:-.02em}
-h2 em{font-style:normal;color:var(--kicker)}
-.lead{color:var(--soft);font-size:18px;max-width:36em;margin:0 0 44px}
-.kicker{display:block;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--kicker);margin-bottom:14px}
-/* kiezer */
-.pick{background:var(--panel)}
-.pick .grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:44px;align-items:start}
-.steps-k{counter-reset:k}
-.step{margin-bottom:30px;counter-increment:k}
-.step[hidden]{display:none}
-.step h3{font-size:15px;font-weight:700;margin:0 0 12px;color:var(--soft)}
-.step h3::before{content:counter(k) ". "}
-.step h3 i{font-style:normal;font-weight:400}
-.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.opts.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-.opts.chips{display:flex;flex-wrap:wrap;gap:8px}
-.opt{position:relative;text-align:left;background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:15px 15px 13px;font:inherit;color:var(--ink);cursor:pointer;min-height:48px;transition:border-color .15s,background .15s}
-.opt:hover{border-color:var(--kicker)}
-.opt b{display:block;font-family:var(--display);font-weight:700;font-size:18px;line-height:1.2}
-.opt small{display:block;color:var(--soft);font-size:13.5px;margin-top:4px;line-height:1.35}
-.opt[aria-pressed="true"]{border-color:var(--plum);background:var(--sel-bg)}
-.opt .lbl{position:absolute;top:-11px;right:10px;background:var(--brass);color:var(--deep);font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 9px}
-.chips .opt{padding:10px 18px;border-radius:999px;font-weight:600}
-.chips .opt[aria-pressed="true"]{background:var(--plum);color:#fff;border-color:var(--plum)}
-.date input{font:inherit;padding:12px 14px;border:2px solid var(--line);border-radius:var(--r);min-height:52px;background:var(--card);color:var(--ink);max-width:100%}
-.hint{font-size:14px;color:var(--soft);margin:8px 0 0;min-height:1em}
-.pnote{font-size:13.5px;color:var(--soft);margin:-12px 0 0}
-.summary{background:var(--plum);color:#fff;border-radius:24px;padding:32px;position:sticky;top:24px}
-.summary .k{font-size:13px;color:var(--lilac);margin-bottom:4px;letter-spacing:.08em;text-transform:uppercase}
-.summary h3{font-family:var(--display);font-weight:800;font-size:28px;line-height:1.15;margin:0 0 20px}
-.summary dl{margin:0 0 26px;display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:15.5px}
-.summary dt{color:var(--lilac)}
-.summary dd{margin:0}
-.summary .btn{width:100%}
-.summary .note{font-size:13.5px;color:var(--lilac);margin-top:14px;text-align:center}
-/* waarom */
-.why-g{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.wcard{border-top:3px solid var(--brass);padding:22px 0 0}
-.why-g h3{margin:0 0 8px;font-size:20px;font-weight:700}
-.why-g p{margin:0;color:var(--soft)}
-.why-g svg{width:30px;height:30px;stroke:var(--kicker);fill:none;stroke-width:1.6;margin-bottom:14px;stroke-linecap:round;stroke-linejoin:round}
-.owner{margin-top:48px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px 28px;display:flex;gap:18px;align-items:center}
-.owner .ini{flex:none;width:56px;height:56px;border-radius:50%;background:var(--plum);color:var(--brass);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:24px}
-.owner p{margin:0;color:var(--soft)}
-.owner b{color:var(--ink)}
-/* reviews */
-.reviews{background:var(--deep);color:#f4f1f7}
-.reviews .kicker{color:var(--lilac)}
-.reviews h2 em{color:var(--brass)}
-.score{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:50px}
-.score b{font-family:var(--display);font-weight:800;font-size:92px;line-height:1;color:var(--brass)}
-.score span{color:var(--lilac);font-size:16px}
-.score .stars{color:var(--brass);letter-spacing:4px;font-size:20px;display:block}
-.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-blockquote{margin:0;font-family:var(--display);font-weight:700;font-size:23px;line-height:1.3;border-left:3px solid var(--brass);padding-left:20px}
-blockquote cite{display:block;margin-top:14px;font-family:var(--sans);font-weight:500;font-style:normal;font-size:14px;color:var(--lilac)}
-.also{margin:40px 0 0;color:var(--lilac);font-size:15px}
-/* stappen */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:s}
-.steps li{counter-increment:s}
-.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:var(--brass);color:var(--deep);font-family:var(--display);font-weight:800;font-size:22px;margin-bottom:16px}
-.steps h3{margin:0 0 6px;font-size:20px;font-weight:700}
-.steps p{margin:0;color:var(--soft)}
-/* faq */
-.faq .wrap{max-width:840px}
-details{border-bottom:1px solid var(--line);padding:4px 0}
-summary{cursor:pointer;list-style:none;padding:17px 40px 17px 0;font-size:18px;font-weight:700;position:relative}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";position:absolute;right:6px;top:12px;font-size:26px;font-weight:400;color:var(--kicker)}
-details[open] summary::after{content:"–"}
-details p{margin:0 0 18px;color:var(--soft)}
-/* bezoek */
-.visit{background:var(--panel)}
-.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.addr{font-size:19px;margin:0 0 18px}
-.ov{color:var(--soft);margin:0 0 26px;font-size:16px}
-.hbox{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px}
-.hbox h3{font-family:var(--display);font-weight:800;font-size:24px;margin:0 0 10px}
-.hours{width:100%;border-collapse:collapse;margin-bottom:22px}
-.hours td{padding:11px 0;border-bottom:1px solid var(--line)}
-.hours td:last-child{text-align:right;color:var(--soft)}
-.hours tr.today td{font-weight:700;color:var(--ink)}
-.final{background:var(--plum);color:#f4f1f7;text-align:center}
-.final h2{max-width:16ch;margin:0 auto 16px}
-.final h2 em{color:var(--brass)}
-.final .lead{color:var(--lilac);margin:0 auto 32px}
-.final .btns{justify-content:center}
-footer{background:var(--deep);color:#b9a9c4;padding:56px 0 96px;font-size:15px}
-footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px}
-footer img{height:44px;width:auto;margin-bottom:14px;max-width:100%}
-footer h4{color:var(--brass);font-weight:700;margin:0 0 10px;font-size:15px}
-footer p{margin:0}
-footer a{display:inline-block;padding:10px 0}
-.fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;margin-top:20px;font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.fine a{padding:0;min-height:0}
-.float{position:fixed;left:16px;right:16px;bottom:16px;z-index:9;display:none}
-.float.on{display:block}
-.float .btn{width:100%;box-shadow:0 12px 30px rgba(26,13,32,.35)}
-.sr{position:absolute;left:-9999px}
-@media (min-width:861px){.float{display:none!important}}
-@media (max-width:860px){
-  header.bar nav{display:none}
-  header.bar img{height:38px}
-  .hgrid{grid-template-columns:minmax(0,1fr);padding-bottom:60px}
-  .vis{height:320px}
-  .hero h1{font-size:clamp(28px,7.6vw,44px)}
-  .pick .grid,.visit .wrap{grid-template-columns:minmax(0,1fr)}
-  .why-g,.quotes,.steps{grid-template-columns:1fr}
-  .opts,.opts.three{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .opt b{font-size:16.5px}
-  .opt{padding:14px 12px 12px;overflow-wrap:anywhere}
-  .summary{position:static}
-  footer .wrap{grid-template-columns:1fr}
-  section{padding:72px 0}
-  .score b{font-size:76px}
-  blockquote{font-size:20px}
-  .owner{flex-direction:column;align-items:flex-start}
+:root{
+  --wit:#fff;--papier:#f4f4f2;--inkt:#121212;--inkt-2:#3a3a3a;--grijs:#6b6b6b;--lijn:#e2e2de;
+  --rood:#d4202b;--rood-d:#a9151f;--rood-l:#fbe9ea;
+  --serif:"Instrument Serif","Times New Roman",serif;--sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --balk:repeating-linear-gradient(to bottom,transparent 0 9px,var(--inkt) 9px 10px);
 }
-@media (prefers-reduced-motion:reduce){.band .track{animation:none}html{scroll-behavior:auto}*{animation-duration:.001s!important;animation-iteration-count:1!important}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--inkt);background:var(--wit);line-height:1.55;font-size:17px;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--rood);outline-offset:3px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.01em}
+h2{font-size:clamp(38px,8.4vw,72px)}
+h2 em,h1 em{font-style:italic;color:var(--rood)}
+.kicker{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grijs)}
+.kicker b{color:var(--rood);font-weight:700}
+section{scroll-margin-top:70px}
+
+/* demo-strook + aankondiging */
+.demo{position:relative;background:var(--inkt);color:#fff;text-align:center;font-size:13px;padding:7px 46px}
+.demo a{color:#fff;font-weight:600}
+.pitch-knop{position:absolute;right:6px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;border:0;background:transparent;color:#fff;font:700 10px var(--sans);opacity:.28;cursor:pointer}
+.pitch-knop:hover{opacity:1}
+.aank{background:var(--rood);color:#fff;font-size:14px;font-weight:500;text-align:center;padding:7px 14px}
+.aank span{white-space:nowrap}
+
+/* header */
+.kop{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--lijn)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;height:68px}
+.kop .merk{display:block;line-height:0}
+.kop .merk img{height:56px;width:auto}
+.kop nav{display:flex;align-items:center;gap:6px}
+.kop nav a.l{display:none;text-decoration:none;font-weight:500;font-size:15px;padding:12px 10px}
+.kop nav a.l:hover{color:var(--rood)}
+.belknop{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--inkt);text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap}
+.belknop:hover{background:var(--inkt);color:#fff}
+.belknop svg{width:16px;height:16px}
+@media (min-width:860px){.kop nav a.l{display:inline-block}.kop .merk img{height:60px}}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.rood{background:var(--rood);color:#fff}
+.btn.rood:hover{background:var(--rood-d)}
+.btn.lijn{border-color:var(--inkt);color:var(--inkt);background:transparent}
+.btn.lijn:hover{background:var(--inkt);color:#fff}
+.btn.wit{background:#fff;color:var(--inkt)}
+.btn.wit:hover{background:var(--inkt);color:#fff}
+.btn.lijn-w{border-color:#fff;color:#fff}
+.btn.lijn-w:hover{background:#fff;color:var(--inkt)}
+
+/* hero */
+.hero{position:relative;background:var(--wit);overflow:hidden}
+.notenbalk{position:relative;height:50px;margin-top:22px}
+.notenbalk .lijnen{position:absolute;inset:0;background:var(--balk);opacity:.85;transform-origin:left center;animation:teken 1.4s cubic-bezier(.2,.7,.2,1) both}
+.notenbalk .lijnen::before{content:"";position:absolute;left:0;top:9px;bottom:0;width:3px;background:var(--inkt)}
+.noot{position:absolute;width:15px;height:11px;animation:noot .5s cubic-bezier(.3,1.6,.5,1) both}
+.noot::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--rood);rotate:-20deg}
+.noot::after{content:"";position:absolute;right:.5px;bottom:5px;width:1.5px;height:30px;background:var(--rood)}
+.noot.omlaag::after{right:auto;left:.5px;top:5px;bottom:auto}
+.noot.leeg::before{background:transparent;box-shadow:inset 0 0 0 2px var(--rood)}
+.speelkop{position:absolute;top:2px;bottom:-4px;width:2px;background:var(--rood);left:0;animation:speel 9s linear 1.8s infinite both;opacity:.9}
+.speelkop::before{content:"";position:absolute;top:-4px;left:-4px;width:10px;height:10px;border-radius:50%;background:var(--rood)}
+@keyframes teken{from{scale:0 1}to{scale:1 1}}
+@keyframes noot{from{opacity:0;translate:0 10px}to{opacity:1;translate:0 0}}
+@keyframes speel{0%{left:0;opacity:0}4%{opacity:.9}94%{opacity:.9}100%{left:100%;opacity:0}}
+.hero-tekst{padding:16px 0 18px}
+.hero h1{font-size:clamp(46px,12.2vw,132px);margin-top:10px}
+.hero h1 em{display:inline-block;padding-right:.08em}
+.hero .sub{font-size:17px;color:var(--inkt-2);max-width:34em;margin-top:22px}
+.hero .sub.desk{display:none}
+.pano{position:relative;height:clamp(260px,36svh,360px);overflow:hidden;background:#ddd}
+.pano img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:0% 40%}
+.pano .tip{position:absolute;left:14px;bottom:14px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.92);color:var(--inkt);font-size:13px;font-weight:600;padding:8px 12px;border-radius:999px;transition:opacity .4s}
+.pano .tip i{display:inline-block;width:22px;height:2px;background:var(--rood);position:relative;animation:wijs 1.6s ease-in-out infinite}
+.pano .tip i::after{content:"";position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left:6px solid var(--rood);border-right:0}
+@keyframes wijs{0%,100%{translate:0 0}50%{translate:5px 0}}
+.pano .tip.weg{opacity:0}
+.pano .bord{position:absolute;right:14px;top:14px;background:var(--inkt);color:#fff;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:7px 11px;border-radius:4px}
+.hero-voet{padding:16px 0 34px}
+.knoppen{display:flex;flex-wrap:wrap;gap:10px}
+.knoppen .btn{flex:1 1 230px;white-space:nowrap}
+.hero-cta .btn{flex:1 1 140px}
+.tn{white-space:nowrap}
+.trust{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:15px;color:var(--inkt-2)}
+.trust b{font-weight:700;color:var(--inkt)}
+.trust .ster{color:var(--rood)}
+.trust a{text-underline-offset:3px}
+@media (min-width:860px){
+  .hero-tekst{display:grid;grid-template-columns:1.55fr 1fr;gap:48px;align-items:end;padding:22px 0 34px}
+  .hero h1{font-size:clamp(64px,7.2vw,112px)}
+  .hero .sub.mob{display:none}.hero .sub.desk{display:block;margin:0 0 22px}
+  .hero-voet,.hero-voet>*{display:none}
+  .hero .desk-cta .knoppen .btn{flex:0 1 auto}
+  .pano{height:min(64vh,620px)}
+  .pano .tip{left:auto;right:20px;bottom:20px}
+  .pano .bord{right:auto;left:20px;top:20px}
+}
+@media (max-width:859px){.hero .desk-cta{display:none}}
+
+/* partituur */
+.part{padding:84px 0 70px;background:var(--wit);border-top:1px solid var(--lijn)}
+.part-kop{display:grid;gap:14px;margin-bottom:34px}
+.part-kop p{color:var(--inkt-2);max-width:36em}
+.legenda{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--grijs)}
+.legenda i{width:12px;height:9px;border-radius:50%;background:var(--rood);rotate:-20deg;display:inline-block}
+.systeem{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-left:3px solid var(--inkt)}
+.maat{position:relative;text-align:left;text-decoration:none;color:inherit;background:none;border:0;border-right:1px solid var(--inkt);padding:0 14px 26px;cursor:pointer;min-width:0;display:flex;flex-direction:column}
+.maat .balk{position:relative;height:62px;margin:0 -14px 14px;background:var(--balk);background-size:100% 50px;background-repeat:no-repeat;background-position:0 8px}
+.maat .kn{position:absolute;left:42%;width:16px;height:12px;transition:scale .25s}
+.maat .kn::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--rood);rotate:-20deg}
+.maat .kn::after{content:"";position:absolute;right:.5px;bottom:5px;width:1.5px;height:32px;background:var(--rood)}
+.maat .rust{position:absolute;left:42%;top:20px;width:14px;height:34px}
+.maat .rust path{stroke:var(--inkt);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.maat:hover .kn,.maat:focus-visible .kn{scale:1.25}
+.maat .naam{font-family:var(--serif);font-size:clamp(22px,5.6vw,30px);line-height:1.08;overflow-wrap:break-word}
+.maat .info{margin-top:auto;padding-top:10px;display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.maat .prijs{font-weight:700;font-size:20px}
+.maat .duur{font-size:14px;color:var(--grijs)}
+.maat .kies{display:block;margin-top:10px;font-size:13px;font-weight:600;color:var(--rood)}
+.maat:hover{background:var(--rood-l)}
+.systeem+.systeem{margin-top:26px}
+.maat.laatste{border-right-width:4px}
+.bron{margin-top:22px;font-size:14px;color:var(--grijs)}
+.bron a{color:var(--grijs)}
+@media (min-width:860px){.systeem{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.rv{opacity:0;translate:0 18px;transition:opacity .7s,translate .7s}
+.rv.in{opacity:1;translate:0 0}
+.part .rv .kn{opacity:0;translate:0 -12px;transition:opacity .4s .3s,translate .5s .3s cubic-bezier(.3,1.6,.5,1)}
+.part .rv.in .kn{opacity:1;translate:0 0}
+
+/* kiezer: programmablad */
+.kiezer{padding:80px 0;background:var(--papier)}
+.blad{background:#fff;border:1.5px solid var(--inkt);border-radius:6px;display:grid;overflow:hidden}
+.blad-kop{padding:26px 22px 18px;border-bottom:1.5px solid var(--inkt);display:grid;gap:10px}
+.blad-kop h2{font-size:clamp(36px,7.4vw,60px)}
+.deel{padding:22px;border-bottom:1px solid var(--lijn)}
+.deel h3{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--grijs);margin-bottom:12px}
+.deel h3 b{color:var(--rood)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{min-height:46px;min-width:46px;padding:8px 16px;border-radius:999px;border:1.5px solid var(--lijn);background:#fff;cursor:pointer;font-size:15px;font-weight:500;text-align:left;line-height:1.2}
+.opt small{display:block;font-size:12px;color:var(--grijs);font-weight:500}
+.opt:hover{border-color:var(--inkt)}
+.opt[aria-pressed="true"]{background:var(--inkt);border-color:var(--inkt);color:#fff}
+.opt[aria-pressed="true"] small{color:#cfcfcf}
+.deel .noot-t{margin-top:12px;font-size:14px;color:var(--grijs)}
+.bericht{padding:22px;background:var(--inkt);color:#fff;display:grid;gap:16px;align-content:start}
+.bericht .kicker{color:#bdbdbd}
+.bericht pre{white-space:pre-wrap;font:500 16px/1.55 var(--sans);background:#1f1f1f;border-left:3px solid var(--rood);padding:14px 16px;border-radius:4px}
+.bericht .cta-rij{display:grid;gap:10px}
+.bericht .klein{font-size:14px;color:#c9c9c9}
+@media (min-width:900px){
+  .blad{grid-template-columns:1.5fr 1fr}
+  .blad-kop{grid-column:1/-1}
+  .delen{border-right:1.5px solid var(--inkt)}
+  .bericht{padding:30px}
+}
+
+/* fade-vergelijker */
+.werk{padding:84px 0;background:var(--wit)}
+.werk-grid{display:grid;gap:28px;align-items:center}
+.werk-grid p{color:var(--inkt-2)}
+.verg{position:relative;aspect-ratio:5/4;border-radius:6px;overflow:hidden;background:#222;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.verg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.verg .boven{clip-path:inset(0 calc(100% - var(--x,50%)) 0 0)}
+.verg .lab{position:absolute;bottom:12px;background:rgba(255,255,255,.94);color:var(--inkt);font-size:13px;font-weight:600;padding:6px 10px;border-radius:4px;pointer-events:none}
+.verg .lab.l{left:12px}.verg .lab.r{right:12px}
+.verg .stok{position:absolute;top:0;bottom:0;left:var(--x,50%);width:0;pointer-events:none}
+.verg .stok::before{content:"";position:absolute;top:0;bottom:0;left:-1px;width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.verg .greep{position:absolute;top:50%;left:-24px;margin-top:-24px;width:48px;height:48px;border-radius:50%;background:var(--rood);box-shadow:0 4px 14px rgba(0,0,0,.3);display:grid;place-items:center}
+.verg .greep svg{width:26px;height:26px}
+.verg input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.werk .onder{font-size:14px;color:var(--grijs);margin-top:12px}
+@media (min-width:860px){.werk-grid{grid-template-columns:1fr 1.25fr;gap:60px}}
+
+/* waarom */
+.waarom{padding:84px 0;background:var(--papier);border-top:1px solid var(--lijn)}
+.waarom h2{margin-bottom:34px}
+.maten{display:grid;border-left:3px solid var(--inkt)}
+.maten article{padding:24px 20px;border-bottom:1px solid var(--lijn);background:#fff;border-right:1px solid var(--inkt);min-width:0}
+.maten .nr{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rood)}
+.maten h3{font-size:clamp(28px,6.6vw,38px);margin:8px 0 10px;overflow-wrap:break-word}
+.maten p{color:var(--inkt-2)}
+@media (min-width:860px){.maten{grid-template-columns:repeat(3,1fr)}.maten article{border-bottom:0;padding:30px 26px}}
+
+/* reviews */
+.reviews{padding:84px 0;background:var(--wit)}
+.rev-grid{display:grid;gap:34px}
+.score{display:grid;gap:6px;align-content:start}
+.score .cijfer{font-family:var(--serif);font-size:clamp(110px,30vw,190px);line-height:.85;color:var(--rood)}
+.score p{font-size:17px}
+.score a{font-weight:600;text-underline-offset:3px}
+.citaten{display:grid;gap:14px}
+.citaten blockquote{border-left:3px solid var(--rood);padding:6px 0 6px 18px}
+.citaten blockquote p{font-family:var(--serif);font-size:clamp(25px,5.8vw,34px);line-height:1.15}
+.citaten footer{margin-top:8px;font-size:15px;color:var(--grijs)}
+.rev-bron{font-size:14px;color:var(--grijs);margin-top:6px}
+.rev-bron a{color:var(--grijs)}
+@media (min-width:860px){.rev-grid{grid-template-columns:.8fr 1.4fr;gap:70px}}
+
+/* stappen */
+.stappen{padding:80px 0;background:var(--inkt);color:#fff}
+.stappen h2{margin-bottom:34px}
+.stappen h2 em{color:#ff5a63}
+.stappen ol{list-style:none;display:grid;gap:0;border-top:1px solid #3a3a3a}
+.stappen li{display:grid;grid-template-columns:56px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid #3a3a3a}
+.stappen li>span{font-family:var(--serif);font-size:44px;line-height:1;color:#ff5a63}
+.stappen h3{font-family:var(--sans);font-size:19px;font-weight:600;margin-bottom:4px;letter-spacing:0}
+.stappen li p{color:#cfcfcf}
+@media (min-width:860px){.stappen ol{grid-template-columns:repeat(3,1fr);gap:30px;border-top:0}.stappen li{border-top:1px solid #3a3a3a}}
+
+/* faq */
+.faq{padding:84px 0;background:var(--wit)}
+.faq h2{margin-bottom:28px}
+.faq details{border-top:1px solid var(--lijn)}
+.faq details:last-child{border-bottom:1px solid var(--lijn)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:60px;padding:14px 0;font-weight:600;font-size:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--serif);font-size:30px;color:var(--rood);line-height:1;flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 20px;color:var(--inkt-2);max-width:44em}
+@media (min-width:860px){.faq .wrap{display:grid;grid-template-columns:.8fr 1.4fr;gap:70px}}
+
+/* route */
+.route{padding:84px 0;background:var(--papier);border-top:1px solid var(--lijn)}
+.route-grid{display:grid;gap:34px}
+.adres{font-size:19px;margin:16px 0 8px}
+.ov{color:var(--inkt-2)}
+.route .knoppen{margin-top:26px}
+.uren{background:#fff;border:1.5px solid var(--inkt);border-radius:6px;padding:8px 22px}
+.uren h3{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--grijs);padding:14px 0 8px}
+.uren table{width:100%;border-collapse:collapse;font-size:17px}
+.uren td{padding:11px 0;border-top:1px solid var(--lijn)}
+.uren td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.uren tr.nu td{font-weight:700;color:var(--rood)}
+@media (min-width:860px){.route-grid{grid-template-columns:1.1fr 1fr;gap:70px;align-items:start}}
+
+/* slot */
+.slot{padding:90px 0;background:var(--rood);color:#fff;position:relative;overflow:hidden}
+.slot::before{content:"";position:absolute;left:0;right:0;top:34px;height:50px;background:repeating-linear-gradient(to bottom,transparent 0 9px,rgba(255,255,255,.35) 9px 10px)}
+.slot .wrap{position:relative}
+.slot h2{font-size:clamp(44px,10vw,96px);margin:44px 0 16px}
+.slot h2 em{color:#fff}
+.slot p{font-size:18px;max-width:30em;opacity:.95}
+.slot .knoppen{margin-top:28px;max-width:560px}
+
+/* footer */
+footer.voet{background:var(--inkt);color:#d6d6d6;padding:56px 0 110px;font-size:15px}
+.voet-grid{display:grid;gap:26px}
+.voet img{height:72px;width:auto}
+.voet a{color:#fff}
+.voet .door{border-top:1px solid #333;margin-top:30px;padding-top:20px;font-size:14px;color:#a8a8a8}
+@media (min-width:860px){.voet-grid{grid-template-columns:1.2fr 1fr 1fr}footer.voet{padding-bottom:56px}}
+
+/* zwevende CTA (mobiel) */
+.zweef{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;display:flex;gap:8px;padding:8px;background:#fff;border:1.5px solid var(--inkt);border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.18);translate:0 140%;opacity:0;transition:translate .35s,opacity .35s;pointer-events:none}
+.zweef.on{translate:0 0;opacity:1;pointer-events:auto}
+.zweef .btn{min-height:48px;flex:1;padding:0 14px;font-size:15px}
+.zweef .btn.lijn{flex:0 0 auto}
+@media (min-width:860px){.zweef{display:none}}
+
+/* pitch-modus (alleen voor Mo) */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center}
+.pitch.open{display:flex}
+.pitch .vel{background:#fff;width:min(1100px,100%);max-height:94svh;overflow:auto;border-radius:16px 16px 0 0;padding:24px clamp(18px,3vw,40px) 40px}
+.pitch .pk{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.pitch .pk h3{font-size:30px}
+.pitch .psluit{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--lijn);background:#fff;font-size:24px;cursor:pointer}
+.vn{display:grid;gap:22px}
+.vn figure{display:grid;gap:10px;align-content:start}
+.vn figcaption{font-weight:700;font-size:17px}
+.vn figcaption span{display:block;font-weight:400;font-size:14px;color:var(--grijs)}
+.tel{width:min(300px,100%);aspect-ratio:9/17;border:10px solid var(--inkt);border-radius:30px;overflow:hidden;background:#fff;margin-inline:auto;position:relative}
+.tel iframe{width:390px;height:737px;border:0;transform-origin:0 0;position:absolute;left:0;top:0}
+.browser{height:100%;display:flex;flex-direction:column;font-family:Arial,Helvetica,sans-serif}
+.browser .url{background:#f1f3f4;padding:10px 12px;font-size:12px;color:#333;display:flex;align-items:center;gap:6px}
+.browser .url i{width:9px;height:9px;border:1.5px solid #999;border-radius:2px;display:inline-block}
+.browser .susp{flex:1;display:grid;place-content:center;text-align:center;padding:20px;gap:14px;background:#fff}
+.browser .susp strong{font-size:22px;color:#c00}
+.browser .susp em{display:block;height:8px;background:#e6e6e6;border-radius:4px;width:150px;margin:0 auto}
+.browser .susp em+em{width:110px}
+.fouten{list-style:none;display:grid;gap:8px;font-size:15px}
+.fouten li{display:grid;grid-template-columns:24px 1fr;gap:8px}
+.fouten b{width:24px;height:24px;border-radius:50%;background:var(--rood);color:#fff;font-size:13px;display:grid;place-items:center}
+.reken,.beter{margin-top:26px;border-top:1px solid var(--lijn);padding-top:22px}
+.reken h4,.beter h4{font-family:var(--serif);font-weight:400;font-size:28px;margin-bottom:6px}
+.reken .vb{font-size:14px;color:var(--grijs);margin-bottom:14px}
+.reken label{display:flex;justify-content:space-between;gap:10px;font-weight:600;font-size:15px;margin-top:12px}
+.reken input[type=range]{width:100%;accent-color:var(--rood);height:44px}
+.uit{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:14px}
+.uit div{background:var(--papier);border-radius:8px;padding:14px}
+.uit small{display:block;font-size:13px;color:var(--grijs)}
+.uit strong{font-family:var(--serif);font-weight:400;font-size:30px}
+.beter ol{padding-left:22px;display:grid;gap:8px}
+@media (min-width:760px){.vn{grid-template-columns:1fr 1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv,.part .rv .kn{opacity:1!important;translate:none!important}
+  .speelkop{display:none}
+}
+@media(min-width:1000px){.pano{width:min(940px,100% - 40px);margin-inline:auto}}
 </style>
 </head>
 <body>
-<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
-<div class="notice"><b>4,9 ★</b> uit 108 Google-reviews · elke dag open in Delfshaven</div>
-<header class="bar"><div class="wrap"><a href="#top"><img src="logo-dark.svg" alt="Barbershop Maestro" width="362" height="70"></a><nav aria-label="Hoofdmenu"><a href="#kiezer">Afspraak</a><a href="#waarom">Waarom</a><a href="#ervaringen">Ervaringen</a><a href="#adres">Adres</a></nav></div></header>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> <button class="pitch-knop" id="pitchKnop" type="button" aria-label="Presentatie openen">Mo</button></div>
+<div class="aank"><span>4,9 op Google · 108 reviews</span> · <span id="vandaag">Delfshaven</span></div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="Barbershop Maestro, naar boven"><img src="logo-dark.svg" alt="Barbershop Maestro" width="130" height="56"></a>
+    <nav aria-label="Hoofdmenu">
+      <a class="l" href="#diensten">Diensten</a>
+      <a class="l" href="#werk">Werk</a>
+      <a class="l" href="#route">Route</a>
+      <a class="belknop" href="tel:+31687326970"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Bel</a>
+    </nav>
+  </div>
+</header>
+
 <main>
-<div class="hero" id="top">
-<div class="wrap hgrid">
-  <div>
-    <span class="tag">Knippen · Baard · Contouren</span>
-    <h1>Je barbier in Delfshaven, <span class="rot" id="rot">zonder haastwerk</span></h1>
-    <p class="sub">Heren knippen, baard stylen en contouren aan de Grote Visserijstraat. Eigenaar Aziz heeft jarenlange ervaring in zijn vak. Klanten noemen vooral dat er precies geknipt wordt wat ze vragen.</p>
-    <div class="btns"><a class="btn btn-fill js-wa-plain" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>App via WhatsApp</a><a class="btn btn-line" href="#kiezer">Kies je knipbeurt</a></div>
-    <div class="trust"><span><span class="st" aria-hidden="true">★★★★★</span> <b>4,9</b> op Google</span><span><b>108</b> reviews</span><span>Grote Visserijstraat, Delfshaven</span></div>
+<section class="hero" id="top" aria-labelledby="h1">
+  <div class="notenbalk" aria-hidden="true">
+    <div class="lijnen"></div>
+    <i class="noot" style="left:7%;top:34px;animation-delay:.9s"></i>
+    <i class="noot" style="left:15%;top:29px;animation-delay:1.05s"></i>
+    <i class="noot omlaag" style="left:23%;top:19px;animation-delay:1.2s"></i>
+    <i class="noot leeg" style="left:36%;top:39px;animation-delay:1.35s"></i>
+    <i class="noot" style="left:47%;top:24px;animation-delay:1.5s"></i>
+    <i class="noot omlaag" style="left:58%;top:14px;animation-delay:1.65s"></i>
+    <i class="noot" style="left:70%;top:29px;animation-delay:1.8s"></i>
+    <i class="noot leeg" style="left:82%;top:34px;animation-delay:1.95s"></i>
+    <i class="noot omlaag" style="left:92%;top:19px;animation-delay:2.1s"></i>
+    <span class="speelkop"></span>
   </div>
-  <div class="vis" aria-hidden="true"><span class="lbl-top">Maestro · Delfshaven</span><canvas id="anim"></canvas><span class="pill" id="pill">Knippen</span></div>
-</div>
-</div>
-<div class="band" aria-hidden="true"><div class="track" id="track"><span>Heren knippen</span><span>Baard stylen</span><span>Contouren</span><span>Lang haar met schaar</span><span>Keratine</span><span>4,9 uit 108 Google-reviews</span><span>Elke dag open</span></div></div>
-<section class="pick" id="kiezer">
-  <div class="wrap">
-    <span class="kicker">Afspraak aanvragen</span>
-    <h2>Kies je <em>knipbeurt</em></h2>
-    <p class="lead">Kies wat je wilt en wanneer het je uitkomt. Je bericht staat klaar, je stuurt het in één tik via WhatsApp.</p>
-    <div class="grid"><div class="steps-k">
-      <div class="step"><h3>Wat wil je laten doen?</h3><div class="opts" data-group="t">
-        <button class="opt" type="button" data-v="Knippen" aria-pressed="true"><b>Knippen</b><small>Heren, wassen of lang haar</small></button>
-        <button class="opt" type="button" data-v="Knippen + baard" data-p="€35 · 45 min" aria-pressed="false"><span class="lbl">Combi</span><b>Knippen + baard</b><small>Knippen en baard stylen · 45 min · €35</small></button>
-        <button class="opt" type="button" data-v="Baard of contouren" aria-pressed="false"><b>Baard of contouren</b><small>Baard stylen of strak zetten</small></button>
-        <button class="opt" type="button" data-v="Keratine" data-p="prijs via WhatsApp" aria-pressed="false"><b>Keratine</b><small>Keratinebehandeling</small></button>
-      </div></div>
-      <div class="step vstep" data-for="Knippen"><h3>Welke knipbeurt?</h3><div class="opts three" data-group="v">
-        <button class="opt" type="button" data-v="Heren knippen" data-p="€25 · 30 min" aria-pressed="true"><b>Heren knippen</b><small>30 min · €25</small></button>
-        <button class="opt" type="button" data-v="Wassen en knippen" data-p="€30" aria-pressed="false"><b>Wassen en knippen</b><small>€30</small></button>
-        <button class="opt" type="button" data-v="Lang haar met schaar" data-p="€25" aria-pressed="false"><b>Lang haar</b><small>Met de schaar · €25</small></button>
-      </div></div>
-      <div class="step vstep" data-for="Baard of contouren" hidden><h3>Wat precies?</h3><div class="opts" data-group="v">
-        <button class="opt" type="button" data-v="Baard stylen" data-p="€20" aria-pressed="true"><b>Baard stylen</b><small>€20</small></button>
-        <button class="opt" type="button" data-v="Contouren" data-p="€15" aria-pressed="false"><b>Contouren</b><small>€15</small></button>
-      </div></div>
-      <div class="step"><h3>Welke dag past je het best?</h3><div class="opts chips" data-group="dag"><button class="opt" type="button" data-v="Doordeweeks" aria-pressed="false">Doordeweeks</button><button class="opt" type="button" data-v="Weekend" aria-pressed="false">Weekend</button><button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button></div></div>
-      <div class="step"><h3>Welk dagdeel?</h3><div class="opts chips" data-group="deel"><button class="opt" type="button" data-v="Ochtend" aria-pressed="false">Ochtend</button><button class="opt" type="button" data-v="Middag" aria-pressed="false">Middag</button><button class="opt" type="button" data-v="Avond" aria-pressed="false">Avond</button><button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button></div></div>
-      <div class="step date"><h3>Heb je al een datum in gedachten? <i>(optioneel)</i></h3><label class="sr" for="d1">Datum</label><input type="date" id="d1" class="js-date"><p class="hint" id="hint" aria-live="polite"></p></div>
-      <p class="pnote">Prijzen en tijden zoals nu vermeld op Treatwell.</p>
-    </div><aside class="summary" aria-live="polite">
-      <div class="k">Jouw afspraakverzoek</div>
-      <h3 id="s-title"></h3>
-      <dl><dt>Dienst</dt><dd id="s-t">–</dd><dt>Prijs</dt><dd id="s-p">–</dd><dt>Voorkeur</dt><dd id="s-dag">–</dd><dt>Datum</dt><dd id="s-datum">–</dd></dl>
-      <a class="btn btn-brass js-ask" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>Vraag je afspraak aan via WhatsApp</a>
-      <div class="note">Vrijblijvend. Je hoort via WhatsApp wanneer je terecht kunt.</div>
-    </aside></div>
-  </div>
-</section>
-<section class="why" id="waarom">
-  <div class="wrap">
-    <span class="kicker">Wat klanten steeds noemen</span>
-    <h2>Waarom klanten voor <em>Maestro</em> kiezen</h2>
-    <p class="lead">Drie dingen die in de reviews telkens terugkomen.</p>
-    <div class="why-g">
-      <div class="wcard"><svg viewBox="0 0 30 30"><circle cx="8" cy="22" r="4"/><circle cx="8" cy="8" r="4"/><path d="M11 10l15 12M11 20L26 8"/></svg><h3>Precies wat je vraagt</h3><p>Je legt uit hoe je het wilt, en zo gaat het eraf. Dat noemen klanten vaak in hun reviews.</p></div>
-      <div class="wcard"><svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="11"/><path d="M15 8v7l5 3"/></svg><h3>Rust en aandacht</h3><p>Geen haastwerk: er wordt de tijd voor je genomen, met oprechte aandacht voor je kapsel.</p></div>
-      <div class="wcard"><svg viewBox="0 0 30 30"><path d="M11 22V7l13-3v15"/><circle cx="8" cy="22" r="3"/><circle cx="21" cy="19" r="3"/></svg><h3>Gastvrij, met muziek</h3><p>Een goede sfeer, goede muziek en de koffie staat klaar.</p></div>
+  <div class="wrap hero-tekst">
+    <div>
+      <p class="kicker"><b>Barbershop</b> · Delfshaven, Rotterdam</p>
+      <h1 id="h1">Knippen en baard, <em>op de maat.</em></h1>
     </div>
-    <div class="owner"><span class="ini" aria-hidden="true">A</span><p><b>Aziz, eigenaar.</b> Hij heeft jarenlange ervaring in zijn vak.</p></div>
-  </div>
-</section>
-<section class="reviews" id="ervaringen">
-  <div class="wrap">
-    <span class="kicker">Ervaringen</span>
-    <h2>108 Google-reviews, gemiddeld een <em>4,9</em></h2>
-    <div class="score"><b>4,9</b><span><span class="stars" aria-hidden="true">★★★★★</span>gemiddeld op Google, uit 108 reviews</span></div>
-    <div class="quotes">
-      <blockquote>“En precies geknipt waar ik om vroeg!”<cite>Timo, review op Treatwell</cite></blockquote>
-      <blockquote>“Geen haastwerk, maar oprechte aandacht. Daarbij staat de koffie altijd klaar.”<cite>Mike, review op Treatwell</cite></blockquote>
-      <blockquote>“Beste kapper van Nederland Service top gastvrij”<cite>Niko, review op Treatwell</cite></blockquote>
+    <div class="desk-cta">
+      <p class="sub desk">Herenkapper aan de Grote Visserijstraat 49a. Knippen, baard, contouren en lang haar met de schaar. Kies wat je wilt en app of bel, je bericht staat al klaar.</p>
+      <div class="knoppen">
+        <a class="btn rood js-wa" href="https://wa.me/31687326970?text=Hoi%20Barbershop%20Maestro%2C%20ik%20wil%20graag%20geknipt%20worden.%20Wanneer%20kan%20ik%20terecht%3F"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.1c-.25.7-1.45 1.33-2 1.38-.53.05-1.03.25-3.45-.72-2.9-1.15-4.75-4.1-4.9-4.3-.14-.18-1.17-1.56-1.17-2.97 0-1.4.74-2.1 1-2.38a1.06 1.06 0 0 1 .77-.36h.55c.18 0 .42-.07.65.5.25.58.83 2 .9 2.15.08.15.12.32.03.5-.1.2-.15.32-.3.48-.14.17-.3.38-.44.5-.15.15-.3.3-.13.6.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.36 1.45.3.15.47.12.64-.08.18-.2.74-.86.94-1.16.2-.3.4-.25.66-.15.28.1 1.73.82 2.03.97.3.15.5.22.57.35.07.12.07.72-.18 1.41z"/></svg>App via WhatsApp</a>
+        <a class="btn lijn" href="#kiezer">Kies je behandeling</a>
+      </div>
+      <p class="trust"><span><span class="ster">★</span> <b>4,9</b> op Google · 108 reviews</span><span>06 87 32 69 70</span></p>
     </div>
-    <p class="also">Ook op Treatwell: 4,7 uit 623 reviews.</p>
+  </div>
+  <div class="pano" id="pano">
+    <img src="img/zaak.webp" alt="De zaak van Barbershop Maestro: twee witte barberstoelen, rood-zwarte kasten, een ringlamp, spiegels en een witte trap naar de vide" width="857" height="1040" fetchpriority="high">
+    <span class="bord">Grote Visserijstraat 49a</span>
+    <span class="tip" id="panTip"><i></i>Scroll en loop mee door de zaak</span>
+  </div>
+  <div class="wrap hero-voet">
+    <div class="knoppen hero-cta">
+      <a class="btn rood js-wa" href="https://wa.me/31687326970?text=Hoi%20Barbershop%20Maestro%2C%20ik%20wil%20graag%20geknipt%20worden.%20Wanneer%20kan%20ik%20terecht%3F"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.1c-.25.7-1.45 1.33-2 1.38-.53.05-1.03.25-3.45-.72-2.9-1.15-4.75-4.1-4.9-4.3-.14-.18-1.17-1.56-1.17-2.97 0-1.4.74-2.1 1-2.38a1.06 1.06 0 0 1 .77-.36h.55c.18 0 .42-.07.65.5.25.58.83 2 .9 2.15.08.15.12.32.03.5-.1.2-.15.32-.3.48-.14.17-.3.38-.44.5-.15.15-.3.3-.13.6.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.36 1.45.3.15.47.12.64-.08.18-.2.74-.86.94-1.16.2-.3.4-.25.66-.15.28.1 1.73.82 2.03.97.3.15.5.22.57.35.07.12.07.72-.18 1.41z"/></svg>WhatsApp</a>
+      <a class="btn lijn" href="#kiezer">Kies je dienst</a>
+    </div>
+    <p class="trust"><span><span class="ster">★</span> <b>4,9</b> op Google · 108 reviews</span><span>Bel: <a href="tel:+31687326970">06 87 32 69 70</a></span></p>
+    <p class="sub mob">Herenkapper aan de Grote Visserijstraat 49a. Kies wat je wilt in de partituur hieronder, app of bel, klaar.</p>
   </div>
 </section>
-<section class="how" id="werkwijze">
+
+<section class="part" id="diensten" aria-labelledby="h-part">
   <div class="wrap">
-    <span class="kicker">Zo werkt het</span>
-    <h2>In drie stappen geregeld</h2>
-    <p class="lead">Even appen is genoeg.</p>
-    <ol class="steps"><li><h3>Kies je knipbeurt</h3><p>Knippen, baard, contouren of keratine, en wanneer het je uitkomt.</p></li><li><h3>Stuur het via WhatsApp</h3><p>Je bericht staat al klaar, je drukt alleen op verzenden.</p></li><li><h3>Kom langs</h3><p>Grote Visserijstraat 49a in Delfshaven. Elke dag open.</p></li></ol>
+    <div class="part-kop">
+      <p class="kicker"><b>De partituur</b> · diensten en prijzen</p>
+      <h2 id="h-part">Zeven noten, <em>één partituur.</em></h2>
+      <p>Tik op een noot en je keuze staat meteen klaar in je bericht.</p>
+      <span class="legenda"><i></i> Hoe hoger de noot, hoe hoger de prijs</span>
+    </div>
+    <div class="systeem">
+      <button class="maat rv" type="button" data-kies="Heren knippen"><span class="balk"><i class="kn" style="top:41px"></i></span><span class="naam">Heren knippen</span><span class="info"><span class="prijs">€ 25</span><span class="duur">30 min</span></span><span class="kies">Kies deze →</span></button>
+      <button class="maat rv" type="button" data-kies="Knippen en baard stylen"><span class="balk"><i class="kn" style="top:31px"></i></span><span class="naam">Knippen en baard stylen</span><span class="info"><span class="prijs">€ 35</span><span class="duur">45 min</span></span><span class="kies">Kies deze →</span></button>
+      <button class="maat rv" type="button" data-kies="Wassen en knippen"><span class="balk"><i class="kn" style="top:36px"></i></span><span class="naam">Wassen en knippen</span><span class="info"><span class="prijs">€ 30</span></span><span class="kies">Kies deze →</span></button>
+      <button class="maat rv laatste-m" type="button" data-kies="Lang haar knippen met schaar"><span class="balk"><i class="kn" style="top:41px"></i></span><span class="naam">Lang haar knippen met schaar</span><span class="info"><span class="prijs">€ 25</span></span><span class="kies">Kies deze →</span></button>
+    </div>
+    <div class="systeem">
+      <button class="maat rv" type="button" data-kies="Baard stylen"><span class="balk"><i class="kn" style="top:46px"></i></span><span class="naam">Baard stylen</span><span class="info"><span class="prijs">€ 20</span></span><span class="kies">Kies deze →</span></button>
+      <button class="maat rv" type="button" data-kies="Contouren"><span class="balk"><i class="kn" style="top:51px"></i></span><span class="naam">Contouren</span><span class="info"><span class="prijs">€ 15</span></span><span class="kies">Kies deze →</span></button>
+      <button class="maat rv" type="button" data-kies="Keratinebehandeling"><span class="balk"><svg class="rust" viewBox="0 0 14 34" aria-hidden="true"><path d="M4 2l7 8-5 6 7 8c-4-2-8-1-6 6"/></svg></span><span class="naam">Keratine&shy;behandeling</span><span class="info"><span class="duur">Prijs: vraag het even</span></span><span class="kies">Kies deze →</span></button>
+      <a class="maat rv laatste" href="#kiezer" data-kies="Iets anders"><span class="balk"></span><span class="naam">Iets anders?</span><span class="info"><span class="duur">Zet het in je bericht</span></span><span class="kies">Naar de kiezer →</span></a>
+    </div>
+    <p class="bron">Prijzen en duur zoals vermeld op de <a href="https://www.treatwell.nl/salon/barbershop-maestro/" target="_blank" rel="noopener">Treatwell-pagina van Barbershop Maestro</a>.</p>
   </div>
 </section>
-<section class="faq" id="vragen">
+
+<section class="kiezer" id="kiezer" aria-labelledby="h-kies">
   <div class="wrap">
-    <span class="kicker">Vragen</span>
-    <h2>Veelgestelde vragen</h2>
-    <details><summary>Wat kost een knipbeurt?</summary><p>Heren knippen is €25 (30 minuten), knippen en baard stylen €35 (45 minuten). Alle diensten en prijzen staan in de kiezer hierboven.</p></details>
-    <details><summary>Wanneer zijn jullie open?</summary><p>Elke dag. Maandag 10:00–20:00, dinsdag tot en met zaterdag 09:00–21:00, zondag 10:00–20:00.</p></details>
-    <details><summary>Knippen jullie ook lang haar?</summary><p>Ja, lang haar wordt met de schaar geknipt.</p></details>
-    <details><summary>Doen jullie ook keratine?</summary><p>Ja, er worden keratinebehandelingen gedaan. Kies 'Keratine' in de kiezer, dan hoor je via WhatsApp de prijs en wanneer je terecht kunt.</p></details>
-    <details><summary>Hoe kom ik er met het OV?</summary><p>Tramhalte Mathenesserbrug ligt op ongeveer 3 minuten lopen, metrostation Delfshaven op ongeveer 7 minuten.</p></details>
-    <details><summary>Waar zit Barbershop Maestro?</summary><p>Grote Visserijstraat 49a, 3026 CC Rotterdam (Delfshaven).</p></details>
+    <div class="blad">
+      <div class="blad-kop">
+        <p class="kicker"><b>Programma</b> · in drie delen</p>
+        <h2 id="h-kies">Kies, en je bericht <em>schrijft zichzelf.</em></h2>
+      </div>
+      <div class="delen">
+        <div class="deel">
+          <h3><b>Deel 1</b> · Wat wil je?</h3>
+          <div class="opts" data-group="dienst" role="group" aria-label="Dienst">
+            <button class="opt" type="button" data-v="Heren knippen" aria-pressed="true">Heren knippen<small>€ 25 · 30 min</small></button>
+            <button class="opt" type="button" data-v="Knippen en baard stylen" aria-pressed="false">Knippen + baard<small>€ 35 · 45 min</small></button>
+            <button class="opt" type="button" data-v="Wassen en knippen" aria-pressed="false">Wassen en knippen<small>€ 30</small></button>
+            <button class="opt" type="button" data-v="Lang haar knippen met schaar" aria-pressed="false">Lang haar, schaar<small>€ 25</small></button>
+            <button class="opt" type="button" data-v="Baard stylen" aria-pressed="false">Baard stylen<small>€ 20</small></button>
+            <button class="opt" type="button" data-v="Contouren" aria-pressed="false">Contouren<small>€ 15</small></button>
+            <button class="opt" type="button" data-v="Keratinebehandeling" aria-pressed="false">Keratine<small>prijs navragen</small></button>
+            <button class="opt" type="button" data-v="Iets anders" aria-pressed="false">Iets anders</button>
+          </div>
+        </div>
+        <div class="deel">
+          <h3><b>Deel 2</b> · Welke dag?</h3>
+          <div class="opts" data-group="dag" id="dagen" role="group" aria-label="Dag"></div>
+        </div>
+        <div class="deel">
+          <h3><b>Deel 3</b> · Welk dagdeel?</h3>
+          <div class="opts" data-group="deel" role="group" aria-label="Dagdeel">
+            <button class="opt" type="button" data-v="Ochtend" aria-pressed="false">Ochtend</button>
+            <button class="opt" type="button" data-v="Middag" aria-pressed="false">Middag</button>
+            <button class="opt" type="button" data-v="Avond" aria-pressed="false">Avond</button>
+            <button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button>
+          </div>
+          <p class="noot-t">Open: ma 10:00–20:00, di t/m za 09:00–21:00, zo 10:00–20:00.</p>
+        </div>
+      </div>
+      <div class="bericht" aria-live="polite">
+        <p class="kicker">Je bericht</p>
+        <pre id="voorbeeld"></pre>
+        <div class="cta-rij">
+          <a class="btn rood js-kies" href="https://wa.me/31687326970?text=Hoi%20Barbershop%20Maestro%2C%20ik%20wil%20graag%3A%20heren%20knippen."><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.1c-.25.7-1.45 1.33-2 1.38-.53.05-1.03.25-3.45-.72-2.9-1.15-4.75-4.1-4.9-4.3-.14-.18-1.17-1.56-1.17-2.97 0-1.4.74-2.1 1-2.38a1.06 1.06 0 0 1 .77-.36h.55c.18 0 .42-.07.65.5.25.58.83 2 .9 2.15.08.15.12.32.03.5-.1.2-.15.32-.3.48-.14.17-.3.38-.44.5-.15.15-.3.3-.13.6.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.36 1.45.3.15.47.12.64-.08.18-.2.74-.86.94-1.16.2-.3.4-.25.66-.15.28.1 1.73.82 2.03.97.3.15.5.22.57.35.07.12.07.72-.18 1.41z"/></svg>Stuur via WhatsApp</a>
+          <a class="btn wit" href="tel:+31687326970">Of bel 06 87 32 69 70</a>
+        </div>
+        <p class="klein">Liever even bellen? Noem dan gewoon je keuze hierboven.</p>
+      </div>
+    </div>
   </div>
 </section>
-<section class="visit" id="adres">
+
+<section class="werk" id="werk" aria-labelledby="h-werk">
+  <div class="wrap werk-grid">
+    <div>
+      <p class="kicker"><b>Uit de stoel</b> · eigen werk</p>
+      <h2 id="h-werk">Twee fades. <em>Schuif de stok.</em></h2>
+      <p style="margin-top:16px">Links een fade met krullen bovenop, rechts een fade waar de tondeuse in de nek bezig is. Beide komen uit video's van de zaak zelf. Sleep de rode greep om te vergelijken.</p>
+    </div>
+    <div>
+      <div class="verg" id="verg" style="--x:50%">
+        <img loading="lazy" decoding="async" src="img/fade-tondeuse.webp" alt="Fade in de nek, de tondeuse is bezig, van achteren gezien" width="520" height="416">
+        <img class="boven" src="img/fade-krullen.webp" alt="Fade met krullen bovenop en een baard, van opzij en achteren gezien" width="520" height="416">
+        <span class="lab l">Fade met krullen</span><span class="lab r">Fade, tondeuse in de nek</span>
+        <div class="stok"><span class="greep"><svg viewBox="0 0 26 26" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7l-5 6 5 6M17 7l5 6-5 6"/></svg></span></div>
+        <input type="range" min="0" max="100" value="50" aria-label="Schuif tussen de twee fades">
+      </div>
+      <p class="onder">Stills uit hun eigen video's; klanten alleen van achteren of opzij.</p>
+    </div>
+  </div>
+</section>
+
+<section class="waarom" aria-labelledby="h-waarom">
+  <div class="wrap">
+    <p class="kicker"><b>Waarom Maestro</b> · uit de reviews</p>
+    <h2 id="h-waarom">Wat klanten noemen, <em>in drie maten.</em></h2>
+    <div class="maten">
+      <article class="rv"><span class="nr">Maat 1</span><h3>Geknipt zoals gevraagd</h3><p>Klanten schrijven dat er precies geknipt wordt waar ze om vroegen.</p></article>
+      <article class="rv"><span class="nr">Maat 2</span><h3>Rust en aandacht</h3><p>Klanten schrijven over aandacht in de stoel, zonder haastwerk. En over de koffie.</p></article>
+      <article class="rv"><span class="nr">Maat 3</span><h3>Sfeer en muziek</h3><p>Klanten noemen de gastvrijheid, de goede sfeer en de muziek in de zaak.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" aria-labelledby="h-rev">
+  <div class="wrap rev-grid">
+    <div class="score">
+      <p class="kicker"><b>Applaus</b> · Google</p>
+      <p class="cijfer" id="h-rev">4,9</p>
+      <p>op Google, uit 108 reviews.<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Barbershop+Maestro+Grote+Visserijstraat+49a+Rotterdam" target="_blank" rel="noopener">Bekijk de reviews op Google</a></p>
+    </div>
+    <div>
+      <div class="citaten">
+        <blockquote class="rv"><p>"En precies geknipt waar ik om vroeg!"</p><footer>Timo</footer></blockquote>
+        <blockquote class="rv"><p>"Geen haastwerk, maar oprechte aandacht. Daarbij staat de koffie altijd klaar."</p><footer>Mike</footer></blockquote>
+        <blockquote class="rv"><p>"Beste kapper van Nederland Service top gastvrij"</p><footer>Niko</footer></blockquote>
+      </div>
+      <p class="rev-bron">Citaten uit reviews op <a href="https://www.treatwell.nl/salon/barbershop-maestro/" target="_blank" rel="noopener">Treatwell</a> (daar 4,7 uit 623 reviews).</p>
+    </div>
+  </div>
+</section>
+
+<section class="stappen" aria-labelledby="h-stap">
+  <div class="wrap">
+    <p class="kicker" style="color:#a9a9a9"><b style="color:#ff5a63">Zo gaat het</b> · drie tellen</p>
+    <h2 id="h-stap">Eén, twee, drie, <em>en je zit.</em></h2>
+    <ol>
+      <li><span>1</span><div><h3>Kies je noot</h3><p>Knippen, baard, contouren of lang haar: tik het aan in de partituur of de kiezer.</p></div></li>
+      <li><span>2</span><div><h3>App of bel</h3><p>Je bericht staat klaar met dienst, dag en dagdeel. Of bel <span class="tn">06 87 32 69 70</span>.</p></div></li>
+      <li><span>3</span><div><h3>Kom naar Delfshaven</h3><p>Grote Visserijstraat 49a, op een paar minuten lopen van tram en metro.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="h-faq">
   <div class="wrap">
     <div>
-      <span class="kicker">Langskomen</span>
-      <h2>Grote Visserijstraat 49a</h2>
-      <p class="addr">Grote Visserijstraat 49a<br>3026 CC Rotterdam</p>
-      <p class="ov">Tram Mathenesserbrug ca. 3 min lopen · metro Delfshaven ca. 7 min</p>
-      <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=Barbershop+Maestro+Grote+Visserijstraat+49a+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
+      <p class="kicker"><b>Vragen</b></p>
+      <h2 id="h-faq">Kort <em>en eerlijk.</em></h2>
     </div>
-    <div class="hbox"><h3>Openingstijden</h3>
-      <table class="hours"><tbody>
-        <tr data-d="1"><td>Maandag</td><td>10:00–20:00</td></tr>
-        <tr data-d="2"><td>Dinsdag</td><td>09:00–21:00</td></tr>
-        <tr data-d="3"><td>Woensdag</td><td>09:00–21:00</td></tr>
-        <tr data-d="4"><td>Donderdag</td><td>09:00–21:00</td></tr>
-        <tr data-d="5"><td>Vrijdag</td><td>09:00–21:00</td></tr>
-        <tr data-d="6"><td>Zaterdag</td><td>09:00–21:00</td></tr>
-        <tr data-d="0"><td>Zondag</td><td>10:00–20:00</td></tr>
-      </tbody></table>
-      <a class="btn btn-fill js-wa-plain" href="#">App Maestro via WhatsApp</a>
+    <div>
+      <details><summary>Wat kost heren knippen?</summary><p>Heren knippen is € 25 (ongeveer 30 minuten). Knippen en baard stylen samen is € 35 (ongeveer 45 minuten). Prijzen zoals vermeld op Treatwell.</p></details>
+      <details><summary>Kan ik alleen voor mijn baard komen?</summary><p>Ja. Baard stylen is € 20 en contouren € 15.</p></details>
+      <details><summary>Knippen jullie ook lang haar?</summary><p>Ja, lang haar knippen met de schaar staat op de lijst voor € 25. Wassen en knippen is € 30.</p></details>
+      <details><summary>Doen jullie keratinebehandelingen?</summary><p>Ja, keratinebehandelingen staan op de dienstenlijst. Vraag de prijs even via WhatsApp of telefoon.</p></details>
+      <details><summary>Wanneer zijn jullie open?</summary><p>Maandag 10:00–20:00, dinsdag tot en met zaterdag 09:00–21:00 en zondag 10:00–20:00.</p></details>
+      <details><summary>Hoe kom ik er met het OV?</summary><p>Tramhalte Mathenesserbrug ligt op ongeveer 3 minuten lopen, metrostation Delfshaven op ongeveer 7 minuten.</p></details>
     </div>
   </div>
 </section>
-<section class="final">
+
+<section class="route" id="route" aria-labelledby="h-route">
+  <div class="wrap route-grid">
+    <div>
+      <p class="kicker"><b>Route</b> · Delfshaven</p>
+      <h2 id="h-route">Grote Visserij&shy;straat <em>49a.</em></h2>
+      <p class="adres">Grote Visserijstraat 49a<br>3026 CC Rotterdam</p>
+      <p class="ov">Tram: halte Mathenesserbrug, ca. 3 min lopen. Metro: Delfshaven, ca. 7 min lopen.</p>
+      <div class="knoppen">
+        <a class="btn rood" href="https://www.google.com/maps/dir/?api=1&amp;destination=Grote+Visserijstraat+49a%2C+3026+CC+Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+        <a class="btn lijn" href="tel:+31687326970">Bel 06 87 32 69 70</a>
+      </div>
+    </div>
+    <div class="uren">
+      <h3>Openingstijden</h3>
+      <table>
+        <tbody id="uren">
+          <tr data-d="1"><td>Maandag</td><td>10:00 – 20:00</td></tr>
+          <tr data-d="2"><td>Dinsdag</td><td>09:00 – 21:00</td></tr>
+          <tr data-d="3"><td>Woensdag</td><td>09:00 – 21:00</td></tr>
+          <tr data-d="4"><td>Donderdag</td><td>09:00 – 21:00</td></tr>
+          <tr data-d="5"><td>Vrijdag</td><td>09:00 – 21:00</td></tr>
+          <tr data-d="6"><td>Zaterdag</td><td>09:00 – 21:00</td></tr>
+          <tr data-d="0"><td>Zondag</td><td>10:00 – 20:00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="h-slot">
   <div class="wrap">
-    <h2>Tijd voor een <em>verse cut?</em></h2>
-    <p class="lead">Kies wat je wilt en stuur je aanvraag in één tik via WhatsApp.</p>
-    <div class="btns"><a class="btn btn-brass" href="#kiezer">Plan je knipbeurt</a></div>
+    <h2 id="h-slot">Tijd voor een <em>nieuwe maat?</em></h2>
+    <p>App of bel Barbershop Maestro in Delfshaven. Zeg wat je wilt en wanneer het je uitkomt.</p>
+    <div class="knoppen">
+      <a class="btn wit js-wa" href="https://wa.me/31687326970?text=Hoi%20Barbershop%20Maestro%2C%20ik%20wil%20graag%20geknipt%20worden.%20Wanneer%20kan%20ik%20terecht%3F">App via WhatsApp</a>
+      <a class="btn lijn-w" href="tel:+31687326970">Bel 06 87 32 69 70</a>
+    </div>
   </div>
 </section>
 </main>
-<footer>
+
+<footer class="voet">
   <div class="wrap">
-    <div><img src="logo-light.svg" alt="Barbershop Maestro" width="362" height="70"><p>Knippen, baard en contouren in Rotterdam-Delfshaven.</p></div>
-    <div><h4>Adres</h4><p>Grote Visserijstraat 49a<br>3026 CC Rotterdam</p></div>
-    <div><h4>Contact</h4><p><a class="js-wa-plain" href="#">WhatsApp 06 87326970</a></p></div>
-    <div class="fine"><span>© 2026 Barbershop Maestro</span><span>Website door <a href="https://mohamedia.nl">Mohamedia</a></span></div>
+    <div class="voet-grid">
+      <div><img src="logo-light.svg" alt="Barbershop Maestro" width="167" height="72"></div>
+      <div><p>Grote Visserijstraat 49a<br>3026 CC Rotterdam (Delfshaven)</p></div>
+      <div><p><a href="tel:+31687326970">06 87 32 69 70</a><br>Ma 10–20 · di–za 9–21 · zo 10–20</p></div>
+    </div>
+    <p class="door">Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> · demo, niet de officiële site van Barbershop Maestro</p>
   </div>
 </footer>
-<div class="float" id="float"><a class="btn btn-brass" href="#kiezer">Plan je knipbeurt</a></div>
+
+<div class="zweef" id="zweef" aria-label="Snel contact">
+  <a class="btn rood js-wa" href="https://wa.me/31687326970?text=Hoi%20Barbershop%20Maestro%2C%20ik%20wil%20graag%20geknipt%20worden.%20Wanneer%20kan%20ik%20terecht%3F">App Maestro</a>
+  <a class="btn lijn" href="tel:+31687326970" aria-label="Bel 06 87 32 69 70">Bel</a>
+</div>
+
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-label="Presentatie">
+  <div class="vel">
+    <div class="pk"><h3>Barbershop Maestro: nu en straks</h3><button class="psluit" id="pitchSluit" type="button" aria-label="Sluiten">×</button></div>
+    <div class="vn">
+      <figure>
+        <figcaption>Nu<span>Wie op Google Maps op "Website" tikt</span></figcaption>
+        <div class="tel"><div class="browser">
+          <div class="url"><i></i>barbershopmaestro.nl</div>
+          <div class="susp"><strong>Account Suspended</strong><em></em><em></em></div>
+        </div></div>
+        <ul class="fouten">
+          <li><b>1</b>Het eigen domein barbershopmaestro.nl staat op Google Maps, maar toont "Account Suspended".</li>
+          <li><b>2</b>Prijzen en diensten staan niet op een eigen site, maar op Treatwell.</li>
+        </ul>
+      </figure>
+      <figure>
+        <figcaption>Straks<span>Deze site, op dezelfde telefoon</span></figcaption>
+        <div class="tel" id="telNa"><iframe id="naFrame" title="Nieuwe site op een telefoon" loading="lazy"></iframe></div>
+      </figure>
+    </div>
+    <div class="reken">
+      <h4>Wat dit kan opleveren</h4>
+      <p class="vb">Voorbeeld om samen in te vullen, geen belofte. Vul je eigen cijfers in; het gaat om omzet, niet om winst.</p>
+      <label for="r-knip">Extra knipbeurten per week via de site <output id="o-knip">2</output></label>
+      <input type="range" id="r-knip" min="0" max="20" step="1" value="2">
+      <label for="r-prijs">Prijs van een knipbeurt <output id="o-prijs">€ 25</output></label>
+      <input type="range" id="r-prijs" min="15" max="35" step="1" value="25">
+      <div class="uit">
+        <div><small>Extra per maand</small><strong id="u-maand">€ 217</strong></div>
+        <div><small>Extra per jaar</small><strong id="u-jaar">€ 2.600</strong></div>
+        <div><small>€ 595 is de omzet van</small><strong id="u-knip">24 knipbeurten</strong></div>
+      </div>
+    </div>
+    <div class="beter">
+      <h4>Wat er concreet beter is</h4>
+      <ol>
+        <li>Wie op Google Maps op "Website" tikt, ziet de zaak, de 4,9 uit 108 reviews en het nummer, in plaats van "Account Suspended".</li>
+        <li>Alle diensten met prijs op één plek, en in één tik een bericht met dienst, dag en dagdeel al ingevuld (of bellen).</li>
+        <li>Route-knop naar Grote Visserijstraat 49a, openingstijden van vandaag en hoe je er met tram of metro komt.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
 <script>
-const WA = "31687326970";
-const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
-const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const HOURS = {0:"10:00 tot 20:00",1:"10:00 tot 20:00",2:"09:00 tot 21:00",3:"09:00 tot 21:00",4:"09:00 tot 21:00",5:"09:00 tot 21:00",6:"09:00 tot 21:00"};
-const st = { t: "", v: "", p: "", dag: "", deel: "", datum: "" };
-const fmt = d => d ? new Date(d + "T12:00").toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long" }) : "";
-const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-const pb = g => g && g.querySelector('.opt[aria-pressed="true"]');
-const pressed = g => { const b = pb(g); return b ? b.dataset.v : ""; };
-function render() {
-  const tb = pb($('[data-group="t"]')); st.t = tb ? tb.dataset.v : "";
-  $$(".vstep").forEach(s => s.hidden = s.dataset.for !== st.t);
-  const vb = pb($('.vstep:not([hidden]) [data-group="v"]'));
-  st.v = vb ? vb.dataset.v : "";
-  st.p = (vb && vb.dataset.p) || (tb && tb.dataset.p) || "";
-  st.dag = pressed($('[data-group="dag"]')); st.deel = pressed($('[data-group="deel"]'));
-  const dienst = st.v || st.t;
-  $("#s-title").textContent = dienst;
-  $("#s-t").textContent = st.v ? st.t + " · " + st.v : st.t;
-  $("#s-p").textContent = st.p || "–";
-  const pref = [st.dag, st.deel].filter(p => p && !/^maakt niet uit$/i.test(p)).join(", ");
-  $("#s-dag").textContent = pref || "Maakt niet uit";
-  $("#s-datum").textContent = st.datum ? fmt(st.datum) : "Flexibel";
-  const lines = ["Hoi Maestro! Ik wil graag een afspraak maken.", `Dienst: ${dienst}`, `Voorkeur: ${pref || "maakt niet uit"}`, `Datum: ${st.datum ? fmt(st.datum) : "flexibel"}`, "Is er plek? Dank je!"];
-  $$(".js-ask").forEach(a => { a.href = wa(lines.join("\n")); a.target = "_blank"; a.rel = "noopener"; });
-}
-$$(".opts[data-group]").forEach(g => g.addEventListener("click", e => {
-  const b = e.target.closest(".opt"); if (!b) return;
-  g.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b)); render();
-}));
-const today = new Date();
-const iso = d => new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
-$$(".js-date").forEach(i => { i.min = iso(today); i.addEventListener("input", () => {
-  st.datum = i.value; const wd = i.value ? new Date(i.value + "T12:00").getDay() : -1;
-  $("#hint").textContent = wd >= 0 ? `Die dag is Maestro open van ${HOURS[wd]}.` : ""; render(); }); });
-$$(".js-wa-plain").forEach(a => { a.href = wa("Hoi Maestro! Ik wil graag een afspraak maken. Wanneer kan ik terecht?"); a.target = "_blank"; a.rel = "noopener"; });
-const tr = $(`.hours tr[data-d="${today.getDay()}"]`); if (tr) tr.classList.add("today");
-render();
-const track = $("#track"); track.innerHTML += track.innerHTML;
-const fl = $("#float"); let heroOut = false, pickIn = false; const upd = () => fl.classList.toggle("on", heroOut && !pickIn);
-new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe($("#top"));
-new IntersectionObserver(([e]) => { pickIn = e.isIntersecting; upd(); }, { threshold: .12 }).observe($("#kiezer"));
-(function rotate(el, words, ms) { let i = 0; if (reduce || !el) return; setInterval(() => { i = (i + 1) % words.length;
-  el.animate([{ opacity: 1 }, { opacity: 0, transform: "translateY(-6px)" }], { duration: 240 }).onfinish = () => { el.textContent = words[i];
-  el.animate([{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }], { duration: 420, easing: "cubic-bezier(.2,.8,.3,1)" }); }; }, ms); })
-  ($("#rot"), ["zonder haastwerk", "precies zoals jij wilt", "elke dag open"], 2800);
-// notenbalk van vijf haarlijnen; een schaar knipt ze steeds bij, de snippers dwarrelen als noten weg
-(() => { const c = $("#anim"), x = c.getContext("2d"); let W, H;
-  const pill = $("#pill"), names = ["Knippen", "Baard stylen", "Contouren"]; let lastLap = -1;
-  const brass = "#d9a441", lilac = "#c9b6d6", bits = [];
-  function size() { const r = devicePixelRatio || 1; W = c.clientWidth; H = c.clientHeight; c.width = W * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0); }
-  const yAt = (i, px, T) => { const gap = Math.min(34, H * .075); const base = H * .46 + (i - 2) * gap; return base + Math.sin(px * .018 + T * .0016 + i * .7) * (H * .035); };
-  function scissors(sx, sy, open) {
-    x.save(); x.translate(sx, sy); x.scale(1.7, 1.7); x.lineCap = "round"; x.strokeStyle = "#f4f1f7"; x.lineWidth = 3;
-    [-1, 1].forEach(s => { x.save(); x.rotate(s * open);
-      x.beginPath(); x.moveTo(-6, 0); x.lineTo(46, s * -2); x.stroke();
-      x.beginPath(); x.arc(-20, s * 9, 9, 0, Math.PI * 2); x.stroke(); x.restore(); });
-    x.fillStyle = brass; x.beginPath(); x.arc(0, 0, 3.4, 0, Math.PI * 2); x.fill(); x.restore(); }
-  function f(t) {
-    const T = reduce ? 4000 : t; x.clearRect(0, 0, W, H);
-    const span = W + 160, lap = Math.floor(T * .11 / span), sx = (T * .11) % span - 60;
-    if (lap !== lastLap) { lastLap = lap; pill.textContent = names[lap % names.length]; }
-    for (let i = 0; i < 5; i++) {
-      x.lineWidth = 3; x.lineCap = "round";
-      // links van de schaar: kort geknipte stukjes
-      x.strokeStyle = "rgba(201,182,214,.55)"; x.beginPath();
-      for (let px = 10; px < Math.min(sx - 30, W - 10); px += 16) { x.moveTo(px, yAt(i, px, T)); x.lineTo(px + 9, yAt(i, px + 9, T)); }
-      x.stroke();
-      // rechts: nog lange, ongeknipte lijnen
-      x.strokeStyle = brass; x.beginPath(); let first = true;
-      for (let px = Math.max(10, sx - 30); px < W - 10; px += 6) { const y = yAt(i, px, T); first ? x.moveTo(px, y) : x.lineTo(px, y); first = false; }
-      x.stroke();
-    }
-    const open = .08 + Math.abs(Math.sin(T * .012)) * .32, sy = yAt(2, sx, T);
-    if (!reduce && sx > 0 && sx < W && Math.random() < .35) bits.push({ x: sx + 30, y: sy + (Math.random() - .5) * 120, vx: (Math.random() - .5) * .6, vy: -.4 - Math.random() * .6, a: 1, r: Math.random() * 6, note: Math.random() < .25 });
-    for (let k = bits.length - 1; k >= 0; k--) { const b = bits[k]; b.x += b.vx; b.y += b.vy; b.vy += .025; b.a -= .008; b.r += .03;
-      if (b.a <= 0 || b.y > H) { bits.splice(k, 1); continue; }
-      x.globalAlpha = b.a;
-      if (b.note) { x.fillStyle = brass; x.font = "18px serif"; x.fillText("♪", b.x, b.y); }
-      else { x.strokeStyle = lilac; x.lineWidth = 1.6; x.beginPath(); x.moveTo(b.x, b.y); x.lineTo(b.x + Math.cos(b.r) * 7, b.y + Math.sin(b.r) * 7); x.stroke(); }
-      x.globalAlpha = 1; }
-    scissors(sx, sy, open);
-    if (!reduce) requestAnimationFrame(f); }
-  size(); addEventListener("resize", size); requestAnimationFrame(f); })();
+(function(){
+  "use strict";
+  var WA = "31687326970";
+  var wa = function(t){ return "https://wa.me/" + WA + "?text=" + encodeURIComponent(t); };
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function(s){ return document.querySelector(s); }, $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+  $$(".js-wa").forEach(function(a){ a.target = "_blank"; a.rel = "noopener"; });
+
+  /* openingstijden van vandaag */
+  var UREN = {0:["10:00","20:00"],1:["10:00","20:00"],2:["09:00","21:00"],3:["09:00","21:00"],4:["09:00","21:00"],5:["09:00","21:00"],6:["09:00","21:00"]};
+  var nu = new Date(), dag = nu.getDay();
+  $("#vandaag").textContent = "Vandaag " + UREN[dag][0] + "–" + UREN[dag][1];
+  var rij = document.querySelector('#uren tr[data-d="' + dag + '"]'); if (rij) rij.classList.add("nu");
+
+  /* panorama: loopt bij scrollen door de zaak */
+  var pano = $("#pano"), pimg = pano.querySelector("img"), tip = $("#panTip"), breed = matchMedia("(min-width:860px)"), bezig = false;
+  function pan(){
+    bezig = false;
+    var eind = pano.offsetTop + pano.offsetHeight;
+    var p = Math.min(1, Math.max(0, scrollY / Math.max(1, eind)));
+    p = 1 - Math.pow(1 - p, 1.4);
+    if (breed.matches) pimg.style.objectPosition = "50% " + (40 + p * 48).toFixed(1) + "%";
+    else pimg.style.objectPosition = (p * 100).toFixed(1) + "% 40%";
+    tip.classList.toggle("weg", scrollY > 60);
+  }
+  if (!reduce){
+    addEventListener("scroll", function(){ if (!bezig){ bezig = true; requestAnimationFrame(pan); } }, {passive: true});
+    addEventListener("resize", pan); pan();
+  } else { pimg.style.objectPosition = "30% 40%"; tip.style.display = "none"; }
+
+  /* kiezer: dagen */
+  var DAGEN = ["zo","ma","di","wo","do","vr","za"], MND = ["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"];
+  var dagBox = $("#dagen"), html = "";
+  for (var i = 0; i < 7; i++){
+    var d = new Date(nu.getFullYear(), nu.getMonth(), nu.getDate() + i);
+    var lab = i === 0 ? "Vandaag" : i === 1 ? "Morgen" : DAGEN[d.getDay()] + " " + d.getDate() + " " + MND[d.getMonth()];
+    var waarde = (i < 2 ? lab.toLowerCase() + " (" : "") + DAGEN[d.getDay()] + " " + d.getDate() + " " + MND[d.getMonth()] + (i < 2 ? ")" : "");
+    html += '<button class="opt" type="button" data-v="' + waarde + '" aria-pressed="false">' + lab + '<small>' + UREN[d.getDay()][0] + "–" + UREN[d.getDay()][1] + '</small></button>';
+  }
+  html += '<button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button>';
+  dagBox.innerHTML = html;
+
+  var pressed = function(g){ var b = document.querySelector('[data-group="' + g + '"] .opt[aria-pressed="true"]'); return b ? b.dataset.v : ""; };
+  function render(){
+    var dienst = pressed("dienst"), dg = pressed("dag"), deel = pressed("deel");
+    var regels = ["Hoi Barbershop Maestro,", "Ik wil graag: " + (dienst === "Iets anders" ? "iets anders, namelijk ..." : dienst.toLowerCase()) + "."];
+    if (dg !== "Maakt niet uit" || deel !== "Maakt niet uit")
+      regels.push("Voorkeur: " + [dg !== "Maakt niet uit" ? dg : "", deel !== "Maakt niet uit" ? deel.toLowerCase() : ""].filter(Boolean).join(", ") + ".");
+    else regels.push("Dag en tijd maken niet uit.");
+    regels.push("Wanneer kan ik terecht?");
+    $("#voorbeeld").textContent = regels.join("\n");
+    $$(".js-kies").forEach(function(a){ a.href = wa(regels.join("\n")); a.target = "_blank"; a.rel = "noopener"; });
+  }
+  function kies(groep, v){
+    $$('[data-group="' + groep + '"] .opt').forEach(function(o){ o.setAttribute("aria-pressed", o.dataset.v === v ? "true" : "false"); });
+    render();
+  }
+  $$(".opts[data-group]").forEach(function(g){ g.addEventListener("click", function(e){
+    var b = e.target.closest(".opt"); if (!b) return; kies(g.dataset.group, b.dataset.v); }); });
+  render();
+
+  /* partituur -> kiezer */
+  $$(".maat[data-kies]").forEach(function(m){ m.addEventListener("click", function(e){
+    e.preventDefault(); kies("dienst", m.dataset.kies);
+    $("#kiezer").scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "start"});
+  }); });
+
+  /* vergelijkschuif */
+  var verg = $("#verg"), rng = verg.querySelector("input");
+  rng.addEventListener("input", function(){ verg.style.setProperty("--x", rng.value + "%"); });
+
+  /* zwevende CTA: na de hero, niet bij de kiezer */
+  var zw = $("#zweef"), heroUit = false, kiesIn = false, upd = function(){ zw.classList.toggle("on", heroUit && !kiesIn); };
+  new IntersectionObserver(function(e){ heroUit = !e[0].isIntersecting; upd(); }).observe($(".hero-voet"));
+  new IntersectionObserver(function(e){ kiesIn = e[0].isIntersecting; upd(); }, {threshold: .2}).observe($(".bericht"));
+
+  /* scroll-onthulling met vangnet */
+  var rv = $$(".rv");
+  if ("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); }, {rootMargin: "0px 0px -8% 0px"});
+    rv.forEach(function(el){ io.observe(el); });
+  }
+  setTimeout(function(){ rv.forEach(function(el){ el.classList.add("in"); }); }, reduce ? 0 : 3500);
+
+  /* pitch-modus */
+  var pitch = $("#pitch"), naFrame = $("#naFrame"), telNa = $("#telNa");
+  function schaal(){ var w = telNa.clientWidth; naFrame.style.transform = "scale(" + (w / 390) + ")"; naFrame.style.height = (telNa.clientHeight * 390 / w) + "px"; }
+  function openPitch(){ if (!naFrame.src) naFrame.src = location.pathname.split("/").pop() || "index.html"; pitch.classList.add("open"); schaal(); }
+  function sluitPitch(){ pitch.classList.remove("open"); if (/[?&]pitch/.test(location.search)) history.replaceState(null, "", location.pathname); }
+  $("#pitchKnop").addEventListener("click", openPitch);
+  $("#pitchSluit").addEventListener("click", sluitPitch);
+  pitch.addEventListener("click", function(e){ if (e.target === pitch) sluitPitch(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") sluitPitch(); });
+  addEventListener("resize", function(){ if (pitch.classList.contains("open")) schaal(); });
+  if (/[?&]pitch/.test(location.search)) openPitch();
+  if (window.self !== window.top){ $("#pitchKnop").hidden = true; }
+
+  var eur = function(n){ return "€ " + Math.round(n).toLocaleString("nl-NL"); };
+  function reken(){
+    var k = +$("#r-knip").value, p = +$("#r-prijs").value;
+    $("#o-knip").textContent = k; $("#o-prijs").textContent = eur(p);
+    $("#u-maand").textContent = eur(k * p * 52 / 12);
+    $("#u-jaar").textContent = eur(k * p * 52);
+    $("#u-knip").textContent = Math.ceil(595 / p) + " knipbeurten";
+  }
+  $("#r-knip").addEventListener("input", reken); $("#r-prijs").addEventListener("input", reken); reken();
+})();
 </script>
 </body>
 </html>
