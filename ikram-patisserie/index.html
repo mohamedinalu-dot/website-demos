@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>İkram Patisserie en Bakkerij – Turkse patisserie en bakkerij in Rotterdam</title>
+<meta name="description" content="İkram aan de Zwart Janstraat 49B in Rotterdam-Noord: baklava, kadayif, slagroomtaarten voor 4, 6 of 8 personen, börek, simit en döner. 4,8 uit 200 Google-reviews.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!--
+  L230 İkram Patisserie en Bakkerij (Zwart Janstraat 49B, Rotterdam-Noord)
+  Concept: "Het uithangbord als voorpagina": een tijdschriftcover in hun eigen vermiljoen, met het
+  nagetekende ikram-bord als naamkop en hun ronde baklavaschaal (eigen Maps-foto) als coverfoto.
+  Lay-out-archetype: EDITORIAL / MAGAZINE. Cover met datumregel en naamkop, daarna een genummerde
+  inhoudsopgave (01-04) en rubrieken als tijdschriftpagina's (vitrine-index met puntlijnen, taartmaten
+  als bovenaanzicht, hartig op zwart marmer zoals hun wand).
+  Beweging: eenmalig. De letters van het bord komen één voor één los van het bord en gaan 'aan'
+  (CSS-animatie op de SVG-letters, blijft staan met fill-mode forwards), en de baklavaschaal wordt
+  punt voor punt 'aangesneden' (16 punten, conic-mask via JS, daarna weg). Geen lus, geen Ken Burns,
+  geen stoom, geen stempel, geen lopende band, foto recht.
+  Foto's: alleen eigen Google Maps-foto's van de zaak (gevel, baklavaschaal, vitrineblad, dönerspiezen,
+  broodje voor de gevel). Taartmaten zijn een illustratie (gelabeld).
+-->
+<style>
+:root{
+  --verm:#CF4A2A; --verm-d:#A9381D; --verm-dd:#7E2914;
+  --ink:#17110E; --ink-2:#4A3F3A; --lijn:#E6E1DC;
+  --wit:#FFFFFF; --grijs:#F3F1EF;
+  --pist:#6E8F27; --pist-l:#EEF3E0;
+  --marmer:#1B1817;
+  --kop:"Schibsted Grotesk",system-ui,sans-serif;
+  --tekst:"Nunito",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--tekst);font-size:17px;line-height:1.55;color:var(--ink);background:var(--wit);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);line-height:1.05;margin:0;letter-spacing:-.02em;overflow-wrap:break-word}
+p{margin:0 0 1em}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* demo-strook + aankondiging */
+.demo-strip{background:var(--ink);color:#fff;font-size:13.5px;display:flex;align-items:center;justify-content:center;gap:10px;padding:7px 12px;text-align:center}
+.demo-strip a{color:#fff;font-weight:800}
+.demo-mo{width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:700 11px var(--tekst);cursor:pointer;flex:none}
+.melding{background:var(--verm-dd);color:#fff;font-size:14px;text-align:center;padding:8px 14px;font-weight:700}
+.melding a{color:#fff;text-decoration:none}
+.melding .st{color:#FFD7A8}
+.breed{display:none}
+@media (min-width:600px){.breed{display:inline}}
+
+/* cover */
+.cover{background:var(--verm);color:#fff;position:relative;overflow:hidden}
+.cover-in{max-width:1200px;margin:0 auto;padding:0 20px 34px;display:grid;grid-template-columns:1fr;grid-template-areas:"datum" "bord" "foto" "kop" "acties";column-gap:56px}
+.datum{grid-area:datum;display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:2px solid rgba(255,255,255,.9);padding:12px 0 9px;font:700 11.5px/1.3 var(--kop);letter-spacing:.12em;text-transform:uppercase}
+.datum nav{display:none}
+.datum nav a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px;padding:0 10px}
+.datum nav a:hover{text-decoration:underline}
+.bord-wrap{grid-area:bord;padding:14px 0 12px}
+.bord{width:100%;max-width:300px;height:auto;overflow:visible;display:block}
+.bord .fc{fill:#fff}
+.bord .sh{fill:#8E2F19;transform:translate(2.2px,3.6px)}
+.bord .tg{fill:#fff}
+.lt .fc{animation:aan .7s cubic-bezier(.2,.8,.2,1) calc(.25s + var(--i)*.13s) both}
+.lt .sh{animation:schaduw .7s cubic-bezier(.2,.8,.2,1) calc(.25s + var(--i)*.13s) both}
+.bord .tg,.bord .reg{animation:opkomen .6s ease 1.05s both}
+@keyframes aan{from{transform:translate(2.2px,3.6px);fill:#E9876E}to{transform:translate(0,0);fill:#fff}}
+@keyframes schaduw{from{fill:#B8452A}to{fill:#8E2F19}}
+@keyframes opkomen{from{opacity:0}to{opacity:1}}
+
+.cover-foto{grid-area:foto;margin:0 -20px;position:relative;background:var(--verm-d)}
+.cover-foto img{width:100%;aspect-ratio:4/3;height:auto;object-fit:cover}
+.cover-foto.snij img{-webkit-mask-image:conic-gradient(from 0deg at 52% 36%,#000 var(--a,0deg),transparent 0);mask-image:conic-gradient(from 0deg at 52% 36%,#000 var(--a,0deg),transparent 0)}
+.cover-foto figcaption{position:absolute;left:12px;bottom:12px;background:var(--ink);color:#fff;font:700 12.5px/1.3 var(--kop);padding:7px 10px;letter-spacing:.02em;max-width:calc(100% - 24px)}
+.kop{grid-area:kop;padding-top:18px}
+.kop h1{font-size:clamp(34px,9.6vw,64px);font-weight:900;line-height:.98}
+.kop h1 em{font-style:normal;color:var(--ink)}
+.kop p{font-size:16.5px;margin:12px 0 0;max-width:36ch;color:#fff}
+.acties{grid-area:acties;padding-top:18px}
+.cta-rij{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:0 22px;border-radius:999px;font:800 16.5px var(--tekst);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-wit{background:#fff;color:var(--verm-dd)}
+.btn-wit:hover{background:var(--ink);color:#fff}
+.btn-rand{border-color:#fff;color:#fff;background:transparent}
+.btn-rand:hover{background:rgba(255,255,255,.14)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:var(--verm-dd)}
+.btn-verm{background:var(--verm);color:#fff}
+.btn-verm:hover{background:var(--verm-dd)}
+.btn-lijn{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-lijn:hover{background:var(--ink);color:#fff}
+.vertrouwen{margin-top:28px;font-size:14.5px;font-weight:700;display:flex;flex-wrap:wrap;gap:4px 14px}
+.vertrouwen a{color:#fff}
+.vertrouwen .st{color:#FFD7A8;letter-spacing:1px}
+
+/* rubriek-koppen */
+.sectie{padding:64px 0}
+.rubriek{display:flex;align-items:center;gap:12px;font:800 12px/1 var(--kop);letter-spacing:.16em;text-transform:uppercase;color:var(--verm-d);margin-bottom:16px}
+.rubriek::after{content:"";flex:1;height:2px;background:currentColor;opacity:.9}
+.rubriek b{font-size:28px;letter-spacing:-.02em;font-weight:900}
+.sectie h2{font-size:clamp(30px,7.4vw,52px);font-weight:900;max-width:18ch}
+.lead{font-size:18.5px;color:var(--ink-2);max-width:56ch;margin-top:14px}
+
+/* inhoud */
+.inhoud{padding:40px 0 10px}
+.inhoud h2{font:800 12px/1 var(--kop);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
+.inhoud ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;border-top:2px solid var(--ink)}
+.inhoud li{border-bottom:1px solid var(--lijn)}
+.inhoud a{display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:6px;min-height:64px;text-decoration:none;padding:8px 0}
+.inhoud .nr{font:900 26px var(--kop);color:var(--verm)}
+.inhoud .t{font:800 18px/1.2 var(--kop)}
+.inhoud .t small{display:block;font:600 14px var(--tekst);color:var(--ink-2);letter-spacing:0}
+.inhoud .pijl{font:700 20px var(--kop);color:var(--verm)}
+.inhoud a:hover .t{text-decoration:underline}
+
+/* 01 vitrine */
+.spread{display:grid;gap:30px;margin-top:30px}
+.spread figure{margin:0}
+.spread figure img{width:100%;height:auto;aspect-ratio:900/520;object-fit:cover}
+.spread figcaption,.onderschrift{font-size:13.5px;color:var(--ink-2);margin-top:8px;border-left:3px solid var(--verm);padding-left:9px}
+.index{list-style:none;margin:0;padding:0}
+.index li{display:flex;align-items:baseline;gap:8px;padding:11px 0;border-bottom:1px solid var(--lijn)}
+.index .n{font:800 17px/1.25 var(--kop);min-width:0}
+.index .n small{display:block;font:600 14px/1.4 var(--tekst);color:var(--ink-2)}
+.index .lijntje{flex:1;border-bottom:2px dotted #C9C1BA;transform:translateY(-4px);min-width:16px}
+.index .st{font:800 13px var(--kop);color:var(--pist);white-space:nowrap;letter-spacing:.02em}
+.bron{font-size:13.5px;color:var(--ink-2);margin-top:12px}
+
+/* 02 taarten */
+.taart{background:var(--grijs)}
+.taart-grid{display:grid;gap:30px;margin-top:28px;align-items:center}
+.maten{display:flex;align-items:flex-end;justify-content:center;gap:14px;padding:10px 0}
+.maat{display:flex;flex-direction:column;align-items:center;gap:10px;font:800 15px var(--kop)}
+.maat svg{display:block;height:auto}
+.maat span{white-space:nowrap}
+.illus{font-size:12.5px;color:var(--ink-2);text-align:center;margin-top:6px}
+.smaken{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none}
+.smaken li{background:#fff;border:1px solid var(--lijn);border-radius:999px;padding:6px 13px;font-weight:700;font-size:15px}
+.taart .btn{margin-top:24px}
+
+/* 03 kiezer */
+.kiezer{background:var(--pist-l)}
+.kz{display:grid;gap:22px;margin-top:28px}
+.stap{background:#fff;border-radius:18px;padding:18px;border:1px solid #DCE5C7}
+.stap h3{font-size:19px;font-weight:800;display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.stap h3 i{font-style:normal;width:30px;height:30px;border-radius:50%;background:var(--verm);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex:none}
+.keuzes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.keus{min-height:48px;border:2px solid var(--lijn);background:#fff;border-radius:14px;padding:10px 12px;font:700 15.5px/1.25 var(--tekst);color:var(--ink);cursor:pointer;text-align:left;display:flex;align-items:center;gap:10px}
+.keus svg{width:34px;height:34px;flex:none}
+.keus[aria-pressed=true]{border-color:var(--verm);background:#FFF1EC;box-shadow:inset 0 0 0 1px var(--verm)}
+.keus:focus-visible,.btn:focus-visible{outline:3px solid var(--pist);outline-offset:2px}
+.sub-label{font-weight:800;font-size:14px;margin:14px 0 8px;color:var(--ink-2)}
+.datum-in{display:none;margin-top:10px}
+.datum-in.toon{display:block}
+.datum-in input{min-height:48px;width:100%;border:2px solid var(--lijn);border-radius:12px;padding:8px 12px;font:600 16px var(--tekst)}
+.bericht{background:var(--ink);color:#fff;border-radius:18px;padding:20px}
+.bericht h3{font-size:19px;margin-bottom:12px}
+.bubbel{background:#fff;color:var(--ink);border-radius:14px 14px 14px 4px;padding:14px 16px;font-size:16px;white-space:pre-line;min-height:96px}
+.bericht .btn{margin-top:16px;width:100%}
+.bericht .klein{margin:12px 0 0;color:#D8D0CA;font-size:13.5px}
+.bericht .klein a{color:#fff}
+
+/* 04 hartig */
+.hartig{background:var(--marmer);color:#fff;position:relative;overflow:hidden}
+.hartig .rubriek{color:#F2A58E}
+.hartig .lead{color:#E2DAD4}
+.hartig-grid{display:grid;gap:26px;margin-top:30px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.duo figure{margin:0}
+.duo img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}
+.duo figcaption{font-size:13px;color:#D8D0CA;margin-top:7px}
+.menu-l{list-style:none;margin:0;padding:0}
+.menu-l li{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.menu-l b{font:800 19px var(--kop);display:block}
+.menu-l span{color:#E2DAD4;font-size:15.5px}
+.hartig .btn{margin-top:22px}
+.hartig a.tl{color:#fff}
+
+/* waarom + reviews */
+.kaarten{display:grid;gap:14px;margin-top:28px}
+.kaart{border-top:4px solid var(--verm);background:var(--grijs);padding:20px 18px;min-width:0}
+.kaart h3{font-size:clamp(19px,5.2vw,22px);font-weight:800;margin-bottom:8px}
+.kaart p{margin:0;color:var(--ink-2)}
+.score{display:flex;align-items:center;gap:16px;margin-top:22px;flex-wrap:wrap}
+.score .groot{font:900 72px/1 var(--kop);color:var(--verm)}
+.score .st{color:#E0A100;font-size:22px;letter-spacing:2px}
+.score a{font-weight:800}
+.citaten{display:grid;gap:14px;margin-top:24px}
+.citaat{margin:0;border:1px solid var(--lijn);padding:18px;border-radius:4px;background:#fff;min-width:0}
+.citaat p{font:700 18px/1.4 var(--kop);margin:0 0 10px;letter-spacing:-.01em}
+.citaat span{font-size:14px;color:var(--ink-2);font-weight:700}
+.label-sam{font-size:13.5px;color:var(--ink-2);margin-top:14px}
+
+/* stappen + faq */
+.stappen{background:var(--grijs)}
+.stappen ol{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px;counter-reset:s}
+.stappen li{background:#fff;padding:20px 18px 20px 70px;position:relative;min-height:84px;counter-increment:s}
+.stappen li::before{content:counter(s,decimal-leading-zero);position:absolute;left:16px;top:16px;font:900 30px var(--kop);color:var(--verm)}
+.stappen li b{display:block;font:800 18px var(--kop);margin-bottom:4px}
+.faq details{border-bottom:1px solid var(--lijn)}
+.faq summary{cursor:pointer;list-style:none;font:800 18px/1.3 var(--kop);padding:18px 40px 18px 0;position:relative;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:14px;font:700 26px var(--kop);color:var(--verm)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--ink-2);padding-bottom:6px}
+.faq-lijst{margin-top:22px;border-top:2px solid var(--ink)}
+
+/* route */
+.route{background:var(--marmer);color:#fff}
+.route-grid{display:grid;gap:26px;margin-top:10px}
+.route figure{margin:0}
+.route img{width:100%;height:auto;aspect-ratio:800/977;object-fit:cover;max-height:560px;object-position:50% 30%}
+.route figcaption{font-size:13px;color:#D8D0CA;margin-top:7px}
+.route h2{color:#fff}
+.adres{font:800 24px/1.3 var(--kop);margin:18px 0 6px}
+.route p{color:#E2DAD4}
+.route .cta-rij{margin-top:18px}
+.route .btn-lijn{border-color:#fff;color:#fff}
+.route .btn-lijn:hover{background:#fff;color:var(--ink)}
+.route .rubriek{color:#F2A58E}
+
+/* slot */
+.slot{background:var(--verm);color:#fff;text-align:left}
+.slot h2{color:#fff;max-width:16ch}
+.slot p{font-size:18.5px;max-width:46ch;margin:14px 0 0}
+.slot .cta-rij{margin-top:24px}
+
+footer{background:var(--ink);color:#D8D0CA;padding:40px 0 110px;font-size:14.5px}
+footer .wrap{display:grid;gap:18px}
+footer img{width:150px;height:auto}
+footer a{color:#fff}
+
+/* zwevende cta */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:flex;gap:8px;transform:translateY(140%);opacity:0;visibility:hidden;transition:transform .3s ease,opacity .3s ease,visibility 0s linear .3s;pointer-events:none}
+.zweef.toon{transform:none;opacity:1;visibility:visible;pointer-events:auto;transition:transform .3s ease,opacity .3s ease,visibility 0s}
+.zweef a{flex:1;min-height:54px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.zweef a.bel{flex:0 0 auto;padding:0 18px}
+
+/* pitch */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(23,17,14,.82);display:none;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.pitch.open{display:block}
+.pp{background:#fff;color:var(--ink);max-width:980px;margin:18px auto;border-radius:18px;padding:22px 18px 30px}
+.pp-top{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--ink-2);margin-bottom:10px}
+.pp-sluit{width:44px;height:44px;border-radius:50%;border:1px solid var(--lijn);background:#fff;font-size:24px;cursor:pointer;color:var(--ink)}
+.pp h2{font-size:clamp(24px,5.6vw,38px);margin-bottom:20px;font-weight:900}
+.pp h3{font-size:21px;margin:30px 0 12px;font-weight:800}
+.vn{display:grid;gap:18px}
+.vn figure{margin:0}
+.vn figcaption{font-size:14px;color:var(--ink-2);margin-top:8px}
+.tel{width:100%;max-width:300px;aspect-ratio:390/700;border:10px solid #111;border-radius:34px;overflow:hidden;margin:0 auto;background:#000;position:relative}
+.tel img{width:100%;height:100%;object-fit:cover;object-position:top}
+.tel iframe{width:390px;height:700px;border:0;transform:scale(.718);transform-origin:0 0;position:absolute;left:0;top:0}
+.reken{background:var(--grijs);border-radius:14px;padding:18px}
+.reken label{display:flex;justify-content:space-between;gap:10px;font-weight:700;margin-bottom:6px}
+.reken input[type=range]{width:100%;accent-color:var(--verm);height:44px}
+.uitkomst{display:grid;gap:10px;margin-top:10px}
+.uitkomst div{background:#fff;border-radius:12px;padding:12px 14px}
+.uitkomst small{display:block;color:var(--ink-2);font-size:13px}
+.uitkomst strong{font:900 26px var(--kop);color:var(--verm-d)}
+.disclaimer{font-size:13px;color:var(--ink-2);margin-top:12px}
+.punten{padding-left:20px;display:grid;gap:10px;margin:0}
+
+@media (min-width:700px){
+  .inhoud ol{grid-template-columns:1fr 1fr;column-gap:40px}
+  .keuzes{grid-template-columns:repeat(4,1fr)}
+  .keuzes.k2{grid-template-columns:repeat(3,1fr)}
+  .kaarten,.citaten{grid-template-columns:repeat(3,1fr)}
+  .stappen ol{grid-template-columns:repeat(3,1fr)}
+  .vn{grid-template-columns:1fr 1fr}
+  .uitkomst{grid-template-columns:repeat(3,1fr)}
+  footer .wrap{grid-template-columns:auto 1fr auto;align-items:center}
+}
+@media (min-width:960px){
+  .cover-in{grid-template-columns:1fr 1.08fr;grid-template-areas:"datum datum" "bord foto" "kop foto" "acties foto";padding-bottom:56px;align-items:start}
+  .datum nav{display:flex}
+  .bord-wrap{padding:34px 0 8px}
+  .bord{max-width:420px}
+  .cover-foto{margin:34px 0 0;align-self:center}
+  .kop p{font-size:18px}
+  .kop{padding-top:20px}
+  .kop h1{font-size:clamp(44px,4.6vw,64px)}
+  .spread{grid-template-columns:1.1fr 1fr;align-items:start;gap:48px}
+  .taart-grid{grid-template-columns:1fr 1fr;gap:56px}
+  .maat:nth-child(1) svg{width:110px}
+  .maat:nth-child(2) svg{width:148px}
+  .maat:nth-child(3) svg{width:188px}
+  .maten{gap:26px}
+  .kz{grid-template-columns:1.4fr 1fr;align-items:start}
+  .kz .stappen-kz{display:grid;gap:16px}
+  .bericht{position:sticky;top:20px}
+  .hartig-grid{grid-template-columns:1.1fr 1fr;gap:56px;align-items:start}
+  .route-grid{grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .zweef{display:none}
+  .sectie{padding:96px 0}
+}
+@media (max-width:400px){
+  .keus{font-size:14.5px;padding:8px 10px;gap:8px}
+  .keus svg{width:28px;height:28px}
+  .datum{font-size:10.5px;letter-spacing:.08em}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+<noscript><style>.cover-foto.snij img{-webkit-mask-image:none;mask-image:none}</style></noscript>
+</head>
+<body>
+
+<div class="demo-strip"><span>Dit is een demo, gemaakt door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a>.<span class="breed"> Niet de officiële site van İkram.</span></span><button class="demo-mo" id="pitch-knop" type="button" aria-label="Pitch-modus">Mo</button></div>
+<div class="melding"><p style="margin:0"><a href="https://www.google.com/maps/search/?api=1&amp;query=%C4%B0kram+Patisserie+en+Bakkerij+Zwart+Janstraat+49B+Rotterdam" target="_blank" rel="noopener"><span class="st">★</span> 4,8 uit 200 Google-reviews · Zwart Janstraat 49B</a></p></div>
+
+<header class="cover" id="hero">
+  <div class="cover-in">
+    <div class="datum">
+      <span>Rotterdam-Noord</span>
+      <nav aria-label="Rubrieken"><a href="#vitrine">Vitrine</a><a href="#taarten">Taarten</a><a href="#hartig">Hartig</a><a href="#route">Route</a></nav>
+      <span>Zwart Janstraat 49B</span>
+    </div>
+    <div class="bord-wrap"><a href="#hero" aria-label="İkram, naar boven" class="logo-link"><svg class="bord" viewBox="-4 -8 392 150" role="img" aria-label="ikram, Doner &amp; Fastfood &amp; Bakkerij"><g class="lt" style="--i:0"><path class="sh" d="M34.4 45.8V83Q34.4 86 34.9 87.2Q35.3 88.3 36.1 89L37 89.6Q38.4 90.5 39.2 91.8Q40 93 40 94.8Q40 97.2 38.5 98.6Q37 100 34.3 100H9.1Q6.5 100 5 98.6Q3.5 97.2 3.5 94.8Q3.5 93 4.3 91.8Q5 90.5 6.5 89.6L7.3 89Q8.2 88.3 8.6 87.2Q9 86 9 83V63.4Q9 60.7 8.3 59.7Q7.7 58.7 6.6 58.1L5.8 57.6Q4.4 56.8 3.6 55.8Q2.8 54.8 2.8 53.1Q2.8 51.2 3.9 49.8Q5 48.5 7.6 47.6L20.3 42.6Q23.3 41.4 25.3 40.9Q27.3 40.4 29.5 40.4Q31.8 40.4 33.1 41.9Q34.4 43.4 34.4 45.8ZM20.4 35.1Q13.7 35.1 9.8 32Q5.9 28.8 5.9 23.4Q5.9 18.1 9.8 15Q13.7 12 20.4 12Q27.1 12 31 15Q34.9 18.1 34.9 23.4Q34.9 28.8 31 32Q27.1 35.1 20.4 35.1Z"/><path class="fc" d="M34.4 45.8V83Q34.4 86 34.9 87.2Q35.3 88.3 36.1 89L37 89.6Q38.4 90.5 39.2 91.8Q40 93 40 94.8Q40 97.2 38.5 98.6Q37 100 34.3 100H9.1Q6.5 100 5 98.6Q3.5 97.2 3.5 94.8Q3.5 93 4.3 91.8Q5 90.5 6.5 89.6L7.3 89Q8.2 88.3 8.6 87.2Q9 86 9 83V63.4Q9 60.7 8.3 59.7Q7.7 58.7 6.6 58.1L5.8 57.6Q4.4 56.8 3.6 55.8Q2.8 54.8 2.8 53.1Q2.8 51.2 3.9 49.8Q5 48.5 7.6 47.6L20.3 42.6Q23.3 41.4 25.3 40.9Q27.3 40.4 29.5 40.4Q31.8 40.4 33.1 41.9Q34.4 43.4 34.4 45.8ZM20.4 35.1Q13.7 35.1 9.8 32Q5.9 28.8 5.9 23.4Q5.9 18.1 9.8 15Q13.7 12 20.4 12Q27.1 12 31 15Q34.9 18.1 34.9 23.4Q34.9 28.8 31 32Q27.1 35.1 20.4 35.1Z"/></g><g class="lt" style="--i:1"><path class="sh" d="M50.4 100Q47.8 100 46.2 98.6Q44.7 97.2 44.7 94.8Q44.7 93 45.5 91.8Q46.3 90.5 47.7 89.6L48.6 89Q49.4 88.3 49.8 87.2Q50.2 86 50.2 83V32.4Q50.2 29.7 49.6 28.8Q48.9 27.8 47.8 27.2L47 26.7Q45.7 25.9 44.8 24.9Q44 23.8 44 22.1Q44 20.2 45.1 18.9Q46.3 17.6 48.8 16.6L61.5 11.7Q64.6 10.5 66.6 9.9Q68.5 9.4 70.8 9.4Q73 9.4 74.4 10.9Q75.7 12.5 75.7 14.8V83Q75.7 86.4 76 87.6Q76.3 88.9 77.2 89.6L78.2 90.3Q80.5 92 80.5 94.8Q80.5 100 75.4 100ZM67.9 73.8 89.8 56.3Q91.2 55.2 91.2 54.5Q91.2 53.7 89.8 52.7L88.8 51.9Q87.7 51 87.2 49.9Q86.7 48.8 86.7 47.3Q86.7 44.9 88.2 43.5Q89.7 42.2 92.3 42.2H113.8Q116.4 42.2 117.9 43.5Q119.4 44.9 119.4 47.3Q119.4 49.4 118.2 51.1Q116.9 52.8 113 53.7Q111 54.1 108.8 54.9Q106.6 55.7 103 58.5L71.7 83ZM93.6 56.2 113.8 84.8Q114.9 86.2 115.6 87Q116.4 87.9 117.6 88.9Q119.3 90.4 120.5 91.9Q121.6 93.3 121.6 95.1Q121.6 97.4 120.1 98.7Q118.6 100 116 100H90.6Q88.3 100 86.9 98.6Q85.5 97.2 85.5 94.8Q85.5 93.5 86 92.5Q86.5 91.5 87.4 90.7L88.4 89.9Q90.1 88.7 89.4 87.5Q88.8 86.2 87.4 84.3L77.5 69.9Z"/><path class="fc" d="M50.4 100Q47.8 100 46.2 98.6Q44.7 97.2 44.7 94.8Q44.7 93 45.5 91.8Q46.3 90.5 47.7 89.6L48.6 89Q49.4 88.3 49.8 87.2Q50.2 86 50.2 83V32.4Q50.2 29.7 49.6 28.8Q48.9 27.8 47.8 27.2L47 26.7Q45.7 25.9 44.8 24.9Q44 23.8 44 22.1Q44 20.2 45.1 18.9Q46.3 17.6 48.8 16.6L61.5 11.7Q64.6 10.5 66.6 9.9Q68.5 9.4 70.8 9.4Q73 9.4 74.4 10.9Q75.7 12.5 75.7 14.8V83Q75.7 86.4 76 87.6Q76.3 88.9 77.2 89.6L78.2 90.3Q80.5 92 80.5 94.8Q80.5 100 75.4 100ZM67.9 73.8 89.8 56.3Q91.2 55.2 91.2 54.5Q91.2 53.7 89.8 52.7L88.8 51.9Q87.7 51 87.2 49.9Q86.7 48.8 86.7 47.3Q86.7 44.9 88.2 43.5Q89.7 42.2 92.3 42.2H113.8Q116.4 42.2 117.9 43.5Q119.4 44.9 119.4 47.3Q119.4 49.4 118.2 51.1Q116.9 52.8 113 53.7Q111 54.1 108.8 54.9Q106.6 55.7 103 58.5L71.7 83ZM93.6 56.2 113.8 84.8Q114.9 86.2 115.6 87Q116.4 87.9 117.6 88.9Q119.3 90.4 120.5 91.9Q121.6 93.3 121.6 95.1Q121.6 97.4 120.1 98.7Q118.6 100 116 100H90.6Q88.3 100 86.9 98.6Q85.5 97.2 85.5 94.8Q85.5 93.5 86 92.5Q86.5 91.5 87.4 90.7L88.4 89.9Q90.1 88.7 89.4 87.5Q88.8 86.2 87.4 84.3L77.5 69.9Z"/></g><g class="lt" style="--i:2"><path class="sh" d="M150.8 68.3Q150.8 58.6 153.1 52.4Q155.5 46.2 159.7 43.3Q163.9 40.4 169.4 40.4Q175.2 40.4 178.7 44.3Q182.1 48.2 182.1 56Q182.1 63.8 179 67.4Q175.9 71 170.9 71Q165.6 71 163 68.6Q160.4 66.3 160.4 62.3V59.7Q160.4 58 159.6 57.2Q158.9 56.4 157.7 56.4Q156.5 56.4 155.6 57.6Q154.6 58.7 154.1 60.9Q153.5 63.2 153.5 66.5ZM152 46.5 153.5 58.2V83Q153.5 85.8 154.3 87.2Q155 88.7 156.9 89L161.1 89.6Q163.4 89.9 164.3 91.3Q165.3 92.7 165.3 94.8Q165.3 97.2 163.8 98.6Q162.3 100 159.6 100H128.8Q126.2 100 124.7 98.6Q123.2 97.2 123.2 94.8Q123.2 93 123.9 91.8Q124.7 90.6 126.2 89.6L127 89Q127.8 88.4 128.3 87.2Q128.7 86 128.7 83V63.4Q128.7 60.7 128 59.7Q127.4 58.7 126.3 58.1L125.4 57.6Q124.1 56.9 123.3 55.8Q122.4 54.8 122.4 53.1Q122.4 51.2 123.6 49.8Q124.7 48.5 127.2 47.6L140 42.6Q142.6 41.6 144.4 41Q146.1 40.4 147.5 40.4Q149.3 40.4 150.4 41.7Q151.5 43 152 46.5Z"/><path class="fc" d="M150.8 68.3Q150.8 58.6 153.1 52.4Q155.5 46.2 159.7 43.3Q163.9 40.4 169.4 40.4Q175.2 40.4 178.7 44.3Q182.1 48.2 182.1 56Q182.1 63.8 179 67.4Q175.9 71 170.9 71Q165.6 71 163 68.6Q160.4 66.3 160.4 62.3V59.7Q160.4 58 159.6 57.2Q158.9 56.4 157.7 56.4Q156.5 56.4 155.6 57.6Q154.6 58.7 154.1 60.9Q153.5 63.2 153.5 66.5ZM152 46.5 153.5 58.2V83Q153.5 85.8 154.3 87.2Q155 88.7 156.9 89L161.1 89.6Q163.4 89.9 164.3 91.3Q165.3 92.7 165.3 94.8Q165.3 97.2 163.8 98.6Q162.3 100 159.6 100H128.8Q126.2 100 124.7 98.6Q123.2 97.2 123.2 94.8Q123.2 93 123.9 91.8Q124.7 90.6 126.2 89.6L127 89Q127.8 88.4 128.3 87.2Q128.7 86 128.7 83V63.4Q128.7 60.7 128 59.7Q127.4 58.7 126.3 58.1L125.4 57.6Q124.1 56.9 123.3 55.8Q122.4 54.8 122.4 53.1Q122.4 51.2 123.6 49.8Q124.7 48.5 127.2 47.6L140 42.6Q142.6 41.6 144.4 41Q146.1 40.4 147.5 40.4Q149.3 40.4 150.4 41.7Q151.5 43 152 46.5Z"/></g><g class="lt" style="--i:3"><path class="sh" d="M222.7 90.1V88.5L220.3 88.1V54.4Q220.3 52.1 219.1 50.7Q217.9 49.4 215.8 49.4Q214.2 49.4 213 50.1Q211.9 50.9 211.9 52.1V55.8Q211.9 60.9 208.4 63.6Q205 66.4 198.5 66.4Q193.1 66.4 190.4 64.1Q187.7 61.8 187.7 57.6Q187.7 53.7 191.6 49.7Q195.4 45.8 203.2 43.1Q211 40.5 222.8 40.5Q234.2 40.5 239.8 45.1Q245.5 49.8 245.5 57.8V83.8Q245.5 84.7 246 85.5Q246.5 86.2 247.7 86.2Q248.5 86.2 248.9 86Q249.3 85.8 249.7 85.6Q250 85.4 250.3 85.3Q250.6 85.1 251.1 85.1Q252.7 85.1 253.6 86.2Q254.5 87.3 254.5 89Q254.5 92 252.5 94.9Q250.6 97.8 247 99.8Q243.4 101.7 238.5 101.7Q231.8 101.7 227.2 98.4Q222.7 95.1 222.7 90.1ZM185.6 87Q185.6 78.6 193.3 73.7Q201.1 68.8 213.8 68.8Q217.3 68.8 220 69.2Q222.7 69.6 224.4 70.4L221.9 77.4Q220.7 76.7 219.5 76.4Q218.3 76.1 216.8 76.1Q214.3 76.1 212.7 77.7Q211.1 79.4 211.1 82Q211.1 84.9 212.8 86.6Q214.4 88.2 217.2 88.2Q219.1 88.2 220.6 87.5Q222.1 86.9 222.8 86.1L224.4 93.2Q221.5 97.2 215.8 99.5Q210.2 101.7 203.8 101.7Q195.5 101.7 190.5 97.5Q185.6 93.3 185.6 87Z"/><path class="fc" d="M222.7 90.1V88.5L220.3 88.1V54.4Q220.3 52.1 219.1 50.7Q217.9 49.4 215.8 49.4Q214.2 49.4 213 50.1Q211.9 50.9 211.9 52.1V55.8Q211.9 60.9 208.4 63.6Q205 66.4 198.5 66.4Q193.1 66.4 190.4 64.1Q187.7 61.8 187.7 57.6Q187.7 53.7 191.6 49.7Q195.4 45.8 203.2 43.1Q211 40.5 222.8 40.5Q234.2 40.5 239.8 45.1Q245.5 49.8 245.5 57.8V83.8Q245.5 84.7 246 85.5Q246.5 86.2 247.7 86.2Q248.5 86.2 248.9 86Q249.3 85.8 249.7 85.6Q250 85.4 250.3 85.3Q250.6 85.1 251.1 85.1Q252.7 85.1 253.6 86.2Q254.5 87.3 254.5 89Q254.5 92 252.5 94.9Q250.6 97.8 247 99.8Q243.4 101.7 238.5 101.7Q231.8 101.7 227.2 98.4Q222.7 95.1 222.7 90.1ZM185.6 87Q185.6 78.6 193.3 73.7Q201.1 68.8 213.8 68.8Q217.3 68.8 220 69.2Q222.7 69.6 224.4 70.4L221.9 77.4Q220.7 76.7 219.5 76.4Q218.3 76.1 216.8 76.1Q214.3 76.1 212.7 77.7Q211.1 79.4 211.1 82Q211.1 84.9 212.8 86.6Q214.4 88.2 217.2 88.2Q219.1 88.2 220.6 87.5Q222.1 86.9 222.8 86.1L224.4 93.2Q221.5 97.2 215.8 99.5Q210.2 101.7 203.8 101.7Q195.5 101.7 190.5 97.5Q185.6 93.3 185.6 87Z"/></g><g class="lt" style="--i:4"><path class="sh" d="M287.7 45.8V83Q287.7 86.4 288 87.6Q288.3 88.9 289.2 89.6L290.2 90.3Q292.5 92 292.5 94.8Q292.5 100 287.4 100H262.6Q260 100 258.5 98.6Q256.9 97.2 256.9 94.8Q256.9 93 257.7 91.8Q258.5 90.5 259.9 89.6L260.8 89Q261.6 88.3 262 87.2Q262.5 86 262.5 83V63.4Q262.5 60.7 261.8 59.7Q261.1 58.7 260.1 58.1L259.2 57.6Q257.9 56.8 257.1 55.8Q256.2 54.8 256.2 53.1Q256.2 51.2 257.4 49.8Q258.5 48.5 261 47.6L273.5 42.6Q276.6 41.4 278.5 40.9Q280.5 40.4 282.7 40.4Q285 40.4 286.3 41.9Q287.7 43.4 287.7 45.8ZM286.1 62.8 281.5 57.5 284.3 54.9Q292.7 46.8 298.8 43.6Q304.8 40.4 309.9 40.4Q317.6 40.4 322.4 45.7Q327.1 51 327.1 59.6V83Q327.1 86.4 327.5 87.6Q327.8 88.8 328.7 89.6L329.7 90.3Q331.9 92 331.9 94.8Q331.9 100 326.9 100H302.2Q297.1 100 297.1 94.8Q297.1 92 299.4 90.3L300.4 89.6Q301.3 88.9 301.6 87.6Q301.9 86.4 301.9 83V65.7Q301.9 61.9 300.3 60Q298.7 58 295.8 58Q294 58 292 58.6Q290.1 59.3 288.1 61ZM325 62.8 320.4 57.5 323.2 54.9Q331.5 47 337.3 43.7Q343.2 40.4 348 40.4Q355.6 40.4 359.8 45.7Q364 51 364.9 59.6L367.5 83Q367.8 86 368.1 87.2Q368.4 88.3 369.1 89L370 89.6Q371.4 90.6 372.2 91.8Q373 93 373 94.8Q373 97.2 371.5 98.6Q370 100 367.3 100H342.1Q337.1 100 337.1 94.8Q337.1 92 339.4 90.3L340.3 89.6Q341.2 88.9 341.8 87.6Q342.3 86.4 341.9 83L340.1 65.7Q339.7 61.9 338.3 60Q336.9 58 334 58Q332.3 58 330.6 58.7Q328.9 59.4 327 61Z"/><path class="fc" d="M287.7 45.8V83Q287.7 86.4 288 87.6Q288.3 88.9 289.2 89.6L290.2 90.3Q292.5 92 292.5 94.8Q292.5 100 287.4 100H262.6Q260 100 258.5 98.6Q256.9 97.2 256.9 94.8Q256.9 93 257.7 91.8Q258.5 90.5 259.9 89.6L260.8 89Q261.6 88.3 262 87.2Q262.5 86 262.5 83V63.4Q262.5 60.7 261.8 59.7Q261.1 58.7 260.1 58.1L259.2 57.6Q257.9 56.8 257.1 55.8Q256.2 54.8 256.2 53.1Q256.2 51.2 257.4 49.8Q258.5 48.5 261 47.6L273.5 42.6Q276.6 41.4 278.5 40.9Q280.5 40.4 282.7 40.4Q285 40.4 286.3 41.9Q287.7 43.4 287.7 45.8ZM286.1 62.8 281.5 57.5 284.3 54.9Q292.7 46.8 298.8 43.6Q304.8 40.4 309.9 40.4Q317.6 40.4 322.4 45.7Q327.1 51 327.1 59.6V83Q327.1 86.4 327.5 87.6Q327.8 88.8 328.7 89.6L329.7 90.3Q331.9 92 331.9 94.8Q331.9 100 326.9 100H302.2Q297.1 100 297.1 94.8Q297.1 92 299.4 90.3L300.4 89.6Q301.3 88.9 301.6 87.6Q301.9 86.4 301.9 83V65.7Q301.9 61.9 300.3 60Q298.7 58 295.8 58Q294 58 292 58.6Q290.1 59.3 288.1 61ZM325 62.8 320.4 57.5 323.2 54.9Q331.5 47 337.3 43.7Q343.2 40.4 348 40.4Q355.6 40.4 359.8 45.7Q364 51 364.9 59.6L367.5 83Q367.8 86 368.1 87.2Q368.4 88.3 369.1 89L370 89.6Q371.4 90.6 372.2 91.8Q373 93 373 94.8Q373 97.2 371.5 98.6Q370 100 367.3 100H342.1Q337.1 100 337.1 94.8Q337.1 92 339.4 90.3L340.3 89.6Q341.2 88.9 341.8 87.6Q342.3 86.4 341.9 83L340.1 65.7Q339.7 61.9 338.3 60Q336.9 58 334 58Q332.3 58 330.6 58.7Q328.9 59.4 327 61Z"/></g><path class="tg" d="M50.3 132Q49.5 132 49.1 131.6Q48.6 131.1 48.6 130.3V119.2Q48.6 118.4 49.1 117.9Q49.5 117.5 50.3 117.5H54.3Q58 117.5 60.1 119.4Q62.1 121.3 62.1 124.7Q62.1 126.5 61.6 127.8Q61.1 129.2 60.1 130.1Q59.1 131 57.6 131.5Q56.2 132 54.3 132ZM51.8 129.4H54.1Q55.3 129.4 56.2 129.1Q57 128.8 57.6 128.2Q58.2 127.7 58.5 126.8Q58.8 125.9 58.8 124.7Q58.8 122.4 57.6 121.3Q56.5 120.1 54.1 120.1H51.8Z M69.8 132.2Q68.2 132.2 67 131.6Q65.8 130.9 65.1 129.8Q64.4 128.6 64.4 126.9Q64.4 125.7 64.8 124.8Q65.2 123.8 65.9 123.1Q66.6 122.4 67.6 122.1Q68.6 121.7 69.8 121.7Q71.4 121.7 72.6 122.3Q73.8 123 74.5 124.1Q75.1 125.3 75.1 126.9Q75.1 128.2 74.8 129.1Q74.4 130.1 73.7 130.8Q73 131.5 72 131.9Q71 132.2 69.8 132.2ZM69.8 129.9Q70.4 129.9 70.9 129.6Q71.4 129.3 71.7 128.6Q72 127.9 72 126.9Q72 125.4 71.4 124.7Q70.8 124 69.8 124Q69.1 124 68.6 124.3Q68.1 124.6 67.8 125.3Q67.5 125.9 67.5 126.9Q67.5 128.4 68.2 129.2Q68.8 129.9 69.8 129.9Z M79.2 132.2Q78.5 132.2 78.1 131.8Q77.7 131.4 77.7 130.6V123.3Q77.7 122.5 78.1 122.1Q78.5 121.7 79.2 121.7Q79.9 121.7 80.3 122.1Q80.7 122.5 80.7 123.3V124.5L80.5 123.8Q80.9 122.8 81.9 122.2Q82.8 121.7 84 121.7Q85.2 121.7 86 122.2Q86.8 122.6 87.2 123.6Q87.6 124.5 87.6 125.9V130.6Q87.6 131.4 87.2 131.8Q86.8 132.2 86 132.2Q85.3 132.2 84.9 131.8Q84.5 131.4 84.5 130.6V126.1Q84.5 125 84.1 124.6Q83.7 124.1 82.9 124.1Q81.9 124.1 81.4 124.7Q80.8 125.3 80.8 126.4V130.6Q80.8 132.2 79.2 132.2Z M95.8 132.2Q94 132.2 92.7 131.6Q91.4 130.9 90.7 129.7Q90 128.6 90 127Q90 125.4 90.7 124.2Q91.3 123 92.5 122.4Q93.7 121.7 95.2 121.7Q96.3 121.7 97.2 122Q98.1 122.4 98.7 123.1Q99.3 123.8 99.7 124.7Q100 125.7 100 126.8Q100 127.2 99.7 127.4Q99.5 127.6 99 127.6H92.6V126H97.7L97.4 126.3Q97.4 125.5 97.2 124.9Q96.9 124.3 96.5 124Q96 123.7 95.3 123.7Q94.6 123.7 94 124.1Q93.5 124.4 93.2 125.1Q92.9 125.8 92.9 126.7V126.9Q92.9 128.4 93.6 129.2Q94.4 129.9 95.8 129.9Q96.3 129.9 96.9 129.8Q97.6 129.7 98.1 129.4Q98.6 129.2 99 129.2Q99.3 129.3 99.5 129.6Q99.8 129.8 99.8 130.2Q99.8 130.5 99.6 130.9Q99.5 131.2 99 131.4Q98.3 131.8 97.4 132Q96.6 132.2 95.8 132.2Z M104 132.2Q103.2 132.2 102.8 131.8Q102.4 131.4 102.4 130.6V123.3Q102.4 122.5 102.8 122.1Q103.2 121.7 103.9 121.7Q104.7 121.7 105.1 122.1Q105.5 122.5 105.5 123.3V124.4H105.3Q105.5 123.1 106.3 122.5Q107.2 121.8 108.5 121.7Q109 121.7 109.3 122Q109.6 122.2 109.6 122.9Q109.7 123.6 109.4 123.9Q109.1 124.3 108.4 124.4L107.9 124.4Q106.7 124.5 106.2 125.1Q105.6 125.7 105.6 126.8V130.6Q105.6 131.4 105.2 131.8Q104.8 132.2 104 132.2Z  M123 132.2Q121.4 132.2 120.2 131.7Q119.1 131.2 118.4 130.3Q117.8 129.4 117.8 128.2Q117.8 127.5 118 126.9Q118.2 126.3 118.6 125.8Q118.9 125.2 119.5 124.8Q120 124.4 120.7 124L121.4 123.6L120.9 124.2Q120.1 123.4 119.7 122.6Q119.3 121.8 119.3 120.9Q119.3 119.8 119.8 119Q120.3 118.2 121.3 117.7Q122.3 117.3 123.6 117.3Q125.3 117.3 126.3 118.2Q127.4 119.1 127.4 120.6Q127.4 121.4 127.1 122.1Q126.7 122.8 126.1 123.4Q125.4 124.1 124.4 124.6L124.4 123.9L127.7 127.3H127Q127.3 126.9 127.5 126.4Q127.6 125.9 127.8 125.4Q127.9 124.8 128 124.2Q128.1 123.6 128.5 123.3Q128.8 123 129.4 123Q130 123 130.3 123.4Q130.7 123.7 130.6 124.4Q130.5 125.3 130.2 126.1Q130 127 129.6 127.7Q129.2 128.4 128.8 129.1L128.8 128.3L130.6 130.2Q131.1 130.6 131.1 131.1Q131.1 131.6 130.8 131.9Q130.4 132.2 129.8 132.2Q129.2 132.2 128.9 132Q128.5 131.7 128.1 131.3L127.1 130.3H127.8Q126.8 131.2 125.6 131.7Q124.4 132.2 123 132.2ZM123.2 129.8Q124.1 129.8 124.8 129.5Q125.5 129.2 126.1 128.5L126 129.3L121.8 125.1L123.1 125.2L122.6 125.5Q122 125.8 121.6 126.2Q121.2 126.5 121 127Q120.9 127.4 120.9 127.9Q120.9 128.8 121.5 129.3Q122.1 129.8 123.2 129.8ZM123.6 119.4Q122.9 119.4 122.5 119.8Q122.1 120.2 122.1 120.8Q122.1 121.2 122.2 121.5Q122.3 121.8 122.6 122.2Q122.9 122.5 123.4 123L122.7 123Q123.5 122.6 124 122.2Q124.5 121.9 124.7 121.5Q124.9 121.1 124.9 120.7Q124.9 120.1 124.5 119.7Q124.2 119.4 123.6 119.4Z  M142.1 132.2Q141.3 132.2 140.9 131.7Q140.4 131.3 140.4 130.5V119.2Q140.4 118.4 140.9 117.9Q141.3 117.5 142.1 117.5H149.1Q149.8 117.5 150.1 117.8Q150.4 118.1 150.4 118.7Q150.4 119.3 150.1 119.7Q149.8 120 149.1 120H143.6V123.5H148.7Q149.3 123.5 149.6 123.8Q150 124.2 150 124.8Q150 125.4 149.6 125.7Q149.3 126 148.7 126H143.6V130.5Q143.6 132.2 142.1 132.2Z M155.9 132.2Q154.8 132.2 153.9 131.8Q153.1 131.4 152.6 130.6Q152.1 129.9 152.1 129Q152.1 127.8 152.6 127.2Q153.2 126.6 154.5 126.3Q155.8 126 157.9 126H159V127.6H158Q156.9 127.6 156.3 127.7Q155.6 127.8 155.3 128.1Q155.1 128.4 155.1 128.8Q155.1 129.4 155.5 129.8Q155.9 130.1 156.6 130.1Q157.2 130.1 157.7 129.9Q158.1 129.6 158.4 129.1Q158.7 128.6 158.7 128V125.6Q158.7 124.7 158.3 124.4Q157.9 124 156.9 124Q156.3 124 155.7 124.1Q155 124.2 154.2 124.6Q153.8 124.7 153.4 124.6Q153.1 124.5 152.9 124.2Q152.7 123.9 152.7 123.6Q152.7 123.2 152.9 122.9Q153.1 122.5 153.6 122.4Q154.6 122 155.4 121.8Q156.3 121.7 157 121.7Q158.6 121.7 159.6 122.2Q160.6 122.6 161.1 123.6Q161.6 124.5 161.6 126V130.6Q161.6 131.4 161.3 131.8Q160.9 132.2 160.2 132.2Q159.5 132.2 159.1 131.8Q158.7 131.4 158.7 130.6V129.8L158.9 130Q158.8 130.7 158.4 131.2Q158 131.7 157.3 131.9Q156.7 132.2 155.9 132.2Z M168.5 132.2Q167.6 132.2 166.6 132.1Q165.6 131.9 164.9 131.5Q164.4 131.3 164.3 131Q164.1 130.7 164.1 130.3Q164.1 130 164.3 129.7Q164.5 129.5 164.8 129.4Q165.2 129.3 165.6 129.4Q166.4 129.8 167.1 129.9Q167.8 130.1 168.5 130.1Q169.3 130.1 169.8 129.8Q170.2 129.5 170.2 129.1Q170.2 128.7 169.9 128.5Q169.6 128.3 169.1 128.2L166.9 127.8Q165.7 127.5 165 126.8Q164.3 126.1 164.3 125Q164.3 124 164.9 123.2Q165.4 122.5 166.5 122.1Q167.5 121.7 168.8 121.7Q169.7 121.7 170.5 121.9Q171.3 122 172 122.4Q172.4 122.6 172.5 122.9Q172.7 123.2 172.6 123.5Q172.6 123.9 172.4 124.1Q172.2 124.4 171.8 124.5Q171.5 124.6 171.1 124.4Q170.4 124.1 169.9 124Q169.3 123.8 168.8 123.8Q167.9 123.8 167.5 124.1Q167.1 124.4 167.1 124.9Q167.1 125.2 167.3 125.4Q167.5 125.7 168 125.8L170.2 126.1Q171.5 126.4 172.2 127.1Q172.9 127.7 172.9 128.9Q172.9 130.4 171.7 131.3Q170.5 132.2 168.5 132.2Z M180.3 132.2Q178.9 132.2 177.9 131.8Q177 131.3 176.5 130.4Q176 129.5 176 128.1V124.2H175.1Q174.6 124.2 174.3 123.9Q173.9 123.6 173.9 123.1Q173.9 122.5 174.3 122.2Q174.6 121.9 175.1 121.9H176V120.3Q176 119.6 176.4 119.2Q176.8 118.8 177.6 118.8Q178.3 118.8 178.7 119.2Q179.1 119.6 179.1 120.3V121.9H181.1Q181.7 121.9 182 122.2Q182.3 122.5 182.3 123.1Q182.3 123.6 182 123.9Q181.7 124.2 181.1 124.2H179.1V128Q179.1 128.8 179.5 129.3Q179.9 129.7 180.8 129.7Q181.1 129.7 181.4 129.6Q181.7 129.6 181.9 129.6Q182.2 129.5 182.3 129.7Q182.5 129.9 182.5 130.6Q182.5 131.1 182.4 131.5Q182.2 131.8 181.8 132Q181.5 132.1 181.1 132.1Q180.6 132.2 180.3 132.2Z M186.6 132.2Q185.8 132.2 185.4 131.8Q185 131.4 185 130.6V124.2H184.3Q183.7 124.2 183.4 123.9Q183.1 123.6 183.1 123.1Q183.1 122.5 183.4 122.2Q183.7 121.9 184.3 121.9H185.9L185 122.7V122.1Q185 119.9 186.1 118.8Q187.2 117.7 189.4 117.5L190 117.4Q190.6 117.4 190.9 117.6Q191.2 117.8 191.3 118.1Q191.4 118.4 191.3 118.8Q191.3 119.1 191.1 119.4Q190.8 119.6 190.5 119.7L190.2 119.7Q189.1 119.8 188.6 120.2Q188.1 120.6 188.1 121.5V122.3L187.8 121.9H189.6Q190.2 121.9 190.5 122.2Q190.8 122.5 190.8 123.1Q190.8 123.6 190.5 123.9Q190.2 124.2 189.6 124.2H188.1V130.6Q188.1 132.2 186.6 132.2Z M197.6 132.2Q196 132.2 194.8 131.6Q193.6 130.9 192.9 129.8Q192.2 128.6 192.2 126.9Q192.2 125.7 192.6 124.8Q193 123.8 193.7 123.1Q194.4 122.4 195.4 122.1Q196.4 121.7 197.6 121.7Q199.2 121.7 200.4 122.3Q201.6 123 202.3 124.1Q202.9 125.3 202.9 126.9Q202.9 128.2 202.6 129.1Q202.2 130.1 201.5 130.8Q200.8 131.5 199.8 131.9Q198.8 132.2 197.6 132.2ZM197.6 129.9Q198.2 129.9 198.8 129.6Q199.3 129.3 199.5 128.6Q199.8 127.9 199.8 126.9Q199.8 125.4 199.2 124.7Q198.6 124 197.6 124Q196.9 124 196.4 124.3Q195.9 124.6 195.6 125.3Q195.3 125.9 195.3 126.9Q195.3 128.4 196 129.2Q196.6 129.9 197.6 129.9Z M210.3 132.2Q208.7 132.2 207.5 131.6Q206.3 130.9 205.6 129.8Q205 128.6 205 126.9Q205 125.7 205.3 124.8Q205.7 123.8 206.4 123.1Q207.1 122.4 208.1 122.1Q209.1 121.7 210.3 121.7Q211.9 121.7 213.1 122.3Q214.3 123 215 124.1Q215.7 125.3 215.7 126.9Q215.7 128.2 215.3 129.1Q214.9 130.1 214.2 130.8Q213.5 131.5 212.5 131.9Q211.5 132.2 210.3 132.2ZM210.3 129.9Q211 129.9 211.5 129.6Q212 129.3 212.3 128.6Q212.6 127.9 212.6 126.9Q212.6 125.4 211.9 124.7Q211.3 124 210.3 124Q209.7 124 209.2 124.3Q208.6 124.6 208.4 125.3Q208.1 125.9 208.1 126.9Q208.1 128.4 208.7 129.2Q209.3 129.9 210.3 129.9Z M222.1 132.2Q220.8 132.2 219.8 131.6Q218.8 130.9 218.2 129.8Q217.7 128.6 217.7 126.9Q217.7 125.3 218.2 124.1Q218.8 123 219.8 122.3Q220.8 121.7 222.1 121.7Q223.3 121.7 224.2 122.3Q225.1 122.8 225.5 123.8H225.2V118.9Q225.2 118.1 225.6 117.7Q226 117.3 226.8 117.3Q227.5 117.3 227.9 117.7Q228.3 118.1 228.3 118.9V130.6Q228.3 131.4 228 131.8Q227.6 132.2 226.8 132.2Q226.1 132.2 225.7 131.8Q225.3 131.4 225.3 130.6V129.2L225.5 130Q225.2 131 224.3 131.6Q223.3 132.2 222.1 132.2ZM223.1 129.9Q223.7 129.9 224.2 129.6Q224.7 129.3 225 128.6Q225.3 127.9 225.3 126.9Q225.3 125.4 224.7 124.7Q224 124 223.1 124Q222.4 124 221.9 124.3Q221.4 124.6 221.1 125.3Q220.8 125.9 220.8 126.9Q220.8 128.4 221.4 129.2Q222.1 129.9 223.1 129.9Z  M242.9 132.2Q241.3 132.2 240.1 131.7Q238.9 131.2 238.3 130.3Q237.6 129.4 237.6 128.2Q237.6 127.5 237.8 126.9Q238 126.3 238.4 125.8Q238.8 125.2 239.3 124.8Q239.8 124.4 240.5 124L241.2 123.6L240.8 124.2Q239.9 123.4 239.5 122.6Q239.1 121.8 239.1 120.9Q239.1 119.8 239.6 119Q240.2 118.2 241.1 117.7Q242.1 117.3 243.4 117.3Q245.2 117.3 246.2 118.2Q247.2 119.1 247.2 120.6Q247.2 121.4 246.9 122.1Q246.6 122.8 245.9 123.4Q245.3 124.1 244.2 124.6L244.2 123.9L247.5 127.3H246.9Q247.1 126.9 247.3 126.4Q247.5 125.9 247.6 125.4Q247.8 124.8 247.9 124.2Q248 123.6 248.3 123.3Q248.6 123 249.2 123Q249.9 123 250.2 123.4Q250.5 123.7 250.4 124.4Q250.3 125.3 250.1 126.1Q249.8 127 249.4 127.7Q249.1 128.4 248.6 129.1L248.6 128.3L250.5 130.2Q251 130.6 251 131.1Q251 131.6 250.6 131.9Q250.2 132.2 249.6 132.2Q249.1 132.2 248.7 132Q248.4 131.7 248 131.3L246.9 130.3H247.6Q246.7 131.2 245.4 131.7Q244.2 132.2 242.9 132.2ZM243.1 129.8Q243.9 129.8 244.6 129.5Q245.3 129.2 245.9 128.5L245.8 129.3L241.7 125.1L243 125.2L242.4 125.5Q241.8 125.8 241.4 126.2Q241.1 126.5 240.9 127Q240.7 127.4 240.7 127.9Q240.7 128.8 241.3 129.3Q241.9 129.8 243.1 129.8ZM243.4 119.4Q242.7 119.4 242.3 119.8Q241.9 120.2 241.9 120.8Q241.9 121.2 242.1 121.5Q242.2 121.8 242.5 122.2Q242.8 122.5 243.2 123L242.6 123Q243.4 122.6 243.8 122.2Q244.3 121.9 244.5 121.5Q244.7 121.1 244.7 120.7Q244.7 120.1 244.4 119.7Q244 119.4 243.4 119.4Z  M261.9 132Q261.1 132 260.7 131.6Q260.3 131.1 260.3 130.3V119.2Q260.3 118.4 260.7 117.9Q261.1 117.5 261.9 117.5H266.9Q268.5 117.5 269.6 118Q270.6 118.4 271.2 119.3Q271.8 120.1 271.8 121.3Q271.8 122.6 271 123.5Q270.3 124.4 269 124.7V124.4Q270.5 124.6 271.3 125.5Q272.2 126.5 272.2 127.9Q272.2 129.8 270.8 130.9Q269.5 132 267.1 132ZM263.3 129.6H266.7Q268 129.6 268.5 129.2Q269.1 128.7 269.1 127.7Q269.1 126.8 268.5 126.3Q268 125.8 266.7 125.8H263.3ZM263.3 123.5H266.4Q267.6 123.5 268.1 123Q268.7 122.6 268.7 121.7Q268.7 120.8 268.1 120.3Q267.6 119.9 266.4 119.9H263.3Z M278.3 132.2Q277.2 132.2 276.3 131.8Q275.5 131.4 275 130.6Q274.5 129.9 274.5 129Q274.5 127.8 275.1 127.2Q275.6 126.6 276.9 126.3Q278.2 126 280.4 126H281.4V127.6H280.4Q279.3 127.6 278.7 127.7Q278 127.8 277.8 128.1Q277.5 128.4 277.5 128.8Q277.5 129.4 277.9 129.8Q278.3 130.1 279 130.1Q279.6 130.1 280.1 129.9Q280.6 129.6 280.8 129.1Q281.1 128.6 281.1 128V125.6Q281.1 124.7 280.7 124.4Q280.3 124 279.3 124Q278.7 124 278.1 124.1Q277.4 124.2 276.7 124.6Q276.2 124.7 275.8 124.6Q275.5 124.5 275.3 124.2Q275.1 123.9 275.1 123.6Q275.1 123.2 275.3 122.9Q275.5 122.5 276 122.4Q277 122 277.8 121.8Q278.7 121.7 279.4 121.7Q281 121.7 282 122.2Q283 122.6 283.5 123.6Q284 124.5 284 126V130.6Q284 131.4 283.7 131.8Q283.3 132.2 282.6 132.2Q281.9 132.2 281.5 131.8Q281.2 131.4 281.2 130.6V129.8L281.3 130Q281.2 130.7 280.8 131.2Q280.4 131.7 279.8 131.9Q279.1 132.2 278.3 132.2Z M288.6 132.2Q287.8 132.2 287.4 131.8Q287 131.4 287 130.6V118.9Q287 118.1 287.4 117.7Q287.8 117.3 288.6 117.3Q289.3 117.3 289.7 117.7Q290.1 118.1 290.1 118.9V126.1H290.2L293.1 122.8Q293.6 122.3 294 122Q294.3 121.7 295 121.7Q295.6 121.7 296 122.1Q296.3 122.4 296.3 122.9Q296.3 123.3 295.9 123.8L292.8 127.3V126.1L296.2 130.2Q296.7 130.6 296.6 131.1Q296.5 131.6 296.2 131.9Q295.8 132.2 295.2 132.2Q294.5 132.2 294.1 131.9Q293.7 131.7 293.2 131.1L290.2 127.6H290.1V130.6Q290.1 132.2 288.6 132.2Z M300.6 132.2Q299.9 132.2 299.5 131.8Q299.1 131.4 299.1 130.6V118.9Q299.1 118.1 299.5 117.7Q299.9 117.3 300.6 117.3Q301.4 117.3 301.8 117.7Q302.2 118.1 302.2 118.9V126.1H302.3L305.2 122.8Q305.7 122.3 306.1 122Q306.4 121.7 307.1 121.7Q307.7 121.7 308.1 122.1Q308.4 122.4 308.4 122.9Q308.4 123.3 308 123.8L304.9 127.3V126.1L308.3 130.2Q308.8 130.6 308.7 131.1Q308.6 131.6 308.3 131.9Q307.9 132.2 307.3 132.2Q306.6 132.2 306.2 131.9Q305.8 131.7 305.3 131.1L302.3 127.6H302.2V130.6Q302.2 132.2 300.6 132.2Z M316.4 132.2Q314.7 132.2 313.4 131.6Q312.1 130.9 311.4 129.7Q310.7 128.6 310.7 127Q310.7 125.4 311.4 124.2Q312 123 313.2 122.4Q314.4 121.7 315.9 121.7Q317 121.7 317.9 122Q318.7 122.4 319.4 123.1Q320 123.8 320.3 124.7Q320.7 125.7 320.7 126.8Q320.7 127.2 320.4 127.4Q320.2 127.6 319.7 127.6H313.2V126H318.4L318.1 126.3Q318.1 125.5 317.9 124.9Q317.6 124.3 317.2 124Q316.7 123.7 316 123.7Q315.3 123.7 314.7 124.1Q314.2 124.4 313.9 125.1Q313.6 125.8 313.6 126.7V126.9Q313.6 128.4 314.3 129.2Q315 129.9 316.5 129.9Q317 129.9 317.6 129.8Q318.3 129.7 318.8 129.4Q319.3 129.2 319.7 129.2Q320 129.3 320.2 129.6Q320.4 129.8 320.5 130.2Q320.5 130.5 320.3 130.9Q320.1 131.2 319.7 131.4Q319 131.8 318.1 132Q317.2 132.2 316.4 132.2Z M324.7 132.2Q323.9 132.2 323.5 131.8Q323.1 131.4 323.1 130.6V123.3Q323.1 122.5 323.5 122.1Q323.9 121.7 324.6 121.7Q325.4 121.7 325.7 122.1Q326.1 122.5 326.1 123.3V124.4H325.9Q326.2 123.1 327 122.5Q327.9 121.8 329.2 121.7Q329.7 121.7 330 122Q330.3 122.2 330.3 122.9Q330.3 123.6 330 123.9Q329.7 124.3 329 124.4L328.6 124.4Q327.4 124.5 326.8 125.1Q326.3 125.7 326.3 126.8V130.6Q326.3 131.4 325.9 131.8Q325.5 132.2 324.7 132.2Z M333.7 132.2Q333 132.2 332.6 131.7Q332.2 131.3 332.2 130.5V123.4Q332.2 122.6 332.6 122.2Q333 121.7 333.7 121.7Q334.5 121.7 334.9 122.2Q335.3 122.6 335.3 123.4V130.5Q335.3 131.3 334.9 131.7Q334.5 132.2 333.7 132.2ZM333.7 120.1Q332.9 120.1 332.4 119.6Q332 119.2 332 118.5Q332 117.7 332.4 117.3Q332.9 116.9 333.7 116.9Q334.6 116.9 335.1 117.3Q335.5 117.7 335.5 118.5Q335.5 119.2 335.1 119.6Q334.6 120.1 333.7 120.1Z M337.4 135.9Q336.9 135.9 336.5 135.7Q336.2 135.5 336.1 135.2Q336 134.8 336 134.5Q336.1 134.2 336.3 133.9Q336.5 133.7 336.9 133.7Q337.7 133.6 338.1 133.2Q338.4 132.8 338.4 132V123.3Q338.4 122.5 338.8 122.1Q339.2 121.7 340 121.7Q340.7 121.7 341.1 122.1Q341.5 122.5 341.5 123.3V131.8Q341.5 133.1 341.1 134Q340.6 134.9 339.7 135.3Q338.8 135.8 337.4 135.9ZM340 120.1Q339.1 120.1 338.7 119.6Q338.2 119.2 338.2 118.5Q338.2 117.7 338.7 117.3Q339.1 116.9 340 116.9Q340.8 116.9 341.3 117.3Q341.7 117.7 341.7 118.5Q341.7 119.2 341.3 119.6Q340.8 120.1 340 120.1Z"/><g class="reg"><circle cx="367.0" cy="5.4" r="7.5" fill="none" stroke="#fff" stroke-width="1.8"/><path fill="#fff" d="M365.0 9.1Q364.6 9.1 364.4 8.8Q364.1 8.6 364.1 8.2V2.9Q364.1 2.4 364.4 2.2Q364.6 2.0 365.0 2.0H367.5Q368.7 2.0 369.4 2.5Q370.0 3.1 370.0 4.2Q370.0 4.8 369.7 5.3Q369.4 5.8 368.9 6.1Q368.3 6.3 367.5 6.3L367.6 6.2H368.1Q368.5 6.2 368.8 6.4Q369.1 6.6 369.4 7.0L369.9 7.9Q370.0 8.2 370.0 8.5Q370.0 8.7 369.8 8.9Q369.6 9.1 369.2 9.1Q368.8 9.1 368.6 8.9Q368.3 8.8 368.1 8.4L367.2 6.8Q367.1 6.5 366.9 6.5Q366.7 6.4 366.5 6.4H365.9V8.2Q365.9 8.6 365.7 8.8Q365.5 9.1 365.0 9.1ZM365.9 5.1H367.2Q367.7 5.1 368.0 4.9Q368.3 4.6 368.3 4.2Q368.3 3.8 368.0 3.6Q367.7 3.4 367.2 3.4H365.9Z"/></g></svg></a></div>
+    <figure class="cover-foto snij" id="schaal">
+      <img src="img/schaal-baklava.jpg" width="1000" height="750" alt="Een ronde schaal baklava met gemalen pistache, in punten gesneden, in de vitrine van İkram" fetchpriority="high">
+      <figcaption>Baklava met pistache, in hun vitrine</figcaption>
+    </figure>
+    <div class="kop">
+      <h1>Baklava met pistache. <em>Taart voor vier, zes of acht.</em></h1>
+      <p>Turkse patisserie en bakkerij in het Oude Noorden, met börek, simit en döner in dezelfde zaak.</p>
+    </div>
+    <div class="acties">
+      <div class="cta-rij">
+        <a class="btn btn-wit wa" href="#" data-msg="Hoi İkram, ik heb een vraag:"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>App İkram</a>
+        <a class="btn btn-rand" href="#kiezer">Vraag naar een taart</a>
+      </div>
+      <p class="vertrouwen"><span><span class="st">★★★★★</span> 4,8 uit 200 <a href="https://www.google.com/maps/search/?api=1&amp;query=%C4%B0kram+Patisserie+en+Bakkerij+Zwart+Janstraat+49B+Rotterdam" target="_blank" rel="noopener">Google-reviews</a></span><span>Rotterdam-Noord</span></p>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="inhoud" aria-labelledby="inh">
+  <div class="wrap">
+    <h2 id="inh">In dit nummer</h2>
+    <ol>
+      <li><a href="#vitrine"><span class="nr">01</span><span class="t">De vitrine<small>Baklava, kadayif, trileçe</small></span><span class="pijl" aria-hidden="true">→</span></a></li>
+      <li><a href="#taarten"><span class="nr">02</span><span class="t">Taarten<small>Voor 4, 6 of 8 personen</small></span><span class="pijl" aria-hidden="true">→</span></a></li>
+      <li><a href="#kiezer"><span class="nr">03</span><span class="t">Even navragen<small>Drie tikken, één appje</small></span><span class="pijl" aria-hidden="true">→</span></a></li>
+      <li><a href="#hartig"><span class="nr">04</span><span class="t">Hartig<small>Döner, börek, simit, Turkse pizza</small></span><span class="pijl" aria-hidden="true">→</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sectie" id="vitrine" aria-labelledby="h-vitrine">
+  <div class="wrap">
+    <div class="rubriek"><b>01</b> De vitrine</div>
+    <h2 id="h-vitrine">Ambachtelijke baklava, per drie stuks.</h2>
+    <p class="lead">Laagjes filodeeg met pistache, walnoot of chocolade, doordrenkt met siroop en bereid met roomboter. Zo beschrijft İkram het zelf.</p>
+    <div class="spread">
+      <figure>
+        <img src="img/vitrine-blad.jpg" width="900" height="520" loading="lazy" decoding="async" alt="Een vol bakblad met goudbruin gebak met pistache in de vitrine van İkram">
+        <figcaption>Een vol blad gebak met pistache, in hun vitrine.</figcaption>
+      </figure>
+      <div>
+        <ul class="index">
+          <li><span class="n">Baklava met pistachenoten<small>Filodeeg, pistache, siroop, roomboter</small></span><span class="lijntje"></span><span class="st">3 stuks</span></li>
+          <li><span class="n">Baklava met walnoten</span><span class="lijntje"></span><span class="st">3 stuks</span></li>
+          <li><span class="n">Baklava met chocolade<small>Met pistache en chocolade</small></span><span class="lijntje"></span><span class="st">3 stuks</span></li>
+          <li><span class="n">Midye baklava<small>In mosselvorm, met verse pistache</small></span><span class="lijntje"></span><span class="st">3 stuks</span></li>
+          <li><span class="n">Baklava rol met pistache</span><span class="lijntje"></span><span class="st">3 stuks</span></li>
+          <li><span class="n">Pistache cold baklava<small>Lichter, met koude melk</small></span><span class="lijntje"></span><span class="st">3 stuks</span></li>
+          <li><span class="n">Kadayif met pistache<small>Knapperig, overgoten met siroop</small></span><span class="lijntje"></span><span class="st">1 stuk</span></li>
+          <li><span class="n">Trileçe<small>Cake met drie soorten melk</small></span><span class="lijntje"></span><span class="st">1 stuk</span></li>
+          <li><span class="n">Chocolade supangle<small>Romig Turks dessert met pure chocolade</small></span><span class="lijntje"></span><span class="st">1 stuk</span></li>
+        </ul>
+        <p class="bron">Namen en porties zoals ze op de bestelpagina van İkram staan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie taart" id="taarten" aria-labelledby="h-taart">
+  <div class="wrap">
+    <div class="rubriek"><b>02</b> Taarten</div>
+    <h2 id="h-taart">Slagroomtaart voor vier, zes of acht personen.</h2>
+    <div class="taart-grid">
+      <div>
+        <div class="maten" aria-hidden="true">
+          <div class="maat"><svg width="78" height="78" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="#fff" stroke="#E6E1DC" stroke-width="3"/><circle cx="50" cy="50" r="38" fill="#F7EDE6"/><g fill="#CF4A2A"><circle cx="50" cy="20" r="5"/><circle cx="80" cy="50" r="5"/><circle cx="50" cy="80" r="5"/><circle cx="20" cy="50" r="5"/></g><circle cx="50" cy="50" r="12" fill="#9DBB4A"/></svg><span>4 pers.</span></div>
+          <div class="maat"><svg width="104" height="104" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="#fff" stroke="#E6E1DC" stroke-width="2.4"/><circle cx="50" cy="50" r="39" fill="#F7EDE6"/><g fill="#CF4A2A"><circle cx="50" cy="17" r="4.2"/><circle cx="78.6" cy="33.5" r="4.2"/><circle cx="78.6" cy="66.5" r="4.2"/><circle cx="50" cy="83" r="4.2"/><circle cx="21.4" cy="66.5" r="4.2"/><circle cx="21.4" cy="33.5" r="4.2"/></g><circle cx="50" cy="50" r="13" fill="#9DBB4A"/></svg><span>6 pers.</span></div>
+          <div class="maat"><svg width="132" height="132" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="#fff" stroke="#E6E1DC" stroke-width="2"/><circle cx="50" cy="50" r="40" fill="#F7EDE6"/><g fill="#CF4A2A"><circle cx="50" cy="16" r="3.6"/><circle cx="74" cy="26" r="3.6"/><circle cx="84" cy="50" r="3.6"/><circle cx="74" cy="74" r="3.6"/><circle cx="50" cy="84" r="3.6"/><circle cx="26" cy="74" r="3.6"/><circle cx="16" cy="50" r="3.6"/><circle cx="26" cy="26" r="3.6"/></g><circle cx="50" cy="50" r="14" fill="#9DBB4A"/></svg><span>8 pers.</span></div>
+        </div>
+        <p class="illus">Illustratie van de drie maten, geen foto van hun taarten.</p>
+      </div>
+      <div>
+        <p class="lead" style="margin-top:0">Op de bestelpagina van İkram staat het zo: slagroomtaarten worden dagelijks vers bereid, en de smaak hangt af van de voorraad. Bijvoorbeeld:</p>
+        <ul class="smaken"><li>Pistache</li><li>Chocolade</li><li>Fruit</li><li>Room</li><li>Aardbei</li><li>Banaan</li></ul>
+        <p class="lead">Vraag daarom even na of jouw taart er is, en voor welke dag.</p>
+        <a class="btn btn-verm" href="#kiezer" data-kies="taart">Vraag naar een taart</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie kiezer" id="kiezer" aria-labelledby="h-kiezer">
+  <div class="wrap">
+    <div class="rubriek"><b>03</b> Even navragen</div>
+    <h2 id="h-kiezer">Drie tikken, en je vraag staat klaar.</h2>
+    <p class="lead">Drie tikken: wat je zoekt, welke soort en voor wanneer. Je stuurt een vraag; de zaak laat weten of het kan.</p>
+    <div class="kz">
+      <div class="stappen-kz">
+        <div class="stap">
+          <h3><i>1</i> Wat zoek je?</h3>
+          <div class="keuzes" id="k-wat">
+            <button class="keus" type="button" data-v="taart" aria-pressed="true"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="#F7EDE6" stroke="#CF4A2A" stroke-width="2"/><circle cx="20" cy="20" r="6" fill="#9DBB4A"/><g fill="#CF4A2A"><circle cx="20" cy="7.5" r="2"/><circle cx="32.5" cy="20" r="2"/><circle cx="20" cy="32.5" r="2"/><circle cx="7.5" cy="20" r="2"/></g></svg>Slagroomtaart</button>
+            <button class="keus" type="button" data-v="baklava" aria-pressed="false"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="5" width="30" height="30" rx="3" fill="#F2C46B" stroke="#A9381D" stroke-width="2"/><path d="M5 15h30M5 25h30M15 5v30M25 5v30" stroke="#A9381D" stroke-width="1.6"/><g fill="#9DBB4A"><circle cx="10" cy="10" r="2"/><circle cx="20" cy="20" r="2"/><circle cx="30" cy="30" r="2"/><circle cx="30" cy="10" r="2"/><circle cx="10" cy="30" r="2"/></g></svg>Baklava &amp; zoet</button>
+            <button class="keus" type="button" data-v="borek" aria-pressed="false"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 20m-3 0a3 3 0 1 1 6 0a6 6 0 1 1-12 0a9 9 0 1 1 18 0a12 12 0 1 1-24 0" fill="none" stroke="#C98B3A" stroke-width="4" stroke-linecap="round"/></svg>Börek</button>
+            <button class="keus" type="button" data-v="simit" aria-pressed="false"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="12" fill="none" stroke="#B5652B" stroke-width="7"/><g fill="#F4E3BE"><circle cx="13" cy="12" r="1"/><circle cx="27" cy="13" r="1"/><circle cx="30" cy="22" r="1"/><circle cx="25" cy="30" r="1"/><circle cx="12" cy="27" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="19" cy="9" r="1"/><circle cx="18" cy="31" r="1"/></g></svg>Simit</button>
+          </div>
+        </div>
+        <div class="stap">
+          <h3><i>2</i> <span id="t-soort">Voor hoeveel personen?</span></h3>
+          <div class="keuzes k2" id="k-soort"></div>
+          <div id="k-smaak-wrap">
+            <p class="sub-label" id="t-smaak">Smaak (hangt af van de voorraad)</p>
+            <div class="keuzes k2" id="k-smaak"></div>
+          </div>
+        </div>
+        <div class="stap">
+          <h3><i>3</i> Voor wanneer?</h3>
+          <div class="keuzes k2" id="k-dag"></div>
+          <div class="datum-in" id="datum-in"><label class="sr" for="d-in">Kies een datum</label><input type="date" id="d-in"></div>
+        </div>
+      </div>
+      <div class="bericht" aria-live="polite">
+        <h3>Jouw appje</h3>
+        <div class="bubbel" id="bubbel"></div>
+        <a class="btn btn-wit wa" id="kz-wa" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>Stuur je vraag via WhatsApp</a>
+        <p class="klein">Je vraag gaat naar 06 48 36 28 03. Liever bellen? <a href="tel:+31648362803">Bel de zaak</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie hartig" id="hartig" aria-labelledby="h-hartig">
+  <div class="wrap">
+    <div class="rubriek"><b>04</b> Hartig</div>
+    <h2 id="h-hartig">Ook hartig: döner, börek en Turkse pizza.</h2>
+    <p class="lead">Kalfs- en kipdöner van de spies, Turkse pizza, kapsalon en börek in vier vormen.</p>
+    <div class="hartig-grid">
+      <div class="duo">
+        <figure><img src="img/doner-spiezen.jpg" width="700" height="758" loading="lazy" decoding="async" alt="Twee dönerspiezen bij İkram, kip en vlees, voor een zwarte marmeren wand"><figcaption>Kip en vlees aan de spies.</figcaption></figure>
+        <figure><img src="img/gevel-bord.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Het bord van İkram boven de open deur, met de toonbank binnen"><figcaption>Bord boven de deur, toonbank binnen.</figcaption></figure>
+      </div>
+      <div>
+        <ul class="menu-l">
+          <li><b>Döner</b><span>Dürüm, broodje of menu, met kalfs- of kipdöner, salade, knoflooksaus en sambal.</span></li>
+          <li><b>Turkse pizza</b><span>Origineel, met salade, met kaas, of met kip- of vleesdöner.</span></li>
+          <li><b>Kapsalon</b><span>Kip of vlees, klein of groot.</span></li>
+          <li><b>Börek en simit</b><span>Lang, rond, driehoekig of vierkant, met kaas, spinazie, aardappel of gehakt. En simit, "de ster van het ontbijt", zoals ze zelf schrijven.</span></li>
+        </ul>
+        <p class="lead" style="margin-top:18px">Liever thuis? Op hun <a class="tl" href="https://www.ikram-rotterdam.nl/" target="_blank" rel="noopener">bestelpagina</a> kun je laten bezorgen.</p>
+        <a class="btn btn-wit wa" href="#" data-msg="Hoi İkram, ik heb een vraag over jullie döner of börek:"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>App over hartig</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie" id="waarom" aria-labelledby="h-waarom">
+  <div class="wrap">
+    <div class="rubriek">Waarom İkram</div>
+    <h2 id="h-waarom">Wat klanten over de zaak opschrijven.</h2>
+    <div class="kaarten">
+      <article class="kaart"><h3>Kalfsdöner en volle broodjes</h3><p>Klanten schrijven over kalfsdöner van goede kwaliteit en broodjes die goed gevuld zijn.</p></article>
+      <article class="kaart"><h3>Gastvrij achter de toonbank</h3><p>Klanten noemen de eigenaren vriendelijk en behulpzaam, en schrijven dat er soms een stukje baklava meegaat.</p></article>
+      <article class="kaart"><h3>Brood en baklava van huis</h3><p>Klanten schrijven over huisgemaakt brood en over de baklava van de zaak.</p></article>
+    </div>
+
+    <div class="score">
+      <span class="groot">4,8</span>
+      <div><div class="st" aria-hidden="true">★★★★★</div><p style="margin:0">uit 200 reviews op <a href="https://www.google.com/maps/search/?api=1&amp;query=%C4%B0kram+Patisserie+en+Bakkerij+Zwart+Janstraat+49B+Rotterdam" target="_blank" rel="noopener">Google</a></p></div>
+    </div>
+    <div class="citaten">
+      <figure class="citaat"><p>Kalfsdöner van goede kwaliteit, en een goed gevuld broodje.</p><span>Ninja · Google</span></figure>
+      <figure class="citaat"><p>Vriendelijke en behulpzame eigenaren.</p><span>sena · Google</span></figure>
+      <figure class="citaat"><p>Voelde zich heel welkom; het brood was heerlijk en de baklava geweldig.</p><span>Khadija · Google</span></figure>
+    </div>
+    <p class="label-sam">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="sectie stappen" aria-labelledby="h-stappen">
+  <div class="wrap">
+    <div class="rubriek">Zo werkt het</div>
+    <h2 id="h-stappen">Van vraag naar vitrine.</h2>
+    <ol>
+      <li><b>Kies wat je zoekt</b>Taart, baklava, börek of simit, met de maat of soort erbij.</li>
+      <li><b>Stuur het appje</b>Je vraag staat al klaar, met de dag die je kiest.</li>
+      <li><b>Kom langs</b>Aan de Zwart Janstraat 49B, als de zaak laat weten dat het kan.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="sectie faq" aria-labelledby="h-faq">
+  <div class="wrap">
+    <div class="rubriek">Vragen</div>
+    <h2 id="h-faq">Goed om te weten.</h2>
+    <div class="faq-lijst">
+      <details><summary>Welke taarten zijn er?</summary><p>Slagroomtaarten voor 4, 6 of 8 personen. Volgens hun bestelpagina worden ze dagelijks vers bereid en hangt de smaak af van de voorraad, bijvoorbeeld pistache, chocolade, fruit, room, aardbei of banaan. Vraag even na of jouw taart er is.</p></details>
+      <details><summary>Wat zit er in de baklava?</summary><p>Op hun bestelpagina: laagjes filodeeg, gevuld met pistache, walnoot of pistache met chocolade, doordrenkt met siroop en bereid met roomboter. De baklava staat er per 3 stuks.</p></details>
+      <details><summary>Is het eten halal?</summary><p>Op hun bestelpagina staan de döner-gerechten, de Turkse pizza's en de broodjes met saus en salade als halal. Twijfel je over iets anders, vraag het dan even.</p></details>
+      <details><summary>Kan ik laten bezorgen?</summary><p>Ja, via hun bestelpagina op <a href="https://www.ikram-rotterdam.nl/" target="_blank" rel="noopener">ikram-rotterdam.nl</a>.</p></details>
+      <details><summary>Hoe laat zijn jullie open?</summary><p>Bel of app even voor de actuele tijden: <a href="tel:+31648362803">06 48 36 28 03</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sectie route" id="route" aria-labelledby="h-route">
+  <div class="wrap">
+    <div class="route-grid">
+      <figure><img src="img/gevel.jpg" width="800" height="977" loading="lazy" decoding="async" alt="De gevel van İkram aan de Zwart Janstraat, met het oranjerode bord ikram, Doner &amp; Fastfood &amp; Bakkerij"><figcaption>Het oranjerode bord aan de Zwart Janstraat.</figcaption></figure>
+      <div>
+        <div class="rubriek">Route</div>
+        <h2 id="h-route">Zoek het oranjerode bord.</h2>
+        <p class="adres">Zwart Janstraat 49B<br>3035 AL Rotterdam</p>
+        <p>In het Oude Noorden, Rotterdam-Noord. Bel of app even voor de actuele openingstijden.</p>
+        <div class="cta-rij">
+          <a class="btn btn-wit" href="https://www.google.com/maps/dir/?api=1&amp;destination=Zwart+Janstraat+49B+3035+AL+Rotterdam" target="_blank" rel="noopener">Route in Google Maps</a>
+          <a class="btn btn-lijn" href="tel:+31648362803">Bel 06 48 36 28 03</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie slot" aria-labelledby="h-slot">
+  <div class="wrap">
+    <h2 id="h-slot">Baklava voor bij de thee, of een taart voor zes?</h2>
+    <p>Stel je vraag in een paar tikken, of app İkram meteen.</p>
+    <div class="cta-rij">
+      <a class="btn btn-wit wa" href="#" data-msg="Hoi İkram, ik heb een vraag:"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>App İkram</a>
+      <a class="btn btn-rand" href="#kiezer" data-kies="taart">Vraag naar een taart</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-light.svg" width="150" height="57" alt="ikram, Doner &amp; Fastfood &amp; Bakkerij">
+    <p style="margin:0">İkram Patisserie en Bakkerij · Zwart Janstraat 49B, 3035 AL Rotterdam · <a href="tel:+31648362803">06 48 36 28 03</a></p>
+    <p style="margin:0">Website door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef">
+  <a class="btn btn-verm wa" href="#" data-msg="Hoi İkram, ik heb een vraag:"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>App İkram</a>
+  <a class="btn btn-ink bel" href="tel:+31648362803" aria-label="Bel İkram">Bel</a>
+</div>
+
+<!-- Pitch-modus: alleen voor Mo in het gesprek. Openen via het kleine "Mo"-knopje in de demo-strook of ?pitch in de URL. -->
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-labelledby="pp-titel">
+  <div class="pp">
+    <div class="pp-top"><b>Pitch · İkram Patisserie en Bakkerij</b><button class="pp-sluit" id="pp-sluit" type="button" aria-label="Sluiten">×</button></div>
+    <h2 id="pp-titel">Wie ikram-rotterdam.nl opent, ziet een bestelsjabloon van Thuisbezorgd. Jullie baklava en taarten verdienen de voorpagina.</h2>
+    <div class="vn">
+      <figure><div class="tel"><img src="img/voor-site.jpg" alt="ikram-rotterdam.nl op een telefoon: een bestelpagina in Thuisbezorgd-sjabloon met een cookiemelding" width="390" height="844" loading="lazy"></div><figcaption><b>Nu:</b> ikram-rotterdam.nl op een telefoon (8 nov 2026). Een Thuisbezorgd-sjabloon: geen telefoonnummer, geen openingstijden, alleen bezorgtijden.</figcaption></figure>
+      <figure><div class="tel"><iframe id="pp-frame" title="De nieuwe site op een telefoon" loading="lazy"></iframe></div><figcaption><b>Straks:</b> jullie eigen bord, baklava en gevel groot in beeld, en een taartvraag in één appje.</figcaption></figure>
+    </div>
+
+    <h3>Rekenvoorbeeld (vul samen in)</h3>
+    <div class="reken">
+      <div><label for="r-klant">Extra klanten per week via de site <output id="o-klant">2</output></label><input type="range" id="r-klant" min="0" max="20" step="1" value="2"></div>
+      <div><label for="r-best">Gemiddelde besteding <output id="o-best">€ 15</output></label><input type="range" id="r-best" min="5" max="60" step="1" value="15"></div>
+      <div class="uitkomst">
+        <div><small>Extra omzet per week</small><strong id="u-week">€ 30</strong></div>
+        <div><small>Extra omzet per jaar (× 52)</small><strong id="u-jaar">€ 1.560</strong></div>
+        <div><small>€ 595 is terugverdiend na</small><strong id="u-klant">40 klanten</strong></div>
+      </div>
+      <p class="disclaimer">Voorbeeld, geen belofte. Jullie kiezen de getallen; het gaat om omzet, niet om winst.</p>
+    </div>
+
+    <h3>Wat er concreet beter is</h3>
+    <ol class="punten">
+      <li><b>Jullie eigen adres wordt jullie eigen site.</b> Nu toont ikram-rotterdam.nl een bestelsjabloon van Thuisbezorgd, zonder telefoonnummer of openingstijden. Straks: jullie bord, vitrine en gevel.</li>
+      <li><b>Taarten krijgen een eigen plek.</b> Nu staan de slagroomtaarten voor 4, 6 en 8 personen onder 'Nagerecht', na de sauzen. Straks vraagt een klant er in drie tikken naar, met smaak en dag.</li>
+      <li><b>Bewijs en adres in één scherm.</b> 4,8 uit 200 Google-reviews, Zwart Janstraat 49B met route, en bellen of appen in één tik.</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+const WA = "31648362803";
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const waUrl = t => "https://wa.me/" + WA + "?text=" + encodeURIComponent(t);
+
+/* vaste WhatsApp-knoppen */
+document.querySelectorAll("a.wa[data-msg]").forEach(a => { a.href = waUrl(a.dataset.msg); a.target = "_blank"; a.rel = "noopener"; });
+
+/* hero: de schaal wordt punt voor punt aangesneden (16 punten), daarna geen mask meer */
+(function(){
+  const fig = document.getElementById("schaal");
+  const klaar = () => { fig.classList.remove("snij"); fig.style.removeProperty("--a"); };
+  if (reduce) { klaar(); return; }
+  const N = 16, duur = 1900; let t0 = null;
+  function stap(t){
+    if (t0 === null) t0 = t;
+    const p = Math.min(1, (t - t0) / duur), e = p;
+    fig.style.setProperty("--a", (Math.ceil(e * N) * 360 / N) + "deg");
+    if (p < 1) requestAnimationFrame(stap); else setTimeout(klaar, 120);
+  }
+  setTimeout(() => requestAnimationFrame(stap), 900);
+  setTimeout(klaar, 4500); /* vangnet */
+})();
+
+/* kiezer */
+(function(){
+  const OPT = {
+    taart: { titel: "Voor hoeveel personen?", soort: ["4 personen","6 personen","8 personen"], smaak: ["Pistache","Chocolade","Fruit","Room","Aardbei","Banaan","Maakt niet uit"] },
+    baklava: { titel: "Welke soort?", soort: ["Baklava met pistache","Baklava met walnoten","Baklava met chocolade","Midye baklava","Kadayif","Trileçe"], smaak: null },
+    borek: { titel: "Welke börek?", soort: ["Met kaas","Met spinazie","Spinazie en kaas","Met aardappel","Met gehakt"], smaak: null },
+    simit: { titel: "Hoeveel simit?", soort: ["1 simit","2 simit","4 simit","Meer dan 4"], smaak: null }
+  };
+  const DAGEN = ["Vandaag","Morgen","Zaterdag","Zondag","Andere dag"];
+  const st = { wat: "taart", soort: "6 personen", smaak: "Pistache", dag: "Zaterdag", datum: "" };
+  const $ = id => document.getElementById(id);
+  function knoppen(box, lijst, huidig, cb){
+    box.innerHTML = "";
+    lijst.forEach(v => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "keus"; b.textContent = v; b.setAttribute("aria-pressed", v === huidig);
+      b.addEventListener("click", () => { cb(v); });
+      box.appendChild(b);
+    });
+  }
+  function wanneer(){
+    if (st.dag === "Andere dag") {
+      if (!st.datum) return "op een andere dag (datum volgt)";
+      const d = new Date(st.datum + "T12:00");
+      return "op " + d.toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long" });
+    }
+    return st.dag === "Vandaag" ? "vandaag" : st.dag === "Morgen" ? "morgen" : "op " + st.dag.toLowerCase();
+  }
+  function tekst(){
+    const w = wanneer();
+    if (st.wat === "taart") return "Hoi İkram, ik heb een vraag.\nHebben jullie " + w + " een slagroomtaart voor " + st.soort.replace(" personen","") + " personen? Smaak: " + st.smaak.toLowerCase() + ".\nHoor graag of dat kan.";
+    if (st.wat === "baklava") return "Hoi İkram, ik heb een vraag.\nHebben jullie " + w + " " + st.soort.toLowerCase() + "?\nHoor graag of dat kan.";
+    if (st.wat === "borek") return "Hoi İkram, ik heb een vraag.\nHebben jullie " + w + " börek " + st.soort.toLowerCase() + "?\nHoor graag of dat kan.";
+    return "Hoi İkram, ik heb een vraag.\nHebben jullie " + w + " " + (st.soort === "Meer dan 4" ? "meer dan 4 simit" : st.soort) + " voor me?\nHoor graag of dat kan.";
+  }
+  function teken(){
+    document.querySelectorAll("#k-wat .keus").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === st.wat));
+    const o = OPT[st.wat];
+    $("t-soort").textContent = o.titel;
+    knoppen($("k-soort"), o.soort, st.soort, v => { st.soort = v; teken(); });
+    $("k-smaak-wrap").hidden = !o.smaak;
+    if (o.smaak) knoppen($("k-smaak"), o.smaak, st.smaak, v => { st.smaak = v; teken(); });
+    knoppen($("k-dag"), DAGEN, st.dag, v => { st.dag = v; teken(); });
+    $("datum-in").classList.toggle("toon", st.dag === "Andere dag");
+    const t = tekst();
+    $("bubbel").textContent = t;
+    $("kz-wa").href = waUrl(t); $("kz-wa").target = "_blank"; $("kz-wa").rel = "noopener";
+  }
+  document.querySelectorAll("#k-wat .keus").forEach(b => b.addEventListener("click", () => {
+    st.wat = b.dataset.v; st.soort = OPT[st.wat].soort[st.wat === "taart" ? 1 : 0]; teken();
+  }));
+  $("d-in").addEventListener("change", e => { st.datum = e.target.value; teken(); });
+  const vandaag = new Date(); $("d-in").min = vandaag.toISOString().slice(0,10);
+  document.querySelectorAll("[data-kies]").forEach(a => a.addEventListener("click", () => {
+    st.wat = a.dataset.kies; st.soort = OPT[st.wat].soort[st.wat === "taart" ? 1 : 0]; teken();
+  }));
+  teken();
+})();
+
+/* zwevende CTA zodra de hero uit beeld is */
+(function(){
+  const z = document.getElementById("zweef"), hero = document.getElementById("hero");
+  if (!("IntersectionObserver" in window)) { z.classList.add("toon"); return; }
+  new IntersectionObserver(([e]) => z.classList.toggle("toon", !e.isIntersecting), {threshold:0}).observe(hero);
+})();
+
+/* pitch-modus */
+(function(){
+  const p = document.getElementById("pitch"), frame = document.getElementById("pp-frame");
+  const euro = n => "€ " + Math.round(n).toLocaleString("nl-NL");
+  function open(){ p.classList.add("open"); document.body.style.overflow = "hidden"; if (!frame.src) frame.src = location.href.split("#")[0].split("?")[0]; }
+  function dicht(){ p.classList.remove("open"); document.body.style.overflow = ""; }
+  document.getElementById("pitch-knop").addEventListener("click", open);
+  document.getElementById("pp-sluit").addEventListener("click", dicht);
+  p.addEventListener("click", e => { if (e.target === p) dicht(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") dicht(); });
+  const k = document.getElementById("r-klant"), b = document.getElementById("r-best");
+  function reken(){
+    const n = +k.value, x = +b.value;
+    document.getElementById("o-klant").textContent = n;
+    document.getElementById("o-best").textContent = euro(x);
+    document.getElementById("u-week").textContent = euro(n*x);
+    document.getElementById("u-jaar").textContent = euro(n*x*52);
+    const t = Math.ceil(595/x);
+    document.getElementById("u-klant").textContent = t + (t === 1 ? " klant" : " klanten");
+  }
+  k.addEventListener("input", reken); b.addEventListener("input", reken); reken();
+  if (/[?&]pitch\b/.test(location.search)) open();
+  if (window.self !== window.top) { document.getElementById("pitch-knop").hidden = true; }
+})();
+</script>
+</body>
+</html>
