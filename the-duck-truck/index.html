@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="nl">
+<!--
+  Demo L247 The Duck Truck & Corndogs Zuidplein (groep L246-L249), Mohamedia, 8 nov 2026.
+  Concept in één zin: "De truck is geparkeerd op Zuidplein: bestel zoals aan hun eigen bestelzuil."
+  Lay-out-archetype: BESTELZUIL / SELF-ORDER-KIOSK. In hun zaak hangen bestelschermen aan de wand (zichtbaar op de
+  gevelfoto); de site gedraagt zich als zo'n zuil: grote tegels, categorie-rail, een "winkelmand"-balk met prijs en
+  één knop naar Thuisbezorgd. Burger-kiezer = vlees -> smaak -> los/menu, met een camerapan over hun eigen
+  burgerfoto die per gekozen smaak één burger doorschuift, zonder smaak-op-burger-koppeling (geen getekende schaal, geen kaartje dat zich invult).
+  Hero: hun eigen gevelfoto (Zuidplein, lichtletters) recht en stil. Eronder een stilstaande zwart-wit tegelstrook
+  (hun vloer) als weg: één keer rijdt een getekende foodtruck van "2017 · foodtruck" naar "Zuidplein hoog 751" en
+  parkeert; de pin valt één keer. Daarna stil. Geen lus, geen Ken Burns, geen stoom, geen licht-gaat-aan/neon-flikker,
+  geen letters één voor één, geen schuine fotokaart, geen stempel/sticker, geen lopende band.
+  Kleuren uit hun zaak/logo: diep groen (#0b4a34), zwart-wit tegel, oranje lichtletters (#ff6a0d), geel van de sterren.
+  Fonts: Bowlby One (zoals hun lichtletters) + Rethink Sans.
+  Logo: hun eigen logo (eend, THE, burger, corn dog, boogband met DUCK TRUCK) nagetekend als vectorpaden.
+  Geen WhatsApp: geen bevestigd nummer voor de zaak (dossier: twee 06-nummers). Hoofd-CTA = Thuisbezorgd (wens Edison).
+  Pitch-modus: klein "Mo"-knopje rechts in de demo-strook, of ?pitch. Paneel met voor/straks, rekensom, 3 punten, volgende stap.
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The Duck Truck – burgers en corn dogs in Rotterdam (Zuidplein)</title>
+<meta name="description" content="The Duck Truck & Corndogs Zuidplein: burgers met gekonfijte eend, kip, MRIJ rund of veggie op geroosterd brioche, en negen soorten corn dogs. Bestel via Thuisbezorgd of kom langs op Zuidplein hoog 751, Rotterdam.">
+<meta name="theme-color" content="#0b4a34">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Rethink+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --groen:#0b4a34; --groen-d:#06301f; --groen-l:#12603f;
+  --oranje:#ff6a0d; --oranje-d:#e25500; --geel:#ffc93c;
+  --zwart:#0b0b0b; --wit:#ffffff; --tegel:#f3f6f3; --voeg:#dde4de;
+  --tekst:#14201a; --zacht:#5b6a62;
+  --r:18px;
+  --kop:"Bowlby One", "Arial Black", sans-serif;
+  --body:"Rethink Sans", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--body);color:var(--tekst);background:var(--tegel);line-height:1.55;font-size:17px;overflow-x:hidden}
+img{max-width:100%;display:block}
+figure{margin:0}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:400;line-height:1.02;margin:0;letter-spacing:.005em;overflow-wrap:break-word}
+p{margin:0}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.breed{display:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* demo-strook + aankondiging */
+.demo{background:var(--zwart);color:#cfd8d2;font-size:13px;text-align:center;padding:7px 12px}
+.demo a{color:#fff;font-weight:700}
+.aankondiging{margin:0;background:var(--geel);color:var(--zwart);font-weight:700;font-size:14px;text-align:center;padding:8px 12px}
+.aankondiging a{text-decoration:none}
+.aankondiging .ster{color:var(--oranje-d)}
+
+/* header */
+.kop{position:sticky;top:0;z-index:40;background:var(--groen);border-bottom:3px solid var(--zwart)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo img{height:52px;width:auto}
+.nav{display:none;gap:26px;align-items:center}
+.nav a{color:#e7f0ea;text-decoration:none;font-weight:600;font-size:15px}
+.nav a:hover{color:var(--geel)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:14px;font-weight:800;font-size:16px;text-decoration:none;border:3px solid var(--zwart);cursor:pointer;font-family:var(--body);line-height:1.1;text-align:center}
+.btn-oranje{background:var(--oranje);color:var(--zwart);box-shadow:0 5px 0 var(--zwart)}
+.btn-oranje:hover{background:#ff7f2e}
+.btn-wit{background:var(--wit);color:var(--zwart);box-shadow:0 5px 0 var(--zwart)}
+.btn-groen{background:var(--groen);color:#fff;box-shadow:0 5px 0 var(--zwart)}
+.btn:active{box-shadow:0 2px 0 var(--zwart)}
+.btn svg{width:20px;height:20px;flex:none}
+.kop .btn{min-height:46px;padding:0 16px;font-size:15px;box-shadow:0 3px 0 var(--zwart)}
+
+/* hero */
+.hero{background:var(--groen);color:#fff;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr}
+.hero-foto{position:relative;height:clamp(250px,35vh,330px);overflow:hidden;background:#2b2f2c}
+.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 14%}
+.hero-foto .bron{position:absolute;right:10px;top:10px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;padding:3px 8px;border-radius:99px}
+.weg{position:relative;height:16px;background:repeating-conic-gradient(var(--zwart) 0 25%,#fff 0 50%) 0 0/16px 16px;border-block:2px solid var(--zwart)}
+.truck{position:absolute;bottom:14px;right:16%;width:104px;height:56px;z-index:3;animation:rij 2.6s cubic-bezier(.2,.75,.25,1) .35s both}
+.truck .wiel{transform-box:fill-box;transform-origin:center;animation:draai 2.6s cubic-bezier(.2,.75,.25,1) .35s both}
+.truck .romp{animation:veer .5s ease-out 2.75s both;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes rij{from{transform:translateX(-110vw)}to{transform:translateX(0)}}
+@keyframes draai{from{transform:rotate(-1440deg)}to{transform:rotate(0)}}
+@keyframes veer{0%{transform:translateY(0)}35%{transform:translateY(2px) rotate(.8deg)}70%{transform:translateY(-1px)}100%{transform:translateY(0)}}
+.pin{position:absolute;right:calc(16% - 30px);bottom:46px;width:30px;height:40px;z-index:4;animation:pinval .55s cubic-bezier(.3,1.5,.5,1) 2.85s both}
+@keyframes pinval{from{opacity:0;transform:translateY(-40px)}to{opacity:1;transform:translateY(0)}}
+.route-labels{display:flex;justify-content:space-between;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#bfe0cd;padding:10px 0 0}
+.route-labels b{color:var(--geel);font-weight:800}
+.hero-tekst{padding:14px 0 30px}
+.hero-tekst .plek{display:none;font-weight:700;font-size:14px;color:var(--geel);letter-spacing:.06em;text-transform:uppercase;margin-top:18px}
+.hero h1{font-size:clamp(30px,8.4vw,64px);margin-top:8px;text-transform:uppercase}
+.hero h1 .o{color:var(--oranje)}
+.hero .lead{margin-top:12px;color:#dbeae1;font-size:16px;max-width:40ch}
+.hero-cta{display:grid;gap:12px;margin-top:18px;max-width:520px}
+.hero-cta .rij{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hero-cta .btn{width:100%}
+.trust{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:14px;color:#cfe5d8}
+.trust a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--geel)}
+.sterren{color:var(--geel);letter-spacing:2px}
+
+/* secties */
+section{scroll-margin-top:80px}
+.sectie{padding:72px 0}
+.tegelvlak{background-color:var(--tegel);background-image:linear-gradient(var(--voeg) 1px,transparent 1px),linear-gradient(90deg,var(--voeg) 1px,transparent 1px);background-size:56px 28px}
+.groenvlak{background:var(--groen);color:#fff}
+.zwartvlak{background:var(--zwart);color:#fff}
+.label{display:inline-block;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;background:var(--zwart);color:var(--geel);padding:5px 10px;border-radius:8px}
+.groenvlak .label{background:var(--geel);color:var(--zwart)}
+h2{font-size:clamp(30px,6.6vw,54px);margin-top:14px;text-transform:uppercase}
+.intro{margin-top:14px;max-width:56ch;color:var(--zacht);font-size:18px}
+.groenvlak .intro,.zwartvlak .intro{color:#cfe2d7}
+.checker{height:14px;background:repeating-conic-gradient(var(--zwart) 0 25%,#fff 0 50%) 0 0/14px 14px}
+
+/* kiosk */
+.kiosk{margin-top:34px;background:var(--zwart);border-radius:30px;padding:12px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.scherm{background:#fff;border-radius:20px;overflow:hidden}
+.scherm-kop{background:var(--groen);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px}
+.scherm-kop img{height:36px;width:auto}
+.scherm-kop span{font-size:13px;font-weight:700;color:#cfe5d8}
+.stap{padding:20px 16px 6px}
+.stap h3{font-family:var(--body);font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--zacht);display:flex;align-items:center;gap:10px}
+.stap h3 i{font-style:normal;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--oranje);color:var(--zwart);font-size:14px;border:2px solid var(--zwart)}
+.tegels{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.tegel{appearance:none;border:3px solid #d5ddd8;background:#fff;border-radius:16px;padding:14px 12px;text-align:left;cursor:pointer;font-family:var(--body);color:var(--tekst);min-height:96px;display:flex;flex-direction:column;gap:4px;transition:border-color .15s,background .15s}
+.tegel b{font-family:var(--kop);font-weight:400;font-size:clamp(18px,5vw,24px);line-height:1;text-transform:uppercase}
+.tegel small{font-size:13px;color:var(--zacht);line-height:1.3}
+.tegel .prijs{margin-top:auto;font-weight:800;font-size:16px}
+.tegel[aria-pressed=true]{border-color:var(--zwart);background:#fff3e9;box-shadow:inset 0 0 0 2px var(--oranje)}
+.smaken{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.smaak{appearance:none;border:3px solid #d5ddd8;background:#fff;border-radius:999px;min-height:48px;padding:0 18px;font-family:var(--body);font-weight:800;font-size:16px;cursor:pointer;color:var(--tekst)}
+.smaak[aria-pressed=true]{background:var(--zwart);color:#fff;border-color:var(--zwart)}
+.pan{position:relative;margin-top:14px;height:200px;border-radius:14px;overflow:hidden;background:#3a2414}
+.pan img{width:100%;height:100%;object-fit:cover;object-position:0% 50%;transition:object-position .7s cubic-bezier(.3,.8,.3,1)}
+.pan figcaption{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;padding:3px 8px;border-radius:99px}
+.toppings{margin-top:12px;font-size:15px;color:var(--zacht);min-height:3em}
+.keuze2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.mand{position:sticky;bottom:0;margin-top:18px;background:var(--groen);color:#fff;padding:14px 16px 16px;display:grid;gap:12px;border-top:3px solid var(--zwart)}
+.mand .naam{font-family:var(--kop);font-size:clamp(20px,5.4vw,28px);line-height:1.05;text-transform:uppercase}
+.mand .bedrag{font-family:var(--kop);font-size:28px;color:var(--geel);white-space:nowrap}
+.mand .boven{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.mand .uitleg{font-size:13px;color:#cfe5d8}
+.mand .btn{width:100%}
+
+/* corn dogs */
+.cd-grid{display:grid;gap:28px;margin-top:30px}
+.cd-foto{border:3px solid var(--zwart);border-radius:22px;overflow:hidden;position:relative;background:#e8ecec}
+.cd-foto img{width:100%;height:auto}
+.cd-foto figcaption{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.65);color:#fff;font-size:12px;padding:4px 10px;border-radius:99px}
+.prijsrij{display:grid;gap:14px}
+.trap{border:3px solid var(--zwart);border-radius:18px;background:#fff;overflow:hidden}
+.trap .t-kop{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--zwart);color:#fff}
+.trap .t-kop b{font-family:var(--kop);font-weight:400;font-size:26px;color:var(--geel)}
+.trap .t-kop span{font-weight:700;font-size:14px;color:#cfd8d2}
+.trap ul{list-style:none;margin:0;padding:12px 16px 14px;display:flex;flex-wrap:wrap;gap:8px}
+.trap li{background:var(--tegel);border:2px solid #d5ddd8;border-radius:99px;padding:6px 14px;font-weight:700;font-size:15px;color:var(--zwart)}
+
+/* kaart */
+.rail{display:flex;gap:8px;overflow-x:auto;margin-top:28px;padding:4px 2px 12px;scrollbar-width:thin}
+.rail button{flex:none;appearance:none;border:3px solid var(--zwart);background:#fff;border-radius:12px;min-height:48px;padding:0 16px;font-weight:800;font-family:var(--body);font-size:15px;cursor:pointer;color:var(--zwart)}
+.rail button[aria-selected=true]{background:var(--oranje)}
+.kaart{background:#fff;border:3px solid var(--zwart);border-radius:22px;padding:6px 18px;margin-top:6px}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:16px 0;border-bottom:2px dashed #d5ddd8}
+.item:last-child{border-bottom:0}
+.item h3{font-family:var(--body);font-weight:800;font-size:18px;line-height:1.25}
+.item p{grid-column:1/-1;font-size:15px;color:var(--zacht)}
+.item .p{font-weight:800;font-size:18px;white-space:nowrap}
+.kaart-voet{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;margin-top:18px;font-size:14px;color:var(--zacht)}
+
+/* waarom + reviews */
+.drie{display:grid;gap:16px;margin-top:30px}
+.kaartje{background:var(--groen-l);border:3px solid var(--zwart);border-radius:20px;padding:22px;color:#fff}
+.kaartje .nr{font-family:var(--kop);font-size:40px;color:var(--geel);line-height:1}
+.kaartje h3{font-size:clamp(20px,5.4vw,26px);margin-top:10px;text-transform:uppercase}
+.kaartje p{margin-top:8px;color:#d7e9de}
+.score{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:26px;background:#fff;border:3px solid var(--zwart);border-radius:20px;padding:18px 20px}
+.score .getal{font-family:var(--kop);font-size:58px;line-height:1}
+.score .sterren{font-size:22px;color:var(--oranje)}
+.score a{font-weight:800}
+.rev{background:#fff;border:3px solid var(--zwart);border-radius:20px;padding:20px}
+.rev p{font-size:18px;font-weight:600}
+.rev .wie{margin-top:12px;font-size:14px;color:var(--zacht);font-weight:700}
+.noot{margin-top:14px;font-size:13px;color:var(--zacht)}
+
+/* stappen */
+.stappen{display:grid;gap:14px;margin-top:30px;counter-reset:s}
+.st{display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;align-items:start;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.15);border-radius:18px;padding:18px}
+.st .n{width:64px;height:64px;border-radius:16px;background:var(--oranje);color:var(--zwart);font-family:var(--kop);font-size:30px;display:grid;place-items:center;border:3px solid var(--zwart)}
+.st h3{font-size:clamp(19px,5vw,24px);text-transform:uppercase}
+.st p{margin-top:6px;color:#cfe2d7}
+
+/* vestiging */
+.vest{display:grid;gap:24px;margin-top:30px}
+.vest-foto{border:3px solid var(--zwart);border-radius:22px;overflow:hidden;position:relative}
+.vest-foto img{width:100%;height:100%;object-fit:cover}
+.vest-foto figcaption{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.65);color:#fff;font-size:12px;padding:4px 10px;border-radius:99px}
+.adres{background:#fff;border:3px solid var(--zwart);border-radius:22px;padding:24px}
+.adres h3{font-size:clamp(24px,6vw,34px);text-transform:uppercase}
+.adres dl{margin:18px 0 0;display:grid;gap:14px}
+.adres dt{font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--zacht)}
+.adres dd{margin:2px 0 0;font-size:17px}
+.adres .btns{display:grid;gap:12px;margin-top:22px}
+.ook{display:grid;gap:12px;margin-top:22px}
+.ook a{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:64px;background:#fff;border:3px solid var(--zwart);border-radius:16px;padding:12px 16px;text-decoration:none}
+.ook b{display:block;font-size:17px}
+.ook small{display:block;color:var(--zacht);font-size:14px}
+.ook .pijl{font-weight:800;color:var(--oranje-d);white-space:nowrap;font-size:14px}
+
+/* faq */
+.faq{margin-top:28px;display:grid;gap:10px}
+.faq details{background:#fff;border:3px solid var(--zwart);border-radius:16px}
+.faq summary{list-style:none;cursor:pointer;padding:16px 18px;font-weight:800;font-size:17px;display:flex;justify-content:space-between;gap:12px;min-height:52px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--kop);font-size:22px;color:var(--oranje-d)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 18px 18px;color:var(--zacht)}
+
+/* slot */
+.slot{text-align:center}
+.slot h2{font-size:clamp(34px,9vw,76px)}
+.slot .btns{display:grid;gap:12px;max-width:460px;margin:26px auto 0}
+
+/* footer */
+footer{background:var(--zwart);color:#cfd8d2;padding:46px 0 120px;font-size:15px}
+footer .wrap{display:grid;gap:26px}
+footer img{height:70px;width:auto}
+footer a{color:#fff}
+footer .klein{font-size:13px;color:#9fb0a6}
+.door{border-top:1px solid #2b2b2b;padding-top:18px;font-size:14px}
+.door a{color:var(--geel);font-weight:800}
+
+/* zwevende CTA */
+.zweef{position:fixed;left:10px;right:10px;bottom:10px;z-index:60;display:grid;grid-template-columns:1.6fr 1fr;gap:8px;transform:translateY(140%);transition:transform .3s ease;pointer-events:none}
+.zweef.aan{transform:translateY(0);pointer-events:auto}
+.zweef .btn{min-height:54px;box-shadow:0 4px 0 var(--zwart)}
+
+/* pitch */
+.demo{position:relative}
+.mo-knop{position:absolute;right:8px;top:6px;width:26px;height:22px;border-radius:6px;border:1px solid #3a3a3a;background:transparent;color:#7d8a83;font-weight:700;font-size:10px;cursor:pointer;font-family:var(--body);padding:0}
+.pitch{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.55);display:flex;justify-content:flex-end}
+.pitch[hidden]{display:none}
+.paneel{width:min(560px,100%);height:100%;overflow-y:auto;background:#fff;padding:22px 20px 40px;border-left:4px solid var(--zwart)}
+.paneel h2{font-size:28px;margin-top:6px}
+.paneel h3{font-family:var(--body);font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--zacht);margin-top:26px}
+.paneel .sluit{float:right;min-height:44px;min-width:44px;border:3px solid var(--zwart);border-radius:12px;background:#fff;font-weight:800;cursor:pointer}
+.voorna{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.voorna figure{margin:0}
+.voorna img{border:2px solid var(--zwart);border-radius:12px;width:100%;height:auto}
+.voorna figcaption{font-size:12px;color:var(--zacht);margin-top:6px;line-height:1.35}
+.paneel ul,.paneel ol{padding-left:20px;margin:10px 0 0;display:grid;gap:8px;font-size:15px}
+.reken{margin-top:10px;background:var(--tegel);border:2px solid var(--zwart);border-radius:14px;padding:16px;display:grid;gap:12px}
+.reken label{display:grid;gap:4px;font-weight:700;font-size:14px}
+.reken input[type=range]{width:100%;min-height:36px;accent-color:var(--oranje)}
+.reken .uit{font-size:15px}
+.reken .uit b{font-family:var(--kop);font-weight:400;font-size:24px;display:block}
+.reken .klein{font-size:12px;color:var(--zacht)}
+
+@media (min-width:720px){
+  .tegels{grid-template-columns:repeat(4,1fr)}
+  .drie{grid-template-columns:repeat(3,1fr)}
+  .stappen{grid-template-columns:repeat(3,1fr)}
+  .st{grid-template-columns:1fr}
+  .ook{grid-template-columns:1fr 1fr}
+  .pan{height:260px}
+}
+@media (min-width:980px){
+  .nav{display:flex}
+  .breed{display:inline}
+  .hero-tekst .plek{display:block}
+  .hero .lead{font-size:17px}
+  .kop .wrap{height:82px}
+  .logo img{height:66px}
+  .hero-grid{grid-template-columns:1.05fr 1fr;min-height:560px}
+  .hero-foto{height:auto;min-height:560px;grid-row:1/3}
+  .hero-foto img{object-position:50% 35%}
+  .weg{grid-column:1/-1;grid-row:3}
+  .hero-tekst{grid-column:2;grid-row:1/3;padding:56px 40px 40px 56px;align-self:center;max-width:640px}
+  .route-labels{grid-column:1/-1;grid-row:4;padding:10px 24px 18px}
+  .truck{width:130px;height:70px}
+  .cd-grid{grid-template-columns:1fr 1.05fr;align-items:center}
+  .vest{grid-template-columns:1fr 1fr;align-items:stretch}
+  .adres .btns{grid-template-columns:1fr 1fr}
+  .zweef,.zweef.aan{display:none}
+  .hero-tekst{padding-top:36px;padding-bottom:100px}
+  .truck{right:9%}
+  .pin{right:calc(9% - 40px)}
+  .kiosk{padding:16px}
+  .stap{padding:24px 26px 6px}
+  .mand{grid-template-columns:1fr auto;align-items:center;padding:18px 26px}
+  .mand .btn{width:auto;min-width:300px}
+  .slot .btns{grid-template-columns:1fr 1fr;max-width:640px}
+}
+@media (max-width:979px){
+  .hero-tekst{width:min(1180px,100% - 40px);margin-inline:auto}
+  .route-labels{width:min(1180px,100% - 40px);margin-inline:auto}
+}
+@media (max-width:400px){
+  .hero-cta .rij .btn{font-size:15px;padding:0 10px}
+  .tegel{padding:12px 10px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> <button class="mo-knop" id="mo-knop" type="button" aria-label="Pitch-modus openen">Mo</button></div>
+<p class="aankondiging"><span class="ster">★</span> 4,6 uit 300 Google-reviews · Zuidplein hoog 751<span class="breed">, Rotterdam</span></p>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="The Duck Truck, naar boven"><img src="logo-light.svg" alt="The Duck Truck" width="92" height="58"></a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <a href="#bestel">Burger kiezen</a>
+      <a href="#corndogs">Corn dogs</a>
+      <a href="#kaart">Kaart</a>
+      <a href="#zuidplein">Zuidplein</a>
+    </nav>
+    <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestellen</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero" aria-labelledby="hero-kop">
+  <div class="hero-grid">
+    <div class="hero-foto">
+      <img src="img/gevel-zuidplein.jpg" alt="De gevel van The Duck Truck op Zuidplein: oranje lichtletters 'The Duck Truck, burgers &amp; corn dogs' boven een zaak met zwart-witte tegelvloer en groene wand" width="960" height="960" fetchpriority="high">
+      <span class="bron">Zuidplein · Google Maps</span>
+    </div>
+    <div class="weg" aria-hidden="true">
+      <svg class="truck" viewBox="0 0 120 64" aria-hidden="true">
+        <g class="romp">
+          <path d="M6 12 Q6 6 12 6 H86 V50 H6 Z" fill="#f3f6f3" stroke="#0b0b0b" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M86 20 H104 L114 34 V50 H86 Z" fill="#f3f6f3" stroke="#0b0b0b" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M90 24 H102 L109 34 H90 Z" fill="#bfe8f0" stroke="#0b0b0b" stroke-width="2"/>
+          <rect x="16" y="14" width="54" height="20" rx="2" fill="#ffc93c" stroke="#0b0b0b" stroke-width="2.5"/>
+          <path d="M14 14 H72 L68 9 H18 Z" fill="#ff6a0d" stroke="#0b0b0b" stroke-width="2" stroke-linejoin="round"/>
+          <rect x="6" y="38" width="108" height="6" fill="#0b4a34"/>
+          <circle cx="43" cy="24" r="6" fill="#ff6a0d" stroke="#0b0b0b" stroke-width="2"/>
+          <rect x="37" y="23" width="12" height="2.4" fill="#46a83c"/>
+        </g>
+        <g class="wiel"><circle cx="28" cy="52" r="9" fill="#0b0b0b"/><circle cx="28" cy="52" r="4" fill="#cfd8d2"/><rect x="27" y="44" width="2" height="5" fill="#cfd8d2"/></g>
+        <g class="wiel"><circle cx="96" cy="52" r="9" fill="#0b0b0b"/><circle cx="96" cy="52" r="4" fill="#cfd8d2"/><rect x="95" y="44" width="2" height="5" fill="#cfd8d2"/></g>
+      </svg>
+      <svg class="pin" viewBox="0 0 30 40" aria-hidden="true"><path d="M15 38 C15 38 3 24 3 14 A12 12 0 0 1 27 14 C27 24 15 38 15 38 Z" fill="#ff6a0d" stroke="#0b0b0b" stroke-width="3"/><circle cx="15" cy="14" r="4.5" fill="#0b0b0b"/></svg>
+    </div>
+    <div class="route-labels" aria-hidden="true"><span><b>2017</b> · the best burger on wheels</span><span class="breed"><b>nu</b> · Zuidplein hoog 751</span></div>
+    <div class="hero-tekst">
+      <p class="plek">Winkelcentrum Zuidplein · Rotterdam</p>
+      <h1 id="hero-kop">Duckburgers <span class="o">&amp;</span> corn dogs op Zuidplein.</h1>
+      <p class="lead">Gekonfijte eend, kip, MRIJ rund of veggie op geroosterd brioche, en negen soorten corn dogs. Laat het bezorgen via Thuisbezorgd of eet aan tafel op Zuidplein.</p>
+      <div class="hero-cta">
+        <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13v9H3z"/><path d="M16 10h3l2 3v3h-5"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Bestel via Thuisbezorgd</a>
+        <div class="rij">
+          <a class="btn btn-wit" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Duck+Truck+%26+Corndogs+Zuidplein%2C+Zuidplein+hoog+751%2C+3083+BJ+Rotterdam" target="_blank" rel="noopener">Kom langs</a>
+          <a class="btn btn-groen" href="#bestel" style="border-color:#fff;box-shadow:0 5px 0 #000">Kies je burger</a>
+        </div>
+      </div>
+      <p class="trust"><span><span class="sterren" aria-hidden="true">★★★★★</span> <a href="https://maps.google.com/?cid=5119356036273146732" target="_blank" rel="noopener">4,6 uit 300 reviews</a> op Google</span><span>100% halal</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="sectie tegelvlak" id="bestel" aria-labelledby="bestel-kop">
+  <div class="wrap">
+    <span class="label">De bestelzuil</span>
+    <h2 id="bestel-kop">Eerst het vlees, dan de smaak.</h2>
+    <p class="intro">Elke burger komt op geroosterd brioche. Kies je vlees en een van de vijf smaken, en zie meteen wat erop zit en wat het kost.</p>
+
+    <div class="kiosk">
+      <div class="scherm">
+        <div class="scherm-kop"><img src="logo-light.svg" alt="" width="57" height="36" loading="lazy"><span>Zuidplein · burgers</span></div>
+
+        <div class="stap">
+          <h3><i>1</i> Kies je vlees</h3>
+          <div class="tegels" role="group" aria-label="Vlees">
+            <button class="tegel" type="button" data-vlees="duck" aria-pressed="true"><b>Duck</b><small>gekonfijte eend</small><span class="prijs">€ 10,90</span></button>
+            <button class="tegel" type="button" data-vlees="chicken" aria-pressed="false"><b>Chicken</b><small>gekonfijte kip</small><span class="prijs">€ 9,90</span></button>
+            <button class="tegel" type="button" data-vlees="beef" aria-pressed="false"><b>Beef</b><small>MRIJ rund</small><span class="prijs">€ 9,90</span></button>
+            <button class="tegel" type="button" data-vlees="veggie" aria-pressed="false"><b>Veggie Duck</b><small>vegetarisch</small><span class="prijs">€ 10,90</span></button>
+          </div>
+        </div>
+
+        <div class="stap">
+          <h3><i>2</i> Kies je smaak</h3>
+          <div class="smaken" role="group" aria-label="Smaak">
+            <button class="smaak" type="button" data-smaak="blue" aria-pressed="true">blue</button>
+            <button class="smaak" type="button" data-smaak="goat" aria-pressed="false">goat</button>
+            <button class="smaak" type="button" data-smaak="cheddar" aria-pressed="false">cheddar</button>
+            <button class="smaak" type="button" data-smaak="kimchi" aria-pressed="false">kimchi</button>
+            <button class="smaak" type="button" data-smaak="asian" aria-pressed="false">Asian</button>
+          </div>
+          <figure class="pan" id="pan"><img src="img/burgers.jpg" alt="Vier burgers van The Duck Truck op een rij, op geroosterd brioche" width="1440" height="270" loading="lazy" decoding="async"><figcaption>Foto ter illustratie: burgers van The Duck Truck (Breda)</figcaption></figure>
+          <p class="toppings" id="toppings" aria-live="polite"></p>
+        </div>
+
+        <div class="stap">
+          <h3><i>3</i> Los of als menu</h3>
+          <div class="keuze2" role="group" aria-label="Los of menu">
+            <button class="tegel" type="button" data-menu="0" aria-pressed="true"><b>Los</b><small>alleen de burger</small><span class="prijs" id="p-los">€ 10,90</span></button>
+            <button class="tegel" type="button" data-menu="1" aria-pressed="false"><b>Menu</b><small>met friet en een drankje naar keuze</small><span class="prijs" id="p-menu">€ 17,90</span></button>
+          </div>
+        </div>
+
+        <div class="mand" aria-live="polite">
+          <div>
+            <div class="boven"><span class="naam" id="m-naam">Duck burger blue</span><span class="bedrag" id="m-prijs">€ 10,90</span></div>
+            <p class="uitleg" id="m-uitleg">Op Thuisbezorgd vind je hem onder Duck burgers.</p>
+          </div>
+          <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel op Thuisbezorgd</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="checker" aria-hidden="true"></div>
+
+<section class="sectie zwartvlak" id="corndogs" aria-labelledby="cd-kop">
+  <div class="wrap">
+    <span class="label" style="background:var(--oranje);color:var(--zwart)">Corn dogs</span>
+    <h2 id="cd-kop">Negen corn dogs, drie prijzen.</h2>
+    <div class="cd-grid">
+      <figure class="cd-foto"><img src="img/corndogs-flatlay.jpg" alt="Corn dogs met verschillende korsten, loaded friet en snacks in bakjes van The Duck Truck, van bovenaf" width="760" height="945" loading="lazy" decoding="async"><figcaption>Foto: Thuisbezorgd-pagina The Duck Truck Zuidplein</figcaption></figure>
+      <div class="prijsrij">
+        <div class="trap"><div class="t-kop"><span>1 soort</span><b>€ 8,90</b></div><ul><li>Classic</li></ul></div>
+        <div class="trap"><div class="t-kop"><span>4 soorten</span><b>€ 10,90</b></div><ul><li>Asian</li><li>Parmaco</li><li>Kimchi</li><li>Spicy green</li></ul></div>
+        <div class="trap"><div class="t-kop"><span>4 soorten</span><b>€ 11,90</b></div><ul><li>Cheetos cheese</li><li>Blue Takis</li><li>Red Cheetos</li><li>Patato</li></ul></div>
+        <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel corn dogs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie tegelvlak" id="kaart" aria-labelledby="kaart-kop">
+  <div class="wrap">
+    <span class="label">De kaart</span>
+    <h2 id="kaart-kop">Alles van Zuidplein, met prijs.</h2>
+    <p class="intro">Prijzen zoals op onze bestelpagina (november 2026). Tik op een categorie.</p>
+    <div class="rail" role="tablist" aria-label="Categorieën" id="rail"></div>
+    <div class="kaart" id="kaartlijst" role="tabpanel"></div>
+    <div class="kaart-voet"><span>Sauzen en drankjes staan ook op Thuisbezorgd.</span><a class="btn btn-groen" href="#bestel">Twijfel je? Kies je burger</a></div>
+  </div>
+</section>
+
+<section class="sectie groenvlak" id="waarom" aria-labelledby="waarom-kop">
+  <div class="wrap">
+    <span class="label">Waarom Zuidplein hier eet</span>
+    <h2 id="waarom-kop">Drie dingen die gasten noemen.</h2>
+    <div class="drie">
+      <article class="kaartje"><div class="nr">01</div><h3>Vers en lekker</h3><p>Gasten schrijven op Google dat het eten vers en lekker is.</p></article>
+      <article class="kaartje"><div class="nr">02</div><h3>Vriendelijk</h3><p>Gasten noemen het personeel en de eigenaar vriendelijk.</p></article>
+      <article class="kaartje"><div class="nr">03</div><h3>Halal</h3><p>Alles is 100% halal. Gasten noemen het ook in hun reviews.</p></article>
+    </div>
+
+    <div class="score" style="color:var(--tekst)">
+      <span class="getal">4,6</span>
+      <div><div class="sterren" aria-label="4,6 van 5 sterren">★★★★★</div><div><b>300 reviews</b> op Google · <a href="https://maps.google.com/?cid=5119356036273146732" target="_blank" rel="noopener">lees ze op Google Maps</a></div></div>
+    </div>
+    <div class="drie" style="color:var(--tekst)">
+      <article class="rev"><p>Volgens Thore de beste corn dogs ooit gegeten.</p><div class="wie">Thore · Google</div></article>
+      <article class="rev"><p>Raadt de spicy green fries van harte aan.</p><div class="wie">Ivo · Google</div></article>
+      <article class="rev"><p>Alles vers, en goede service.</p><div class="wie">C. · Google</div></article>
+    </div>
+    <p class="noot" style="color:#cfe2d7">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="sectie zwartvlak" id="zo" aria-labelledby="zo-kop">
+  <div class="wrap">
+    <span class="label" style="background:var(--geel);color:var(--zwart)">Bestellen</span>
+    <h2 id="zo-kop">Van kiezen tot happen.</h2>
+    <div class="stappen">
+      <div class="st"><div class="n">1</div><div><h3>Kies</h3><p>Een burger, een corn dog of iets uit de snackbak. Met de <a href="#bestel" style="color:var(--geel)">bestelzuil</a> heb je je burger in drie tikken.</p></div></div>
+      <div class="st"><div class="n">2</div><div><h3>Laat bezorgen</h3><p>Bestellen en bezorgen gaat via Thuisbezorgd.</p></div></div>
+      <div class="st"><div class="n">3</div><div><h3>Of kom langs</h3><p>Zuidplein hoog 751, in Winkelcentrum Zuidplein. Aan tafel op de zwart-witte tegels.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="checker" aria-hidden="true"></div>
+
+<section class="sectie tegelvlak" id="zuidplein" aria-labelledby="zp-kop">
+  <div class="wrap">
+    <span class="label">De zaak</span>
+    <h2 id="zp-kop">Zuidplein hoog 751.</h2>
+    <p class="intro">The Duck Truck bestaat sinds 2017, "the best burger on wheels". Op Zuidplein staat de truck stil: een vaste zaak met een groene wand, het neonlogo en zitplekken.</p>
+    <div class="vest">
+      <figure class="vest-foto"><img src="img/interieur-neon.jpg" alt="Binnen bij The Duck Truck Zuidplein: het neonlogo op de groene wand, en twee burgers met friet op een dienblad" width="503" height="592" loading="lazy" decoding="async"><figcaption>In de zaak op Zuidplein</figcaption></figure>
+      <div class="adres">
+        <h3>The Duck Truck &amp; Corndogs Zuidplein</h3>
+        <dl>
+          <div><dt>Adres</dt><dd>Zuidplein hoog 751<br>3083 BJ Rotterdam<br>in Winkelcentrum Zuidplein</dd></div>
+          <div><dt>Openingstijden</dt><dd><p>Bekijk de actuele tijden op <a href="https://maps.google.com/?cid=5119356036273146732" target="_blank" rel="noopener">Google Maps</a>.</p></dd></div>
+          <div><dt>Bezorgen</dt><dd><p>Via <a href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Thuisbezorgd</a></p></dd></div>
+        </dl>
+        <div class="btns">
+          <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel via Thuisbezorgd</a>
+          <a class="btn btn-wit" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Duck+Truck+%26+Corndogs+Zuidplein%2C+Zuidplein+hoog+751%2C+3083+BJ+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:clamp(22px,5.6vw,30px);margin-top:48px;text-transform:uppercase">The Duck Truck vind je ook in</h3>
+    <p class="intro" style="font-size:16px">Andere vestigingen van het merk. Bestellen gaat per vestiging via Thuisbezorgd.</p>
+    <div class="ook">
+      <a href="https://www.thuisbezorgd.nl/menu/duckburger-binnenweg" target="_blank" rel="noopener"><span><b>Rotterdam · Nieuwe Binnenweg</b><small>Rotterdam-West</small></span><span class="pijl">Thuisbezorgd →</span></a>
+      <a href="https://www.thuisbezorgd.nl/menu/the-duck-truck-westfield" target="_blank" rel="noopener"><span><b>Leidschendam · Westfield Mall</b><small>The Duck Truck Westfield</small></span><span class="pijl">Thuisbezorgd →</span></a>
+      <a href="https://www.thuisbezorgd.nl/menu/the-duck-truck-breda" target="_blank" rel="noopener"><span><b>Breda · Ridderstraat 5</b><small>The Duck Truck Breda</small></span><span class="pijl">Thuisbezorgd →</span></a>
+      <a href="https://www.thuisbezorgd.nl/menu/duckburger-nieuwegein" target="_blank" rel="noopener"><span><b>Nieuwegein · Passage 56</b><small>The Duck Truck Nieuwegein</small></span><span class="pijl">Thuisbezorgd →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sectie" id="faq" aria-labelledby="faq-kop" style="background:#fff">
+  <div class="wrap">
+    <span class="label">Vragen</span>
+    <h2 id="faq-kop">Voor je bestelt.</h2>
+    <div class="faq">
+      <details><summary>Kan ik laten bezorgen?</summary><p>Ja. Bestellen en bezorgen gaat via <a href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Thuisbezorgd</a>.</p></details>
+      <details><summary>Is het halal?</summary><p>Ja, alles is 100% halal.</p></details>
+      <details><summary>Hebben jullie iets vegetarisch?</summary><p>Ja: de Duck burger vegetarisch (met vegetarische gebraden eend) en de Veggie Duck burgers in vijf smaken.</p></details>
+      <details><summary>Wat zit er in een menu?</summary><p>Een burger, friet en een drankje naar keuze. Het Duckburger menu kost € 17,90; het Beef, Chicken en Veggie Duck burger menu € 16,90.</p></details>
+      <details><summary>Hoe laat zijn jullie open?</summary><p>Bekijk de actuele openingstijden op <a href="https://maps.google.com/?cid=5119356036273146732" target="_blank" rel="noopener">Google Maps</a>.</p></details>
+      <details><summary>Waar zitten jullie precies?</summary><p>Zuidplein hoog 751, 3083 BJ Rotterdam, in Winkelcentrum Zuidplein. <a href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Duck+Truck+%26+Corndogs+Zuidplein%2C+Zuidplein+hoog+751%2C+3083+BJ+Rotterdam" target="_blank" rel="noopener">Plan je route</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sectie groenvlak slot" aria-labelledby="slot-kop">
+  <div class="wrap">
+    <h2 id="slot-kop">Zin in eend op brioche?</h2>
+    <p class="intro" style="margin-inline:auto">Bezorgd via Thuisbezorgd, of aan tafel op Zuidplein.</p>
+    <div class="btns">
+      <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel via Thuisbezorgd</a>
+      <a class="btn btn-wit" href="#bestel">Kies eerst je burger</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-light.svg" alt="The Duck Truck" width="111" height="70" loading="lazy">
+    <div>
+      <b style="color:#fff">The Duck Truck &amp; Corndogs Zuidplein</b><br>
+      Zuidplein hoog 751, 3083 BJ Rotterdam<br>
+      <a href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestellen via Thuisbezorgd</a> · <a href="https://www.instagram.com/theducktruck.nl/" target="_blank" rel="noopener">Instagram @theducktruck.nl</a>
+    </div>
+    <p class="klein">Foto's: The Duck Truck (eigen Thuisbezorgd-pagina's) en Google Maps; gasten onherkenbaar gemaakt. Prijzen van onze bestelpagina, november 2026.</p>
+    <p class="door">Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef">
+  <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel</a>
+  <a class="btn btn-wit" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Duck+Truck+%26+Corndogs+Zuidplein%2C+Zuidplein+hoog+751%2C+3083+BJ+Rotterdam" target="_blank" rel="noopener">Route</a>
+</div>
+
+<div class="pitch" id="pitch" hidden>
+  <div class="paneel" role="dialog" aria-modal="true" aria-labelledby="pitch-kop">
+    <button class="sluit" type="button" id="pitch-sluit" aria-label="Sluiten">✕</button>
+    <span class="label">Pitch-modus</span>
+    <h2 id="pitch-kop">The Duck Truck Zuidplein</h2>
+
+    <h3>Nu en straks</h3>
+    <div class="voorna">
+      <figure><img src="img/voor-merksite.jpg" alt="Huidige site theducktruck.nl op een telefoon" width="390" height="844" loading="lazy" decoding="async"><figcaption>Google Maps stuurt naar theducktruck.nl: foodtruck-site, nieuwste evenement juli 2023, Zuidplein niet op de homepage (alleen weggestopt onder Locaties), geen bestelknop.</figcaption></figure>
+      <figure><img src="img/voor-bestelsite.jpg" alt="Huidige bestelsite van Zuidplein op een telefoon" width="390" height="844" loading="lazy" decoding="async"><figcaption>Eigen bestelsite = Thuisbezorgd-sjabloon: alleen een menu, geen telefoon of e-mail.</figcaption></figure>
+      <figure><img src="img/na-mobiel.jpg" alt="De nieuwe site op een telefoon" width="390" height="844" loading="lazy" decoding="async"><figcaption><b>Straks:</b> deze site. Thuisbezorgd bovenaan, eigen zaak in beeld.</figcaption></figure>
+    </div>
+    <ul>
+      <li>Openingstijden spreken elkaar tegen: Google en de bezorgtijden op de bestelsite zeggen zondag dicht, Verkenrotterdam zegt zondag 11:00–19:30.</li>
+      <li>Op de bestelsite staat bij alle Veggie Duck burgers "MRIJ rund" in de omschrijving.</li>
+      <li>Halal staat alleen in de paginatitel van de contactpagina van de bestelsite, niet op de merksite.</li>
+    </ul>
+
+    <h3>Wat er beter is</h3>
+    <ol>
+      <li><b>Bestellen in 1 tik:</b> Thuisbezorgd bovenaan, in elke sectie en als vaste knop op de telefoon.</li>
+      <li><b>De hele kaart met prijzen</b> en wat erop zit, plus een burger-kiezer: vlees, smaak, los of menu.</li>
+      <li><b>Eén pagina voor Zuidplein:</b> adres, route, link naar de actuele tijden, 4,6 uit 300 reviews, halal; de andere vestigingen netjes apart.</li>
+    </ol>
+
+    <h3>Wat dit oplevert (voorbeeld)</h3>
+    <div class="reken">
+      <label>Extra bestellingen per week: <span id="r-n-uit">5</span><input type="range" id="r-n" min="1" max="40" step="1" value="5"></label>
+      <label>Gemiddelde bestelling: € <span id="r-b-uit">17,90</span><input type="range" id="r-b" min="8" max="40" step="0.5" value="17.9"></label>
+      <div class="uit">Extra omzet per jaar<b id="r-jaar">€ 4.654</b></div>
+      <div class="uit">€ 595 is de omzet van <b id="r-x" style="display:inline;font-size:20px">34</b> bestellingen.</div>
+      <p class="klein">Voorbeeld om samen in te vullen, geen belofte. Omzet, vóór de Thuisbezorgd-kosten. De standaardwaarde € 17,90 is de prijs van het Duckburger menu.</p>
+    </div>
+
+    <h3>Volgende stap</h3>
+    <ul>
+      <li>Dezelfde aanpak voor Papi Chulo.</li>
+      <li>Daarna eventueel één site voor alle vestigingen. Nu stuurt Google bij de Binnenweg bijvoorbeeld naar de bestelpagina van de Markthal.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ---------- menu (bestelpagina Zuidplein, 8 nov 2026) ---------- */
+  var BRIOCHE = "Geroosterd brioche broodje, ";
+  var VLEES = {
+    duck:{naam:"Duck burger", cat:"Duck burgers", prijs:10.90, menu:17.90, in:"gekonfijte eend"},
+    chicken:{naam:"Chicken burger", cat:"Chicken burgers", prijs:9.90, menu:16.90, in:"gekonfijte kip"},
+    beef:{naam:"Beef burger", cat:"Beef burgers", prijs:9.90, menu:16.90, in:"MRIJ rund"},
+    veggie:{naam:"Veggie Duck burger", cat:"Veggie burgers", prijs:10.90, menu:16.90, in:"vegetarische burger"}
+  };
+  var SMAAK = {
+    blue:{label:"blue", tekst:function(v){return "uienconfituur, mosterd, rucola, "+v+", gorgonzola en witte truffel-honing";}},
+    goat:{label:"goat", tekst:function(v){return "uienconfituur, mosterd, rucola, "+v+", geitenkaas en witte truffel-honing";}},
+    cheddar:{label:"cheddar", tekst:function(v){return "uienconfituur, mosterd, rucola, "+v+" en rijpe cheddar kaas";}},
+    kimchi:{label:"kimchi", tekst:function(v){return "gochujang saus, kimchi, komkommer, geraspte wortel en "+v+(v==="vegetarische burger"?"":" met vijf kruiden");}},
+    asian:{label:"Asian", tekst:function(v){return "hoisinsaus, komkommer, lente-ui, "+v+(v==="vegetarische burger"?"":" (5 kruiden)")+" en sriracha mayonaise";}}
+  };
+  function euro(x){return "€ "+x.toFixed(2).replace(".",",");}
+
+  var staat={vlees:"duck",smaak:"blue",menu:0}, panStap=0;
+  var pan=document.getElementById("pan"), panImg=pan.querySelector("img");
+  function zetPan(){
+    var h=pan.clientHeight, cw=pan.clientWidth, W=h*1440/270;
+    if(W<=cw){panImg.style.objectPosition="50% 50%";return;}
+    var f=[.14,.365,.615,.87][panStap%4], p=(f*W-cw/2)/(W-cw);
+    p=Math.max(0,Math.min(1,p));
+    panImg.style.objectPosition=(p*100).toFixed(1)+"% 50%";
+  }
+  function teken(){
+    var v=VLEES[staat.vlees], s=SMAAK[staat.smaak];
+    document.querySelectorAll("[data-vlees]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.vlees===staat.vlees);});
+    document.querySelectorAll("[data-smaak]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.smaak===staat.smaak);});
+    document.querySelectorAll("[data-menu]").forEach(function(b){b.setAttribute("aria-pressed",+b.dataset.menu===staat.menu);});
+    document.getElementById("toppings").textContent=BRIOCHE+s.tekst(v.in)+".";
+    document.getElementById("p-los").textContent=euro(v.prijs);
+    document.getElementById("p-menu").textContent=euro(v.menu);
+    var menuNaam=staat.vlees==="duck"?"Duckburger menu":v.naam+" menu";
+    document.getElementById("m-naam").textContent=staat.menu? menuNaam : v.naam+" "+s.label;
+    document.getElementById("m-prijs").textContent=euro(staat.menu? v.menu : v.prijs);
+    document.getElementById("m-uitleg").textContent= staat.menu
+      ? "Burger, friet en drankje naar keuze. Op Thuisbezorgd staat het onder Menu."
+      : "Op Thuisbezorgd vind je hem onder "+v.cat+".";
+    zetPan();
+  }
+  document.querySelectorAll("[data-vlees]").forEach(function(b){b.addEventListener("click",function(){staat.vlees=b.dataset.vlees;teken();});});
+  document.querySelectorAll("[data-smaak]").forEach(function(b){b.addEventListener("click",function(){if(staat.smaak!==b.dataset.smaak)panStap++;staat.smaak=b.dataset.smaak;teken();});});
+  document.querySelectorAll("[data-menu]").forEach(function(b){b.addEventListener("click",function(){staat.menu=+b.dataset.menu;teken();});});
+  window.addEventListener("resize",zetPan);
+  if(panImg.complete) teken(); else {teken(); panImg.addEventListener("load",zetPan);}
+
+  /* ---------- volledige kaart ---------- */
+  function burgers(sleutel){
+    var v=VLEES[sleutel], volgorde={duck:["blue","goat","cheddar","kimchi","asian"],chicken:["kimchi","goat","asian","blue","cheddar"],beef:["asian","goat","kimchi","blue","cheddar"],veggie:["kimchi","goat","blue","cheddar","asian"]}[sleutel];
+    var rij=volgorde.map(function(k){return [v.naam+" "+SMAAK[k].label, BRIOCHE+SMAAK[k].tekst(v.in), v.prijs];});
+    if(sleutel==="duck") rij.splice(3,0,["Duck burger vegetarisch","Geroosterd brioche broodje, hoisinsaus, komkommer, lente-ui, vegetarische gebraden eend (5 kruiden) en sriracha mayonaise",10.90]);
+    return rij;
+  }
+  var KAART=[
+    ["Menu's",[["Duckburger menu","Duckburger, friet en drankje naar keuze",17.90],["Beef burger menu","Beef burger, friet en drankje naar keuze",16.90],["Veggie Duck burger menu","Vegetarische burger, friet en drankje naar keuze",16.90],["Chicken burger menu","Chicken burger, friet en drankje naar keuze",16.90]]],
+    ["Duck",burgers("duck")],
+    ["Chicken",burgers("chicken")],
+    ["Beef",burgers("beef")],
+    ["Veggie",burgers("veggie")],
+    ["Corn dogs",[["Classic corn dog","",8.90],["Asian corn dog","",10.90],["Parmaco corn dog","",10.90],["Kimchi corn dog","",10.90],["Spicy green corn dog","",10.90],["Cheetos cheese corn dog","",11.90],["Blue Takis corn dog","",11.90],["Red Cheetos corn dog","",11.90],["Patato corn dog","",11.90]]],
+    ["Friet & snacks",[["Friet","",4.50],["Friet parmaco","",7.90],["Friet spicy green","",7.90],["Hotwings","5 stuks",6.90],["Chicken tenders","5 stuks",6.90],["Mozzarella sticks","5 stuks",6.90],["Chili cheese nuggets","5 stuks",5.90],["Onion rings","5 stuks",3.90],["Snack lovers package","Hotwings 3x, tenders 3x, onion rings 3x, mozzarella sticks 3x en chili cheese nuggets 3x",12.90]]]
+  ];
+  var rail=document.getElementById("rail"), lijst=document.getElementById("kaartlijst");
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  function toon(i){
+    [].forEach.call(rail.children,function(b,j){b.setAttribute("aria-selected",i===j);b.tabIndex=i===j?0:-1;});
+    lijst.innerHTML=KAART[i][1].map(function(it){return '<div class="item"><h3>'+esc(it[0])+'</h3><span class="p">'+euro(it[2])+'</span>'+(it[1]?'<p>'+esc(it[1])+'</p>':'')+'</div>';}).join("");
+  }
+  KAART.forEach(function(c,i){var b=document.createElement("button");b.type="button";b.setAttribute("role","tab");b.textContent=c[0];b.addEventListener("click",function(){toon(i);});rail.appendChild(b);});
+  toon(1);
+
+  /* ---------- vangnet: lazy foto's na 3 s alsnog laden (screenshots/printen) ---------- */
+  setTimeout(function(){document.querySelectorAll('img[loading="lazy"]').forEach(function(i){i.decoding="sync";i.loading="eager";if(!(i.complete&&i.naturalWidth)){var src=i.getAttribute("src");i.removeAttribute("src");i.setAttribute("src",src);}if(i.decode)i.decode().catch(function(){});});},3000);
+
+  /* ---------- zwevende CTA ---------- */
+  var zweef=document.getElementById("zweef"), hero=document.getElementById("hero");
+  if("IntersectionObserver" in window){
+    var heroZicht=true, zuilZicht=false;
+    function zet(){zweef.classList.toggle("aan",!heroZicht&&!zuilZicht);}
+    new IntersectionObserver(function(e){heroZicht=e[0].isIntersecting;zet();},{threshold:0}).observe(hero);
+    new IntersectionObserver(function(e){zuilZicht=e[0].isIntersecting;zet();},{threshold:0}).observe(document.querySelector(".kiosk"));
+  } else zweef.classList.add("aan");
+
+  /* ---------- pitch ---------- */
+  var pitch=document.getElementById("pitch");
+  function open(){pitch.hidden=false;}
+  function dicht(){pitch.hidden=true;}
+  document.getElementById("mo-knop").addEventListener("click",open);
+  document.getElementById("pitch-sluit").addEventListener("click",dicht);
+  pitch.addEventListener("click",function(e){if(e.target===pitch)dicht();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")dicht();});
+  if(/[?&]pitch\b/.test(location.search)) open();
+  var rn=document.getElementById("r-n"), rb=document.getElementById("r-b");
+  function reken(){
+    var n=+rn.value, b=+rb.value;
+    document.getElementById("r-n-uit").textContent=n;
+    document.getElementById("r-b-uit").textContent=b.toFixed(2).replace(".",",");
+    document.getElementById("r-jaar").textContent="€ "+Math.round(n*b*52).toLocaleString("nl-NL");
+    document.getElementById("r-x").textContent=Math.ceil(595/b);
+  }
+  rn.addEventListener("input",reken); rb.addEventListener("input",reken); reken();
+})();
+</script>
+</body>
+</html>
