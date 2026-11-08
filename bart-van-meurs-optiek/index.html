@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="nl">
+<!--
+  Demo L240 - Bart van Meurs Optiek en Optometrie, Slinge 441, Rotterdam-Zuidwijk.
+  Concept in één zin: "De opticien om de hoek, sinds 1958: de winkel gaat voor je aan."
+  Lay-out-archetype: HORIZONTALE VITRINE-RAIL. De hero is hun eigen winkelfoto breed (op mobiel een veegbare rail
+  door de winkel) waarin bij het laden de verlichte eiken vitrines en hanglampen één voor één aangaan; daaronder een
+  stilstaande eiken plank met feiten (geen lopende band). Aanbod als horizontale rail van verlichte vitrinevakken,
+  daarna een 3-stappen-stepper (meten -> kiezen -> passen) met hun eigen foto's, review-thema's, een afspraak-kiezer
+  (dienst -> dag, maandag dicht -> dagdeel) die eindigt in bellen of een ingevulde mail, en een route/uren-blok.
+  Niet gebruikt: lens die scherpstelt, split-screen, bento (Optiek 010), schuine fotokaart, stempel, stoom, Ken Burns, marquee.
+  Kleuren uit de winkel: eiken, antraciet (zuilen), zacht wit (balie), goud (hun logovlak). Logo: hun eigen woordmerk nagetekend.
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Bart van Meurs Optiek en Optometrie – opticien en optometrist in Rotterdam-Zuidwijk</title>
+<meta name="description" content="Opticien en optometrist aan de Slinge 441 in Rotterdam-Zuidwijk, sinds 1958. Oogmeting, brillen, zonnebrillen en contactlenzen, ook multifocaal. Bel 010 480 72 33.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300..800&family=Golos+Text:wght@400..700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/winkel.jpg">
+<style>
+:root{
+  --ant:#22211f; --ant2:#2f2d2a; --ink:#1d1c1a; --wit:#f3f2ef; --wit2:#e8e6e1;
+  --oak:#b07c47; --oak-l:#c99a62; --oak-d:#7a522c;
+  --goud:#d4af37; --goud-d:#7d6310; --line:rgba(29,28,26,.14);
+  --kop:"Geologica",system-ui,sans-serif; --tekst:"Golos Text",system-ui,sans-serif;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--tekst);color:var(--ink);background:var(--wit);line-height:1.55;font-size:17px;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);line-height:1.08;letter-spacing:-.01em}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font:600 16px/1 var(--tekst);text-decoration:none;border:0;cursor:pointer;white-space:nowrap}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-goud{background:var(--goud);color:#1d1a10}
+.btn-goud:hover{background:#e0bd4a}
+.btn-rand{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)}
+.btn-rand:hover{box-shadow:inset 0 0 0 1.5px #fff}
+.btn-donker{background:var(--ant);color:#fff}
+.btn-licht{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.oog{font:600 13px/1.2 var(--kop);letter-spacing:.16em;text-transform:uppercase;color:var(--goud-d)}
+.sec{padding:clamp(64px,9vw,112px) 0}
+.sec h2{font-size:clamp(30px,5.4vw,52px);font-weight:700;margin:12px 0 14px;max-width:18ch;overflow-wrap:break-word}
+.lead{font-size:clamp(17px,2vw,19px);color:#4a4741;max-width:58ch}
+
+/* 1. demo-strook */
+.demo{position:relative;background:#111;color:#cfcac0;font-size:13px;text-align:center;padding:8px 48px}
+.demo a{color:#fff}
+.pitch-knop{position:absolute;right:6px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;border:0;background:transparent;color:#fff;font:700 10px var(--kop);opacity:.25;cursor:pointer}
+.pitch-knop:hover{opacity:1}
+
+/* 2. aankondiging */
+.bar{background:var(--goud);color:#1d1a10;font-size:14px;font-weight:500}
+.bar .wrap{display:flex;justify-content:center;align-items:center;gap:8px 18px;flex-wrap:wrap;padding:8px 0;text-align:center}
+.bar a{text-decoration:none;font-weight:700;display:inline-flex;align-items:center;min-height:44px}
+.bar .wrap{padding:0}
+.status{display:inline-flex;align-items:center;gap:8px}
+.stip{width:9px;height:9px;border-radius:50%;background:#1d1a10;flex:none}
+.status.open .stip{background:#1f7a3a;animation:puls 2.4s ease-in-out infinite}
+@keyframes puls{0%,100%{box-shadow:0 0 0 0 rgba(31,122,58,.5)}50%{box-shadow:0 0 0 6px rgba(31,122,58,0)}}
+
+/* 3. header */
+.kopbalk{background:var(--ant);color:#fff;position:relative;z-index:5}
+.kopbalk .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.merk{display:flex;align-items:center;text-decoration:none}
+.merk img{height:48px;width:auto}
+.nav{display:flex;align-items:center;gap:26px;font-size:15px}
+.nav a{text-decoration:none;color:#d9d5cc}
+.nav a:hover{color:#fff}
+.nav .btn{min-height:46px;padding:0 18px;font-size:15px}
+.nav .klein{display:none}
+@media (max-width:900px){.nav a:not(.btn){display:none}.nav .btn .lang{display:none}.nav .klein{display:inline}.merk img{height:40px}}
+
+/* 4. hero: de winkel gaat aan */
+.hero{background:var(--ant);color:#fff}
+.rail-foto{position:relative;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rail-foto::-webkit-scrollbar{display:none}
+.hero-foto{position:relative}
+.winkel{position:relative;width:min(100%,calc(48vh * 1036 / 528));aspect-ratio:1036/528;margin-inline:auto;box-shadow:0 0 60px rgba(0,0,0,.5)}
+@media (min-width:821px){.rail-foto{overflow:hidden}.rail-foto::before{content:"";position:absolute;inset:-40px;background:url(img/winkel.jpg) center/cover;filter:blur(30px) brightness(.25);}}
+.winkel img{width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.55);animation:aan 1.1s 1.55s cubic-bezier(.3,.1,.2,1) forwards}
+@keyframes aan{to{filter:brightness(1) saturate(1)}}
+.licht{position:absolute;pointer-events:none;mix-blend-mode:screen;opacity:0;border-radius:4px}
+.licht.led{background:linear-gradient(90deg,rgba(255,200,90,.95),rgba(255,170,60,.28) 22%,rgba(255,170,60,.06) 60%,rgba(255,190,80,.2));filter:blur(3px);animation:led .9s var(--d) steps(1,end) forwards, rust .8s calc(var(--d) + .9s) ease-out forwards}
+.licht.lamp{border-radius:50%;background:radial-gradient(closest-side,rgba(255,190,110,.95),rgba(255,160,70,.35) 55%,transparent);animation:gloei .7s var(--d) ease-out forwards, rust .9s calc(var(--d) + 1.2s) ease-out forwards}
+.licht.koel{background:radial-gradient(closest-side,rgba(230,242,255,.9),rgba(200,225,255,.3) 70%,transparent);border-radius:8px;animation:gloei .6s var(--d) ease-out forwards, rust .9s calc(var(--d) + 1.1s) ease-out forwards}
+@keyframes led{0%{opacity:.9}12%{opacity:.1}24%{opacity:.85}36%{opacity:.25}48%,100%{opacity:1}}
+@keyframes gloei{to{opacity:1}}
+@keyframes rust{to{opacity:.28}}
+.veeg{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);background:rgba(20,19,17,.72);color:#fff;font-size:13px;padding:7px 14px;border-radius:999px;display:none;align-items:center;gap:8px;white-space:nowrap;pointer-events:none;transition:opacity .4s}
+.veeg.weg{opacity:0}
+.plank{position:relative;background:
+  linear-gradient(180deg,rgba(255,214,140,.55) 0 2px,transparent 2px),
+  repeating-linear-gradient(91deg,rgba(0,0,0,.05) 0 2px,transparent 2px 9px),
+  linear-gradient(180deg,var(--oak-l),var(--oak) 55%,var(--oak-d));color:#1f150b;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.plank .wrap{display:flex;flex-wrap:wrap;gap:6px 26px;justify-content:center;padding:13px 0;font:600 14px/1.3 var(--kop);letter-spacing:.02em}
+.plank span{display:inline-flex;align-items:center;gap:8px}
+.plank span+span::before{content:"";width:5px;height:5px;border-radius:50%;background:#3b2711;opacity:.55;margin-right:18px;margin-left:-18px}
+.hero-tekst{padding:clamp(22px,3vw,34px) 0 clamp(48px,6vw,80px)}
+.hero-tekst .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:28px 56px;align-items:end}
+.hero h1{font-size:clamp(34px,5vw,62px);font-weight:700;letter-spacing:-.02em;max-width:14ch}
+.hero h1 em{font-style:normal;color:var(--goud)}
+.hero .sub{color:#cfcac0;font-size:clamp(17px,1.8vw,19px);max-width:46ch;margin-bottom:24px}
+.cta-rij{display:flex;flex-wrap:wrap;gap:12px}
+.trust{margin-top:28px;display:flex;align-items:center;gap:10px;color:#cfcac0;font-size:15px;flex-wrap:wrap}
+.trust a{color:#fff}
+.sterren{color:var(--goud);letter-spacing:2px}
+.sterren .half{background:linear-gradient(90deg,var(--goud) 50%,rgba(212,175,55,.3) 50%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.intro{animation:opkomen .8s 2.3s ease-out both}
+@keyframes opkomen{from{opacity:0}to{opacity:1}}
+@media (max-width:820px){
+  .hero-tekst .wrap{grid-template-columns:1fr;gap:18px}
+  .winkel{width:510px;height:260px;aspect-ratio:auto;box-shadow:none}
+  .winkel img{width:auto;height:260px;max-width:none}
+  .hero-tekst .wrap>div:last-child{display:flex;flex-direction:column}
+  .hero .cta-rij{order:-1;margin-bottom:22px}
+  .hero .sub{margin-bottom:0}
+  .hero .trust{margin-top:18px}
+  .plank .m-weg{display:none}
+  .veeg{display:inline-flex}
+  .plank .wrap{gap:4px 18px;font-size:13px}
+  .plank span+span::before{margin-right:12px;margin-left:-12px}
+  .intro{animation-delay:1.9s}
+}
+
+/* aanbod-rail: vitrinevakken */
+.aanbod{background:var(--wit)}
+.kop-rij{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.pijlen{display:flex;gap:10px}
+.pijlen button{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font-size:20px;cursor:pointer;color:var(--ink)}
+.vitrine{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(250px,1fr);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:20px;padding:28px 20px 26px;margin:0 -20px;scrollbar-width:thin}
+.vak{scroll-snap-align:start;position:relative;border-radius:10px;padding:12px;background:
+  repeating-linear-gradient(92deg,rgba(0,0,0,.05) 0 2px,transparent 2px 11px),
+  linear-gradient(160deg,var(--oak-l),var(--oak) 60%,var(--oak-d));box-shadow:0 14px 30px rgba(60,38,16,.22)}
+.vak-binnen{position:relative;height:100%;border-radius:6px;background:linear-gradient(180deg,#fbf6ea,#f1e7d2);padding:22px 20px 20px;display:flex;flex-direction:column;gap:10px;overflow:hidden;box-shadow:inset 0 2px 10px rgba(80,50,15,.18)}
+.vak-binnen::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#ffd27a,#ffb648);box-shadow:0 0 18px 4px rgba(255,190,80,.55)}
+.vak svg{width:62px;height:42px;color:var(--ant)}
+.vak .t{font:700 clamp(19px,2.2vw,22px)/1.15 var(--kop);overflow-wrap:break-word}
+.vak .o{color:#4f4a42;font-size:15.5px;flex:1}
+.vak a{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;text-decoration:none;color:var(--ink);border-top:1px solid rgba(29,28,26,.12);padding-top:8px}
+.vak a:hover{color:var(--oak-d)}
+@media (min-width:1100px){.vitrine{grid-auto-flow:row;grid-template-columns:repeat(5,1fr);overflow:visible;margin:0;padding-inline:0}.pijlen{display:none}}
+
+/* stepper */
+.stappen{background:var(--ant);color:#fff}
+.stappen .oog{color:var(--goud)}
+.stappen .lead{color:#cfcac0}
+.stepper{margin-top:36px;display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(24px,4vw,56px);align-items:center}
+.tabs{display:grid;gap:12px;position:relative}
+.tab{display:grid;grid-template-columns:52px 1fr;gap:16px;text-align:left;background:transparent;border:0;color:#fff;cursor:pointer;padding:16px;border-radius:var(--r);font:inherit;min-height:44px}
+.tab .nr{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:700 20px var(--kop);background:var(--ant2);color:#cfcac0;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.18)}
+.tab b{display:block;font:700 22px/1.2 var(--kop);margin:4px 0 4px}
+.tab span.u{display:block;color:#bdb8ae;font-size:15.5px}
+.tab[aria-selected=true]{background:var(--ant2)}
+.tab[aria-selected=true] .nr{background:var(--goud);color:#1d1a10;box-shadow:none}
+.tab[aria-selected=true] b{color:var(--goud)}
+.beeld{position:relative;border-radius:10px;padding:12px;background:repeating-linear-gradient(92deg,rgba(0,0,0,.06) 0 2px,transparent 2px 11px),linear-gradient(160deg,var(--oak-l),var(--oak) 60%,var(--oak-d))}
+.beeld-in{position:relative;aspect-ratio:4/4.4;border-radius:6px;overflow:hidden;background:#111}
+.beeld-in img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+.beeld-in img.aan{opacity:1}
+.beeld figcaption{color:#2b1c0c;font-size:13.5px;font-weight:600;padding:10px 4px 0}
+@media (max-width:820px){.stepper{grid-template-columns:1fr}.beeld{order:-1}.beeld-in{aspect-ratio:4/3.6}}
+
+/* waarom */
+.waarom-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.kaart{background:#fff;border-radius:var(--r);padding:26px 24px;box-shadow:0 1px 0 var(--line),0 10px 30px rgba(29,28,26,.06);min-width:0}
+.kaart .ico{width:46px;height:46px;border-radius:12px;background:var(--wit2);display:grid;place-items:center;margin-bottom:16px}
+.kaart .ico svg{width:24px;height:24px}
+.kaart h3{font-size:clamp(19px,4.6vw,22px);margin-bottom:8px;overflow-wrap:break-word}
+.kaart p{color:#55514a;font-size:16px}
+@media (max-width:820px){.waarom-grid{grid-template-columns:1fr}}
+
+/* reviews */
+.reviews{background:var(--wit2)}
+.rev-wrap{display:grid;grid-template-columns:.8fr 1.6fr;gap:clamp(24px,4vw,56px);align-items:start}
+.score{background:var(--ant);color:#fff;border-radius:var(--r);padding:30px 28px}
+.score .groot{font:700 76px/1 var(--kop);letter-spacing:-.03em}
+.score .sterren{font-size:22px;margin:8px 0 6px}
+.score p{color:#cfcac0;font-size:15px}
+.score a{display:inline-flex;align-items:center;min-height:44px;color:var(--goud);font-weight:600;margin-top:10px}
+.revs{display:grid;gap:14px}
+.rev{background:#fff;border-radius:var(--r);padding:22px 24px;display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+.rev .ini{width:44px;height:44px;border-radius:50%;background:var(--oak);color:#fff;display:grid;place-items:center;font:700 17px var(--kop)}
+.rev p{font-size:17px}
+.rev .wie{font-size:14px;color:#6b665d;margin-top:6px}
+.label{font-size:13.5px;color:#6b665d;margin-top:4px}
+@media (max-width:820px){.rev-wrap{grid-template-columns:1fr}}
+
+/* kiezer */
+.kiezer{background:var(--wit)}
+.kies-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(20px,3vw,40px);margin-top:34px;align-items:start}
+.stap{background:#fff;border-radius:var(--r);padding:24px;box-shadow:0 1px 0 var(--line);margin-bottom:14px}
+.stap h3{font-size:18px;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.stap h3 i{font-style:normal;width:30px;height:30px;border-radius:50%;background:var(--ant);color:#fff;display:grid;place-items:center;font-size:14px;flex:none}
+.opties{display:flex;flex-wrap:wrap;gap:10px}
+.optie{min-height:48px;padding:10px 18px;border-radius:12px;border:1.5px solid var(--line);background:var(--wit);font:600 15.5px/1.2 var(--tekst);cursor:pointer;color:var(--ink);text-align:left}
+.optie small{display:block;font-weight:400;font-size:12.5px;color:#6b665d;margin-top:2px}
+.optie[aria-pressed=true]{background:var(--ant);border-color:var(--ant);color:#fff}
+.optie[aria-pressed=true] small{color:#cfcac0}
+.optie:disabled{opacity:.45;cursor:not-allowed;text-decoration:line-through}
+.veld{display:grid;gap:6px;margin-top:4px}
+.veld label{font-size:14px;font-weight:600}
+.veld input{min-height:48px;border-radius:12px;border:1.5px solid var(--line);padding:0 14px;font:16px var(--tekst);background:var(--wit);width:100%}
+.briefje{position:sticky;top:20px;border-radius:10px;padding:12px;background:repeating-linear-gradient(92deg,rgba(0,0,0,.05) 0 2px,transparent 2px 11px),linear-gradient(160deg,var(--oak-l),var(--oak) 60%,var(--oak-d))}
+.briefje-in{background:#fffdf8;border-radius:6px;padding:24px 22px}
+.briefje .oog{margin-bottom:10px}
+.regel{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px dashed rgba(29,28,26,.2);font-size:15.5px}
+.regel span:first-child{color:#6b665d}
+.regel span:last-child{font-weight:600;text-align:right}
+.briefje .knoppen{display:grid;gap:10px;margin-top:20px}
+.briefje .knoppen .btn{width:100%}
+.briefje .klein{font-size:13.5px;color:#6b665d;margin-top:12px}
+.briefje .klein a{color:var(--ink)}
+@media (max-width:860px){.kies-grid{grid-template-columns:1fr}.briefje{position:static}}
+
+/* faq */
+.faq-lijst{margin-top:30px;max-width:820px}
+.faq-lijst details{border-bottom:1px solid var(--line)}
+.faq-lijst summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;padding:14px 0;font:600 18px/1.3 var(--kop)}
+.faq-lijst summary::-webkit-details-marker{display:none}
+.faq-lijst summary::after{content:"+";font-size:26px;font-weight:400;color:var(--oak-d)}
+.faq-lijst details[open] summary::after{content:"−"}
+.faq-lijst p{padding:0 0 18px;color:#4f4a42;max-width:66ch}
+.faq-lijst a{color:var(--ink)}
+
+/* route */
+.route{background:var(--ant);color:#fff}
+.route .oog{color:var(--goud)}
+.route-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);margin-top:30px}
+.adres{font:600 clamp(22px,3vw,28px)/1.3 var(--kop)}
+.route p.n{color:#cfcac0;margin-top:12px;max-width:44ch}
+.route .cta-rij{margin-top:26px}
+.uren{background:var(--ant2);border-radius:var(--r);padding:12px 24px}
+.uren div{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.09);font-size:16px}
+.uren div:last-child{border-bottom:0}
+.uren div.vandaag{color:var(--goud);font-weight:700}
+.uren .dicht{color:#9a958b}
+@media (max-width:820px){.route-grid{grid-template-columns:1fr}}
+
+/* slot */
+.slot{position:relative;overflow:hidden;background:var(--ant);color:#fff;text-align:center;padding:clamp(70px,10vw,120px) 0}
+.slot::before{content:"";position:absolute;inset:0;background:url(img/vitrines.jpg) center/cover;opacity:.22}
+.slot .wrap{position:relative}
+.slot h2{font-size:clamp(32px,5.6vw,58px);font-weight:700;max-width:16ch;margin:12px auto 16px}
+.slot p{color:#d9d5cc;margin:0 auto 28px;max-width:46ch}
+.slot .cta-rij{justify-content:center}
+
+footer{background:#151413;color:#a9a49a;font-size:14.5px;padding:44px 0 110px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-start}
+footer img{height:44px;width:auto;margin-bottom:12px}
+footer a{color:#fff}
+footer .soc{display:flex;gap:16px;margin-top:6px}
+footer .soc a{display:inline-flex;align-items:center;min-height:44px}
+@media (min-width:821px){footer{padding-bottom:44px}}
+
+/* zwevende CTA (mobiel) */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:none;gap:8px;padding:8px;background:rgba(34,33,31,.96);border-radius:999px;box-shadow:0 12px 30px rgba(0,0,0,.35);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.zweef.zicht{opacity:1;visibility:visible}
+.zweef .btn{flex:1;min-height:48px;padding:0 14px;font-size:15px}
+.zweef .btn-rand{flex:0 0 auto}
+@media (max-width:820px){.zweef{display:flex}}
+
+/* pitch-modus (alleen voor Mo) */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(10,10,9,.6);display:none;align-items:flex-end;justify-content:center}
+.pitch.open{display:flex}
+.pitch .vel{background:#fff;width:min(1120px,100%);max-height:94svh;overflow:auto;border-radius:24px 24px 0 0;padding:24px clamp(18px,3vw,40px) 40px}
+.pitch .pk{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.pitch .pk h3{font-size:22px}
+.pitch .sluit{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:22px;cursor:pointer}
+.vn{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.vn h4{font:700 15px var(--kop);margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em;color:#6b665d}
+.tel-nu{border-radius:22px;background:#0d0d0c;padding:10px;max-width:300px}
+.tel-nu .scherm{position:relative;height:420px;border-radius:14px;overflow:hidden;background:#1b1a17}
+.tel-nu .top{display:flex;justify-content:space-between;align-items:center;padding:10px;background:#000}
+.tel-nu .logo-vlak{background:#b39431;color:#fff;font:700 9px/1.2 var(--kop);padding:8px 10px;text-align:center}
+.tel-nu .icons{color:#bbb;font-size:12px;letter-spacing:6px}
+.tel-nu .pop{position:absolute;left:12px;right:12px;top:80px;height:230px;background:#2a2a2a;border:1px dashed #777;display:grid;place-items:center;color:#ddd;font-size:13px;text-align:center;padding:16px}
+.tel-nu .cookie{position:absolute;left:0;right:0;bottom:0;background:#d6b545;color:#222;font-size:11.5px;padding:10px;line-height:1.35}
+.fout{list-style:none;margin-top:14px;display:grid;gap:8px;font-size:14.5px}
+.fout li{display:grid;grid-template-columns:22px 1fr;gap:8px}
+.fout li::before{content:"✕";color:#b3261e;font-weight:700}
+.fout code{font-size:12.5px;background:#f2f0ec;padding:1px 5px;border-radius:4px;word-break:break-all}
+.na-frame{width:300px;height:440px;border:10px solid #0d0d0c;border-radius:22px;background:#fff}
+.reken{margin-top:28px;background:var(--wit);border-radius:var(--r);padding:22px}
+.reken label{display:block;font-weight:600;font-size:15px;margin-top:12px}
+.reken input[type=range]{width:100%;height:44px;accent-color:var(--oak-d)}
+.reken .uit{margin-top:14px;font:600 20px/1.4 var(--kop)}
+.reken .uit b{color:var(--oak-d)}
+.reken .vb{font-size:13px;color:#6b665d;margin-top:8px}
+.punten{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.punten div{background:var(--wit);border-radius:var(--r);padding:18px;font-size:15px}
+.punten b{display:block;font-family:var(--kop);font-size:17px;margin-bottom:4px}
+@media (max-width:820px){.vn,.punten{grid-template-columns:1fr}.na-frame{width:100%}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .winkel img{filter:none}
+  .licht{opacity:.28}
+}
+</style>
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a>, voor Bart van Meurs Optiek en Optometrie. <button class="pitch-knop" id="pitchKnop" aria-label="Presentatie openen">Mo</button></div>
+
+<div class="bar"><div class="wrap">
+  <span class="status" id="status"><span class="stip"></span><span id="statusTekst">Di–vr 09:00–17:30 · za 09:00–16:30</span></span>
+  <span><a href="https://www.google.com/maps/search/?api=1&amp;query=Bart+van+Meurs+Optiek+en+Optometrie+Slinge+441+Rotterdam" target="_blank" rel="noopener">4,5 ★ uit 48 Google-reviews</a></span>
+</div></div>
+
+<header class="kopbalk"><div class="wrap">
+  <a class="merk" href="#top" aria-label="Bart van Meurs Optiek en Optometrie, naar boven"><img src="logo-light.svg" alt="Bart van Meurs Optiek en Optometrie, sinds 1958" width="172" height="48"></a>
+  <nav class="nav" aria-label="Hoofdmenu">
+    <a href="#aanbod">Aanbod</a>
+    <a href="#stappen">Zo gaat het</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#route">Route &amp; uren</a>
+    <a class="btn btn-goud" href="#afspraak"><span class="lang">Afspraak plannen</span><span class="klein">Afspraak</span></a>
+  </nav>
+</div></header>
+
+<main id="top">
+<section class="hero" id="hero" aria-label="De winkel aan de Slinge">
+  <div class="hero-foto"><div class="rail-foto" id="railFoto">
+    <div class="winkel">
+      <img src="img/winkel.jpg" alt="De winkel aan de Slinge: verlichte eikenhouten vitrines met monturen, tafels met spiegels en hanglampen" width="1036" height="528" fetchpriority="high">
+      <span class="licht koel" style="left:1.3%;top:18%;width:12.6%;height:62%;--d:.15s"></span>
+      <span class="licht lamp" style="left:17%;top:20%;width:17%;height:22%;--d:.35s"></span>
+      <span class="licht lamp" style="left:27%;top:26%;width:13%;height:17%;--d:.5s"></span>
+      <span class="licht led" style="left:62%;top:31%;width:2.2%;height:35%;--d:.6s"></span>
+      <span class="licht led" style="left:64.7%;top:28%;width:3%;height:41%;--d:.75s"></span>
+      <span class="licht led" style="left:68%;top:26%;width:3.9%;height:47%;--d:.9s"></span>
+      <span class="licht led" style="left:72.3%;top:21%;width:5.6%;height:56%;--d:1.05s"></span>
+      <span class="licht led" style="left:78.6%;top:17%;width:8.4%;height:67%;--d:1.2s"></span>
+    </div>
+  </div>
+  <span class="veeg" id="veeg" aria-hidden="true">&#8592; veeg door de winkel &#8594;</span></div>
+  <div class="plank"><div class="wrap">
+    <span>Sinds 1958</span><span>Slinge 441, Zuidwijk</span><span>4,5 ★ Google</span><span class="m-weg">Maandag gesloten</span>
+  </div></div>
+  <div class="hero-tekst"><div class="wrap intro">
+    <div>
+      <p class="oog" style="color:var(--goud)">Opticien &amp; optometrist in Rotterdam-Zuid</p>
+      <h1 style="margin-top:12px">Scherp zien begint <em>op de Slinge.</em></h1>
+    </div>
+    <div>
+      <p class="sub">Oogmeting en optometrie, brillen, zonnebrillen en contactlenzen (ook multifocaal). Kies wat u nodig hebt en bel of mail in één keer.</p>
+      <div class="cta-rij">
+        <a class="btn btn-goud" href="tel:+31104807233"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Bel 010 480 72 33</a>
+        <a class="btn btn-rand" href="#afspraak">Afspraak kiezen</a>
+      </div>
+      <p class="trust"><span class="sterren" aria-hidden="true">★★★★<span class="half">★</span></span><span><a href="https://www.google.com/maps/search/?api=1&amp;query=Bart+van+Meurs+Optiek+en+Optometrie+Slinge+441+Rotterdam" target="_blank" rel="noopener">4,5 uit 48 Google-reviews</a> · Slinge 441, Rotterdam</span></p>
+    </div>
+  </div></div>
+</section>
+
+<section class="sec aanbod" id="aanbod">
+  <div class="wrap">
+    <div class="kop-rij">
+      <div>
+        <p class="oog">Uit de vitrine</p>
+        <h2>Alles voor uw ogen, achter één winkelruit</h2>
+      </div>
+      <div class="pijlen"><button type="button" id="railL" aria-label="Vorige">&#8592;</button><button type="button" id="railR" aria-label="Volgende">&#8594;</button></div>
+    </div>
+    <div class="vitrine" id="vitrine">
+      <div class="vak"><div class="vak-binnen">
+        <svg viewBox="0 0 62 42" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 18h10m34 0h10M24 21h14"/><rect x="8" y="14" width="18" height="14" rx="6"/><rect x="36" y="14" width="18" height="14" rx="6"/></svg>
+        <div class="t">Brillen</div>
+        <div class="o">Monturen in de verlichte vitrines, met glazen voor lezen en ver kijken, multifocaal of computerwerk.</div>
+        <a href="#afspraak" data-dienst="Nieuwe bril">Plan een bril &#8594;</a>
+      </div></div>
+      <div class="vak"><div class="vak-binnen">
+        <svg viewBox="0 0 62 42" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 16h10m34 0h10M24 19h14"/><path d="M8 13h18v8a7 7 0 0 1-7 7h-4a7 7 0 0 1-7-7z" fill="currentColor" fill-opacity=".85"/><path d="M36 13h18v8a7 7 0 0 1-7 7h-4a7 7 0 0 1-7-7z" fill="currentColor" fill-opacity=".85"/><path d="M48 3v4m6 1-3 3M42 4l1 4" stroke-width="1.8"/></svg>
+        <div class="t">Zonnebrillen</div>
+        <div class="o">Zonnebrillen en zonneglazen. Kom ze passen in de winkel.</div>
+        <a href="#afspraak" data-dienst="Nieuwe bril">Langskomen &#8594;</a>
+      </div></div>
+      <div class="vak"><div class="vak-binnen">
+        <svg viewBox="0 0 62 42" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M14 26c4-12 30-12 34 0"/><path d="M14 26c8 6 26 6 34 0"/><circle cx="31" cy="23" r="4" stroke-width="1.8"/></svg>
+        <div class="t">Contactlenzen</div>
+        <div class="o">Daglenzen, maandlenzen en harde lenzen, ook multifocaal en voor cilinder.</div>
+        <a href="#afspraak" data-dienst="Contactlenzen">Plan lenzen &#8594;</a>
+      </div></div>
+      <div class="vak"><div class="vak-binnen">
+        <svg viewBox="0 0 62 42" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 21s9-13 25-13 25 13 25 13-9 13-25 13S6 21 6 21z"/><circle cx="31" cy="21" r="7"/><circle cx="31" cy="21" r="2.5" fill="currentColor"/></svg>
+        <div class="t">Oogmeting &amp; optometrie</div>
+        <div class="o">Een oogmeting voor uw nieuwe sterkte, of een optometrisch onderzoek van uw ogen.</div>
+        <a href="#afspraak" data-dienst="Optometrisch onderzoek">Plan een meting &#8594;</a>
+      </div></div>
+      <div class="vak"><div class="vak-binnen">
+        <svg viewBox="0 0 62 42" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="5" width="34" height="32" rx="3"/><path d="M20 13h22M23 20h16M26 27h10" stroke-width="2.8"/></svg>
+        <div class="t">Rijbewijskeuring</div>
+        <div class="o">De oogkeuring voor uw rijbewijs: de CBR-oogkeuring.</div>
+        <a href="#afspraak" data-dienst="Rijbewijskeuring">Plan de keuring &#8594;</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec stappen" id="stappen">
+  <div class="wrap">
+    <p class="oog">Oogzorg in drie stappen</p>
+    <h2>Meten, kiezen, passen</h2>
+    <p class="lead">Van de balie tot de spiegel: zo loopt u door de winkel aan de Slinge.</p>
+    <div class="stepper">
+      <div class="tabs" role="tablist" aria-label="Drie stappen">
+        <button class="tab" role="tab" aria-selected="true" data-stap="0" id="tab0"><span class="nr">1</span><span><b>Meten</b><span class="u">Een oogmeting voor uw sterkte, of een optometrisch onderzoek van uw ogen.</span></span></button>
+        <button class="tab" role="tab" aria-selected="false" data-stap="1" id="tab1"><span class="nr">2</span><span><b>Kiezen</b><span class="u">Een montuur uit de verlichte eiken vitrines, of contactlenzen die bij u passen.</span></span></button>
+        <button class="tab" role="tab" aria-selected="false" data-stap="2" id="tab2"><span class="nr">3</span><span><b>Passen</b><span class="u">Aan tafel, voor de spiegel, ziet u hoe het montuur staat.</span></span></button>
+      </div>
+      <figure class="beeld">
+        <div class="beeld-in">
+          <img class="aan" src="img/balie.jpg" alt="De witte balie met de letters Optiek en Optometrie en een eiken blad" width="458" height="640">
+          <img src="img/vitrines.jpg" alt="Eikenhouten vitrines met ledverlichting en monturen op glazen planken" width="386" height="490">
+          <img src="img/pastafel.jpg" alt="Tafels met spiegels en bloemen voor het passen van een montuur" width="510" height="270">
+        </div>
+        <figcaption id="onderschrift">De balie: Optiek en Optometrie</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="waarom">
+  <div class="wrap">
+    <p class="oog">Waarom Bart van Meurs</p>
+    <h2>Wat klanten terugzien in hun reviews</h2>
+    <div class="waarom-grid">
+      <div class="kaart"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></div><h3>Metingen</h3><p>Klanten schrijven dat de metingen betrouwbaar zijn.</p></div>
+      <div class="kaart"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 5a3.5 3.5 0 0 1 0 7m2 8a6.5 6.5 0 0 0-3-5.5"/></svg></div><h3>Mensen</h3><p>Klanten schrijven over vriendelijk personeel in de winkel.</p></div>
+      <div class="kaart"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></div><h3>Uitleg</h3><p>Klanten schrijven dat ze bij de oogmeting uitleg krijgen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec reviews" id="reviews">
+  <div class="wrap rev-wrap">
+    <div class="score">
+      <p class="oog" style="color:var(--goud)">Google-reviews</p>
+      <div class="groot" style="margin-top:12px">4,5</div>
+      <div class="sterren" aria-hidden="true">★★★★<span class="half">★</span></div>
+      <p>uit 48 reviews op Google</p>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Bart+van+Meurs+Optiek+en+Optometrie+Slinge+441+Rotterdam" target="_blank" rel="noopener">Bekijk ze op Google &#8594;</a>
+    </div>
+    <div>
+      <div class="revs">
+        <div class="rev"><span class="ini">N</span><div><p>Noemt de service erg goed en de metingen betrouwbaar.</p><p class="wie">Niels · Google</p></div></div>
+        <div class="rev"><span class="ini">A</span><div><p>Vindt het prettige mensen die er werken.</p><p class="wie">Anita · Google</p></div></div>
+        <div class="rev"><span class="ini">P</span><div><p>Ziet contouren nu een stuk beter.</p><p class="wie">Pim · Google</p></div></div>
+      </div>
+      <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec kiezer" id="afspraak">
+  <div class="wrap">
+    <p class="oog">Afspraak plannen</p>
+    <h2>Kies wat u nodig hebt en welke dag past</h2>
+    <p class="lead">Drie keuzes, daarna belt u of verstuurt u het als mail. Maandag is de winkel gesloten.</p>
+    <div class="kies-grid">
+      <div>
+        <div class="stap"><h3><i>1</i>Waarvoor komt u?</h3>
+          <div class="opties" id="optDienst">
+            <button type="button" class="optie" data-v="Oogmeting">Oogmeting</button>
+            <button type="button" class="optie" data-v="Optometrisch onderzoek">Optometrisch onderzoek</button>
+            <button type="button" class="optie" data-v="Nieuwe bril">Nieuwe bril</button>
+            <button type="button" class="optie" data-v="Contactlenzen">Contactlenzen</button>
+            <button type="button" class="optie" data-v="Rijbewijskeuring">Rijbewijskeuring</button>
+          </div>
+        </div>
+        <div class="stap"><h3><i>2</i>Welke dag past?</h3>
+          <div class="opties" id="optDag"></div>
+        </div>
+        <div class="stap"><h3><i>3</i>Ochtend of middag?</h3>
+          <div class="opties" id="optDeel">
+            <button type="button" class="optie" data-v="ochtend">Ochtend<small>vanaf 09:00</small></button>
+            <button type="button" class="optie" data-v="middag">Middag<small>tot sluiting</small></button>
+          </div>
+          <div class="veld" style="margin-top:16px"><label for="naam">Uw naam (voor de mail)</label><input id="naam" autocomplete="name"></div>
+        </div>
+      </div>
+      <aside class="briefje" aria-live="polite">
+        <div class="briefje-in">
+          <p class="oog">Uw afspraakverzoek</p>
+          <div class="regel"><span>Voor</span><span id="bDienst">nog kiezen</span></div>
+          <div class="regel"><span>Dag</span><span id="bDag">nog kiezen</span></div>
+          <div class="regel"><span>Dagdeel</span><span id="bDeel">nog kiezen</span></div>
+          <div class="knoppen">
+            <a class="btn btn-donker" href="tel:+31104807233"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Bel 010 480 72 33</a>
+            <a class="btn btn-licht" id="mailKnop" href="mailto:info@bartvanmeurs.nl?subject=Afspraakverzoek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Mail dit verzoek</a>
+          </div>
+          <p class="klein">U kunt ook <a href="https://www.bartvanmeurs.nl/contact/online-afspraak-maken/" target="_blank" rel="noopener">online een afspraak maken</a> (al klant? dan logt u in met uw geboortedatum).</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq" style="background:#fff">
+  <div class="wrap">
+    <p class="oog">Vragen</p>
+    <h2>Vragen aan de balie</h2>
+    <div class="faq-lijst">
+      <details><summary>Wanneer is de winkel open?</summary><p>Dinsdag tot en met vrijdag van 09:00 tot 17:30 en zaterdag van 09:00 tot 16:30. Op maandag is de winkel gesloten.</p></details>
+      <details><summary>Kan ik ook online een afspraak maken?</summary><p>Ja, via <a href="https://www.bartvanmeurs.nl/contact/online-afspraak-maken/" target="_blank" rel="noopener">onze afspraakpagina</a>. Bent u al klant, dan logt u in met uw geboortedatum. Bellen naar 010 480 72 33 of mailen naar info@bartvanmeurs.nl kan ook.</p></details>
+      <details><summary>Hebben jullie multifocale contactlenzen?</summary><p>Ja. Naast dag- en maandlenzen en harde lenzen hebben we ook multifocale lenzen en lenzen voor cilinder.</p></details>
+      <details><summary>Waar kan ik parkeren?</summary><p>Het is betaald parkeren. Ons advies: parkeer voor de winkel, op de shopstrook (zone 291).</p></details>
+      <details><summary>Hoe lang zitten jullie er al?</summary><p>Bart van Meurs bestaat sinds 1958. U vindt ons op de Slinge 441 in Zuidwijk.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec route" id="route">
+  <div class="wrap">
+    <p class="oog">Route &amp; openingstijden</p>
+    <h2>Op de Slinge, in Zuidwijk</h2>
+    <div class="route-grid">
+      <div>
+        <p class="adres">Slinge 441<br>3085 ES Rotterdam</p>
+        <p class="n">Betaald parkeren. Ons advies: voor de winkel, op de shopstrook (zone 291).</p>
+        <div class="cta-rij">
+          <a class="btn btn-goud" href="https://www.google.com/maps/dir/?api=1&amp;destination=Slinge+441+3085+ES+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
+          <a class="btn btn-rand" href="mailto:info@bartvanmeurs.nl">info@bartvanmeurs.nl</a>
+        </div>
+      </div>
+      <div class="uren" id="uren">
+        <div data-d="1"><span>Maandag</span><span class="dicht">gesloten</span></div>
+        <div data-d="2"><span>Dinsdag</span><span>09:00 – 17:30</span></div>
+        <div data-d="3"><span>Woensdag</span><span>09:00 – 17:30</span></div>
+        <div data-d="4"><span>Donderdag</span><span>09:00 – 17:30</span></div>
+        <div data-d="5"><span>Vrijdag</span><span>09:00 – 17:30</span></div>
+        <div data-d="6"><span>Zaterdag</span><span>09:00 – 16:30</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <div class="wrap">
+    <p class="oog" style="color:var(--goud)">Tijd voor nieuwe glazen?</p>
+    <h2>De vitrines staan aan. U bent welkom.</h2>
+    <p>Plan uw oogmeting, bril of lenzen in drie keuzes, of bel direct de winkel.</p>
+    <div class="cta-rij">
+      <a class="btn btn-goud" href="#afspraak">Afspraak plannen</a>
+      <a class="btn btn-rand" href="tel:+31104807233">Bel 010 480 72 33</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="logo-light.svg" alt="Bart van Meurs Optiek en Optometrie" width="158" height="44">
+      <p>Slinge 441, 3085 ES Rotterdam<br><a href="tel:+31104807233">010 480 72 33</a> · <a href="mailto:info@bartvanmeurs.nl">info@bartvanmeurs.nl</a></p>
+      <div class="soc"><a href="https://www.instagram.com/bartvanmeursoptiekenoptometrie/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/bartvanmeursoptiek" target="_blank" rel="noopener">Facebook</a></div>
+    </div>
+    <p>Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef">
+  <a class="btn btn-goud" href="tel:+31104807233">Bel voor een afspraak</a>
+  <a class="btn btn-rand" href="#afspraak">Plannen</a>
+</div>
+
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-label="Presentatie">
+  <div class="vel">
+    <div class="pk"><h3>Bart van Meurs: nu en straks</h3><button class="sluit" id="pitchSluit" aria-label="Sluiten">×</button></div>
+    <div class="vn">
+      <div>
+        <h4>Nu: bartvanmeurs.nl op de telefoon (8 nov)</h4>
+        <div class="tel-nu"><div class="scherm">
+          <div class="top"><span class="logo-vlak">BART VAN MEURS<br>OPTIEK EN OPTOMETRIE</span><span class="icons">☎ ⌖ ✉</span></div>
+          <div class="pop">Pop-up van een merk-event over het eerste scherm</div>
+          <div class="cookie">Onze website maakt gebruik van cookies … [Aanpassen] [Accepteer cookies]</div>
+        </div></div>
+        <ul class="fout">
+          <li><span>WhatsApp-knop gaat naar <code>wa.me/0104807233</code>: een vast nummer zonder landcode, dus er opent geen chat.</span></li>
+          <li><span>Het eerste scherm op mobiel: een pop-up en de cookiebalk liggen over de winkel heen.</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Straks: deze site</h4>
+        <iframe class="na-frame" id="naFrame" title="Nieuwe site op de telefoon" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="reken">
+      <h4 style="font:700 17px var(--kop)">Wat dit kan opleveren (voorbeeld, geen belofte)</h4>
+      <label for="rKlant">Extra klanten per maand via de site: <span id="vKlant">2</span></label>
+      <input type="range" id="rKlant" min="1" max="10" step="1" value="2">
+      <label for="rBesteding">Gemiddelde besteding per klant: €<span id="vBest">150</span></label>
+      <input type="range" id="rBesteding" min="25" max="600" step="25" value="150">
+      <p class="uit">Voorbeeld: <b id="uMaand">€300</b> extra per maand, <b id="uJaar">€3.600</b> per jaar.<br>€595 is de omzet van <b id="uKlanten">4</b> klanten.</p>
+      <p class="vb">Vul de getallen samen in. Dit is een rekenvoorbeeld, geen belofte of verwachting.</p>
+    </div>
+    <div class="punten">
+      <div><b>WhatsApp en bellen in één tik</b>Een WhatsApp-knop die echt een chat opent (met een 06-nummer of WhatsApp Business), bellen in één tik, of een ingevuld afspraakverzoek per mail.</div>
+      <div><b>De winkel meteen in beeld</b>Geen pop-up of balk ervoor: hun eigen vitrines, de score en of ze nu open zijn.</div>
+      <div><b>Plannen zonder inloggen</b>Dienst, dag (maandag dicht) en dagdeel kiezen in drie tikken.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var dagen=["zondag","maandag","dinsdag","woensdag","donderdag","vrijdag","zaterdag"];
+  var maanden=["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"];
+  var uren={2:[540,1050],3:[540,1050],4:[540,1050],5:[540,1050],6:[540,990]};
+  function hm(m){return String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0");}
+
+  /* open/dicht-status (zondag staat niet in de bronnen: dan alleen de uren) */
+  var nu=new Date(), d=nu.getDay(), min=nu.getHours()*60+nu.getMinutes();
+  var st=document.getElementById("status"), stT=document.getElementById("statusTekst");
+  if(uren[d] && min>=uren[d][0] && min<uren[d][1]){st.classList.add("open");stT.textContent="Nu open, tot "+hm(uren[d][1]);}
+  else if(uren[d] && min<uren[d][0]){stT.textContent="Vandaag open vanaf 09:00";}
+  else if(d!==0 && d!==6 && d!==1){stT.textContent="Gesloten, morgen weer open om 09:00";}
+  else if(d===1){stT.textContent="Maandag gesloten, dinsdag weer open om 09:00";}
+  var rij=document.querySelector('#uren [data-d="'+d+'"]'); if(rij) rij.classList.add("vandaag");
+
+  /* hero: veegrail op mobiel */
+  var rail=document.getElementById("railFoto"), veeg=document.getElementById("veeg");
+  function midden(){ if(rail.scrollWidth>rail.clientWidth+4){ rail.scrollLeft=(rail.scrollWidth-rail.clientWidth)*0.62; } }
+  midden(); window.addEventListener("load",midden);
+  var eerst=true; rail.addEventListener("scroll",function(){ if(!eerst) veeg.classList.add("weg"); },{passive:true});
+  setTimeout(function(){eerst=false;},400);
+
+  /* aanbod-rail pijlen */
+  var vit=document.getElementById("vitrine");
+  document.getElementById("railL").onclick=function(){vit.scrollBy({left:-280,behavior:"smooth"});};
+  document.getElementById("railR").onclick=function(){vit.scrollBy({left:280,behavior:"smooth"});};
+
+  /* stepper */
+  var tabs=[].slice.call(document.querySelectorAll(".tab")), imgs=[].slice.call(document.querySelectorAll(".beeld-in img"));
+  var onder=["De balie: Optiek en Optometrie","De vitrines met ledverlichting","De pastafels met spiegels"];
+  tabs.forEach(function(t,i){ t.addEventListener("click",function(){
+    tabs.forEach(function(x,j){x.setAttribute("aria-selected",j===i?"true":"false");});
+    imgs.forEach(function(x,j){x.classList.toggle("aan",j===i);});
+    document.getElementById("onderschrift").textContent=onder[i];
+  });});
+
+  /* kiezer */
+  var keuze={dienst:"",dag:"",deel:""};
+  var optDag=document.getElementById("optDag");
+  var dt=new Date(); dt.setHours(12,0,0,0); var n=0;
+  for(var i=1;n<7 && i<14;i++){
+    var x=new Date(dt.getTime()+i*864e5), wd=x.getDay();
+    if(wd===0) continue;
+    var b=document.createElement("button"); b.type="button"; b.className="optie";
+    var label=dagen[wd]+" "+x.getDate()+" "+maanden[x.getMonth()];
+    b.innerHTML=dagen[wd].charAt(0).toUpperCase()+dagen[wd].slice(1,2)+" "+x.getDate()+" "+maanden[x.getMonth()]+"<small>"+(wd===1?"gesloten":hm(uren[wd][0])+"–"+hm(uren[wd][1]))+"</small>";
+    b.setAttribute("data-v",label);
+    if(wd===1){b.disabled=true;b.setAttribute("aria-label",label+", gesloten");}
+    optDag.appendChild(b); n++;
+  }
+  function groep(id,sleutel,veld){
+    var el=document.getElementById(id);
+    el.addEventListener("click",function(e){
+      var b=e.target.closest(".optie"); if(!b||b.disabled) return;
+      [].forEach.call(el.querySelectorAll(".optie"),function(o){o.setAttribute("aria-pressed",o===b?"true":"false");});
+      keuze[sleutel]=b.getAttribute("data-v"); document.getElementById(veld).textContent=keuze[sleutel]; mail();
+    });
+    [].forEach.call(el.querySelectorAll(".optie"),function(o){o.setAttribute("aria-pressed","false");});
+  }
+  groep("optDienst","dienst","bDienst"); groep("optDag","dag","bDag"); groep("optDeel","deel","bDeel");
+  var naam=document.getElementById("naam"); naam.addEventListener("input",mail);
+  function mail(){
+    var t="Hallo,\n\nIk wil graag een afspraak maken"+(keuze.dienst?" voor: "+keuze.dienst.toLowerCase():"")+"."+
+      (keuze.dag?"\nVoorkeur: "+keuze.dag+(keuze.deel?", "+keuze.deel:""):"")+
+      "\n\nKunt u laten weten of dat past?\n\nMet vriendelijke groet,\n"+(naam.value.trim()||"");
+    var s="Afspraakverzoek"+(keuze.dienst?": "+keuze.dienst:"");
+    document.getElementById("mailKnop").href="mailto:info@bartvanmeurs.nl?subject="+encodeURIComponent(s)+"&body="+encodeURIComponent(t);
+  }
+  mail();
+  [].forEach.call(document.querySelectorAll("[data-dienst]"),function(a){
+    a.addEventListener("click",function(){
+      var v=a.getAttribute("data-dienst"), b=document.querySelector('#optDienst .optie[data-v="'+v+'"]'); if(b) b.click();
+    });
+  });
+
+  /* zwevende CTA zodra de hero uit beeld is */
+  var zweef=document.getElementById("zweef");
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(e){ zweef.classList.toggle("zicht",!e[0].isIntersecting); }).observe(document.getElementById("hero"));
+  } else { zweef.classList.add("zicht"); }
+
+  /* pitch-modus */
+  var pitch=document.getElementById("pitch"), naFrame=document.getElementById("naFrame");
+  function openPitch(){ if(!naFrame.src) naFrame.src=location.pathname.split("/").pop()||"index.html"; pitch.classList.add("open"); }
+  function sluitPitch(){ pitch.classList.remove("open"); if(/[?&]pitch/.test(location.search)) history.replaceState(null,"",location.pathname); }
+  document.getElementById("pitchKnop").addEventListener("click",openPitch);
+  document.getElementById("pitchSluit").addEventListener("click",sluitPitch);
+  pitch.addEventListener("click",function(e){ if(e.target===pitch) sluitPitch(); });
+  if(/[?&]pitch/.test(location.search)) openPitch();
+  if(window.self!==window.top){ document.getElementById("pitchKnop").hidden=true; }
+  var rK=document.getElementById("rKlant"), rB=document.getElementById("rBesteding");
+  function eur(v){return "€"+v.toLocaleString("nl-NL");}
+  function reken(){
+    var k=+rK.value, b=+rB.value;
+    document.getElementById("vKlant").textContent=k; document.getElementById("vBest").textContent=b;
+    document.getElementById("uMaand").textContent=eur(k*b); document.getElementById("uJaar").textContent=eur(k*b*12);
+    document.getElementById("uKlanten").textContent=Math.ceil(595/b);
+  }
+  rK.addEventListener("input",reken); rB.addEventListener("input",reken); reken();
+})();
+</script>
+</body>
+</html>
