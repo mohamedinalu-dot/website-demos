@@ -1,0 +1,865 @@
+<!doctype html>
+<!--
+  Demo L242 Kadushi Body Care (Mohamedia, 8 nov 2026)
+  Concept in één zin: "Zacht voor je huid, stoer als een cactus" - vrolijk, warm en vertrouwd, met hun eigen
+  cactus-mascotte (het logo op hun deur) als gastheer.
+  Lay-out-archetype: BEHANDELMENU ALS ZACHT KAARTENSPEL. De hero is een recht stapeltje kaarten: bovenop hun eigen
+  behandelkamer met de bloemenwand, daarachter twee pastelkaarten die er bij het laden onder vandaan schuiven; de
+  cactus uit hun logo staat op de hoek, zijn bloem gaat één keer open en hij zwaait één keer (eenmalig, daarna
+  stil; de foto zelf beweegt niet).
+  Daaronder het behandelmenu als stapel zachte kaarten (één behandeling per kaart, alleen uit dossier + eigen site)
+  die je wegveegt of via de tabjes bovenop legt; daarna een boek-kiezer (behandeling -> dag -> dagdeel) die een
+  afspraakkaartje invult -> WhatsApp 06 39 12 41 26, of hun eigen Treatwell-widget als alternatief.
+  Bewust NIET: schuine/gekantelde fotokaart, ronde of draaiende stempel, lopende band onder de hero, stoom,
+  Ken Burns-zoom, boogvormige lijsten (Adonis), split-screen (Batu), bento (Istanbul), tegelveld (Safeer), panorama (Maestro).
+  Palet: cactusgroen #3f7a2c / donker #23431b / licht #9fcd5f, poederroze #f7dbe1, bloemroze #d23a5b, crème #fbf7f0,
+  zand #efdcb4 en goud #b8872c (geen terracotta).
+  Fonts: Bricolage Grotesque (koppen) + Figtree (tekst).
+  Logo: hun eigen logo (cactus met roze bloem in pot, KADUSHi met punt boven de U, lijn, BODY CARE) nagetekend naar
+  de deurfoto en het logo op hun site; letters uit Josefin Sans via fontTools naar paden.
+  Beeld: behandelkamer (Google Maps, apr 2026; tv-scherm met persoon weggesneden, poster met merk vervaagd) en twee
+  salonfoto's uit de galerij van hun eigen site (zelfde kamer, geen personen). Stockfoto's van hun site niet gebruikt.
+  Prijzen: alleen vanaf-prijzen die op hun eigen site staan (zie "Aanvulling Design" in het dossier).
+-->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Kadushi Body Care – waxen en laserontharen in Rotterdam-Zuid</title>
+<meta name="description" content="Kadushi Body Care op Plein 1953 29 in Pendrecht, Rotterdam-Zuid: waxen, laserontharen, spray tan, vajacials en een waxcursus. 4,8 op Google uit 123 reviews. App 06 39 12 41 26.">
+<meta name="theme-color" content="#23431b">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="img/behandelkamer.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --groen:#3f7a2c;--groen-d:#23431b;--groen-dd:#1a3214;--cactus:#9fcd5f;--mint:#dcebc6;
+  --roze:#f7dbe1;--roze-2:#efc4ce;--bloem:#d23a5b;--bloem-l:#f5a8b9;
+  --creme:#fbf7f0;--zand:#efdcb4;--goud:#b8872c;--goud-l:#e3c27a;
+  --inkt:#23251f;--grijs:#5f6359;--lijn:#e7e0d3;
+  --kop:"Bricolage Grotesque",system-ui,sans-serif;--tekst:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--tekst);color:var(--inkt);background:var(--creme);line-height:1.55;font-size:17px;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--bloem);outline-offset:3px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--kop);line-height:1.04;letter-spacing:-.02em;font-weight:800}
+h2{font-size:clamp(32px,8.4vw,60px)}
+h1 em,h2 em{font-style:normal;color:var(--bloem)}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--groen)}
+.kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--bloem)}
+section{scroll-margin-top:84px}
+.tn{white-space:nowrap}
+
+/* demo-strook + aankondiging */
+.demo{position:relative;background:var(--groen-dd);color:#fff;text-align:center;font-size:13px;padding:7px 46px}
+.demo a{color:#fff;font-weight:600}
+.pitch-knop{position:absolute;right:6px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;border:0;background:transparent;color:#fff;font:700 10px var(--tekst);opacity:.28;cursor:pointer}
+.pitch-knop:hover{opacity:1}
+.aank{background:var(--roze);color:var(--groen-d);font-size:14px;font-weight:600;text-align:center;padding:7px 14px}
+.aank span{white-space:nowrap}
+.aank .ster{color:var(--goud)}
+
+/* header */
+.kop{position:sticky;top:0;z-index:40;background:rgba(251,247,240,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--lijn)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;height:78px}
+.kop .merk{display:block;line-height:0;text-decoration:none}
+.kop .merk img{height:68px;width:auto}
+.kop nav{display:flex;align-items:center;gap:4px}
+.kop nav a.l{display:none;text-decoration:none;font-weight:600;font-size:15px;padding:12px 10px}
+.kop nav a.l:hover{color:var(--groen)}
+.kopknop{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:var(--groen);color:#fff;text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap}
+.kopknop:hover{background:var(--groen-d)}
+@media (min-width:900px){.kop nav a.l{display:inline-block}.kop .merk img{height:70px}}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s;white-space:nowrap}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.groen{background:var(--groen);color:#fff}
+.btn.groen:hover{background:var(--groen-d)}
+.btn.roze{background:var(--roze);color:var(--groen-d)}
+.btn.roze:hover{background:#fff}
+.btn.rand{border-color:var(--groen-d);color:var(--groen-d);background:transparent}
+.btn.rand:hover{background:var(--groen-d);color:#fff}
+.btn.rand-w{border-color:rgba(255,255,255,.75);color:#fff}
+.btn.rand-w:hover{background:#fff;color:var(--groen-d)}
+.knoppen{display:flex;flex-wrap:wrap;gap:10px}
+.knoppen .btn{flex:1 1 150px}
+
+/* hero: het stapeltje */
+.hero{position:relative;overflow:hidden;padding:20px 0 30px}
+.hero::before{content:"";position:absolute;width:520px;height:520px;right:-220px;top:-120px;border-radius:50%;background:radial-gradient(circle,var(--roze) 0%,rgba(247,219,225,0) 70%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"top" "stapel" "onder"}
+.hero-top{grid-area:top}.stapel{grid-area:stapel}.hero-onder{grid-area:onder}
+.hero .sub .dl{display:none}
+.hero h1{font-size:clamp(33px,9.2vw,70px);margin-top:10px;max-width:11.5em}
+.hero .sub{margin-top:10px;font-size:16px;color:var(--grijs);max-width:31em}
+.hero .sub b{color:var(--inkt);font-weight:600}
+.stapel{position:relative;margin:40px 4px 0;isolation:isolate}
+.stapel .ach{position:absolute;inset:0;border-radius:28px;z-index:-1;transform-origin:50% 0}
+.stapel .a1{background:#e8c98a;transform:translateY(-26px) scale(.86);animation:deel1 .9s cubic-bezier(.2,.8,.2,1) .25s backwards}
+.stapel .a2{background:#eab0bf;transform:translateY(-13px) scale(.93);animation:deel2 .9s cubic-bezier(.2,.8,.2,1) .45s backwards}
+@keyframes deel1{from{transform:translateY(0) scale(.86)}}
+@keyframes deel2{from{transform:translateY(0) scale(.93)}}
+.fotokaart{position:relative;border-radius:28px;overflow:hidden;background:var(--roze);box-shadow:0 24px 50px -22px rgba(35,67,27,.45);border:6px solid #fff}
+.fotokaart img{width:100%;height:clamp(230px,64vw,290px);object-fit:cover;object-position:100% 46%}
+.fotokaart figcaption{position:absolute;right:10px;bottom:10px;background:rgba(255,255,255,.92);color:var(--groen-d);font-size:13px;font-weight:600;padding:6px 11px;border-radius:999px}
+.mascotte{position:absolute;left:-10px;bottom:-30px;width:116px;height:auto;filter:drop-shadow(0 8px 10px rgba(35,67,27,.25))}
+.mascotte .blad{transform-box:fill-box;transform-origin:center;animation:bloei 1.1s cubic-bezier(.3,1.6,.5,1) 1.05s both}
+@keyframes bloei{0%{transform:scale(.18) rotate(-80deg)}100%{transform:scale(1) rotate(0)}}
+.mascotte .knop-bloem{transform-box:fill-box;transform-origin:center;animation:knop 1.1s ease 1.05s both}
+@keyframes knop{0%{opacity:1;transform:scale(1)}40%{opacity:1}100%{opacity:0;transform:scale(.4)}}
+.mascotte .arm{transform-box:fill-box;transform-origin:8% 92%;animation:zwaai 1.3s ease-in-out 2.1s both}
+@keyframes zwaai{0%,100%{transform:rotate(0)}25%{transform:rotate(-14deg)}55%{transform:rotate(9deg)}80%{transform:rotate(-6deg)}}
+.hero .knoppen{margin-top:44px;flex-wrap:nowrap}
+.hero .knoppen .btn{flex:1 1 0;min-width:0;padding:0 12px}
+@media (max-width:360px){.hero .knoppen .btn{font-size:14.5px;padding:0 8px;gap:6px}.hero .knoppen .btn svg{width:17px;height:17px}}
+.trust{margin-top:24px;display:flex;flex-wrap:wrap;gap:4px 14px;font-size:15px;color:var(--grijs)}
+.trust b{color:var(--inkt)}
+.trust .ster{color:var(--goud);letter-spacing:1px}
+.trust a{color:var(--groen-d);font-weight:600;text-underline-offset:3px}
+@media (min-width:900px){
+  .hero{padding:56px 0 76px}
+  .hero .wrap{grid-template-columns:1.02fr .98fr;grid-template-areas:"top stapel" "onder stapel";column-gap:56px;align-items:end}
+  .hero-onder{align-self:start}
+  .hero .sub .dl{display:inline}
+  .hero .sub{font-size:19px}
+  .hero .knoppen{margin-top:30px}
+  .hero .knoppen .btn{flex:0 1 auto;padding:0 24px}
+  .stapel{margin:36px 0 0;align-self:center}
+  .fotokaart img{height:min(560px,calc(100svh - 260px));min-height:420px;object-position:62% 72%}
+  .stapel{margin-top:60px}
+  .mascotte{width:150px;left:-46px;bottom:-34px}
+}
+
+/* behandelmenu: zachte kaarten */
+.menu{background:var(--groen-d);color:#fff;padding:72px 0 80px;position:relative;overflow:hidden}
+.menu .kicker{color:var(--cactus)}
+.menu .kicker::before{background:var(--bloem-l)}
+.menu h2{margin:12px 0 10px}
+.menu h2 em{color:var(--bloem-l)}
+.menu .intro{color:#d6e2cd;max-width:34em}
+.menu-grid{display:grid;gap:26px;margin-top:28px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tab{min-height:44px;padding:8px 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:#fff;font-weight:600;font-size:15px;cursor:pointer}
+.tab:hover{border-color:#fff}
+.tab[aria-pressed="true"]{background:#fff;color:var(--groen-d);border-color:#fff}
+.dek{display:grid;padding-bottom:34px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.kaart{grid-area:1/1;position:relative;border-radius:26px;padding:24px 22px 22px;color:var(--inkt);box-shadow:0 18px 40px -18px rgba(0,0,0,.5);transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .35s;will-change:transform;display:flex;flex-direction:column;min-width:0;cursor:grab}
+.kaart.sleep{transition:none;cursor:grabbing}
+.kaart[data-k="wax"]{background:var(--roze)}
+.kaart[data-k="laser"]{background:var(--mint)}
+.kaart[data-k="tan"]{background:var(--zand)}
+.kaart[data-k="vaja"]{background:#eed5e3}
+.kaart[data-k="cursus"]{background:#fffaf0;border:2px solid var(--goud-l)}
+.kaart .kn{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.kaart .nr{font:700 13px var(--tekst);letter-spacing:.14em;text-transform:uppercase;color:var(--groen)}
+.kaart .ico{width:76px;height:76px;flex:none}
+.kaart .tt{display:block;font-family:var(--kop);font-weight:800;font-size:clamp(28px,7.6vw,40px);line-height:1;letter-spacing:-.02em;margin-top:2px;overflow-wrap:break-word}
+.kaart .ds{display:block;margin-top:12px;font-size:16px;color:#3c4036}
+.kaart .pr{display:grid;gap:6px;margin-top:16px;padding-top:14px;border-top:1.5px dashed rgba(35,37,31,.22)}
+.kaart .pr span{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.kaart .pr span i{font-style:normal;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.kaart .pr .geen{display:block;color:var(--grijs)}
+.kaart .kies{margin-top:auto;padding-top:18px}
+.kaart .kies .btn{width:100%}
+.dek-nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.dek-nav .teller{font-weight:600;color:#d6e2cd;font-variant-numeric:tabular-nums}
+.dek-nav .pijlen{display:flex;gap:8px}
+.rond{width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);background:transparent;color:#fff;font-size:20px;cursor:pointer;display:grid;place-items:center}
+.rond:hover{background:#fff;color:var(--groen-d)}
+.veeg{font-size:14px;color:#b9c9ad}
+.prijsnoot{margin-top:18px;font-size:14px;color:#b9c9ad;max-width:44em}
+.prijsnoot a{color:#fff}
+@media (min-width:900px){
+  .menu{padding:100px 0}
+  .menu-grid{grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+  .tabs{flex-direction:column;align-items:stretch;gap:6px;margin-top:20px}
+  .tab{text-align:left;padding:12px 18px;font-size:17px;border-radius:16px}
+  .kaart{padding:34px 34px 28px}
+  .kaart .ico{width:96px;height:96px}
+}
+
+/* kiezer: afspraakkaartje */
+.kiezer{background:var(--roze);padding:72px 0 80px}
+.kiezer h2{margin:12px 0 24px}
+.kiezer-grid{display:grid;gap:28px}
+.stap{padding:18px 0;border-top:1.5px solid rgba(35,67,27,.18)}
+.stap h3{font-family:var(--tekst);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--groen-d);margin-bottom:12px;line-height:1.3}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{min-height:46px;min-width:46px;padding:8px 15px;border-radius:14px;border:1.5px solid rgba(35,67,27,.28);background:rgba(255,255,255,.55);color:var(--groen-d);cursor:pointer;font-size:15px;font-weight:600;text-align:left;line-height:1.2}
+.opt small{display:block;font-size:12px;color:var(--grijs);font-weight:500}
+.opt:hover{border-color:var(--groen-d)}
+.opt[aria-pressed="true"]{background:var(--groen-d);border-color:var(--groen-d);color:#fff}
+.opt[aria-pressed="true"] small{color:#d6e2cd}
+.opt:disabled{opacity:.4;cursor:not-allowed;text-decoration:line-through}
+.kaartje{background:#fff;border-radius:22px;padding:22px 22px 20px;box-shadow:0 20px 44px -20px rgba(35,67,27,.45);position:relative;overflow:hidden}
+.kaartje::after{content:"";position:absolute;left:0;right:0;top:0;height:8px;background:repeating-linear-gradient(90deg,var(--cactus) 0 18px,var(--bloem-l) 18px 36px,var(--zand) 36px 54px)}
+.kaartje .kk{display:flex;align-items:center;gap:12px;margin-top:6px;padding-bottom:14px;border-bottom:1.5px dashed var(--lijn)}
+.kaartje .kk img{width:46px;height:46px}
+.kaartje .kk span{font-size:14px;color:var(--grijs);line-height:1.35}
+.kaartje .kk b{display:block;font-family:var(--kop);font-size:20px;color:var(--groen-d)}
+.velden{display:grid;gap:0;margin:6px 0 4px}
+.veld{display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px;padding:11px 0;border-bottom:1px solid var(--lijn);font-size:16px}
+.veld span{color:var(--grijs);font-size:14px;padding-top:2px}
+.veld output{font-weight:700;color:var(--inkt);overflow-wrap:anywhere}
+.bericht-tekst{margin-top:14px;background:#f3f7ee;border-radius:14px;padding:14px 16px;font-size:15px;white-space:pre-wrap;color:#33382e}
+.kaartje .acties{display:grid;gap:10px;margin-top:16px}
+.kaartje .klein{font-size:14px;color:var(--grijs);margin-top:12px}
+@media (min-width:900px){
+  .kiezer{padding:100px 0}
+  .kiezer-grid{grid-template-columns:1.1fr .9fr;gap:60px;align-items:start}
+  .kaartje{position:sticky;top:110px;padding:28px}
+}
+
+/* binnen */
+.binnen{padding:76px 0}
+.binnen h2{margin:12px 0 10px}
+.binnen .intro{color:var(--grijs);max-width:34em}
+.fotos{display:grid;gap:14px;margin-top:28px}
+.fotos figure{position:relative;border-radius:24px;overflow:hidden;background:var(--zand)}
+.fotos img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.fotos figcaption{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.92);color:var(--groen-d);font-size:13px;font-weight:600;padding:6px 11px;border-radius:999px}
+@media (min-width:760px){.fotos{grid-template-columns:1fr 1fr}}
+
+/* waarom */
+.waarom{padding:20px 0 80px}
+.waarom h2{margin:12px 0 30px;max-width:14em}
+.punten{display:grid;gap:14px}
+.punt{background:#fff;border-radius:22px;padding:24px 22px;border:1px solid var(--lijn);min-width:0;display:grid;grid-template-columns:54px minmax(0,1fr);gap:16px;align-items:start}
+.punt svg{width:54px;height:54px}
+.punt h3{font-size:clamp(21px,5.4vw,26px);margin-bottom:6px;overflow-wrap:break-word}
+.punt p{color:var(--grijs);font-size:16px}
+@media (min-width:900px){.punten{grid-template-columns:repeat(3,1fr)}.punt{grid-template-columns:1fr}}
+
+/* reviews */
+.reviews{background:var(--groen-d);color:#fff;padding:76px 0 80px}
+.reviews-grid{display:grid;gap:34px}
+.reviews .kicker{color:var(--cactus)}
+.reviews .kicker::before{background:var(--bloem-l)}
+.cijfer{font-family:var(--kop);font-weight:800;font-size:clamp(110px,32vw,200px);line-height:.85;letter-spacing:-.04em;margin-top:14px}
+.sterren{color:var(--goud-l);font-size:28px;letter-spacing:4px}
+.reviews .bij{font-size:18px;color:#d6e2cd;margin-top:6px}
+.reviews .bij a{color:#fff;font-weight:600;text-underline-offset:3px}
+.samen{display:grid;gap:14px}
+.samen article{background:rgba(255,255,255,.07);border-radius:20px;padding:20px 22px;border-left:4px solid var(--bloem-l)}
+.samen p{font-family:var(--kop);font-weight:600;font-size:clamp(20px,5vw,25px);line-height:1.25}
+.samen footer{margin-top:8px;font-size:15px;color:#b9c9ad}
+.samen .rev-bron{font-family:var(--tekst);font-weight:400;font-size:14px;line-height:1.5;color:#a9bb9c;margin-top:4px}
+@media (min-width:900px){.reviews{padding:100px 0}.reviews-grid{grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}}
+
+/* stappen */
+.stappen{padding:76px 0}
+.stappen h2{margin:12px 0 28px}
+.stappen ol{list-style:none;display:grid;gap:12px}
+.stappen li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:start;padding:20px;border-radius:22px;background:#fff;border:1px solid var(--lijn)}
+.stappen .n{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;font:800 24px var(--kop);color:var(--groen-d)}
+.stappen li:nth-child(1) .n{background:var(--roze)}
+.stappen li:nth-child(2) .n{background:var(--mint)}
+.stappen li:nth-child(3) .n{background:var(--zand)}
+.stappen h3{font-size:21px;margin-bottom:4px}
+.stappen li p{color:var(--grijs);font-size:16px}
+@media (min-width:900px){.stappen ol{grid-template-columns:repeat(3,1fr)}}
+
+/* faq */
+.faq{padding:76px 0;background:#fff}
+.faq h2{margin:12px 0 24px}
+.faq details{border-top:1px solid var(--lijn)}
+.faq details:last-child{border-bottom:1px solid var(--lijn)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:62px;padding:14px 0;font-weight:700;font-size:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:800 28px var(--kop);color:var(--bloem);line-height:1;flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 20px;color:var(--grijs);max-width:44em}
+@media (min-width:900px){.faq .wrap{display:grid;grid-template-columns:.8fr 1.4fr;gap:70px}}
+
+/* route */
+.route{padding:76px 0;background:var(--zand)}
+.route-grid{display:grid;gap:30px}
+.route h2{margin:12px 0 12px}
+.adres{font-size:19px}
+.route .knoppen{margin-top:22px}
+.uren{background:#fff;border-radius:22px;padding:8px 22px 16px}
+.uren table{width:100%;border-collapse:collapse;font-size:17px}
+.uren td{padding:12px 0;border-bottom:1px solid var(--lijn)}
+.uren tr:last-child td{border-bottom:0}
+.uren td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.uren tr.nu td{color:var(--bloem);font-weight:700}
+@media (min-width:900px){.route{padding:100px 0}.route-grid{grid-template-columns:1fr 1fr;gap:70px;align-items:center}}
+
+/* slot */
+.slot{background:var(--groen);color:#fff;padding:80px 0 86px;position:relative;overflow:hidden}
+.slot .wrap{position:relative;display:grid;gap:24px;align-items:center}
+.slot .groot{width:min(170px,40vw);height:auto}
+.slot h2 em{color:var(--roze)}
+.slot p{font-size:18px;margin-top:12px;max-width:30em;color:#e3eedb}
+.slot .knoppen{margin-top:26px;max-width:560px}
+@media (min-width:900px){.slot .wrap{grid-template-columns:auto 1fr;gap:56px}.slot .groot{width:210px}}
+
+/* footer */
+footer.voet{background:var(--groen-dd);color:#cbd6c2;padding:56px 0 130px;font-size:15px}
+.voet-grid{display:grid;gap:26px}
+.voet .vlogo{width:120px;height:auto}
+.voet a{color:#fff}
+.voet .door{border-top:1px solid #2e4626;margin-top:30px;padding-top:20px;font-size:14px;color:#9fb092}
+@media (min-width:900px){.voet-grid{grid-template-columns:1fr 1.2fr 1.2fr}footer.voet{padding-bottom:56px}}
+
+/* zwevende CTA (mobiel) */
+.zweef{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;display:flex;gap:8px;padding:8px;background:var(--groen-dd);border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.3);translate:0 140%;opacity:0;transition:translate .35s,opacity .35s;pointer-events:none}
+.zweef.on{translate:0 0;opacity:1;pointer-events:auto}
+.zweef .btn{min-height:48px;flex:1;padding:0 14px;font-size:15px}
+.zweef .btn.rand-w{flex:0 0 auto}
+@media (min-width:900px){.zweef{display:none}}
+
+/* scroll-onthulling */
+.rv{opacity:0;translate:0 18px;transition:opacity .7s,translate .7s}
+.rv.in{opacity:1;translate:0 0}
+
+/* pitch-modus (alleen voor Mo) */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center}
+.pitch.open{display:flex}
+.pitch .vel{background:#fff;width:min(1100px,100%);max-height:94svh;overflow:auto;border-radius:22px 22px 0 0;padding:24px clamp(18px,3vw,40px) 40px}
+.pitch .pk{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.pitch .pk h3{font-size:28px}
+.pitch .psluit{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--lijn);background:#fff;font-size:24px;cursor:pointer}
+.vn{display:grid;gap:22px}
+.vn figure{display:grid;gap:10px;align-content:start}
+.vn figcaption{font-weight:700;font-size:17px}
+.vn figcaption span{display:block;font-weight:400;font-size:14px;color:var(--grijs)}
+.tel{width:min(300px,100%);aspect-ratio:9/17;border:10px solid var(--inkt);border-radius:30px;overflow:hidden;background:#fff;margin-inline:auto;position:relative}
+.tel iframe{width:390px;height:737px;border:0;transform-origin:0 0;position:absolute;left:0;top:0}
+/* nagebouwd eerste scherm van hun huidige site */
+.oud{position:absolute;inset:0;background:linear-gradient(180deg,#fff 0 30%,#b9a99d 30% 100%);font-family:Roboto,Arial,sans-serif}
+.oud .ologo{position:absolute;top:4%;left:50%;width:22%;transform:translateX(-50%);opacity:.5}
+.oud .dim{position:absolute;inset:0;background:rgba(0,0,0,.42)}
+.oud .ck{position:absolute;left:7%;right:7%;top:2%;background:#fff;border-radius:4px;padding:10px 10px 12px;font-size:8.6px;line-height:1.55;color:#222}
+.oud .ck b{display:block;font-size:9px;margin-bottom:6px;padding-bottom:5px;border-bottom:1.5px solid #222;width:58%}
+.oud .ck i{display:block;font-style:normal;background:#2b2725;color:#fff;text-align:center;padding:7px 0;margin-top:5px;font-size:8.6px}
+.oud .boek{position:absolute;left:34%;right:15%;bottom:3%;background:#a8c43a;color:#fff;font-weight:700;font-size:13px;text-align:center;padding:6px 0;opacity:.75}
+.fouten{list-style:none;display:grid;gap:8px;font-size:15px}
+.fouten li{display:grid;grid-template-columns:24px 1fr;gap:8px}
+.fouten b{width:24px;height:24px;border-radius:50%;background:var(--bloem);color:#fff;font-size:13px;display:grid;place-items:center}
+.reken,.beter{margin-top:26px;border-top:1px solid var(--lijn);padding-top:22px}
+.reken h4,.beter h4{font-family:var(--kop);font-weight:800;font-size:26px;margin-bottom:6px}
+.reken .vb{font-size:14px;color:var(--grijs);margin-bottom:14px}
+.reken label{display:flex;justify-content:space-between;gap:10px;font-weight:600;font-size:15px;margin-top:12px}
+.reken input[type=range]{width:100%;accent-color:var(--groen);height:44px}
+.uit{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:14px}
+.uit div{background:var(--creme);border-radius:12px;padding:14px}
+.uit small{display:block;font-size:13px;color:var(--grijs)}
+.uit strong{font-family:var(--kop);font-weight:800;font-size:28px}
+.reken .noot{margin-top:12px;font-size:14px;color:var(--grijs)}
+.beter ol{padding-left:22px;display:grid;gap:8px}
+@media (min-width:760px){.vn{grid-template-columns:1fr 1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .mascotte .knop-bloem{opacity:0}
+  .rv{opacity:1!important;translate:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> <button class="pitch-knop" id="pitchKnop" type="button" aria-label="Presentatie openen">Mo</button></div>
+<div class="aank"><span><span class="ster">★</span> 4,8 · 123 Google-reviews</span> · <span id="vandaag">Plein 1953 29</span></div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="Kadushi Body Care, naar boven"><img src="logo-dark.svg" alt="Kadushi Body Care" width="48" height="68"></a>
+    <nav aria-label="Hoofdmenu">
+      <a class="l" href="#menu">Behandelingen</a>
+      <a class="l" href="#binnen">De salon</a>
+      <a class="l" href="#route">Route en tijden</a>
+      <a class="kopknop" href="#kiezer">Afspraak</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="top" aria-labelledby="h1">
+  <div class="wrap">
+    <div class="hero-top">
+      <p class="kicker">Waxen · laser · spray tan · vajacials</p>
+      <h1 id="h1">Zacht voor je huid, <em>stoer als een cactus.</em></h1>
+      <p class="sub">Salon in Pendrecht, Rotterdam-Zuid, voor <b>waxen, laserontharen en spray tan</b>.<span class="dl"> Waxen en laseren voor vrouwen én mannen.</span></p>
+    </div>
+    <div class="stapel" aria-label="De behandelkamer van Kadushi Body Care">
+      <span class="ach a1" aria-hidden="true"></span>
+      <span class="ach a2" aria-hidden="true"></span>
+      <figure class="fotokaart">
+        <img src="img/behandelkamer.webp" alt="De behandelkamer van Kadushi Body Care: een behandelbank met handdoek, een wand vol roze en witte bloemen, een lamp en tegeltjes achter de wasbak" width="736" height="1024" fetchpriority="high">
+        <figcaption>De behandelkamer</figcaption>
+      </figure>
+      <svg class="mascotte" viewBox="84 22 124 182" aria-hidden="true">
+        <g class="arm"><path d="M175 101C190 101 197 94 196 79" fill="none" stroke="#4f8f2f" stroke-width="17" stroke-linecap="round"/><path d="M175 101C190 101 197 94 196 79" fill="none" stroke="#9fcd5f" stroke-width="12" stroke-linecap="round"/><path d="M199 76l4-1M190 70l2-4" stroke="#4f8f2f" stroke-width="1.3" stroke-linecap="round"/></g>
+        <path d="M117 101C102 99 94 106 96 119" fill="none" stroke="#4f8f2f" stroke-width="17" stroke-linecap="round"/>
+        <path d="M117 101C102 99 94 106 96 119" fill="none" stroke="#9fcd5f" stroke-width="12" stroke-linecap="round"/>
+        <path d="M115 134C112 106 111 82 113 63C115 44 129 35 146 35S178 45 179 64C180 86 179 110 177 134Z" fill="#9fcd5f" stroke="#4f8f2f" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="M133 46C130 76 131 108 133 132M160 46C163 76 163 108 161 132" fill="none" stroke="#7fb348" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M115 72l-4-1M114 98l-4 0M177 60l4-2M178 118l4 0M152 36l1-4M129 40l-2-3M93 116l-4 1M101 125l-2 4" stroke="#4f8f2f" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M134 67q4-3 8 0M152 67q4-3 8 0" fill="none" stroke="#4f8f2f" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="138" cy="74" r="2.4" fill="#3d6f22"/><circle cx="156" cy="74" r="2.4" fill="#3d6f22"/>
+        <path d="M136 85q11 9 22 0" fill="none" stroke="#3d6f22" stroke-width="2.2" stroke-linecap="round"/>
+        <g transform="translate(127 48)">
+          <ellipse class="knop-bloem" cx="0" cy="-2" rx="5" ry="7" fill="#c0304f"/>
+          <g class="blad"><ellipse cx="0" cy="-8" rx="6.5" ry="8.5" fill="#e0405f"/><ellipse cx="0" cy="-8" rx="6.5" ry="8.5" fill="#e0405f" transform="rotate(72)"/><ellipse cx="0" cy="-8" rx="6.5" ry="8.5" fill="#e0405f" transform="rotate(144)"/><ellipse cx="0" cy="-8" rx="6.5" ry="8.5" fill="#e0405f" transform="rotate(216)"/><ellipse cx="0" cy="-8" rx="6.5" ry="8.5" fill="#e0405f" transform="rotate(288)"/><circle r="4.6" fill="#f3889b"/></g>
+        </g>
+        <ellipse cx="144" cy="198" rx="54" ry="6.5" fill="#e9e5dc"/>
+        <path d="M113 150L179 150 171 194Q170 197 167 197L125 197Q122 197 121 194Z" fill="#c9966b" stroke="#8a5a36" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M109 128L183 128Q186 128 186 131L184 147Q184 150 181 150L111 150Q108 150 108 147L106 131Q106 128 109 128Z" fill="#c08a5c" stroke="#8a5a36" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M115 157L120 192" stroke="#e0b893" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="hero-onder">
+      <div class="knoppen">
+        <a class="btn groen js-wa" href="https://wa.me/31639124126?text=Hoi%20Kadushi%20Body%20Care%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20terecht%3F"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.1c-.25.7-1.45 1.33-2 1.38-.53.05-1.03.25-3.45-.72-2.9-1.15-4.75-4.1-4.9-4.3-.14-.18-1.17-1.56-1.17-2.97 0-1.4.74-2.1 1-2.38a1.06 1.06 0 0 1 .77-.36h.55c.18 0 .42-.07.65.5.25.58.83 2 .9 2.15.08.15.12.32.03.5-.1.2-.15.32-.3.48-.14.17-.3.38-.44.5-.15.15-.3.3-.13.6.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.36 1.45.3.15.47.12.64-.08.18-.2.74-.86.94-1.16.2-.3.4-.25.66-.15.28.1 1.73.82 2.03.97.3.15.5.22.57.35.07.12.07.72-.18 1.41z"/></svg>Afspraak appen</a>
+        <a class="btn rand" href="#menu">Behandelingen</a>
+      </div>
+      <p class="trust"><span><span class="ster">★★★★★</span> <b>4,8</b> op Google · 123 reviews</span><span>Plein 1953 29, Rotterdam</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu" aria-labelledby="h-menu">
+  <div class="wrap">
+    <div class="menu-grid">
+      <div>
+        <p class="kicker">Het behandelmenu</p>
+        <h2 id="h-menu">Vijf kaarten, <em>kies de jouwe.</em></h2>
+        <p class="intro">Veeg de bovenste kaart opzij of tik op een behandeling. Met "Kies deze" staat je keuze meteen klaar in het afspraakkaartje.</p>
+        <div class="tabs" role="group" aria-label="Behandelingen" id="tabs">
+          <button class="tab" type="button" data-naar="wax" aria-pressed="true">Waxen</button>
+          <button class="tab" type="button" data-naar="laser" aria-pressed="false">Laserontharen</button>
+          <button class="tab" type="button" data-naar="tan" aria-pressed="false">Spray tan</button>
+          <button class="tab" type="button" data-naar="vaja" aria-pressed="false">Vajacials</button>
+          <button class="tab" type="button" data-naar="cursus" aria-pressed="false">Waxcursus</button>
+        </div>
+      </div>
+      <div>
+        <div class="dek" id="dek">
+          <article class="kaart" data-k="wax" data-kies="Waxen" aria-label="Waxen">
+            <div class="kn"><div><span class="nr">Kaart 1 van 5</span><span class="tt" role="heading" aria-level="3">Waxen</span></div>
+              <svg class="ico" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="38" fill="#fff" opacity=".7"/><rect x="34" y="12" width="13" height="44" rx="6.5" transform="rotate(28 40 34)" fill="#ecd6a6" stroke="#23431b" stroke-width="2.4"/><path d="M27 52c-3 6-2 13 4 14 7 1 10-6 6-12-2-3-6-4-10-2z" fill="#e3b54f" stroke="#23431b" stroke-width="2.4" stroke-linejoin="round"/><path d="M31 57c1-1 2-1 3 0" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/></svg></div>
+            <span class="ds">Benen, bovenlichaam, gezicht of schaamstreek, los of als combinatie van zones. Voor vrouwen én mannen.</span>
+            <span class="pr"><span>Brazilian + oksels (dames) <i>vanaf € 50</i></span><span>Gezicht, boven- of onderlichaam (heren) <i>vanaf € 15</i></span><span>Full body wax dames <i>vanaf € 140</i></span></span>
+            <span class="kies"><button class="btn groen" type="button" data-kies="Waxen">Kies deze behandeling</button></span>
+          </article>
+          <article class="kaart" data-k="laser" data-kies="Laserontharen" aria-label="Laserontharen">
+            <div class="kn"><div><span class="nr">Kaart 2 van 5</span><span class="tt" role="heading" aria-level="3">Laserontharen</span></div>
+              <svg class="ico" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="38" fill="#fff" opacity=".7"/><path d="M22 54l18-30a6 6 0 0 1 10 6L33 60z" fill="#fff" stroke="#23431b" stroke-width="2.4" stroke-linejoin="round"/><path d="M33 60l-6 8" stroke="#23431b" stroke-width="2.4" stroke-linecap="round"/><path d="M52 18l6-6M57 27l8-2M47 13l1-8" stroke="#b8872c" stroke-width="2.6" stroke-linecap="round"/><circle cx="46" cy="27" r="3" fill="#9fcd5f"/></svg></div>
+            <span class="ds">Voor mannen en vrouwen, onder meer op rug, benen, buik en bikinilijn. Het resultaat verschilt per persoon en vaak zijn meerdere behandelingen nodig.</span>
+            <span class="pr"><span>Laserontharen dames <i>vanaf € 20</i></span><span>Laserontharen heren <i>vanaf € 34,50</i></span><span>Combi-deals <i>vraag ernaar</i></span></span>
+            <span class="kies"><button class="btn groen" type="button" data-kies="Laserontharen">Kies deze behandeling</button></span>
+          </article>
+          <article class="kaart" data-k="tan" data-kies="Spray tan" aria-label="Spray tan">
+            <div class="kn"><div><span class="nr">Kaart 3 van 5</span><span class="tt" role="heading" aria-level="3">Spray tan</span></div>
+              <svg class="ico" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="38" fill="#fff" opacity=".7"/><rect x="18" y="28" width="26" height="14" rx="5" fill="#fff" stroke="#23431b" stroke-width="2.4"/><path d="M26 42v18a4 4 0 0 0 8 0V42" fill="#c48a3a" stroke="#23431b" stroke-width="2.4"/><path d="M44 35h6" stroke="#23431b" stroke-width="2.4" stroke-linecap="round"/><g fill="#b8872c"><circle cx="57" cy="35" r="2"/><circle cx="63" cy="30" r="1.8"/><circle cx="64" cy="39" r="1.8"/><circle cx="69" cy="34" r="1.5"/><circle cx="70" cy="25" r="1.3"/><circle cx="71" cy="43" r="1.3"/></g></svg></div>
+            <span class="ds">Een bruine gloed zonder zonnebank, afgestemd op je huidtype. De kleur blijft tot 7 dagen zitten.</span>
+            <span class="pr"><span>Spray tan fullbody <i>€ 35</i></span><span>Fullbody duo <i>€ 70</i></span></span>
+            <span class="kies"><button class="btn groen" type="button" data-kies="Spray tan">Kies deze behandeling</button></span>
+          </article>
+          <article class="kaart" data-k="vaja" data-kies="Vajacial" aria-label="Vajacials">
+            <div class="kn"><div><span class="nr">Kaart 4 van 5</span><span class="tt" role="heading" aria-level="3">Vajacials</span></div>
+              <svg class="ico" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="38" fill="#fff" opacity=".7"/><path d="M24 36h32v20a8 8 0 0 1-8 8H32a8 8 0 0 1-8-8z" fill="#f3c9d4" stroke="#23431b" stroke-width="2.4"/><rect x="22" y="28" width="36" height="9" rx="3" fill="#fff" stroke="#23431b" stroke-width="2.4"/><path d="M40 47c-6-4-6-9 0-12 6 3 6 8 0 12zM40 47v8" fill="#9fcd5f" stroke="#23431b" stroke-width="2" stroke-linejoin="round"/></svg></div>
+            <span class="ds">Verzorging van de huid rond de venusheuvel: zacht stomen, een milde scrub, waxen en een koud masker van klei of hydro jelly. Bij ingegroeide haartjes of hyperpigmentatie.</span>
+            <span class="pr"><span class="geen">Prijs: vraag het in je bericht of kijk op Treatwell.</span></span>
+            <span class="kies"><button class="btn groen" type="button" data-kies="Vajacial">Kies deze behandeling</button></span>
+          </article>
+          <article class="kaart" data-k="cursus" data-kies="Waxcursus" aria-label="Waxcursus">
+            <div class="kn"><div><span class="nr">Kaart 5 van 5</span><span class="tt" role="heading" aria-level="3">Waxcursus</span></div>
+              <svg class="ico" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="38" fill="#fff" opacity=".7"/><rect x="16" y="20" width="48" height="34" rx="4" fill="#fff" stroke="#23431b" stroke-width="2.4"/><path d="M24 30h32M24 37h22" stroke="#9fcd5f" stroke-width="2.6" stroke-linecap="round"/><circle cx="52" cy="50" r="8" fill="#e3c27a" stroke="#23431b" stroke-width="2.2"/><path d="M47 57l-3 10 8-4 8 4-3-10" fill="#d23a5b" stroke="#23431b" stroke-width="2" stroke-linejoin="round"/></svg></div>
+            <span class="ds">Privé full wax body cursus in twee delen: eerst de basis, daarna geavanceerder, zoals de brazilian wax. Met starterspakket, theorieboek, lunch en certificaat.</span>
+            <span class="pr"><span class="geen">Een plek reserveer je via Treatwell; vragen kun je appen.</span></span>
+            <span class="kies"><button class="btn groen" type="button" data-kies="Waxcursus">Kies deze behandeling</button></span>
+          </article>
+        </div>
+        <div class="dek-nav">
+          <span class="teller" id="teller" aria-live="polite">1 / 5</span>
+          <span class="veeg">Veeg of gebruik de pijlen</span>
+          <span class="pijlen"><button class="rond" type="button" id="vorige" aria-label="Vorige behandeling">←</button><button class="rond" type="button" id="volgende" aria-label="Volgende behandeling">→</button></span>
+        </div>
+        <p class="prijsnoot">Vanaf-prijzen zoals ze op kadushi-bodycare.nl staan. De volledige prijslijst staat op <a href="https://widget.treatwell.nl/salon/kadushi-bodycare/" target="_blank" rel="noopener">Treatwell</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kiezer" id="kiezer" aria-labelledby="h-kies">
+  <div class="wrap kiezer-grid">
+    <div>
+      <p class="kicker">Afspraak vragen</p>
+      <h2 id="h-kies">Vul je <em>afspraakkaartje</em> in.</h2>
+      <div class="stap">
+        <h3>1 · Welke behandeling?</h3>
+        <div class="opts" data-group="dienst" role="group" aria-label="Behandeling">
+          <button class="opt" type="button" data-v="Waxen" aria-pressed="true">Waxen</button>
+          <button class="opt" type="button" data-v="Laserontharen" aria-pressed="false">Laserontharen</button>
+          <button class="opt" type="button" data-v="Spray tan" aria-pressed="false">Spray tan</button>
+          <button class="opt" type="button" data-v="Vajacial" aria-pressed="false">Vajacial</button>
+          <button class="opt" type="button" data-v="Waxcursus" aria-pressed="false">Waxcursus</button>
+        </div>
+      </div>
+      <div class="stap">
+        <h3>2 · Welke dag?</h3>
+        <div class="opts" data-group="dag" id="dagen" role="group" aria-label="Dag"></div>
+      </div>
+      <div class="stap">
+        <h3>3 · Welk dagdeel?</h3>
+        <div class="opts" data-group="deel" id="delen" role="group" aria-label="Dagdeel">
+          <button class="opt" type="button" data-v="Ochtend" aria-pressed="false">Ochtend<small>vanaf 10:00</small></button>
+          <button class="opt" type="button" data-v="Middag" aria-pressed="false">Middag<small>12:00–17:00</small></button>
+          <button class="opt" type="button" data-v="Avond" aria-pressed="false">Avond<small>tot 20:00</small></button>
+          <button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button>
+        </div>
+      </div>
+    </div>
+    <div class="kaartje" aria-live="polite">
+      <div class="kk"><img src="favicon.svg" alt="" width="46" height="46"><span><b>Afspraakkaartje</b>voor Kadushi Body Care · <span class="tn">06 39 12 41 26</span></span></div>
+      <div class="velden">
+        <div class="veld"><span>Behandeling</span><output id="v-dienst">Waxen</output></div>
+        <div class="veld"><span>Dag</span><output id="v-dag">Maakt niet uit</output></div>
+        <div class="veld"><span>Dagdeel</span><output id="v-deel">Maakt niet uit</output></div>
+      </div>
+      <div class="bericht-tekst" id="voorbeeld"></div>
+      <div class="acties">
+        <a class="btn groen js-kies" href="https://wa.me/31639124126?text=Hoi%20Kadushi%20Body%20Care%2C%20ik%20wil%20graag%20een%20afspraak%20voor%3A%20waxen."><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.1c-.25.7-1.45 1.33-2 1.38-.53.05-1.03.25-3.45-.72-2.9-1.15-4.75-4.1-4.9-4.3-.14-.18-1.17-1.56-1.17-2.97 0-1.4.74-2.1 1-2.38a1.06 1.06 0 0 1 .77-.36h.55c.18 0 .42-.07.65.5.25.58.83 2 .9 2.15.08.15.12.32.03.5-.1.2-.15.32-.3.48-.14.17-.3.38-.44.5-.15.15-.3.3-.13.6.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.36 1.45.3.15.47.12.64-.08.18-.2.74-.86.94-1.16.2-.3.4-.25.66-.15.28.1 1.73.82 2.03.97.3.15.5.22.57.35.07.12.07.72-.18 1.41z"/></svg>Stuur via WhatsApp</a>
+        <a class="btn rand" href="https://widget.treatwell.nl/salon/kadushi-bodycare/" target="_blank" rel="noopener">Liever direct boeken op Treatwell</a>
+      </div>
+      <p class="klein">Tijden: ma–vr 10:00–20:00, za 10:00–17:00, zo 12:00–17:00. De salon bevestigt je tijd.</p>
+    </div>
+  </div>
+</section>
+
+<section class="binnen" id="binnen" aria-labelledby="h-binnen">
+  <div class="wrap">
+    <p class="kicker">De salon</p>
+    <h2 id="h-binnen">De salon <em>aan het Plein.</em></h2>
+    <p class="intro">Een huiselijk ingerichte salon aan het Plein 1953 in Pendrecht, met de behandelbank achter glazen wanden.</p>
+    <div class="fotos">
+      <figure class="rv"><img loading="lazy" src="img/kamer-glas.webp" alt="Behandelbank met mintgroene en grijze handdoek in een kamer met glazen wanden en een kleed op de vloer" width="720" height="480" decoding="async"><figcaption>Behandelbank achter glas</figcaption></figure>
+      <figure class="rv"><img loading="lazy" src="img/kamer-wasbak.webp" alt="Behandelkamer met een zwarte waskom op een mintgroen kastje, sierlijke tegeltjes, een trolley en de behandelbank" width="720" height="480" decoding="async"><figcaption>Wasbak, tegeltjes en trolley</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="waarom" aria-labelledby="h-waarom">
+  <div class="wrap">
+    <p class="kicker">Waarom Kadushi</p>
+    <h2 id="h-waarom">Snel, gezellig <em>en goed uitgelegd.</em></h2>
+    <div class="punten">
+      <article class="punt rv"><svg viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="18" fill="#f7dbe1"/><circle cx="27" cy="28" r="13" fill="none" stroke="#23431b" stroke-width="2.6"/><path d="M27 20v8l6 4" fill="none" stroke="#d23a5b" stroke-width="2.6" stroke-linecap="round"/></svg><div><h3>Snel klaar</h3><p>Klanten schrijven dat er snel gewerkt wordt. In één review: binnen tien minuten weer buiten.</p></div></article>
+      <article class="punt rv"><svg viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="18" fill="#dcebc6"/><path d="M27 39s-12-7-12-16a6.5 6.5 0 0 1 12-3.5A6.5 6.5 0 0 1 39 23c0 9-12 16-12 16z" fill="#f5a8b9" stroke="#23431b" stroke-width="2.4" stroke-linejoin="round"/></svg><div><h3>Op je gemak</h3><p>Klanten schrijven dat ze op hun gemak worden gesteld, in een gezellige sfeer.</p></div></article>
+      <article class="punt rv"><svg viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" rx="18" fill="#efdcb4"/><path d="M14 18h26a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H25l-7 6v-6h-4a3 3 0 0 1-3-3V21a3 3 0 0 1 3-3z" fill="#fff" stroke="#23431b" stroke-width="2.4" stroke-linejoin="round"/><path d="M19 25h16M19 30h10" stroke="#3f7a2c" stroke-width="2.4" stroke-linecap="round"/></svg><div><h3>Goed uitgelegd</h3><p>Klanten schrijven dat alles goed wordt uitgelegd.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" aria-labelledby="h-rev">
+  <div class="wrap reviews-grid">
+    <div>
+      <p class="kicker">Google-reviews</p>
+      <p class="cijfer" id="h-rev">4,8</p>
+      <p class="sterren" aria-hidden="true">★★★★★</p>
+      <p class="bij">uit 123 reviews op Google.<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Kadushi+Body+Care+Plein+1953+29+Rotterdam" target="_blank" rel="noopener">Lees de reviews op Google</a></p>
+    </div>
+    <div class="samen">
+      <article class="rv"><p>Er werd snel gewerkt: binnen tien minuten weer buiten.</p><footer>Haylee</footer></article>
+      <article class="rv"><p>Ze stelde me echt op mijn gemak, in een supergezellige sfeer.</p><footer>Aimee</footer></article>
+      <article class="rv"><p>Een fijne ervaring.</p><footer>Audrey</footer></article>
+      <p class="rev-bron">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+    </div>
+  </div>
+</section>
+
+<section class="stappen" aria-labelledby="h-stap">
+  <div class="wrap">
+    <p class="kicker">Van kaart tot afspraak</p>
+    <h2 id="h-stap">Kaart kiezen, appen, <em>ontspannen.</em></h2>
+    <ol>
+      <li><span class="n">1</span><div><h3>Kies je kaart</h3><p>Waxen, laserontharen, spray tan, een vajacial of de waxcursus. Plus een dag en een dagdeel.</p></div></li>
+      <li><span class="n">2</span><div><h3>App of boek</h3><p>Je bericht staat klaar voor WhatsApp. Liever zelf een tijd prikken? Dat kan via Treatwell.</p></div></li>
+      <li><span class="n">3</span><div><h3>Kom naar het Plein 1953</h3><p>Nummer 29, in Pendrecht, Rotterdam-Zuid.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="h-faq">
+  <div class="wrap">
+    <div>
+      <p class="kicker">Vragen</p>
+      <h2 id="h-faq">Vragen over <em>je behandeling.</em></h2>
+    </div>
+    <div>
+      <details><summary>Kunnen mannen ook terecht?</summary><p>Ja. Waxen en laserontharen zijn er voor vrouwen én mannen, met eigen behandelingen voor heren, zoals gezicht, bovenlichaam en full body wax.</p></details>
+      <details><summary>Wat is een vajacial?</summary><p>Een verzorgende behandeling voor de huid rond de venusheuvel: zacht stomen, een milde scrub, waxen en daarna een koud masker. Het masker is op kleibasis of hydro jelly. Bedoeld bij ingegroeide haartjes of hyperpigmentatie.</p></details>
+      <details><summary>Hoeveel laserbehandelingen heb ik nodig?</summary><p>Dat verschilt per persoon. Vaak zijn meerdere behandelingen nodig, en het is niet gegarandeerd dat álle haren verdwijnen. Eén of twee onderhoudsbehandelingen per jaar kunnen nodig zijn. Vraag gerust advies in je bericht.</p></details>
+      <details><summary>Hoe bereid ik me voor op een spray tan?</summary><p>Scrub, scheer of wax vooraf. Wacht na de behandeling minimaal 8 uur met douchen. De kleur blijft tot 7 dagen zitten.</p></details>
+      <details><summary>Wat heb ik nodig voor de waxcursus?</summary><p>Per trainingsdag neem je twee modellen mee. Je krijgt een starterspakket, een theorieboek, lunch en na afronding een certificaat.</p></details>
+      <details><summary>Kan ik mijn afspraak verzetten?</summary><p>Kosteloos annuleren of verplaatsen kan tot 24 uur vóór je afspraak. Daarna kan het niet meer.</p></details>
+      <details><summary>Wat kost een behandeling?</summary><p>Bij de kaarten hierboven staan de vanaf-prijzen van hun eigen site, bijvoorbeeld spray tan fullbody € 35. De volledige prijslijst staat op Treatwell.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="route" id="route" aria-labelledby="h-route">
+  <div class="wrap route-grid">
+    <div>
+      <p class="kicker">Route en tijden</p>
+      <h2 id="h-route">Plein 1953 <em>29.</em></h2>
+      <p class="adres">Plein 1953 29<br>3086 ED Rotterdam (Pendrecht, Rotterdam-Zuid)</p>
+      <div class="knoppen">
+        <a class="btn groen" href="https://www.google.com/maps/dir/?api=1&amp;destination=Plein+1953+29%2C+3086+ED+Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+        <a class="btn rand" href="tel:+31639124126">Bel 06 39 12 41 26</a>
+      </div>
+    </div>
+    <div class="uren">
+      <table>
+        <tbody id="uren">
+          <tr data-d="1"><td>Maandag</td><td>10:00 – 20:00</td></tr>
+          <tr data-d="2"><td>Dinsdag</td><td>10:00 – 20:00</td></tr>
+          <tr data-d="3"><td>Woensdag</td><td>10:00 – 20:00</td></tr>
+          <tr data-d="4"><td>Donderdag</td><td>10:00 – 20:00</td></tr>
+          <tr data-d="5"><td>Vrijdag</td><td>10:00 – 20:00</td></tr>
+          <tr data-d="6"><td>Zaterdag</td><td>10:00 – 17:00</td></tr>
+          <tr data-d="0"><td>Zondag</td><td>12:00 – 17:00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="h-slot">
+  <div class="wrap">
+    <img class="groot" loading="lazy" src="logo-light.svg" alt="Kadushi Body Care" width="182" height="258">
+    <div>
+      <h2 id="h-slot">Zin in een <em>gladde huid?</em></h2>
+      <p>App Kadushi Body Care met de behandeling en de dag die je uitkomt, of boek zelf een tijd op Treatwell.</p>
+      <div class="knoppen">
+        <a class="btn roze js-wa" href="https://wa.me/31639124126?text=Hoi%20Kadushi%20Body%20Care%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20terecht%3F">App voor een afspraak</a>
+        <a class="btn rand-w" href="https://widget.treatwell.nl/salon/kadushi-bodycare/" target="_blank" rel="noopener">Boek op Treatwell</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="voet">
+  <div class="wrap">
+    <div class="voet-grid">
+      <div><img class="vlogo" loading="lazy" src="logo-light.svg" alt="Kadushi Body Care" width="182" height="258"></div>
+      <div><p><b>Kadushi Body Care</b><br>Plein 1953 29<br>3086 ED Rotterdam (Pendrecht)</p><p style="margin-top:10px"><a href="https://www.instagram.com/kadushibodycare/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@kadushibodycaresalon1" target="_blank" rel="noopener">TikTok</a></p></div>
+      <div><p><a href="tel:+31639124126">06 39 12 41 26</a><br><a href="mailto:kadushibodycare@gmail.com">kadushibodycare@gmail.com</a><br>Ma–vr 10–20 · za 10–17 · zo 12–17</p></div>
+    </div>
+    <p class="door">Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> · demo, niet de officiële site van Kadushi Body Care</p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-label="Snel contact">
+  <a class="btn roze js-wa" href="https://wa.me/31639124126?text=Hoi%20Kadushi%20Body%20Care%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20terecht%3F">App voor een afspraak</a>
+  <a class="btn rand-w" href="#kiezer">Kies</a>
+</div>
+
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-label="Presentatie">
+  <div class="vel">
+    <div class="pk"><h3>Kadushi Body Care: nu en straks</h3><button class="psluit" id="pitchSluit" type="button" aria-label="Sluiten">×</button></div>
+    <div class="vn">
+      <figure>
+        <figcaption>Nu<span>kadushi-bodycare.nl op een telefoon, eerste scherm (nagebouwd, 8 nov 2026)</span></figcaption>
+        <div class="tel"><div class="oud" aria-label="Nagebouwd: cookievenster over het hele eerste scherm, groene BOOK NOW-balk onderaan">
+          <img class="ologo" src="logo-dark.svg" alt="" width="48" height="68">
+          <span class="dim"></span>
+          <div class="ck"><b>Toestemming&nbsp;&nbsp; Over cookies</b>Beste gebruikers, deze site slaat cookies op uw computer op. Ze zijn bedoeld om uw webervaring te verbeteren en u tegelijkertijd meer gepersonaliseerde diensten te bieden. Cookies worden ook gebruikt voor het personaliseren van advertenties…<i>Alles weigeren</i><i>Aanpassen</i><i>Alles toestaan</i></div>
+          <span class="boek">BOOK NOW!</span>
+        </div></div>
+        <ul class="fouten">
+          <li><b>1</b>Op een telefoon is het eerste scherm een cookievenster; de salon zelf zie je pas daarna.</li>
+          <li><b>2</b>De groene "BOOK NOW!"-balk gaat naar de homepage van treatwell.nl, niet naar de eigen Treatwell-pagina.</li>
+          <li><b>3</b>Onder het label "KvK :" staat geen KvK-nummer. En de "Lees meer"-links heten "link".</li>
+        </ul>
+      </figure>
+      <figure>
+        <figcaption>Straks<span>Deze site, op dezelfde telefoon</span></figcaption>
+        <div class="tel" id="telNa"><iframe id="naFrame" title="Nieuwe site op een telefoon" loading="lazy"></iframe></div>
+      </figure>
+    </div>
+    <div class="reken">
+      <h4>Wat dit kan opleveren</h4>
+      <p class="vb">Voorbeeld om samen in te vullen, geen belofte. Vul jullie eigen aantal en bedrag in; het gaat om omzet, niet om winst.</p>
+      <label for="r-aantal">Extra afspraken per week via de site <output id="o-aantal">2</output></label>
+      <input type="range" id="r-aantal" min="0" max="15" step="1" value="2">
+      <label for="r-prijs">Gemiddelde behandeling (vul zelf in) <output id="o-prijs">€ 50</output></label>
+      <input type="range" id="r-prijs" min="15" max="200" step="5" value="50">
+      <div class="uit">
+        <div><small>Extra per maand</small><strong id="u-maand">€ 433</strong></div>
+        <div><small>Extra per jaar</small><strong id="u-jaar">€ 5.200</strong></div>
+        <div><small>€ 595 is de omzet van</small><strong id="u-aantal">12 behandelingen</strong></div>
+      </div>
+      <p class="noot">Elke extra afspraak telt mee; de getallen vul je samen in.</p>
+    </div>
+    <div class="beter">
+      <h4>Wat er concreet beter is</h4>
+      <ol>
+        <li>Wie de site opent, ziet meteen de eigen salon, het cactuslogo en 4,8 uit 123 Google-reviews, in plaats van een cookievenster.</li>
+        <li>Elke boekknop werkt: het afspraakkaartje vult behandeling, dag en dagdeel in voor WhatsApp, en "Boek op Treatwell" gaat naar de eigen Treatwell-pagina in plaats van naar de homepage.</li>
+        <li>Alle vijf behandelingen met uitleg en vanaf-prijzen op één plek, plus route, tijden van vandaag en een nette footer zonder verkeerd nummer onder "KvK".</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var WA = "31639124126";
+  var wa = function(t){ return "https://wa.me/" + WA + "?text=" + encodeURIComponent(t); };
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function(s){ return document.querySelector(s); }, $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+  $$(".js-wa").forEach(function(a){ a.target = "_blank"; a.rel = "noopener"; });
+
+  /* openingstijden (eigen site) */
+  var UREN = {0:["12:00","17:00"],1:["10:00","20:00"],2:["10:00","20:00"],3:["10:00","20:00"],4:["10:00","20:00"],5:["10:00","20:00"],6:["10:00","17:00"]};
+  var nu = new Date(), dag = nu.getDay();
+  $("#vandaag").textContent = "Vandaag " + UREN[dag][0] + "–" + UREN[dag][1];
+  var rij = document.querySelector('#uren tr[data-d="' + dag + '"]'); if (rij) rij.classList.add("nu");
+
+  /* behandelmenu: stapel kaarten */
+  var dek = $("#dek"), kaarten = $$("#dek .kaart"), volgorde = kaarten.map(function(_, i){ return i; });
+  function leg(){
+    volgorde.forEach(function(k, pos){
+      var el = kaarten[k];
+      el.style.zIndex = 10 - pos;
+      el.style.transform = "translateY(" + (pos * 16) + "px) scale(" + (1 - pos * .04) + ")";
+      el.style.opacity = pos > 2 ? "0" : "1"; el.style.visibility = pos > 2 ? "hidden" : "visible";
+      if (pos === 0){ el.removeAttribute("aria-hidden"); el.inert = false; } else { el.setAttribute("aria-hidden", "true"); el.inert = true; }
+    });
+    var top = kaarten[volgorde[0]];
+    $("#teller").textContent = (volgorde[0] + 1) + " / " + kaarten.length;
+    $$("#tabs .tab").forEach(function(t){ t.setAttribute("aria-pressed", t.dataset.naar === top.dataset.k ? "true" : "false"); });
+  }
+  function draai(n){ for (var i = 0; i < Math.abs(n); i++){ if (n > 0) volgorde.push(volgorde.shift()); else volgorde.unshift(volgorde.pop()); } leg(); }
+  function wegVegen(richting){
+    var el = kaarten[volgorde[0]];
+    if (reduce){ draai(1); return; }
+    el.style.transform = "translateX(" + (richting * 120) + "%)"; el.style.opacity = "0";
+    setTimeout(function(){ el.classList.add("sleep"); draai(1); el.style.opacity = "0"; el.offsetHeight; el.classList.remove("sleep"); leg(); }, 260);
+  }
+  $("#volgende").addEventListener("click", function(){ wegVegen(-1); });
+  $("#vorige").addEventListener("click", function(){ draai(-1); });
+  $$("#tabs .tab").forEach(function(t){ t.addEventListener("click", function(){
+    var doel = kaarten.findIndex(function(k){ return k.dataset.k === t.dataset.naar; });
+    while (volgorde[0] !== doel) volgorde.push(volgorde.shift());
+    leg();
+  }); });
+  var start = null, dx = 0, actief = null;
+  dek.addEventListener("pointerdown", function(e){
+    if (e.target.closest("button")) return;
+    actief = kaarten[volgorde[0]]; if (!actief.contains(e.target)) { actief = null; return; }
+    start = e.clientX; dx = 0; actief.classList.add("sleep"); actief.setPointerCapture(e.pointerId);
+  });
+  dek.addEventListener("pointermove", function(e){
+    if (!actief) return; dx = e.clientX - start;
+    actief.style.transform = "translateX(" + dx + "px)";
+  });
+  function los(){
+    if (!actief) return; var el = actief; actief = null; el.classList.remove("sleep");
+    if (Math.abs(dx) > 70) wegVegen(dx > 0 ? 1 : -1); else leg();
+  }
+  dek.addEventListener("pointerup", los); dek.addEventListener("pointercancel", los);
+  dek.addEventListener("keydown", function(e){ if (e.key === "ArrowRight") wegVegen(-1); if (e.key === "ArrowLeft") draai(-1); });
+  leg();
+
+  /* kiezer */
+  var DAGEN = ["zo","ma","di","wo","do","vr","za"], MND = ["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"];
+  var html = "";
+  for (var i = 0; i < 7; i++){
+    var d = new Date(nu.getFullYear(), nu.getMonth(), nu.getDate() + i);
+    var lab = i === 0 ? "Vandaag" : i === 1 ? "Morgen" : DAGEN[d.getDay()] + " " + d.getDate() + " " + MND[d.getMonth()];
+    var waarde = (i < 2 ? lab.toLowerCase() + " (" : "") + DAGEN[d.getDay()] + " " + d.getDate() + " " + MND[d.getMonth()] + (i < 2 ? ")" : "");
+    html += '<button class="opt" type="button" data-v="' + waarde + '" data-wd="' + d.getDay() + '" aria-pressed="false">' + lab + '<small>' + UREN[d.getDay()][0] + "–" + UREN[d.getDay()][1] + '</small></button>';
+  }
+  html += '<button class="opt" type="button" data-v="Maakt niet uit" aria-pressed="true">Maakt niet uit</button>';
+  $("#dagen").innerHTML = html;
+
+  var pressed = function(g){ var b = document.querySelector('[data-group="' + g + '"] .opt[aria-pressed="true"]'); return b; };
+  function dagdelen(){
+    /* zondag 12-17: geen ochtend/avond; zaterdag 10-17: geen avond */
+    var b = pressed("dag"), wd = b && b.dataset.wd !== undefined ? +b.dataset.wd : -1;
+    $$("#delen .opt").forEach(function(o){
+      var uit = (wd === 0 && (o.dataset.v === "Ochtend" || o.dataset.v === "Avond")) || (wd === 6 && o.dataset.v === "Avond");
+      o.disabled = uit;
+      if (uit && o.getAttribute("aria-pressed") === "true"){ o.setAttribute("aria-pressed", "false"); $('#delen .opt[data-v="Maakt niet uit"]').setAttribute("aria-pressed", "true"); }
+    });
+  }
+  function render(){
+    dagdelen();
+    var dienst = pressed("dienst").dataset.v, dg = pressed("dag").dataset.v, deel = pressed("deel").dataset.v;
+    $("#v-dienst").textContent = dienst; $("#v-dag").textContent = dg; $("#v-deel").textContent = deel;
+    var regels = ["Hoi Kadushi Body Care,", (dienst === "Waxcursus" ? "Ik heb interesse in de waxcursus." : "Ik wil graag een afspraak voor: " + dienst.toLowerCase() + ".")];
+    if (dg !== "Maakt niet uit" || deel !== "Maakt niet uit")
+      regels.push("Voorkeur: " + [dg !== "Maakt niet uit" ? dg : "", deel !== "Maakt niet uit" ? deel.toLowerCase() : ""].filter(Boolean).join(", ") + ".");
+    else regels.push("Dag en tijd maken niet uit.");
+    regels.push("Wanneer kan ik terecht?");
+    $("#voorbeeld").textContent = regels.join("\n");
+    $$(".js-kies").forEach(function(a){ a.href = wa(regels.join("\n")); a.target = "_blank"; a.rel = "noopener"; });
+  }
+  function kies(groep, v){
+    $$('[data-group="' + groep + '"] .opt').forEach(function(o){ o.setAttribute("aria-pressed", o.dataset.v === v ? "true" : "false"); });
+    render();
+  }
+  $$(".opts[data-group]").forEach(function(g){ g.addEventListener("click", function(e){
+    var b = e.target.closest(".opt"); if (!b || b.disabled) return; kies(g.dataset.group, b.dataset.v); }); });
+  render();
+
+  /* kaart -> kiezer */
+  $$(".kaart button[data-kies]").forEach(function(m){ m.addEventListener("click", function(){
+    kies("dienst", m.dataset.kies);
+    $("#kiezer").scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "start"});
+  }); });
+
+  /* zwevende CTA: na de hero, niet bij het kaartje */
+  var zw = $("#zweef"), heroUit = false, kaartIn = false, upd = function(){ zw.classList.toggle("on", heroUit && !kaartIn); };
+  new IntersectionObserver(function(e){ heroUit = !e[0].isIntersecting; upd(); }).observe($(".hero .knoppen"));
+  new IntersectionObserver(function(e){ kaartIn = e[0].isIntersecting; upd(); }, {threshold: .25}).observe($(".kaartje .acties"));
+
+  /* scroll-onthulling met vangnet */
+  var rv = $$(".rv");
+  if ("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); }, {rootMargin: "0px 0px -8% 0px"});
+    rv.forEach(function(el){ io.observe(el); });
+  }
+  setTimeout(function(){ rv.forEach(function(el){ el.classList.add("in"); }); }, reduce ? 0 : 3500);
+
+  /* pitch-modus */
+  var pitch = $("#pitch"), naFrame = $("#naFrame"), telNa = $("#telNa");
+  function schaal(){ var w = telNa.clientWidth; naFrame.style.transform = "scale(" + (w / 390) + ")"; naFrame.style.height = (telNa.clientHeight * 390 / w) + "px"; }
+  function openPitch(){ if (!naFrame.src) naFrame.src = location.pathname.split("/").pop() || "index.html"; pitch.classList.add("open"); schaal(); }
+  function sluitPitch(){ pitch.classList.remove("open"); if (/[?&]pitch/.test(location.search)) history.replaceState(null, "", location.pathname); }
+  $("#pitchKnop").addEventListener("click", openPitch);
+  $("#pitchSluit").addEventListener("click", sluitPitch);
+  pitch.addEventListener("click", function(e){ if (e.target === pitch) sluitPitch(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") sluitPitch(); });
+  addEventListener("resize", function(){ if (pitch.classList.contains("open")) schaal(); });
+  if (window.self !== window.top){ $("#pitchKnop").hidden = true; }
+  else if (/[?&]pitch/.test(location.search)) openPitch();
+
+  var eur = function(n){ return "€ " + Math.round(n).toLocaleString("nl-NL"); };
+  function reken(){
+    var k = +$("#r-aantal").value, p = +$("#r-prijs").value;
+    $("#o-aantal").textContent = k; $("#o-prijs").textContent = eur(p);
+    $("#u-maand").textContent = eur(k * p * 52 / 12);
+    $("#u-jaar").textContent = eur(k * p * 52);
+    $("#u-aantal").textContent = Math.ceil(595 / p) + " behandelingen";
+  }
+  $("#r-aantal").addEventListener("input", reken); $("#r-prijs").addEventListener("input", reken); reken();
+})();
+</script>
+</body>
+</html>
