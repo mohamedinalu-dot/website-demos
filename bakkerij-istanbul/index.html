@@ -1,0 +1,638 @@
+<!doctype html>
+<!--
+  L231 Bakkerij Istanbul — demo door Mohamedia (8 nov 2026)
+  Concept: "Het broodrek van de Benthuizerstraat": de pagina is hun winkel van buiten naar binnen. Bovenaan hun eigen
+  gevelbord (blauwe serif-kapitalen met witte rand op grijs, nagetekend als SVG), daaronder het zwarte broodrek met
+  houten latten, en elk vak is een schap met een eigen foto en een schapkaartje ("Vraag ernaar").
+  Lay-out-archetype: BENTO-GRID (het broodrek): vakken van verschillende grootte in een zwart frame, elk vak op een
+  houten lat. Hero = gevelbord + klein rek van 4 vakken; assortiment = groot rek van 6 vakken.
+  Hero-beweging: eenmalige intro. De letters van het bord kleuren één voor één van onverlicht grijs naar blauw, daarna
+  worden de broden in de vakken "op de lat gelegd" (alleen het img schuift omlaag). Geen lus, geen Ken Burns, geen
+  stoom, geen schuine/ingekaderde foto, geen stempel, geen lopende band.
+  Bewust anders dan bakkerij-avrasya (geel, ovendeur, draaiende stempel) en bakkerij-alanya (donkere full-bleed gevel,
+  tijdlijn) en de demo's van dezelfde wijk/dag (İkram editorial, Batu split-screen, La Vie horizontale galerij).
+  Palet: bordblauw, bordgrijs, rekzwart, latten-hout, koel meelwit. Fonts: Cinzel (koppen, als het bord) + Plus Jakarta Sans.
+  Beeld: alleen hun eigen Facebookpagina en Google Maps-foto's (via Restaurant Guru: "Photo from Facebook"/"Photo from Google"),
+  RG-stickers weggesneden, personen in de etalage vervaagd. Openingstijden alleen "volgens Restaurant Guru".
+  WhatsApp op 06 54 75 10 43 niet bevestigd: de kiezer stuurt een vraag, belooft geen bestellingen.
+  Volgende demo: kies iets anders dan bento/broodrek.
+-->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Bakkerij Istanbul – Turkse bakkerij in Rotterdam-Noord</title>
+<meta name="description" content="Bakkerij Istanbul aan de Benthuizerstraat 80B in het Oude Noorden, Rotterdam: Turks brood, pide, simit, baklava en belegde broodjes. 4,6 uit 48 Google-reviews. App of bel 06 54 75 10 43.">
+<meta name="theme-color" content="#5c6366">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/brood-rek.webp">
+<style>
+:root{
+  --blauw:#1a46a0; --blauw-d:#11306f; --blauw-l:#e6edf9; --hemel:#8cc7ee;
+  --bord:#5c6366; --bord-d:#474d50; --rek:#17181b; --rek-2:#25272b;
+  --lat:#d98a3a; --lat-d:#a95f1d; --lat-l:#f2b067;
+  --meel:#f3f5f8; --wit:#fff; --ink:#15181e; --zacht:#596170;
+  --kop:"Cinzel", "Times New Roman", serif;
+  --body:"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--meel);font-size:17px;line-height:1.55;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:900;line-height:1.08;margin:0;letter-spacing:.01em;overflow-wrap:break-word}
+p{margin:0}
+.wrap{width:min(1180px,100% - 36px);margin-inline:auto}
+svg.i{width:20px;height:20px;flex:none;fill:currentColor}
+.nw{white-space:nowrap}
+
+/* demo-strook */
+.demo-strip{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--rek);color:#d8dce2;font-size:13px;padding:7px 12px;text-align:center}
+.demo-strip a{color:var(--hemel);font-weight:600}
+.demo-strip .kort{display:none}
+.demo-mo{border:1px solid rgba(255,255,255,.25);background:transparent;color:#aab1bb;border-radius:99px;font:600 11px/1 var(--body);width:26px;height:26px;cursor:pointer;flex:none}
+@media (max-width:560px){.demo-strip .lang{display:none}.demo-strip .kort{display:inline}}
+
+/* aankondiging */
+.aank{background:var(--blauw);color:#fff;font-size:14px;font-weight:600;text-align:center}
+.aank a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 14px;text-decoration:none}
+.aank svg{width:16px;height:16px;fill:#ffd36b}
+@media (max-width:560px){.aank-lang{display:none}}
+
+/* gevelbord = header */
+.gevel-kop{background:var(--bord);background-image:linear-gradient(180deg,rgba(255,255,255,.07),rgba(0,0,0,.08));border-bottom:6px solid #e9ecef;position:relative}
+.gevel-kop::before,.gevel-kop::after{content:"";position:absolute;top:10px;width:5px;height:5px;border-radius:50%;background:#848b8f;box-shadow:0 1px 0 rgba(255,255,255,.2)}
+.gevel-kop::before{left:10px}.gevel-kop::after{right:10px}
+.bord{display:block;padding:14px 0 10px;text-decoration:none}
+@media (max-width:600px){.gevel-kop .wrap{width:calc(100% - 12px)}.bord{padding:20px 0 16px}.bord-svg .lt{stroke-width:5.5}}
+.bord-svg{display:block;width:100%;height:auto;max-width:1040px;margin-inline:auto;overflow:visible}
+.bord-svg .lt{fill:var(--blauw);stroke:#f4f6f8;stroke-width:4.5;stroke-linejoin:round;paint-order:stroke;animation:licht .5s cubic-bezier(.3,.7,.3,1) both;animation-delay:calc(.15s + var(--i) * .07s)}
+@keyframes licht{from{fill:#7d8488;stroke:#6d7377}to{fill:var(--blauw);stroke:#f4f6f8}}
+.kopnav{display:none}
+@media (min-width:900px){
+  .kopnav{display:flex;justify-content:center;gap:4px;padding:0 0 12px;font-size:14.5px;font-weight:600}
+  .kopnav a{color:#eef1f4;text-decoration:none;padding:12px 14px;border-radius:99px;min-height:44px;display:inline-flex;align-items:center;gap:8px}
+  .kopnav a:hover{background:rgba(255,255,255,.1)}
+  .kopnav .tel{background:#fff;color:var(--blauw-d)}
+  .bord{padding:24px 0 10px}
+}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 22px;border-radius:12px;font:700 16px/1.1 var(--body);text-decoration:none;border:0;cursor:pointer}
+.btn-wa{background:var(--blauw);color:#fff;box-shadow:0 6px 0 var(--blauw-d)}
+.btn-wa:hover{background:#1d50b6}
+.btn-lat{background:var(--lat-l);color:#3a210b;box-shadow:0 6px 0 var(--lat-d)}
+.btn-rand{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn-wit{background:#fff;color:var(--blauw-d);box-shadow:0 6px 0 #c7d2e6}
+
+/* hero */
+.hero{padding:16px 0 40px}
+.hero-grid{display:grid;gap:18px}
+@media (max-width:600px){.hero .lede{font-size:15.5px;margin-top:8px}.knoppen{margin-top:14px}}
+.hero h1{font-size:clamp(27px,7.6vw,60px);color:var(--ink)}
+.hero h1 em{font-style:normal;color:var(--blauw)}
+.hero .lede{margin-top:12px;font-size:17px;color:var(--zacht);max-width:34em}
+.knoppen{display:flex;flex-wrap:wrap;gap:12px 12px;margin-top:20px}
+.knoppen .btn{flex:1 1 200px}
+.trust{margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:14.5px;color:var(--zacht)}
+.trust b{color:var(--ink)}
+.sterren{display:inline-flex;gap:1px;color:#e2a414}
+.sterren svg{width:16px;height:16px;fill:currentColor}
+
+/* het rek (bento) */
+.rek{background:var(--rek);padding:10px;border-radius:8px;display:grid;gap:10px;box-shadow:0 18px 40px -22px rgba(0,0,0,.6)}
+.vak{position:relative;overflow:hidden;background:var(--rek-2);border-radius:3px;padding-bottom:12px;min-width:0}
+.vak::after{content:"";position:absolute;left:0;right:0;bottom:0;height:12px;background:
+  repeating-linear-gradient(90deg,rgba(0,0,0,.0) 0 46px,rgba(0,0,0,.18) 46px 48px),
+  linear-gradient(180deg,var(--lat-l),var(--lat) 55%,var(--lat-d));z-index:2}
+.vak img{width:100%;height:100%;object-fit:cover}
+.vak .foto{position:relative;height:100%;overflow:hidden}
+.mini{grid-template-columns:1fr 1fr;grid-template-rows:128px 108px 108px;gap:8px;padding:8px}
+.mini .vak{height:auto}
+.mini .v1{grid-column:1 / -1}
+.mini .v2{grid-row:2 / 4;grid-column:1}
+.mini .vak img{animation:leg .7s cubic-bezier(.25,1.4,.45,1) both;animation-delay:calc(1.2s + var(--j) * .16s)}
+@keyframes leg{from{transform:translateY(-26px)}to{transform:none}}
+.vak .kaartje{position:absolute;left:8px;bottom:20px;z-index:3;background:#fff;color:var(--ink);font:700 12.5px/1.2 var(--body);padding:6px 9px;border-radius:4px;border-top:3px solid var(--blauw);box-shadow:0 3px 10px rgba(0,0,0,.25);max-width:calc(100% - 16px)}
+@media (min-width:900px){
+  .hero{padding:44px 0 64px}
+  .hero-grid{grid-template-columns:1fr 1.05fr;align-items:center;gap:48px}
+  .mini{grid-template-columns:1.1fr 1fr 1fr;grid-template-rows:200px 200px}
+  .mini{gap:10px;padding:10px}
+  .mini .v1{grid-column:2 / 4}
+  .mini .v2{grid-row:1 / 3;grid-column:1}
+}
+
+/* secties */
+.sec{padding:64px 0}
+.kicker{font:800 12.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--blauw);display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.kicker::before{content:"";width:22px;height:4px;border-radius:2px;background:var(--lat)}
+.sec h2{font-size:clamp(28px,6.4vw,46px)}
+.sec .intro{margin-top:12px;color:var(--zacht);max-width:40em}
+
+/* groot rek */
+.groot{margin-top:28px;grid-template-columns:1fr 1fr}
+.groot .vak{min-height:170px}
+.groot .w2,.groot .gp{grid-column:1 / -1;min-height:180px}
+.groot .vak .onder{position:absolute;left:0;right:0;bottom:12px;z-index:3;padding:34px 10px 10px;background:linear-gradient(180deg,transparent,rgba(10,12,16,.82));display:flex;align-items:flex-end;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.groot .vak h3{font-family:var(--body);font-weight:800;font-size:clamp(15px,4.2vw,19px);color:#fff;line-height:1.2;min-width:0;overflow-wrap:break-word}
+.vraag{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:99px;background:#fff;color:var(--blauw-d);font:700 13.5px/1 var(--body);text-decoration:none;flex:none}
+.ruitvak{background:var(--blauw);color:#fff;padding:14px 14px 30px;display:grid;gap:14px}
+.ruitvak .ruit-img{width:100%;height:auto;aspect-ratio:760/375;object-fit:cover;border-radius:4px}
+.ruit-tekst{display:flex;flex-direction:column;gap:12px;min-width:0}
+.ruitvak h3{font-family:var(--kop)!important;font-size:clamp(20px,5vw,26px)!important}
+.ruitvak p{font-size:14.5px;color:#d9e3f6}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chips span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:99px;padding:6px 11px;font-size:13.5px;font-weight:600}
+.bron{margin-top:14px;font-size:13px;color:var(--zacht)}
+@media (min-width:900px){
+  .groot{grid-template-columns:repeat(4,1fr);grid-template-rows:230px 230px auto;grid-template-areas:"a a s p" "d d s g" "r r r r"}
+  .groot .vak,.groot .w2{min-height:0;grid-column:auto}
+  .groot .ga{grid-area:a}.groot .gs{grid-area:s}.groot .gp{grid-area:p}.groot .gd{grid-area:d}.groot .gg{grid-area:g}.groot .gr{grid-area:r}
+  .ruitvak{grid-template-columns:minmax(0,420px) 1fr;align-items:center;gap:24px;padding:16px 20px 30px 16px}
+}
+
+/* kiezer */
+.kies-sec{background:#fff;border-top:1px solid #e3e7ee;border-bottom:1px solid #e3e7ee}
+.kies-grid{display:grid;gap:26px;margin-top:26px}
+@media (min-width:900px){.kies-grid{grid-template-columns:1.15fr .85fr;align-items:start}}
+.stap{border:2px solid #e1e6ee;border-radius:14px;padding:16px;margin:0 0 14px}
+.stap legend{font:800 15px/1 var(--body);padding:0 6px;display:flex;gap:8px;align-items:center}
+.stap legend i{font-style:normal;background:var(--blauw);color:#fff;width:24px;height:24px;border-radius:50%;display:inline-grid;place-items:center;font-size:13px}
+.opties{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.optie input{position:absolute;opacity:0;pointer-events:none}
+.optie span{display:inline-flex;align-items:center;min-height:44px;padding:0 15px;border-radius:10px;border:2px solid #d5dce7;font-weight:600;font-size:15px;cursor:pointer;background:#fff}
+.optie input:checked + span{background:var(--blauw);border-color:var(--blauw);color:#fff}
+.optie input:focus-visible + span{outline:3px solid var(--lat);outline-offset:2px}
+.teller{display:flex;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap}
+.teller button{width:48px;height:48px;border-radius:10px;border:2px solid #d5dce7;background:#fff;font:700 22px/1 var(--body);cursor:pointer}
+.teller output{min-width:44px;text-align:center;font:800 24px/1 var(--body)}
+.teller label{display:inline-flex;align-items:center;gap:8px;font-size:15px;min-height:44px}
+.veld{display:block;margin-top:10px}
+.veld input{width:100%;min-height:48px;border:2px solid #d5dce7;border-radius:10px;padding:10px 12px;font:500 16px var(--body)}
+.bon{background:var(--meel);border-radius:16px;padding:18px;border:2px dashed #c5cfdd}
+.bon h3{font-family:var(--body);font-weight:800;font-size:16px}
+.bubbel{margin-top:12px;background:#dcf8c6;border-radius:12px 12px 12px 3px;padding:12px 14px;white-space:pre-wrap;font-size:15.5px;min-height:90px}
+.bon .btn{width:100%;margin-top:16px}
+.bon .klein{font-size:13.5px;color:var(--zacht);margin-top:22px}
+.bon .klein a{font-weight:700}
+
+/* waarom */
+.waarom{display:grid;gap:14px;margin-top:26px}
+@media (min-width:860px){.waarom{grid-template-columns:repeat(3,1fr)}}
+.kaart{background:#fff;border-radius:14px;padding:22px;border-bottom:8px solid var(--lat);box-shadow:0 10px 26px -18px rgba(20,30,50,.5);min-width:0}
+.kaart h3{font-family:var(--body);font-weight:800;font-size:clamp(18px,4.6vw,21px);line-height:1.25}
+.kaart p{margin-top:8px;color:var(--zacht);font-size:15.5px}
+.kaart .nr{font:900 30px/1 var(--kop);color:var(--blauw);display:block;margin-bottom:10px}
+
+/* reviews */
+.rev-sec{background:var(--bord);color:#fff}
+.rev-sec .kicker{color:#d7e6ff}
+.score{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px}
+.score strong{font:900 54px/1 var(--kop)}
+.score a{color:#fff;font-weight:600;display:inline-flex;align-items:center;min-height:44px}
+.citaat{margin:28px 0 0;font:700 clamp(28px,7vw,52px)/1.12 var(--kop);color:#fff}
+.citaat::before{content:"\201C";color:var(--hemel)}
+.citaat::after{content:"\201D";color:var(--hemel)}
+.citaat-van{margin-top:12px;color:#dfe3e6;font-size:15px}
+.sam{display:grid;gap:12px;margin-top:28px}
+@media (min-width:760px){.sam{grid-template-columns:1fr 1fr}}
+.sam div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:16px}
+.sam b{display:block;margin-bottom:4px}
+.sam-label{margin-top:12px;font-size:13px;color:#d4d8db}
+
+/* stappen */
+.stappen{display:grid;gap:12px;margin-top:26px;counter-reset:s}
+@media (min-width:860px){.stappen{grid-template-columns:repeat(3,1fr)}}
+.stappen li{list-style:none;background:#fff;border-radius:14px;padding:20px;border-left:8px solid var(--blauw);min-width:0}
+.stappen li::before{counter-increment:s;content:counter(s);font:900 28px/1 var(--kop);color:var(--lat-d);display:block;margin-bottom:8px}
+.stappen{padding:0}
+.stappen b{display:block;font-size:17.5px}
+.stappen span{color:var(--zacht);font-size:15.5px}
+
+/* faq */
+.faq{margin-top:22px;display:grid;gap:10px;max-width:820px}
+.faq details{background:#fff;border-radius:12px;border:1px solid #e1e6ee}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;min-height:56px;font-weight:700}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:700 24px/1 var(--body);color:var(--blauw)}
+.faq details[open] summary::after{content:"\2212"}
+.faq p{padding:0 18px 18px;color:var(--zacht)}
+
+/* route */
+.route-grid{display:grid;gap:22px;margin-top:26px}
+@media (min-width:900px){.route-grid{grid-template-columns:1.2fr 1fr;align-items:center}}
+.route-foto{border-radius:10px;overflow:hidden;border-bottom:12px solid var(--lat)}
+.route-foto img{width:100%;height:auto;aspect-ratio:1000/414;object-fit:cover}
+.route-foto figcaption{font-size:13px;color:var(--zacht);background:#fff;padding:8px 12px}
+.adres{font-size:19px;font-weight:700}
+.uren{width:100%;border-collapse:collapse;margin-top:14px;font-size:16px;background:#fff;border-radius:10px;overflow:hidden}
+.uren td{padding:11px 14px;border-bottom:1px solid #eef1f5}
+.uren td:last-child{text-align:right;font-weight:700}
+.uren-bron{font-size:13.5px;color:var(--zacht);margin-top:8px}
+
+/* slot */
+.slot{background:var(--blauw);color:#fff;text-align:center;padding:60px 0 70px}
+.slot h2{font-size:clamp(28px,6.6vw,48px)}
+.slot p{margin:12px auto 0;max-width:34em;color:#dce6f8}
+.slot .knoppen{justify-content:center;max-width:560px;margin-inline:auto;margin-top:26px}
+
+/* footer */
+footer{background:var(--rek);color:#c7ccd4;padding:40px 0 110px;font-size:15px}
+.f-grid{display:grid;gap:22px}
+@media (min-width:800px){.f-grid{grid-template-columns:1.4fr 1fr 1fr}}
+footer h4{margin:0 0 8px;color:#fff;font-size:15px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+footer a{color:#e6eaf0}
+.f-logo{background:var(--bord);border-radius:8px;padding:12px 14px;display:inline-block}
+.mohamedia{margin-top:28px;padding-top:18px;border-top:1px solid #2c2f35;font-size:14px}
+.mohamedia a{color:var(--hemel);font-weight:700}
+
+/* zwevende cta */
+.float{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:flex;gap:10px;transform:translateY(140%);transition:transform .3s ease;padding-bottom:env(safe-area-inset-bottom)}
+.float.toon{transform:none}
+.float .btn{flex:1;box-shadow:0 10px 24px rgba(0,0,0,.3)}
+.float .bel{flex:0 0 56px;padding:0;background:#fff;color:var(--blauw-d)}
+@media (min-width:900px){.float{display:none}}
+
+/* reveal met vangnet */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+
+/* pitch */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(15,18,24,.62);display:none;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.pitch.open{display:block}
+.pp{background:#fff;max-width:1000px;margin:20px auto;border-radius:20px;padding:22px;color:var(--ink)}
+.pp-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px;color:var(--zacht)}
+.pp-sluit{width:44px;height:44px;border-radius:50%;border:0;background:#e9edf3;font-size:24px;cursor:pointer}
+.pp h2{font-size:clamp(24px,5.6vw,36px);margin:8px 0 18px;color:var(--blauw-d)}
+.pp h3{font-family:var(--body);font-weight:800;font-size:18px;margin:26px 0 12px}
+.vn{display:grid;gap:18px}
+@media (min-width:760px){.vn{grid-template-columns:1fr 1fr}}
+.vn figure{margin:0}
+.vn figcaption{font-size:14px;color:var(--zacht);margin-top:8px}
+.tel-frame{border:10px solid var(--rek);border-radius:34px;overflow:hidden;height:560px;background:#000;max-width:300px;margin:0 auto}
+.tel-frame img{width:100%;height:100%;object-fit:cover;object-position:top}
+.tel-frame iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+.reken{background:var(--blauw-l);border-radius:16px;padding:18px;display:grid;gap:16px}
+.reken label{display:flex;justify-content:space-between;font-weight:700;font-size:15px}
+.reken input[type=range]{width:100%;accent-color:var(--blauw);height:32px}
+.uitkomst{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.uitkomst div{background:#fff;border-radius:12px;padding:12px;text-align:center}
+.uitkomst small{display:block;font-size:12.5px;color:var(--zacht)}
+.uitkomst strong{font:900 22px/1.2 var(--kop);color:var(--blauw)}
+@media (max-width:520px){.uitkomst{grid-template-columns:1fr}}
+.disclaimer{font-size:13px;color:var(--zacht)}
+.punten{padding-left:22px;display:grid;gap:10px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1 1.7.7 2.4.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1 0-.2-.1-.5-.2z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></symbol>
+    <symbol id="i-ster" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9z"/></symbol>
+  </defs>
+</svg>
+
+<div class="demo-strip"><span class="lang">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a>. Niet de officiële site van Bakkerij Istanbul.</span><span class="kort">Demo door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a> · niet de officiële site</span><button class="demo-mo" id="pitch-knop" type="button" aria-label="Pitch-modus openen">Mo</button></div>
+
+<div class="aank"><a href="https://www.google.com/maps/search/?api=1&amp;query=Bakkerij+Istanbul+Benthuizerstraat+80B+Rotterdam" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ster"/></svg>4,6 uit 48 Google-reviews<span class="aank-lang"> · Benthuizerstraat 80B, Oude Noorden</span></a></div>
+
+<header class="gevel-kop">
+  <div class="wrap">
+    <a class="bord" href="#top" aria-label="Bakkerij Istanbul, naar boven"><svg class="bord-svg" viewBox="-6 -76 1232.7 104" role="img" aria-label="Bakkerij Istanbul"><path class="lt" style="--i:0" d="M16.2 -70H37.8Q45.3 -70 51.6 -68.5Q57.9 -67 61.8 -63.2Q65.6 -59.5 65.6 -52.6Q65.6 -47.8 63.7 -44.6Q61.8 -41.4 58.9 -39.8Q55.9 -38.2 52.5 -38.1Q57.4 -37.9 61.6 -35.7Q65.7 -33.5 68.2 -29.6Q70.7 -25.6 70.7 -20Q70.7 -13.1 66.7 -8.7Q62.6 -4.2 55.5 -2.1Q48.5 0 39.4 0H30.3Q30.3 0 30.4 -1.3Q30.4 -2.6 30.4 -3.9Q30.4 -5.1 30.4 -5.1H32.5Q36.5 -5.1 39.9 -6.7Q43.2 -8.3 45.2 -11.9Q47.2 -15.5 47.2 -21.5Q47.2 -25.1 46.4 -28Q45.6 -30.8 44 -32.9Q42.5 -34.9 40.2 -36Q37.8 -37 34.6 -37V-37.9Q37 -37.9 38.8 -38.8Q40.6 -39.7 41.8 -41.4Q42.9 -43 43.5 -45.5Q44.1 -47.9 44.1 -51Q44.1 -56.4 42.5 -59.5Q41 -62.5 38.4 -63.8Q35.8 -65 32.5 -65H17.2Q17.2 -65.1 16.9 -66.3Q16.7 -67.5 16.4 -68.8Q16.2 -70 16.2 -70ZM31.2 -70V0H10.7V-70ZM11 -7.3V0H3V-1Q3.2 -1 3.7 -1Q4.2 -1 4.3 -1Q6.9 -1 8.8 -2.9Q10.6 -4.7 10.7 -7.3ZM11 -62.7H10.7Q10.6 -65.3 8.8 -67.2Q6.9 -69 4.3 -69Q4.2 -69 3.7 -69Q3.2 -69 3 -69V-70H11Z"/><path class="lt" style="--i:1" d="M114.2 -72.4 148.8 -0.6H124.8L105.5 -46.8ZM92.7 -7.3Q91.8 -5.3 92.3 -3.9Q92.8 -2.5 94.1 -1.8Q95.3 -1 96.5 -1H97.4V0H75.1V-1Q75.1 -1 75.6 -1Q76 -1 76 -1Q78.3 -1 80.8 -2.5Q83.2 -3.9 84.8 -7.3ZM114.2 -72.4V-56.8L89.6 -0.3H81.5L107.6 -57.5Q108.1 -58.4 109 -60.4Q109.8 -62.3 110.8 -64.6Q111.7 -66.9 112.5 -69Q113.2 -71.1 113.3 -72.4ZM122.4 -21.6V-16.6H94.1V-21.6ZM121.9 -7.3H145.5Q147.2 -3.9 149.6 -2.5Q152 -1 154.3 -1Q154.3 -1 154.7 -1Q155.1 -1 155.1 -1V0H117.2V-1H118.1Q120.1 -1 121.7 -2.6Q123.2 -4.3 121.9 -7.3Z"/><path class="lt" style="--i:2" d="M206.4 -46 231.2 -8.6Q233.6 -4.9 236.2 -3Q238.8 -1.1 241.9 -1V0H231.1Q230 0 227 -0.1Q224 -0.2 220.1 -1Q216.2 -1.8 212.2 -3.9Q208.3 -6 205.4 -10Q204.6 -11.1 203.3 -13.1Q202 -15 200.5 -17.5Q198.9 -19.9 197.3 -22.4Q195.7 -24.9 194.4 -27Q193.1 -29.1 192.3 -30.5Q191.5 -31.8 191.5 -31.8ZM229 -69.3 198.8 -32.8 191.5 -31.8 219 -69.3ZM236.1 -70V-69.1H235.7Q232.4 -69.1 229.6 -67.8Q226.7 -66.4 224.7 -64.2L215.4 -64.4Q216.6 -66.1 215.9 -67.6Q215.1 -69.1 213 -69.1H212V-70H235.7ZM188.3 -70V0H167.8V-70ZM168.1 -7.3V0H160.1V-1Q160.3 -1 160.8 -1Q161.3 -1 161.4 -1Q164 -1 165.9 -2.9Q167.7 -4.7 167.8 -7.3ZM168.1 -62.7H167.8Q167.7 -65.3 165.9 -67.2Q164 -69 161.4 -69Q161.3 -69 160.8 -69Q160.3 -69 160.1 -69V-70H168.1ZM188 -7.3H188.3Q188.4 -4.7 190.3 -2.9Q192.1 -1 194.7 -1Q194.9 -1 195.4 -1Q195.9 -1 196 -1V0H188ZM188 -62.7V-70H196V-69Q195.9 -69 195.4 -69Q194.9 -69 194.7 -69Q192.1 -69 190.3 -67.2Q188.4 -65.3 188.3 -62.7Z"/><path class="lt" style="--i:3" d="M294.6 -46 319.4 -8.6Q321.8 -4.9 324.4 -3Q327 -1.1 330.1 -1V0H319.3Q318.2 0 315.2 -0.1Q312.2 -0.2 308.3 -1Q304.4 -1.8 300.5 -3.9Q296.5 -6 293.6 -10Q292.8 -11.1 291.5 -13.1Q290.2 -15 288.7 -17.5Q287.1 -19.9 285.5 -22.4Q283.9 -24.9 282.6 -27Q281.3 -29.1 280.5 -30.5Q279.7 -31.8 279.7 -31.8ZM317.2 -69.3 287 -32.8 279.7 -31.8 307.2 -69.3ZM324.3 -70V-69.1H323.9Q320.6 -69.1 317.8 -67.8Q314.9 -66.4 312.9 -64.2L303.6 -64.4Q304.8 -66.1 304.1 -67.6Q303.3 -69.1 301.2 -69.1H300.2V-70H323.9ZM276.5 -70V0H256V-70ZM256.3 -7.3V0H248.3V-1Q248.5 -1 249 -1Q249.5 -1 249.6 -1Q252.2 -1 254.1 -2.9Q255.9 -4.7 256 -7.3ZM256.3 -62.7H256Q255.9 -65.3 254.1 -67.2Q252.2 -69 249.6 -69Q249.5 -69 249 -69Q248.5 -69 248.3 -69V-70H256.3ZM276.2 -7.3H276.5Q276.6 -4.7 278.5 -2.9Q280.3 -1 282.9 -1Q283.1 -1 283.6 -1Q284.1 -1 284.2 -1V0H276.2ZM276.2 -62.7V-70H284.2V-69Q284.1 -69 283.6 -69Q283.1 -69 282.9 -69Q280.3 -69 278.5 -67.2Q276.6 -65.3 276.5 -62.7Z"/><path class="lt" style="--i:4" d="M364.7 -70V0H344.2V-70ZM390.7 -5.1 394.7 0H364.4V-5.1ZM387.4 -37V-32H364.4V-37ZM392.7 -70V-64.9H364.4V-70ZM398.8 -23.2 395 0H373.4L377 -5.1Q381.8 -5.1 386 -7.2Q390.1 -9.4 393.2 -13.4Q396.3 -17.5 397.8 -23.2ZM387.4 -32.2V-20.6H386.4V-21.1Q386.4 -25.8 383.4 -28.9Q380.3 -31.9 375.6 -32V-32.2ZM387.4 -48.4V-36.8H375.6V-37Q380.3 -37.1 383.4 -40.2Q386.5 -43.3 386.4 -48V-48.4ZM392.7 -65.2V-51.2H391.7V-52Q391.7 -58 388.3 -61.5Q384.9 -64.9 378.8 -65V-65.2ZM392.7 -71.8V-68.9L380.5 -70Q382.7 -70 385.1 -70.3Q387.6 -70.6 389.7 -71Q391.8 -71.4 392.7 -71.8ZM344.5 -7.3V0H336.5V-1Q336.5 -1 337.1 -1Q337.8 -1 337.8 -1Q340.4 -1 342.2 -2.9Q344.1 -4.7 344.2 -7.3ZM344.5 -62.7H344.2Q344.1 -65.3 342.2 -67.2Q340.4 -69 337.8 -69Q337.8 -69 337.1 -69Q336.5 -69 336.5 -69V-70H344.5Z"/><path class="lt" style="--i:5" d="M436.7 -70H448.8Q453.3 -70 458 -69.2Q462.7 -68.4 466.6 -66.3Q470.5 -64.3 472.9 -60.6Q475.3 -56.9 475.3 -51.1Q475.3 -47.3 473.9 -43.2Q472.5 -39.2 469.1 -36.2Q465.6 -33.1 459.3 -32.1Q463.5 -30.9 466.6 -28Q469.7 -25.1 471.5 -22.1Q471.7 -21.8 472.5 -20.4Q473.3 -19 474.6 -16.9Q475.8 -14.9 477.2 -12.7Q478.6 -10.5 480 -8.6Q482.3 -5.5 484 -3.9Q485.7 -2.3 487.4 -1.7Q489.2 -1.1 491.6 -1V0H479.1Q473.1 0 468 -0.7Q462.9 -1.4 458.9 -3.8Q454.8 -6.2 451.7 -11.4Q450.6 -13.2 449.9 -15Q449.2 -16.8 448.7 -18.5Q448.2 -20.2 447.9 -21.8Q447.5 -23.3 447.2 -24.8Q446.9 -26.2 446.5 -27.5Q445.5 -31.1 444.1 -32.4Q442.7 -33.7 441.3 -34.2V-35.2Q441.7 -35.2 442.2 -35.2Q442.7 -35.2 442.9 -35.2Q445.7 -35.2 447.9 -36.5Q450.1 -37.8 451.6 -40.5Q453.1 -43.2 453.6 -47.5Q453.7 -48.3 453.8 -49.2Q453.9 -50.2 453.8 -51.6Q453.4 -59 450.1 -61.9Q446.9 -64.8 442.4 -64.8Q441.9 -64.8 441.1 -64.8Q440.3 -64.8 439.4 -64.8Q438.5 -64.8 437.7 -64.8Q437.7 -64.8 437.4 -66.1Q437.2 -67.4 436.9 -68.7Q436.7 -70 436.7 -70ZM438 -70V0H417.4V-70ZM417.7 -7.3V0H409.7V-1Q409.9 -1 410.4 -1Q410.9 -1 411 -1Q413.6 -1 415.4 -2.9Q417.3 -4.7 417.4 -7.3ZM417.7 -62.7H417.4Q417.3 -65.3 415.4 -67.2Q413.6 -69 411 -69Q410.9 -69 410.4 -69Q409.9 -69 409.7 -69V-70H417.7ZM437.7 -7.3H438Q438 -4.7 439.9 -2.9Q441.8 -1 444.4 -1Q444.6 -1 445.1 -1Q445.5 -1 445.6 -1V0H437.7Z"/><path class="lt" style="--i:6" d="M522.7 -70V0H502.2V-70ZM502.5 -7.3V0H494.5V-1Q494.5 -1 495.1 -1Q495.8 -1 495.8 -1Q498.4 -1 500.2 -2.9Q502.1 -4.7 502.2 -7.3ZM502.5 -62.7H502.2Q502.1 -65.3 500.2 -67.2Q498.4 -69 495.8 -69Q495.8 -69 495.1 -69Q494.5 -69 494.5 -69V-70H502.5ZM522.4 -7.3H522.7Q522.8 -4.7 524.6 -2.9Q526.5 -1 529.1 -1Q529.1 -1 529.7 -1Q530.3 -1 530.4 -1V0H522.4ZM522.4 -62.7V-70H530.4V-69Q530.3 -69 529.7 -69Q529.1 -69 529.1 -69Q526.5 -69 524.6 -67.2Q522.8 -65.3 522.7 -62.7Z"/><path class="lt" style="--i:7" d="M571 -70V-5Q571 1.4 568.3 6.4Q565.6 11.3 561 14.7Q556.4 18 550.6 19.4Q544.9 20.8 538.8 20V19.1Q543.6 16.9 546.1 13Q548.7 9.1 549.6 4.3Q550.5 -0.5 550.5 -5.3V-70ZM550.8 -62.7H550.5Q550.4 -65.3 548.5 -67.2Q546.7 -69 544.1 -69Q544.1 -69 543.4 -69Q542.8 -69 542.8 -69V-70H550.8ZM570.7 -62.7V-70H578.7V-69Q578.7 -69 578 -69Q577.4 -69 577.4 -69Q574.8 -69 572.9 -67.2Q571.1 -65.3 571 -62.7Z"/><path class="lt" style="--i:8" d="M650.9 -70V0H630.4V-70ZM630.7 -7.3V0H622.7V-1Q622.7 -1 623.3 -1Q624 -1 624 -1Q626.6 -1 628.4 -2.9Q630.3 -4.7 630.4 -7.3ZM630.7 -62.7H630.4Q630.3 -65.3 628.4 -67.2Q626.6 -69 624 -69Q624 -69 623.3 -69Q622.7 -69 622.7 -69V-70H630.7ZM650.6 -7.3H650.9Q651 -4.7 652.8 -2.9Q654.7 -1 657.3 -1Q657.3 -1 657.9 -1Q658.5 -1 658.6 -1V0H650.6ZM650.6 -62.7V-70H658.6V-69Q658.5 -69 657.9 -69Q657.3 -69 657.3 -69Q654.7 -69 652.8 -67.2Q651 -65.3 650.9 -62.7Z"/><path class="lt" style="--i:9" d="M696.9 -71.4Q699.1 -71.4 702.8 -71.2Q706.5 -71 710.5 -70.7Q714.5 -70.3 717.5 -70Q720.5 -69.6 721.4 -69.2L719.4 -54.1H718.4Q718.4 -59.6 714.1 -63Q709.9 -66.4 702.5 -66.4Q696.4 -66.4 692.8 -64.1Q689.2 -61.7 688.9 -58Q688.6 -54.4 691.3 -52.4Q694.1 -50.4 697.8 -48.7L716.5 -40Q722.1 -37.5 725.3 -32.7Q728.5 -27.9 728 -20.6Q727.3 -9.9 719 -4.2Q710.8 1.4 696.6 1.4Q690.8 1.4 686.1 0.5Q681.4 -0.4 678 -1.9Q674.7 -3.3 672.9 -5.1Q671.8 -7.6 672 -11.2Q672.2 -14.8 673.3 -18.4Q674.5 -21.9 676.1 -24H677Q676.7 -18.8 679.2 -14.1Q681.7 -9.4 686.7 -6.5Q691.7 -3.6 698.7 -3.6Q705.9 -3.6 709.3 -6.6Q712.8 -9.6 712.8 -13.4Q712.8 -16.6 710.3 -19.2Q707.9 -21.8 702.2 -24.4L685.9 -32Q679 -35.2 675.8 -40.8Q672.7 -46.4 673.6 -53.5Q674.3 -59.3 677.3 -63.3Q680.3 -67.3 685.2 -69.3Q690.2 -71.4 696.9 -71.4ZM721.6 -70.4 721.3 -68.3H706.8V-70.4Z"/><path class="lt" style="--i:10" d="M783.2 -69.7V0H762.7V-69.7ZM806.9 -70.1V-65.1H739V-70.1ZM806.9 -65.4V-51.3L805.9 -51.4V-52.1Q805.9 -58.1 802.5 -61.5Q799.1 -65 793 -65.1V-65.4ZM806.9 -71.9V-69L794.7 -70.1Q796.9 -70.1 799.3 -70.4Q801.8 -70.7 803.9 -71.1Q806 -71.5 806.9 -71.9ZM763 -7.3V0H755V-1Q755 -1 755.6 -1Q756.3 -1 756.3 -1Q758.9 -1 760.7 -2.9Q762.6 -4.7 762.7 -7.3ZM782.9 -7.3H783.2Q783.3 -4.7 785.1 -2.9Q787 -1 789.6 -1Q789.6 -1 790.2 -1Q790.9 -1 790.9 -1V0H782.9ZM752.9 -65.4V-65.1Q746.8 -65 743.4 -61.5Q740 -58.1 740 -52.1V-51.4L739 -51.3V-65.4ZM739 -71.9Q740 -71.5 742 -71.1Q744.1 -70.7 746.6 -70.4Q749.1 -70.1 751.2 -70.1L739 -69Z"/><path class="lt" style="--i:11" d="M848.9 -72.4 883.5 -0.6H859.5L840.2 -46.8ZM827.4 -7.3Q826.5 -5.3 827 -3.9Q827.5 -2.5 828.7 -1.8Q830 -1 831.2 -1H832.1V0H809.8V-1Q809.8 -1 810.2 -1Q810.7 -1 810.7 -1Q813 -1 815.4 -2.5Q817.9 -3.9 819.5 -7.3ZM848.9 -72.4V-56.8L824.3 -0.3H816.2L842.3 -57.5Q842.8 -58.4 843.6 -60.4Q844.5 -62.3 845.4 -64.6Q846.4 -66.9 847.1 -69Q847.9 -71.1 848 -72.4ZM857.1 -21.6V-16.6H828.8V-21.6ZM856.6 -7.3H880.2Q881.9 -3.9 884.3 -2.5Q886.7 -1 889 -1Q889 -1 889.4 -1Q889.8 -1 889.8 -1V0H851.9V-1H852.8Q854.8 -1 856.3 -2.6Q857.9 -4.3 856.6 -7.3Z"/><path class="lt" style="--i:12" d="M901.5 -71.5 969 -11.5 970.3 1.4 902.8 -58.5ZM902.1 -7.1V0H893.8V-1Q893.8 -1 894.7 -1Q895.6 -1 895.7 -1Q898.2 -1 900 -2.8Q901.8 -4.6 901.8 -7.1ZM922.4 -7.1Q922.4 -4.6 924.2 -2.8Q926 -1 928.5 -1Q928.6 -1 929.5 -1Q930.4 -1 930.4 -1V0H922.1V-7.1ZM901.5 -71.5 922.3 -49.9 922.4 0H901.8V-59Q901.8 -64.9 901.1 -68.2Q900.5 -71.5 900.5 -71.5ZM969.9 -70V-11.4Q969.9 -7.3 970.2 -4.4Q970.6 -1.5 970.9 -0Q971.2 1.4 971.2 1.4H970.3L949.4 -21.8V-70ZM977.9 -70V-69Q977.9 -69 977 -69Q976.1 -69 976.1 -69Q973.6 -69 971.8 -67.2Q970 -65.5 969.9 -62.9H969.6V-70ZM941.3 -70H949.6V-62.9H949.4Q949.3 -65.5 947.5 -67.2Q945.8 -69 943.2 -69Q943.2 -69 942.3 -69Q941.4 -69 941.3 -69Z"/><path class="lt" style="--i:13" d="M1002.1 -70H1023.7Q1031.2 -70 1037.5 -68.5Q1043.8 -67 1047.6 -63.2Q1051.5 -59.5 1051.5 -52.6Q1051.5 -47.8 1049.6 -44.6Q1047.7 -41.4 1044.8 -39.8Q1041.8 -38.2 1038.4 -38.1Q1043.3 -37.9 1047.4 -35.7Q1051.6 -33.5 1054.1 -29.6Q1056.6 -25.6 1056.6 -20Q1056.6 -13.1 1052.5 -8.7Q1048.5 -4.2 1041.4 -2.1Q1034.4 0 1025.3 0H1016.2Q1016.2 0 1016.2 -1.3Q1016.3 -2.6 1016.3 -3.9Q1016.3 -5.1 1016.3 -5.1H1018.4Q1022.4 -5.1 1025.8 -6.7Q1029.1 -8.3 1031.1 -11.9Q1033.1 -15.5 1033.1 -21.5Q1033.1 -25.1 1032.3 -28Q1031.5 -30.8 1029.9 -32.9Q1028.4 -34.9 1026 -36Q1023.7 -37 1020.5 -37V-37.9Q1022.9 -37.9 1024.7 -38.8Q1026.5 -39.7 1027.6 -41.4Q1028.8 -43 1029.4 -45.5Q1030 -47.9 1030 -51Q1030 -56.4 1028.4 -59.5Q1026.9 -62.5 1024.3 -63.8Q1021.7 -65 1018.4 -65H1003.1Q1003.1 -65.1 1002.8 -66.3Q1002.6 -67.5 1002.3 -68.8Q1002.1 -70 1002.1 -70ZM1017.1 -70V0H996.6V-70ZM996.9 -7.3V0H988.9V-1Q989.1 -1 989.6 -1Q990.1 -1 990.2 -1Q992.8 -1 994.6 -2.9Q996.5 -4.7 996.6 -7.3ZM996.9 -62.7H996.6Q996.5 -65.3 994.6 -67.2Q992.8 -69 990.2 -69Q990.1 -69 989.6 -69Q989.1 -69 988.9 -69V-70H996.9Z"/><path class="lt" style="--i:14" d="M1095.4 -70V-26Q1095.4 -19 1097.6 -14Q1099.8 -9 1103.8 -6.3Q1107.9 -3.7 1113.6 -3.7Q1119.4 -3.7 1123.4 -6.2Q1127.5 -8.7 1129.7 -13.4Q1131.9 -18.1 1131.9 -24.7V-70H1140.6V-25.7Q1140.6 -17.3 1137.1 -11.2Q1133.6 -5.1 1126.9 -1.9Q1120.2 1.4 1110.6 1.4Q1098.4 1.4 1090.4 -1.9Q1082.5 -5.1 1078.7 -11.2Q1074.9 -17.2 1074.9 -25.6V-70ZM1075.2 -70V-64H1074.9Q1074.9 -66.2 1073.3 -67.6Q1071.8 -69 1069.6 -69Q1069.6 -69 1068.8 -69Q1068 -69 1068 -69V-70ZM1102.3 -70V-69Q1102.3 -69 1101.5 -69Q1100.7 -69 1100.7 -69Q1098.5 -69 1096.9 -67.6Q1095.4 -66.2 1095.4 -64H1095.2V-70ZM1132.2 -70V-64H1131.9Q1131.9 -66.2 1130.3 -67.6Q1128.8 -69 1126.6 -69Q1126.6 -69 1125.8 -69Q1125 -69 1125 -69V-70ZM1147.5 -70V-69Q1147.5 -69 1146.7 -69Q1145.9 -69 1145.9 -69Q1143.7 -69 1142.1 -67.6Q1140.6 -66.2 1140.6 -64H1140.4V-70Z"/><path class="lt" style="--i:15" d="M1186.7 -70V0H1166.2V-70ZM1212.7 -5.1 1216.7 0H1186.4V-5.1ZM1220.8 -23.2 1217 0H1195.4L1199 -5.1Q1203.8 -5.1 1207.9 -7.2Q1212.1 -9.4 1215.2 -13.4Q1218.3 -17.5 1219.8 -23.2ZM1166.5 -7.3V0H1158.5V-1Q1158.5 -1 1159.1 -1Q1159.8 -1 1159.8 -1Q1162.4 -1 1164.2 -2.9Q1166.1 -4.7 1166.2 -7.3ZM1166.5 -62.7H1166.2Q1166.1 -65.3 1164.2 -67.2Q1162.4 -69 1159.8 -69Q1159.8 -69 1159.1 -69Q1158.5 -69 1158.5 -69V-70H1166.5ZM1186.4 -62.7V-70H1194.4V-69Q1194.3 -69 1193.7 -69Q1193.1 -69 1193.1 -69Q1190.5 -69 1188.6 -67.2Q1186.8 -65.3 1186.7 -62.7Z"/></svg></a>
+    <nav class="kopnav" aria-label="Hoofdmenu">
+      <a href="#rek">Het rek</a><a href="#vraag">Vraag het de bakker</a><a href="#reviews">Reviews</a><a href="#route">Route</a>
+      <a class="tel" href="tel:+31654751043"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>06 54 75 10 43</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="rek mini" aria-label="Foto's uit de bakkerij">
+      <figure class="vak v1" style="margin:0"><div class="foto"><img src="img/brood-rek.webp" width="820" height="560" alt="Twee Turkse broden op de houten latten van het broodrek" style="--j:0;object-position:50% 45%"></div><span class="kaartje">Turks brood</span></figure>
+      <figure class="vak v2" style="margin:0"><div class="foto"><img src="img/pide-gevuld.webp" width="640" height="832" alt="Bakplaat met gevulde pides, onder meer met spinazie" style="--j:1;object-position:50% 40%"></div><span class="kaartje">Gevulde pide</span></figure>
+      <figure class="vak v3" style="margin:0"><div class="foto"><img src="img/simit.webp" width="820" height="514" alt="Simit en ronde sesambroodjes op een dienblad" style="--j:2;object-position:40% 55%"></div><span class="kaartje">Simit</span></figure>
+      <figure class="vak v4" style="margin:0"><div class="foto"><img src="img/baklava.webp" width="760" height="844" alt="Bakplaten met baklava op de toonbank" style="--j:3;object-position:50% 60%"></div><span class="kaartje">Baklava</span></figure>
+    </div>
+    <div>
+      <h1>Het broodrek van het <em>Oude&nbsp;Noorden</em></h1>
+      <p class="lede">Turks brood, pide, simit en baklava van de Turkse buurtbakkerij aan de Benthuizerstraat 80B. Kijk wat er op het rek ligt en vraag het even na.</p>
+      <div class="knoppen">
+        <a class="btn btn-wa" href="https://wa.me/31654751043?text=Hoi%20Bakkerij%20Istanbul%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>App de bakkerij</a>
+        <a class="btn btn-rand" href="#vraag">Stel je vraag samen</a>
+      </div>
+      <div class="trust"><span class="sterren" aria-hidden="true"><svg><use href="#i-ster"/></svg><svg><use href="#i-ster"/></svg><svg><use href="#i-ster"/></svg><svg><use href="#i-ster"/></svg><svg><use href="#i-ster"/></svg></span><span><b>4,6</b> uit 48 Google-reviews</span><span>Rotterdam-Noord</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="rek">
+  <div class="wrap">
+    <div class="kicker">Het rek</div>
+    <h2>Wat er op de latten ligt</h2>
+    <p class="intro">Foto's uit de bakkerij zelf. Zie je iets liggen? Tik op <b>Vraag ernaar</b>, dan staat het meteen in je bericht.</p>
+    <div class="rek groot">
+      <figure class="vak w2 ga rv" style="margin:0"><div class="foto"><img loading="lazy" decoding="async" src="img/rek-stokbrood.webp" width="1000" height="321" alt="Rek met rond Turks brood en stokbroden" style="object-position:50% 50%"></div>
+        <div class="onder"><h3>Rond brood en stokbrood</h3><a class="vraag" href="#vraag" data-kies="Turks brood">Vraag ernaar</a></div></figure>
+      <figure class="vak gs rv" style="margin:0"><div class="foto"><img loading="lazy" decoding="async" src="img/rond-brood.webp" width="820" height="699" alt="Ronde gebakken broodjes op een houten broodschep" style="object-position:55% 40%"></div>
+        <div class="onder"><h3>Op de houten schep</h3><a class="vraag" href="#vraag" data-kies="Turks brood">Vraag ernaar</a></div></figure>
+      <figure class="vak gg rv" style="margin:0"><div class="foto"><img loading="lazy" decoding="async" src="img/pide-gehakt.webp" width="745" height="540" alt="Bakplaat met pides met gehaktvulling" style="object-position:50% 50%"></div>
+        <div class="onder"><h3>Pide met gehakt</h3><a class="vraag" href="#vraag" data-kies="Pide">Vraag ernaar</a></div></figure>
+      <figure class="vak gp rv" style="margin:0"><div class="foto"><img loading="lazy" decoding="async" src="img/pide-pizza.webp" width="725" height="360" alt="Pides en pizza's op het houten rek" style="object-position:50% 50%"></div>
+        <div class="onder"><h3>Pide en pizza</h3><a class="vraag" href="#vraag" data-kies="Pide">Vraag ernaar</a></div></figure>
+      <figure class="vak w2 gd rv" style="margin:0"><div class="foto"><img loading="lazy" decoding="async" src="img/doos-pide.webp" width="725" height="540" alt="Een doos vol pides met gehakt" style="object-position:50% 45%"></div>
+        <div class="onder"><h3>Een doos vol pide</h3><a class="vraag" href="#vraag" data-kies="Pide" data-veel="1">Vraag ernaar</a></div></figure>
+      <div class="vak ruitvak w2 gr rv">
+        <img class="ruit-img" loading="lazy" decoding="async" src="img/ruit.webp" width="760" height="375" alt="De etalage van Bakkerij Istanbul met de lijst van wat er te koop is">
+        <div class="ruit-tekst">
+        <h3>Op de ruit</h3>
+        <p>Dit staat er op de etalage aan de Benthuizerstraat:</p>
+        <div class="chips"><span>Turks brood</span><span>Belegde broodjes</span><span>Stokbrood</span><span>Bruin brood</span><span>Broodjes</span><span>Simit</span><span>Baklava</span><span>Börek</span><span>Gebak</span></div>
+        <p>En ook warm:</p>
+        <div class="chips"><span>Döner</span><span>Dürüm</span><span>Lahmacun</span><span>Pizza</span><span>Pasta</span><span>Smoothies</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="bron">Foto's: Facebookpagina van Bakkerij Istanbul en Google Maps (via Restaurant Guru). Wat er vandaag ligt, verschilt; vraag het gerust even.</p>
+  </div>
+</section>
+
+<section class="sec kies-sec" id="vraag">
+  <div class="wrap">
+    <div class="kicker">Vraag het de bakker</div>
+    <h2>Stel je vraag in drie tikken</h2>
+    <p class="intro">Kies wat je zoekt, hoeveel en voor wanneer. Je appje staat klaar; je stuurt het zelf.</p>
+    <div class="kies-grid">
+      <form id="kiesform" onsubmit="return false">
+        <fieldset class="stap"><legend><i>1</i>Wat zoek je?</legend>
+          <div class="opties">
+            <label class="optie"><input type="radio" name="product" value="Turks brood" checked><span>Turks brood</span></label>
+            <label class="optie"><input type="radio" name="product" value="Pide"><span>Pide</span></label>
+            <label class="optie"><input type="radio" name="product" value="Simit"><span>Simit</span></label>
+            <label class="optie"><input type="radio" name="product" value="Baklava"><span>Baklava</span></label>
+            <label class="optie"><input type="radio" name="product" value="Belegde broodjes"><span>Belegde broodjes</span></label>
+            <label class="optie"><input type="radio" name="product" value="Börek"><span>Börek</span></label>
+            <label class="optie"><input type="radio" name="product" value="Iets anders"><span>Iets anders</span></label>
+          </div>
+          <label class="veld" id="anders-veld" hidden><input id="v-anders" type="text" aria-label="Wat precies?" placeholder="Bijvoorbeeld: mini lavash" autocomplete="off"></label>
+        </fieldset>
+        <fieldset class="stap"><legend><i>2</i>Hoeveel?</legend>
+          <div class="teller">
+            <button type="button" id="min" aria-label="Minder">−</button><output id="aantal" aria-live="polite">1</output><button type="button" id="plus" aria-label="Meer">+</button>
+            <label><input type="checkbox" id="veel"> een grote hoeveelheid</label>
+          </div>
+        </fieldset>
+        <fieldset class="stap"><legend><i>3</i>Voor wanneer?</legend>
+          <div class="opties">
+            <label class="optie"><input type="radio" name="dag" value="vandaag" checked><span>Vandaag</span></label>
+            <label class="optie"><input type="radio" name="dag" value="morgen"><span>Morgen</span></label>
+            <label class="optie"><input type="radio" name="dag" value="anders"><span>Andere dag</span></label>
+          </div>
+          <label class="veld" id="datum-veld" hidden><input id="v-datum" type="date" aria-label="Datum"></label>
+          <label class="veld"><input id="v-naam" type="text" placeholder="Je naam (mag leeg)" autocomplete="given-name" aria-label="Je naam"></label>
+        </fieldset>
+      </form>
+      <div class="bon" aria-live="polite">
+        <h3>Je appje aan Bakkerij Istanbul</h3>
+        <div class="bubbel" id="bericht"></div>
+        <a class="btn btn-wa" id="wa-kies" href="https://wa.me/31654751043?text=Hoi%20Bakkerij%20Istanbul" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>Stuur via WhatsApp</a>
+        <p class="klein">Gaat naar <span class="nw">06 54 75 10 43</span>. Liever even bellen? <a href="tel:+31654751043">Bel de bakkerij</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="waarom">
+  <div class="wrap">
+    <div class="kicker">Waarom Bakkerij Istanbul</div>
+    <h2>Brood, broodjes en een warm welkom</h2>
+    <div class="waarom">
+      <div class="kaart rv"><span class="nr">I</span><h3>Klanten noemen het brood het lekkerste van de stad</h3><p>Een klant schreef het letterlijk zo op. In andere reviews gaat het over vers brood en gevulde pides.</p></div>
+      <div class="kaart rv"><span class="nr">II</span><h3>Klanten noemen de broodjes lekker en betaalbaar</h3><p>Dat schrijven klanten in de Google-reviews: lekkere belegde broodjes voor een vriendelijke prijs.</p></div>
+      <div class="kaart rv"><span class="nr">III</span><h3>Twee eigenaren achter de toonbank</h3><p>De wijksite van het Oude Noorden spreekt van "twee hele aardige eigenaren", en reviewers noemen het stel hartelijk.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec rev-sec" id="reviews">
+  <div class="wrap">
+    <div class="kicker">Reviews</div>
+    <h2>Over de bakker gezegd</h2>
+    <div class="score"><strong>4,6</strong><span><span class="sterren" aria-hidden="true"><svg><use href="#i-ster"/></svg><svg><use href="#i-ster"/></svg><svg><use href="#i-ster"/></svg><svg><use href="#i-ster"/></svg><svg><use href="#i-ster"/></svg></span><br><a href="https://www.google.com/maps/search/?api=1&amp;query=Bakkerij+Istanbul+Benthuizerstraat+80B+Rotterdam" target="_blank" rel="noopener">48 reviews op Google</a></span></div>
+    <blockquote class="citaat">Lekkerste brood van de stad.</blockquote>
+    <p class="citaat-van">Adam, review via <a href="https://restaurantguru.com/Bakkerij-Istanbul-Rotterdam-2" target="_blank" rel="noopener" style="color:#fff">Restaurant Guru</a></p>
+    <div class="sam">
+      <div><b>Zena</b>Lekkere broodjes, en betaalbaar.</div>
+      <div><b>Dwizzy</b>Lieve mensen en lekker eten.</div>
+    </div>
+    <p class="sam-label">Zena en Dwizzy: samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="sec" id="zo">
+  <div class="wrap">
+    <div class="kicker">Zo gaat het</div>
+    <h2>Van het rek naar je tas</h2>
+    <ol class="stappen">
+      <li class="rv"><b>Kijk wat er ligt</b><span>Brood, pide, simit, baklava: alles staat hierboven in het rek.</span></li>
+      <li class="rv"><b>App of bel even</b><span>Je vraag staat klaar in de kiezer, of bel <span class="nw">06 54 75 10 43</span>.</span></li>
+      <li class="rv"><b>Loop binnen op 80B</b><span>Benthuizerstraat 80B, in het Oude Noorden.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="vragen" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker">Vragen</div>
+    <h2>Vragen aan de toonbank</h2>
+    <div class="faq">
+      <details><summary>Wat kan ik er halen?</summary><p>Op de etalage staan onder meer Turks brood, belegde broodjes, stokbrood, bruin brood, simit, baklava, börek en gebak, en daarnaast döner, dürüm, lahmacun, pizza, pasta en smoothies. Wat er vandaag ligt, verschilt: vraag het even.</p></details>
+      <details><summary>Wanneer is de bakkerij open?</summary><p>Volgens Restaurant Guru van maandag tot en met zaterdag van 08:00 tot 18:00, en op zondag dicht. Wil je het zeker weten? Bel even: <a href="tel:+31654751043">06 54 75 10 43</a>.</p></details>
+      <details><summary>Ligt iets er niet?</summary><p>Een klant schreef dat de bakker soms iets op verzoek bakt. Vraag het gerust via de kiezer of de telefoon.</p></details>
+      <details><summary>Kan ik een grotere hoeveelheid navragen?</summary><p>Ja. Vink in de kiezer "een grote hoeveelheid" aan, kies de dag en stuur je vraag. Zo weet de bakkerij meteen om hoeveel en welke dag het gaat.</p></details>
+      <details><summary>Waar zit de bakkerij precies?</summary><p>Benthuizerstraat 80B, 3036 CL Rotterdam, in het Oude Noorden.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="route" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker">Route</div>
+    <h2>Aan de Benthuizerstraat</h2>
+    <div class="route-grid">
+      <figure class="route-foto" style="margin:0"><img src="img/gevel.webp" width="1000" height="414" alt="De gevel van Bakkerij Istanbul met het blauwe bord" loading="lazy" decoding="async"><figcaption>De gevel aan de Benthuizerstraat (foto via Google Maps)</figcaption></figure>
+      <div>
+        <p class="adres">Benthuizerstraat 80B<br>3036 CL Rotterdam</p>
+        <table class="uren" aria-label="Openingstijden volgens Restaurant Guru">
+          <tr><td>Maandag t/m zaterdag</td><td>08:00–18:00</td></tr>
+          <tr><td>Zondag</td><td>gesloten</td></tr>
+        </table>
+        <p class="uren-bron">Volgens Restaurant Guru. Even bellen om zeker te zijn kan altijd.</p>
+        <div class="knoppen">
+          <a class="btn btn-lat" href="https://www.google.com/maps/dir/?api=1&amp;destination=Benthuizerstraat+80B%2C+3036+CL+Rotterdam" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Route plannen</a>
+          <a class="btn btn-rand" href="tel:+31654751043"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>Bel 06 54 75 10 43</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <div class="wrap">
+    <h2>Iets lekkers voor straks?</h2>
+    <p>Stuur de bakkerij een appje of bel even. Het adres: Benthuizerstraat 80B.</p>
+    <div class="knoppen">
+      <a class="btn btn-wit" href="https://wa.me/31654751043?text=Hoi%20Bakkerij%20Istanbul%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>App de bakkerij</a>
+      <a class="btn btn-lat" href="#vraag">Stel je vraag samen</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div><span class="f-logo"><img src="logo-light.svg" width="240" height="20" alt="Bakkerij Istanbul"></span><p style="margin-top:12px">Turkse buurtbakkerij in het Oude Noorden, Rotterdam.</p></div>
+      <div><h4>Adres</h4><ul><li>Benthuizerstraat 80B</li><li>3036 CL Rotterdam</li><li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Benthuizerstraat+80B%2C+3036+CL+Rotterdam" target="_blank" rel="noopener">Route plannen</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="tel:+31654751043">06 54 75 10 43</a></li><li><a href="https://wa.me/31654751043?text=Hoi%20Bakkerij%20Istanbul%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener">Appje sturen</a></li><li><a href="https://www.facebook.com/bakkerijistanbul.rotterdamnoord/" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+    </div>
+    <p class="mohamedia">Website door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a> · demo, niet de officiële site</p>
+  </div>
+</footer>
+
+<div class="float" id="float" aria-hidden="false">
+  <a class="btn btn-wa" href="https://wa.me/31654751043?text=Hoi%20Bakkerij%20Istanbul%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>App de bakkerij</a>
+  <a class="btn bel" href="tel:+31654751043" aria-label="Bel de bakkerij"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg></a>
+</div>
+
+<!-- Pitch-modus: alleen voor Mo in het gesprek. Openen via het kleine "Mo"-knopje of ?pitch in de URL. -->
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-labelledby="pp-titel">
+  <div class="pp">
+    <div class="pp-top"><b>Pitch · Bakkerij Istanbul</b><button class="pp-sluit" id="pp-sluit" type="button" aria-label="Sluiten">×</button></div>
+    <h2 id="pp-titel">Volgens de KvK opgericht in 1997. Op Google bij 'website': een Facebookpagina.</h2>
+    <div class="vn">
+      <figure><div class="tel-frame"><img src="img/voor-facebook.webp" width="585" height="1266" alt="Hun Facebookpagina op een telefoon: eerst een cookiescherm, dan een aanmeldvenster" loading="lazy"></div><figcaption><b>Voor:</b> hun Facebookpagina op een telefoon, zonder account (8 nov 2026). Na het cookiescherm vraagt Facebook meteen om aan te melden.</figcaption></figure>
+      <figure><div class="tel-frame"><iframe id="pp-frame" title="De nieuwe site op een telefoon" loading="lazy"></iframe></div><figcaption><b>Na:</b> hun eigen site, met hun eigen bord en hun eigen foto's van het rek.</figcaption></figure>
+    </div>
+
+    <h3>Rekenvoorbeeld (vul samen in)</h3>
+    <div class="reken">
+      <div><label for="r-klanten">Extra klanten per week <output id="o-klanten">3</output></label><input type="range" id="r-klanten" min="0" max="40" step="1" value="3"></div>
+      <div><label for="r-besteding">Gemiddelde besteding per klant <output id="o-besteding">€ 6</output></label><input type="range" id="r-besteding" min="2" max="40" step="1" value="6"></div>
+      <div class="uitkomst">
+        <div><small>Extra omzet per week</small><strong id="u-week">€ 18</strong></div>
+        <div><small>Extra omzet per jaar</small><strong id="u-jaar">€ 936</strong></div>
+        <div><small>€ 595 is de omzet van</small><strong id="u-klanten">100 klanten</strong></div>
+      </div>
+      <p class="disclaimer">Voorbeeld, geen belofte. De eigenaar kiest de getallen; het gaat om omzet, niet om winst.</p>
+    </div>
+
+    <h3>Drie dingen die beter worden</h3>
+    <ol class="punten">
+      <li><span><b>Hun eigen foto's van het rek op één open plek.</b> Nu staan ze op Facebook, waar je zonder account eerst een aanmeldvenster krijgt.</span></li>
+      <li><span><b>Een vraag of grote bestelling in 1 tik, met aantal en dag erbij.</b> App- en belknop blijven op de telefoon in beeld.</span></li>
+      <li><span><b>Bewijs en route bovenaan.</b> 4,6 uit 48 Google-reviews staat direct in beeld, 'Lekkerste brood van de stad.' bij de reviews, met een routeknop naar 80B.</span></li>
+    </ol>
+  </div>
+</div>
+
+<script>
+const WA_NUMMER = "31654751043";
+
+/* scroll-reveal met vangnet */
+(function(){
+  const els = document.querySelectorAll(".rv");
+  if ("IntersectionObserver" in window){
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin:"0px 0px -8% 0px"});
+    els.forEach(el => io.observe(el));
+  }
+  setTimeout(() => els.forEach(el => el.classList.add("in")), 3500);
+  /* vangnet: lazy foto's alsnog laden (screenshots, printen) */
+  window.addEventListener("load", () => setTimeout(() => document.querySelectorAll('main img[loading="lazy"]').forEach(i => { i.loading = "eager"; i.decoding = "sync"; }), 3500));
+})();
+
+/* zwevende cta zodra de hero uit beeld is */
+(function(){
+  const f = document.getElementById("float"), hero = document.getElementById("hero");
+  if (!("IntersectionObserver" in window)) { f.classList.add("toon"); return; }
+  new IntersectionObserver(([e]) => f.classList.toggle("toon", !e.isIntersecting), {threshold:0}).observe(hero);
+})();
+
+/* kiezer */
+(function(){
+  const form = document.getElementById("kiesform"), out = document.getElementById("bericht"), wa = document.getElementById("wa-kies");
+  const $ = id => document.getElementById(id);
+  let n = 1;
+  const vandaag = new Date(); vandaag.setMinutes(vandaag.getMinutes() - vandaag.getTimezoneOffset());
+  $("v-datum").min = vandaag.toISOString().slice(0,10);
+  const fmt = v => { if(!v) return ""; const d = new Date(v + "T12:00:00"); return d.toLocaleDateString("nl-NL",{weekday:"long",day:"numeric",month:"long"}); };
+  const namen = {"Turks brood":"Turks brood","Pide":"pide","Simit":"simit","Baklava":"baklava","Belegde broodjes":"belegde broodjes","Börek":"börek"};
+  function bouw(){
+    const product = form.querySelector("input[name=product]:checked").value;
+    const dag = form.querySelector("input[name=dag]:checked").value;
+    $("anders-veld").hidden = product !== "Iets anders";
+    $("datum-veld").hidden = dag !== "anders";
+    const veel = $("veel").checked;
+    $("aantal").textContent = veel ? "veel" : n;
+    const wat = product === "Iets anders" ? ($("v-anders").value.trim() || "iets anders") : namen[product];
+    const hoeveel = veel ? "een grote hoeveelheid " : n + "× ";
+    const wanneer = dag === "vandaag" ? "vandaag" : dag === "morgen" ? "morgen" : (fmt($("v-datum").value) ? "op " + fmt($("v-datum").value) : "binnenkort");
+    const naam = $("v-naam").value.trim();
+    const tekst = "Hoi Bakkerij Istanbul,\nhebben jullie " + wanneer + " " + hoeveel + wat + " voor mij?\n" + (naam ? "Groet, " + naam : "Groet!");
+    out.textContent = tekst;
+    wa.href = "https://wa.me/" + WA_NUMMER + "?text=" + encodeURIComponent(tekst);
+  }
+  $("min").addEventListener("click", () => { n = Math.max(1, n - 1); $("veel").checked = false; bouw(); });
+  $("plus").addEventListener("click", () => { n = Math.min(50, n + 1); $("veel").checked = false; bouw(); });
+  form.addEventListener("input", bouw); form.addEventListener("change", bouw);
+  document.querySelectorAll("[data-kies]").forEach(a => a.addEventListener("click", () => {
+    const r = form.querySelector('input[name=product][value="' + a.dataset.kies + '"]');
+    if (r){ r.checked = true; }
+    $("veel").checked = !!a.dataset.veel;
+    bouw();
+  }));
+  bouw();
+})();
+
+/* pitch-modus */
+(function(){
+  const p = document.getElementById("pitch"), frame = document.getElementById("pp-frame");
+  const euro = n => "€ " + Math.round(n).toLocaleString("nl-NL");
+  function open(){ p.classList.add("open"); document.body.style.overflow = "hidden"; if (!frame.src) frame.src = location.href.split("#")[0].split("?")[0]; }
+  function dicht(){ p.classList.remove("open"); document.body.style.overflow = ""; }
+  document.getElementById("pitch-knop").addEventListener("click", open);
+  document.getElementById("pp-sluit").addEventListener("click", dicht);
+  p.addEventListener("click", e => { if (e.target === p) dicht(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") dicht(); });
+  const k = document.getElementById("r-klanten"), b = document.getElementById("r-besteding");
+  function reken(){
+    const kl = +k.value, best = +b.value;
+    document.getElementById("o-klanten").textContent = kl;
+    document.getElementById("o-besteding").textContent = euro(best);
+    document.getElementById("u-week").textContent = euro(kl * best);
+    document.getElementById("u-jaar").textContent = euro(kl * best * 52);
+    document.getElementById("u-klanten").textContent = Math.ceil(595 / best) + " klanten";
+  }
+  k.addEventListener("input", reken); b.addEventListener("input", reken); reken();
+  if (/[?&]pitch\b/.test(location.search)) open();
+  if (window.self !== window.top) { document.getElementById("pitch-knop").hidden = true; }
+})();
+</script>
+</body>
+</html>
