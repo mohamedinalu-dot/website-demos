@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<!--
+  L227 Bruidskleding Hannelore — concept: "Jouw jurk, rustig gevonden" (zacht, persoonlijk).
+  Lay-out-archetype: TROUWKAART ALS HELD. De hero is een ivoren dubbelgevouwen kaart (gatefold) met kant en een
+  saliegroen lint. Eenmalige intro: de twee vleugels vouwen open (3D, naar de kijker toe) en blijven schuin openstaan,
+  waarna een gouden lijn de boog rond hun eigen jurkfoto tekent. Geen lus, geen Ken Burns, geen stoom, geen schuine
+  fotokaart (de kaart staat recht), geen draaiende stempel, geen lopende band onder de hero.
+  Kiezer = een RSVP-kaartje dat je invult (trouwmaand/jaar, stijl, met hoeveel je komt, voorkeursdag, ook kijken naar)
+  -> WhatsApp 06 28 84 16 29 of mail als tekst. Aanbod als programma-kaart met hun haarsieraad-foto.
+  Logo: hun eigen logo (Hannelore + gouden kroon + "bruidskleding") nagetekend als vectorpaden.
+  Pitch-modus: knop "Mo" linksonder of ?pitch.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Bruidskleding Hannelore – trouwjurken en bruidsmode in Rotterdam</title>
+<meta name="description" content="Bruidskleding Hannelore in Rotterdam-Zuidwijk: trouwjurken in maat 32 tot en met 68, bruidsaccessoires, schoenen, lingerie en outlet. Passen op afspraak, Harkulo 19.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivoor:#fbf7ef;--papier:#fffdf8;--champ:#eadcc5;--champ2:#f3eadb;--salie:#8a9a82;--salie-d:#4c5a47;--salie-dd:#38433a;
+  --goud:#a8874f;--goud-l:#d6bd8c;--inkt:#2a2621;--grijs:#625b52;
+  --kop:"Cormorant Garamond",Georgia,serif;--tekst:"Jost",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivoor);color:var(--inkt);font:400 17px/1.6 var(--tekst);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:600;line-height:1.08;margin:0;letter-spacing:-.005em}
+h2{font-size:clamp(34px,7.4vw,54px)}
+h2 em,h1 em{font-style:italic;font-weight:500;color:var(--salie-d)}
+p{margin:0}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+.oog{font:500 13px/1.3 var(--tekst);letter-spacing:.16em;text-transform:uppercase;color:var(--goud)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* demo-strook + aankondiging */
+.demo-strook{background:var(--inkt);color:#efe6d6;font-size:13px;text-align:center;padding:7px 12px}
+.demo-strook a{color:var(--goud-l)}
+.aankondiging{background:var(--champ2);border-bottom:1px solid var(--champ);font-size:14px;text-align:center;padding:8px 12px;color:var(--salie-dd)}
+.aankondiging b{font-weight:500}
+.aankondiging .ster{color:var(--goud)}
+.alleen-breed{display:none}
+
+/* header */
+.kop{position:sticky;top:0;z-index:30;background:rgba(251,247,239,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(168,135,79,.18)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:66px}
+.kop .logo img{height:50px;width:auto}
+.kop nav{display:none;gap:26px;font-size:15px}
+.kop nav a{text-decoration:none;color:var(--grijs);padding:12px 0}
+.kop nav a:hover{color:var(--inkt)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:12px 22px;border-radius:999px;font:500 16px/1.2 var(--tekst);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-wa{background:var(--salie-d);color:#fff}
+.btn-wa:hover{background:var(--salie-dd)}
+.btn-lijn{border-color:var(--inkt);color:var(--inkt);background:transparent}
+.btn-lijn:hover{background:var(--inkt);color:var(--ivoor)}
+.btn-klein{min-height:44px;padding:10px 18px;font-size:15px}
+
+/* ===== HERO: trouwkaart die openvouwt ===== */
+.hero{position:relative;overflow:hidden;padding:16px 0 40px;
+  background:
+   radial-gradient(120% 70% at 50% 18%,rgba(255,253,248,.95),rgba(251,247,239,0) 70%),
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='%23e2d3b8' stroke-width='.9'%3E%3Ccircle cx='28' cy='28' r='9'/%3E%3Ccircle cx='28' cy='28' r='3.5'/%3E%3Cpath d='M0 0Q14 14 28 0Q42 14 56 0M0 56Q14 42 28 56Q42 42 56 56'/%3E%3C/g%3E%3Cg fill='%23e2d3b8'%3E%3Ccircle cx='28' cy='14' r='1.3'/%3E%3Ccircle cx='28' cy='42' r='1.3'/%3E%3Ccircle cx='14' cy='28' r='1.3'/%3E%3Ccircle cx='42' cy='28' r='1.3'/%3E%3Ccircle cx='0' cy='28' r='2'/%3E%3Ccircle cx='56' cy='28' r='2'/%3E%3C/g%3E%3C/svg%3E") var(--ivoor)}
+.hero-in{display:grid;gap:16px;justify-items:center;text-align:center}
+.podium{perspective:1100px;width:100%;display:flex;justify-content:center;padding:4px 0 6px}
+.kaart{position:relative;width:min(60vw,240px);aspect-ratio:1/1.34;transform-style:preserve-3d}
+.kaart-binnen{position:absolute;inset:0;background:var(--papier);border-radius:4px;padding:13px 13px 0;
+  box-shadow:0 1px 0 rgba(0,0,0,.03),0 24px 50px -22px rgba(76,90,71,.45),0 6px 18px -8px rgba(42,38,33,.18);
+  display:flex;flex-direction:column}
+.kaart-binnen::before{content:"";position:absolute;inset:6px;border:1px solid var(--goud-l);border-radius:2px;pointer-events:none}
+.boog{position:relative;flex:1;border-radius:999px 999px 0 0;overflow:hidden;background:var(--champ2)}
+.boog img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.boog-lijn{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.boog-lijn path{fill:none;stroke:#f1dfb8;stroke-width:1.5;stroke-dasharray:1;stroke-dashoffset:1;animation:teken 1.6s ease-out 2.2s forwards}
+.kaart-regel{font:italic 500 17px/1 var(--kop);color:var(--grijs);text-align:center;padding:12px 0 13px}
+@keyframes teken{to{stroke-dashoffset:0}}
+
+.vleugel{position:absolute;top:0;bottom:0;width:50%;transform-style:preserve-3d;z-index:2}
+.vleugel.l{left:0;transform-origin:0 50%;animation:openL 1.7s cubic-bezier(.55,.05,.2,1) .7s forwards}
+.vleugel.r{right:0;transform-origin:100% 50%;animation:openR 1.7s cubic-bezier(.55,.05,.2,1) .85s forwards}
+@keyframes openL{to{transform:rotateY(-122deg)}}
+@keyframes openR{to{transform:rotateY(122deg)}}
+.v-voor,.v-achter{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.v-voor{background:
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34'%3E%3Cg fill='none' stroke='%23cdb68a' stroke-width='.8'%3E%3Ccircle cx='17' cy='17' r='7'/%3E%3Cpath d='M17 10v14M10 17h14'/%3E%3Cpath d='M0 0Q8.5 8.5 17 0Q25.5 8.5 34 0M0 34Q8.5 25.5 17 34Q25.5 25.5 34 34'/%3E%3C/g%3E%3Cg fill='%23cdb68a'%3E%3Ccircle cx='0' cy='17' r='1.6'/%3E%3Ccircle cx='34' cy='17' r='1.6'/%3E%3C/g%3E%3C/svg%3E") var(--papier);
+  box-shadow:inset 0 0 0 1px rgba(168,135,79,.25)}
+.vleugel.l .v-voor{border-radius:4px 0 0 4px}
+.vleugel.r .v-voor{border-radius:0 4px 4px 0}
+.vleugel.l .v-voor::after,.vleugel.r .v-voor::after{content:"";position:absolute;top:0;bottom:0;width:9px;
+  background:radial-gradient(circle at 50% 50%,var(--goud-l) 1.8px,transparent 2.3px) 0 0/9px 11px repeat-y}
+.vleugel.l .v-voor::after{right:2px}
+.vleugel.r .v-voor::after{left:2px}
+.lint{position:absolute;left:0;right:0;top:56%;height:46px;background:linear-gradient(180deg,#9aa992,#7f8f78 55%,#8c9b85);box-shadow:0 2px 6px rgba(56,67,58,.25)}
+.lint span{position:absolute;top:0;width:200%;height:100%;display:flex;align-items:center;justify-content:center;
+  font:italic 500 21px/1 var(--kop);color:#fffaf0;letter-spacing:.02em;white-space:nowrap}
+.vleugel.l .lint span{left:0}
+.vleugel.r .lint span{right:0}
+.v-achter{transform:rotateY(180deg);background:linear-gradient(90deg,#f6efe2,var(--papier));border-radius:4px;box-shadow:inset 0 0 0 1px rgba(168,135,79,.3)}
+.v-achter::before{content:"";position:absolute;inset:7px;border:1px solid var(--goud-l);border-radius:2px}
+.v-achter span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotate(180deg);font:italic 500 26px/1 var(--kop);color:var(--goud);letter-spacing:.04em}
+.vleugel.r .v-achter span{transform:none}
+
+.hero-tekst{max-width:560px}
+.hero-tekst .oog{margin-bottom:10px}
+.hero h1{font-size:clamp(40px,10.6vw,76px)}
+.hero .lead{margin-top:10px;color:var(--grijs);font-size:16.5px}
+.knoppen{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+.knoppen .btn{flex:1 1 150px;max-width:280px;padding-inline:16px}
+.trust{margin-top:28px;font-size:15px;color:var(--grijs);display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px}
+.trust a{color:var(--inkt);text-decoration:none;border-bottom:1px solid var(--goud-l)}
+.trust .ster{color:var(--goud);letter-spacing:1px}
+
+/* ===== secties algemeen ===== */
+section{padding:72px 0}
+.sectie-kop{max-width:640px;margin-bottom:34px}
+.sectie-kop p{margin-top:12px;color:var(--grijs)}
+.midden{text-align:center;margin-inline:auto}
+
+/* ===== aanbod: programma-kaart ===== */
+.aanbod{background:var(--papier);border-top:1px solid var(--champ);border-bottom:1px solid var(--champ)}
+.aanbod-grid{display:grid;gap:34px;align-items:center}
+.programma{list-style:none;margin:0;padding:0;border-top:1px solid var(--champ)}
+.programma li{border-bottom:1px solid var(--champ)}
+.programma a{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 4px;text-decoration:none;min-height:64px}
+.programma a:hover h3{color:var(--salie-d)}
+.programma .nr{font:italic 500 22px/1 var(--kop);color:var(--goud)}
+.programma h3{font-size:clamp(23px,5.6vw,28px);overflow-wrap:break-word;transition:color .2s}
+.programma small{display:block;font-size:15px;color:var(--grijs);margin-top:3px}
+.programma .pijl{font-size:13px;color:var(--salie-d);white-space:nowrap;border:1px solid var(--champ);border-radius:999px;padding:6px 10px}
+.detail{margin:0;position:relative}
+.detail .raam{border-radius:999px 999px 6px 6px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 22px 44px -26px rgba(42,38,33,.5);max-width:420px;margin-inline:auto}
+.detail img{width:100%;height:100%;object-fit:cover;object-position:50% 28%}
+.detail figcaption{text-align:center;font:italic 500 18px/1.3 var(--kop);color:var(--grijs);margin-top:12px}
+
+/* ===== kiezer: RSVP-kaartje ===== */
+.rsvp-sec{background:linear-gradient(180deg,var(--ivoor),#f1eadc)}
+.rsvp{position:relative;max-width:760px;margin:0 auto;background:var(--papier);padding:30px 22px 26px;border-radius:6px;
+  box-shadow:0 30px 60px -36px rgba(56,67,58,.55),0 2px 8px rgba(42,38,33,.06)}
+.rsvp::before{content:"";position:absolute;inset:8px;border:1px solid var(--goud-l);border-radius:3px;pointer-events:none}
+.rsvp::after{content:"";position:absolute;left:8px;right:8px;top:8px;height:14px;pointer-events:none;
+  background:radial-gradient(circle at 50% 0,transparent 5px,var(--goud-l) 5.5px,transparent 6.5px) 0 0/16px 14px repeat-x;opacity:.9}
+.rsvp-kop{text-align:center;margin-bottom:22px}
+.rsvp-kop .oog{display:block;margin-bottom:6px}
+.rsvp-kop strong{font:italic 500 clamp(28px,6.5vw,36px)/1.1 var(--kop)}
+.veld{border:0;margin:0 0 20px;padding:0;min-width:0}
+.veld legend,.veld>label{display:block;font:500 13px/1.3 var(--tekst);letter-spacing:.12em;text-transform:uppercase;color:var(--goud);margin-bottom:10px;padding:0}
+.datum{display:flex;gap:10px;flex-wrap:wrap}
+select,input[type=text]{font:400 17px/1.2 var(--tekst);color:var(--inkt);background:transparent;border:0;border-bottom:1.5px solid var(--champ);
+  min-height:48px;padding:8px 4px;border-radius:0;flex:1 1 140px;min-width:0}
+select:focus,input:focus{outline:none;border-bottom-color:var(--salie-d)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:9px 16px;border:1.5px solid var(--champ);border-radius:999px;font-size:16px;background:#fff;transition:background-color .2s,border-color .2s,color .2s}
+.chip input:checked+span{background:var(--salie-d);border-color:var(--salie-d);color:#fff}
+.chip input:focus-visible+span{outline:2px solid var(--goud);outline-offset:2px}
+.bericht-box{margin-top:6px;border-top:1px dashed var(--goud-l);padding-top:18px}
+.bericht-box .oog{font-size:12px}
+.bericht{font:italic 500 21px/1.4 var(--kop);color:var(--salie-dd);margin:8px 0 18px;min-height:3em}
+.verstuur{display:flex;flex-wrap:wrap;gap:10px}
+.verstuur .btn{flex:1 1 220px}
+.mailbox{margin-top:14px;padding:14px;background:var(--champ2);border-radius:6px;font-size:16px}
+.mailbox .adres{font-weight:500;overflow-wrap:anywhere}
+.mailbox .rij{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.mailbox button{min-height:44px}
+.klein{font-size:14px;color:var(--grijs);margin-top:12px}
+
+/* ===== waarom ===== */
+.waarom-grid{display:grid;gap:16px}
+.w-kaart{background:var(--papier);border:1px solid var(--champ);border-radius:6px;padding:26px 22px;min-width:0}
+.w-kaart .icoon{width:40px;height:40px;color:var(--goud);margin-bottom:14px}
+.w-kaart h3{font-size:clamp(25px,6vw,30px);overflow-wrap:break-word}
+.w-kaart p{color:var(--grijs);margin-top:8px}
+.feitjes{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.feitjes span{border:1px solid var(--champ);border-radius:999px;padding:8px 14px;font-size:15px;background:var(--papier)}
+
+/* ===== reviews (donker salie) ===== */
+.reviews{background:var(--salie-dd);color:#f3ede2}
+.reviews h2 em{color:var(--goud-l)}
+.score{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 28px}
+.score b{font:600 clamp(64px,16vw,96px)/1 var(--kop);color:#fffaf0}
+.score .ster{color:var(--goud-l);font-size:22px;letter-spacing:2px}
+.score a{color:#fffaf0;display:inline-flex;align-items:center;min-height:44px}
+.adreskaart dd a{display:inline-flex;align-items:center;min-height:44px}
+.rev-grid{display:grid;gap:14px}
+.rev{border:1px solid rgba(214,189,140,.35);border-radius:6px;padding:22px;background:rgba(255,255,255,.04)}
+.rev p{font:italic 500 22px/1.35 var(--kop)}
+.rev span{display:block;margin-top:12px;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--goud-l)}
+.rev-noot{margin-top:18px;font-size:14px;color:#cfc6b6}
+.rev-noot a{color:#fffaf0}
+
+/* ===== stappen ===== */
+.stappen{display:grid;gap:14px;counter-reset:s;list-style:none;margin:0;padding:0}
+.stappen li{position:relative;padding:22px 20px 22px 74px;background:var(--papier);border:1px solid var(--champ);border-radius:6px;min-width:0}
+.stappen li::before{counter-increment:s;content:counter(s);position:absolute;left:20px;top:20px;width:38px;height:38px;border-radius:50%;
+  border:1px solid var(--goud);display:grid;place-items:center;font:italic 600 22px/1 var(--kop);color:var(--goud)}
+.stappen h3{font-size:clamp(24px,5.8vw,28px)}
+.stappen p{color:var(--grijs);margin-top:4px}
+
+/* ===== faq ===== */
+.faq{max-width:760px;margin-inline:auto}
+.faq details{border-bottom:1px solid var(--champ)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:14px;align-items:center;min-height:56px;padding:12px 0;
+  font:600 clamp(21px,5vw,24px)/1.25 var(--kop)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:400 26px/1 var(--tekst);color:var(--goud);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 18px;color:var(--grijs)}
+
+/* ===== bezoek ===== */
+.bezoek{background:var(--papier);border-top:1px solid var(--champ)}
+.bezoek-grid{display:grid;gap:24px}
+.adreskaart{border:1px solid var(--champ);border-radius:6px;padding:26px 22px;background:var(--ivoor)}
+.adreskaart h3{font-size:30px}
+.adreskaart dl{margin:16px 0 0;display:grid;gap:12px}
+.adreskaart dt{font:500 12px/1.2 var(--tekst);letter-spacing:.14em;text-transform:uppercase;color:var(--goud)}
+.adreskaart dd{margin:3px 0 0}
+.adreskaart .knoppen{justify-content:flex-start}
+.kaartje-wijk{border-radius:6px;overflow:hidden;border:1px solid var(--champ);background:var(--champ2);min-height:240px;position:relative}
+.kaartje-wijk svg{width:100%;height:100%;display:block}
+
+/* ===== slot ===== */
+.slot{text-align:center;background:
+  radial-gradient(90% 80% at 50% 0,rgba(255,253,248,.9),rgba(243,234,219,0)),
+  var(--champ2)}
+.slot h2{max-width:700px;margin-inline:auto}
+.slot p{max-width:520px;margin:14px auto 0;color:var(--grijs)}
+
+/* ===== footer ===== */
+footer{background:var(--inkt);color:#d9cfbf;padding:44px 0 110px;font-size:15px}
+footer .wrap{display:grid;gap:22px}
+footer img{height:56px;width:auto}
+footer a{color:#fffaf0}
+footer a[href^="tel"]{white-space:nowrap}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 18px}
+.foot-links a{display:inline-flex;align-items:center;min-height:44px}
+.mohamedia{border-top:1px solid rgba(214,189,140,.25);padding-top:18px;font-size:14px}
+
+/* ===== zwevende CTA (mobiel) ===== */
+.zweef{position:fixed;right:14px;bottom:14px;z-index:40;display:flex;align-items:center;gap:9px;min-height:54px;padding:12px 22px;border-radius:999px;
+  background:var(--salie-d);color:#fff;text-decoration:none;font:500 16px/1 var(--tekst);box-shadow:0 14px 30px -10px rgba(56,67,58,.6);
+  opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.zweef svg{width:20px;height:20px}
+.zweef.aan{opacity:1;visibility:visible}
+
+/* ===== pitch-modus ===== */
+.pitch-knop{position:fixed;left:12px;bottom:14px;z-index:41;width:44px;height:44px;border-radius:50%;border:1px solid rgba(168,135,79,.4);
+  background:rgba(255,253,248,.85);color:var(--goud);font:italic 600 17px/1 var(--kop);cursor:pointer;opacity:.55}
+.pitch-knop:hover{opacity:1}
+@media (max-width:759px){body:not(.voorbij-hero) .pitch-knop{display:none}}
+.pitch{position:fixed;inset:0;z-index:60;background:rgba(42,38,33,.55);display:none;overflow-y:auto;padding:18px 12px}
+.pitch.open{display:block}
+.pitch-in{max-width:980px;margin:0 auto;background:var(--papier);border-radius:10px;padding:24px 18px 28px;position:relative}
+.pitch-sluit{position:absolute;right:10px;top:10px;width:44px;height:44px;border-radius:50%;border:1px solid var(--champ);background:#fff;font-size:22px;cursor:pointer}
+.pitch h2{font-size:clamp(28px,6vw,40px);padding-right:44px}
+.pitch h3{font-size:24px;margin:26px 0 12px}
+.voorna{display:grid;gap:16px}
+.voor-kaart{border:1px solid #e3c9c0;background:#fff7f4;border-radius:8px;padding:16px;display:grid;gap:14px;grid-template-columns:minmax(0,1fr)}
+.voor-kaart img{width:100%;max-width:220px;border-radius:6px;border:1px solid #ddd;margin-inline:auto}
+.voor-kaart ol{margin:0;padding-left:20px;display:grid;gap:8px;font-size:15px}
+.na-kaart{border:1px solid #cbd5c5;background:#f3f6f1;border-radius:8px;padding:16px}
+.na-kaart ul{margin:0;padding-left:20px;display:grid;gap:8px;font-size:15px}
+.label{display:inline-block;font:500 12px/1 var(--tekst);letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;border-radius:999px;margin-bottom:10px}
+.label.voor{background:#f2d9d0;color:#7a3b2a}
+.label.na{background:#d5e0cf;color:#33402f}
+.reken{display:grid;gap:16px;background:var(--ivoor);border:1px solid var(--champ);border-radius:8px;padding:18px}
+.reken label{display:block;font-size:15px}
+.reken output{font-weight:500}
+.reken input[type=range]{width:100%;min-height:44px;accent-color:var(--salie-d)}
+.uitkomst{font:600 clamp(26px,6vw,34px)/1.15 var(--kop);color:var(--salie-dd)}
+.uitkomst small{display:block;font:400 15px/1.5 var(--tekst);color:var(--grijs);margin-top:6px}
+.punten{margin:0;padding-left:22px;display:grid;gap:10px}
+
+@media (min-width:760px){
+  .alleen-breed{display:inline}
+  .rsvp{padding:44px 48px 36px}
+  .waarom-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .rev-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .stappen{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .stappen li{padding:74px 22px 24px}
+  .bezoek-grid{grid-template-columns:1fr 1fr;align-items:stretch}
+  .voorna{grid-template-columns:1fr 1fr}
+  .voor-kaart{grid-template-columns:180px minmax(0,1fr)}
+  .zweef,.zweef.aan{display:none}
+  .pitch-knop{bottom:18px;left:18px}
+}
+@media (min-width:980px){
+  .kop nav{display:flex}
+  .hero{padding:56px 0 72px}
+  .hero-in{grid-template-columns:minmax(0,1fr) 600px;text-align:left;justify-items:start;align-items:center}
+  .hero-tekst{order:-1}
+  .knoppen{justify-content:flex-start}
+  .trust{justify-content:flex-start}
+  .kaart{width:340px}
+  .lint span{font-size:26px}
+  .aanbod-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px}
+}
+@media (max-width:400px){
+  .programma .pijl{display:none}
+  .programma a{grid-template-columns:28px minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .vleugel{display:none}
+  .boog-lijn path{animation:none;stroke-dashoffset:0}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-strook">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="aankondiging"><b><span class="ster">★</span> 4,8 uit 56 Google-reviews</b><span class="alleen-breed"> · trouwjurken in maat 32 t/m 68</span> · op afspraak</div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Bruidskleding Hannelore, naar boven"><img src="logo-dark.svg" width="138" height="50" alt="Hannelore bruidskleding"></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#aanbod">Collectie</a><a href="#afspraak">Pasafspraak</a><a href="#reviews">Reviews</a><a href="#bezoek">Bezoek</a>
+    </nav>
+    <a class="btn btn-wa btn-klein" href="#afspraak">Pasafspraak</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="hero-kop">
+  <div class="wrap hero-in">
+    <div class="podium">
+      <div class="kaart">
+        <div class="kaart-binnen">
+          <div class="boog"><svg class="boog-lijn" aria-hidden="true"><path pathLength="1" d=""/></svg><img src="img/jurk-in-zaak.jpg" width="682" height="936" alt="Kanten trouwjurk met lange mouwen en V-hals in de winkel van Bruidskleding Hannelore, met rekken vol jurken op de achtergrond"></div>
+          <p class="kaart-regel">Harkulo 19 · Rotterdam</p>
+        </div>
+        <div class="vleugel l" aria-hidden="true"><div class="v-voor"><div class="lint"><span>Jouw pasafspraak</span></div></div><div class="v-achter"><span>maat 32 t/m 68</span></div></div>
+        <div class="vleugel r" aria-hidden="true"><div class="v-voor"><div class="lint"><span>Jouw pasafspraak</span></div></div><div class="v-achter"><span>op afspraak</span></div></div>
+      </div>
+    </div>
+    <div class="hero-tekst">
+      <p class="oog">Bruidskleding Hannelore · Zuidwijk</p>
+      <h1 id="hero-kop">Jouw jurk, <em>rustig</em> gevonden.</h1>
+      <p class="lead">Trouwjurken in maat 32 tot en met 68, plus accessoires, schoenen en lingerie. Je past op afspraak.</p>
+      <div class="knoppen">
+        <a class="btn btn-wa" href="https://wa.me/31628841629?text=Hallo%2C%20ik%20wil%20graag%20een%20pasafspraak%20maken%20bij%20Bruidskleding%20Hannelore." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+          <span><span class="alleen-breed">Plan via </span>WhatsApp</span></a>
+        <a class="btn btn-lijn" href="#afspraak">Vul je kaartje in</a>
+      </div>
+      <p class="trust"><a href="https://www.google.com/maps?cid=14127223056920905072" target="_blank" rel="noopener"><span class="ster">★★★★★</span> 4,8 uit 56 Google-reviews</a><span>Harkulo 19, Rotterdam-Zuidwijk</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="aanbod" id="aanbod" aria-labelledby="aanbod-kop">
+  <div class="wrap aanbod-grid">
+    <div>
+      <div class="sectie-kop">
+        <p class="oog">De collectie</p>
+        <h2 id="aanbod-kop">Wat er bij Hannelore <em>klaarhangt</em></h2>
+        <p>Van de jurk tot het haarsieraad: je stelt je bruidslook op één plek samen. Tik op wat je wilt zien, dan zet je het meteen op je kaartje.</p>
+      </div>
+      <ul class="programma">
+        <li><a href="#afspraak" data-ook=""><span class="nr">i</span><span><h3>Trouwjurken</h3><small>Maat 32 tot en met 68, ook plus-size</small></span><span class="pijl">Pasafspraak</span></a></li>
+        <li><a href="#afspraak" data-ook="accessoires"><span class="nr">ii</span><span><h3>Bruidsaccessoires</h3><small>Voor in je haar en om je look af te maken</small></span><span class="pijl">Op mijn kaartje</span></a></li>
+        <li><a href="#afspraak" data-ook="schoenen"><span class="nr">iii</span><span><h3>Bruidsschoenen</h3><small>Uitzoeken bij je jurk</small></span><span class="pijl">Op mijn kaartje</span></a></li>
+        <li><a href="#afspraak" data-ook="lingerie"><span class="nr">iv</span><span><h3>Bruidslingerie</h3><small>Wat je onder je jurk draagt</small></span><span class="pijl">Op mijn kaartje</span></a></li>
+        <li><a href="#afspraak" data-ook="outlet"><span class="nr">v</span><span><h3>Outlet</h3><small>Vraag ernaar bij je afspraak</small></span><span class="pijl">Op mijn kaartje</span></a></li>
+        <li><a href="#afspraak" data-ook=""><span class="nr">vi</span><span><h3>Direct uit voorraad</h3><small>Ook jurken die direct uit voorraad leverbaar zijn</small></span><span class="pijl">Pasafspraak</span></a></li>
+      </ul>
+    </div>
+    <figure class="detail">
+      <div class="raam"><img src="img/haar-detail.jpg" width="682" height="1112" loading="lazy" decoding="async" alt="Rug van een kanten trouwjurk met een opgestoken knot en een haarsieraad met kristallen bloemetjes"></div>
+      <figcaption>Een haarsieraad met kristallen bloemetjes, op een kanten rug</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="rsvp-sec" id="afspraak" aria-labelledby="rsvp-kop">
+  <div class="wrap">
+    <div class="sectie-kop midden" style="text-align:center">
+      <p class="oog">Pasafspraak plannen</p>
+      <h2 id="rsvp-kop">Je pasafspraak, <em>op een kaartje</em></h2>
+      <p>Vul in wat je al weet. Er komt een bericht uit dat je met één tik via WhatsApp verstuurt, of kopieert voor een mail.</p>
+    </div>
+    <form class="rsvp" id="rsvp" onsubmit="return false">
+      <div class="rsvp-kop"><span class="oog">Bruidskleding Hannelore</span><strong>Ik kom graag passen</strong></div>
+
+      <div class="veld">
+        <label for="maand">Wij trouwen in</label>
+        <div class="datum">
+          <select id="maand" aria-label="Maand van de bruiloft">
+            <option value="">maand</option><option>januari</option><option>februari</option><option>maart</option><option>april</option><option>mei</option><option>juni</option><option>juli</option><option>augustus</option><option>september</option><option>oktober</option><option>november</option><option>december</option>
+          </select>
+          <select id="jaar" aria-label="Jaar van de bruiloft">
+            <option value="">jaar</option><option>2026</option><option>2027</option><option>2028</option>
+          </select>
+        </div>
+      </div>
+
+      <fieldset class="veld"><legend>Mijn stijl</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="stijl" value="romantisch"><span>Romantisch</span></label>
+          <label class="chip"><input type="radio" name="stijl" value="strak"><span>Strak</span></label>
+          <label class="chip"><input type="radio" name="stijl" value="boho"><span>Boho</span></label>
+          <label class="chip"><input type="radio" name="stijl" value="klassiek"><span>Klassiek</span></label>
+          <label class="chip"><input type="radio" name="stijl" value="weet ik nog niet"><span>Weet ik nog niet</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="veld"><legend>Ik kom</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="mee" value="alleen"><span>Alleen</span></label>
+          <label class="chip"><input type="radio" name="mee" value="met z'n tweeën"><span>Met z'n tweeën</span></label>
+          <label class="chip"><input type="radio" name="mee" value="met z'n drieën"><span>Met z'n drieën</span></label>
+          <label class="chip"><input type="radio" name="mee" value="met z'n vieren"><span>Met z'n vieren</span></label>
+          <label class="chip"><input type="radio" name="mee" value="met meer mensen"><span>Met meer</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="veld"><legend>Liefst op een dag</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="dag" value="doordeweeks"><span>Doordeweeks</span></label>
+          <label class="chip"><input type="radio" name="dag" value="in het weekend"><span>In het weekend</span></label>
+          <label class="chip"><input type="radio" name="dag" value="maakt niet uit"><span>Maakt niet uit</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="veld"><legend>Ook kijken naar</legend>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="ook" value="accessoires"><span>Accessoires</span></label>
+          <label class="chip"><input type="checkbox" name="ook" value="schoenen"><span>Schoenen</span></label>
+          <label class="chip"><input type="checkbox" name="ook" value="lingerie"><span>Lingerie</span></label>
+          <label class="chip"><input type="checkbox" name="ook" value="outlet"><span>Outlet</span></label>
+        </div>
+      </fieldset>
+
+      <div class="veld">
+        <label for="naam">Mijn voornaam</label>
+        <input type="text" id="naam" autocomplete="given-name" placeholder="mag je ook leeg laten">
+      </div>
+
+      <div class="bericht-box">
+        <p class="oog">Zo komt je bericht aan</p>
+        <p class="bericht" id="bericht" aria-live="polite"></p>
+        <div class="verstuur">
+          <a class="btn btn-wa" id="waSend" href="https://wa.me/31628841629?text=Hallo%2C%20ik%20wil%20graag%20een%20pasafspraak." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+            Verstuur via WhatsApp</a>
+          <button type="button" class="btn btn-lijn" id="mailKnop" aria-expanded="false" aria-controls="mailbox">Liever mailen</button>
+        </div>
+        <div class="mailbox" id="mailbox" hidden>
+          Mail je bericht naar <span class="adres">info@bruidskledinghannelore.nl</span>
+          <div class="rij">
+            <button type="button" class="btn btn-lijn btn-klein" data-kopie="adres">Kopieer adres</button>
+            <button type="button" class="btn btn-lijn btn-klein" data-kopie="bericht">Kopieer bericht</button>
+          </div>
+          <p class="klein" id="kopieMelding" aria-live="polite"></p>
+        </div>
+        <p class="klein">Bellen kan ook: <a href="tel:+31628841629">06 28 84 16 29</a></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="waarom" aria-labelledby="waarom-kop">
+  <div class="wrap">
+    <div class="sectie-kop">
+      <p class="oog">Uit de reviews</p>
+      <h2 id="waarom-kop">Waar bruiden <em>over schrijven</em></h2>
+    </div>
+    <div class="waarom-grid">
+      <article class="w-kaart">
+        <svg class="icoon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M20 33s-11-6.6-11-14.3A6 6 0 0 1 20 15a6 6 0 0 1 11 3.7C31 26.4 20 33 20 33Z"/></svg>
+        <h3>Aandacht voor jou</h3>
+        <p>Klanten schrijven dat ze persoonlijke aandacht kregen.</p>
+      </article>
+      <article class="w-kaart">
+        <svg class="icoon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M7 19 20 8l13 11M11 16v15h18V16M17 31v-8h6v8"/></svg>
+        <h3>Een huiselijke sfeer</h3>
+        <p>Klanten noemen het welkom hartelijk en de sfeer huiselijk.</p>
+      </article>
+      <article class="w-kaart">
+        <svg class="icoon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M20 6v6M14 12h12l-2 7h-8zM16 19c-4 4-6 9-6 15h20c0-6-2-11-6-15"/></svg>
+        <h3>Vakkennis</h3>
+        <p>Klanten schrijven dat ze hier hun vak verstaan.</p>
+      </article>
+    </div>
+    <div class="feitjes" aria-label="Feiten">
+      <span>Maat 32 t/m 68</span><span>Op afspraak</span><span>CBW-erkende bruidswinkel</span><span>Rotterdam-Zuidwijk</span>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" aria-labelledby="rev-kop">
+  <div class="wrap">
+    <p class="oog" style="color:var(--goud-l)">Google-reviews</p>
+    <h2 id="rev-kop">Woorden van <em>bruiden</em></h2>
+    <div class="score"><b>4,8</b><span><span class="ster">★★★★★</span><br><a href="https://www.google.com/maps?cid=14127223056920905072" target="_blank" rel="noopener">uit 56 reviews op Google</a></span></div>
+    <div class="rev-grid">
+      <article class="rev"><p>Volgens Cindy verstaan ze hier hun vak.</p><span>Cindy</span></article>
+      <article class="rev"><p>Jan beschrijft een heel fijn welkom in een huiselijke sfeer.</p><span>Jan</span></article>
+      <article class="rev"><p>Corinda noemt het welkom hartelijk en de aandacht persoonlijk.</p><span>Corinda</span></article>
+    </div>
+    <p class="rev-noot">Samengevat uit reviews op Google, niet letterlijk geciteerd. Elke review van het afgelopen jaar kreeg een antwoord van Hannelore. <a href="https://www.google.com/maps?cid=14127223056920905072" target="_blank" rel="noopener">Lees alle reviews</a></p>
+  </div>
+</section>
+
+<section aria-labelledby="stap-kop">
+  <div class="wrap">
+    <div class="sectie-kop">
+      <p class="oog">Stap voor stap</p>
+      <h2 id="stap-kop">Van kaartje <em>tot paskamer</em></h2>
+    </div>
+    <ol class="stappen">
+      <li><h3>Vul je kaartje in</h3><p>Trouwmaand, stijl, met wie je komt en welke dag je het liefst hebt.</p></li>
+      <li><h3>Verstuur het</h3><p>Met één tik via WhatsApp, of kopieer het bericht voor een mail.</p></li>
+      <li><h3>Kom passen</h3><p>Op het moment dat jullie samen afspreken, aan de Harkulo 19 in Zuidwijk.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section style="padding-top:0" aria-labelledby="faq-kop">
+  <div class="wrap">
+    <div class="sectie-kop midden" style="text-align:center">
+      <p class="oog">Vragen</p>
+      <h2 id="faq-kop">Vóór je <em>eerste pasbeurt</em></h2>
+    </div>
+    <div class="faq">
+      <details><summary>Moet ik een afspraak maken?</summary><p>Ja, je past bij Bruidskleding Hannelore op afspraak. Je plant je afspraak via WhatsApp of telefoon.</p></details>
+      <details><summary>Welke maten zijn er?</summary><p>Trouwjurken in maat 32 tot en met 68, ook plus-size.</p></details>
+      <details><summary>Zijn er alleen trouwjurken?</summary><p>Nee, er zijn ook bruidsaccessoires, bruidsschoenen, bruidslingerie en een outlet. Zet op je kaartje waar je ook naar wilt kijken.</p></details>
+      <details><summary>Zijn er jurken uit voorraad?</summary><p>Ja, er zijn ook jurken die direct uit voorraad leverbaar zijn. Vraag ernaar bij je afspraak.</p></details>
+      <details><summary>Wanneer kan ik komen?</summary><p>Je komt op afspraak. Stuur je kaartje of app even, dan spreek je samen een moment af.</p></details>
+      <details><summary>Waar is de winkel?</summary><p>Harkulo 19, 3085 MH Rotterdam, in Zuidwijk.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="bezoek" id="bezoek" aria-labelledby="bezoek-kop">
+  <div class="wrap bezoek-grid">
+    <div class="adreskaart">
+      <p class="oog">Bezoek</p>
+      <h3 id="bezoek-kop">Harkulo 19, Zuidwijk</h3>
+      <dl>
+        <div><dt>Adres</dt><dd>Harkulo 19, 3085 MH Rotterdam</dd></div>
+        <div><dt>Wanneer</dt><dd>Op afspraak. Je plant je afspraak via WhatsApp of telefoon.</dd></div>
+        <div><dt>Telefoon en WhatsApp</dt><dd><a href="tel:+31628841629">06 28 84 16 29</a></dd></div>
+        <div><dt>E-mail</dt><dd>info@bruidskledinghannelore.nl</dd></div>
+      </dl>
+      <div class="knoppen" style="margin-top:22px">
+        <a class="btn btn-lijn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Harkulo%2019%2C%203085%20MH%20Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+        <a class="btn btn-lijn" href="tel:+31628841629">Bel</a>
+      </div>
+    </div>
+    <a class="kaartje-wijk" href="https://www.google.com/maps/search/?api=1&amp;query=Bruidskleding%20Hannelore%20Harkulo%2019%20Rotterdam" target="_blank" rel="noopener" aria-label="Bekijk Harkulo 19 op Google Maps">
+      <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="400" height="260" fill="#f3eadb"/>
+        <g stroke="#fffdf8" stroke-width="10" fill="none" stroke-linecap="round"><path d="M-10 70 Q120 60 210 90 T420 80"/><path d="M60 -10 Q80 120 50 270"/><path d="M300 -10 Q280 130 320 270"/><path d="M-10 190 Q160 170 420 210"/></g>
+        <g stroke="#e2d3b8" stroke-width="1" fill="none"><path d="M120 110h70v50h-70zM220 120h50v40h-50zM110 200h60v40h-60zM200 30h70v35h-70z"/></g>
+        <path d="M30 230 Q120 215 200 240 T400 232" stroke="#b9c6b2" stroke-width="16" fill="none"/>
+        <g transform="translate(196 104)"><path d="M0 0c-13 0-22 9-22 21 0 16 22 37 22 37s22-21 22-37C22 9 13 0 0 0Z" fill="#4c5a47"/><circle cy="21" r="7.5" fill="#fffdf8"/></g>
+        <text x="200" y="186" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="22" fill="#38433a">Harkulo 19</text>
+        <text x="200" y="208" text-anchor="middle" font-family="Jost, sans-serif" font-size="12" letter-spacing="2" fill="#a8874f">ZUIDWIJK · ROTTERDAM</text>
+        <text x="200" y="40" text-anchor="middle" font-family="Jost, sans-serif" font-size="13" fill="#4c5a47">Open in Google Maps →</text>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="slot-kop">
+  <div class="wrap">
+    <h2 id="slot-kop">Kom <em>rustig</em> passen.</h2>
+    <p>Maat 32 tot en met 68, op afspraak, in Zuidwijk. Stuur je kaartje of app meteen.</p>
+    <div class="knoppen" style="justify-content:center">
+      <a class="btn btn-wa" href="https://wa.me/31628841629?text=Hallo%2C%20ik%20wil%20graag%20een%20pasafspraak%20maken." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+        <span><span class="alleen-breed">Plan via </span>WhatsApp</span></a>
+      <a class="btn btn-lijn" href="#afspraak">Naar mijn kaartje</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-light.svg" width="154" height="56" alt="Hannelore bruidskleding">
+    <p>Harkulo 19, 3085 MH Rotterdam · Op afspraak · <a href="tel:+31628841629">06 28 84 16 29</a></p>
+    <div class="foot-links">
+      <a href="https://instagram.com/bruidskledinghannelore" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://facebook.com/bruidskledinghannelore" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.google.com/maps?cid=14127223056920905072" target="_blank" rel="noopener">Google-reviews</a>
+    </div>
+    <p class="mohamedia">Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+  </div>
+</footer>
+
+<a class="zweef" id="zweef" href="https://wa.me/31628841629?text=Hallo%2C%20ik%20wil%20graag%20een%20pasafspraak." target="_blank" rel="noopener" aria-label="Pasafspraak via WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+  Pasafspraak</a>
+
+<!-- ===== Pitch-modus (alleen voor Mo) ===== -->
+<button class="pitch-knop" id="pitchKnop" type="button" aria-label="Pitch-modus openen" aria-controls="pitch">Mo</button>
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-labelledby="pitch-kop" hidden>
+  <div class="pitch-in">
+    <button class="pitch-sluit" id="pitchSluit" type="button" aria-label="Sluiten">×</button>
+    <p class="oog">Pitch · Bruidskleding Hannelore</p>
+    <h2 id="pitch-kop">Van een cookiemelding naar een pasafspraak</h2>
+
+    <h3>Voor en na</h3>
+    <div class="voorna">
+      <div class="voor-kaart">
+        <img src="img/voor-site.jpg" width="390" height="844" alt="Huidige contactpagina van Bruidskleding Hannelore op een telefoon, met de cookiemelding over de onderste helft" loading="lazy" decoding="async">
+        <div>
+          <span class="label voor">Nu · hun site op een telefoon</span>
+          <ol>
+            <li>De cookiemelding bedekt de onderste helft van het eerste scherm.</li>
+            <li>Openingstijden verschillen: hun site zegt dinsdag tot en met zaterdag 09:30–17:30, openingstijden.nl zegt doordeweeks tot 21:00.</li>
+            <li>Geen WhatsApp-knop, terwijl het nummer een 06 is.</li>
+            <li>Twee namen door elkaar: Bruidskleding Hannelore en Bruidsmode Hannelore.</li>
+            <li>Het logo staat als klein plaatje met een grijzig vlak eromheen.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="na-kaart">
+        <span class="label na">Straks · deze site</span>
+        <ul>
+          <li>Eén duidelijke regel: op afspraak, Harkulo 19, met route-knop.</li>
+          <li>Een pasafspraak-kaartje dat de bruid invult en in één tik via WhatsApp stuurt.</li>
+          <li>4,8 uit 56 Google-reviews bovenaan, één naam en hun logo scherp als vector.</li>
+          <li>Hun eigen jurkfoto als held, geen cookiemelding die het scherm afdekt.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Wat dit kan opleveren <small style="font:400 14px var(--tekst);color:var(--grijs)">voorbeeld, geen belofte</small></h3>
+    <div class="reken">
+      <label for="rBruiden">Extra bruiden per maand via de site: <output id="oBruiden">1</output></label>
+      <input type="range" id="rBruiden" min="0" max="4" step="1" value="1">
+      <label for="rBesteding">Gemiddelde besteding per bruid (vul samen in): <output id="oBesteding">€ 800</output></label>
+      <input type="range" id="rBesteding" min="200" max="2500" step="50" value="800">
+      <p class="uitkomst" id="uitkomst"></p>
+    </div>
+
+    <h3>Drie dingen die beter zijn dan nu</h3>
+    <ol class="punten">
+      <li><strong>Pasafspraak in één tik:</strong> trouwmaand, stijl en met wie ze komt staan al in het WhatsApp-bericht. Nu is er geen WhatsApp-knop.</li>
+      <li><strong>Eén waarheid over wanneer:</strong> "op afspraak" met adres en route, in plaats van tijden die per site verschillen.</li>
+      <li><strong>Eerste scherm verkoopt:</strong> hun eigen jurk, hun logo en 4,8 uit 56 reviews, in plaats van een cookiemelding over de helft van het scherm.</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NR='31628841629';
+  var $=function(s,c){return (c||document).querySelector(s)};
+  var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+
+  /* ---- gouden lijn binnen de boog (pixelmaat) ---- */
+  function boog(){var b=$('.boog'),sv=$('.boog-lijn'),w=b.clientWidth,h=b.clientHeight,i=6,r=w/2-i;
+    sv.setAttribute('viewBox','0 0 '+w+' '+h);
+    sv.firstChild.setAttribute('d','M'+i+' '+h+' V'+(r+i)+' A'+r+' '+r+' 0 0 1 '+(w-i)+' '+(r+i)+' V'+h);}
+  boog();addEventListener('resize',boog);
+
+  /* ---- kaartje -> bericht ---- */
+  var form=$('#rsvp'), bericht=$('#bericht'), wa=$('#waSend');
+  function waarde(n){var e=$('input[name="'+n+'"]:checked');return e?e.value:''}
+  function tekst(){
+    var naam=$('#naam').value.trim(), m=$('#maand').value, j=$('#jaar').value;
+    var t=naam?'Hallo, ik ben '+naam+'. Ik wil graag een pasafspraak.':'Hallo, ik wil graag een pasafspraak.';
+    if(m||j) t+=' We trouwen in '+[m,j].filter(Boolean).join(' ')+'.';
+    var s=waarde('stijl'); if(s) t+=(s==='weet ik nog niet'?' Mijn stijl weet ik nog niet.':' Mijn stijl is '+s+'.');
+    var mee=waarde('mee'); if(mee) t+=' Ik kom '+mee+'.';
+    var d=waarde('dag'); if(d) t+=(d==='maakt niet uit'?' Welke dag maakt niet uit.':' Het liefst '+d+'.');
+    var ook=$$('input[name="ook"]:checked').map(function(e){return e.value});
+    if(ook.length) t+=' Ik wil ook kijken naar '+(ook.length>1?ook.slice(0,-1).join(', ')+' en '+ook[ook.length-1]:ook[0])+'.';
+    return t;
+  }
+  function bijwerken(){var t=tekst();bericht.textContent=t;wa.href='https://wa.me/'+NR+'?text='+encodeURIComponent(t)}
+  form.addEventListener('input',bijwerken);form.addEventListener('change',bijwerken);bijwerken();
+
+  $$('.programma a').forEach(function(a){a.addEventListener('click',function(){
+    var v=a.getAttribute('data-ook'); if(!v) return;
+    var c=$('input[name="ook"][value="'+v+'"]'); if(c){c.checked=true;bijwerken()}
+  })});
+
+  var mk=$('#mailKnop'), mb=$('#mailbox');
+  mk.addEventListener('click',function(){var open=mb.hidden;mb.hidden=!open;mk.setAttribute('aria-expanded',String(open))});
+  $$('[data-kopie]').forEach(function(b){b.addEventListener('click',function(){
+    var t=b.getAttribute('data-kopie')==='adres'?'info@bruidskledinghannelore.nl':tekst();
+    var meld=$('#kopieMelding');
+    var klaar=function(){meld.textContent=b.getAttribute('data-kopie')==='adres'?'Adres gekopieerd.':'Bericht gekopieerd. Plak het in je mail.'};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(klaar,function(){meld.textContent=t})}else{meld.textContent=t}
+  })});
+
+  /* ---- zwevende CTA zodra de hero uit beeld is ---- */
+  var zweef=$('#zweef'), hero=$('.hero');
+  if('IntersectionObserver' in window){
+    var heroUit=false,bijKaart=false;
+    var zet=function(){zweef.classList.toggle('aan',heroUit&&!bijKaart);document.body.classList.toggle('voorbij-hero',heroUit)};
+    new IntersectionObserver(function(e){heroUit=!e[0].isIntersecting;zet()},{threshold:0}).observe(hero);
+    new IntersectionObserver(function(e){bijKaart=e[0].isIntersecting;zet()},{threshold:0,rootMargin:'-30% 0px -30% 0px'}).observe($('#rsvp'));
+  }else{zweef.classList.add('aan')}
+
+  /* ---- pitch-modus ---- */
+  var p=$('#pitch');
+  function openP(){p.hidden=false;p.classList.add('open');document.body.style.overflow='hidden'}
+  function sluitP(){p.classList.remove('open');p.hidden=true;document.body.style.overflow=''}
+  $('#pitchKnop').addEventListener('click',openP);$('#pitchSluit').addEventListener('click',sluitP);
+  p.addEventListener('click',function(e){if(e.target===p)sluitP()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')sluitP()});
+  if(/[?&]pitch\b/.test(location.search)) openP();
+
+  var rB=$('#rBruiden'), rS=$('#rBesteding');
+  var eur=function(n){return '€ '+Math.round(n).toLocaleString('nl-NL')};
+  function reken(){
+    var b=+rB.value, s=+rS.value;
+    $('#oBruiden').textContent=b; $('#oBesteding').textContent=eur(s);
+    var jaar=b*s*12, x=595/s;
+    var xs=x.toLocaleString('nl-NL',{maximumFractionDigits:1});
+    $('#uitkomst').innerHTML=eur(jaar)+' extra omzet per jaar'+
+      '<small>'+b+' bruid'+(b===1?'':'en')+' × '+eur(s)+' × 12 maanden. €595 voor de site is de omzet van ongeveer '+xs+' bruid'+(x>1.05?'en':'')+'. Voorbeeld met jullie eigen getallen, geen belofte.</small>';
+  }
+  rB.addEventListener('input',reken);rS.addEventListener('input',reken);reken();
+})();
+</script>
+</body>
+</html>
