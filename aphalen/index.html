@@ -1,646 +1,711 @@
 <!doctype html>
+<!--
+  Demo L206 Ap Halen (v2, 8 nov 2026)
+  Concept: "Ap Halen = even ophalen bij Ap" - huiselijk, warm, Indisch.
+  Archetype: "stel je bord samen" van bovenaf. Hero = een rond emaille bord (hun eigen foto, recht, rond uitgesneden)
+  op een stilstaand kawung-batikpatroon, waarop de onderdelen een voor een benoemd worden (labels), met opstijgende stoom.
+  Kiezer = een getekend bord van bovenaf dat je zelf vult (illustratief) -> appje/belletje naar Ap.
+  Foto's van Google Maps als rechte polaroids in een raster (niet schuin). Geen draaiende stempel, geen lopende band.
+  Kleuren: indigo-batik, kurkuma, pandan. Fonts: Caprasimo + Figtree.
+-->
 <html lang="nl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Ap Halen – Indisch eten afhalen in Rotterdam-Delfshaven</title>
-<meta name="description" content="Ap Halen is een afhaalzaakje voor Indisch eten aan de Mathenesserdijk in Rotterdam-Delfshaven. Elke dag een ander dagmenu, vers en voordelig. Woensdag t/m vrijdag vanaf 17:00, op = op.">
-<meta name="theme-color" content="#4a3f4c">
+<meta name="description" content="Ap Halen, afhaalzaakje voor Indisch eten aan de Mathenesserdijk 412c in Rotterdam. Elke dag een ander dagmenu, wo–vr vanaf 17:00. Op is op: bel even wat er vandaag is. 4,9 uit 203 Google-reviews.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--plum:#5d5262;--plum-d:#4a3f4c;--plum-dd:#352d37;--rose:#f1e6e5;--rose-2:#e6d6d4;--paper:#fffaf8;--hull:#8f6a43;--hull-d:#6e4f30;--gold:#c9a15b;--ink:#2c2530;--soft:#665b68;--line:#dccbc9;
---head:"Josefin Sans",system-ui,sans-serif;--body:"Nunito Sans",system-ui,sans-serif}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:12px}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+:root{
+  --indigo:#1b2350;--indigo2:#26306b;--indigo3:#34408a;--blauw:#2f4fa8;
+  --kurkuma:#e8a317;--kurkuma-l:#f7cf5a;--pandan:#2f7d3d;--pandan-d:#22602d;--pandan-l:#e6f1e3;
+  --rijst:#fbfaf6;--ink:#161b38;--grijs:#5a5f78;--lijn:#e3e1d8;
+  --kop:"Caprasimo",Georgia,serif;--tekst:"Figtree",system-ui,sans-serif;
+  --batik:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='%23222c5f' stroke='%232c3874' stroke-width='1.5'%3E%3Cellipse cx='16' cy='16' rx='14' ry='7.5' transform='rotate(45 16 16)'/%3E%3Cellipse cx='48' cy='16' rx='14' ry='7.5' transform='rotate(-45 48 16)'/%3E%3Cellipse cx='16' cy='48' rx='14' ry='7.5' transform='rotate(-45 16 48)'/%3E%3Cellipse cx='48' cy='48' rx='14' ry='7.5' transform='rotate(45 48 48)'/%3E%3C/g%3E%3Cg fill='%23a87a1c' opacity='.55'%3E%3Ccircle cx='32' cy='32' r='2.2'/%3E%3Ccircle cx='0' cy='0' r='2.2'/%3E%3Ccircle cx='64' cy='0' r='2.2'/%3E%3Ccircle cx='0' cy='64' r='2.2'/%3E%3Ccircle cx='64' cy='64' r='2.2'/%3E%3C/g%3E%3Cg fill='none' stroke='%23384690' stroke-width='1'%3E%3Cellipse cx='16' cy='16' rx='8' ry='3' transform='rotate(45 16 16)'/%3E%3Cellipse cx='48' cy='16' rx='8' ry='3' transform='rotate(-45 48 16)'/%3E%3Cellipse cx='16' cy='48' rx='8' ry='3' transform='rotate(-45 16 48)'/%3E%3Cellipse cx='48' cy='48' rx='8' ry='3' transform='rotate(45 48 48)'/%3E%3C/g%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--tekst);color:var(--ink);background:var(--rijst);line-height:1.55;font-size:17px;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--head);overflow-wrap:break-word;min-width:0;letter-spacing:.01em}
-h2{font-weight:300;font-size:clamp(30px,7vw,50px);line-height:1.08;margin:0 0 14px;color:var(--plum-d);text-transform:uppercase;letter-spacing:.04em}
-h2 b{font-weight:700}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--head);font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--hull);margin:0 0 12px}
-.eyebrow::before{content:"";width:28px;height:2px;background:currentColor}
-.lead{font-size:18px;color:var(--soft);max-width:38em;margin:0 0 34px}
-section{padding:84px 0}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--kop);font-weight:400;line-height:1.05;letter-spacing:-.005em}
+h2{font-size:clamp(2rem,6.4vw,3.3rem);overflow-wrap:break-word}
+h2 em{font-style:normal;color:var(--pandan)}
+.kicker{font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pandan)}
+.lead{font-size:1.08rem;color:var(--grijs);max-width:56ch}
+section{padding:72px 0}
 
-/* strook + balk */
-.demo{background:var(--plum-dd);color:#d9cdd6;font-size:12.5px;text-align:center;padding:6px 14px}
-.demo a{color:#fff}
-.notice{background:var(--gold);color:var(--plum-dd);font-size:14.5px;font-weight:800;text-align:center;padding:9px 14px;line-height:1.4}
-.notice span{white-space:nowrap}
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:52px;padding:0 22px;border-radius:999px;font-weight:800;font-size:1rem;text-decoration:none;border:0;cursor:pointer;font-family:var(--tekst);white-space:nowrap}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-bel{background:var(--kurkuma);color:var(--indigo);box-shadow:0 6px 0 #b67d0c}
+.btn-bel:hover{background:var(--kurkuma-l)}
+.btn-app{background:var(--pandan);color:#fff;box-shadow:0 6px 0 var(--pandan-d)}
+.btn-app:hover{background:#37904a}
+.btn-rand{background:transparent;color:var(--indigo);border:2px solid var(--indigo)}
+.btn:focus-visible,.chip:focus-visible,button:focus-visible{outline:3px solid var(--kurkuma);outline-offset:3px}
+
+/* demo-strook + aankondiging */
+.demo-strip{background:#0e1330;color:#cfd3ea;font-size:.8rem;padding:6px 12px;display:flex;align-items:center;justify-content:center;gap:10px;text-align:center}
+.demo-strip a{color:#fff}
+.demo-mo{background:none;border:1px solid #3c4475;color:#8f96bf;border-radius:999px;font:700 .68rem var(--tekst);min-width:44px;min-height:30px;cursor:pointer}
+.aank{background:var(--kurkuma);color:var(--indigo);font-weight:700;font-size:.86rem;text-align:center;padding:7px 12px}
+.aank a{text-decoration:none;justify-content:center;flex-wrap:wrap}
+.aank b{font-weight:800}
 
 /* header */
-.head{background:var(--plum-d);color:#fff}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:82px}
-.brand{display:flex;align-items:center;text-decoration:none;min-width:0}
-.brand img{width:160px;height:auto}
-.bar nav{display:flex;align-items:center;gap:26px}
-.bar nav a{text-decoration:none;font-family:var(--head);font-weight:600;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:#e8dde4}
-.bar nav a:hover{color:#fff}
-
-/* knoppen: geen transition op transform */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:14px 24px;border-radius:6px;font-family:var(--head);font-weight:700;font-size:16.5px;letter-spacing:.06em;text-transform:uppercase;line-height:1.15;text-decoration:none;border:2px solid transparent;cursor:pointer;text-align:center;transition:background-color .2s,color .2s,border-color .2s}
-.btn svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.btn-g{background:var(--gold);color:var(--plum-dd)}
-.btn-g:hover{background:#d8b373}
-.btn-p{background:var(--plum-d);color:#fff}
-.btn-p:hover{background:var(--plum-dd)}
-.btn-o{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
-.btn-o:hover{background:rgba(255,255,255,.1)}
-.btn-l{background:transparent;color:var(--plum-d);border-color:var(--plum-d)}
-.btn-l:hover{background:var(--plum-d);color:#fff}
-.bar .btn{min-height:46px;padding:10px 18px;font-size:14.5px}
+header{background:var(--indigo) var(--batik);background-size:64px 64px;color:#fff}
+.kop{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+.kop img{height:44px;width:auto}
+.kop nav{display:none;gap:26px;font-weight:600;font-size:.95rem}
+.kop nav a{text-decoration:none;color:#dfe3f7}
+.kop nav a:hover{color:var(--kurkuma-l)}
+.kop .btn{min-height:44px;padding:0 16px;font-size:.92rem;box-shadow:0 4px 0 #b67d0c}
 
 /* hero */
-.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(180deg,var(--plum-d) 0%,var(--plum) 100%)}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 80% 40%,rgba(201,161,91,.18),transparent 70%);pointer-events:none}
-.hero-in{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center;padding-top:56px;padding-bottom:84px}
-.status{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 16px;font-size:14.5px;font-weight:600;margin:0 0 22px;max-width:100%}
-.status i{width:10px;height:10px;border-radius:50%;background:var(--gold);flex:none;animation:pulse 2.2s ease-in-out infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,161,91,.55)}50%{box-shadow:0 0 0 7px rgba(201,161,91,0)}}
-.hero h1{font-weight:300;font-size:clamp(36px,8.6vw,66px);line-height:1.04;margin:0 0 20px;text-transform:uppercase;letter-spacing:.03em}
-.hero h1 b{font-weight:700;display:block;color:var(--gold)}
-.hero .sub{font-size:18.5px;color:#e6dbe2;max-width:31em;margin:0 0 32px}
-.btns{display:flex;flex-wrap:wrap;gap:14px}
-.trust{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px;color:#ddd0d9}
+.hero{background:var(--indigo) var(--batik);background-size:64px 64px;color:#fff;padding:10px 0 40px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:14px;background:repeating-linear-gradient(90deg,var(--kurkuma) 0 22px,var(--pandan) 22px 44px)}
+.hero-grid{display:grid;gap:18px;align-items:center;position:relative}
+.hero .kicker{color:var(--kurkuma-l)}
+.hero h1{font-size:clamp(2.6rem,12vw,4.7rem);margin:6px 0 6px}
+.nw{white-space:nowrap}
+.breed{display:none}
+@media (max-width:979px){.hero-tekst{display:contents}.hero .kicker{order:1}.hero h1{order:2}.bordvak{order:3}.hero .sub{order:4;font-size:.95rem}.cta-rij{order:5}.naar-bord{order:6}.trust{order:7}.hero-grid{gap:0}.bordvak{margin:52px 0 6px}.cta-rij{margin-top:16px}.trust{margin-top:14px}.naar-bord{margin-top:4px}}
+.hero h1 em{font-style:normal;color:var(--kurkuma)}
+.hero .sub{color:#d5d9f0;font-size:1rem;max-width:44ch}
+.hero .sub b{color:#fff}
+
+.bordvak{position:relative;justify-self:center;width:min(78vw,300px);margin-top:8px}
+.bord{position:relative;width:100%;aspect-ratio:1;border-radius:50%;background:#fff;padding:13px;box-shadow:0 0 0 6px var(--blauw),0 0 0 9px #fff,0 26px 50px rgba(5,8,25,.55)}
+.bord .foto{width:100%;height:100%;border-radius:50%;overflow:hidden;position:relative}
+.bord .foto img{width:100%;height:100%;object-fit:cover}
+.ken{animation:ken 22s ease-in-out infinite alternate;transform-origin:50% 45%}
+@keyframes ken{from{transform:scale(1)}to{transform:scale(1.08)}}
+.lbl{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%) scale(.6);opacity:0;transition:opacity .45s ease,transform .5s cubic-bezier(.3,1.6,.5,1);z-index:2;pointer-events:none}
+.lbl.op{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.lbl span{display:inline-block;background:var(--rijst);color:var(--indigo);font-weight:800;font-size:.8rem;padding:5px 11px 5px 9px;border-radius:999px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,.35)}
+.lbl span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--pandan);margin-right:6px;vertical-align:1px}
+.lbl.k span::before{background:var(--kurkuma)}
+.stoom{position:absolute;left:50%;top:-56px;width:160px;height:90px;transform:translateX(-50%);pointer-events:none;z-index:3}
+.stoom path{fill:none;stroke:rgba(255,255,255,.55);stroke-width:5;stroke-linecap:round;opacity:0;animation:stoom 4.2s ease-in-out infinite}
+.stoom path:nth-child(2){animation-delay:1.4s}
+.stoom path:nth-child(3){animation-delay:2.8s}
+@keyframes stoom{0%{opacity:0;transform:translateY(26px)}35%{opacity:.8}100%{opacity:0;transform:translateY(-14px)}}
+.bordvak figcaption{font-size:.74rem;color:#aab1d8;text-align:center;margin-top:16px}
+
+.cta-rij{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.cta-rij .btn-bel{flex:1 1 auto}
+.naar-bord{display:inline-flex;align-items:center;min-height:44px;margin-top:14px;color:#fff;font-weight:700;text-underline-offset:4px}
+.trust{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:26px;font-size:.9rem;color:#d5d9f0}
 .trust b{color:#fff}
-.trust a{text-decoration:none;display:inline-flex;align-items:center;gap:6px;min-height:44px}
-.trust{align-items:center}
-.stars{color:var(--gold);letter-spacing:2px}
+.ster{color:var(--kurkuma)}
 
-/* ansichtkaart */
-.card-wrap{justify-self:center;width:100%;max-width:400px}
-.pc{width:100%;height:auto;display:block;overflow:visible;filter:drop-shadow(10px 14px 0 rgba(30,22,32,.35))}
-.pc-tilt{transform-origin:50% 50%;animation:tilt 9s ease-in-out infinite}
-@keyframes tilt{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(-.6deg)}}
-.ship{animation:bob 3.6s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(4px,-3px) rotate(-.6deg)}}
-.ship-go{animation:sail 14s ease-in-out infinite}
-@keyframes sail{0%,100%{transform:translateX(-10px)}50%{transform:translateX(10px)}}
-.puff{transform-box:fill-box;transform-origin:center;animation:puff 4.2s ease-out infinite;opacity:0}
-.puff.p2{animation-delay:1.4s}.puff.p3{animation-delay:2.8s}
-@keyframes puff{0%{opacity:0;transform:translate(0,0) scale(.5)}15%{opacity:.85}100%{opacity:0;transform:translate(-56px,-70px) scale(2.1)}}
-.foam{animation:foam 7s linear infinite}
-.foam.f2{animation-duration:11s;animation-direction:reverse}
-@keyframes foam{to{transform:translateX(-80px)}}
-.gull{animation:gull 12s linear infinite}
-.gull.g2{animation-duration:16s;animation-delay:-6s}
-@keyframes gull{0%{transform:translate(-60px,10px)}50%{transform:translate(120px,-8px)}100%{transform:translate(300px,6px)}}
-.wing{transform-box:fill-box;transform-origin:center;animation:flap .7s ease-in-out infinite alternate}
-@keyframes flap{to{transform:scaleY(.5)}}
-.stamp{transform-box:fill-box;transform-origin:center;animation:stamp .7s cubic-bezier(.3,1.5,.5,1) .6s both}
-@keyframes stamp{from{transform:scale(1.8) rotate(-20deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
-.cap{font-size:13px;color:#d8cad4;text-align:center;margin:18px 0 0}
-
-/* marquee */
-.band{background:var(--rose-2);color:var(--plum-d);overflow:hidden;white-space:nowrap;border-top:2px solid var(--plum-d);border-bottom:2px solid var(--plum-d)}
-.band .track{display:inline-block;padding:14px 0;animation:slide 40s linear infinite;font-family:var(--head);font-weight:600;font-size:19px;letter-spacing:.12em;text-transform:uppercase}
-.band span{margin:0 20px}
-.band span::after{content:"";display:inline-block;width:8px;height:8px;background:var(--hull);transform:rotate(45deg);margin-left:40px;vertical-align:3px}
-@keyframes slide{to{transform:translateX(-50%)}}
-
-/* vandaag */
-.today-s{background:var(--rose)}
-.tgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
-.board{position:relative;background:var(--paper);border:2px solid var(--plum-d);border-radius:4px;padding:34px 30px 28px;box-shadow:12px 12px 0 var(--plum-d);min-width:0}
-.board::before{content:"";position:absolute;inset:8px;border:1px solid var(--line);pointer-events:none}
-.board .bt{font-family:var(--head);font-weight:300;font-size:clamp(26px,6.4vw,34px);text-transform:uppercase;letter-spacing:.08em;text-align:center;margin:0;color:var(--plum-d)}
-.board .bd{font-family:var(--head);font-weight:600;text-align:center;color:var(--hull);letter-spacing:.14em;text-transform:uppercase;font-size:14px;margin:4px 0 20px}
-.dish{list-style:none;margin:0 0 18px;padding:0}
-.dish li{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-weight:600;font-size:17.5px;min-width:0}
-.dish li::before{content:"";width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex:none;position:relative;top:-2px}
-.board .src{font-size:13.5px;color:var(--soft);margin:0 0 6px;text-align:center}
-.oop{position:absolute;right:-14px;top:-18px;background:var(--hull);color:#fff;font-family:var(--head);font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;border-radius:3px;transform:rotate(6deg);box-shadow:3px 3px 0 var(--plum-d)}
-.facts{list-style:none;padding:0;margin:0 0 30px;display:grid;gap:14px}
-.facts li{display:flex;gap:14px;align-items:flex-start;min-width:0}
-.facts .ic{width:46px;height:46px;border-radius:50%;background:var(--plum-d);display:flex;align-items:center;justify-content:center;flex:none}
-.facts .ic svg{width:22px;height:22px;fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.facts b{display:block;font-family:var(--head);font-size:18px;letter-spacing:.03em;color:var(--plum-d)}
-.facts span{color:var(--soft);font-size:16px}
+/* even bellen */
+.bellen{background:var(--rijst);padding:56px 0}
+.feiten{display:grid;gap:14px;margin-top:26px}
+.feit{border:2px solid var(--indigo);border-radius:18px;padding:20px 22px;background:#fff;position:relative}
+.feit h3{font-size:1.45rem;margin-bottom:6px}
+.feit p{color:var(--grijs)}
+.feit .bron{font-size:.78rem;margin-top:8px}
+.feit.geel{background:var(--kurkuma);border-color:var(--kurkuma)}
+.feit.geel p{color:var(--indigo)}
+.feit.geel a.telnr{font-family:var(--kop);font-size:clamp(1.6rem,7vw,2.1rem);text-decoration:none;color:var(--indigo);display:inline-flex;min-height:44px;align-items:center}
 
 /* kiezer */
-.pick{background:var(--plum-d);color:#fff}
-.pick h2{color:#fff}
-.pick .lead{color:#ddd0d9}
-.pgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:32px;align-items:start}
-.steps{background:var(--plum);border-radius:8px;padding:28px 26px;border:1px solid rgba(255,255,255,.14);min-width:0}
-fieldset{border:0;margin:0 0 24px;padding:0;min-width:0}
-fieldset:last-child{margin-bottom:0}
-legend{font-family:var(--head);font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 12px;padding:0}
-legend em{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--plum-dd);margin-right:10px;font-size:13px}
-.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.opts.two{grid-template-columns:repeat(2,minmax(0,1fr))}
-.opts.four{grid-template-columns:repeat(4,minmax(0,1fr))}
-.opt{min-height:58px;border-radius:6px;border:2px solid rgba(255,255,255,.3);background:transparent;color:#fff;font:inherit;font-weight:800;font-size:15.5px;line-height:1.2;cursor:pointer;padding:8px 6px;transition:background-color .2s,border-color .2s,color .2s;min-width:0;overflow-wrap:anywhere}
-.opt small{display:block;font-weight:400;font-size:12.5px;opacity:.85;margin-top:2px}
-.opt:hover{border-color:#fff}
-.opt[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--plum-dd)}
-.ticket{background:var(--paper);color:var(--ink);border-radius:6px;padding:28px 26px;position:relative;min-width:0;box-shadow:10px 10px 0 var(--plum-dd)}
-.ticket::after{content:"";position:absolute;left:0;right:0;top:-8px;height:16px;background:radial-gradient(circle at 8px 0,transparent 7px,var(--paper) 8px) -8px 8px/16px 16px repeat-x}
-.ticket h3{font-weight:300;font-size:clamp(24px,6vw,30px);text-transform:uppercase;letter-spacing:.06em;margin:0 0 14px;color:var(--plum-d)}
-.tl{list-style:none;margin:0 0 18px;padding:0}
-.tl li{display:flex;gap:12px;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line);font-size:16px}
-.tl li span:first-child{color:var(--soft)}
-.tl li span:last-child{font-weight:800;text-align:right}
-.tnote{background:var(--rose);border-left:4px solid var(--hull);padding:12px 14px;font-size:15.5px;margin:0 0 20px}
-.ticket .btn{width:100%;margin-top:10px}
+.kiezer{background:var(--pandan-l)}
+.kz{display:grid;gap:28px;margin-top:30px;align-items:start}
+.kz-bord{position:relative;background:var(--indigo) var(--batik);background-size:48px 48px;border-radius:26px;padding:22px;display:grid;place-items:center}
+.kz-bord svg{width:100%;max-width:420px;height:auto}
+.kz-bord .noot{color:#c5cbea;font-size:.78rem;text-align:center;margin-top:10px}
+.it{opacity:0;transform:scale(.4);transform-box:fill-box;transform-origin:center;transition:opacity .35s ease,transform .45s cubic-bezier(.3,1.6,.5,1)}
+.it.op{opacity:1;transform:none}
+.stap-lbl{font-weight:800;font-size:.95rem;margin:0 0 10px;color:var(--indigo)}
+.stap-lbl small{font-weight:500;color:var(--grijs)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{min-height:44px;padding:0 15px;border-radius:999px;border:2px solid var(--indigo);background:#fff;color:var(--indigo);font:700 .92rem var(--tekst);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip[aria-pressed="true"]{background:var(--indigo);color:#fff}
+.chip[aria-pressed="true"]::before{content:"✓";color:var(--kurkuma)}
+.chip small{font-weight:500;opacity:.75}
+.teller{display:inline-flex;align-items:center;gap:6px;margin-bottom:22px;background:#fff;border:2px solid var(--indigo);border-radius:999px;padding:3px}
+.teller button{width:44px;height:44px;border-radius:50%;border:0;background:var(--indigo);color:#fff;font:800 1.3rem var(--tekst);cursor:pointer}
+.teller output{min-width:96px;text-align:center;font-weight:800}
+.kz input[type=text]{width:100%;min-height:48px;border:2px solid var(--indigo);border-radius:14px;padding:0 14px;font:500 1rem var(--tekst);margin-bottom:22px;background:#fff}
+.bon{background:#fff;border-radius:18px;padding:18px 18px 20px;border:2px dashed var(--pandan)}
+.bon pre{white-space:pre-wrap;font:500 .95rem/1.5 var(--tekst);color:var(--ink);margin-bottom:16px}
+.bon .knoppen{display:flex;flex-wrap:wrap;gap:12px}
+.bon .knoppen .btn{flex:1 1 150px}
+.bon .klein{font-size:.8rem;color:var(--grijs);margin-top:14px}
 
-/* waarom */
-.why{background:var(--paper)}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.wcard{background:#fff;border:2px solid var(--line);border-radius:6px;padding:30px 26px;min-width:0;position:relative}
-.wcard .no{font-family:var(--head);font-weight:300;font-size:46px;line-height:1;color:var(--gold);margin:0 0 10px}
-.wcard h3{font-weight:600;font-size:clamp(20px,5.2vw,23px);line-height:1.2;margin:0 0 10px;color:var(--plum-d);text-transform:uppercase;letter-spacing:.04em}
-.wcard p{margin:0;color:var(--soft)}
+/* foto's */
+.fotos{background:var(--rijst)}
+.raster{display:grid;gap:18px;margin-top:30px;grid-template-columns:1fr 1fr}
+.pol{background:#fff;padding:10px 10px 14px;border-radius:4px;box-shadow:0 2px 0 var(--lijn),0 14px 30px rgba(27,35,80,.13)}
+.pol .beeld{position:relative;overflow:hidden;aspect-ratio:1;background:#eee}
+.pol img{width:100%;height:100%;object-fit:cover}
+.pol figcaption{font-size:.84rem;color:var(--grijs);margin-top:10px;line-height:1.4}
+.pol figcaption b{color:var(--ink);display:block;font-size:.95rem}
+.pol.groot{grid-column:1/-1}
+.pol.groot .beeld{aspect-ratio:4/3}
+.pol .stoom{top:auto;bottom:52%;width:60%;height:40%}
+.bron-r{font-size:.8rem;color:var(--grijs);margin-top:16px}
 
-/* verhaal */
-.story{background:var(--rose);position:relative;overflow:hidden}
-.sgrid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center}
-.quote{background:var(--plum-d);color:#fff;border-radius:6px;padding:40px 34px;position:relative;min-width:0}
-.quote::before{content:"\201C";position:absolute;top:-30px;left:24px;font-family:Georgia,serif;font-size:120px;line-height:1;color:var(--gold)}
-.quote p{font-family:var(--head);font-weight:300;font-size:clamp(23px,5.6vw,30px);line-height:1.3;margin:0 0 18px}
-.quote p.cite{font-family:var(--body);font-size:14.5px;margin:0;line-height:1.5}
-.quote cite{font-style:normal;color:#d8cad4}
-.quote cite a{color:#fff}
-.story-t p{margin:0 0 16px}
-.story-t .big{font-family:var(--head);font-size:clamp(21px,5vw,25px);line-height:1.35;color:var(--plum-d);font-weight:400}
-.story-t .src{font-size:14px;color:var(--soft)}
+/* over ap */
+.over{background:var(--indigo) var(--batik);background-size:64px 64px;color:#fff}
+.over .kicker{color:var(--kurkuma-l)}
+.over h2 em{color:var(--kurkuma)}
+.citaten{display:grid;gap:18px;margin-top:30px}
+.cit{background:rgba(14,19,48,.72);border-left:5px solid var(--kurkuma);padding:20px 22px;border-radius:0 16px 16px 0}
+.cit p{font-family:var(--kop);font-size:clamp(1.25rem,4.6vw,1.6rem);line-height:1.25}
+.cit cite{display:block;font-style:normal;font-size:.82rem;color:#aab1d8;margin-top:10px}
+.cit cite a{color:#dfe3f7}
+.cit.pan{border-color:var(--pandan)}
+.waarom{display:grid;gap:14px;margin-top:40px}
+.wk{background:var(--rijst);color:var(--ink);border-radius:18px;padding:22px;min-width:0}
+.wk .nr{font-family:var(--kop);color:var(--kurkuma);font-size:2rem;line-height:1}
+.wk h3{font-size:clamp(1.2rem,5vw,1.4rem);margin:8px 0 6px;overflow-wrap:break-word}
+.wk p{color:var(--grijs);font-size:.95rem}
 
 /* reviews */
-.rev{background:var(--paper)}
-.score{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin:0 0 36px}
-.score .num{font-family:var(--head);font-weight:300;font-size:72px;line-height:1;color:var(--plum-d)}
-.score .stars{font-size:24px}
-.score a{font-weight:800;color:var(--plum-d)}
-.rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.rcard{background:var(--rose);border-radius:6px;padding:28px 26px;min-width:0;display:flex;flex-direction:column}
-.rcard p{font-size:18px;line-height:1.5;margin:0 0 18px;flex:1}
-.rcard .who{font-family:var(--head);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hull);font-size:15px}
-.rnote{font-size:14px;color:var(--soft);margin:22px 0 0}
+.reviews{background:#fff}
+.score{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px}
+.score .getal{font-family:var(--kop);font-size:4rem;line-height:1;color:var(--indigo)}
+.score .sterren{color:var(--kurkuma);font-size:1.4rem;letter-spacing:2px}
+.score a{font-weight:700}
+.rv-grid{display:grid;gap:16px;margin-top:26px}
+.rv{border:2px solid var(--lijn);border-radius:18px;padding:22px;background:var(--rijst)}
+.rv p{font-size:1.05rem}
+.rv b{display:block;margin-top:12px;color:var(--pandan)}
+.label{font-size:.82rem;color:var(--grijs);margin-top:16px}
 
-/* zo werkt het */
-.how{background:var(--plum);color:#fff}
-.how h2{color:#fff}
-.hsteps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:s}
-.hsteps li{border-top:2px solid var(--gold);padding:22px 4px 0;min-width:0}
-.hsteps li::before{counter-increment:s;content:"0" counter(s);display:block;font-family:var(--head);font-weight:300;font-size:44px;line-height:1;color:var(--gold);margin:0 0 12px}
-.hsteps h3{font-weight:600;font-size:clamp(19px,5vw,22px);text-transform:uppercase;letter-spacing:.05em;margin:0 0 8px}
-.hsteps p{margin:0;color:#e3d8df}
+/* stappen */
+.stappen{background:var(--pandan-l)}
+.st-grid{display:grid;gap:16px;margin-top:28px;counter-reset:s}
+.st{background:#fff;border-radius:18px;padding:22px 22px 22px 76px;position:relative;min-height:96px}
+.st::before{counter-increment:s;content:counter(s);position:absolute;left:20px;top:20px;width:42px;height:42px;border-radius:50%;background:var(--kurkuma);color:var(--indigo);font:400 1.4rem/42px var(--kop);text-align:center}
+.st h3{font-size:1.3rem;margin-bottom:4px}
+.st p{color:var(--grijs);font-size:.96rem}
 
 /* faq */
-.faq{background:var(--rose)}
-.fwrap{max-width:820px}
-details{background:var(--paper);border:2px solid var(--line);border-radius:6px;margin:0 0 12px}
-summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 20px;min-height:58px;font-weight:800;font-size:17px;color:var(--plum-d)}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-family:var(--head);font-size:28px;font-weight:300;color:var(--hull);flex:none}
-details[open] summary::after{content:"\2013"}
-details p{margin:0;padding:0 20px 18px;color:var(--soft)}
+.faq{background:var(--rijst)}
+.faq details{border-bottom:2px solid var(--lijn)}
+.faq summary{list-style:none;cursor:pointer;font-weight:800;font-size:1.06rem;padding:18px 40px 18px 0;position:relative;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:6px;top:12px;font:400 1.8rem var(--kop);color:var(--pandan)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 18px;color:var(--grijs);max-width:70ch}
+.faq-lijst{margin-top:24px;max-width:820px}
 
-/* adres */
-.visit{background:var(--paper)}
-.vgrid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:36px;align-items:stretch}
-.vinfo{background:var(--plum-d);color:#fff;border-radius:6px;padding:32px 28px;min-width:0}
-.vinfo h3{font-weight:600;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
-.vinfo p{margin:0 0 22px}
-.vinfo a{color:#fff}
-.hours{list-style:none;margin:0 0 22px;padding:0}
-.hours li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.15)}
-.hours li.now{color:var(--gold);font-weight:800}
-.vinfo .btns .btn{flex:1 1 180px}
-.map{border-radius:6px;overflow:hidden;border:2px solid var(--plum-d);min-height:380px;background:var(--rose-2)}
-.map iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+/* route */
+.route{background:#fff}
+.route-grid{display:grid;gap:24px;margin-top:26px}
+.adres{background:var(--indigo) var(--batik);background-size:64px 64px;color:#fff;border-radius:22px;padding:26px}
+.adres h3{font-size:1.6rem;margin-bottom:10px}
+.adres p{color:#d5d9f0}
+.adres dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin:18px 0 22px}
+.adres dt{font-weight:800;color:var(--kurkuma-l)}
+.adres .knoppen{display:flex;flex-wrap:wrap;gap:12px}
+.kaart{border-radius:22px;overflow:hidden;min-height:300px;background:#dfe3f7;border:2px solid var(--lijn)}
+.kaart iframe{width:100%;height:100%;min-height:300px;border:0;display:block}
 
 /* slot */
-.end{background:var(--plum-dd);color:#fff;text-align:center;position:relative;overflow:hidden}
-.end h2{color:#fff;max-width:16em;margin-left:auto;margin-right:auto}
-.end .lead{color:#d8cad4;margin-left:auto;margin-right:auto}
-.end .btns{justify-content:center}
+.slot{background:var(--kurkuma);text-align:center;padding:64px 0}
+.slot h2{color:var(--indigo)}
+.slot p{margin:12px auto 24px;max-width:46ch;color:var(--indigo);font-weight:500}
+.slot .cta-rij{justify-content:center}
+.slot .btn-bel{background:var(--indigo);color:#fff;box-shadow:0 6px 0 #0b1030;flex:0 1 auto}
 
-/* footer */
-footer{background:#251f27;color:#c9bcc6;padding:44px 0 110px;font-size:15px}
-.fgrid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-start}
-footer img{width:150px;height:auto;margin:0 0 12px}
+.aank a,.bron a,.score a,.adres dd a,.cit cite a,footer a{display:inline-flex;align-items:center;min-height:44px}
+.aank{padding:0 12px}
+.adres dl{align-items:center}
+footer{background:#0e1330;color:#aab1d8;padding:36px 0 110px;font-size:.9rem}
+footer .f{display:grid;gap:16px}
+footer img{height:40px;width:auto}
 footer a{color:#fff}
-footer p{margin:0 0 6px}
-.made{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:14px}
+footer .door{border-top:1px solid #262d57;padding-top:16px;margin-top:8px}
 
-/* zwevende CTA */
-.fbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:none;gap:10px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
-.fbar.show{opacity:1;visibility:visible}
-.fbar .btn{flex:1;min-height:52px;box-shadow:0 6px 18px rgba(0,0,0,.3);padding:10px 12px;font-size:15px}
+/* zwevend */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:flex;gap:10px;transform:translateY(150%);transition:transform .35s ease;pointer-events:none}
+.zweef.toon{transform:none;pointer-events:auto}
+.zweef .btn{flex:1;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.zweef .btn-app{flex:0 0 auto}
 
-/* reveal met vangnet */
-.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
-.rv.in{opacity:1;transform:none}
+/* pitch */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(8,11,30,.78);display:none;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.pitch.open{display:block}
+.pp{background:#fff;max-width:980px;margin:20px auto;border-radius:22px;padding:22px;width:calc(100% - 24px)}
+.pp-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.85rem;color:var(--grijs)}
+.pp-sluit{width:44px;height:44px;border-radius:50%;border:0;background:var(--indigo);color:#fff;font-size:1.4rem;cursor:pointer}
+.pp h2{font-size:clamp(1.6rem,5vw,2.3rem);margin:10px 0 18px}
+.pp h3{font-size:1.3rem;margin:26px 0 12px}
+.vn{display:grid;gap:18px}
+.vn figure{margin:0}
+.vn figcaption{font-size:.85rem;color:var(--grijs);margin-top:8px}
+.oud{background:#8b8291;border-radius:14px;padding:16px;color:#fff;font-family:Georgia,serif;min-height:360px;position:relative;overflow:hidden}
+.oud .url{background:#fff;color:#555;font:12px/1 var(--tekst);border-radius:6px;padding:7px 10px;margin-bottom:14px}
+.oud .ansicht{background:#d9b8b0;color:#5b3f45;border:6px solid #f1e3dc;padding:14px;text-align:center;letter-spacing:.2em;font-size:.95rem}
+.oud .rij{display:flex;gap:12px;margin-top:14px;align-items:flex-start}
+.oud .tel-oud{width:70px;flex:none}
+.oud .kaartje{flex:1;background:#d7d9cf;color:#666;font:11px var(--tekst);height:110px;display:flex;align-items:flex-end;justify-content:flex-end;padding:6px;border:1px solid #bbb;background-image:linear-gradient(90deg,transparent 48%,#fff 48% 52%,transparent 52%),linear-gradient(0deg,transparent 60%,#f4e6a0 60% 64%,transparent 64%)}
+.oud ul{list-style:none;margin-top:14px;font:600 .9rem var(--tekst)}
+.oud ul li{background:rgba(0,0,0,.35);border-radius:8px;padding:6px 10px;margin-top:6px}
+.oud ul li::before{content:"✕ ";color:#ffb4a8}
+.tel{border:10px solid #111;border-radius:30px;overflow:hidden;height:560px;background:#111}
+.tel iframe{width:100%;height:100%;border:0;background:#fff}
+.reken{background:var(--pandan-l);border-radius:18px;padding:18px;display:grid;gap:16px}
+.reken label{display:flex;justify-content:space-between;font-weight:700;gap:10px}
+.reken output{white-space:nowrap}
+.reken input[type=range]{width:100%;min-height:44px;accent-color:var(--pandan)}
+.uitkomst{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.uitkomst div{background:#fff;border-radius:14px;padding:12px}
+.uitkomst small{display:block;color:var(--grijs);font-size:.8rem}
+.uitkomst strong{font-family:var(--kop);font-weight:400;font-size:1.6rem;color:var(--indigo)}
+.disclaimer{font-size:.82rem;color:var(--grijs)}
+.punten{padding-left:22px;display:grid;gap:10px}
 
-@media (max-width:960px){
-  .bar nav a:not(.btn){display:none}
-  .hero-in,.tgrid,.pgrid,.sgrid,.vgrid{grid-template-columns:minmax(0,1fr)}
-  .hero-in{padding-top:36px;gap:34px}
-  .card-wrap{max-width:330px}
-  .cards,.rgrid,.hsteps{grid-template-columns:minmax(0,1fr)}
-  .fbar{display:flex}
+@media (min-width:760px){
+  .kop nav{display:flex}
+  .breed{display:inline}
+  .feiten{grid-template-columns:1.2fr 1fr 1fr}
+  .raster{grid-template-columns:repeat(3,1fr)}
+  .pol.groot{grid-column:auto}
+  .pol.groot .beeld{aspect-ratio:1}
+  .waarom,.rv-grid,.st-grid{grid-template-columns:repeat(3,1fr)}
+  .citaten{grid-template-columns:1.3fr 1fr}
+  .route-grid{grid-template-columns:1fr 1.2fr}
+  .vn{grid-template-columns:1fr 1fr}
+  .zweef{display:none}
+  footer{padding-bottom:40px}
+  footer .f{grid-template-columns:1fr 1fr;align-items:start}
 }
-@media (max-width:520px){
-  section{padding:64px 0}
-  .brand img{width:132px}
-  .bar{min-height:72px}
-  .bar .btn{padding:8px 14px}
-  .hero .btns .btn{flex:1 1 100%}
-  .opts.four{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .board{padding:30px 20px 24px;box-shadow:8px 8px 0 var(--plum-d)}
-  .oop{right:-6px}
-  .steps,.ticket{padding:24px 18px}
-  .score .num{font-size:60px}
+@media (min-width:980px){
+  .hero{padding:30px 0 70px}
+  .hero-grid{grid-template-columns:1.05fr .95fr;gap:40px}
+  .bordvak{width:min(40vw,480px);margin-top:60px}
+  .hero .cta-rij .btn-bel{flex:0 1 auto}
+  .hero .sub{font-size:1.12rem}
+  .kz{grid-template-columns:1fr 1fr}
+  .kz-bord{position:sticky;top:20px}
+  section{padding:96px 0}
+}
+@media (max-width:400px){
+  .lbl span{font-size:.72rem;padding:4px 9px 4px 7px}
+  .cta-rij .btn{padding:0 16px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .puff{opacity:.6}
-  .rv{opacity:1;transform:none}
   html{scroll-behavior:auto}
+  .stoom{display:none}
 }
 </style>
 </head>
 <body>
 
-<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
-<div class="notice"><span>4,9 ★ uit 203 Google-reviews</span> · <span>Mathenesserdijk 412 c, Delfshaven</span></div>
+<div class="demo-strip"><span>Dit is een demo, gemaakt door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a>.</span><button class="demo-mo" id="pitch-knop" type="button" aria-label="Pitch-modus">Mo</button></div>
+<div class="aank"><a href="https://www.google.com/maps/search/?api=1&amp;query=Ap+Halen+Mathenesserdijk+412c+Rotterdam" target="_blank" rel="noopener"><span><b>4,9 ★</b> uit 203 Google-reviews</span><span class="breed">&nbsp;· sinds 2012</span></a></div>
 
-<header class="head">
-  <div class="wrap bar">
-    <a class="brand" href="#top" aria-label="Ap Halen, naar boven"><img src="logo-light.svg" alt="Ap Halen – Indisch eten" width="160" height="45"></a>
-    <nav aria-label="Hoofdmenu">
-      <a href="#vandaag">Dagmenu</a>
-      <a href="#kiezer">Langskomen</a>
-      <a href="#verhaal">Verhaal</a>
-      <a href="#reviews">Reviews</a>
-      <a class="btn btn-g" href="tel:+31619989513"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Bel Ap</a>
-    </nav>
+<header>
+  <div class="wrap kop">
+    <a href="#top" aria-label="Ap Halen, naar boven"><img src="logo-light.svg" alt="Ap Halen – Indisch eten" width="155" height="44"></a>
+    <nav aria-label="Hoofdmenu"><a href="#bord">Je bord</a><a href="#fotos">Foto's</a><a href="#over">Over Ap</a><a href="#route">Route</a></nav>
+    <a class="btn btn-bel" href="tel:+31619989513"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Bel Ap</a>
   </div>
 </header>
 
 <main id="top">
-<section class="hero" id="hero" style="padding:0">
-  <div class="wrap hero-in">
-    <div>
-      <p class="status" id="status"><i></i><span id="statusTxt">Woensdag, donderdag en vrijdag open vanaf 17:00</span></p>
-      <h1>Indisch eten <b>om af te halen</b></h1>
-      <p class="sub">Een handjevol vertrouwde en minder vertrouwde gerechten. Iedere dag verrassend verschillend, maar wel vers en voordelig. Aan de Mathenesserdijk in Delfshaven.</p>
-      <div class="btns cta-row">
-        <a class="btn btn-g" href="tel:+31619989513"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Bel Ap: 06 19 98 95 13</a>
-        <a class="btn btn-o" href="#kiezer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Plan je bezoek</a>
+<section class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-tekst">
+      <p class="kicker">Indisch eten<span class="breed"> om af te halen</span> · Delfshaven</p>
+      <h1>Even ophalen <span class="nw">bij <em>Ap</em>.</span></h1>
+      <p class="sub"><span class="breed">Elke dag een handjevol andere gerechten, <b>vers en voordelig</b>. </span>Woensdag t/m vrijdag vanaf 17:00, en als het op is, is het op.</p>
+      <div class="cta-rij">
+        <a class="btn btn-bel" href="tel:+31619989513"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Bel 06 19 98 95 13</a>
+        <a class="btn btn-app" href="https://wa.me/31619989513?text=Hoi%20Ap%2C%20wat%20staat%20er%20vandaag%20op%20het%20menu%3F" target="_blank" rel="noopener">App Ap</a>
       </div>
-      <div class="trust">
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=Ap+Halen+Mathenesserdijk+412c+Rotterdam" target="_blank" rel="noopener"><span class="stars">★★★★★</span> <b>4,9</b> uit 203 Google-reviews</a>
-        <span>Rotterdam-Delfshaven</span>
-        <span>Als het op is, is het op</span>
+      <a class="naar-bord" href="#bord">Of stel eerst je bord samen ↓</a>
+      <div class="trust"><span><span class="ster">★★★★★</span> <b>4,9</b> uit 203 Google-reviews</span><span>Mathenesserdijk 412c</span></div>
+    </div>
+    <figure class="bordvak">
+      <svg class="stoom" viewBox="0 0 160 90" aria-hidden="true"><path d="M50 86c-10-14 10-22 0-38s8-24 2-40"/><path d="M80 86c-10-14 10-22 0-38s8-24 2-40"/><path d="M110 86c-10-14 10-22 0-38s8-24 2-40"/></svg>
+      <div class="bord">
+        <div class="foto"><img class="ken" src="img/bord-rond.webp" alt="Een bord bij Ap Halen met rijst, kroepoek, komkommer, boontjes en tempé" width="490" height="490" fetchpriority="high"></div>
+        <div class="lbl k" style="--x:20%;--y:31%"><span>kroepoek</span></div>
+        <div class="lbl" style="--x:45%;--y:47%"><span>rijst</span></div>
+        <div class="lbl" style="--x:76%;--y:40%"><span>komkommer</span></div>
+        <div class="lbl k" style="--x:47%;--y:67%"><span>sambal goreng boontjes</span></div>
+        <div class="lbl" style="--x:72%;--y:87%"><span>tempé</span></div>
+      </div>
+      <figcaption>Een bord bij Ap (foto op Google, april 2026)</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="bellen">
+  <div class="wrap">
+    <p class="kicker">Voor je de deur uitgaat</p>
+    <h2>Bel even <em>wat er vandaag is</em>.</h2>
+    <div class="feiten">
+      <div class="feit geel">
+        <h3>Bel Ap</h3>
+        <a class="telnr" href="tel:+31619989513">06 19 98 95 13</a>
+        <p>Het menu wisselt elke dag. Even vragen scheelt een gemiste maaltijd.</p>
+      </div>
+      <div class="feit">
+        <h3>Wo t/m vr vanaf 17:00</h3>
+        <p>Woensdag, donderdag en vrijdag open vanaf vijf uur.</p>
+        <p class="bron">Volgens Rijnmond (dec. 2025) en Spinach.</p>
+      </div>
+      <div class="feit">
+        <h3>Op is op</h3>
+        <p>“Als het op is, is het op.” Kom dus liever vroeg dan laat.</p>
+        <p class="bron">Ap in <a href="https://www.rijnmond.nl/nieuws/2120384/afhaaltoko-ap-halen-begon-13-jaar-geleden-uit-wanhoop-nu-staat-er-elke-dag-een-rij-voor-de-deur" target="_blank" rel="noopener">Rijnmond</a>, december 2025.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="card-wrap">
-      <svg class="pc" viewBox="0 0 360 450" role="img" aria-label="Ansichtkaart met een stoomschip en de naam Ap Halen, Indisch eten">
-        <defs>
-          <clipPath id="sky"><rect x="22" y="22" width="316" height="406"/></clipPath>
-        </defs>
-        <g class="pc-tilt">
-          <path fill="#fbf6f2" d="M8 6 L20 9 L32 5 L44 9 L56 5 L68 8 L80 5 L92 9 L104 6 L116 9 L128 5 L140 8 L152 5 L164 9 L176 6 L188 9 L200 5 L212 8 L224 5 L236 9 L248 6 L260 9 L272 5 L284 8 L296 5 L308 9 L320 6 L332 9 L352 6 L349 18 L353 30 L349 42 L353 54 L349 66 L353 78 L349 90 L353 102 L349 114 L353 126 L349 138 L353 150 L349 162 L353 174 L349 186 L353 198 L349 210 L353 222 L349 234 L353 246 L349 258 L353 270 L349 282 L353 294 L349 306 L353 318 L349 330 L353 342 L349 354 L353 366 L349 378 L353 390 L349 402 L353 414 L349 426 L352 444 L340 441 L328 445 L316 441 L304 445 L292 442 L280 445 L268 441 L256 445 L244 442 L232 445 L220 441 L208 445 L196 442 L184 445 L172 441 L160 445 L148 442 L136 445 L124 441 L112 445 L100 442 L88 445 L76 441 L64 445 L52 442 L40 445 L28 441 L8 444 L11 432 L7 420 L11 408 L7 396 L11 384 L7 372 L11 360 L7 348 L11 336 L7 324 L11 312 L7 300 L11 288 L7 276 L11 264 L7 252 L11 240 L7 228 L11 216 L7 204 L11 192 L7 180 L11 168 L7 156 L11 144 L7 132 L11 120 L7 108 L11 96 L7 84 L11 72 L7 60 L11 48 L7 36 L11 24 Z"/>
-          <g clip-path="url(#sky)">
-            <rect x="22" y="22" width="316" height="406" fill="#ecdfdf"/>
-            <!-- meeuwen -->
-            <g class="gull"><g class="wing" fill="none" stroke="#6b5a5f" stroke-width="2" stroke-linecap="round"><path d="M150 92 q6 -6 12 0 q6 -6 12 0"/></g></g>
-            <g class="gull g2"><g class="wing" fill="none" stroke="#6b5a5f" stroke-width="1.6" stroke-linecap="round"><path d="M120 122 q5 -5 10 0 q5 -5 10 0"/></g></g>
-            <!-- rook -->
-            <g fill="#9b8e93">
-              <circle class="puff" cx="118" cy="168" r="9"/>
-              <circle class="puff p2" cx="118" cy="168" r="8"/>
-              <circle class="puff p3" cx="118" cy="168" r="10"/>
-            </g>
-            <g class="ship-go"><g class="ship">
-              <!-- tuigage -->
-              <g stroke="#4a362b" stroke-width="1.3" fill="none">
-                <path d="M236 70 L318 226"/><path d="M236 70 L180 210"/><path d="M236 70 L270 214"/><path d="M236 104 L206 208"/><path d="M236 104 L296 220"/>
-                <path d="M86 140 L60 234"/><path d="M86 140 L120 176"/>
-              </g>
-              <path d="M236 64 V222" stroke="#3b2a22" stroke-width="5"/>
-              <path d="M222 132 H252" stroke="#3b2a22" stroke-width="4"/>
-              <path d="M86 132 V230" stroke="#3b2a22" stroke-width="3"/>
-              <!-- schoorsteen -->
-              <rect x="108" y="172" width="22" height="50" fill="#3a2b25"/>
-              <rect x="106" y="170" width="26" height="5" fill="#2a1e1a"/>
-              <!-- opbouw -->
-              <path fill="#2b2221" d="M140 210 L146 196 L176 196 L180 188 L206 188 L210 198 L262 198 L266 214 L140 220Z"/>
-              <path fill="#f4ede4" d="M52 240 L58 226 L138 218 L140 238Z"/>
-              <path fill="#f4ede4" d="M60 226 L66 214 L120 208 L124 220Z"/>
-              <rect x="134" y="206" width="66" height="30" fill="#8b6c4d"/>
-              <g fill="#f4ede4"><rect x="138" y="212" width="4" height="12"/><rect x="146" y="212" width="4" height="12"/><rect x="154" y="212" width="4" height="12"/><rect x="162" y="212" width="4" height="12"/><rect x="170" y="212" width="4" height="12"/><rect x="178" y="212" width="4" height="12"/><rect x="186" y="212" width="4" height="12"/></g>
-              <path fill="#f4ede4" d="M196 226 L312 210 L314 224 L196 238Z"/>
-              <!-- romp -->
-              <path fill="#8f6a43" d="M44 246 L314 222 Q324 250 312 290 L66 296 Q50 274 44 246Z"/>
-              <path fill="#f6f0e8" d="M44 246 L314 222 L315 230 L46 254Z"/>
-              <path fill="#6e4f30" d="M66 296 L312 290 L310 298 L72 302Z"/>
-              <g fill="#3b2a22"><circle cx="96" cy="262" r="1.8"/><circle cx="116" cy="261" r="1.8"/><circle cx="136" cy="259" r="1.8"/><circle cx="156" cy="257" r="1.8"/><circle cx="176" cy="256" r="1.8"/><circle cx="196" cy="254" r="1.8"/><circle cx="216" cy="252" r="1.8"/><circle cx="236" cy="250" r="1.8"/><circle cx="256" cy="248" r="1.8"/></g>
-              <path fill="#2b2221" d="M286 236 l8 2 l2 -6 l4 8 l-6 6 l-8 -4z"/>
-              <path d="M314 222 Q324 250 312 290" stroke="#2b2221" stroke-width="3" fill="none"/>
-            </g></g>
-            <!-- zee -->
-            <rect x="22" y="300" width="316" height="128" fill="#6a5f69"/>
-            <g class="foam" fill="#f4ede4"><path d="M0 302 q10 -7 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 V306 H0Z"/></g>
-            <g class="foam f2" fill="none" stroke="#857a84" stroke-width="1.5"><path d="M0 316 q10 -5 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"/></g>
-            <svg x="46" y="334" width="268" height="76" viewBox="0 0 543 154"><g fill="#f4ede4"><path transform="translate(-1.1 80)" d="M5.1 0 35.1 -74.1H35.5L65.5 0H60L33.9 -66.3L37.3 -68.2L10 0ZM19.6 -28.1H51.1L52.5 -23.5H18.4ZM104.3 -71Q110.9 -71 115.9 -68.8Q120.8 -66.5 123.6 -62Q126.3 -57.6 126.3 -50.9Q126.3 -46.9 125.1 -43.1Q123.8 -39.4 121.1 -36.4Q118.3 -33.4 114.1 -31.6Q109.8 -29.8 103.8 -29.8H92.8V0H87.9V-71ZM103.8 -34.5Q109 -34.5 112.5 -36.2Q115.9 -37.8 117.9 -40.4Q119.8 -42.9 120.7 -45.7Q121.5 -48.5 121.5 -50.9Q121.5 -54.3 120.4 -57.1Q119.3 -59.9 117.2 -61.9Q115 -64 111.9 -65.1Q108.8 -66.3 104.8 -66.3H92.8V-34.5ZM238.6 -71V0H233.7V-33.4H190.9V0H186V-71H190.9V-38H233.7V-71ZM261 0 291 -74.1H291.4L321.4 0H315.9L289.8 -66.3L293.2 -68.2L265.9 0ZM275.5 -28.1H307L308.4 -23.5H274.3ZM343.8 -71H348.7V-4.7H387.6V0H343.8ZM410.1 -71H453.9V-66.3H415V-38.1H450V-33.4H415V-4.7H455.3V0H410.1ZM539.4 1.7 483.4 -61.4 484.7 -62.4 484.8 0H480V-72.5H480.3L536.3 -8.9L535 -8.5L534.9 -71H539.6V1.7Z"/><path transform="translate(81.6 148)" d="M4.4 -32H9.5V0H4.4ZM51.5 1.1 26.9 -22.7 28.4 -22.1 28.5 0H23.4V-33.1H23.6L47.8 -9.3L46.6 -9.7L46.5 -32H51.7V1.1ZM65.5 0V-32H74.6Q79.4 -32 82.7 -30.6Q86.1 -29.1 88.1 -26.8Q90.2 -24.4 91.2 -21.4Q92.1 -18.5 92.1 -15.6Q92.1 -12 90.8 -9.1Q89.6 -6.2 87.3 -4.2Q85.1 -2.2 82.2 -1.1Q79.4 0 76.1 0ZM70.6 -4.9H75.2Q77.7 -4.9 79.9 -5.7Q82 -6.4 83.6 -7.8Q85.1 -9.2 86 -11.2Q86.8 -13.3 86.8 -15.9Q86.8 -18.9 85.8 -21.1Q84.8 -23.2 83.2 -24.5Q81.6 -25.9 79.7 -26.5Q77.8 -27.1 76 -27.1H70.6ZM103.9 -32H109.1V0H103.9ZM139.7 -25.5Q138 -26.4 136 -27Q134.1 -27.7 132.3 -27.7Q130 -27.7 128.6 -26.6Q127.2 -25.6 127.2 -23.7Q127.2 -22.4 128.1 -21.4Q129.1 -20.4 130.6 -19.7Q132.1 -18.9 133.8 -18.3Q135.2 -17.8 136.7 -17.1Q138.1 -16.3 139.2 -15.3Q140.4 -14.2 141 -12.7Q141.7 -11.1 141.7 -8.8Q141.7 -6.3 140.5 -4.2Q139.2 -2.1 136.8 -0.9Q134.4 0.4 131 0.4Q129 0.4 127.1 -0.1Q125.2 -0.5 123.5 -1.3Q121.8 -2.1 120.3 -3L122.6 -7.1Q123.7 -6.3 125 -5.6Q126.4 -4.9 127.8 -4.5Q129.3 -4.2 130.6 -4.2Q131.9 -4.2 133.3 -4.6Q134.6 -5.1 135.5 -6.1Q136.4 -7.1 136.4 -8.8Q136.4 -10.1 135.6 -11.1Q134.9 -12.1 133.6 -12.8Q132.3 -13.5 130.8 -14.1Q129.4 -14.6 127.8 -15.4Q126.2 -16.1 124.9 -17.1Q123.6 -18.1 122.7 -19.6Q121.9 -21.1 121.9 -23.3Q121.9 -26 123.1 -27.9Q124.4 -29.8 126.6 -31Q128.7 -32.1 131.6 -32.2Q135 -32.2 137.4 -31.4Q139.8 -30.6 141.6 -29.4ZM177.2 -2.5Q176.6 -2 175.2 -1.3Q173.8 -0.6 171.8 -0.1Q169.9 0.4 167.6 0.4Q163.9 0.3 160.9 -1Q157.9 -2.3 155.8 -4.5Q153.7 -6.7 152.6 -9.6Q151.5 -12.5 151.5 -15.8Q151.5 -19.4 152.7 -22.4Q153.8 -25.5 155.9 -27.7Q158 -29.9 160.9 -31.2Q163.8 -32.4 167.3 -32.4Q170.3 -32.4 172.7 -31.6Q175.1 -30.8 176.7 -29.7L174.7 -24.9Q173.5 -25.8 171.6 -26.6Q169.7 -27.5 167.4 -27.5Q165.3 -27.5 163.4 -26.6Q161.5 -25.7 160 -24.2Q158.5 -22.6 157.7 -20.5Q156.8 -18.5 156.8 -16Q156.8 -13.6 157.6 -11.5Q158.4 -9.3 159.8 -7.8Q161.2 -6.3 163.2 -5.4Q165.2 -4.6 167.7 -4.6Q170.2 -4.6 172.1 -5.4Q174 -6.1 175.1 -7.1ZM215.1 -32V0H210V-13.6H194.2V0H189.1V-32H194.2V-18.5H210V-32ZM248 -32H269.2V-27.1H253.1V-18.6H267.5V-13.6H253.1V-4.9H269.9V0H248ZM279.7 -32H301.1V-27.1H292.8V0H287.7V-27.1H279.7ZM312.6 -32H333.9V-27.1H317.7V-18.6H332.1V-13.6H317.7V-4.9H334.5V0H312.6ZM374.7 1.1 350.1 -22.7 351.6 -22.1 351.7 0H346.6V-33.1H346.8L371 -9.3L369.8 -9.7L369.7 -32H374.8V1.1Z"/></g></svg>
+<section class="kiezer" id="bord">
+  <div class="wrap">
+    <p class="kicker">Stel je bord samen</p>
+    <h2>Waar heb je <em>zin in</em>?</h2>
+    <p class="lead">Tik aan wat je lekker vindt en kies een dag. Bel Ap, of stuur het als appje, en vraag wat er die dag op het menu staat.</p>
+    <div class="kz">
+      <div class="kz-bord">
+        <svg viewBox="0 0 400 400" role="img" aria-label="Getekend bord van bovenaf met de gekozen onderdelen">
+          <circle cx="200" cy="200" r="192" fill="#fff"/>
+          <circle cx="200" cy="200" r="186" fill="none" stroke="#2f4fa8" stroke-width="9"/>
+          <circle cx="200" cy="200" r="156" fill="none" stroke="#ecebe4" stroke-width="2"/>
+          <!-- rijst -->
+          <g class="it" data-k="rijst">
+            <path d="M200 132c34 0 62 20 66 48 5 34-22 60-62 62-42 2-72-22-70-56 2-30 30-54 66-54z" fill="#fdfcf7" stroke="#e6e2d4" stroke-width="2"/>
+            <g fill="#ece8da"><ellipse cx="180" cy="160" rx="5" ry="2.2" transform="rotate(20 180 160)"/><ellipse cx="214" cy="152" rx="5" ry="2.2" transform="rotate(-30 214 152)"/><ellipse cx="236" cy="178" rx="5" ry="2.2" transform="rotate(60 236 178)"/><ellipse cx="166" cy="196" rx="5" ry="2.2" transform="rotate(-10 166 196)"/><ellipse cx="200" cy="186" rx="5" ry="2.2" transform="rotate(40 200 186)"/><ellipse cx="226" cy="214" rx="5" ry="2.2" transform="rotate(-50 226 214)"/><ellipse cx="186" cy="222" rx="5" ry="2.2" transform="rotate(15 186 222)"/><ellipse cx="248" cy="200" rx="5" ry="2.2" transform="rotate(80 248 200)"/></g>
           </g>
-          <!-- stempel -->
-          <g class="stamp">
-            <circle cx="80" cy="74" r="36" fill="none" stroke="#8f6a43" stroke-width="2.2" stroke-dasharray="3 3"/>
-            <circle cx="80" cy="74" r="29" fill="none" stroke="#8f6a43" stroke-width="1.4"/>
-            <text x="80" y="71" text-anchor="middle" font-family="Josefin Sans, sans-serif" font-weight="700" font-size="8.5" letter-spacing="1" fill="#8f6a43">DELFSHAVEN</text>
-            <text x="80" y="84" text-anchor="middle" font-family="Josefin Sans, sans-serif" font-weight="600" font-size="8.5" letter-spacing=".8" fill="#8f6a43">ROTTERDAM</text>
+          <!-- smoor terong -->
+          <g class="it" data-k="terong">
+            <ellipse cx="206" cy="86" rx="46" ry="26" fill="#7a3f22"/>
+            <g fill="#5b2a5e"><rect x="176" y="72" width="22" height="16" rx="6" transform="rotate(-12 187 80)"/><rect x="204" y="70" width="22" height="16" rx="6" transform="rotate(14 215 78)"/><rect x="190" y="88" width="22" height="16" rx="6" transform="rotate(4 201 96)"/><rect x="220" y="90" width="20" height="14" rx="6" transform="rotate(-20 230 97)"/></g>
+            <g fill="#e9e1c9"><rect x="181" y="76" width="10" height="7" rx="3"/><rect x="209" y="74" width="10" height="7" rx="3"/><rect x="195" y="92" width="10" height="7" rx="3"/></g>
           </g>
-        </g>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<div class="band" aria-hidden="true"><div class="track">
-  <span>Indisch eten om af te halen</span><span>Elke dag een ander dagmenu</span><span>Vers en voordelig</span><span>Als het op is, is het op</span><span>Woensdag t/m vrijdag vanaf 17:00</span><span>4,9 ★ op Google</span><span>Mathenesserdijk 412 c</span>
-  <span>Indisch eten om af te halen</span><span>Elke dag een ander dagmenu</span><span>Vers en voordelig</span><span>Als het op is, is het op</span><span>Woensdag t/m vrijdag vanaf 17:00</span><span>4,9 ★ op Google</span><span>Mathenesserdijk 412 c</span>
-</div></div>
-
-<section class="today-s" id="vandaag">
-  <div class="wrap tgrid">
-    <div class="rv">
-      <p class="eyebrow">Het dagmenu</p>
-      <h2>Elke dag <b>een ander menu</b></h2>
-      <p class="lead">Het menu wisselt elke dag. Zo ziet een dagmenu van Ap eruit.</p>
-      <ul class="facts">
-        <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11h18M5 11a7 7 0 0 0 14 0M12 4v3M8 5l1 2M16 5l-1 2"/></svg></span><div><b>Vier gerechten</b><span>Eén dagmenu met vier gerechten, voor €10 à €15 (volgens Rijnmond, dec. 2025).</span></div></li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Vanaf 17:00</b><span>Woensdag, donderdag en vrijdag.</span></div></li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16l-1.5 12a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2zM9 7V5a3 3 0 0 1 6 0v2"/></svg></span><div><b>Op = op</b><span>Kom liefst vlak na opening.</span></div></li>
-      </ul>
-      <div class="btns cta-row">
-        <a class="btn btn-p" href="#kiezer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Plan je bezoek</a>
-        <a class="btn btn-l" href="tel:+31619989513">Bel Ap</a>
+          <!-- kroepoek -->
+          <g class="it" data-k="kroepoek">
+            <path d="M88 120c6-26 40-34 58-16 20 16 10 50-16 54-26 6-48-14-42-38z" fill="#f3e2b4" stroke="#e1c98a" stroke-width="2"/>
+            <path d="M116 150c8-22 40-26 54-8 14 18 0 44-24 44-24 0-38-16-30-36z" fill="#f6e9c4" stroke="#e1c98a" stroke-width="2"/>
+            <g fill="#e7d39b"><circle cx="112" cy="120" r="2"/><circle cx="126" cy="132" r="2"/><circle cx="104" cy="138" r="2"/><circle cx="140" cy="160" r="2"/><circle cx="150" cy="172" r="2"/><circle cx="134" cy="174" r="2"/></g>
+          </g>
+          <!-- tempe -->
+          <g class="it" data-k="tempe">
+            <g fill="#b8732c" stroke="#8d5216" stroke-width="2"><rect x="262" y="108" width="34" height="22" rx="5" transform="rotate(-16 279 119)"/><rect x="290" y="128" width="34" height="22" rx="5" transform="rotate(10 307 139)"/><rect x="258" y="138" width="34" height="22" rx="5" transform="rotate(4 275 149)"/><rect x="284" y="158" width="30" height="20" rx="5" transform="rotate(-22 299 168)"/></g>
+            <g fill="#f0d29a"><circle cx="270" cy="116" r="2.4"/><circle cx="284" cy="121" r="2.4"/><circle cx="300" cy="136" r="2.4"/><circle cx="314" cy="142" r="2.4"/><circle cx="266" cy="148" r="2.4"/><circle cx="282" cy="152" r="2.4"/><circle cx="294" cy="166" r="2.4"/></g>
+          </g>
+          <!-- komkommer / ketimun -->
+          <g class="it" data-k="komkommer">
+            <g fill="#bfe0a8" stroke="#4f8f36" stroke-width="5"><circle cx="300" cy="214" r="17"/><circle cx="326" cy="236" r="17"/><circle cx="296" cy="248" r="17"/><circle cx="322" cy="202" r="15"/></g>
+            <g fill="#e8f3dc"><circle cx="300" cy="214" r="5"/><circle cx="326" cy="236" r="5"/><circle cx="296" cy="248" r="5"/><circle cx="322" cy="202" r="4"/></g>
+          </g>
+          <!-- sambal goreng boontjes -->
+          <g class="it" data-k="boontjes">
+            <path d="M84 250c10-26 56-30 76-10 20 22 6 60-28 62-34 2-58-24-48-52z" fill="#d4572a"/>
+            <g stroke="#5f9a3a" stroke-width="7" stroke-linecap="round"><path d="M98 262l44-14"/><path d="M100 280l50-10"/><path d="M110 296l42-18"/><path d="M118 250l36 4"/><path d="M96 276l20 22"/></g>
+          </g>
+          <!-- gekruide kip -->
+          <g class="it" data-k="kip">
+            <path d="M190 280c26-12 56 0 60 22 4 22-18 40-44 36-12-2-20-8-26-16l-22 10c-8 4-16-6-10-12l18-16c-2-10 6-20 24-24z" fill="#9a4f1f"/>
+            <path d="M206 290c14-4 30 2 32 14" fill="none" stroke="#c97a3a" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="152" cy="326" r="7" fill="#f2e8d6"/><circle cx="146" cy="318" r="6" fill="#f2e8d6"/>
+          </g>
+          <!-- ikan pepesan -->
+          <g class="it" data-k="pepesan">
+            <path d="M246 296l58-6c10 0 14 8 12 16l-6 34c-2 8-10 12-18 10l-48-10c-8-2-12-10-8-18z" fill="#4f7d2e"/>
+            <path d="M246 296l64 44M310 296l-56 46" stroke="#7fae4f" stroke-width="3" fill="none"/>
+            <path d="M262 300l4 36M282 296l2 44M298 296l-2 42" stroke="#3b6222" stroke-width="2" fill="none"/>
+          </g>
+        </svg>
+        <p class="noot">Illustratie. De gerechten komen uit eerdere dagmenu's van Ap (Rijnmond, dec. 2025) en van foto's op Google. Wat er is, wisselt elke dag.</p>
       </div>
-    </div>
-    <div class="rv">
-      <div class="board">
-        <span class="oop">Op = op</span>
-        <p class="bt">Dagmenu</p>
-        <p class="bd">Zo kan het eruitzien</p>
-        <ul class="dish">
-          <li>Ikan pepesan</li>
-          <li>Gekruide kip</li>
-          <li>Gebakken tempeh</li>
-          <li>Smoor terong</li>
-          <li>Ketimun</li>
-          <li>Kroepoek</li>
-        </ul>
-        <p class="src">Voorbeeld van een dagmenu, uit Rijnmond (december 2025).</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="pick" id="kiezer">
-  <div class="wrap">
-    <p class="eyebrow" style="color:var(--gold)">Langskomen</p>
-    <h2>Plan je <b>bezoek</b></h2>
-    <p class="lead">Kies je dag en hoe je komt. Je krijgt de tijden, de route en het nummer van Ap op een rij.</p>
-    <div class="pgrid">
-      <div class="steps">
-        <fieldset>
-          <legend><em>1</em>Welke dag?</legend>
-          <div class="opts" data-g="dag">
-            <button type="button" class="opt" data-v="3" aria-pressed="false">Woensdag<small></small></button>
-            <button type="button" class="opt" data-v="4" aria-pressed="false">Donderdag<small></small></button>
-            <button type="button" class="opt" data-v="5" aria-pressed="false">Vrijdag<small></small></button>
+      <form id="kiesform" onsubmit="return false">
+        <p class="stap-lbl">1. Waar heb je zin in? <small>(meerdere kan)</small></p>
+        <div class="chips" id="items"></div>
+        <p class="stap-lbl">2. Welke dag kom je? <small>(wo t/m vr vanaf 17:00)</small></p>
+        <div class="chips" id="dagen"></div>
+        <p class="stap-lbl">3. Voor hoeveel mensen?</p>
+        <div class="teller"><button type="button" id="min" aria-label="Minder">−</button><output id="pers" aria-live="polite">2 mensen</output><button type="button" id="plus" aria-label="Meer">+</button></div>
+        <label class="stap-lbl" for="naam" style="display:block">4. Je naam <small>(mag leeg blijven)</small></label>
+        <input type="text" id="naam" autocomplete="given-name" placeholder="Je voornaam">
+        <div class="bon">
+          <pre id="bericht"></pre>
+          <div class="knoppen">
+            <a class="btn btn-app" id="wa-knop" href="https://wa.me/31619989513" target="_blank" rel="noopener">App dit naar Ap</a>
+            <a class="btn btn-bel" href="tel:+31619989513">Of bel: 06 19 98 95 13</a>
           </div>
-        </fieldset>
-        <fieldset>
-          <legend><em>2</em>Meenemen of hier eten?</legend>
-          <div class="opts two" data-g="eten">
-            <button type="button" class="opt" data-v="mee" aria-pressed="true">Meenemen</button>
-            <button type="button" class="opt" data-v="hier" aria-pressed="false">Hier eten<small>tafel of bank</small></button>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend><em>3</em>Hoe kom je?</legend>
-          <div class="opts four" data-g="reis">
-            <button type="button" class="opt" data-v="walking" aria-pressed="false">Lopend</button>
-            <button type="button" class="opt" data-v="bicycling" aria-pressed="true">Fiets</button>
-            <button type="button" class="opt" data-v="transit" aria-pressed="false">OV</button>
-            <button type="button" class="opt" data-v="driving" aria-pressed="false">Auto</button>
-          </div>
-        </fieldset>
-      </div>
-      <div class="ticket" aria-live="polite">
-        <h3>Jouw bezoek</h3>
-        <ul class="tl">
-          <li><span>Dag</span><span id="tDag">Woensdag</span></li>
-          <li><span>Open</span><span>vanaf 17:00</span></li>
-          <li><span>Waar</span><span>Mathenesserdijk 412 c</span></li>
-          <li><span>Eten</span><span id="tEten">Meenemen</span></li>
-        </ul>
-        <p class="tnote" id="tNote">Kom liefst vlak na 17:00: als het op is, is het op.</p>
-        <a class="btn btn-p" id="tRoute" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mathenesserdijk+412c,+3026+GV+Rotterdam&amp;travelmode=bicycling" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8z"/></svg><span id="tRouteTxt">Route op de fiets</span></a>
-        <a class="btn btn-l" href="tel:+31619989513"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Bel Ap: 06 19 98 95 13</a>
-      </div>
+          <p class="klein">Je vraagt Ap wat er die dag is. Het dagmenu bepaalt Ap, en als het op is, is het op.</p>
+        </div>
+      </form>
     </div>
   </div>
 </section>
 
-<section class="why">
+<section class="fotos" id="fotos">
   <div class="wrap">
-    <p class="eyebrow">Waarom Ap Halen</p>
-    <h2>Wat klanten <b>erover schrijven</b></h2>
-    <p class="lead">Drie dingen die steeds terugkomen in de reviews op Google.</p>
-    <div class="cards">
-      <article class="wcard rv"><p class="no">01</p><h3>Vers en Indisch</h3><p>Klanten schrijven dat het eten vers en echt Indisch is, en dat het elke dag anders is.</p></article>
-      <article class="wcard rv"><p class="no">02</p><h3>Gastvrije eigenaren</h3><p>Klanten noemen de eigenaren lief en gastvrij. Je blijft er makkelijk even hangen voor een praatje.</p></article>
-      <article class="wcard rv"><p class="no">03</p><h3>Op is op</h3><p>Klanten schrijven dat het eten op is voor je het weet, en dat de pittigheid per dag verschilt.</p></article>
+    <p class="kicker">Bij Ap op tafel</p>
+    <h2>Zo ziet het er <em>echt</em> uit.</h2>
+    <div class="raster">
+      <figure class="pol groot">
+        <div class="beeld"><img src="img/pan.webp" alt="Een grote pan met een stoofgerecht op het vuur" width="418" height="438"><svg class="stoom" viewBox="0 0 160 90" aria-hidden="true"><path d="M50 86c-10-14 10-22 0-38s8-24 2-40"/><path d="M80 86c-10-14 10-22 0-38s8-24 2-40"/><path d="M110 86c-10-14 10-22 0-38s8-24 2-40"/></svg></div>
+        <figcaption><b>De grote pan op het vuur</b>Stilstaand beeld uit een video op Google.</figcaption>
+      </figure>
+      <figure class="pol">
+        <div class="beeld"><img src="img/borden-tafel.webp" alt="Een bord met rijst, kroepoek, boontjes en vlees op een houten tafel, met een glas gemberdrankje" width="595" height="600"></div>
+        <figcaption><b>Aan tafel, met een gemberdrankje</b>Foto op Google (2019).</figcaption>
+      </figure>
+      <figure class="pol">
+        <div class="beeld"><img src="img/tempe-krant.webp" alt="Glanzende stukjes tempé in krantenpapier" width="820" height="660"></div>
+        <figcaption><b>Tempé manis, in de krant</b>Foto op Google (2014).</figcaption>
+      </figure>
     </div>
+    <p class="bron-r">Foto's van de Google Maps-pagina van Ap Halen.</p>
   </div>
 </section>
 
-<section class="story" id="verhaal">
-  <div class="wrap sgrid">
-    <blockquote class="quote rv" style="margin:0">
-      <p>Het is het warme gevoel dat je krijgt</p>
-      <p class="cite"><cite>Ap, in <a href="https://www.rijnmond.nl/nieuws/2120384/afhaaltoko-ap-halen-begon-13-jaar-geleden-uit-wanhoop-nu-staat-er-elke-dag-een-rij-voor-de-deur" target="_blank" rel="noopener">Rijnmond</a> (december 2025)</cite></p>
-    </blockquote>
-    <div class="story-t rv">
-      <p class="eyebrow">Het verhaal</p>
-      <h2>Indisch eten, <b>Indisch zijn</b></h2>
-      <p class="big">Bij Ap éét je niet alleen Indisch, je leert ook over Indisch zijn en het Indisch gevoel in heden en verleden.</p>
-      <p>Ap Halen is een afhaalzaakje voor Indisch eten, sinds 2012. Wil je er toch even zitten, dan staan er een tafel en een bank om binnen te eten.</p>
-      <p>Het menu is elke dag anders. Als het op is, is het op.</p>
-    </div>
-  </div>
-</section>
-
-<section class="rev" id="reviews">
+<section class="over" id="over">
   <div class="wrap">
-    <p class="eyebrow">Reviews</p>
-    <h2>Wat gasten <b>zeggen</b></h2>
-    <div class="score">
-      <span class="num">4,9</span>
-      <div><div class="stars" aria-hidden="true">★★★★★</div><p style="margin:0">uit 203 reviews op <a href="https://www.google.com/maps/search/?api=1&amp;query=Ap+Halen+Mathenesserdijk+412c+Rotterdam" target="_blank" rel="noopener">Google</a></p></div>
+    <p class="kicker">Over Ap</p>
+    <h2>Meer dan eten: <em>het Indisch gevoel</em>.</h2>
+    <div class="citaten">
+      <blockquote class="cit">
+        <p>“Bij Ap éét je niet alleen Indisch, je leert ook over Indisch zijn en het Indisch gevoel in heden en verleden.”</p>
+        <cite>aphalen.nl</cite>
+      </blockquote>
+      <blockquote class="cit pan">
+        <p>“Het is het warme gevoel dat je krijgt.”</p>
+        <cite>Ap in <a href="https://www.rijnmond.nl/nieuws/2120384/afhaaltoko-ap-halen-begon-13-jaar-geleden-uit-wanhoop-nu-staat-er-elke-dag-een-rij-voor-de-deur" target="_blank" rel="noopener">Rijnmond</a>, december 2025</cite>
+      </blockquote>
     </div>
-    <div class="rgrid">
-      <article class="rcard rv"><p>Heerlijk eten, gemaakt door lieve mensen.</p><span class="who">Jo</span></article>
-      <article class="rcard rv"><p>Een legendarische zaak en een begrip in Rotterdam-West.</p><span class="who">Just</span></article>
-      <article class="rcard rv"><p>Had Rotterdam nog maar dertig van zulke zaken.</p><span class="who">Mark</span></article>
+    <div class="waarom">
+      <div class="wk"><div class="nr">1</div><h3>Elke dag anders</h3><p>Klanten schrijven dat het eten vers en echt Indisch is, en dat het menu elke dag wisselt.</p></div>
+      <div class="wk"><div class="nr">2</div><h3>Even kletsen</h3><p>Klanten schrijven over lieve, gastvrije eigenaren met tijd voor een praatje.</p></div>
+      <div class="wk"><div class="nr">3</div><h3>Vroeg erbij zijn</h3><p>Klanten schrijven dat het eten soms vroeg op is, en dat de pittigheid per dag verschilt.</p></div>
     </div>
-    <p class="rnote">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
   </div>
 </section>
 
-<section class="how">
+<section class="reviews">
   <div class="wrap">
-    <p class="eyebrow" style="color:var(--gold)">Zo werkt het</p>
-    <h2>In drie <b>stappen</b></h2>
-    <p class="lead" style="color:#e3d8df">Geen bestelplatform, gewoon langskomen.</p>
-    <ol class="hsteps">
-      <li class="rv"><h3>Kijk het dagmenu</h3><p>Elke dag een handjevol andere gerechten. Wat er vandaag is, zie je aan de toonbank.</p></li>
-      <li class="rv"><h3>Kom vanaf 17:00</h3><p>Woensdag, donderdag of vrijdag, naar de Mathenesserdijk 412 c. Liefst vlak na opening.</p></li>
-      <li class="rv"><h3>Meenemen of blijven</h3><p>Neem je eten mee naar huis, of eet het aan de tafel of op de bank binnen.</p></li>
-    </ol>
+    <p class="kicker">Google-reviews</p>
+    <h2>Wat gasten <em>schrijven</em>.</h2>
+    <div class="score"><span class="getal">4,9</span><div><div class="sterren" aria-hidden="true">★★★★★</div><a href="https://www.google.com/maps/search/?api=1&amp;query=Ap+Halen+Mathenesserdijk+412c+Rotterdam" target="_blank" rel="noopener">uit 203 reviews op Google</a></div></div>
+    <div class="rv-grid">
+      <div class="rv"><p>Heerlijk eten, gemaakt door lieve mensen.</p><b>Jo</b></div>
+      <div class="rv"><p>Een legendarische zaak, een instituut in Rotterdam-West.</p><b>Just</b></div>
+      <div class="rv"><p>Had Rotterdam maar dertig van dit soort zaken.</p><b>Mark</b></div>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="stappen">
+  <div class="wrap">
+    <p class="kicker">Zo haal je het</p>
+    <h2>Bellen, ophalen, <em>smullen</em>.</h2>
+    <div class="st-grid">
+      <div class="st"><h3>Vraag wat er is</h3><p>Bel Ap op 06 19 98 95 13. Elke dag een handjevol andere gerechten.</p></div>
+      <div class="st"><h3>Kom vanaf 17:00</h3><p>Woensdag t/m vrijdag aan de Mathenesserdijk 412c. Op is op, dus niet te laat.</p></div>
+      <div class="st"><h3>Mee of hier</h3><p>Neem het mee naar huis, of schuif aan bij de tafel of op de bank binnen.</p></div>
+    </div>
   </div>
 </section>
 
 <section class="faq">
-  <div class="wrap fwrap">
-    <p class="eyebrow">Vragen</p>
-    <h2>Goed om <b>te weten</b></h2>
-    <details><summary>Wanneer is Ap Halen open?</summary><p>Woensdag, donderdag en vrijdag vanaf 17:00. Als het op is, is het op, dus kom liefst vlak na opening.</p></details>
-    <details><summary>Wat staat er op het menu?</summary><p>Dat wisselt elke dag: een handjevol vertrouwde en minder vertrouwde Indische gerechten. Het dagmenu heeft vier gerechten en kost €10 à €15 (volgens Rijnmond, december 2025).</p></details>
-    <details><summary>Kan ik er ook eten?</summary><p>Ja, Ap Halen is een afhaalzaakje, maar er staan een tafel en een bank om binnen te eten.</p></details>
-    <details><summary>Is het pittig?</summary><p>Klanten schrijven dat de pittigheid per dag verschilt. Twijfel je, vraag het Ap.</p></details>
-    <details><summary>Waar zit Ap Halen?</summary><p>Mathenesserdijk 412 c, 3026 GV Rotterdam, in Delfshaven. Bellen kan op <a href="tel:+31619989513">06 19 98 95 13</a>.</p></details>
-  </div>
-</section>
-
-<section class="visit" id="route">
   <div class="wrap">
-    <p class="eyebrow">Adres en tijden</p>
-    <h2>Kom <b>langs</b></h2>
-    <div class="vgrid">
-      <div class="vinfo rv">
-        <h3>Adres</h3>
-        <p>Mathenesserdijk 412 c<br>3026 GV Rotterdam (Delfshaven)</p>
-        <h3>Open</h3>
-        <ul class="hours" id="hours">
-          <li data-d="3"><span>Woensdag</span><span>vanaf 17:00</span></li>
-          <li data-d="4"><span>Donderdag</span><span>vanaf 17:00</span></li>
-          <li data-d="5"><span>Vrijdag</span><span>vanaf 17:00</span></li>
-        </ul>
-        <p style="margin-top:-8px">Op = op, dus kom liefst vlak na opening.</p>
-        <h3>Telefoon</h3>
-        <p><a href="tel:+31619989513">06 19 98 95 13</a></p>
-        <div class="btns">
-          <a class="btn btn-g" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mathenesserdijk+412c,+3026+GV+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
-          <a class="btn btn-o" href="tel:+31619989513">Bel Ap</a>
-        </div>
-      </div>
-      <div class="map rv">
-        <iframe title="Kaart: Ap Halen, Mathenesserdijk 412 c, Rotterdam" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Mathenesserdijk%20412c%2C%203026%20GV%20Rotterdam&amp;z=16&amp;output=embed"></iframe>
-      </div>
+    <p class="kicker">Vragen</p>
+    <h2>Vragen over <em>Ap Halen</em>.</h2>
+    <div class="faq-lijst">
+      <details><summary>Wanneer is Ap Halen open?</summary><p>Woensdag, donderdag en vrijdag vanaf 17:00 (volgens Rijnmond, december 2025, en Spinach). Twijfel je over een andere dag? Bel even: 06 19 98 95 13.</p></details>
+      <details><summary>Wat staat er vandaag op het menu?</summary><p>Dat wisselt elke dag: “een handjevol vertrouwde en minder vertrouwde gerechten”. Bel of app Ap, dan hoor je het.</p></details>
+      <details><summary>Wat kost het?</summary><p>Volgens Rijnmond (december 2025) kost een dagmenu met vier gerechten €10 à €15. Vraag Ap naar de prijs van vandaag.</p></details>
+      <details><summary>Kan ik er ook eten?</summary><p>Ja, er staan een tafel en een bank om binnen te eten.</p></details>
+      <details><summary>Waarom is het soms al op?</summary><p>Ap kookt elke dag een dagmenu, en als het op is, is het op. Kom dus liever vroeg.</p></details>
     </div>
   </div>
 </section>
 
-<section class="end">
+<section class="route" id="route">
   <div class="wrap">
-    <h2>Trek in <b>Indisch?</b></h2>
-    <p class="lead">Woensdag, donderdag en vrijdag vanaf 17:00 aan de Mathenesserdijk. Op = op.</p>
-    <div class="btns">
-      <a class="btn btn-g" href="tel:+31619989513"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Bel Ap</a>
-      <a class="btn btn-o" href="#kiezer">Plan je bezoek</a>
+    <p class="kicker">Route</p>
+    <h2>Mathenesserdijk <em>412c</em>.</h2>
+    <div class="route-grid">
+      <div class="adres">
+        <h3>Ap Halen</h3>
+        <p>Mathenesserdijk 412c<br>3026 GV Rotterdam</p>
+        <dl><dt>Open</dt><dd>wo t/m vr vanaf 17:00</dd><dt>Bellen</dt><dd><a href="tel:+31619989513">06 19 98 95 13</a></dd><dt>Online</dt><dd><a href="https://www.facebook.com/ikwilaphalen" target="_blank" rel="noopener">Facebook</a></dd></dl>
+        <div class="knoppen">
+          <a class="btn btn-bel" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mathenesserdijk+412c%2C+3026+GV+Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+          <a class="btn btn-app" href="tel:+31619989513">Bel Ap</a>
+        </div>
+      </div>
+      <div class="kaart"><iframe title="Kaart: Mathenesserdijk 412c, Rotterdam" src="https://maps.google.com/maps?q=Mathenesserdijk%20412c%2C%203026%20GV%20Rotterdam&amp;z=16&amp;output=embed" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <div class="wrap">
+    <h2>Even bellen, dan even ophalen.</h2>
+    <p>Vraag Ap wat er vandaag in de pan zit. Woensdag t/m vrijdag vanaf 17:00.</p>
+    <div class="cta-rij">
+      <a class="btn btn-bel" href="tel:+31619989513">Bel 06 19 98 95 13</a>
+      <a class="btn btn-app" href="https://wa.me/31619989513?text=Hoi%20Ap%2C%20wat%20staat%20er%20vandaag%20op%20het%20menu%3F" target="_blank" rel="noopener">App Ap</a>
     </div>
   </div>
 </section>
 </main>
 
 <footer>
-  <div class="wrap">
-    <div class="fgrid">
-      <div>
-        <img src="logo-light.svg" alt="Ap Halen – Indisch eten" width="150" height="42">
-        <p>Afhaalzaakje voor Indisch eten</p>
-      </div>
-      <div>
-        <p>Mathenesserdijk 412 c, 3026 GV Rotterdam</p>
-        <p>Wo, do, vr vanaf 17:00 · op = op</p>
-        <p><a href="tel:+31619989513">06 19 98 95 13</a> · <a href="https://www.facebook.com/ikwilaphalen" target="_blank" rel="noopener">Facebook</a></p>
-      </div>
-    </div>
-    <p class="made">Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+  <div class="wrap f">
+    <div><img src="logo-light.svg" alt="Ap Halen – Indisch eten" width="141" height="40"><p style="margin-top:12px">Afhaalzaakje voor Indisch eten<br>Mathenesserdijk 412c, 3026 GV Rotterdam<br><a href="tel:+31619989513">06 19 98 95 13</a> · <a href="https://www.facebook.com/ikwilaphalen" target="_blank" rel="noopener">Facebook</a></p></div>
+    <div><p>Wo t/m vr vanaf 17:00. Op is op.</p></div>
+    <p class="door">Website door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a> · Dit is een demo.</p>
   </div>
 </footer>
 
-<div class="fbar" id="fbar">
-  <a class="btn btn-g" href="tel:+31619989513">Bel Ap</a>
-  <a class="btn btn-p" href="#kiezer">Plan bezoek</a>
+<div class="zweef" id="zweef">
+  <a class="btn btn-bel" href="tel:+31619989513">Bel Ap</a>
+  <a class="btn btn-app" href="https://wa.me/31619989513?text=Hoi%20Ap%2C%20wat%20staat%20er%20vandaag%20op%20het%20menu%3F" target="_blank" rel="noopener">App</a>
+</div>
+
+<!-- Pitch-modus: alleen voor Mo in het gesprek. Openen via het kleine "Mo"-knopje in de demo-strook of ?pitch in de URL. -->
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-labelledby="pp-titel">
+  <div class="pp">
+    <div class="pp-top"><b>Pitch · Ap Halen</b><button class="pp-sluit" id="pp-sluit" type="button" aria-label="Sluiten">×</button></div>
+    <h2 id="pp-titel">203 reviews met een 4,9, maar op je site staat je nummer nergens.</h2>
+    <div class="vn">
+      <figure>
+        <div class="oud" aria-label="Schets van de huidige site aphalen.nl">
+          <div class="url">aphalen.nl</div>
+          <div class="ansicht">AP HALEN · INDISCH ETEN</div>
+          <div class="rij">
+            <svg class="tel-oud" viewBox="0 0 70 90" aria-hidden="true"><rect x="8" y="10" width="54" height="74" rx="6" fill="#222"/><path d="M4 18c0-10 62-10 62 0v8H52v-4H18v4H4z" fill="#111"/><circle cx="35" cy="54" r="17" fill="#444"/><circle cx="35" cy="54" r="6" fill="#222"/></svg>
+            <div class="kaartje">©2012 Google</div>
+          </div>
+          <ul><li>Kaartje uit 2012</li><li>Geen telefoonnummer, alleen een plaatje van een oude telefoon</li><li>Geen openingstijden, geen reviews</li></ul>
+        </div>
+        <figcaption><b>Nu:</b> aphalen.nl (schets van wat er staat). Google Maps linkt niet naar de site maar naar Facebook.</figcaption>
+      </figure>
+      <figure><div class="tel"><iframe id="pp-frame" title="De nieuwe site op een telefoon" loading="lazy"></iframe></div><figcaption><b>Straks:</b> je nummer groot bovenaan, je eigen eten in beeld, tijden en route in 1 tik.</figcaption></figure>
+    </div>
+
+    <h3>Rekenvoorbeeld (vul samen in)</h3>
+    <div class="reken">
+      <div><label for="r-best">Extra afhaalbestellingen per week <output id="o-best">3</output></label><input type="range" id="r-best" min="0" max="30" step="1" value="3"></div>
+      <div><label for="r-bed">Gemiddelde besteding per bestelling <output id="o-bed">€ 12</output></label><input type="range" id="r-bed" min="5" max="40" step="1" value="12"></div>
+      <div class="uitkomst">
+        <div><small>Extra omzet per week</small><strong id="u-week">€ 36</strong></div>
+        <div><small>Extra omzet per jaar</small><strong id="u-jaar">€ 1.872</strong></div>
+        <div><small>€ 595 is de omzet van</small><strong id="u-aantal">50 bestellingen</strong></div>
+      </div>
+      <p class="disclaimer">Voorbeeld, geen belofte. Jullie kiezen de getallen; het gaat om omzet, niet om winst. (Ter vergelijking: volgens Rijnmond, dec. 2025, kost een dagmenu € 10 à € 15.)</p>
+    </div>
+
+    <h3>Wat er concreet beter is</h3>
+    <ol class="punten">
+      <li><b>Je nummer groot en in 1 tik te bellen of appen.</b> Nu staat er alleen een plaatje van een oude telefoon, zonder nummer.</li>
+      <li><b>Openingstijden en "op is op" bovenaan.</b> Nu staan er nergens tijden, en de gidsen spreken elkaar tegen.</li>
+      <li><b>Je eigen eten, 4,9 uit 203 reviews en een echte route.</b> Nu geen foto's van eten, geen reviews en een kaartje uit 2012. En Google Maps kan straks naar je eigen site wijzen in plaats van Facebook.</li>
+    </ol>
+  </div>
 </div>
 
 <script>
+const WA = "31619989513";
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* hero: onderdelen van het bord een voor een benoemen */
 (function(){
-  var NAMEN=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
-  var MAAND=['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
-  var OPEN=[3,4,5];
-  var nu=new Date(), dag=nu.getDay(), uur=nu.getHours();
-  function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+  const l = document.querySelectorAll(".bord .lbl");
+  l.forEach((el,i) => { if (reduce) el.classList.add("op"); else setTimeout(() => el.classList.add("op"), 500 + i*450); });
+})();
 
-  // status in de hero en het bord
-  var st=document.getElementById('statusTxt');
-  if(OPEN.indexOf(dag)>-1){
-    st.textContent = uur>=17 ? 'Vandaag ('+NAMEN[dag]+') open vanaf 17:00, op = op' : 'Vandaag ('+NAMEN[dag]+') open vanaf 17:00';
-    var li=document.querySelector('#hours li[data-d="'+dag+'"]'); if(li) li.classList.add('now');
-  }else{
-    var v=dag; do{v=(v+1)%7;}while(OPEN.indexOf(v)<0);
-    st.textContent='Weer open op '+NAMEN[v]+' vanaf 17:00';
-  }
+function amsDag(d){ try{ const w = new Intl.DateTimeFormat("en-US",{timeZone:"Europe/Amsterdam",weekday:"short"}).format(d); return ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(w); }catch(e){ return d.getDay(); } }
 
-  // kiezer
-  var keuze={dag:null,eten:'mee',reis:'bicycling'};
-  function volgende(d){var x=new Date(nu); var diff=(d-dag+7)%7; x.setDate(x.getDate()+diff); return x;}
-  document.querySelectorAll('.opts[data-g="dag"] .opt').forEach(function(b){
-    var dt=volgende(+b.dataset.v); b.querySelector('small').textContent=dt.getDate()+' '+MAAND[dt.getMonth()].slice(0,3);
+/* kiezer: stel je bord samen */
+(function(){
+  const $ = id => document.getElementById(id);
+  const ITEMS = [["rijst","rijst"],["tempe","tempé"],["boontjes","sambal goreng boontjes"],["kroepoek","kroepoek"],["komkommer","ketimun (komkommer)"],["kip","gekruide kip"],["pepesan","ikan pepesan"],["terong","smoor terong"]];
+  const AAN = ["rijst","tempe","boontjes","kroepoek","komkommer"];
+  const box = $("items");
+  ITEMS.forEach(([k,n]) => {
+    const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.dataset.k = k; b.textContent = n;
+    b.setAttribute("aria-pressed", AAN.includes(k)); box.appendChild(b);
+    b.addEventListener("click", () => { b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true"); bouw(); });
   });
-  var eerste=OPEN.indexOf(dag)>-1?dag:(function(){var v=dag;do{v=(v+1)%7;}while(OPEN.indexOf(v)<0);return v;})();
-  keuze.dag=String(eerste);
-  var REIS={walking:'Route lopend',bicycling:'Route op de fiets',transit:'Route met het OV',driving:'Route met de auto'};
-  function teken(){
-    document.querySelectorAll('.opts').forEach(function(g){
-      g.querySelectorAll('.opt').forEach(function(b){b.setAttribute('aria-pressed', String(b.dataset.v===keuze[g.dataset.g]));});
-    });
-    var dt=volgende(+keuze.dag);
-    document.getElementById('tDag').textContent=cap(NAMEN[+keuze.dag])+' '+dt.getDate()+' '+MAAND[dt.getMonth()];
-    document.getElementById('tEten').textContent=keuze.eten==='mee'?'Meenemen':'Hier eten (tafel of bank)';
-    document.getElementById('tRoute').href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent('Mathenesserdijk 412c, 3026 GV Rotterdam')+'&travelmode='+keuze.reis;
-    document.getElementById('tRouteTxt').textContent=REIS[keuze.reis];
+  const dagNamen = ["zondag","maandag","dinsdag","woensdag","donderdag","vrijdag","zaterdag"], kort = ["zo","ma","di","wo","do","vr","za"];
+  const maand = d => d.toLocaleDateString("nl-NL",{month:"long",timeZone:"Europe/Amsterdam"});
+  const dagen = $("dagen"); let n = 0;
+  for (let i = 0; i < 14 && n < 5; i++){
+    const dt = new Date(Date.now() + i*864e5), d = amsDag(dt);
+    if (![3,4,5].includes(d)) continue;
+    const dag = +dt.toLocaleDateString("nl-NL",{day:"numeric",timeZone:"Europe/Amsterdam"});
+    const b = document.createElement("button"); b.type = "button"; b.className = "chip";
+    b.dataset.v = i === 0 ? "vandaag" : i === 1 ? "morgen (" + dagNamen[d] + ")" : dagNamen[d] + " " + dag + " " + maand(dt);
+    b.innerHTML = (i === 0 ? "Vandaag" : i === 1 ? "Morgen" : kort[d] + " " + dag) + " <small>v.a. 17:00</small>";
+    b.setAttribute("aria-pressed", n === 0); dagen.appendChild(b); n++;
+    b.addEventListener("click", () => { dagen.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b)); bouw(); });
   }
-  document.querySelectorAll('.opts').forEach(function(g){
-    g.addEventListener('click',function(e){var b=e.target.closest('.opt'); if(!b) return; keuze[g.dataset.g]=b.dataset.v; teken();});
-  });
-  teken();
+  let pers = 2;
+  const zet = () => { $("pers").textContent = pers + (pers === 1 ? " persoon" : " mensen"); bouw(); };
+  $("min").onclick = () => { pers = Math.max(1, pers-1); zet(); };
+  $("plus").onclick = () => { pers = Math.min(12, pers+1); zet(); };
+  $("naam").addEventListener("input", bouw);
+  function bouw(){
+    const gekozen = [...box.querySelectorAll('.chip[aria-pressed="true"]')];
+    document.querySelectorAll(".kz-bord .it").forEach(g => g.classList.toggle("op", gekozen.some(c => c.dataset.k === g.dataset.k)));
+    const namen = gekozen.map(c => c.textContent);
+    const dg = (dagen.querySelector('.chip[aria-pressed="true"]') || {dataset:{v:"binnenkort"}}).dataset.v;
+    const naam = $("naam").value.trim();
+    const r = ["Hoi Ap,", "ik wil " + dg + " graag komen halen voor " + (pers === 1 ? "1 persoon" : pers + " mensen") + "."];
+    if (namen.length) r.push("Ik heb zin in: " + namen.join(", ") + ".");
+    r.push("Wat staat er die dag op het menu?");
+    r.push(naam ? "Groetjes, " + naam : "Groetjes!");
+    const t = r.join("\n");
+    $("bericht").textContent = t;
+    $("wa-knop").href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(t);
+  }
+  bouw();
+})();
 
-  // reveal met vangnet
-  var rv=document.querySelectorAll('.rv');
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
-    rv.forEach(function(el){io.observe(el);});
-    var fbar=document.getElementById('fbar');
-    new IntersectionObserver(function(es){fbar.classList.toggle('show',!es[0].isIntersecting);}).observe(document.getElementById('hero'));
+/* zwevende CTA zodra de hero uit beeld is */
+(function(){
+  const z = document.getElementById("zweef"), hero = document.getElementById("hero");
+  if (!("IntersectionObserver" in window)) { z.classList.add("toon"); return; }
+  new IntersectionObserver(([e]) => z.classList.toggle("toon", !e.isIntersecting), {threshold:0}).observe(hero);
+})();
+
+/* pitch-modus */
+(function(){
+  const p = document.getElementById("pitch"), frame = document.getElementById("pp-frame");
+  const euro = n => "€ " + Math.round(n).toLocaleString("nl-NL");
+  function open(){ p.classList.add("open"); document.body.style.overflow = "hidden"; if (!frame.src) frame.src = location.href.split("#")[0].split("?")[0]; }
+  function dicht(){ p.classList.remove("open"); document.body.style.overflow = ""; }
+  document.getElementById("pitch-knop").addEventListener("click", open);
+  document.getElementById("pp-sluit").addEventListener("click", dicht);
+  p.addEventListener("click", e => { if (e.target === p) dicht(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") dicht(); });
+  const a = document.getElementById("r-best"), b = document.getElementById("r-bed");
+  function reken(){
+    const n = +a.value, best = +b.value;
+    document.getElementById("o-best").textContent = n;
+    document.getElementById("o-bed").textContent = euro(best);
+    document.getElementById("u-week").textContent = euro(n*best);
+    document.getElementById("u-jaar").textContent = euro(n*best*52);
+    document.getElementById("u-aantal").textContent = Math.ceil(595/best) + " bestellingen";
   }
-  setTimeout(function(){rv.forEach(function(el){el.classList.add('in');});},3500);
+  a.addEventListener("input", reken); b.addEventListener("input", reken); reken();
+  if (/[?&]pitch\b/.test(location.search)) open();
+  if (window.self !== window.top) document.getElementById("pitch-knop").hidden = true;
 })();
 </script>
 </body>
