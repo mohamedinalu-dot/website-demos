@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<!--
+  Demo L254 Hairstudio Breeze (Blokweg 39, Rotterdam-Zuid), Mohamedia, 9 nov 2026
+  Concept in één zin: "Van pluis naar glans": de hero is een veld van getekende haarlokken in balayage-tinten
+  (espresso bij de wortel, honing en champagne in de punten) dat in een bries meebeweegt; een voor/na-schuif
+  veegt bij het laden één keer van mat en pluizig (voor) naar glad en gekleurd (na), daarna kan de bezoeker zelf schuiven.
+  Lay-out-archetype: STAALKAART / KLEURWAAIER. Diensten als haarstalen aan een ring (zoals een kleurkaart in de salon);
+  een staal aantikken start de afspraak-kiezer. Geen foto-hero, geen schuine kaart, geen stempel, geen lopende band,
+  geen Ken Burns, geen stoom, geen licht-gaat-aan, geen letters één voor één. Beweging: canvas, schuif veegt één keer
+  (voor -> na), daarna wiegen de lokken zacht in de bries (lus; Mo wil een hero die echt beweegt). Reduced motion = stilstaand.
+  Beeld: geen eigen foto's bruikbaar (de enige eigen Maps-foto toont een herkenbare klant; klantfoto's bij reviews
+  niet gebruikt). Alles is illustratie, gelabeld. img/voor-fresha.jpg = screenshot van hun Fresha-pagina (pitch).
+  Bron feiten: leads/L254/dossier.md. Tijden: alleen Fresha (Maps toonde 9 nov alleen maandag 09:00-19:00).
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hairstudio Breeze – kapsalon in Rotterdam-Zuid</title>
+<meta name="description" content="Hairstudio Breeze aan de Blokweg 39 in Rotterdam-Zuid: balayage, highlights, kleuren, permanent steil, krullend haar, locs, föhnen en knippen. 5,0 uit 57 Google-reviews. Afspraak vragen via WhatsApp.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2a0f2d">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pruim:#2a0f2d; --pruim2:#40173d; --pruim3:#5b2453;
+  --orchid:#f7f0f5; --lila:#eadbe8; --lila2:#d9c3d6;
+  --espresso:#3a2219; --karamel:#b8743c; --honing:#e3ac5c; --champ:#f6e3bd;
+  --inkt:#24101f; --grijs:#6a5165; --lijn:#e2d2df;
+  --kop:"Yeseva One", Georgia, serif; --tekst:"Sora", system-ui, sans-serif;
+  --balayage:linear-gradient(180deg,#2a1712 0%,#6b3f26 34%,#b8743c 60%,#e3ac5c 82%,#f6e3bd 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--tekst);color:var(--inkt);background:var(--orchid);line-height:1.6;font-size:16px;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:400;line-height:1.08;letter-spacing:-.005em;overflow-wrap:break-word}
+h2{font-size:clamp(30px,7.4vw,52px)}
+h3{font-size:clamp(20px,5.2vw,25px)}
+.wrap{width:min(1180px,100%);margin-inline:auto;padding-inline:clamp(18px,4.5vw,40px)}
+.oog{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--pruim3)}
+.lead{font-size:clamp(16px,4.1vw,18px);color:var(--grijs);max-width:620px}
+section{scroll-margin-top:76px}
+
+/* knoppen (geen transition op transform) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font:600 16px var(--tekst);text-decoration:none;border:0;cursor:pointer;transition:background-color .2s, box-shadow .2s, color .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-honing{background:linear-gradient(100deg,#e9b96c,#f3d79c);color:var(--pruim);box-shadow:0 8px 24px -10px rgba(227,172,92,.7)}
+.btn-honing:hover{box-shadow:0 10px 30px -8px rgba(227,172,92,.95)}
+.btn-pruim{background:var(--pruim);color:#fff}
+.btn-pruim:hover{background:var(--pruim3)}
+.btn-rand{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(246,227,189,.55)}
+.btn-rand:hover{box-shadow:inset 0 0 0 1.5px var(--champ)}
+.btn-lijn{background:#fff;color:var(--pruim);box-shadow:inset 0 0 0 1.5px var(--lila2)}
+.btn-lijn:hover{box-shadow:inset 0 0 0 1.5px var(--pruim3)}
+
+/* 1. demo-strook en 2. aankondiging */
+.demo{background:#140611;color:#e9d9e6;font-size:13px;text-align:center;padding:9px 52px;position:relative}
+.demo a{color:#fff;font-weight:600}
+.pitch-knop{position:absolute;right:6px;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;border:0;background:transparent;color:#fff;font:700 10px var(--tekst);opacity:.28;cursor:pointer}
+.pitch-knop:hover{opacity:1}
+.balk{background:var(--lila);color:var(--pruim);font-size:14px;font-weight:500;text-align:center;padding:9px 16px}
+.balk a{font-weight:700;text-decoration-thickness:1px;text-underline-offset:3px}
+.balk .st{color:#b8743c;letter-spacing:1px}
+
+/* 3. header */
+.kop{position:sticky;top:0;z-index:40;background:rgba(42,15,45,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(246,227,189,.12)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:68px}
+.kop .logo img{height:46px;width:auto}
+.kop nav{display:flex;align-items:center;gap:6px}
+.kop nav a.nl{color:#eadbe8;text-decoration:none;font-size:15px;font-weight:500;padding:12px 12px;min-height:44px;display:inline-flex;align-items:center}
+.kop nav a.nl:hover{color:#fff}
+.kop .btn{min-height:44px;padding:0 18px;font-size:15px}
+@media (max-width:860px){.kop nav a.nl{display:none}}
+@media (max-width:380px){.kop .logo img{height:40px}.kop .btn{padding:0 14px;font-size:14px}}
+
+/* 4. hero: tekst + beeldvak met getekende lokken */
+.hero{position:relative;background:var(--pruim);color:#fff;overflow:hidden;isolation:isolate;display:flex;flex-direction:column}
+.beeld{position:relative;height:clamp(250px,35svh,400px);overflow:hidden;touch-action:pan-y}
+.beeld canvas{position:absolute;inset:0;width:100%;height:100%}
+.beeld::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,var(--pruim) 0%,rgba(42,15,45,0) 26%),linear-gradient(180deg,rgba(42,15,45,.55) 0%,rgba(42,15,45,0) 14%)}
+.hero-tekst{position:relative;padding-block:8px clamp(34px,6vw,70px);width:100%}
+.hero .oog{color:var(--honing);display:flex;flex-wrap:wrap;gap:4px 12px}
+.hero .oog span+span::before{content:"·";margin-right:12px;color:rgba(246,227,189,.5)}
+.hero h1{font-size:clamp(42px,12vw,96px);margin:10px 0 14px;max-width:11ch;text-wrap:balance}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,#c98a4a,#e3ac5c 45%,#f6e3bd);-webkit-background-clip:text;background-clip:text;color:transparent;padding-top:.18em;margin-top:-.18em}
+.hero p.sub{font-size:clamp(16px,4.2vw,19px);color:#eadbe8;max-width:36ch}
+.hero .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.hero .trust{margin-top:28px;display:flex;align-items:center;gap:10px;font-size:14px;color:#e9d9e6;flex-wrap:wrap}
+.hero .trust a{color:#fff;font-weight:600;text-underline-offset:3px}
+.hero .trust .st{color:var(--honing);letter-spacing:2px;font-size:15px}
+.intro{animation:opkomen .9s cubic-bezier(.2,.7,.2,1) .15s both}
+.intro2{animation:opkomen .9s cubic-bezier(.2,.7,.2,1) .35s both}
+@keyframes opkomen{from{opacity:0}to{opacity:1}}
+/* voor/na-schuif */
+.schuif{position:absolute;top:0;bottom:0;width:0;left:45%;z-index:2;pointer-events:none}
+.schuif::before{content:"";position:absolute;top:0;bottom:8%;left:-1px;width:2px;background:linear-gradient(180deg,rgba(246,227,189,.95),rgba(246,227,189,.95) 75%,rgba(246,227,189,0))}
+.greep{position:absolute;left:-26px;top:50%;margin-top:-26px;width:52px;height:52px;border-radius:50%;background:var(--champ);color:var(--pruim);display:grid;place-items:center;box-shadow:0 6px 24px rgba(0,0,0,.4);pointer-events:auto;cursor:ew-resize;touch-action:none;border:0}
+.greep svg{width:26px;height:26px}
+.vn-lab{position:absolute;top:14px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pruim);background:rgba(246,227,189,.92);border-radius:999px;padding:4px 10px;white-space:nowrap}
+.vn-lab.l{right:12px}.vn-lab.r{left:12px}
+.beeld .ill{position:absolute;right:12px;bottom:12px;z-index:2;font-size:11px;color:rgba(246,227,189,.75);letter-spacing:.04em}
+.vn-range{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}
+.vn-range:focus-visible + .schuif .greep{outline:3px solid #fff;outline-offset:3px}
+@media (min-width:900px){
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);min-height:min(calc(100vh - 148px),760px)}
+  .beeld{order:2;height:auto;min-height:560px}
+  .beeld::after{background:linear-gradient(90deg,var(--pruim) 0%,rgba(42,15,45,0) 18%),linear-gradient(180deg,rgba(42,15,45,.5) 0%,rgba(42,15,45,0) 12%),linear-gradient(0deg,rgba(42,15,45,.7) 0%,rgba(42,15,45,0) 16%)}
+  .hero-tekst{order:1;align-self:center;padding:56px 24px 64px max(40px,calc((100vw - 1180px)/2 + 40px))}
+  .hero h1{font-size:clamp(56px,6.4vw,96px)}
+}
+
+/* 5. staalkaart */
+.staal{padding-block:clamp(64px,10vw,120px)}
+.staal .koprij{display:grid;gap:14px;margin-bottom:34px}
+.ring{position:relative;padding-top:26px}
+.ring::before{content:"";position:absolute;left:4px;right:4px;top:12px;height:6px;border-radius:6px;background:linear-gradient(180deg,#d9c3d6,#a88aa3);box-shadow:0 2px 0 rgba(255,255,255,.6) inset}
+.stalen{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 12px}
+@media (min-width:900px){.stalen{grid-template-columns:repeat(8,minmax(0,1fr));gap:16px}}
+.stalen li{min-width:0}
+.lok{width:100%;background:none;border:0;cursor:pointer;display:grid;justify-items:center;gap:10px;padding:0 0 6px;font:inherit;color:inherit;border-radius:14px;min-height:44px}
+.lok svg{width:100%;max-width:96px;height:auto;transform-origin:50% 4%;filter:drop-shadow(0 8px 12px rgba(42,15,45,.18))}
+.lok:hover svg,.lok:focus-visible svg{animation:wieg 1.6s ease-in-out 1}
+@keyframes wieg{0%,100%{transform:rotate(0)}30%{transform:rotate(3deg)}65%{transform:rotate(-2deg)}}
+.lok b{font-family:var(--kop);font-weight:400;font-size:clamp(14px,3.7vw,19px);line-height:1.15;text-align:center;overflow-wrap:break-word;max-width:100%}
+.lok small{display:block;font-family:var(--tekst);font-size:12px;color:var(--grijs);margin-top:2px}
+.lok:focus-visible{outline:3px solid var(--pruim3);outline-offset:4px}
+.noot{font-size:13px;color:var(--grijs);margin-top:24px}
+
+/* 6. kiezer */
+.kiezer{background:#fff;padding-block:clamp(64px,10vw,120px);border-block:1px solid var(--lijn)}
+.kiezer .grid{display:grid;gap:30px}
+@media (min-width:980px){.kiezer .grid{grid-template-columns:1.25fr .95fr;gap:48px;align-items:start}}
+.stap{border-top:1px solid var(--lijn);padding-top:20px;margin-top:22px}
+.stap h3{display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+.stap h3 span{font-family:var(--tekst);font-size:13px;font-weight:700;color:#fff;background:var(--pruim);border-radius:50%;width:28px;height:28px;display:inline-grid;place-items:center;flex:none;transform:translateY(-3px)}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.dl{font-size:13px;font-weight:600;color:var(--grijs);margin:16px 0 8px;letter-spacing:.04em}
+.opt{min-height:46px;padding:8px 16px;border-radius:999px;border:1.5px solid var(--lila2);background:var(--orchid);font:500 15px var(--tekst);color:var(--inkt);cursor:pointer;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.2;transition:background-color .15s,border-color .15s,color .15s}
+.opt small{font-size:11.5px;color:var(--grijs);font-weight:500}
+.opt:hover{border-color:var(--pruim3)}
+.opt[aria-pressed=true]{background:var(--pruim);border-color:var(--pruim);color:#fff}
+.opt[aria-pressed=true] small{color:#e4cfe0}
+.opt:focus-visible{outline:3px solid var(--honing);outline-offset:2px}
+.kaartje{background:var(--pruim);color:#fff;border-radius:22px;padding:26px 22px;position:relative;overflow:hidden}
+@media (min-width:980px){.kaartje{position:sticky;top:96px}}
+.kaartje > *{position:relative;z-index:1}
+.kaartje::after{content:"";position:absolute;z-index:0;right:-30px;top:-30px;width:150px;height:150px;border-radius:50%;background:var(--balayage);opacity:.35;filter:blur(2px)}
+.kaartje h3{color:var(--champ);margin-bottom:12px;position:relative}
+.bericht{background:#fff;color:var(--inkt);border-radius:16px 16px 16px 4px;padding:16px 18px;font-size:15px;white-space:pre-line;position:relative;min-height:130px}
+.kaartje .acties{display:grid;gap:10px;margin-top:18px}
+.kaartje .acties .btn{width:100%}
+.kaartje .eerlijk{font-size:13px;color:#e4cfe0;margin-top:14px}
+.kaartje .eerlijk a{color:#fff}
+
+/* 7. waarom */
+.waarom{padding-block:clamp(64px,10vw,120px)}
+.kaarten{display:grid;gap:16px;margin-top:34px}
+@media (min-width:860px){.kaarten{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.kaart{background:#fff;border:1px solid var(--lijn);border-radius:20px;padding:24px 22px;min-width:0;position:relative;overflow:hidden}
+.kaart .streng{height:8px;border-radius:8px;margin-bottom:22px;width:72px}
+.kaart h3{margin-bottom:10px}
+.kaart p{color:var(--grijs);font-size:15.5px}
+
+/* 8. reviews */
+.reviews{background:var(--pruim);color:#fff;padding-block:clamp(64px,10vw,120px);position:relative;overflow:hidden}
+.reviews .top{display:grid;gap:18px;align-items:end}
+@media (min-width:900px){.reviews .top{grid-template-columns:auto 1fr;gap:48px}}
+.score{font-family:var(--kop);font-size:clamp(84px,24vw,150px);line-height:.9;background:linear-gradient(180deg,#f6e3bd,#e3ac5c 55%,#b8743c);-webkit-background-clip:text;background-clip:text;color:transparent;padding-top:.1em}
+.reviews .oog{color:var(--honing)}
+.reviews h2{color:#fff}
+.reviews .bron{color:#e4cfe0;margin-top:8px}
+.reviews .bron a{color:#fff;font-weight:600}
+.revs{display:grid;gap:14px;margin-top:38px}
+@media (min-width:860px){.revs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.rev{background:var(--pruim2);border:1px solid rgba(246,227,189,.14);border-radius:20px;padding:22px;min-width:0}
+.rev p{font-size:16px;color:#f2e6ef}
+.rev b{display:block;margin-top:14px;color:var(--champ);font-weight:600}
+.reviews .label{font-size:13px;color:#cdb6c9;margin-top:18px}
+
+/* 9. stappen */
+.stappen{padding-block:clamp(64px,10vw,120px)}
+.rij3{display:grid;gap:14px;margin-top:34px;counter-reset:s}
+@media (min-width:860px){.rij3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.rij3 li{list-style:none;background:#fff;border-radius:20px;border:1px solid var(--lijn);padding:22px;min-width:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start}
+.rij3 li::before{counter-increment:s;content:counter(s);font-family:var(--kop);font-size:40px;line-height:1;background:var(--balayage);-webkit-background-clip:text;background-clip:text;color:transparent;padding-top:.12em}
+.rij3 h3{margin-bottom:6px}
+.rij3 p{color:var(--grijs);font-size:15.5px}
+
+/* 10. faq */
+.faq{padding-block:0 clamp(64px,10vw,120px)}
+.faq details{background:#fff;border:1px solid var(--lijn);border-radius:16px;margin-top:10px}
+.faq summary{cursor:pointer;list-style:none;padding:16px 52px 16px 20px;font-weight:600;min-height:56px;display:flex;align-items:center;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:24px;color:var(--pruim3)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 20px 18px;color:var(--grijs)}
+.faq .lijst{max-width:820px;margin-top:26px}
+
+/* 11. adres */
+.adres{background:var(--lila);padding-block:clamp(64px,10vw,120px)}
+.adres .grid{display:grid;gap:22px}
+@media (min-width:900px){.adres .grid{grid-template-columns:1fr 1fr;gap:40px;align-items:start}}
+.blok{background:#fff;border-radius:22px;padding:24px 22px;min-width:0}
+.blok h3{margin-bottom:12px}
+.blok address{font-style:normal;font-size:17px}
+.blok .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.uren{width:100%;border-collapse:collapse;font-size:15.5px}
+.uren td{padding:9px 0;border-bottom:1px solid var(--lijn)}
+.uren td+td{text-align:right;font-variant-numeric:tabular-nums}
+.uren .vandaag td{font-weight:700;color:var(--pruim)}
+.blok .klein{font-size:13px;color:var(--grijs);margin-top:12px}
+
+/* 12. slot */
+.slot{background:var(--pruim);color:#fff;text-align:center;padding-block:clamp(70px,11vw,130px);position:relative;overflow:hidden}
+.slot::before{content:"";position:absolute;left:50%;top:-140px;width:560px;height:280px;margin-left:-280px;border-radius:50%;background:var(--balayage);opacity:.22;filter:blur(40px)}
+.slot h2{max-width:16ch;margin-inline:auto;position:relative}
+.slot p{color:#e4cfe0;margin:14px auto 0;max-width:40ch;position:relative}
+.slot .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px;position:relative}
+.slot .na{position:relative;margin-top:28px;font-size:14px;color:#cdb6c9}
+
+/* 13. footer */
+footer{background:#170716;color:#cdb6c9;padding-block:40px 110px;font-size:14px}
+footer .wrap{display:grid;gap:18px}
+@media (min-width:860px){footer{padding-bottom:40px}footer .wrap{grid-template-columns:auto 1fr auto;align-items:center;gap:30px}}
+footer img{height:40px;width:auto}
+footer a{color:#fff}
+
+/* 14. zwevende CTA */
+.zweef{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;display:flex;gap:10px;visibility:hidden;opacity:0;transition:opacity .25s, visibility .25s}
+.zweef.on{visibility:visible;opacity:1}
+.zweef .btn{flex:1;box-shadow:0 10px 30px rgba(20,6,17,.4)}
+.zweef .btn-tel{flex:none;width:52px;padding:0;background:#fff;color:var(--pruim)}
+@media (min-width:860px){.zweef{display:none}}
+
+/* pitch-modus (alleen voor Mo) */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(20,6,17,.62);display:none;align-items:flex-end;justify-content:center}
+.pitch.open{display:flex}
+.pitch .vel{background:#fff;width:min(1100px,100%);max-height:94svh;overflow:auto;border-radius:18px 18px 0 0;padding:24px clamp(18px,3vw,40px) 40px}
+.pitch .pk{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.pitch .pk h3{font-size:clamp(22px,5vw,30px)}
+.pitch .psluit{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--lijn);background:#fff;font-size:24px;cursor:pointer;flex:none}
+.vn{display:grid;gap:22px}
+@media (min-width:820px){.vn{grid-template-columns:1fr 1fr}}
+.vn figure{display:grid;gap:10px;align-content:start}
+.vn figcaption{font-weight:700;font-size:17px}
+.vn figcaption span{display:block;font-weight:400;font-size:14px;color:var(--grijs)}
+.tel-frame{width:min(300px,100%);aspect-ratio:9/17;border:10px solid var(--inkt);border-radius:30px;overflow:hidden;background:#fff;margin-inline:auto;position:relative}
+.tel-frame > img{width:100%;height:100%;object-fit:cover;object-position:top}
+.tel-frame iframe{width:390px;height:737px;border:0;transform-origin:0 0;position:absolute;left:0;top:0}
+.fouten{list-style:none;display:grid;gap:8px;font-size:15px}
+.fouten li{display:grid;grid-template-columns:24px 1fr;gap:8px}
+.fouten b{width:24px;height:24px;border-radius:50%;background:var(--pruim3);color:#fff;font-size:13px;display:grid;place-items:center}
+.reken,.beter{margin-top:26px;border-top:1px solid var(--lijn);padding-top:22px}
+.reken h4,.beter h4{font-family:var(--kop);font-weight:400;font-size:24px;margin-bottom:6px}
+.reken .vb{font-size:14px;color:var(--grijs);margin-bottom:14px}
+.reken label{display:flex;justify-content:space-between;gap:10px;font-weight:600;font-size:15px;margin-top:12px}
+.reken input[type=range]{width:100%;accent-color:var(--pruim3);height:44px}
+.uit{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:14px}
+.uit div{background:var(--orchid);border-radius:10px;padding:14px}
+.uit small{display:block;font-size:13px;color:var(--grijs)}
+.uit strong{font-family:var(--kop);font-weight:400;font-size:28px}
+.beter ol{padding-left:22px;display:grid;gap:8px}
+
+@media (prefers-reduced-motion:reduce){
+  .intro,.intro2{animation:none}
+  .lok:hover svg,.lok:focus-visible svg{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> <button class="pitch-knop" id="pitchKnop" type="button" aria-label="Presentatie openen">Mo</button></div>
+<div class="balk"><p><span class="st" aria-hidden="true">★★★★★</span> 5,0 uit 57 reviews op <a href="https://www.google.com/maps?cid=14790078097731882408" target="_blank" rel="noopener">Google</a></p></div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Hairstudio Breeze, naar boven"><img src="logo-light.svg" alt="Hairstudio Breeze" width="340" height="108"></a>
+    <nav aria-label="Hoofdmenu">
+      <a class="nl" href="#staalkaart">Behandelingen</a>
+      <a class="nl" href="#reviews">Reviews</a>
+      <a class="nl" href="#adres">Route</a>
+      <a class="btn btn-honing js-wa" href="https://wa.me/31627084180?text=Hoi%20Breeze%2C%20ik%20wil%20graag%20een%20afspraak%20vragen.">Afspraak vragen</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top" aria-label="Hairstudio Breeze">
+  <div class="beeld" id="beeld">
+    <canvas id="haar" aria-hidden="true"></canvas>
+    <input class="vn-range" id="vnRange" type="range" min="5" max="95" value="45" aria-label="Schuif tussen voor en na">
+    <div class="schuif" id="schuif" aria-hidden="true">
+      <span class="vn-lab l">Voor</span><span class="vn-lab r">Na</span>
+      <button class="greep" id="greep" type="button" tabindex="-1" aria-label="Sleep om voor en na te vergelijken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></button>
+    </div>
+    <span class="ill" aria-hidden="true">Illustratie · sleep om te vergelijken</span>
+  </div>
+  <div class="wrap hero-tekst">
+    <p class="oog intro"><span>Kapsalon</span><span>Blokweg 39</span></p>
+    <h1 class="intro">Kleur, keratine <em>en krullen.</em></h1>
+    <p class="sub intro2">Balayage, highlights, permanent steil, locs, föhnen en knippen bij Hairstudio Breeze. Vraag je afspraak aan via WhatsApp.</p>
+    <div class="btns intro2">
+      <a class="btn btn-honing js-wa" href="https://wa.me/31627084180?text=Hoi%20Breeze%2C%20ik%20wil%20graag%20een%20afspraak%20vragen.">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+        Afspraak vragen
+      </a>
+      <a class="btn btn-rand" href="#kiezer">Kies je behandeling</a>
+    </div>
+    <p class="trust intro2"><span class="st" aria-hidden="true">★★★★★</span> <span><a href="https://www.google.com/maps?cid=14790078097731882408" target="_blank" rel="noopener">5,0 uit 57 Google-reviews</a> · Rotterdam-Zuid</span></p>
+  </div>
+</section>
+
+<section class="staal" id="staalkaart">
+  <div class="wrap">
+    <div class="koprij">
+      <p class="oog">De kleurkaart</p>
+      <h2>Kies een lok, begin je aanvraag.</h2>
+      <p class="lead">Van balayage tot knippen. Tik er een aan en hij staat meteen in je WhatsApp-bericht.</p>
+    </div>
+    <div class="ring">
+      <ul class="stalen" id="stalen"></ul>
+    </div>
+    <p class="noot">Illustraties van haarstalen, geen foto's van eigen werk. Prijzen spreek je af in je bericht.</p>
+  </div>
+</section>
+
+<section class="kiezer" id="kiezer">
+  <div class="wrap grid">
+    <div>
+      <p class="oog">Afspraak vragen</p>
+      <h2>Stel je bericht samen.</h2>
+      <p class="lead">Drie keuzes, dan staat je vraag klaar in WhatsApp.</p>
+
+      <div class="stap">
+        <h3><span>1</span>Wat wil je laten doen?</h3>
+        <div class="opts" data-group="dienst" id="diensten"></div>
+      </div>
+      <div class="stap">
+        <h3><span>2</span>Hoe lang is je haar nu?</h3>
+        <div class="opts" data-group="lengte">
+          <button class="opt" type="button" data-v="kort" aria-pressed="false">Kort</button>
+          <button class="opt" type="button" data-v="tot de schouders" aria-pressed="true">Tot de schouders</button>
+          <button class="opt" type="button" data-v="lang" aria-pressed="false">Lang</button>
+          <button class="opt" type="button" data-v="extra lang" aria-pressed="false">Extra lang</button>
+        </div>
+      </div>
+      <div class="stap">
+        <h3><span>3</span>Welke dag past je?</h3>
+        <div class="opts" data-group="dag" id="dagen"></div>
+        <p class="dl">Dagdeel</p>
+        <div class="opts" data-group="deel">
+          <button class="opt" type="button" data-v="" aria-pressed="true">Hele dag goed</button>
+          <button class="opt" type="button" data-v="in de ochtend" aria-pressed="false">Ochtend</button>
+          <button class="opt" type="button" data-v="in de middag" aria-pressed="false">Middag</button>
+          <button class="opt" type="button" data-v="aan het eind van de middag" aria-pressed="false">Eind van de middag</button>
+        </div>
+      </div>
+    </div>
+    <aside class="kaartje" id="kaartje" aria-live="polite">
+      <h3>Jouw bericht aan Breeze</h3>
+      <div class="bericht" id="voorbeeld"></div>
+      <div class="acties">
+        <a class="btn btn-honing js-kies" href="https://wa.me/31627084180?text=Hoi%20Breeze%2C%20ik%20wil%20graag%20een%20afspraak%20vragen.">Verstuur via WhatsApp</a>
+        <a class="btn btn-rand" href="tel:+31627084180">Liever bellen: 06 27 08 41 80</a>
+      </div>
+      <p class="eerlijk">Dit is een aanvraag, nog geen vaste afspraak. Het moment spreek je samen af.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="waarom" id="waarom">
+  <div class="wrap">
+    <p class="oog">Waarom Breeze</p>
+    <h2>Wat in de reviews terugkomt.</h2>
+    <div class="kaarten">
+      <article class="kaart">
+        <div class="streng" style="background:linear-gradient(90deg,#2a1712,#6b3f26,#b8743c)"></div>
+        <h3>Keratine en stijl&shy;behandelingen</h3>
+        <p>Klanten schrijven over hun keratine- en stijlbehandeling bij Breeze. Op Google staan er resultaatfoto's van klanten bij.</p>
+      </article>
+      <article class="kaart">
+        <div class="streng" style="background:linear-gradient(90deg,#6b3f26,#e3ac5c,#f6e3bd)"></div>
+        <h3>Kleur, stap voor stap</h3>
+        <p>Klanten schrijven dat hun kleur in stappen is hersteld. Ook balayage en highlights staan op de lijst.</p>
+      </article>
+      <article class="kaart">
+        <div class="streng" style="background:linear-gradient(90deg,#40173d,#8a4e86,#d9c3d6)"></div>
+        <h3>Ook in het Spaans</h3>
+        <p>Klanten schrijven dat je er ook in het Spaans terecht kunt. Veel reviews zijn in het Spaans en Engels geschreven.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="top">
+      <div class="score" aria-hidden="true">5,0</div>
+      <div>
+        <p class="oog">Google-reviews</p>
+        <h2>Uit 57 reviews op Google.</h2>
+        <p class="bron">Bekijk alle reviews en de foto's van klanten op <a href="https://www.google.com/maps?cid=14790078097731882408" target="_blank" rel="noopener">Google Maps</a>.</p>
+      </div>
+    </div>
+    <div class="revs">
+      <article class="rev"><p>Komt hier al vier jaar en noemt het een heel goede kapper.</p><b>Missy</b></article>
+      <article class="rev"><p>Komt al jaren en noemt het de beste kapper van Rotterdam.</p><b>Gus</b></article>
+      <article class="rev"><p>Uitstekende service; Breeze is volgens Lina attent en professioneel.</p><b>Lina</b></article>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="stappen" id="zo">
+  <div class="wrap">
+    <p class="oog">Drie stappen</p>
+    <h2>Van lok tot afspraak.</h2>
+    <ol class="rij3">
+      <li><div><h3>Kies je behandeling</h3><p>Op de kleurkaart of in de kiezer: van balayage tot een knipbeurt.</p></div></li>
+      <li><div><h3>Stuur je bericht</h3><p>Dienst, haarlengte en dag staan al in je WhatsApp-bericht. Bellen kan ook.</p></div></li>
+      <li><div><h3>Kom langs</h3><p>Jullie spreken een moment af en je komt naar Blokweg 39 in Rotterdam.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <p class="oog">Voor je appt</p>
+    <h2>Vragen.</h2>
+    <div class="lijst">
+      <details><summary>Kan ik online boeken?</summary><p>Op deze site vraag je een afspraak aan via WhatsApp of telefoon (06 27 08 41 80). Het moment spreek je samen af.</p></details>
+      <details><summary>Wat kost een behandeling?</summary><p>Vraag het in je bericht via WhatsApp, of bel 06 27 08 41 80.</p></details>
+      <details><summary>Wanneer is de salon open?</summary><p>Volgens Fresha van maandag tot en met zaterdag van 09:00 tot 19:00, op zondag gesloten.</p></details>
+      <details><summary>Kan ik er in het Spaans terecht?</summary><p>Klanten schrijven in hun reviews dat er Spaans gesproken wordt.</p></details>
+      <details><summary>Waar zit Hairstudio Breeze?</summary><p>Blokweg 39, 3074 RH Rotterdam. De routeknop hieronder opent Google Maps.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="adres" id="adres">
+  <div class="wrap">
+    <p class="oog">Adres en uren</p>
+    <h2 style="margin-bottom:28px">Hier vind je de salon.</h2>
+    <div class="grid">
+      <div class="blok">
+        <h3>Adres</h3>
+        <address>Hairstudio Breeze<br>Blokweg 39<br>3074 RH Rotterdam</address>
+        <div class="btns">
+          <a class="btn btn-pruim" href="https://www.google.com/maps/dir/?api=1&amp;destination=Blokweg+39%2C+3074+RH+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
+          <a class="btn btn-lijn" href="tel:+31627084180">06 27 08 41 80</a>
+        </div>
+      </div>
+      <div class="blok">
+        <h3>Openingstijden</h3>
+        <table class="uren" id="uren">
+          <tr data-d="1"><td>Maandag</td><td>09:00 – 19:00</td></tr>
+          <tr data-d="2"><td>Dinsdag</td><td>09:00 – 19:00</td></tr>
+          <tr data-d="3"><td>Woensdag</td><td>09:00 – 19:00</td></tr>
+          <tr data-d="4"><td>Donderdag</td><td>09:00 – 19:00</td></tr>
+          <tr data-d="5"><td>Vrijdag</td><td>09:00 – 19:00</td></tr>
+          <tr data-d="6"><td>Zaterdag</td><td>09:00 – 19:00</td></tr>
+          <tr data-d="0"><td>Zondag</td><td>Gesloten</td></tr>
+        </table>
+        <p class="klein">Volgens de pagina van Hairstudio Breeze op Fresha. Je plant je afspraak via WhatsApp of telefoon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <div class="wrap">
+    <h2>Toe aan nieuwe kleur of glad haar?</h2>
+    <p>Stuur Breeze een bericht met wat je wilt laten doen.</p>
+    <div class="btns">
+      <a class="btn btn-honing js-wa" href="https://wa.me/31627084180?text=Hoi%20Breeze%2C%20ik%20wil%20graag%20een%20afspraak%20vragen.">Afspraak vragen via WhatsApp</a>
+      <a class="btn btn-rand" href="#kiezer">Naar de kiezer</a>
+    </div>
+    <p class="na">★ 5,0 uit 57 Google-reviews · Blokweg 39, Rotterdam</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-light.svg" alt="Hairstudio Breeze" width="340" height="108" loading="lazy" decoding="async">
+    <p>Blokweg 39, 3074 RH Rotterdam · <a href="tel:+31627084180">06 27 08 41 80</a></p>
+    <p>Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef">
+  <a class="btn btn-honing js-wa" href="https://wa.me/31627084180?text=Hoi%20Breeze%2C%20ik%20wil%20graag%20een%20afspraak%20vragen.">Afspraak vragen via WhatsApp</a>
+  <a class="btn btn-tel" href="tel:+31627084180" aria-label="Bel 06 27 08 41 80"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+</div>
+
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-label="Presentatie">
+  <div class="vel">
+    <div class="pk"><h3>Hairstudio Breeze: nu en straks</h3><button class="psluit" id="pitchSluit" type="button" aria-label="Sluiten">×</button></div>
+    <div class="vn">
+      <figure>
+        <figcaption>Nu<span>De Fresha-pagina op een telefoon (9 nov 2026)</span></figcaption>
+        <div class="tel-frame"><img src="img/voor-fresha.jpg" alt="Fresha-pagina van Hairstudio Breeze met een standaardfoto van twee mannen bij een herenklant" width="390" height="844" loading="lazy" decoding="async"></div>
+        <ul class="fouten">
+          <li><b>1</b>Er is geen eigen website: op Google Maps is het websiteveld leeg.</li>
+          <li><b>2</b>Fresha maakte zelf een pagina, met een standaardfoto van Fresha (twee mannen bij een herenklant) en zonder prijzen. Fresha schrijft erbij dat de zaak niet bij hen is aangesloten.</li>
+          <li><b>3</b>De voor-en-na-foto's van klanten staan alleen tussen de reviews op Google.</li>
+        </ul>
+      </figure>
+      <figure>
+        <figcaption>Straks<span>Deze site, op dezelfde telefoon</span></figcaption>
+        <div class="tel-frame" id="telNa"><iframe id="naFrame" title="Nieuwe site op een telefoon" loading="lazy"></iframe></div>
+      </figure>
+    </div>
+    <div class="reken">
+      <h4>Wat dit kan opleveren</h4>
+      <p class="vb">Voorbeeld om samen in te vullen, geen belofte. Vul je eigen cijfers in; het gaat om omzet, niet om winst.</p>
+      <label for="r-klant">Extra klanten per week via de site <output id="o-klant">1</output></label>
+      <input type="range" id="r-klant" min="0" max="10" step="1" value="1">
+      <label for="r-prijs">Wat een klant gemiddeld besteedt <output id="o-prijs">€ 40</output></label>
+      <input type="range" id="r-prijs" min="20" max="250" step="5" value="40">
+      <div class="uit">
+        <div><small>Extra per maand</small><strong id="u-maand">€ 173</strong></div>
+        <div><small>Extra per jaar</small><strong id="u-jaar">€ 2.080</strong></div>
+        <div><small>De site is terugverdiend na</small><strong id="u-klant">15 klanten</strong></div>
+      </div>
+    </div>
+    <div class="beter">
+      <h4>Wat er concreet beter is</h4>
+      <ol>
+        <li>Een eigen site met je eigen naam en je eigen behandelingen in het Nederlands, in plaats van een Fresha-pagina met een foto van een herenkapper.</li>
+        <li>Een klant kiest behandeling, haarlengte en dag, en het WhatsApp-bericht naar je 06 staat al klaar. Bellen en de route naar Blokweg 39 zijn één tik.</li>
+        <li>Je 5,0 uit 57 Google-reviews staan meteen in beeld. Stuur je eigen voor-en-na-foto's, dan krijgen je kleur- en keratineresultaten op de echte site een eigen plek.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var WA = "31627084180";
+  var wa = function(t){ return "https://wa.me/" + WA + "?text=" + encodeURIComponent(t); };
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function(s){ return document.querySelector(s); }, $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+  $$(".js-wa").forEach(function(a){ a.target = "_blank"; a.rel = "noopener"; });
+
+  /* ===== hero: haarlokken in de bries + voor/na ===== */
+  var cv = $("#haar"), ctx = cv.getContext("2d"), hero = $(".hero"), beeld = $("#beeld"), schuif = $("#schuif"), range = $("#vnRange");
+  var W = 0, H = 0, lokken = [], grad = null, START = .94, DOEL = .45, deel = reduce ? DOEL : START, handmatig = false, zicht = true, t0 = performance.now();
+  function rnd(seed){ var x = Math.sin(seed * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }
+  function opzet(){
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = beeld.clientWidth; H = beeld.clientHeight; if (!W || !H) return;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.round(W / 2.6);
+    lokken = [];
+    for (var i = 0; i < n; i++){
+      var r1 = rnd(i + 1), r2 = rnd(i + 51), r3 = rnd(i + 97), r4 = rnd(i + 173);
+      lokken.push({ x0: -.12 * W + 1.36 * W * (i / n) + (r1 - .5) * 6, len: H * (.92 + r2 * .2), w: r3 < .12 ? 2.6 + r3 * 6 : .7 + r3 * 1.3,
+        ph: r4 * 6.283, dx: (r1 - .5) * .5, a: .35 + r2 * .5, vlieg: r4 > .86 });
+    }
+    grad = ctx.createLinearGradient(0, 0, 0, H);
+    grad.addColorStop(0, "#2a1712"); grad.addColorStop(.28, "#5d3520"); grad.addColorStop(.52, "#a9672f");
+    grad.addColorStop(.76, "#e3ac5c"); grad.addColorStop(1, "#f8e8c8");
+  }
+  var N = 30;
+  function punten(s, t, pluis){
+    var out = [], tt = t * .001;
+    var golf = Math.sin(tt * .7) * .5 + .5;                 // de bries zwelt aan en af
+    for (var k = 0; k <= N; k++){
+      var u = k / N, y = -10 + s.len * u;
+      // gedeelde S-golf (één lok), met kleine eigen afwijking per haar
+      var x = s.x0 + Math.sin(u * 4.2 - tt * 1.1 + s.x0 / W * 1.4 + s.dx) * (10 + 26 * u) * (.8 + .4 * golf)
+            - u * u * W * (.06 + .05 * golf) + Math.sin(u * 9 + s.ph + tt * 1.6) * 2.2 * u;
+      if (pluis){
+        var f = s.vlieg ? 3 : 1;
+        x += (rnd(s.ph * 1000 + k) - .5) * 14 * u * f + Math.sin(k * 2.3 + s.ph * 5) * 4 * u * f;
+        y += (rnd(s.ph * 700 + k) - .5) * 7 * u * f;
+      }
+      out.push(x, y);
+    }
+    return out;
+  }
+  function lijn(p){
+    ctx.beginPath(); ctx.moveTo(p[0], p[1]);
+    for (var k = 2; k < p.length - 2; k += 2){ ctx.quadraticCurveTo(p[k], p[k + 1], (p[k] + p[k + 2]) / 2, (p[k + 1] + p[k + 3]) / 2); }
+    ctx.lineTo(p[p.length - 2], p[p.length - 1]);
+  }
+  function teken(t){
+    if (!W) return;
+    ctx.clearRect(0, 0, W, H);
+    var X = deel * W, i, s;
+    ctx.lineCap = "round";
+    ctx.save(); ctx.beginPath(); ctx.rect(0, 0, X, H); ctx.clip();          // voor: mat en pluizig
+    ctx.strokeStyle = "#86685a";
+    for (i = 0; i < lokken.length; i++){ s = lokken[i]; ctx.globalAlpha = s.a * .55; ctx.lineWidth = Math.min(1.8, s.w); lijn(punten(s, t, true)); ctx.stroke(); }
+    ctx.restore();
+    ctx.save(); ctx.beginPath(); ctx.rect(X, 0, W - X, H); ctx.clip();      // na: glad, balayage van wortel tot punt
+    ctx.strokeStyle = grad;
+    for (i = 0; i < lokken.length; i++){ s = lokken[i]; ctx.globalAlpha = s.a; ctx.lineWidth = s.w; lijn(punten(s, t, false)); ctx.stroke(); }
+    ctx.globalCompositeOperation = "lighter"; ctx.strokeStyle = "#fff1d6";  // glans op de lengtes
+    for (i = 0; i < lokken.length; i += 2){ s = lokken[i]; var p = punten(s, t, false); ctx.globalAlpha = .12; ctx.lineWidth = s.w * .8;
+      ctx.beginPath(); ctx.moveTo(p[18], p[19]); for (var k = 10; k <= 17; k++) ctx.lineTo(p[k * 2], p[k * 2 + 1]); ctx.stroke(); }
+    ctx.restore();
+    ctx.globalAlpha = 1; ctx.globalCompositeOperation = "source-over";
+    schuif.style.left = (deel * 100).toFixed(2) + "%";
+  }
+  function ease(x){ return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+  function frame(t){
+    if (!handmatig){ var v = Math.min(1, Math.max(0, (t - t0 - 600) / 2400)); deel = START + (DOEL - START) * ease(v); }
+    if (zicht) teken(t);
+    requestAnimationFrame(frame);
+  }
+  function zetDeel(x){ handmatig = true; deel = Math.min(.95, Math.max(.05, x)); range.value = Math.round(deel * 100); if (reduce || !zicht) teken(performance.now()); }
+  var greep = $("#greep"), sleept = false;
+  greep.addEventListener("pointerdown", function(e){ sleept = true; greep.setPointerCapture(e.pointerId); e.preventDefault(); });
+  greep.addEventListener("pointermove", function(e){ if (!sleept) return; var r = beeld.getBoundingClientRect(); zetDeel((e.clientX - r.left) / r.width); });
+  greep.addEventListener("pointerup", function(){ sleept = false; });
+  greep.addEventListener("pointercancel", function(){ sleept = false; });
+  range.addEventListener("input", function(){ zetDeel(range.value / 100); });
+  function hersizen(){ opzet(); teken(reduce ? 0 : performance.now()); }
+  addEventListener("resize", hersizen);
+  if ("IntersectionObserver" in window) new IntersectionObserver(function(e){ zicht = e[0].isIntersecting; }).observe(beeld);
+  hersizen();
+  if (!reduce) requestAnimationFrame(frame);
+
+  /* ===== staalkaart ===== */
+  var D = [
+    {v:"Balayage", nl:"Balayage", s:"balayage"},
+    {v:"Highlights", nl:"Highlights", s:"highlights"},
+    {v:"Haar kleuren", nl:"Kleuren", s:"kleur"},
+    {v:"Permanent steil / keratine", nl:"Steil", sub:"permanent, keratine", s:"steil"},
+    {v:"Krullend haar", nl:"Krullend haar", s:"krul"},
+    {v:"Locs", nl:"Locs", s:"locs"},
+    {v:"Föhnen", nl:"Föhnen", s:"fohn"},
+    {v:"Knippen (dames)", nl:"Knippen", sub:"dames", s:"knip"}
+  ];
+  function lokSvg(s, id){
+    var top = '<circle cx="48" cy="12" r="9" fill="none" stroke="#a88aa3" stroke-width="3.5"/><rect x="30" y="19" width="36" height="14" rx="4" fill="#40173d"/><rect x="30" y="19" width="36" height="4" rx="2" fill="#5b2453"/>';
+    var g = function(stops){ return '<linearGradient id="' + id + '" x1="0" y1="0" x2="0" y2="1">' + stops.map(function(c, i){ return '<stop offset="' + (i / (stops.length - 1)).toFixed(2) + '" stop-color="' + c + '"/>'; }).join("") + '</linearGradient>'; };
+    var lok = "M31 33C29 90 28 150 34 212Q48 226 62 212C68 150 67 90 65 33Z";
+    var tex = '<g stroke="#fff" stroke-opacity=".13" stroke-width="1" fill="none"><path d="M38 36C37 100 37 160 41 214M48 36V218M58 36C59 100 59 160 55 214"/></g>';
+    var body = "", defs = "";
+    if (s === "balayage"){ defs = g(["#2a1712","#5d3520","#b8743c","#e3ac5c","#f6e3bd"]); body = '<path d="' + lok + '" fill="url(#' + id + ')"/>' + tex; }
+    if (s === "highlights"){ defs = g(["#3a2219","#5d3520","#6b3f26"]); body = '<path d="' + lok + '" fill="url(#' + id + ')"/><g fill="#f0cf8e" opacity=".9"><path d="M36 34h3l-1 180h-3z"/><path d="M45 34h3v186h-3z"/><path d="M54 34h3l1 182h-3z"/><path d="M61 34h2l2 176h-3z"/></g>' + tex; }
+    if (s === "kleur"){ defs = g(["#3b0f1e","#7a1d34","#b23a48","#d9705a"]); body = '<path d="' + lok + '" fill="url(#' + id + ')"/>' + tex; }
+    if (s === "steil"){ defs = g(["#1d0f0b","#2e1a12","#3a2219"]) + '<linearGradient id="' + id + 'g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>';
+      body = '<path d="M33 33V214Q48 222 63 214V33Z" fill="url(#' + id + ')"/><rect x="33" y="92" width="30" height="16" fill="url(#' + id + 'g)"/><rect x="33" y="150" width="30" height="8" fill="url(#' + id + 'g)" opacity=".6"/><g stroke="#fff" stroke-opacity=".1"><path d="M40 36V216M48 36V218M56 36V216"/></g>'; }
+    if (s === "krul"){ defs = g(["#3a2219","#6b3f26","#9a5b30"]); body = '<path d="M33 33C22 52 44 64 30 84S44 116 30 136S46 168 32 188S50 222 48 222S70 206 62 188S48 156 64 136S50 104 66 84S54 52 63 33Z" fill="url(#' + id + ')"/><g fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="1.2"><path d="M44 40c-8 14 8 22 0 38s8 24 0 40 8 24 0 40 8 24 2 44"/><path d="M54 40c-8 14 8 22 0 38s8 24 0 40 8 24 0 40 6 22 0 40"/></g>'; }
+    if (s === "locs"){ defs = g(["#1d0f0b","#3a2219","#4a2a1c"]); var l = ""; [36, 48, 60].forEach(function(x, k){ l += '<rect x="' + (x - 5) + '" y="33" width="10" height="' + (178 + k % 2 * 10) + '" rx="5" fill="url(#' + id + ')"/>'; for (var y = 42; y < 205; y += 12) l += '<path d="M' + (x - 5) + ' ' + (y + k * 3) + 'l10 6" stroke="#fff" stroke-opacity=".16" stroke-width="1.4"/>'; }); body = l; }
+    if (s === "fohn"){ defs = g(["#3a2219","#7a4a2a","#b8743c"]); body = '<path d="M31 33C20 90 12 150 18 200Q48 230 78 200C84 150 76 90 65 33Z" fill="url(#' + id + ')"/><g fill="none" stroke="#fff" stroke-opacity=".15" stroke-width="1"><path d="M38 38C30 100 24 160 28 208M48 38V220M58 38C66 100 72 160 68 208"/></g><path d="M22 196Q48 214 74 196" fill="none" stroke="#e3ac5c" stroke-opacity=".5" stroke-width="2"/>'; }
+    if (s === "knip"){ defs = g(["#2e1a12","#4a2a1c","#6b3f26"]); body = '<path d="M31 33C29 80 29 120 31 148H65C67 120 67 80 65 33Z" fill="url(#' + id + ')"/>' + '<g stroke="#fff" stroke-opacity=".13"><path d="M40 36V148M48 36V148M56 36V148"/></g><path d="M20 152H76" stroke="#5b2453" stroke-width="2" stroke-dasharray="5 4"/><g fill="none" stroke="#5b2453" stroke-width="2.2"><circle cx="70" cy="172" r="6"/><circle cx="58" cy="176" r="6"/><path d="M66 167L50 150M62 172L72 150"/></g>'; }
+    return '<svg viewBox="0 0 96 230" aria-hidden="true"><defs>' + defs + '</defs>' + top + body + '</svg>';
+  }
+  $("#stalen").innerHTML = D.map(function(d, i){
+    return '<li><button class="lok" type="button" data-dienst="' + d.v + '">' + lokSvg(d.s, "lk" + i) + '<b>' + d.nl + (d.sub ? '<small>' + d.sub + '</small>' : '') + '</b></button></li>';
+  }).join("");
+  $("#diensten").innerHTML = D.map(function(d, i){ return '<button class="opt" type="button" data-v="' + d.v + '" aria-pressed="' + (i === 0 ? "true" : "false") + '">' + (d.s === "steil" ? "Permanent steil / keratine" : d.nl + (d.sub ? ' ' + d.sub : '')) + '</button>'; }).join("") +
+    '<button class="opt" type="button" data-v="advies" aria-pressed="false">Weet ik nog niet</button>';
+
+  /* ===== kiezer ===== */
+  var DAGEN = ["zo","ma","di","wo","do","vr","za"], MND = ["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"];
+  var nu = new Date(), html = "", n = 0, i = 1;
+  while (n < 6){
+    var d = new Date(nu.getFullYear(), nu.getMonth(), nu.getDate() + i); i++;
+    if (d.getDay() === 0) continue;
+    var datum = DAGEN[d.getDay()] + " " + d.getDate() + " " + MND[d.getMonth()];
+    var lab = i === 2 ? "Morgen" : datum;
+    html += '<button class="opt" type="button" data-v="' + (i === 2 ? "morgen (" + datum + ")" : datum) + '" aria-pressed="false">' + lab + (i === 2 ? "<small>" + datum + "</small>" : "") + "</button>";
+    n++;
+  }
+  html += '<button class="opt" type="button" data-v="" aria-pressed="true">Maakt niet uit</button>';
+  $("#dagen").innerHTML = html;
+
+  var gekozen = function(g){ var b = document.querySelector('[data-group="' + g + '"] .opt[aria-pressed="true"]'); return b ? b.dataset.v : ""; };
+  function render(){
+    var dienst = gekozen("dienst"), lengte = gekozen("lengte"), dag = gekozen("dag"), deel2 = gekozen("deel");
+    var r = ["Hoi Breeze,"];
+    r.push(dienst === "advies" ? "Ik wil graag een afspraak vragen, maar weet nog niet precies welke behandeling. Kun je me adviseren?" : "Ik wil graag een afspraak vragen voor: " + dienst.toLowerCase().replace("locs", "locs") + ".");
+    r.push("Mijn haar is nu " + lengte + ".");
+    if (dag) r.push("Liefst op " + dag + (deel2 ? ", " + deel2 : "") + ".");
+    else r.push(deel2 ? "De dag maakt niet uit, liefst " + deel2 + "." : "De dag maakt niet uit.");
+    r.push("Wanneer heb je plek?");
+    var t = r.join("\n");
+    $("#voorbeeld").textContent = t;
+    $$(".js-kies").forEach(function(a){ a.href = wa(t); a.target = "_blank"; a.rel = "noopener"; });
+  }
+  function kies(groep, b){ $$('[data-group="' + groep + '"] .opt').forEach(function(o){ o.setAttribute("aria-pressed", o === b ? "true" : "false"); }); render(); }
+  $$(".opts[data-group]").forEach(function(g){ g.addEventListener("click", function(e){ var b = e.target.closest(".opt"); if (b) kies(g.dataset.group, b); }); });
+  $("#stalen").addEventListener("click", function(e){
+    var b = e.target.closest(".lok"); if (!b) return;
+    var o = document.querySelector('[data-group="dienst"] .opt[data-v="' + b.dataset.dienst + '"]'); if (o) kies("dienst", o);
+    $("#kiezer").scrollIntoView({behavior: reduce ? "auto" : "smooth"});
+  });
+  render();
+
+  /* uren: vandaag markeren */
+  var rij = document.querySelector('#uren tr[data-d="' + nu.getDay() + '"]'); if (rij) rij.className = "vandaag";
+
+  /* ===== zwevende CTA: na de hero, niet bij de kiezer ===== */
+  var zw = $("#zweef"), heroUit = false, kiesIn = false, upd = function(){ zw.classList.toggle("on", heroUit && !kiesIn); };
+  if ("IntersectionObserver" in window){
+    new IntersectionObserver(function(e){ heroUit = !e[0].isIntersecting; upd(); }).observe(hero);
+    new IntersectionObserver(function(e){ kiesIn = e[0].isIntersecting; upd(); }, {threshold: .15}).observe($("#kaartje"));
+  }
+
+  /* ===== pitch-modus ===== */
+  var pitch = $("#pitch"), naFrame = $("#naFrame"), telNa = $("#telNa");
+  function schaal(){ var w = telNa.clientWidth; naFrame.style.transform = "scale(" + (w / 390) + ")"; naFrame.style.height = (telNa.clientHeight * 390 / w) + "px"; }
+  function openPitch(){ if (!naFrame.src) naFrame.src = location.pathname.split("/").pop() || "index.html"; pitch.classList.add("open"); schaal(); }
+  function sluitPitch(){ pitch.classList.remove("open"); if (/[?&]pitch/.test(location.search)) history.replaceState(null, "", location.pathname); }
+  $("#pitchKnop").addEventListener("click", openPitch);
+  $("#pitchSluit").addEventListener("click", sluitPitch);
+  pitch.addEventListener("click", function(e){ if (e.target === pitch) sluitPitch(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") sluitPitch(); });
+  addEventListener("resize", function(){ if (pitch.classList.contains("open")) schaal(); });
+  if (/[?&]pitch/.test(location.search)) openPitch();
+  if (window.self !== window.top){ $("#pitchKnop").hidden = true; zw.style.display = "none"; }
+
+  var eur = function(x){ return "€ " + Math.round(x).toLocaleString("nl-NL"); };
+  function reken(){
+    var k = +$("#r-klant").value, p = +$("#r-prijs").value;
+    $("#o-klant").textContent = k; $("#o-prijs").textContent = eur(p);
+    $("#u-maand").textContent = eur(k * p * 52 / 12);
+    $("#u-jaar").textContent = eur(k * p * 52);
+    $("#u-klant").textContent = Math.ceil(595 / p) + " klanten";
+  }
+  $("#r-klant").addEventListener("input", reken); $("#r-prijs").addEventListener("input", reken); reken();
+})();
+</script>
+</body>
+</html>
