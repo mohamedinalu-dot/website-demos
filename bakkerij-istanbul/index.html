@@ -508,7 +508,7 @@ footer a{color:#e6eaf0}
 <footer>
   <div class="wrap">
     <div class="f-grid">
-      <div><span class="f-logo"><img src="logo-light.svg" width="240" height="20" alt="Bakkerij Istanbul"></span><p style="margin-top:12px">Turkse buurtbakkerij in het Oude Noorden, Rotterdam.</p></div>
+      <div><span class="f-logo"><img src="logo-light.svg" width="240" height="20" alt="Bakkerij Istanbul" loading="lazy" decoding="async"></span><p style="margin-top:12px">Turkse buurtbakkerij in het Oude Noorden, Rotterdam.</p></div>
       <div><h4>Adres</h4><ul><li>Benthuizerstraat 80B</li><li>3036 CL Rotterdam</li><li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Benthuizerstraat+80B%2C+3036+CL+Rotterdam" target="_blank" rel="noopener">Route plannen</a></li></ul></div>
       <div><h4>Contact</h4><ul><li><a href="tel:+31654751043">06 54 75 10 43</a></li><li><a href="https://wa.me/31654751043?text=Hoi%20Bakkerij%20Istanbul%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener">Appje sturen</a></li><li><a href="https://www.facebook.com/bakkerijistanbul.rotterdamnoord/" target="_blank" rel="noopener">Facebook</a></li></ul></div>
     </div>
@@ -563,8 +563,6 @@ const WA_NUMMER = "31654751043";
     els.forEach(el => io.observe(el));
   }
   setTimeout(() => els.forEach(el => el.classList.add("in")), 3500);
-  /* vangnet: lazy foto's alsnog laden (screenshots, printen) */
-  window.addEventListener("load", () => setTimeout(() => document.querySelectorAll('main img[loading="lazy"]').forEach(i => { i.loading = "eager"; i.decoding = "sync"; }), 3500));
 })();
 
 /* zwevende cta zodra de hero uit beeld is */
