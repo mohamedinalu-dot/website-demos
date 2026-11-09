@@ -707,8 +707,6 @@ footer .klein{font-size:13px;color:#9fb0a6}
   KAART.forEach(function(c,i){var b=document.createElement("button");b.type="button";b.setAttribute("role","tab");b.textContent=c[0];b.addEventListener("click",function(){toon(i);});rail.appendChild(b);});
   toon(1);
 
-  /* ---------- vangnet: lazy foto's na 3 s alsnog laden (screenshots/printen) ---------- */
-  setTimeout(function(){document.querySelectorAll('img[loading="lazy"]').forEach(function(i){i.decoding="sync";i.loading="eager";if(!(i.complete&&i.naturalWidth)){var src=i.getAttribute("src");i.removeAttribute("src");i.setAttribute("src",src);}if(i.decode)i.decode().catch(function(){});});},3000);
 
   /* ---------- zwevende CTA ---------- */
   var zweef=document.getElementById("zweef"), hero=document.getElementById("hero");
