@@ -1,622 +1,675 @@
 <!doctype html>
+<!--
+  Arepa House v2 (L213), 9 nov 2026.
+  Concept in één zin: één site, twee gezichten. Mo laat Jiky kiezen.
+  archetype A "KRANTENWIKKEL": hun arepa's gaan in krantenprint-papier; de hero is hun eigen tray-foto (m7)
+     onder een vel krantenpapier dat één keer diagonaal openvouwt (clip-path), daarna stil. Kaart als krantenpagina met kolommen.
+  archetype B "LAMELLEN": rustig lunchcafé; de hero is hun interieurfoto achter houten lamellen (zoals hun toonbank)
+     die één keer openkantelen (rotateY), daarna stil. Kaart als rustige lijst met puntjes.
+  Geen marquee, geen stempel, geen schuine fotokaart, geen stoom, geen Ken Burns, geen "licht gaat aan", geen letters één voor één.
+  Stijl wisselen: ?stijl=a of ?stijl=b (kiezer zichtbaar met ?stijl= of ?pitch). Standaard: B.
+  Foto's: Google Maps-pagina Arepa House, geüpload door gasten (door Ops opgehaald 9 nov), alleen bijgesneden en verkleind, niet met AI bewerkt.
+-->
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Arepa House – Venezolaanse arepa's in Rotterdam (Zuidplein)</title>
-<meta name="description" content="Arepa House (Panaderia Curaçao) op Zuidplein Hoog 1006 in Rotterdam: arepitas, sopas, empanadas en zoete arepa di pampuna. Bekijk de kaart met prijzen en de openingstijden.">
-<meta name="theme-color" content="#0E2A6B">
+<title>Arepa House – arepa's en lunch in Rotterdam (Zuidplein)</title>
+<meta name="description" content="Arepa House (Panaderia Curaçao) op Zuidplein Hoog 1006 in Rotterdam: arepitas, sopas, empanadas en zoete arepa di pampuna. Kaart met prijzen, openingstijden en route.">
+<meta name="theme-color" content="#FBFAF7">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/interieur-m.jpg" media="(max-width:899px)">
 <style>
-:root{
-  --blauw:#0E2A6B; --blauw2:#16398C; --geel:#F6B819; --geel-d:#C9850E; --rood:#D7263D; --groen:#1F8A4C; --roze:#F27BA6;
-  --licht:#FFF8E6; --wit:#fff; --tekst:#1A2340; --zacht:#5A6380;
-  --r:20px;
-}
 *{box-sizing:border-box;margin:0;padding:0}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth}
-body{font-family:'Figtree',system-ui,sans-serif;color:var(--tekst);background:var(--licht);line-height:1.55;font-size:17px;overflow-x:hidden}
-h1,h2,h3,.titan{font-family:'Titan One',system-ui,sans-serif;font-weight:400;line-height:1.08;letter-spacing:.2px}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-img{max-width:100%;display:block}
-.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 24px;border-radius:999px;font-weight:800;text-decoration:none;font-size:17px;border:0;cursor:pointer;font-family:inherit;transition:background-color .2s,box-shadow .2s}
-.btn svg{width:22px;height:22px;flex:none}
-.btn-geel{background:var(--geel);color:var(--blauw);box-shadow:0 5px 0 var(--geel-d)}
-.btn-geel:hover{background:#ffc93a}
-.btn-rand{background:transparent;color:var(--wit);box-shadow:inset 0 0 0 2px rgba(255,255,255,.75)}
-.btn-rand:hover{background:rgba(255,255,255,.1)}
-.btn-blauw{background:var(--blauw);color:var(--wit);box-shadow:0 5px 0 #071a45}
-.btn-rood{background:var(--rood);color:var(--wit);box-shadow:0 5px 0 #9c1426}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
 
-/* demo + balk */
-.demo{background:#071a45;color:#cfd8f5;font-size:13.5px;text-align:center;padding:8px 14px}
-.demo a{color:var(--geel);font-weight:600}
-.balk{background:var(--rood);color:#fff;font-weight:600;font-size:14.5px;text-align:center;padding:9px 14px}
-.balk b{color:var(--geel)}
-
-/* header */
-header.top{background:var(--blauw);position:relative;z-index:5}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px}
-.top .logo img{height:54px;width:auto}
-.top nav{display:flex;gap:22px;align-items:center}
-.top nav a{color:#fff;text-decoration:none;font-weight:600}
-.top nav a:hover{color:var(--geel)}
-.top nav .btn{min-height:46px;padding:10px 20px;font-size:15.5px}
-@media(max-width:820px){.top nav a:not(.btn){display:none}.top .logo img{height:44px}.top nav .btn{padding:10px 16px}}
-@media(max-width:400px){.top .logo img{height:38px}}
-
-/* hero */
-.hero{position:relative;background:radial-gradient(120% 90% at 75% 30%,#1d4cb0 0%,var(--blauw) 55%,#0a2058 100%);color:#fff;overflow:hidden;padding:46px 0 0}
-.hero .patroon{position:absolute;inset:0;opacity:.13;pointer-events:none}
-.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:24px;align-items:center}
-.hero .kicker{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-weight:600;font-size:14.5px}
-.hero .kicker i{width:9px;height:9px;border-radius:50%;background:var(--geel);display:block}
-.hero h1{font-size:clamp(32px,9.6vw,74px);overflow-wrap:break-word;margin:18px 0 14px}
-.hero h1 .g{color:var(--geel)}
-.hero h1 .r{color:#ff8a9b}
-.hero p.lead{font-size:clamp(17px,2.2vw,20px);max-width:33em;color:#e3e9fb}
-.hero .knoppen{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
-.hero .trust{margin-top:30px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:15px;color:#e3e9fb}
-.sterren{color:var(--geel);letter-spacing:2px;font-size:18px}
-.scene{position:relative;aspect-ratio:1/1;max-width:500px;width:100%;justify-self:center}
-.scene svg{width:100%;height:100%;overflow:visible}
-.huizen{position:relative;display:block;width:100%;height:auto;margin-top:22px}
-@media(max-width:820px){
-  .hero{padding-top:30px}
-  .hero .wrap{grid-template-columns:minmax(0,1fr)}
-  .scene{max-width:300px;margin-top:8px}
+/* ---------- variabelen per stijl ---------- */
+body{
+  --bg:#FBFAF7;--bg2:#F1EEE8;--ink:#1F1B17;--zacht:#5F574F;--lijn:#E2DDD5;
+  --acc:#2F5A33;--acc-ink:#fff;--acc2:#8A5A3A;--rood:#A3202A;--goud:#A9843A;
+  --kaart:#fff;--r:6px;
+  --kop:'Instrument Serif',Georgia,serif;--kopw:400;--koptr:none;--kopls:-.01em;
+  font-family:'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:"opsz" 14;
+  background:var(--bg);color:var(--ink);font-size:17px;line-height:1.55;overflow-x:hidden;
 }
-@media(max-width:400px){.hero .knoppen .btn{width:100%}}
+body.s-a{
+  --bg:#F1EFEA;--bg2:#E7E3DA;--ink:#17130F;--zacht:#4E4740;--lijn:#CFC8BC;
+  --acc:#D9231E;--acc-ink:#fff;--acc2:#1F4FB5;--rood:#D9231E;--goud:#F2C200;
+  --kaart:#FBFAF6;--r:4px;
+  --kop:'Bricolage Grotesque',system-ui,sans-serif;--kopw:800;--koptr:uppercase;--kopls:-.01em;
+}
+h1,h2,h3{font-family:var(--kop);font-weight:var(--kopw);text-transform:var(--koptr);letter-spacing:var(--kopls);line-height:1.02;overflow-wrap:break-word}
+.s-a h1,.s-a h2,.s-a h3{font-variation-settings:"wdth" 75,"opsz" 96}
+.s-b h1 em,.s-b h2 em{font-style:italic;color:var(--acc2)}
+.s-a h1 em,.s-a h2 em{font-style:normal;color:var(--rood)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.only-a,.only-b{display:none}
+.s-a .only-a{display:revert}.s-b .only-b{display:revert}
+.s-a span.only-a,.s-b span.only-b{display:inline}
+.grid>*{min-width:0}
 
-/* animaties hero */
-.draai{transform-origin:250px 250px;animation:draai 40s linear infinite}
-@keyframes draai{to{transform:rotate(360deg)}}
-.zweef{animation:zweef 5.5s ease-in-out infinite}
-.zweef2{animation:zweef 6.5s ease-in-out -2s infinite}
-.zweef3{animation:zweef 7s ease-in-out -4s infinite}
-@keyframes zweef{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-.stoom path{stroke-dasharray:60;animation:stoom 3.2s ease-in-out infinite;opacity:0}
-.stoom path:nth-child(2){animation-delay:1s}.stoom path:nth-child(3){animation-delay:2s}
-@keyframes stoom{0%{stroke-dashoffset:60;opacity:0;transform:translateY(8px)}35%{opacity:.85}100%{stroke-dashoffset:-60;opacity:0;transform:translateY(-22px)}}
-.korrel{animation:korrel 9s linear infinite;opacity:0}
-@keyframes korrel{0%{transform:translateY(40px) rotate(0);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateY(-420px) rotate(220deg);opacity:0}}
-.golf{animation:golf 9s linear infinite}
-@keyframes golf{to{transform:translateX(-200px)}}
-.pulse{transform-origin:center;transform-box:fill-box;animation:pulse 2.6s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+/* ---------- knoppen ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:13px 22px;border-radius:var(--r);font-weight:700;font-size:16.5px;text-decoration:none;line-height:1.15;transition:background-color .2s,color .2s,box-shadow .2s}
+.btn svg{width:21px;height:21px;flex:none}
+.btn-hoofd{background:var(--acc);color:var(--acc-ink)}
+.s-a .btn-hoofd{box-shadow:4px 4px 0 var(--ink)}
+.btn-hoofd:hover{filter:brightness(1.08)}
+.btn-twee{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn-twee:hover{background:rgba(0,0,0,.05)}
+.btn-licht{background:#fff;color:var(--ink)}
+.s-a .btn-licht{background:var(--goud);color:#17130F;box-shadow:4px 4px 0 #17130F}
+.mo-note{display:none;font-size:12.5px;font-weight:700;background:#FFE58A;color:#3a2a00;border-radius:4px;padding:3px 8px;margin-top:8px;width:fit-content;max-width:100%}
+body.pitch .mo-note{display:block}
 
-/* marquee */
-.band{background:var(--geel);color:var(--blauw);overflow:hidden;border-top:4px solid var(--rood);border-bottom:4px solid var(--groen)}
-.band .rij{display:flex;gap:0;width:max-content;animation:band 32s linear infinite;padding:14px 0}
-.band span{font-family:'Titan One';font-size:20px;white-space:nowrap;padding:0 22px;display:flex;align-items:center;gap:22px}
-.band span::after{content:"";width:12px;height:12px;background:var(--rood);transform:rotate(45deg);display:block}
-.band span:nth-child(3n)::after{background:var(--groen)}
-.band span:nth-child(3n+1)::after{background:var(--blauw)}
-@keyframes band{to{transform:translateX(-50%)}}
+/* ---------- demo-strook, balk, header ---------- */
+.demo{background:#1F1B17;color:#E9E3DA;font-size:13px;text-align:center;padding:7px 14px}
+.demo a{color:#F2C200;font-weight:600}
+.balk{background:var(--bg2);border-bottom:1px solid var(--lijn);font-size:13.5px;text-align:center;padding:8px 14px;font-weight:500}
+.s-a .balk{background:var(--goud);border:0;color:#17130F;font-weight:700}
+.balk .st{color:var(--goud);letter-spacing:1px}.s-a .balk .st{color:#17130F}
+header.top{background:var(--bg);border-bottom:1px solid var(--lijn);position:relative;z-index:6}
+.s-a header.top{background:#1B1511;border-color:#1B1511;color:#fff}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:68px}
+.top .logo img{height:34px;width:auto}
+.top nav{display:flex;align-items:center;gap:22px}
+.top nav a{text-decoration:none;font-weight:600;font-size:15.5px}
+.top nav a:hover{text-decoration:underline;text-underline-offset:4px}
+.top nav .btn{min-height:44px;padding:9px 16px;font-size:15px}
+@media(max-width:860px){.top nav a:not(.btn){display:none}}
+@media(max-width:420px){.balk{font-size:12.5px;padding:8px 8px}}
+@media(max-width:380px){.top .logo img{height:28px}.top nav .btn{padding:9px 12px}}
 
-section{padding:76px 0}
-.kop{max-width:720px;margin-bottom:34px}
-.kop .label{display:inline-block;font-weight:800;color:var(--rood);text-transform:uppercase;letter-spacing:1.6px;font-size:13.5px;margin-bottom:10px}
-.kop h2{font-size:clamp(32px,5vw,50px);color:var(--blauw)}
-.kop p{margin-top:12px;color:var(--zacht);font-size:18px}
+/* ---------- HERO A: krantenwikkel ---------- */
+.hero-a{display:none;position:relative;background:#1B1511;color:#fff;overflow:hidden}
+.s-a .hero-a{display:block}
+.ha-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;min-height:min(88vh,820px)}
+.ha-tekst{padding:56px 40px 56px max(20px,calc((100vw - 1160px)/2 + 20px));display:flex;flex-direction:column;justify-content:center;background:
+  radial-gradient(120% 80% at 0% 100%,rgba(217,35,30,.28),transparent 60%),#1B1511;position:relative;z-index:2}
+.ha-neon{width:min(420px,100%);height:auto;filter:drop-shadow(0 0 10px rgba(247,231,51,.35)) drop-shadow(0 0 22px rgba(240,48,43,.25));margin-bottom:22px}
+.ha-kicker{font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:#F2C200}
+.hero-a h1{font-size:clamp(64px,13vw,150px);line-height:.86;margin:10px 0 12px;color:#fff}
+.hero-a h1 em{color:#F7E733}
+.ha-sub{font-family:'Bricolage Grotesque',sans-serif;font-variation-settings:"wdth" 75,"opsz" 48;font-weight:800;text-transform:uppercase;font-size:clamp(22px,3vw,34px);line-height:1.05;max-width:16em}
+.ha-sub b{color:#F7E733;font-weight:800}
+.ha-lead{color:#DCD3C7;max-width:31em;margin-top:14px}
+.ha-knoppen{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.ha-knoppen .btn-twee{color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
+.ha-trust{margin-top:28px;font-size:14.5px;color:#DCD3C7}
+.ha-trust b{color:#F7E733;letter-spacing:1px}
+.ha-foto{position:relative;width:min(46vw,620px);min-height:560px}
+.ha-neonfoto{width:min(520px,100%);height:auto;border-radius:3px;margin-bottom:30px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 20px 50px rgba(0,0,0,.5)}
+.ha-foto>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 72%}
+.wikkel{position:absolute;inset:0;filter:drop-shadow(-10px 10px 14px rgba(0,0,0,.45));pointer-events:none}
+.papier{position:absolute;inset:0;background-color:#EDEAE2;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22330%22%20height%3D%22144%22%3E%3Cg%20fill%3D%22%233a322a%22%20fill-opacity%3D%22.38%22%3E%3Crect%20x%3D%226%22%20y%3D%223%22%20width%3D%2210%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2220%22%20y%3D%223%22%20width%3D%2219%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2243%22%20y%3D%223%22%20width%3D%2213%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2260%22%20y%3D%223%22%20width%3D%2215%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2279%22%20y%3D%223%22%20width%3D%226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2289%22%20y%3D%223%22%20width%3D%2212%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2212%22%20width%3D%2223%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%2212%22%20width%3D%2222%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2259%22%20y%3D%2212%22%20width%3D%2215%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2278%22%20y%3D%2212%22%20width%3D%2211%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2221%22%20width%3D%2219%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2229%22%20y%3D%2221%22%20width%3D%2222%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%2221%22%20width%3D%2212%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2271%22%20y%3D%2221%22%20width%3D%2225%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2230%22%20width%3D%2223%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%2230%22%20width%3D%2220%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2257%22%20y%3D%2230%22%20width%3D%2220%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2239%22%20width%3D%2212%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%2239%22%20width%3D%2224%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2250%22%20y%3D%2239%22%20width%3D%2227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2248%22%20width%3D%2224%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2234%22%20y%3D%2248%22%20width%3D%2215%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2253%22%20y%3D%2248%22%20width%3D%2230%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2287%22%20y%3D%2248%22%20width%3D%229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2257%22%20width%3D%2214%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2224%22%20y%3D%2257%22%20width%3D%2216%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2244%22%20y%3D%2257%22%20width%3D%2227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2275%22%20y%3D%2257%22%20width%3D%2212%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2266%22%20width%3D%2220%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2230%22%20y%3D%2266%22%20width%3D%2223%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2257%22%20y%3D%2266%22%20width%3D%2216%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%2266%22%20width%3D%229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2275%22%20width%3D%2214%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2224%22%20y%3D%2275%22%20width%3D%2217%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2245%22%20y%3D%2275%22%20width%3D%2218%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2267%22%20y%3D%2275%22%20width%3D%226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2277%22%20y%3D%2275%22%20width%3D%2226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2284%22%20width%3D%2218%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2228%22%20y%3D%2284%22%20width%3D%2214%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2246%22%20y%3D%2284%22%20width%3D%229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2259%22%20y%3D%2284%22%20width%3D%2228%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2291%22%20y%3D%2284%22%20width%3D%2210%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%2293%22%20width%3D%2229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2239%22%20y%3D%2293%22%20width%3D%2226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2269%22%20y%3D%2293%22%20width%3D%2214%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2287%22%20y%3D%2293%22%20width%3D%2214%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%22102%22%20width%3D%228%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2218%22%20y%3D%22102%22%20width%3D%2210%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2232%22%20y%3D%22102%22%20width%3D%229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2245%22%20y%3D%22102%22%20width%3D%2225%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2274%22%20y%3D%22102%22%20width%3D%2211%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2289%22%20y%3D%22102%22%20width%3D%2215%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%22111%22%20width%3D%2212%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2222%22%20y%3D%22111%22%20width%3D%2225%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2251%22%20y%3D%22111%22%20width%3D%226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2261%22%20y%3D%22111%22%20width%3D%2227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%22120%22%20width%3D%2222%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2232%22%20y%3D%22120%22%20width%3D%2225%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2261%22%20y%3D%22120%22%20width%3D%2211%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2276%22%20y%3D%22120%22%20width%3D%2219%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%22129%22%20width%3D%2223%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2233%22%20y%3D%22129%22%20width%3D%226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2243%22%20y%3D%22129%22%20width%3D%2213%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2260%22%20y%3D%22129%22%20width%3D%2215%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%226%22%20y%3D%22138%22%20width%3D%2230%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2240%22%20y%3D%22138%22%20width%3D%2221%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2265%22%20y%3D%22138%22%20width%3D%226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%2275%22%20y%3D%22138%22%20width%3D%2226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%223%22%20width%3D%2216%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22136%22%20y%3D%223%22%20width%3D%2225%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22165%22%20y%3D%223%22%20width%3D%2213%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22182%22%20y%3D%223%22%20width%3D%227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22193%22%20y%3D%223%22%20width%3D%228%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%2212%22%20width%3D%2226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22146%22%20y%3D%2212%22%20width%3D%2221%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22171%22%20y%3D%2212%22%20width%3D%2216%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%2221%22%20width%3D%2227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22147%22%20y%3D%2221%22%20width%3D%2215%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22166%22%20y%3D%2221%22%20width%3D%2219%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22189%22%20y%3D%2221%22%20width%3D%2223%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%2230%22%20width%3D%226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22126%22%20y%3D%2230%22%20width%3D%2215%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22145%22%20y%3D%2230%22%20width%3D%2211%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22160%22%20y%3D%2230%22%20width%3D%2219%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22183%22%20y%3D%2230%22%20width%3D%229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%2239%22%20width%3D%2211%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22131%22%20y%3D%2239%22%20width%3D%2223%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22158%22%20y%3D%2239%22%20width%3D%2221%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22183%22%20y%3D%2239%22%20width%3D%227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%2248%22%20width%3D%229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22129%22%20y%3D%2248%22%20width%3D%2230%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22163%22%20y%3D%2248%22%20width%3D%2226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%2257%22%20width%3D%2214%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22134%22%20y%3D%2257%22%20width%3D%227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22145%22%20y%3D%2257%22%20width%3D%227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22156%22%20y%3D%2257%22%20width%3D%2216%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22176%22%20y%3D%2257%22%20width%3D%2213%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22193%22%20y%3D%2257%22%20width%3D%2219%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%2266%22%20width%3D%228%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22128%22%20y%3D%2266%22%20width%3D%2210%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22142%22%20y%3D%2266%22%20width%3D%2229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22175%22%20y%3D%2266%22%20width%3D%227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22186%22%20y%3D%2266%22%20width%3D%2216%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22206%22%20y%3D%2266%22%20width%3D%226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%2275%22%20width%3D%2224%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22144%22%20y%3D%2275%22%20width%3D%2214%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22162%22%20y%3D%2275%22%20width%3D%2226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22192%22%20y%3D%2275%22%20width%3D%2213%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%2284%22%20width%3D%2218%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22138%22%20y%3D%2284%22%20width%3D%2224%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22166%22%20y%3D%2284%22%20width%3D%2222%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%2293%22%20width%3D%226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22126%22%20y%3D%2293%22%20width%3D%2216%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22146%22%20y%3D%2293%22%20width%3D%2217%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22167%22%20y%3D%2293%22%20width%3D%2214%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22185%22%20y%3D%2293%22%20width%3D%2228%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%22102%22%20width%3D%2230%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22150%22%20y%3D%22102%22%20width%3D%2224%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22178%22%20y%3D%22102%22%20width%3D%2215%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22197%22%20y%3D%22102%22%20width%3D%2217%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%22111%22%20width%3D%2222%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22142%22%20y%3D%22111%22%20width%3D%2227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22173%22%20y%3D%22111%22%20width%3D%2224%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%22120%22%20width%3D%2210%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22130%22%20y%3D%22120%22%20width%3D%227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22141%22%20y%3D%22120%22%20width%3D%2229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22174%22%20y%3D%22120%22%20width%3D%2228%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%22129%22%20width%3D%2227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22147%22%20y%3D%22129%22%20width%3D%229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22160%22%20y%3D%22129%22%20width%3D%2215%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22179%22%20y%3D%22129%22%20width%3D%2214%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22197%22%20y%3D%22129%22%20width%3D%228%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22116%22%20y%3D%22138%22%20width%3D%2229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22149%22%20y%3D%22138%22%20width%3D%226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22159%22%20y%3D%22138%22%20width%3D%2222%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22185%22%20y%3D%22138%22%20width%3D%229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%223%22%20width%3D%2216%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22246%22%20y%3D%223%22%20width%3D%2211%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22261%22%20y%3D%223%22%20width%3D%2223%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22288%22%20y%3D%223%22%20width%3D%2212%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22304%22%20y%3D%223%22%20width%3D%2214%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%2212%22%20width%3D%2224%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22254%22%20y%3D%2212%22%20width%3D%2213%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22271%22%20y%3D%2212%22%20width%3D%229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22284%22%20y%3D%2212%22%20width%3D%2210%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22298%22%20y%3D%2212%22%20width%3D%227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%2221%22%20width%3D%2226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22256%22%20y%3D%2221%22%20width%3D%2224%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22284%22%20y%3D%2221%22%20width%3D%2226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%2230%22%20width%3D%2224%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22254%22%20y%3D%2230%22%20width%3D%228%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22266%22%20y%3D%2230%22%20width%3D%2217%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22287%22%20y%3D%2230%22%20width%3D%229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%2239%22%20width%3D%2212%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22242%22%20y%3D%2239%22%20width%3D%2226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22272%22%20y%3D%2239%22%20width%3D%2225%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%2248%22%20width%3D%2210%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22240%22%20y%3D%2248%22%20width%3D%2229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22273%22%20y%3D%2248%22%20width%3D%228%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22285%22%20y%3D%2248%22%20width%3D%229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22298%22%20y%3D%2248%22%20width%3D%2216%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%2257%22%20width%3D%2230%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22260%22%20y%3D%2257%22%20width%3D%2215%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22279%22%20y%3D%2257%22%20width%3D%2226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22309%22%20y%3D%2257%22%20width%3D%2210%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%2266%22%20width%3D%2224%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22254%22%20y%3D%2266%22%20width%3D%2213%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22271%22%20y%3D%2266%22%20width%3D%2213%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22288%22%20y%3D%2266%22%20width%3D%2222%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22314%22%20y%3D%2266%22%20width%3D%2210%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%2275%22%20width%3D%2214%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22244%22%20y%3D%2275%22%20width%3D%2221%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22269%22%20y%3D%2275%22%20width%3D%2216%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22289%22%20y%3D%2275%22%20width%3D%2229%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%2284%22%20width%3D%2216%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22246%22%20y%3D%2284%22%20width%3D%227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22257%22%20y%3D%2284%22%20width%3D%228%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22269%22%20y%3D%2284%22%20width%3D%2225%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22298%22%20y%3D%2284%22%20width%3D%226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22308%22%20y%3D%2284%22%20width%3D%2211%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%2293%22%20width%3D%2218%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22248%22%20y%3D%2293%22%20width%3D%2220%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22272%22%20y%3D%2293%22%20width%3D%2215%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22291%22%20y%3D%2293%22%20width%3D%2217%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%22102%22%20width%3D%2228%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22258%22%20y%3D%22102%22%20width%3D%2213%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22275%22%20y%3D%22102%22%20width%3D%2212%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22291%22%20y%3D%22102%22%20width%3D%2222%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%22111%22%20width%3D%2215%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22245%22%20y%3D%22111%22%20width%3D%2221%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22270%22%20y%3D%22111%22%20width%3D%2217%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22291%22%20y%3D%22111%22%20width%3D%2213%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%22120%22%20width%3D%2221%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22251%22%20y%3D%22120%22%20width%3D%2211%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22266%22%20y%3D%22120%22%20width%3D%2226%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22296%22%20y%3D%22120%22%20width%3D%2216%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%22129%22%20width%3D%2219%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22249%22%20y%3D%22129%22%20width%3D%2220%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22273%22%20y%3D%22129%22%20width%3D%2223%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22226%22%20y%3D%22138%22%20width%3D%2214%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22244%22%20y%3D%22138%22%20width%3D%2215%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22263%22%20y%3D%22138%22%20width%3D%2227%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22294%22%20y%3D%22138%22%20width%3D%2214%22%20height%3D%223%22%2F%3E%3Crect%20x%3D%22312%22%20y%3D%22138%22%20width%3D%226%22%20height%3D%223%22%2F%3E%3C%2Fg%3E%3Crect%20x%3D%22107%22%20width%3D%221%22%20height%3D%22144%22%20fill%3D%22%239d9488%22%2F%3E%3Crect%20x%3D%22217%22%20width%3D%221%22%20height%3D%22144%22%20fill%3D%22%239d9488%22%2F%3E%3C%2Fsvg%3E");background-size:330px 144px;
+  clip-path:polygon(0 0,200% 0,0 200%);
+  animation:wikkel 1.25s cubic-bezier(.7,0,.2,1) .35s both}
+.papier .kop{position:absolute;left:6%;right:6%;top:5%;background:#EDEAE2;color:#26201A;text-align:center;border-top:3px double #26201A;border-bottom:3px double #26201A;padding:10px 0;
+  font-family:'Instrument Serif',serif;font-size:clamp(28px,4.4vw,46px);line-height:1}
+.papier .kop small{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-top:6px}
+@keyframes wikkel{
+  0%{clip-path:polygon(0 0,200% 0,0 200%)}
+  100%{clip-path:polygon(0 0,0 0,0 0)}}
+@media(max-width:899px){
+  .ha-grid{display:block;min-height:0}
+  .ha-foto{position:relative;width:100%;height:auto;min-height:0}
+  .ha-neonfoto{display:none}
+  .ha-foto>img{position:relative;height:auto;aspect-ratio:860/1529;max-height:calc(100svh - 120px);object-position:50% 70%}
+  .ha-tekst{position:absolute;inset:0 0 auto 0;z-index:3;padding:26px 20px 30px;background:linear-gradient(180deg,rgba(18,14,11,.86) 0%,rgba(18,14,11,.72) 62%,rgba(18,14,11,0) 100%)}
+  .ha-neon{width:min(250px,70%);margin-bottom:12px}
+  .hero-a h1{font-size:clamp(64px,22vw,104px)}
+  .ha-lead{display:none}
+  .ha-knoppen{margin-top:18px;gap:10px}
+  .ha-knoppen .btn{flex:1 1 150px;padding:12px 14px}
+  .ha-trust{margin-top:24px}
+  .papier .kop{top:58%}
+}
 
-/* menu */
-#menu{background:var(--licht)}
-.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
-.tab{min-height:46px;padding:10px 18px;border-radius:999px;border:2px solid var(--blauw);background:#fff;color:var(--blauw);font-weight:800;font-family:inherit;font-size:15.5px;cursor:pointer}
-.tab[aria-selected=true]{background:var(--blauw);color:#fff}
-.menukaart{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-.cat{background:#fff;border-radius:var(--r);padding:26px 24px 18px;box-shadow:0 2px 0 rgba(14,42,107,.08),0 14px 34px -22px rgba(14,42,107,.45);position:relative;overflow:hidden;min-width:0}
-.cat::before{content:"";position:absolute;left:0;top:0;right:0;height:8px;background:var(--c,var(--geel))}
-.cat h3{font-size:clamp(24px,3.4vw,30px);color:var(--blauw);display:flex;align-items:center;gap:12px;overflow-wrap:break-word}
-.cat h3 svg{width:40px;height:40px;flex:none}
-.cat .sub{color:var(--zacht);font-size:15px;margin:4px 0 12px}
-.cat ul{list-style:none}
-.cat li{display:flex;align-items:baseline;gap:10px;padding:11px 0;border-bottom:1px dashed #d9dcea}
-.cat li:last-child{border-bottom:0}
-.cat li .n{font-weight:600;min-width:0;overflow-wrap:break-word}
-.cat li .n small{display:block;color:var(--zacht);font-weight:400;font-size:14px}
-.cat li .lijn{flex:1;border-bottom:2px dotted #c8cde0;transform:translateY(-4px);min-width:12px}
-.cat li .p{font-weight:800;color:var(--rood);white-space:nowrap;font-variant-numeric:tabular-nums}
-.voorbehoud{margin-top:22px;font-size:14.5px;color:var(--zacht);max-width:52em}
-.cat[hidden]{display:none}
-@media(max-width:820px){.menukaart{grid-template-columns:1fr}}
+/* ---------- HERO B: lamellen ---------- */
+.hero-b{display:none;background:var(--bg)}
+.s-b .hero-b{display:block}
+.hb-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:0;align-items:stretch;min-height:min(82vh,760px)}
+.hb-tekst{padding:64px 48px 56px max(20px,calc((100vw - 1160px)/2 + 20px));display:flex;flex-direction:column;justify-content:center}
+.hb-kicker{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--zacht)}
+.hb-kicker i{width:28px;height:1.5px;background:var(--acc2);display:block}
+.hero-b h1{font-size:clamp(50px,6.6vw,96px);line-height:.95;margin:16px 0 18px}
+.hb-lead{color:var(--zacht);max-width:30em;font-size:18px}
+.hb-knoppen{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hb-trust{margin-top:28px;font-size:14.5px;color:var(--zacht);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.hb-trust b{color:var(--goud);letter-spacing:1px}
+.hb-foto{position:relative;overflow:hidden;perspective:1400px;background:#2a2019}
+.hb-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:46% 60%}
+.lamellen{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,1fr);pointer-events:none}
+.lamellen i{display:block;height:100%;background:
+   repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 6px),
+   linear-gradient(90deg,#5C3A25,#7A5236 45%,#6A4630 55%,#4E311F);
+  transform-origin:50% 50%;animation:lamel 1.1s cubic-bezier(.6,0,.2,1) both;animation-delay:calc(.25s + var(--i) * 55ms)}
+@keyframes lamel{0%{transform:rotateY(0)}70%{opacity:1}100%{transform:rotateY(88deg) scaleX(.02);opacity:0}}
+.hb-label{position:absolute;left:14px;bottom:14px;background:rgba(251,250,247,.92);color:var(--ink);font-size:12.5px;padding:5px 10px;border-radius:3px}
+@media(max-width:899px){
+  .hb-grid{display:flex;flex-direction:column-reverse;min-height:0}
+  .hb-foto{aspect-ratio:1000/820;width:100%}
+  .hb-tekst{padding:26px 20px 34px}
+  .hero-b h1{font-size:clamp(44px,12.4vw,64px);margin:12px 0 12px}
+  .hb-lead{font-size:16.5px}
+  .hb-knoppen .btn{flex:1 1 150px;padding:12px 14px}
+  .hb-trust{margin-top:24px}
+}
 
-/* kiezer */
-#bestel{background:var(--blauw);color:#fff;position:relative;overflow:hidden}
-#bestel .kop h2{color:#fff}
-#bestel .kop p{color:#cdd7f6}
-#bestel .kop .label{color:var(--geel)}
-.kiezer{display:grid;grid-template-columns:1.3fr .9fr;gap:22px;align-items:start}
-.stap{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:var(--r);padding:22px}
-.stap h3{font-size:22px;margin-bottom:14px;display:flex;gap:10px;align-items:center}
-.stap h3 b{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--geel);color:var(--blauw);font-size:17px;flex:none}
-.keus{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.keus button{min-height:44px;padding:9px 16px;border-radius:999px;border:2px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-weight:700;font-family:inherit;font-size:15px;cursor:pointer}
-.keus button[aria-pressed=true]{background:var(--geel);border-color:var(--geel);color:var(--blauw)}
-.items{display:grid;gap:8px}
-.item{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border-radius:14px;padding:8px 8px 8px 14px}
-.item .n{flex:1;font-weight:600;min-width:0;overflow-wrap:break-word}
-.item .p{color:var(--geel);font-weight:800;white-space:nowrap}
-.teller{display:flex;align-items:center;gap:4px}
-.teller button{width:44px;height:44px;border-radius:12px;border:0;background:#fff;color:var(--blauw);font-size:22px;font-weight:800;cursor:pointer;font-family:inherit}
-.teller button.min{background:rgba(255,255,255,.18);color:#fff}
-.teller output{min-width:22px;text-align:center;font-weight:800}
-.lijstje{position:sticky;top:20px}
-.lijstje ul{list-style:none;margin-bottom:12px;min-height:40px}
-.lijstje li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed rgba(255,255,255,.2)}
-.lijstje .leeg{color:#cdd7f6;font-size:15px}
-.totaal{display:flex;justify-content:space-between;font-family:'Titan One';font-size:24px;margin:8px 0 16px}
-.totaal span:last-child{color:var(--geel)}
-.lijstje .btn{width:100%;margin-top:10px}
-.wa-plek{margin-top:14px;border:2px dashed rgba(246,184,25,.7);border-radius:16px;padding:14px 16px;font-size:14.5px;color:#e3e9fb;display:flex;gap:12px;align-items:flex-start}
-.wa-plek svg{width:28px;height:28px;flex:none;color:#25D366}
-.wa-plek b{color:#fff;display:block;margin-bottom:2px}
-.klein{font-size:13.5px;color:#cdd7f6;margin-top:12px}
-@media(max-width:820px){.kiezer{grid-template-columns:minmax(0,1fr)}.lijstje{position:static}}
-.kiezer>*{min-width:0}
-@media(max-width:420px){.stap{padding:16px 12px}.item{flex-wrap:wrap;padding:10px 10px 10px 12px}.item .n{flex:1 1 60%}.item .teller{margin-left:auto}.stap h3{font-size:19px}}
+/* ---------- open-nu strook ---------- */
+.nu{border-bottom:1px solid var(--lijn);background:var(--kaart)}
+.s-a .nu{background:var(--acc2);color:#fff;border:0}
+.nu .wrap{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;min-height:58px;padding-top:10px;padding-bottom:10px;font-size:15.5px}
+.nu .dot{width:10px;height:10px;border-radius:50%;background:#9AA0A6;display:inline-block;margin-right:8px;vertical-align:1px}
+.nu .dot.open{background:#2E9E4F;box-shadow:0 0 0 4px rgba(46,158,79,.18)}
+.nu a{font-weight:700;display:inline-flex;align-items:center;min-height:44px}
 
-/* waarom */
-.kaarten{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.kaart{background:#fff;border-radius:var(--r);padding:26px;min-width:0;box-shadow:0 14px 34px -24px rgba(14,42,107,.5);border-bottom:6px solid var(--c)}
-.kaart .ico{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;background:var(--c);margin-bottom:16px}
-.kaart .ico svg{width:32px;height:32px}
-.kaart h3{font-size:clamp(21px,2.6vw,25px);color:var(--blauw);margin-bottom:8px;overflow-wrap:break-word}
-.kaart p{color:var(--zacht)}
-@media(max-width:820px){.kaarten{grid-template-columns:1fr}}
+/* ---------- secties ---------- */
+section.blok{padding:84px 0}
+.oog{font-size:13.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--acc2);margin-bottom:12px}
+.s-a .oog{color:var(--rood)}
+h2{font-size:clamp(38px,5.6vw,68px);margin-bottom:16px}
+.intro{color:var(--zacht);max-width:40em;font-size:17.5px}
+@media(max-width:600px){section.blok{padding:60px 0}}
 
-/* reviews */
-#reviews{background:#fff}
-.score{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:28px}
-.score .groot{font-family:'Titan One';font-size:64px;color:var(--blauw);line-height:1}
-.score .sterren{font-size:26px}
-.score a{font-weight:700;color:var(--blauw);display:inline-flex;align-items:center;min-height:44px}
-.reviews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.review{background:var(--licht);border-radius:var(--r);padding:24px;min-width:0;position:relative}
-.review::before{content:"";position:absolute;left:24px;top:-10px;width:44px;height:20px;border-radius:10px;background:var(--c)}
-.review p{font-size:17px}
-.review .wie{margin-top:14px;font-weight:800;color:var(--blauw)}
-.label-sam{margin-top:18px;font-size:14px;color:var(--zacht)}
-@media(max-width:820px){.reviews{grid-template-columns:1fr}}
+/* ---------- kaart ---------- */
+.kaart-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:40px;margin-top:34px;align-items:start}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;margin-bottom:18px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;min-height:44px;padding:10px 16px;border-radius:999px;border:1.5px solid var(--lijn);font-weight:600;font-size:15px;background:var(--kaart)}
+.s-a .tab{border-radius:2px;border-color:var(--ink);text-transform:uppercase;font-weight:800;font-variation-settings:"wdth" 80;letter-spacing:.02em}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.paneel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,220px);gap:28px;align-items:start}
+.paneel figure{position:relative}
+.paneel figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+.paneel figcaption{font-size:13px;color:var(--zacht);margin-top:8px}
+.s-a .paneel{grid-template-columns:minmax(0,1fr) minmax(0,220px);background:var(--kaart);border:2px solid var(--ink);padding:22px;box-shadow:6px 6px 0 var(--ink)}
+.s-a .paneel .lijst{column-rule:1px solid var(--lijn)}
+.paneel h3{font-size:clamp(28px,3.4vw,38px);margin-bottom:4px}
+.paneel .sub{color:var(--zacht);font-size:15px;margin-bottom:12px}
+.item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dotted var(--lijn)}
+.s-a .item{border-bottom:1px solid var(--lijn)}
+.item .nm{flex:1;min-width:0;font-weight:600}
+.item .nm small{display:block;font-weight:400;color:var(--zacht);font-size:13.5px}
+.item .pr{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.plus{flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;font-size:22px;line-height:1;font-weight:600}
+.s-a .plus{border-radius:3px;background:var(--goud);border-color:var(--ink)}
+.plus:hover{background:var(--ink);color:var(--bg)}
+.item .aant{min-width:22px;text-align:center;font-weight:800;color:var(--acc)}
+.bron{font-size:13.5px;color:var(--zacht);margin-top:16px}
+.schermen{margin-top:14px;font-size:15px;background:var(--bg2);padding:12px 14px;border-radius:var(--r)}
+@media(max-width:899px){.kaart-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:640px){.paneel,.s-a .paneel{grid-template-columns:minmax(0,1fr)}.paneel figure{order:-1}.paneel figure img{aspect-ratio:16/10}.s-a .paneel{padding:16px;box-shadow:4px 4px 0 var(--ink)}}
 
-/* stappen */
-.stappen{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:s}
-.stapk{background:var(--blauw);color:#fff;border-radius:var(--r);padding:26px;position:relative;overflow:hidden;min-width:0}
-.stapk::after{counter-increment:s;content:counter(s);position:absolute;right:14px;top:-6px;font-family:'Titan One';font-size:96px;color:rgba(246,184,25,.22);line-height:1}
-.stapk h3{font-size:clamp(21px,2.6vw,24px);margin-bottom:8px;color:var(--geel);position:relative}
-.stapk p{color:#dfe6fb;position:relative}
-.stapk a{color:#fff;font-weight:700}
-@media(max-width:820px){.stappen{grid-template-columns:1fr}}
+.stappen{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:26px;max-width:860px}
+.stappen li{display:flex;align-items:center;gap:12px;background:var(--kaart);border:1px solid var(--lijn);border-radius:10px;padding:14px 16px;font-weight:600;font-size:15.5px}
+.s-a .stappen li{border:2px solid var(--ink);border-radius:2px}
+.stappen b{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:var(--acc-ink);font-weight:800}
+.s-a .stappen b{border-radius:2px}
+@media(max-width:700px){.stappen{grid-template-columns:minmax(0,1fr)}}
+/* bestelbon */
+.bon{position:sticky;top:16px;background:var(--kaart);border:1px solid var(--lijn);border-radius:10px;padding:22px}
+.s-a .bon{border:2px solid var(--ink);border-radius:2px;background:#FFFDF7;box-shadow:6px 6px 0 var(--acc)}
+.bon h3{font-size:30px;margin-bottom:6px}
+.bon .leeg{color:var(--zacht);font-size:15px}
+.bon ul{list-style:none;margin:10px 0}
+.bon li{display:flex;justify-content:space-between;gap:10px;font-size:15.5px;padding:4px 0}
+.bon .tot{display:flex;justify-content:space-between;font-weight:800;border-top:1px dashed var(--lijn);padding-top:8px;margin-top:4px}
+.bon .tot small{font-weight:500;color:var(--zacht);font-size:12.5px;display:block}
+.bon label{display:block;font-weight:700;font-size:14.5px;margin:14px 0 6px}
+.dagen{display:flex;flex-wrap:wrap;gap:6px}
+.dag{min-height:44px;padding:8px 12px;border-radius:999px;border:1.5px solid var(--lijn);font-size:14.5px;font-weight:600;background:var(--bg)}
+.s-a .dag{border-radius:2px}
+.dag[aria-pressed="true"]{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.bon select,.bon input{width:100%;min-height:46px;border:1.5px solid var(--lijn);border-radius:6px;padding:8px 12px;font:inherit;background:var(--bg);color:var(--ink)}
+.bon .btn{width:100%;margin-top:16px}
+.bon .klein{font-size:13px;color:var(--zacht);margin-top:10px}
 
-/* faq */
-#faq{background:#fff}
+/* ---------- weekend ---------- */
+.weekend{background:#1F1B17;color:#F3EEE6}
+.s-a .weekend{background:var(--acc);color:#fff}
+.weekend .oog{color:#E9C46A}.s-a .weekend .oog{color:#F7E733}
+.wk-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+.oxtail{border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:28px}
+.s-a .oxtail{border:2px solid #fff;border-radius:2px;background:#B81B17}
+.oxtail .dagen-w{display:flex;gap:8px;margin:14px 0 18px;flex-wrap:wrap}
+.oxtail .dagen-w span{border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14.5px}
+.s-a .oxtail .dagen-w span{border-radius:2px;background:#F7E733;color:#17130F;border-color:#F7E733}
+.oxtail blockquote{font-size:19px;line-height:1.45;border-left:3px solid #E9C46A;padding-left:14px;margin:6px 0 10px}
+.s-a .oxtail blockquote{border-color:#F7E733}
+.oxtail .br{font-size:13.5px;opacity:.8}
+.pamp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:center;margin-top:28px}
+.pamp img{border-radius:8px;aspect-ratio:1/1;object-fit:cover;width:100%}
+.s-a .pamp img{border-radius:2px;border:3px solid #fff}
+.pamp .tops{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pamp .tops span{background:rgba(255,255,255,.12);border-radius:999px;padding:4px 11px;font-size:14px}
+.weekend h2{color:inherit}
+.s-b .weekend h2 em{color:#E9C46A}.s-a .weekend h2 em{color:#F7E733}
+.slot h2 em{color:#F2C200!important}
+@media(max-width:899px){.wk-grid{grid-template-columns:minmax(0,1fr);gap:34px}}
+@media(max-width:480px){.pamp{grid-template-columns:minmax(0,1fr)}.pamp img{aspect-ratio:4/3}}
+
+/* ---------- plek ---------- */
+.plek-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:44px;align-items:center}
+.plek-grid img{width:100%;border-radius:var(--r);aspect-ratio:1070/400;object-fit:cover}
+.s-a .plek-grid img{border:3px solid var(--ink)}
+.plek-grid .fotoB{aspect-ratio:900/1248;max-height:520px;object-fit:cover}
+.plek-feiten{list-style:none;margin-top:18px}
+.plek-feiten li{padding:10px 0;border-bottom:1px solid var(--lijn);display:flex;gap:12px}
+.plek-feiten li b{min-width:92px}
+@media(max-width:899px){.plek-grid{grid-template-columns:minmax(0,1fr);gap:26px}}
+
+/* ---------- reviews ---------- */
+.rev{background:var(--bg2)}
+.s-a .rev{background:#E7E3DA}
+.rev-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px}
+.score{display:flex;align-items:center;gap:14px}
+.score b{font-family:var(--kop);font-size:72px;line-height:1}
+.s-a .score b{font-variation-settings:"wdth" 75,"opsz" 96;font-weight:800}
+.score .st{color:var(--goud);font-size:22px;letter-spacing:2px}
+.s-a .score .st{color:#D9231E}
+.rev-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:30px}
+.rv{background:var(--kaart);border-radius:10px;padding:22px;border:1px solid var(--lijn)}
+.s-a .rv{border:2px solid var(--ink);border-radius:2px}
+.rv p{font-size:16.5px}
+.rv .wie{margin-top:12px;font-weight:700;font-size:14.5px}
+.rev .label{font-size:13.5px;color:var(--zacht);margin-top:16px}
+@media(max-width:820px){.rev-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- info ---------- */
+.info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.info-grid>div{border-top:2px solid var(--ink);padding-top:16px}
+.info-grid h3{font-size:30px;margin-bottom:10px}
+.uren{width:100%;border-collapse:collapse;font-size:16px}
+.uren td{padding:6px 0;border-bottom:1px dotted var(--lijn)}
+.uren td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.uren tr.vandaag td{font-weight:800;color:var(--acc)}
+.info-grid .btn{margin-top:16px}
+@media(max-width:899px){.info-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- faq ---------- */
 .faq{max-width:820px}
-.faq details{border-bottom:2px solid #eceef6}
-.faq summary{list-style:none;cursor:pointer;padding:18px 44px 18px 0;font-weight:800;font-size:18px;color:var(--blauw);position:relative;min-height:44px}
+.faq details{border-bottom:1px solid var(--lijn)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 40px 18px 0;font-weight:700;font-size:18px;position:relative;min-height:44px}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";position:absolute;right:6px;top:12px;font-family:'Titan One';font-size:26px;color:var(--rood)}
+.faq summary::after{content:"+";position:absolute;right:6px;top:12px;font-size:26px;font-weight:400}
 .faq details[open] summary::after{content:"–"}
 .faq details p{padding:0 0 18px;color:var(--zacht)}
 
-/* info */
-.info{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.blok{background:#fff;border-radius:var(--r);padding:26px;box-shadow:0 14px 34px -24px rgba(14,42,107,.5);min-width:0}
-.blok h3{font-size:26px;color:var(--blauw);margin-bottom:14px}
-.uren{width:100%;border-collapse:collapse}
-.uren td{padding:10px 0;border-bottom:1px dashed #d9dcea}
-.uren td:last-child{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
-.uren tr.vr td{color:var(--rood)}
-.blok .noot{font-size:14.5px;color:var(--zacht);margin-top:12px}
-.adres{font-size:19px;font-weight:700;margin-bottom:6px}
-.blok .btn{margin-top:16px;margin-right:8px}
-.kaartje{margin-top:18px;border-radius:16px;overflow:hidden;background:var(--blauw)}
-.kaartje svg{display:block;width:100%;height:auto}
-@media(max-width:820px){.info{grid-template-columns:1fr}}
+/* ---------- slot + footer ---------- */
+.slot{background:var(--acc);color:#fff;text-align:center;padding:76px 0}
+.s-a .slot{background:#1B1511}
+.slot h2{color:#fff}
+.slot p{max-width:34em;margin:0 auto;opacity:.9}
+.slot .knoppen{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px}
+.slot .btn-twee{color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
+.slot .mo-note{margin:10px auto 0}
+footer{background:#14110E;color:#BDB4A8;font-size:14.5px;padding:40px 0 110px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between}
+footer .wrap>div{min-width:0;flex:1 1 260px}
+footer img{height:30px;width:auto;margin-bottom:10px}
+footer a{color:#fff}
 
-/* slot */
-.slot{background:var(--rood);color:#fff;text-align:center;position:relative;overflow:hidden}
-.slot h2{font-size:clamp(34px,5.6vw,58px)}
-.slot p{max-width:36em;margin:14px auto 26px;font-size:18px;color:#ffe3e7}
-.slot .knoppen{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.slot .btn-rand{box-shadow:inset 0 0 0 2px #fff}
+/* ---------- zwevende CTA ---------- */
+.zweef{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;display:flex;gap:8px;transform:translateY(140%);transition:transform .3s}
+.zweef.toon{transform:none}
+.zweef .btn{flex:1;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.zweef .btn-licht{flex:0 0 auto}
+@media(min-width:900px){.zweef{display:none}}
 
-footer{background:#071a45;color:#b8c4ea;padding:40px 0 110px;font-size:15px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
-footer img{height:46px;width:auto}
-footer a{color:var(--geel)}
-@media(min-width:821px){footer{padding-bottom:40px}}
+/* ---------- modal bestel-voorbeeld ---------- */
+.modal{position:fixed;inset:0;z-index:70;background:rgba(15,12,10,.55);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.modal .doos{background:var(--kaart);color:var(--ink);width:min(480px,100%);border-radius:14px;padding:22px;max-height:88vh;overflow:auto}
+.wa-bubbel{background:#DCF8C6;color:#111;border-radius:10px 10px 2px 10px;padding:12px 14px;white-space:pre-wrap;font-size:15px;margin:14px 0;font-family:system-ui,sans-serif}
+.modal .btn{width:100%;margin-top:8px}
+@media(min-width:700px){.modal{align-items:center}}
 
-/* zwevend */
-.zweef-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:flex;gap:10px;transform:translateY(140%);transition:transform .35s ease;pointer-events:none}
-.zweef-cta.aan{transform:none;pointer-events:auto}
-.zweef-cta .btn{flex:1;min-height:54px;padding:12px 14px;font-size:16px;box-shadow:0 10px 26px -8px rgba(0,0,0,.5)}
-@media(min-width:821px){.zweef-cta{display:none}}
-
-.onthul{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
-.onthul.in{opacity:1;transform:none}
+/* ---------- stijlkiezer + pitch ---------- */
+.stijlkiezer{position:fixed;bottom:calc(84px + env(safe-area-inset-bottom));right:12px;z-index:60;background:#14110E;color:#fff;border-radius:999px;padding:4px;display:flex;gap:2px;box-shadow:0 6px 20px rgba(0,0,0,.3);font-size:14px}
+.stijlkiezer button,.stijlrij button{min-height:44px;min-width:44px;padding:6px 14px;border-radius:999px;font-weight:700;color:#fff}
+.stijlrij{background:#14110E;display:flex;justify-content:center;align-items:center;gap:6px;padding:6px 12px;color:#fff;font-size:14px}
+.stijlrij span{margin-right:4px;opacity:.8}
+.stijlrij button{padding:6px 16px;border-radius:999px;font-weight:700;color:#fff}
+.stijlkiezer,.mo-knop{transition:opacity .2s}
+.stijlrij .mo-in{display:none}
+body.pitch .stijlrij .mo-in{display:inline-block;margin-left:10px;color:#F2C200;box-shadow:inset 0 0 0 1.5px #F2C200}
+@media(max-width:899px){.stijlkiezer,.mo-knop{opacity:0;pointer-events:none}.stijlkiezer.toon,.mo-knop.toon{opacity:1;pointer-events:auto}}
+@media(min-width:900px){.stijlrij{display:none!important}}
+.stijlkiezer button[aria-pressed="true"],.stijlrij button[aria-pressed="true"]{background:#F2C200;color:#14110E}
+.mo-knop{position:fixed;left:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:61;width:48px;height:48px;border-radius:50%;background:#14110E;color:#F2C200;font-weight:800;box-shadow:0 6px 20px rgba(0,0,0,.35);font-size:15px}
+@media(min-width:900px){.mo-knop{bottom:20px}.stijlkiezer{bottom:20px}}
+.pitch-p{position:fixed;inset:0;z-index:80;background:rgba(10,8,6,.6);display:flex;justify-content:flex-end}
+.pitch-p .vel{background:#FBFAF7;color:#1F1B17;width:min(520px,100%);height:100%;overflow:auto;padding:22px 20px 40px;font-family:'Bricolage Grotesque',sans-serif}
+.pitch-p h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;text-transform:none;font-size:26px;letter-spacing:0;margin:0}
+.pitch-p h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;text-transform:none;font-size:18px;letter-spacing:0;margin:26px 0 10px}
+.pitch-p .sluit{float:right;width:44px;height:44px;border-radius:50%;background:#EEE9E1;font-size:22px}
+.pitch-p ul{padding-left:18px}.pitch-p li{margin:6px 0;font-size:15.5px}
+.pitch-p .voor{border:1px solid #DDD6CC;border-radius:10px;width:100%;max-width:300px}
+.pitch-p .zin{background:#1F1B17;color:#fff;border-radius:10px;padding:14px 16px;font-size:16.5px;margin-top:10px}
+.pitch-p .keus{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pitch-p .keus button{border:2px solid #1F1B17;border-radius:10px;padding:14px 10px;text-align:left;min-height:88px}
+.pitch-p .keus button b{display:block;font-size:17px}
+.pitch-p .keus button span{font-size:13.5px;color:#5F574F}
+.pitch-p .keus button[aria-pressed="true"]{background:#F2C200}
+.pitch-p .aanbod{background:#fff;border:1px solid #DDD6CC;border-radius:10px;padding:16px}
+.pitch-p .aanbod .prijs{font-size:34px;font-weight:800}
+.pitch-p .rek label{display:flex;justify-content:space-between;font-weight:600;margin-top:12px;font-size:15px}
+.pitch-p input[type=range]{width:100%;min-height:36px;accent-color:#2F5A33}
+.pitch-p .uitk{background:#EAF2EA;border-radius:10px;padding:14px;margin-top:12px;font-size:16px}
+.pitch-p .uitk b{font-size:26px;display:block}
+.pitch-p .klein{font-size:13px;color:#5F574F;margin-top:6px}
 
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .onthul{opacity:1;transform:none}
-  .korrel{opacity:0!important}
+  .papier{animation:none;display:none}
+  .lamellen{display:none}
+  html{scroll-behavior:auto}
+  .zweef{transition:none}
 }
 </style>
 </head>
-<body>
+<body class="s-b">
 
-<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> voor Arepa House.</div>
-<div class="balk"><b>5,0 ★</b> op Google · Zuidplein Hoog 1006, Rotterdam · vrijdag open tot 20:15</div>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a>.</div>
+<div class="stijlrij" id="stijlrij" hidden role="group" aria-label="Kies een stijl (alleen Mo)"><span>Stijl:</span><button type="button" data-stijl="a" aria-pressed="false">A</button><button type="button" data-stijl="b" aria-pressed="true">B</button><button type="button" class="mo-in" id="mo-in" aria-label="Pitch openen">Mo</button></div>
+<div class="balk"><span class="st">★★★★★</span> 5,0 op Google (5 reviews) · Zuidplein Hoog 1006</div>
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="Arepa House, naar boven"><img src="logo-light.svg" alt="Arepa House – Panaderia Curaçao" width="405" height="84"></a>
+    <a class="logo" href="#top" aria-label="Arepa House, naar boven">
+      <img class="only-b" src="logo-dark.svg" alt="Arepa House" width="409" height="78">
+      <img class="only-a" src="logo-light.svg" alt="Arepa House" width="409" height="78">
+    </a>
     <nav aria-label="Hoofdmenu">
-      <a href="#menu">Menu</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#info">Openingstijden</a>
-      <a class="btn btn-geel" href="#bestel">Stel samen</a>
+      <a href="#kaart">Kaart</a>
+      <a href="#weekend">Weekend</a>
+      <a href="#info">Tijden &amp; route</a>
+      <a class="btn btn-hoofd" href="#bestel">Bestellen</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
-<section class="hero" id="hero" aria-label="Welkom">
-  <svg class="patroon" aria-hidden="true" width="100%" height="100%">
-    <defs>
-      <pattern id="ruit" width="56" height="56" patternUnits="userSpaceOnUse">
-        <path d="M28 4 52 28 28 52 4 28Z" fill="none" stroke="#F6B819" stroke-width="2"/>
-        <circle cx="28" cy="28" r="4" fill="#D7263D"/>
-        <circle cx="0" cy="0" r="3" fill="#fff"/><circle cx="56" cy="56" r="3" fill="#fff"/><circle cx="56" cy="0" r="3" fill="#fff"/><circle cx="0" cy="56" r="3" fill="#fff"/>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#ruit)"/>
-  </svg>
 
-  <div class="wrap">
-    <div>
-      <span class="kicker"><i></i> Nu in Winkelcentrum Zuidplein</span>
-      <h1>Venezolaanse <span class="g">arepa's</span> op <span class="r">Zuidplein</span></h1>
-      <p class="lead">Arepitas met carne mechada, kip of garnaal, warme sopa en zoete arepa di pampuna, de pompoenpannenkoekjes van Curaçao. Arepa House is ook bekend als Panaderia Curaçao.</p>
-      <div class="knoppen">
-        <a class="btn btn-geel" href="https://www.google.com/maps/search/?api=1&amp;query=Arepa+House+Zuidplein+Hoog+1006+Rotterdam" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
-          Kom langs op Zuidplein Hoog 1006</a>
-        <a class="btn btn-rand" href="#menu">Bekijk het menu</a>
+<!-- HERO A -->
+<section class="hero-a" id="hero-a" aria-label="Welkom, stijl A">
+  <div class="ha-grid grid">
+    <div class="ha-tekst">
+      <img class="ha-neonfoto" src="img/neon.jpg" alt="De neonletters AREPA HOUSE boven de ingang" width="1070" height="400">
+      <p class="ha-kicker">Zuidplein Hoog 1006 · Rotterdam-Zuid</p>
+      <h1>Bon <em>bini.</em></h1>
+      <p class="ha-sub">Arepa's, empanadas <b>&amp;</b> arepa di pampuna</p>
+      <p class="ha-lead">Venezolaanse arepa's met een Curaçaose kant. Bestel vooruit en haal op, of schuif aan in de zaak.</p>
+      <div class="ha-knoppen">
+        <a class="btn btn-hoofd" href="#bestel" data-cta="hero">Bestel via WhatsApp</a>
+        <a class="btn btn-twee" href="https://www.google.com/maps/dir/?api=1&amp;destination=Arepa%20House%2C%20Zuidplein%20Hoog%201006%2C%20Rotterdam" target="_blank" rel="noopener">Route</a>
       </div>
-      <div class="trust"><span class="sterren" aria-hidden="true">★★★★★</span> <span><b>5,0</b> uit 5 reviews op Google · Rotterdam-Zuid</span></div>
+      <p class="ha-trust"><b>★★★★★</b> 5,0 op Google · 5 reviews</p>
     </div>
-
-    <div class="scene" aria-hidden="true">
-      <svg viewBox="0 0 500 500">
-        <defs>
-          <radialGradient id="zon" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F6B819" stop-opacity=".55"/><stop offset="1" stop-color="#F6B819" stop-opacity="0"/></radialGradient>
-          <g id="kern"><ellipse rx="6" ry="8"/></g>
-        </defs>
-        <circle cx="250" cy="250" r="230" fill="url(#zon)"/>
-        <g class="draai">
-          <g fill="#F6B819" opacity=".35">
-            <path d="M250 20 262 70H238Z"/><path d="M250 480 238 430H262Z"/><path d="M20 250 70 238V262Z"/><path d="M480 250 430 262V238Z"/>
-            <path d="M87 87 128 118 118 128Z"/><path d="M413 413 372 382 382 372Z"/><path d="M413 87 382 128 372 118Z"/><path d="M87 413 118 372 128 382Z"/>
-          </g>
-          <g fill="#D7263D" opacity=".45"><circle cx="250" cy="96" r="6"/><circle cx="250" cy="404" r="6"/><circle cx="96" cy="250" r="6"/><circle cx="404" cy="250" r="6"/></g>
-        </g>
-
-        <!-- stijgende maiskorrels -->
-        <g fill="#F6B819">
-          <ellipse class="korrel" cx="90" cy="470" rx="6" ry="8" style="animation-delay:0s"/>
-          <ellipse class="korrel" cx="160" cy="480" rx="5" ry="7" style="animation-delay:2.2s"/>
-          <ellipse class="korrel" cx="340" cy="475" rx="6" ry="8" style="animation-delay:4.1s"/>
-          <ellipse class="korrel" cx="420" cy="470" rx="5" ry="7" style="animation-delay:6s"/>
-          <ellipse class="korrel" cx="260" cy="490" rx="5" ry="7" style="animation-delay:7.3s" fill="#fff"/>
-        </g>
-
-        <!-- grote arepa met vulling -->
-        <g class="zweef">
-          <g class="stoom" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".9">
-            <path d="M205 150c-14-16 14-28 0-46"/><path d="M250 140c-14-16 14-28 0-46"/><path d="M295 150c-14-16 14-28 0-46"/>
-          </g>
-          <ellipse cx="250" cy="300" rx="150" ry="40" fill="#071a45" opacity=".35"/>
-          <!-- onderste helft -->
-          <path d="M110 262c0 52 62 86 140 86s140-34 140-86Z" fill="#E9A514"/>
-          <path d="M110 262c0 52 62 86 140 86s140-34 140-86c-30 26-80 40-140 40s-110-14-140-40Z" fill="#C9850E"/>
-          <!-- vulling -->
-          <path d="M100 262c22-28 70-40 150-40s128 12 150 40c-10 12-28 18-40 12-18 14-40 4-56 14-20-12-34 6-54-4-20 12-36-2-56 6-20-8-34 6-52-6-14 6-30-4-42-22Z" fill="#1F8A4C"/>
-          <path d="M120 252c30-22 74-30 130-30s100 8 130 30c-24 10-40 2-58 10-22-10-40 6-64-2-22 8-44-4-66 2-24-6-46 2-72-10Z" fill="#7A3B1E"/>
-          <g fill="#D7263D"><circle cx="170" cy="240" r="13"/><circle cx="250" cy="234" r="14"/><circle cx="330" cy="240" r="13"/></g>
-          <g fill="#F2E7C9"><ellipse cx="210" cy="236" rx="16" ry="8"/><ellipse cx="292" cy="236" rx="16" ry="8"/></g>
-          <!-- bovenste helft -->
-          <path d="M118 236c0-58 60-96 132-96s132 38 132 96c-34-18-80-26-132-26s-98 8-132 26Z" fill="#F6B819"/>
-          <path d="M150 170c30-20 62-28 100-28" stroke="#FFE08A" stroke-width="10" stroke-linecap="round" fill="none" opacity=".8"/>
-          <g fill="#C9850E"><circle cx="190" cy="196" r="7"/><circle cx="246" cy="178" r="7"/><circle cx="300" cy="192" r="7"/><circle cx="330" cy="214" r="6"/><circle cx="160" cy="218" r="6"/></g>
-        </g>
-
-        <!-- pampuna -->
-        <g class="zweef2">
-          <ellipse cx="88" cy="128" rx="46" ry="16" fill="#071a45" opacity=".3" transform="translate(0 30)"/>
-          <ellipse cx="88" cy="132" rx="46" ry="16" fill="#C9650E"/>
-          <ellipse cx="88" cy="122" rx="46" ry="16" fill="#E8862A"/>
-          <ellipse cx="88" cy="112" rx="46" ry="16" fill="#F29A3A"/>
-          <path d="M60 106c10 6 44 8 56 0" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none"/>
-          <g fill="#D7263D"><circle cx="76" cy="110" r="4"/></g><g fill="#1F8A4C"><circle cx="98" cy="112" r="4"/></g><g fill="#0E2A6B"><circle cx="110" cy="106" r="4"/></g>
-        </g>
-
-        <!-- kleine arepa rechtsboven -->
-        <g class="zweef3">
-          <circle cx="420" cy="110" r="40" fill="#C9850E"/>
-          <circle cx="420" cy="104" r="40" fill="#F6B819"/>
-          <g fill="#C9850E"><circle cx="404" cy="94" r="5"/><circle cx="430" cy="88" r="5"/><circle cx="436" cy="116" r="5"/><circle cx="410" cy="120" r="5"/></g>
-        </g>
-
-        <!-- label -->
-        <g class="pulse">
-          <circle cx="410" cy="390" r="56" fill="#D7263D"/>
-          <circle cx="410" cy="390" r="48" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="4 6"/>
-          <text x="410" y="384" text-anchor="middle" font-family="Titan One, sans-serif" font-size="17" fill="#fff">Arepitas</text>
-          <text x="410" y="408" text-anchor="middle" font-family="Titan One, sans-serif" font-size="20" fill="#F6B819">v.a. €5</text>
-        </g>
-      </svg>
+    <div class="ha-foto">
+      <img src="img/spread.jpg" alt="Rood dienblad met empanadas, twee arepa's in krantenpapier en een bakje met ei, vlees, bakbanaan en tomaat" width="860" height="1529" fetchpriority="high">
+      <div class="wikkel" aria-hidden="true"><div class="papier"><div class="kop">Arepa House<small>Zuidplein Hoog 1006</small></div></div></div>
     </div>
   </div>
-
-  <!-- Curaçaose gevels + golf -->
-  <svg class="huizen" viewBox="0 0 1400 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <g>
-      <path d="M0 150V70h70l20-30 20 30h40v80Z" fill="#F6B819"/>
-      <path d="M150 150V60l45-30 45 30v90Z" fill="#D7263D"/>
-      <path d="M240 150V78h110v72Z" fill="#1F8A4C"/>
-      <path d="M350 150V54c20-26 70-26 90 0v96Z" fill="#F27BA6"/>
-      <path d="M440 150V72l40-34 40 34v78Z" fill="#4FB3E8"/>
-      <path d="M520 150V66h120v84Z" fill="#F6B819"/>
-      <path d="M640 150V58l50-30 50 30v92Z" fill="#1F8A4C"/>
-      <path d="M740 150V76h90v74Z" fill="#D7263D"/>
-      <path d="M830 150V52c22-26 76-26 98 0v98Z" fill="#F6B819"/>
-      <path d="M928 150V70l40-32 40 32v80Z" fill="#F27BA6"/>
-      <path d="M1008 150V66h110v84Z" fill="#4FB3E8"/>
-      <path d="M1118 150V58l48-30 48 30v92Z" fill="#D7263D"/>
-      <path d="M1214 150V72h96v78Z" fill="#1F8A4C"/>
-      <path d="M1310 150V56l45-28 45 28v94Z" fill="#F6B819"/>
-    </g>
-    <g fill="#fff" opacity=".9">
-      <rect x="20" y="90" width="14" height="22" rx="7"/><rect x="44" y="90" width="14" height="22" rx="7"/><rect x="186" y="80" width="18" height="26" rx="9"/><rect x="268" y="96" width="14" height="22" rx="2"/><rect x="306" y="96" width="14" height="22" rx="2"/><rect x="380" y="76" width="30" height="20" rx="10"/><rect x="470" y="88" width="20" height="24" rx="10"/><rect x="548" y="86" width="16" height="22" rx="2"/><rect x="594" y="86" width="16" height="22" rx="2"/><rect x="678" y="78" width="24" height="26" rx="12"/><rect x="768" y="94" width="14" height="22" rx="2"/><rect x="866" y="74" width="26" height="22" rx="11"/><rect x="958" y="88" width="20" height="24" rx="10"/><rect x="1040" y="86" width="16" height="22" rx="2"/><rect x="1074" y="86" width="16" height="22" rx="2"/><rect x="1154" y="78" width="24" height="26" rx="12"/><rect x="1246" y="92" width="14" height="22" rx="2"/><rect x="1342" y="76" width="26" height="26" rx="13"/>
-    </g>
-    <g class="golf"><path d="M0 132q50-18 100 0t100 0 100 0 100 0 100 0 100 0 100 0 100 0 100 0 100 0 100 0 100 0 100 0 100 0 100 0 100 0V150H0Z" fill="#F6B819"/></g>
-  </svg>
 </section>
 
-<div class="band" aria-label="In het kort">
-  <div class="rij">
-    <span>Arepitas</span><span>Arepa di pampuna</span><span>Sopas y mas</span><span>Empanadas</span><span>Quesadillas</span><span>5,0 op Google</span><span>Zuidplein Hoog 1006</span><span>Vrijdag tot 20:15</span>
-    <span aria-hidden="true">Arepitas</span><span aria-hidden="true">Arepa di pampuna</span><span aria-hidden="true">Sopas y mas</span><span aria-hidden="true">Empanadas</span><span aria-hidden="true">Quesadillas</span><span aria-hidden="true">5,0 op Google</span><span aria-hidden="true">Zuidplein Hoog 1006</span><span aria-hidden="true">Vrijdag tot 20:15</span>
+<!-- HERO B -->
+<section class="hero-b" id="hero-b" aria-label="Welkom, stijl B">
+  <div class="hb-grid grid">
+    <div class="hb-tekst">
+      <p class="hb-kicker"><i></i> Lunch op Zuidplein Hoog</p>
+      <h1>Een warme arepa, <em>aan tafel of mee.</em></h1>
+      <p class="hb-lead">Arepitas, sopas, empanadas en zoete arepa di pampuna. Panaderia Curaçao, op Zuidplein Hoog 1006 in Rotterdam.</p>
+      <div class="hb-knoppen">
+        <a class="btn btn-hoofd" href="#bestel" data-cta="hero">Bestel via WhatsApp</a>
+        <a class="btn btn-twee" href="https://www.google.com/maps/dir/?api=1&amp;destination=Arepa%20House%2C%20Zuidplein%20Hoog%201006%2C%20Rotterdam" target="_blank" rel="noopener">Route</a>
+      </div>
+      <p class="hb-trust"><b>★★★★★</b> 5,0 op Google · 5 reviews</p>
+    </div>
+    <div class="hb-foto">
+      <picture>
+        <source media="(max-width:899px)" srcset="img/interieur-m.jpg">
+        <img src="img/interieur.jpg" alt="De zaak van binnen: houten toonbank met lamellen, rode koorden, menuschermen en zwarte tegels" width="1300" height="975" fetchpriority="high">
+      </picture>
+      <div class="lamellen" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i></div>
+      <span class="hb-label">De toonbank op Zuidplein Hoog</span>
+    </div>
+  </div>
+</section>
+
+<div class="nu" aria-live="polite">
+  <div class="wrap">
+    <span id="nu-status"><span class="dot"></span>Openingstijden staan hieronder</span>
+    <span id="nu-dag"></span>
+    <a href="#info">Alle tijden</a>
   </div>
 </div>
 
-<section id="menu">
+<!-- KAART + BESTELLEN -->
+<section class="blok" id="kaart">
   <div class="wrap">
-    <div class="kop onthul">
-      <span class="label">De kaart</span>
-      <h2>Het menu, met prijzen</h2>
-      <p>Hartig, warm of zoet: alles op één plek, ook op je telefoon.</p>
-    </div>
-    <div class="tabs" role="tablist" aria-label="Menucategorie">
-      <button class="tab" role="tab" aria-selected="true" data-cat="alles">Alles</button>
-      <button class="tab" role="tab" aria-selected="false" data-cat="arepitas">Arepitas</button>
-      <button class="tab" role="tab" aria-selected="false" data-cat="sopas">Sopas y mas</button>
-      <button class="tab" role="tab" aria-selected="false" data-cat="pampuna">Arepa di pampuna</button>
-      <button class="tab" role="tab" aria-selected="false" data-cat="extras">Extras</button>
-    </div>
-    <div class="menukaart">
-      <article class="cat onthul" data-cat="arepitas" style="--c:var(--geel)">
-        <h3><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="21" r="17" fill="#C9850E"/><circle cx="20" cy="19" r="17" fill="#F6B819"/><path d="M4 20q16-7 32 0q-16 6-32 0Z" fill="#D7263D"/><circle cx="14" cy="11" r="2" fill="#C9850E"/><circle cx="25" cy="10" r="2" fill="#C9850E"/></svg>Arepitas</h3>
-        <p class="sub">Gevulde arepa's</p>
-        <ul>
-          <li><span class="n">Carne Mechada</span><span class="lijn"></span><span class="p">€ 6,50</span></li>
-          <li><span class="n">Pollo <small>kip</small></span><span class="lijn"></span><span class="p">€ 6,50</span></li>
-          <li><span class="n">Camarones <small>garnaal</small></span><span class="lijn"></span><span class="p">€ 7,00</span></li>
-          <li><span class="n">Crab <small>surimi</small></span><span class="lijn"></span><span class="p">€ 5,50</span></li>
-          <li><span class="n">Atun <small>tonijn</small></span><span class="lijn"></span><span class="p">€ 5,50</span></li>
-          <li><span class="n">Huevo <small>ei</small></span><span class="lijn"></span><span class="p">€ 5,50</span></li>
-          <li><span class="n">Queso <small>kaas</small></span><span class="lijn"></span><span class="p">€ 5,00</span></li>
-        </ul>
-      </article>
-      <article class="cat onthul" data-cat="sopas" style="--c:var(--rood)">
-        <h3><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 18h32c0 10-7 17-16 17S4 28 4 18Z" fill="#D7263D"/><rect x="2" y="15" width="36" height="5" rx="2.5" fill="#9c1426"/><path d="M14 11c-3-3 3-5 0-8M21 11c-3-3 3-5 0-8M28 11c-3-3 3-5 0-8" stroke="#0E2A6B" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Sopas y mas</h3>
-        <p class="sub">Soep en meer</p>
-        <ul>
-          <li><span class="n">Sopa de Pollo / Carne <small>kip of vlees</small></span><span class="lijn"></span><span class="p">€ 10,00</span></li>
-          <li><span class="n">Tiras de Pollo</span><span class="lijn"></span><span class="p">€ 6,50</span></li>
-          <li><span class="n">Empanadas</span><span class="lijn"></span><span class="p">€ 3,75</span></li>
-          <li><span class="n">Quesadillas</span><span class="lijn"></span><span class="p">€ 12,50</span></li>
-        </ul>
-      </article>
-      <article class="cat onthul" data-cat="pampuna" style="--c:#E8862A">
-        <h3><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="20" cy="28" rx="17" ry="6" fill="#C9650E"/><ellipse cx="20" cy="22" rx="17" ry="6" fill="#E8862A"/><ellipse cx="20" cy="16" rx="17" ry="6" fill="#F29A3A"/><path d="M10 14q10 4 20 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>Arepa di pampuna</h3>
-        <p class="sub">Zoete pompoenpannenkoekjes, een Curaçaose specialiteit</p>
-        <ul>
-          <li><span class="n">Plain</span><span class="lijn"></span><span class="p">€ 2,75</span></li>
-          <li><span class="n">Oreo</span><span class="lijn"></span><span class="p">€ 3,75</span></li>
-          <li><span class="n">Raffaello</span><span class="lijn"></span><span class="p">€ 3,75</span></li>
-          <li><span class="n">Speculoos</span><span class="lijn"></span><span class="p">€ 3,75</span></li>
-          <li><span class="n">M&amp;M's</span><span class="lijn"></span><span class="p">€ 3,75</span></li>
-        </ul>
-      </article>
-      <article class="cat onthul" data-cat="extras" style="--c:var(--groen)">
-        <h3><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4c8 0 13 9 13 19a13 13 0 0 1-26 0C7 13 12 4 20 4Z" fill="#1F8A4C"/><path d="M20 10c5 0 8 7 8 13a8 8 0 0 1-16 0c0-6 3-13 8-13Z" fill="#CFE6A0"/><circle cx="20" cy="25" r="5" fill="#7A3B1E"/></svg>Extras</h3>
-        <p class="sub">Voor erbij</p>
-        <ul>
-          <li><span class="n">Avocado</span><span class="lijn"></span><span class="p">€ 0,75</span></li>
-          <li><span class="n">Bakbanaan</span><span class="lijn"></span><span class="p">€ 0,75</span></li>
-          <li><span class="n">Zwarte bonen</span><span class="lijn"></span><span class="p">€ 0,75</span></li>
-        </ul>
-      </article>
-    </div>
-    <p class="voorbehoud">Prijzen onder voorbehoud: de kaart in de zaak is leidend. In de zaak staat meer op de kaart; gasten noemen in hun reviews bijvoorbeeld ook patacones.</p>
-    <p style="margin-top:22px"><a class="btn btn-blauw" href="#bestel">Stel je bestelling samen</a></p>
-  </div>
-</section>
+    <p class="oog"><span class="only-a">Daily food · de kaart</span><span class="only-b">De kaart</span></p>
+    <h2><span class="only-a">Tik je <em>arepa</em> bij elkaar.</span><span class="only-b">Kies wat je wilt, <em>stuur het in één bericht.</em></span></h2>
+    <p class="intro">Zet gerechten op je bon met de plus, kies wanneer je komt en stuur het als WhatsApp-bericht.</p>
+    <ol class="stappen grid" aria-label="Zo bestel je">
+      <li><b>1</b><span>Tik <strong>+</strong> bij wat je wilt</span></li>
+      <li><b>2</b><span>Kies dag en tijd</span></li>
+      <li><b>3</b><span>Stuur je bon via WhatsApp, of loop gewoon binnen</span></li>
+    </ol>
 
-<section id="bestel">
-  <div class="wrap">
-    <div class="kop onthul">
-      <span class="label">Stel samen</span>
-      <h2>Wat wordt het vandaag?</h2>
-      <p>Kies je arepitas, sopa of pampuna en zie meteen wat het kost.</p>
-    </div>
-    <div class="kiezer">
-      <div class="stap">
-        <h3><b>1</b> Kies een categorie</h3>
-        <div class="keus" id="keusCat" role="group" aria-label="Categorie"></div>
-        <h3><b>2</b> Kies wat je wilt</h3>
-        <div class="items" id="items"></div>
-      </div>
-      <div class="stap lijstje" aria-live="polite">
-        <h3><b>3</b> Jouw lijstje</h3>
-        <ul id="lijst"><li class="leeg">Nog leeg. Tik op + om iets toe te voegen.</li></ul>
-        <div class="totaal"><span>Totaal</span><span id="totaal">€ 0,00</span></div>
-        <a class="btn btn-geel" href="https://www.google.com/maps/search/?api=1&amp;query=Arepa+House+Zuidplein+Hoog+1006+Rotterdam" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
-          Kom langs op Zuidplein Hoog 1006</a>
-        <a class="btn btn-rood" id="waKnop" href="#bestel" hidden>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
-          Bestel via WhatsApp</a>
-        <div class="wa-plek" id="waPlek">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
-          <div><b>Hier komt "Bestel via WhatsApp"</b>Met jullie nummer gaat dit lijstje straks in één tik als bericht naar de zaak.</div>
+    <div class="kaart-grid grid">
+      <div>
+        <div class="tabs" role="tablist" aria-label="Kaart">
+          <button class="tab" role="tab" aria-selected="true" aria-controls="p-arepitas" id="t-arepitas"><span>Arepitas</span></button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="p-sopas" id="t-sopas"><span>Sopas y más</span></button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="p-pampuna" id="t-pampuna"><span>Arepa di pampuna</span></button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="p-extras" id="t-extras"><span>Extra's</span></button>
         </div>
-        <p class="klein">Volg <a href="https://www.instagram.com/arepahouse_nl/" target="_blank" rel="noopener">@arepahouse_nl</a> op Instagram.</p>
+
+        <div class="paneel" role="tabpanel" id="p-arepitas" aria-labelledby="t-arepitas">
+          <div class="lijst">
+            <h3>Arepitas</h3>
+            <p class="sub">Gevulde maïsbroodjes.</p>
+            <div class="item" data-n="Arepita Carne Mechada" data-p="6.50"><span class="nm">Carne Mechada<small>draadjesvlees</small></span><span class="pr">€ 6,50</span></div>
+            <div class="item" data-n="Arepita Pollo" data-p="6.50"><span class="nm">Pollo<small>kip</small></span><span class="pr">€ 6,50</span></div>
+            <div class="item" data-n="Arepita Camarones" data-p="7.00"><span class="nm">Camarones<small>garnaal</small></span><span class="pr">€ 7,00</span></div>
+            <div class="item" data-n="Arepita Crab" data-p="5.50"><span class="nm">Crab<small>surimi</small></span><span class="pr">€ 5,50</span></div>
+            <div class="item" data-n="Arepita Atún" data-p="5.50"><span class="nm">Atún<small>tonijn</small></span><span class="pr">€ 5,50</span></div>
+            <div class="item" data-n="Arepita Huevo" data-p="5.50"><span class="nm">Huevo<small>ei</small></span><span class="pr">€ 5,50</span></div>
+            <div class="item" data-n="Arepita Queso" data-p="5.00"><span class="nm">Queso<small>kaas</small></span><span class="pr">€ 5,00</span></div>
+          </div>
+          <figure><img src="img/arepa.jpg" alt="Doorgesneden arepa met vlees, kaas, avocado en bakbanaan in krantenpapier" width="900" height="1047" loading="lazy" decoding="async"><figcaption>Arepa met vlees, kaas, avocado en bakbanaan.</figcaption></figure>
+        </div>
+
+        <div class="paneel" role="tabpanel" id="p-sopas" aria-labelledby="t-sopas" hidden>
+          <div class="lijst">
+            <h3>Sopas y más</h3>
+            <p class="sub">Soep, empanadas en meer.</p>
+            <div class="item" data-n="Sopa de Pollo" data-p="10.00"><span class="nm">Sopa de Pollo<small>kippensoep</small></span><span class="pr">€ 10,00</span></div>
+            <div class="item" data-n="Sopa de Carne" data-p="10.00"><span class="nm">Sopa de Carne<small>soep met vlees</small></span><span class="pr">€ 10,00</span></div>
+            <div class="item" data-n="Tiras de Pollo" data-p="6.50"><span class="nm">Tiras de Pollo<small>kipreepjes</small></span><span class="pr">€ 6,50</span></div>
+            <div class="item" data-n="Empanada" data-p="3.75"><span class="nm">Empanadas<small>per stuk</small></span><span class="pr">€ 3,75</span></div>
+            <div class="item" data-n="Quesadillas" data-p="12.50"><span class="nm">Quesadillas</span><span class="pr">€ 12,50</span></div>
+          </div>
+          <figure><img src="img/bord2.jpg" alt="Bakje met gebakken ei, rijst met bonen, draadjesvlees, ingemaakte rode ui en friet" width="900" height="1248" loading="lazy" decoding="async"><figcaption>Uit de keuken: ei, rijst met bonen, draadjesvlees en rode ui.</figcaption></figure>
+        </div>
+
+        <div class="paneel" role="tabpanel" id="p-pampuna" aria-labelledby="t-pampuna" hidden>
+          <div class="lijst">
+            <h3>Arepa di pampuna</h3>
+            <p class="sub">Zoete pompoenpannenkoekjes, een Curaçaose specialiteit.</p>
+            <div class="item" data-n="Arepa di pampuna Plain" data-p="2.75"><span class="nm">Plain</span><span class="pr">€ 2,75</span></div>
+            <div class="item" data-n="Arepa di pampuna Oreo" data-p="3.75"><span class="nm">Oreo</span><span class="pr">€ 3,75</span></div>
+            <div class="item" data-n="Arepa di pampuna Raffaello" data-p="3.75"><span class="nm">Raffaello</span><span class="pr">€ 3,75</span></div>
+            <div class="item" data-n="Arepa di pampuna Speculoos" data-p="3.75"><span class="nm">Speculoos</span><span class="pr">€ 3,75</span></div>
+            <div class="item" data-n="Arepa di pampuna M&amp;M's" data-p="3.75"><span class="nm">M&amp;M's</span><span class="pr">€ 3,75</span></div>
+          </div>
+          <figure><img src="img/pampuna.jpg" alt="Arepa di pampuna met een witte, geraspte topping op een papieren bordje" width="900" height="1109" loading="lazy" decoding="async"><figcaption>Arepa di pampuna.</figcaption></figure>
+        </div>
+
+        <div class="paneel" role="tabpanel" id="p-extras" aria-labelledby="t-extras" hidden>
+          <div class="lijst">
+            <h3>Extra's</h3>
+            <p class="sub">Erbij, voor op of naast je arepa.</p>
+            <div class="item" data-n="Extra avocado" data-p="0.75"><span class="nm">Avocado</span><span class="pr">€ 0,75</span></div>
+            <div class="item" data-n="Extra bakbanaan" data-p="0.75"><span class="nm">Bakbanaan</span><span class="pr">€ 0,75</span></div>
+            <div class="item" data-n="Extra zwarte bonen" data-p="0.75"><span class="nm">Zwarte bonen</span><span class="pr">€ 0,75</span></div>
+          </div>
+          <figure><img src="img/bord.jpg" alt="Bakje met avocado, bakbanaan, tomaat, ingemaakte rode ui, draadjesvlees en gebakken ei" width="1000" height="711" loading="lazy" decoding="async"><figcaption>Avocado en bakbanaan in een bakje uit de keuken.</figcaption></figure>
+        </div>
+
+        <p class="schermen">Op de schermen in de zaak staan nog meer gerechten, zoals Mix Grill Arepa's, rijstgerechten en Morro con pollo.</p>
+        <p class="bron">Prijzen zoals vermeld op caribbeankitchen.nl (overgenomen van een menufoto). In de zaak kunnen ze afwijken.</p>
+        <p class="mo-note">Mo: "Geef me je echte prijslijst, dan zet ik die erin."</p>
+      </div>
+
+      <aside class="bon" id="bestel" aria-label="Je bestelling">
+        <h3>Je bon</h3>
+        <p class="leeg" id="bon-leeg">Nog leeg. Tik op de + bij een gerecht.</p>
+        <ul id="bon-lijst"></ul>
+        <div class="tot" id="bon-tot" hidden><span>Indicatie<small>prijzen kunnen afwijken</small></span><span id="bon-som">€ 0,00</span></div>
+        <label>Wanneer kom je?</label>
+        <div class="dagen" id="dagen"></div>
+        <label for="tijd">Hoe laat ongeveer?</label>
+        <select id="tijd"></select>
+        <label for="naam">Je naam</label>
+        <input id="naam" autocomplete="given-name" placeholder="Voornaam">
+        <button class="btn btn-hoofd" id="verstuur" type="button" data-cta="bon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.7-.1 1.4z"/></svg>
+          Stuur via WhatsApp
+        </button>
+        <p class="mo-note">Mo: "Het WhatsApp-nummer van de zaak vul jij in."</p>
+        <p class="klein">Je ziet eerst je bericht; daarna gaat het naar onze WhatsApp.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- WEEKEND -->
+<section class="blok weekend" id="weekend">
+  <div class="wrap wk-grid grid">
+    <div>
+      <p class="oog">Weekend</p>
+      <h2>Vrijdag, zaterdag, zondag: <em>oxtail.</em></h2>
+      <div class="oxtail">
+        <div class="dagen-w"><span>Vr</span><span>Za</span><span>Zo</span></div>
+        <blockquote>"Vrijdag zaterdag en zondag hebben wij OXTAIL. Met Moro, soep en arepas"</blockquote>
+        <p class="br">Zo stond het bij een reel op onze Instagram. Check op <a href="https://www.instagram.com/arepahouse_nl/" target="_blank" rel="noopener">@arepahouse_nl</a> of het dat weekend op de kaart staat.</p>
+      </div>
+    </div>
+    <div>
+      <p class="oog">Zoet uit Korsou</p>
+      <h2>Arepa di pampuna.</h2>
+      <p>Zoete pompoenpannenkoekjes, een Curaçaose specialiteit. Puur, of met een topping.</p>
+      <div class="pamp">
+        <img src="img/pampuna-oreo.jpg" alt="Arepa di pampuna met Oreo-koekjes erop, met een tweede pampuna erachter" width="900" height="800" loading="lazy" decoding="async">
+        <div>
+          <p><b>Vanaf € 2,75</b>, met topping € 3,75.</p>
+          <div class="tops"><span>Oreo</span><span>Raffaello</span><span>Speculoos</span><span>M&amp;M's</span></div>
+          <a class="btn btn-licht" style="margin-top:18px" href="#kaart" data-tab="pampuna">Zet op je bon</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="waarom">
-  <div class="wrap">
-    <div class="kop onthul">
-      <span class="label">Waarom Arepa House</span>
-      <h2>Wat gasten erover schrijven</h2>
-      <p>Uit de reviews op Google.</p>
+<!-- PLEK -->
+<section class="blok" id="plek">
+  <div class="wrap plek-grid grid">
+    <div>
+      <img src="img/neon.jpg" alt="De neonletters AREPA HOUSE boven de ingang op Zuidplein Hoog" width="1070" height="400" loading="lazy" decoding="async">
     </div>
-    <div class="kaarten">
-      <div class="kaart onthul" style="--c:var(--geel)">
-        <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="#0E2A6B" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M11 19c2.5 3 7.5 3 10 0"/><circle cx="12" cy="13" r="1" fill="#0E2A6B"/><circle cx="20" cy="13" r="1" fill="#0E2A6B"/></svg></div>
-        <h3>Vriendelijk en snel</h3>
-        <p>Gasten schrijven dat het personeel vriendelijk en snel is, ook als het druk is.</p>
+    <div>
+      <p class="oog">Waar we zitten</p>
+      <h2><span class="only-a">Zoek de <em>neon&shy;letters.</em></span><span class="only-b">Boven in <em>Zuidplein.</em></span></h2>
+      <p class="intro">Arepa House zit op Zuidplein Hoog 1006, in winkelcentrum Zuidplein. Ken je ons van de foodtruck of van een festival? Nu vind je ons ook vast op Zuidplein Hoog.</p>
+      <ul class="plek-feiten">
+        <li><b>Adres</b><span>Zuidplein Hoog 1006, Rotterdam</span></li>
+        <li><b>Instagram</b><span><a href="https://www.instagram.com/arepahouse_nl/" target="_blank" rel="noopener">@arepahouse_nl</a></span></li>
+      </ul>
+      <a class="btn btn-hoofd" style="margin-top:22px" href="https://www.google.com/maps/dir/?api=1&amp;destination=Arepa%20House%2C%20Zuidplein%20Hoog%201006%2C%20Rotterdam" target="_blank" rel="noopener">Route in Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="blok rev" id="reviews">
+  <div class="wrap">
+    <div class="rev-top">
+      <div>
+        <p class="oog">Op Google</p>
+        <h2>Vijf reviews, <em>vijf sterren.</em></h2>
       </div>
-      <div class="kaart onthul" style="--c:var(--rood)">
-        <div class="ico"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="17" r="12" fill="#fff"/><circle cx="16" cy="16" r="12" fill="#F6B819"/><path d="M5 17q11-6 22 0q-11 5-22 0Z" fill="#1F8A4C"/></svg></div>
-        <h3>Grote, verse porties</h3>
-        <p>In de reviews gaat het over royale porties: arepa's, patacones en pampuna.</p>
-      </div>
-      <div class="kaart onthul" style="--c:var(--groen)">
-        <div class="ico"><svg viewBox="0 0 32 32" fill="#fff" aria-hidden="true"><path d="M12 6v15.5a4 4 0 1 0 2.6 3.7V11l10-2.4v10a4 4 0 1 0 2.6 3.7V3.5Z"/></svg></div>
-        <h3>Muziek en sfeer</h3>
-        <p>Gasten noemen de muziek, de gezellige sfeer en een schone zaak.</p>
-      </div>
+      <a class="score" href="https://www.google.com/maps?cid=18325885539673950112" target="_blank" rel="noopener" style="text-decoration:none"><b>5,0</b><span><span class="st">★★★★★</span><br><small>5 reviews op Google</small></span></a>
     </div>
+    <div class="rev-grid grid">
+      <div class="rv"><p>Een mooie, schone zaak met vriendelijk personeel.</p><p class="wie">Rogier</p></div>
+      <div class="rv"><p>Goede muziek, snelle en vriendelijke service in een gezellige zaak.</p><p class="wie">Beautiful Morning</p></div>
+      <div class="rv"><p>Vriendelijk personeel dat zelfs tijd maakte voor een praatje.</p><p class="wie">Rodney</p></div>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd. <a href="https://www.google.com/maps?cid=18325885539673950112" target="_blank" rel="noopener">Lees ze op Google</a>.</p>
   </div>
 </section>
 
-<section id="reviews">
+<!-- INFO -->
+<section class="blok" id="info">
   <div class="wrap">
-    <div class="kop onthul">
-      <span class="label">Reviews</span>
-      <h2>5,0 op Google</h2>
-    </div>
-    <div class="score onthul">
-      <span class="groot">5,0</span>
-      <div><div class="sterren" aria-label="5 van 5 sterren">★★★★★</div><a href="https://www.google.com/maps/search/?api=1&amp;query=Arepa+House+Zuidplein+Hoog+1006+Rotterdam" target="_blank" rel="noopener">uit 5 reviews op Google</a></div>
-    </div>
-    <div class="reviews">
-      <div class="review onthul" style="--c:var(--geel)"><p>Een mooie, schone zaak met vriendelijk personeel.</p><div class="wie">Rogier</div></div>
-      <div class="review onthul" style="--c:var(--rood)"><p>Goede muziek en snelle, vriendelijke bediening in een gezellige zaak.</p><div class="wie">Beautiful Morning</div></div>
-      <div class="review onthul" style="--c:var(--groen)"><p>Vriendelijk personeel dat zelfs tijd nam voor een praatje.</p><div class="wie">Rodney</div></div>
-    </div>
-    <p class="label-sam">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
-  </div>
-</section>
-
-<section id="hoe">
-  <div class="wrap">
-    <div class="kop onthul">
-      <span class="label">Zo werkt het</span>
-      <h2>In drie stappen aan tafel</h2>
-    </div>
-    <div class="stappen">
-      <div class="stapk onthul"><h3>Kies van de kaart</h3><p>Bekijk het <a href="#menu">menu met prijzen</a> of <a href="#bestel">stel je lijstje samen</a>.</p></div>
-      <div class="stapk onthul"><h3>Kom naar Zuidplein</h3><p>Je vindt Arepa House op Zuidplein Hoog 1006, in Winkelcentrum Zuidplein.</p></div>
-      <div class="stapk onthul"><h3>¡Buen provecho!</h3><p>Arepitas, sopa of een zoete arepa di pampuna. Eet smakelijk.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="kop onthul">
-      <span class="label">Vragen</span>
-      <h2>Goed om te weten</h2>
-    </div>
-    <div class="faq">
-      <details><summary>Waar zit Arepa House?</summary><p>Op Zuidplein Hoog 1006 in Rotterdam, in Winkelcentrum Zuidplein.</p></details>
-      <details><summary>Wat is arepa di pampuna?</summary><p>Zoete pompoenpannenkoekjes, een Curaçaose specialiteit. Je hebt ze plain of met Oreo, Raffaello, speculoos of M&amp;M's.</p></details>
-      <details><summary>Wat kost een arepita?</summary><p>Op de kaart van € 5,00 (queso) tot € 7,00 (camarones). Prijzen onder voorbehoud: de kaart in de zaak is leidend.</p></details>
-      <details><summary>Zijn Arepa House en Panaderia Curaçao hetzelfde?</summary><p>Ja. Op Instagram heet de zaak "ArepaHouse - Panaderia Curaçao" en op de site van Zuidplein staat hij als Panaderia Curaçao.</p></details>
-      <details><summary>Tot hoe laat zijn jullie open op vrijdag?</summary><p>Op vrijdag tot 20:15. Kijk voor de andere dagen bij de <a href="#info">openingstijden</a>.</p></details>
-    </div>
-  </div>
-</section>
-
-<section id="info">
-  <div class="wrap">
-    <div class="kop onthul">
-      <span class="label">Langskomen</span>
-      <h2>Adres en openingstijden</h2>
-    </div>
-    <div class="info">
-      <div class="blok onthul">
-        <h3>Openingstijden</h3>
-        <table class="uren">
-          <tr><td>Dinsdag</td><td>11:15 – 17:15</td></tr>
-          <tr><td>Woensdag</td><td>11:15 – 17:15</td></tr>
-          <tr class="vr"><td>Vrijdag</td><td>11:15 – 20:15</td></tr>
-          <tr><td>Zaterdag</td><td>11:15 – 17:15</td></tr>
+    <p class="oog">Praktisch</p>
+    <h2>Tijden, adres <em>en route.</em></h2>
+    <div class="info-grid grid" style="margin-top:30px">
+      <div>
+        <h3>Open</h3>
+        <table class="uren" id="uren">
+          <tr data-d="2"><td>Dinsdag</td><td>11:15–17:30</td></tr>
+          <tr data-d="3"><td>Woensdag</td><td>11:15–17:30</td></tr>
+          <tr data-d="4"><td>Donderdag</td><td>11:15–17:30</td></tr>
+          <tr data-d="5"><td>Vrijdag</td><td>11:15–20:30</td></tr>
+          <tr data-d="6"><td>Zaterdag</td><td>11:15–17:30</td></tr>
+          <tr data-d="0"><td>Zondag</td><td>13:00–17:30</td></tr>
         </table>
-        <p class="noot">Maandag, donderdag en zondag: vraag de tijden even in de zaak.</p>
+        <p class="bron">Maandag: kijk even op <a href="https://www.instagram.com/arepahouse_nl/" target="_blank" rel="noopener">Instagram</a>.</p>
       </div>
-      <div class="blok onthul">
+      <div>
         <h3>Adres</h3>
-        <p class="adres">Zuidplein Hoog 1006<br>Rotterdam</p>
-        <p style="color:var(--zacht)">In Winkelcentrum Zuidplein</p>
-        <a class="btn btn-blauw" href="https://www.google.com/maps/search/?api=1&amp;query=Arepa+House+Zuidplein+Hoog+1006+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
-        <a class="btn btn-geel" href="#bestel">Stel samen</a>
-        <div class="kaartje" aria-hidden="true">
-          <svg viewBox="0 0 400 130">
-            <rect width="400" height="130" fill="#16398C"/>
-            <g stroke="#2b56b8" stroke-width="10" fill="none"><path d="M-10 40H410"/><path d="M-10 100H410"/><path d="M90-10V140"/><path d="M290-10V140"/></g>
-            <rect x="140" y="52" width="120" height="40" rx="10" fill="#0E2A6B" stroke="#F6B819" stroke-width="2"/>
-            <text x="200" y="77" text-anchor="middle" font-family="Figtree, sans-serif" font-weight="800" font-size="13" fill="#fff">Zuidplein Hoog</text>
-            <g class="pulse"><path d="M232 22a12 12 0 0 0-12 12c0 9 12 22 12 22s12-13 12-22a12 12 0 0 0-12-12Z" fill="#D7263D"/><circle cx="232" cy="34" r="4.5" fill="#fff"/></g>
-          </svg>
-        </div>
+        <p>Arepa House<br>Zuidplein Hoog 1006<br>Rotterdam</p>
+        <p class="bron">In winkelcentrum Zuidplein.</p>
+        <a class="btn btn-twee" href="https://www.google.com/maps/dir/?api=1&amp;destination=Arepa%20House%2C%20Zuidplein%20Hoog%201006%2C%20Rotterdam" target="_blank" rel="noopener">Route</a>
       </div>
+      <div>
+        <h3>Bestellen</h3>
+        <p>Zet je bestelling op de bon en stuur hem via WhatsApp. Of loop gewoon binnen.</p>
+        <a class="btn btn-hoofd" href="#bestel" data-cta="info">Bestel via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="blok" id="faq" style="padding-top:0">
+  <div class="wrap">
+    <p class="oog">Kort gevraagd</p>
+    <div class="faq">
+      <details><summary>Waar zitten jullie precies?</summary><p>Op Zuidplein Hoog 1006, in winkelcentrum Zuidplein in Rotterdam. Zoek de neonletters AREPA HOUSE.</p></details>
+      <details><summary>Wat is arepa di pampuna?</summary><p>Een zoet pompoenpannenkoekje, een Curaçaose specialiteit. Bij ons puur of met Oreo, Raffaello, Speculoos of M&amp;M's.</p></details>
+      <details><summary>Hebben jullie oxtail?</summary><p>Bij een reel op Instagram schreven we: "Vrijdag zaterdag en zondag hebben wij OXTAIL. Met Moro, soep en arepas". Check op @arepahouse_nl of het dat weekend op de kaart staat.</p></details>
+      <details><summary>Zijn de prijzen op deze site actueel?</summary><p>Ze komen van caribbeankitchen.nl en kunnen afwijken van de kaart in de zaak. De schermen boven de toonbank zijn leidend.</p></details>
     </div>
   </div>
 </section>
 
 <section class="slot">
   <div class="wrap">
-    <h2>Zin in een arepa?</h2>
-    <p>Venezolaanse arepitas en zoete pampuna op Zuidplein Hoog 1006. Volg @arepahouse_nl op Instagram.</p>
+    <h2>Trek in een <em>arepa?</em></h2>
+    <p>Stel je bon samen en stuur hem via WhatsApp, of loop binnen op Zuidplein Hoog.</p>
     <div class="knoppen">
-      <a class="btn btn-geel" href="https://www.google.com/maps/search/?api=1&amp;query=Arepa+House+Zuidplein+Hoog+1006+Rotterdam" target="_blank" rel="noopener">Kom langs op Zuidplein Hoog 1006</a>
-      <a class="btn btn-rand" href="https://www.instagram.com/arepahouse_nl/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-        @arepahouse_nl</a>
+      <a class="btn btn-licht" href="#bestel" data-cta="slot">Bestel via WhatsApp</a>
+      <a class="btn btn-twee" href="https://www.google.com/maps/dir/?api=1&amp;destination=Arepa%20House%2C%20Zuidplein%20Hoog%201006%2C%20Rotterdam" target="_blank" rel="noopener">Route</a>
     </div>
   </div>
 </section>
@@ -624,78 +677,219 @@ footer a{color:var(--geel)}
 
 <footer>
   <div class="wrap">
-    <img src="logo-light.svg" alt="Arepa House – Panaderia Curaçao" width="405" height="84">
-    <div>Zuidplein Hoog 1006, Rotterdam · <a href="https://www.instagram.com/arepahouse_nl/" target="_blank" rel="noopener">Instagram</a></div>
-    <div>Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></div>
+    <div>
+      <img src="logo-light.svg" alt="Arepa House" width="409" height="78">
+      <p>Arepa House · Panaderia Curaçao<br>Zuidplein Hoog 1006, Rotterdam</p>
+      <p><a href="https://www.instagram.com/arepahouse_nl/" target="_blank" rel="noopener">@arepahouse_nl</a></p>
+    </div>
+    <div>
+      <p>Foto's: Google Maps-pagina Arepa House (gasten).</p>
+      <p class="mo-note">Mo: "Deze foto's zijn van gasten op Google. Mag ik ze gebruiken, of heb je eigen foto's?"</p>
+      <p>Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></p>
+    </div>
   </div>
 </footer>
 
-<div class="zweef-cta" id="zweef">
-  <a class="btn btn-geel" href="#bestel">Stel samen</a>
-  <a class="btn btn-blauw" href="https://www.google.com/maps/search/?api=1&amp;query=Arepa+House+Zuidplein+Hoog+1006+Rotterdam" target="_blank" rel="noopener" aria-label="Route naar Arepa House">Route</a>
+<div class="zweef" id="zweef" aria-hidden="true">
+  <a class="btn btn-hoofd" href="#bestel" tabindex="-1">Bestel via WhatsApp</a>
+  <a class="btn btn-licht" href="https://www.google.com/maps/dir/?api=1&amp;destination=Arepa%20House%2C%20Zuidplein%20Hoog%201006%2C%20Rotterdam" target="_blank" rel="noopener" tabindex="-1">Route</a>
+</div>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-kop">
+  <div class="doos">
+    <h3 id="modal-kop" style="font-size:28px">Je bericht</h3>
+    <div class="wa-bubbel" id="wa-tekst"></div>
+    <p class="klein" style="font-size:14px;color:var(--zacht)">In deze demo staat het WhatsApp-nummer van de zaak er nog niet in. Op de echte site opent deze knop direct WhatsApp met dit bericht.</p>
+    <p class="mo-note">Mo: "Hier komt jouw WhatsApp-nummer."</p>
+    <button class="btn btn-hoofd" type="button" id="kopieer">Kopieer bericht</button>
+    <button class="btn btn-twee" type="button" id="sluit-modal">Sluiten</button>
+  </div>
+</div>
+
+<!-- stijlkiezer (alleen met ?pitch of ?stijl=) -->
+<div class="stijlkiezer" id="stijlkiezer" hidden role="group" aria-label="Kies een stijl">
+  <button type="button" data-stijl="a" aria-pressed="false">Stijl A</button>
+  <button type="button" data-stijl="b" aria-pressed="true">Stijl B</button>
+</div>
+
+<!-- pitch-modus (alleen Mo) -->
+<button class="mo-knop" id="mo-knop" hidden type="button" aria-label="Pitch openen">Mo</button>
+<div class="pitch-p" id="pitch" hidden>
+  <div class="vel">
+    <button class="sluit" id="pitch-dicht" type="button" aria-label="Sluiten">×</button>
+    <h2>Arepa House</h2>
+    <p class="klein">Alleen voor Mo, in het gesprek met Jiky.</p>
+
+    <h3>1. Wat een klant nu vindt</h3>
+    <img class="voor" src="img/voor-google.jpg" alt="Google Maps-vermelding van Arepa House zonder telefoonnummer en zonder website" width="410" height="890" loading="lazy" decoding="async">
+    <ul>
+      <li><b>Google Maps:</b> "Arepa House", 5,0. Geen telefoonnummer en geen website; Google toont zelf "Telefoonnummer van plaats toevoegen" en "Website toevoegen" (gezien 9 nov).</li>
+      <li><b>zuidplein.nl:</b> "Panaderia Curacao", alleen met het nummer van het centrummanagement.</li>
+      <li><b>Instagram:</b> "ArepaHouse - Panaderia Curaçao".</li>
+      <li><b>panaderiacuracao.nl:</b> bestaat niet meer (9 nov: domein niet gevonden).</li>
+    </ul>
+    <p class="klein">Drie namen voor één zaak, en nergens een nummer.</p>
+
+    <h3>2. Instagram</h3>
+    <p class="zin">Ruim 6.200 volgers op Instagram. De prijslijst zit in een highlight en de tijden in je bio, maar wie je googelt ziet geen menu, geen nummer en geen site.</p>
+
+    <h3>3. Welke past bij jou?</h3>
+    <p class="zin">"Je zei dat de eerste niet was wat je in gedachten had. Daarom heb ik er twee gemaakt: welke past bij jou? Dan maak ik hem helemaal af zoals jij het wilt."</p>
+    <div class="keus" style="margin-top:12px">
+      <button type="button" data-stijl="a" aria-pressed="false"><b>Stijl A</b><span>Caribische street food: neon, rood dienblad, krantenpapier, "Bon bini".</span></button>
+      <button type="button" data-stijl="b" aria-pressed="true"><b>Stijl B</b><span>Rustig lunchcafé: veel wit, je interieur en je borden voorop.</span></button>
+    </div>
+
+    <h3>4. Wat je krijgt</h3>
+    <div class="aanbod">
+      <div class="prijs">€ 595 <small style="font-size:15px;font-weight:600">eenmalig, incl. btw</small></div>
+      <ul>
+        <li>Website tot 5 pagina's, gemaakt voor de telefoon</li>
+        <li>Eigen domein: dat betaal en bezit jij, wij koppelen het</li>
+        <li>WhatsApp-knop, bestel-/contactformulier, Google-reviews en route</li>
+        <li>Basis-SEO, hosting inbegrepen, 1 feedbackronde</li>
+        <li>Live binnen 48 uur na betaling</li>
+      </ul>
+    </div>
+
+    <h3>5. Rekensom (voorbeeld, geen belofte)</h3>
+    <div class="rek">
+      <label for="r-klant">Extra bestellingen per week <span id="v-klant">3</span></label>
+      <input type="range" id="r-klant" min="0" max="40" value="3">
+      <label for="r-bon">Gemiddelde bon <span id="v-bon">€ 10</span></label>
+      <input type="range" id="r-bon" min="3" max="30" value="10">
+      <div class="uitk"><b id="v-jaar">€ 1.560</b>extra omzet per jaar, als je deze getallen zelf realistisch vindt.</div>
+      <p class="klein">Voorbeeld, geen belofte. Jij vult de getallen in; de site kost eenmalig € 595.</p>
+    </div>
+
+    <h3>6. Wat er concreet beter wordt</h3>
+    <ul>
+      <li>Eén naam en één adres, met route in één tik.</li>
+      <li>De kaart met prijzen en de tijden op één plek, met "nu open" erbij.</li>
+      <li>Bestellen via WhatsApp: de bon komt ingevuld binnen.</li>
+    </ul>
+
+    <h3>Open punten voor Jiky</h3>
+    <ul>
+      <li>Je echte prijslijst (nu van caribbeankitchen.nl).</li>
+      <li>Het WhatsApp-nummer van de zaak.</li>
+      <li>Maandag: open of dicht?</li>
+      <li>Foto's: nu van gasten op je Google Maps-pagina. Vraag toestemming, of vraag om eigen foto's.</li>
+    </ul>
+  </div>
 </div>
 
 <script>
-/* Zodra het WhatsApp-nummer van de zaak bekend is: hier invullen, zonder + en spaties (bijv. 316xxxxxxxx). */
-const WA_NUMMER = "31618712340";
+(function(){
+  var q=new URLSearchParams(location.search);
+  var body=document.body;
+  var pitch=q.has('pitch');
+  var stijl=(q.get('stijl')||'').toLowerCase();
+  if(stijl!=='a'&&stijl!=='b') stijl='b';
 
-const MENU = {
-  "Arepitas": [["Carne Mechada",6.5],["Pollo (kip)",6.5],["Camarones (garnaal)",7],["Crab (surimi)",5.5],["Atun (tonijn)",5.5],["Huevo (ei)",5.5],["Queso (kaas)",5]],
-  "Sopas y mas": [["Sopa de Pollo / Carne",10],["Tiras de Pollo",6.5],["Empanadas",3.75],["Quesadillas",12.5]],
-  "Pampuna": [["Arepa di pampuna plain",2.75],["Arepa di pampuna Oreo",3.75],["Arepa di pampuna Raffaello",3.75],["Arepa di pampuna Speculoos",3.75],["Arepa di pampuna M&M's",3.75]],
-  "Extras": [["Avocado",.75],["Bakbanaan",.75],["Zwarte bonen",.75]]
-};
-const euro = n => "€ " + n.toFixed(2).replace(".", ",");
-const aantal = {};
-let actief = "Arepitas";
-const keusCat = document.getElementById("keusCat"), itemsEl = document.getElementById("items"),
-      lijst = document.getElementById("lijst"), totaalEl = document.getElementById("totaal"),
-      waKnop = document.getElementById("waKnop"), waPlek = document.getElementById("waPlek");
-
-function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
-function tekenCats(){
-  keusCat.innerHTML = Object.keys(MENU).map(c => `<button type="button" aria-pressed="${c===actief}">${esc(c)}</button>`).join("");
-  [...keusCat.children].forEach(b => b.onclick = () => { actief = b.textContent; tekenCats(); tekenItems(); });
-}
-function tekenItems(){
-  itemsEl.innerHTML = MENU[actief].map(([n,p]) => `<div class="item"><span class="n">${esc(n)}</span><span class="p">${euro(p)}</span>
-    <span class="teller"><button type="button" class="min" aria-label="Eén ${esc(n)} minder">−</button><output>${aantal[n]||0}</output><button type="button" aria-label="${esc(n)} toevoegen">+</button></span></div>`).join("");
-  [...itemsEl.children].forEach((el,i) => {
-    const [n] = MENU[actief][i]; const [min, plus] = el.querySelectorAll("button");
-    plus.onclick = () => { aantal[n] = (aantal[n]||0)+1; el.querySelector("output").textContent = aantal[n]; tekenLijst(); };
-    min.onclick = () => { aantal[n] = Math.max(0,(aantal[n]||0)-1); el.querySelector("output").textContent = aantal[n]; tekenLijst(); };
-  });
-}
-function prijs(n){ for (const c in MENU) for (const [m,p] of MENU[c]) if (m===n) return p; return 0; }
-function tekenLijst(){
-  const regels = Object.entries(aantal).filter(([,a]) => a>0);
-  let tot = 0;
-  lijst.innerHTML = regels.length ? regels.map(([n,a]) => { const s = a*prijs(n); tot += s; return `<li><span>${a}× ${esc(n)}</span><span>${euro(s)}</span></li>`; }).join("")
-    : '<li class="leeg">Nog leeg. Tik op + om iets toe te voegen.</li>';
-  totaalEl.textContent = euro(tot);
-  if (WA_NUMMER) {
-    const tekst = "Hoi Arepa House, ik wil graag bestellen:\n" + regels.map(([n,a]) => `${a}x ${n}`).join("\n") + (regels.length ? "\nTotaal volgens de site: " + euro(tot) : "");
-    waKnop.href = "https://wa.me/" + WA_NUMMER + "?text=" + encodeURIComponent(tekst);
+  function zetStijl(s,replay){
+    body.classList.remove('s-a','s-b'); body.classList.add('s-'+s);
+    document.querySelectorAll('[data-stijl]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.stijl===s?'true':'false')});
+    document.querySelector('meta[name=theme-color]').setAttribute('content',s==='a'?'#1B1511':'#FBFAF7');
+    if(replay){
+      document.querySelectorAll('.papier,.lamellen i').forEach(function(el){el.style.animation='none';void el.offsetWidth;el.style.animation='';});
+      var p=new URLSearchParams(location.search); p.set('stijl',s); history.replaceState(null,'','?'+p.toString().replace('pitch=','pitch')+location.hash);
+    }
+    stijl=s; heroObs();
   }
-}
-if (WA_NUMMER) { waKnop.hidden = false; waKnop.target = "_blank"; waKnop.rel = "noopener"; waPlek.hidden = true; waPlek.style.display = "none"; }
-tekenCats(); tekenItems(); tekenLijst();
+  if(pitch){body.classList.add('pitch');document.getElementById('mo-knop').hidden=false;}
+  if(pitch||q.has('stijl')){document.getElementById('stijlkiezer').hidden=false;document.getElementById('stijlrij').hidden=false;}
+  document.querySelectorAll('[data-stijl]').forEach(function(b){b.addEventListener('click',function(){zetStijl(b.dataset.stijl,true)})});
 
-/* menu-tabs */
-const tabs = document.querySelectorAll(".tab"), cats = document.querySelectorAll(".cat");
-tabs.forEach(t => t.addEventListener("click", () => {
-  tabs.forEach(x => x.setAttribute("aria-selected", x===t));
-  cats.forEach(c => c.hidden = !(t.dataset.cat==="alles" || c.dataset.cat===t.dataset.cat));
-}));
+  /* pitch-paneel */
+  var pp=document.getElementById('pitch');
+  document.getElementById('mo-knop').addEventListener('click',function(){pp.hidden=false});
+  document.getElementById('mo-in').addEventListener('click',function(){pp.hidden=false});
+  document.getElementById('pitch-dicht').addEventListener('click',function(){pp.hidden=true});
+  pp.addEventListener('click',function(e){if(e.target===pp)pp.hidden=true});
+  if(q.get('pitch')==='open') pp.hidden=false;
+  var rk=document.getElementById('r-klant'),rb=document.getElementById('r-bon');
+  function euro(n,dec){return '€ '+n.toLocaleString('nl-NL',{minimumFractionDigits:dec||0,maximumFractionDigits:dec||0})}
+  function reken(){document.getElementById('v-klant').textContent=rk.value;document.getElementById('v-bon').textContent=euro(+rb.value);document.getElementById('v-jaar').textContent=euro(rk.value*rb.value*52)}
+  rk.addEventListener('input',reken);rb.addEventListener('input',reken);reken();
 
-/* zwevende CTA zodra de hero uit beeld is */
-const zweef = document.getElementById("zweef");
-new IntersectionObserver(([e]) => zweef.classList.toggle("aan", !e.isIntersecting)).observe(document.getElementById("hero"));
+  /* openingstijden (bron: Instagram-bio, 9 nov 2026). Maandag onbekend. */
+  var U={0:[780,1050],2:[675,1050],3:[675,1050],4:[675,1050],5:[675,1230],6:[675,1050]};
+  var DAG=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+  function hm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+  function nuNL(){var s=new Date().toLocaleString('en-US',{timeZone:'Europe/Amsterdam'});return new Date(s)}
+  var n=nuNL(),d=n.getDay(),m=n.getHours()*60+n.getMinutes();
+  var st=document.getElementById('nu-status'),sd=document.getElementById('nu-dag');
+  var tr=document.querySelector('#uren tr[data-d="'+d+'"]'); if(tr) tr.classList.add('vandaag');
+  if(U[d]&&m>=U[d][0]&&m<U[d][1]){st.innerHTML='<span class="dot open"></span><b>Nu open</b>, tot '+hm(U[d][1]);sd.textContent='Zuidplein Hoog 1006';}
+  else{
+    var tekst;
+    if(U[d]&&m<U[d][0]) tekst='Vandaag open vanaf '+hm(U[d][0]);
+    else if(d===1) tekst='Maandag: tijden op Instagram';
+    else{var k=1;while(k<8&&!U[(d+k)%7])k++;var nd=(d+k)%7;tekst=(k===1?'Morgen':'Op '+DAG[nd])+' open vanaf '+hm(U[nd][0]);}
+    st.innerHTML='<span class="dot"></span>'+tekst; sd.textContent='Zuidplein Hoog 1006';
+  }
 
-/* scroll-reveal met vangnet */
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
-document.querySelectorAll(".onthul").forEach(el => io.observe(el));
-setTimeout(() => document.querySelectorAll(".onthul").forEach(el => el.classList.add("in")), 3500);
+  /* tabs */
+  var tabs=document.querySelectorAll('.tab');
+  function kiesTab(id){tabs.forEach(function(t){var on=t.id==='t-'+id;t.setAttribute('aria-selected',on);document.getElementById(t.getAttribute('aria-controls')).hidden=!on})}
+  tabs.forEach(function(t){t.addEventListener('click',function(){kiesTab(t.id.slice(2))})});
+  document.querySelectorAll('[data-tab]').forEach(function(a){a.addEventListener('click',function(){kiesTab(a.dataset.tab)})});
+
+  /* bon */
+  var bon={};
+  document.querySelectorAll('.item').forEach(function(it){
+    var b=document.createElement('button');b.type='button';b.className='plus';b.textContent='+';b.setAttribute('aria-label',it.dataset.n+' op je bon');
+    var a=document.createElement('span');a.className='aant';
+    it.appendChild(a);it.appendChild(b);
+    b.addEventListener('click',function(){var k=it.dataset.n;bon[k]=bon[k]||{n:0,p:+it.dataset.p};bon[k].n++;a.textContent=bon[k].n+'×';tekenBon()});
+  });
+  function tekenBon(){
+    var ul=document.getElementById('bon-lijst');ul.innerHTML='';var som=0,leeg=true;
+    Object.keys(bon).forEach(function(k){var r=bon[k];if(!r.n)return;leeg=false;som+=r.n*r.p;
+      var li=document.createElement('li');li.innerHTML='<span></span><span></span>';li.children[0].textContent=r.n+'× '+k;li.children[1].textContent=euro(r.n*r.p,2);ul.appendChild(li)});
+    document.getElementById('bon-leeg').hidden=!leeg;document.getElementById('bon-tot').hidden=leeg;
+    document.getElementById('bon-som').textContent=euro(som,2);
+  }
+  /* dagen: komende open dagen; maandag niet, want die tijden kennen we niet */
+  var dagBox=document.getElementById('dagen'),tijd=document.getElementById('tijd'),gekozen=null;
+  var opties=[];
+  for(var i=0;i<9&&opties.length<6;i++){var dd=new Date(n);dd.setDate(n.getDate()+i);var w=dd.getDay();if(!U[w])continue;
+    if(i===0&&m>U[w][1]-30)continue;
+    var lab=i===0?'Vandaag':i===1?'Morgen':DAG[w].charAt(0).toUpperCase()+DAG[w].slice(1,2)+' '+dd.getDate()+'/'+(dd.getMonth()+1);
+    if(i>1) lab=['Zo','Ma','Di','Wo','Do','Vr','Za'][w]+' '+dd.getDate()+'/'+(dd.getMonth()+1);
+    opties.push({lab:lab,w:w,i:i,datum:DAG[w]+' '+dd.getDate()+' '+['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'][dd.getMonth()]});}
+  opties.forEach(function(o,idx){var b=document.createElement('button');b.type='button';b.className='dag';b.textContent=o.lab;b.setAttribute('aria-pressed',idx===0);
+    b.addEventListener('click',function(){dagBox.querySelectorAll('.dag').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');kiesDag(o)});dagBox.appendChild(b)});
+  function kiesDag(o){gekozen=o;tijd.innerHTML='';var start=U[o.w][0]+15;if(o.i===0)start=Math.max(start,Math.ceil((m+20)/15)*15);
+    for(var t=start;t<=U[o.w][1]-30;t+=15){var op=document.createElement('option');op.textContent=hm(t);tijd.appendChild(op)}}
+  if(opties[0])kiesDag(opties[0]);
+  function bericht(){
+    var r=['Hoi Arepa House! Ik wil graag bestellen:'];var heeft=false;
+    Object.keys(bon).forEach(function(k){if(bon[k].n){heeft=true;r.push(bon[k].n+'× '+k)}});
+    if(!heeft)r.push('(nog kiezen)');
+    if(gekozen)r.push('','Ophalen: '+gekozen.datum+' rond '+tijd.value);
+    var nm=document.getElementById('naam').value.trim();if(nm)r.push('Naam: '+nm);
+    return r.join('\n');
+  }
+  var modal=document.getElementById('modal');
+  document.getElementById('verstuur').addEventListener('click',function(){document.getElementById('wa-tekst').textContent=bericht();modal.hidden=false});
+  document.getElementById('sluit-modal').addEventListener('click',function(){modal.hidden=true});
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.hidden=true});
+  document.getElementById('kopieer').addEventListener('click',function(){var t=bericht();if(navigator.clipboard)navigator.clipboard.writeText(t);this.textContent='Gekopieerd'});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){modal.hidden=true;pp.hidden=true}});
+
+  /* zwevende CTA: na de hero, niet zolang de bon in beeld is */
+  var zw=document.getElementById('zweef'),heroUit=false,bonIn=false,io1;
+  function zet(){var on=heroUit&&!bonIn;document.getElementById('stijlkiezer').classList.toggle('toon',heroUit);document.getElementById('mo-knop').classList.toggle('toon',heroUit);zw.classList.toggle('toon',on);zw.setAttribute('aria-hidden',!on);zw.querySelectorAll('a').forEach(function(a){a.tabIndex=on?0:-1})}
+  function heroObs(){if(!('IntersectionObserver' in window))return;if(io1)io1.disconnect();
+    io1=new IntersectionObserver(function(e){heroUit=!e[0].isIntersecting;zet()},{threshold:0});
+    io1.observe(document.getElementById(stijl==='a'?'hero-a':'hero-b'));}
+  if('IntersectionObserver' in window){new IntersectionObserver(function(e){bonIn=e[0].isIntersecting;zet()},{threshold:.15}).observe(document.getElementById('bestel'));}
+
+  zetStijl(stijl,false);
+
+})();
 </script>
 </body>
 </html>
