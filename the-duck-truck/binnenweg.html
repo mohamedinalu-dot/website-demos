@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="nl">
+<!--
+  Demo L247 The Duck Truck, vestigingspagina Binnenweg (Mohamedia, 9 nov 2026).
+  Idee: één site voor de Rotterdamse vestigingen, elke vestiging een eigen pagina en URL, zodat elk Google-profiel
+  naar zijn eigen pagina linkt (eigen bestellink, route, tijden, reviews). Op de echte site: https://<domein>/binnenweg.
+  Feiten gecheckt 9 nov 2026: adres en telefoon Google Maps (Markthal: markthal.nl), bestellink Thuisbezorgd,
+  score/aantal Google (stand nov 2026). Geen eigen foto's van deze vestiging gebruikt behalve waar vermeld.
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The Duck Truck & Corndogs Binnenweg – burgers en corn dogs in Rotterdam-West</title>
+<meta name="description" content="The Duck Truck & Corndogs aan de Nieuwe Binnenweg 245 A in Rotterdam-West: duckburgers en corn dogs. Bestel via Thuisbezorgd of kom langs.">
+<link rel="canonical" href="https://demo.mohamedia.nl/the-duck-truck/binnenweg.html">
+<meta name="theme-color" content="#0b4a34">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Rethink+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "name": "The Duck Truck & Corndogs Binnenweg", "servesCuisine": "Burgers", "address": {"@type": "PostalAddress", "streetAddress": "Nieuwe Binnenweg 245 A", "postalCode": "3021 GD", "addressLocality": "Rotterdam", "addressCountry": "NL"}, "telephone": "+31657379149", "url": "https://demo.mohamedia.nl/the-duck-truck/binnenweg.html", "hasMap": "https://maps.google.com/?cid=5621118906857954976", "potentialAction": {"@type": "OrderAction", "target": "https://www.thuisbezorgd.nl/menu/duckburger-binnenweg"}}</script>
+<style>
+:root{--groen:#0b4a34;--groen-d:#06301f;--groen-l:#12603f;--oranje:#ff6a0d;--oranje-d:#e25500;--geel:#ffc93c;--zwart:#0b0b0b;--wit:#fff;--tegel:#f3f6f3;--voeg:#dde4de;--tekst:#14201a;--zacht:#5b6a62;--kop:"Bowlby One","Arial Black",sans-serif;--body:"Rethink Sans",system-ui,sans-serif}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--body);color:var(--tekst);background:var(--tegel);line-height:1.55;font-size:17px;overflow-x:hidden}
+img{max-width:100%;display:block}figure{margin:0}a{color:inherit}p{margin:0}
+h1,h2,h3{font-family:var(--kop);font-weight:400;line-height:1.02;margin:0;overflow-wrap:break-word}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.demo{background:var(--zwart);color:#cfd8d2;font-size:13px;text-align:center;padding:7px 12px}.demo a{color:#fff;font-weight:700}
+.kop{position:sticky;top:0;z-index:40;background:var(--groen);border-bottom:3px solid var(--zwart)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo img{height:52px;width:auto}
+.nav{display:none;gap:24px;align-items:center}.nav a{color:#e7f0ea;text-decoration:none;font-weight:600;font-size:15px}.nav a[aria-current]{color:var(--geel)}
+.tabs{background:var(--groen-d);border-bottom:3px solid var(--zwart)}
+.tabs .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px 0}
+.tabs a{min-height:44px;display:grid;place-items:center;border-radius:12px;color:#d7e9de;text-decoration:none;font-weight:800;font-size:15px;border:2px solid #23573f}
+.tabs a[aria-current]{background:var(--oranje);color:var(--zwart);border-color:var(--zwart)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 20px;border-radius:14px;font-weight:800;font-size:16px;text-decoration:none;border:3px solid var(--zwart);font-family:var(--body);line-height:1.1;text-align:center}
+.btn-oranje{background:var(--oranje);color:var(--zwart);box-shadow:0 5px 0 var(--zwart)}
+.btn-wit{background:#fff;color:var(--zwart);box-shadow:0 5px 0 var(--zwart)}
+.kop .btn{min-height:46px;padding:0 16px;font-size:15px;box-shadow:0 3px 0 var(--zwart)}
+.hero{background:var(--groen);color:#fff;padding:30px 0 40px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:auto 0 0 0;height:14px;background:repeating-conic-gradient(var(--zwart) 0 25%,#fff 0 50%) 0 0/14px 14px}
+.hero-grid{display:grid;gap:26px}
+.plek{font-weight:700;font-size:13px;color:var(--geel);letter-spacing:.08em;text-transform:uppercase}
+.hero h1{font-size:clamp(32px,8.6vw,64px);margin-top:10px;text-transform:uppercase}.hero h1 .o{color:var(--oranje)}
+.adresregel{margin-top:14px;font-size:18px;color:#dbeae1}.adresregel b{color:#fff}
+.score{margin-top:10px;font-size:15px;color:#cfe5d8}.score a{color:#fff;font-weight:800;text-decoration:none;border-bottom:2px solid var(--geel)}.ster{color:var(--geel)}
+.cta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px;max-width:520px}.cta .btn{width:100%}.cta .breed{grid-column:1/-1}
+.kaartvak{border:4px solid var(--zwart);border-radius:22px;overflow:hidden;background:#dfe7e2;box-shadow:0 8px 0 var(--zwart);aspect-ratio:4/3;position:relative}
+.kaartvak iframe{width:100%;height:100%;border:0;display:block}
+.kaartvak .lbl,.fotovak figcaption{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.7);color:#fff;font-size:12px;padding:4px 10px;border-radius:99px}
+.fotovak{border:4px solid var(--zwart);border-radius:22px;overflow:hidden;box-shadow:0 8px 0 var(--zwart);position:relative;max-width:440px}
+.fotovak img{width:100%;height:auto}
+.sectie{padding:60px 0}
+.label{display:inline-block;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;background:var(--zwart);color:var(--geel);padding:5px 10px;border-radius:8px}
+h2{font-size:clamp(28px,6.4vw,48px);margin-top:14px;text-transform:uppercase}
+.info{display:grid;gap:16px;margin-top:26px}
+.blok{background:#fff;border:3px solid var(--zwart);border-radius:20px;padding:20px}
+.blok h3{font-family:var(--body);font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--zacht)}
+.blok p,.blok td{font-size:17px}.blok p+p{margin-top:6px}.blok .klein{font-size:13px;color:var(--zacht);margin-top:10px}
+.blok a{font-weight:800;color:var(--groen)}
+table{border-collapse:collapse;width:100%;margin-top:6px}td{padding:4px 0;border-bottom:1px dashed #d5ddd8}td+td{text-align:right;font-weight:700;white-space:nowrap}
+.drie{display:grid;gap:14px;margin-top:26px}
+.kaartje{background:var(--groen-l);border:3px solid var(--zwart);border-radius:20px;padding:20px;color:#fff}
+.kaartje h3{font-size:clamp(19px,5.2vw,24px);text-transform:uppercase}.kaartje p{margin-top:8px;color:#d7e9de}
+.groenvlak{background:var(--groen);color:#fff}.groenvlak .label{background:var(--geel);color:var(--zwart)}
+.rev{background:#fff;border:3px solid var(--zwart);border-radius:20px;padding:18px;color:var(--tekst)}.rev p{font-size:18px;font-weight:600}.rev .wie{margin-top:10px;font-size:14px;color:var(--zacht);font-weight:700}
+.noot{margin-top:14px;font-size:13px;color:#cfe2d7}
+.scorebalk{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;margin-top:22px;background:#fff;color:var(--tekst);border:3px solid var(--zwart);border-radius:20px;padding:16px 18px}
+.scorebalk .getal{font-family:var(--kop);font-size:52px;line-height:1}.scorebalk .st{color:var(--oranje);font-size:20px;letter-spacing:2px}.scorebalk a{font-weight:800}
+.ook{display:grid;gap:12px;margin-top:22px}
+.ook a{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:64px;background:#fff;border:3px solid var(--zwart);border-radius:16px;padding:12px 16px;text-decoration:none}
+.ook b{display:block}.ook small{display:block;color:var(--zacht);font-size:14px}.ook .pijl{font-weight:800;color:var(--oranje-d);white-space:nowrap;font-size:14px}
+footer{background:var(--zwart);color:#cfd8d2;padding:40px 0 120px;font-size:15px}footer .wrap{display:grid;gap:20px}footer img{height:66px;width:auto}footer a{color:#fff}
+.door{border-top:1px solid #2b2b2b;padding-top:16px;font-size:14px}.door a{color:var(--geel);font-weight:800}.klein{font-size:13px;color:#9fb0a6}
+.zweef{position:fixed;left:10px;right:10px;bottom:10px;z-index:60;display:grid;grid-template-columns:1.6fr 1fr;gap:8px;transform:translateY(140%);transition:transform .3s ease;pointer-events:none}
+.zweef.aan{transform:none;pointer-events:auto}.zweef .btn{min-height:54px;box-shadow:0 4px 0 var(--zwart)}
+@media (min-width:720px){.drie{grid-template-columns:repeat(3,1fr)}.info{grid-template-columns:repeat(3,1fr)}.ook{grid-template-columns:1fr 1fr}}
+@media (min-width:980px){.nav{display:flex}.tabs{display:none}.kop .wrap{height:82px}.logo img{height:66px}
+ .hero{padding:56px 0 66px}.hero-grid{grid-template-columns:1.1fr .9fr;align-items:center;gap:56px}.zweef,.zweef.aan{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></div>
+<header class="kop">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="The Duck Truck, naar de homepage"><img src="logo-light.svg" alt="The Duck Truck" width="92" height="58"></a>
+    <nav class="nav" aria-label="Hoofdmenu"><a href="index.html">Home</a><a href="markthal.html">Markthal</a><a href="binnenweg.html" aria-current="page">Binnenweg</a><a href="zuidplein.html">Zuidplein</a><a href="index.html#kaart">Menu</a></nav>
+    <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/duckburger-binnenweg" target="_blank" rel="noopener">Bestellen</a>
+  </div>
+</header>
+<nav class="tabs" aria-label="Vestigingen"><div class="wrap"><a href="markthal.html">Markthal</a><a href="binnenweg.html" aria-current="page">Binnenweg</a><a href="zuidplein.html">Zuidplein</a></div></nav>
+
+<main>
+<section class="hero" id="hero" aria-labelledby="h1">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="plek">Rotterdam-West · Nieuwe Binnenweg</p>
+      <h1 id="h1">Duckburgers <span class="o">&amp;</span> corn dogs op de Binnenweg.</h1>
+      <p class="adresregel"><b>Nieuwe Binnenweg 245 A</b>, 3021 GD Rotterdam<br>Rotterdam-West</p>
+      <p class="score"><span class="ster" aria-hidden="true">★</span> <a href="https://maps.google.com/?cid=5621118906857954976" target="_blank" rel="noopener">4,6 uit 182 reviews</a> op Google</p>
+      <div class="cta">
+        <a class="btn btn-oranje breed" href="https://www.thuisbezorgd.nl/menu/duckburger-binnenweg" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h13v9H3z"/><path d="M16 10h3l2 3v3h-5"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Bestel bij de Binnenweg</a>
+        <a class="btn btn-wit" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Duck+Truck+%26+Corndogs+Binnenweg%2C+Nieuwe+Binnenweg+245+A%2C+3021+GD+Rotterdam" target="_blank" rel="noopener">Route</a>
+        <a class="btn btn-wit" href="tel:+31657379149">Bellen</a>
+      </div>
+    </div>
+    <div class="kaartvak"><iframe src="https://maps.google.com/maps?q=The+Duck+Truck+%26+Corndogs+Binnenweg%2C+Nieuwe+Binnenweg+245+A%2C+3021+GD+Rotterdam&amp;z=16&amp;output=embed" title="Kaart: The Duck Truck &amp; Corndogs Binnenweg" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><span class="lbl">Nieuwe Binnenweg 245 A</span></div>
+  </div>
+</section>
+
+<section class="sectie" aria-labelledby="praktisch">
+  <div class="wrap">
+    <span class="label">Praktisch</span>
+    <h2 id="praktisch">Alles over de Binnenweg.</h2>
+    <div class="info">
+      <div class="blok"><h3>Adres</h3><p>Nieuwe Binnenweg 245 A<br>3021 GD Rotterdam</p><p><a href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Duck+Truck+%26+Corndogs+Binnenweg%2C+Nieuwe+Binnenweg+245+A%2C+3021+GD+Rotterdam" target="_blank" rel="noopener">Plan je route →</a></p></div>
+      <div class="blok"><h3>Openingstijden</h3><p>Bekijk de actuele openingstijden op <a href="https://maps.google.com/?cid=5621118906857954976" target="_blank" rel="noopener">Google Maps</a>.</p></div>
+      <div class="blok"><h3>Bestellen en contact</h3><p><a href="https://www.thuisbezorgd.nl/menu/duckburger-binnenweg" target="_blank" rel="noopener">Bestel via Thuisbezorgd →</a></p><p><a href="tel:+31657379149">06 57379149</a></p><p class="klein">Nummer zoals op Google Maps.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie groenvlak" aria-labelledby="eten">
+  <div class="wrap">
+    <span class="label">Op de kaart</span>
+    <h2 id="eten">Wat je hier eet.</h2>
+    <div class="drie"><article class="kaartje"><h3>Duckburgers</h3><p>Gekonfijte eend op brioche, in de smaken blue, goat, cheddar, kimchi en Asian, en een vegetarische variant.</p></article><article class="kaartje"><h3>Corn dogs</h3><p>Van classic tot Cheetos cheese en Blue Takis.</p></article><article class="kaartje"><h3>100% halal</h3><p>Zo staat het als categorie op onze kaart bij Thuisbezorgd.</p></article></div>
+    <p class="noot">De volledige kaart en de prijzen van deze vestiging staan op <a href="https://www.thuisbezorgd.nl/menu/duckburger-binnenweg" target="_blank" rel="noopener" style="color:#fff;font-weight:800">Thuisbezorgd</a>.</p>
+  </div>
+</section>
+
+<section class="sectie groenvlak" style="background:var(--groen-d)" aria-labelledby="rev">
+  <div class="wrap">
+    <span class="label">Reviews</span>
+    <h2 id="rev">Gasten van de Binnenweg.</h2>
+    <div class="scorebalk"><span class="getal">4,6</span><div><div class="st" aria-label="4,6 van 5 sterren">★★★★★</div><b>182 reviews</b> op Google · <a href="https://maps.google.com/?cid=5621118906857954976" target="_blank" rel="noopener">lees ze op Google Maps</a></div></div>
+    <div class="drie"><article class="rev"><p>Superlekkere corn dog, altijd mooi vers.</p><div class="wie">Asia · Google</div></article><article class="rev"><p>Uitstekende duck burgers.</p><div class="wie">Fanny · Google</div></article><article class="rev"><p>De bestelling stond binnen 7 minuten klaar.</p><div class="wie">Tetiana · Google</div></article></div>
+    <p class="noot">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="sectie" aria-labelledby="ook">
+  <div class="wrap">
+    <span class="label">Ook in Rotterdam</span>
+    <h2 id="ook">De andere twee.</h2>
+    <div class="ook"><a href="markthal.html"><span><b>The Duck Truck Markthal</b><small>Dominee Jan Scharpstraat 298, unit 44</small></span><span class="pijl">Bekijk →</span></a><a href="zuidplein.html"><span><b>The Duck Truck & Corndogs Zuidplein</b><small>Zuidplein hoog 751</small></span><span class="pijl">Bekijk →</span></a><a href="index.html"><span><b>Alle burgers en corn dogs</b><small>Homepage met de bestelzuil en de kaart</small></span><span class="pijl">Home →</span></a></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-light.svg" alt="The Duck Truck" width="105" height="66" loading="lazy">
+    <div><b style="color:#fff">The Duck Truck & Corndogs Binnenweg</b><br>Nieuwe Binnenweg 245 A, 3021 GD Rotterdam<br><a href="https://www.thuisbezorgd.nl/menu/duckburger-binnenweg" target="_blank" rel="noopener">Bestellen via Thuisbezorgd</a> · <a href="https://www.instagram.com/theducktruck.nl/" target="_blank" rel="noopener">Instagram @theducktruck.nl</a></div>
+    <p class="klein">Duckburger Binnenweg B.V. · KvK 96372885</p>
+    <p class="door">Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef">
+  <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/duckburger-binnenweg" target="_blank" rel="noopener">Bestel</a>
+  <a class="btn btn-wit" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Duck+Truck+%26+Corndogs+Binnenweg%2C+Nieuwe+Binnenweg+245+A%2C+3021+GD+Rotterdam" target="_blank" rel="noopener">Route</a>
+</div>
+<script>
+(function(){var z=document.getElementById("zweef"),h=document.getElementById("hero");
+if("IntersectionObserver" in window)new IntersectionObserver(function(e){z.classList.toggle("aan",!e[0].isIntersecting);},{threshold:0}).observe(h);else z.classList.add("aan");
+try{localStorage.setItem("ddt-vestiging","binnenweg");}catch(e){}})();
+</script>
+</body>
+</html>

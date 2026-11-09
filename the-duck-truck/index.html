@@ -7,22 +7,36 @@
   gevelfoto); de site gedraagt zich als zo'n zuil: grote tegels, categorie-rail, een "winkelmand"-balk met prijs en
   één knop naar Thuisbezorgd. Burger-kiezer = vlees -> smaak -> los/menu, met een camerapan over hun eigen
   burgerfoto die per gekozen smaak één burger doorschuift, zonder smaak-op-burger-koppeling (geen getekende schaal, geen kaartje dat zich invult).
-  Hero: hun eigen gevelfoto (Zuidplein), met AI opgeschoond (mensen verwijderd), recht. Beweging (wens Mo 9 nov, gaat
-  vóór de "geen lus"-les): de gloeilampjes van hun lichtletters THE DUCK TRUCK leven als een marquee: bij laden één
-  snelle chase van links naar rechts, daarna een rustige twinkel per lampje (overlay op de 101 gemeten lampposities,
-  niet de hele foto). Bij laden vloeit een warme gloed over de stenen vloer naar buiten. Eronder een stilstaande
-  zwart-wit tegelstrook (hun vloer). Geen truck meer (Caribbean Soul Kitchen heeft al een rijdende truck), geen
-  Ken Burns, geen stoom, geen letters één voor één, geen schuine fotokaart, geen stempel, geen lopende band.
+  Hero (9 nov, wens Mo "laat de volledige dolly shot zien"): hun eigen zaak als video (img/hero-dolly.mp4, 1080x1340
+  staand, 10 s, Kling 2.6 via Higgsfield vanaf de met AI opgeschoonde gevelfoto): één doorlopende dolly van de gevel
+  naar de toonbank. Twee varianten, te kiezen met ?hero=a / ?hero=b (wisselknopje alleen zichtbaar met ?hero=):
+    A = video vult de hele hero, tekst eroverheen op een donkere gradient; object-position schuift mee met de
+        camera (alleen waar er verticaal wordt bijgesneden, d.w.z. op brede schermen).
+    B = split: tekst links, video rechts onafgesneden (eigen verhouding) in een zwarte lijst; mobiel video bovenaan
+        op volle breedte, tekst eronder.
+  Standaard: A op telefoon/tablet (< 980 px: staande video in een staand scherm, alleen zijkanten weg, gevelletters
+  blijven heel), B op desktop (een staande video in een breed vak zou 60% verliezen).
+  Loop: 1,8 s stil op de toonbank, fade naar het eerste beeld, opnieuw. Reduced motion = posterbeeld.
+  Geen lampjes-overlay meer (die hoorde bij de gevelfoto). Geen Ken Burns, stoom, stempel, schuine fotokaart, band.
+  Direct onder de hero: vestigingskiezer (Markthal / Binnenweg / Zuidplein) die alle bestel- en routeknoppen omzet.
+  Vestigingspagina's: markthal.html, binnenweg.html, zuidplein.html (eigen titel, canonical, JSON-LD).
   Kleuren uit hun zaak/logo: diep groen (#0b4a34), zwart-wit tegel, oranje lichtletters (#ff6a0d), geel van de sterren.
   Fonts: Bowlby One (zoals hun lichtletters) + Rethink Sans.
   Logo: hun eigen logo (eend, THE, burger, corn dog, boogband met DUCK TRUCK) nagetekend als vectorpaden.
   Geen WhatsApp: geen bevestigd nummer voor de zaak (dossier: twee 06-nummers). Hoofd-CTA = Thuisbezorgd (wens Edison).
-  Pitch-modus: klein "Mo"-knopje rechts in de demo-strook, of ?pitch. Paneel met voor/straks, rekensom, 3 punten, volgende stap.
+  Pitch: klein "Mo"-knopje in de demo-strook of ?pitch opent pitch.html (los verhaal voor op Mo's telefoon).
 -->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<script>
+/* hero-variant vóór het tekenen: ?hero=a|b forceert, anders A onder 980 px en B daarboven. ?pitch -> pitch.html */
+(function(){var q=location.search,d=document.documentElement,m=q.match(/[?&]hero=([ab])/i);
+if(/[?&]pitch(?:[=&]|$)/.test(q)){location.replace("pitch.html");return;}
+window.__heroVast=m?m[1].toLowerCase():null; if(m)d.classList.add("toon-wissel");
+d.setAttribute("data-hero",window.__heroVast||(window.innerWidth<980?"a":"b"));})();
+</script>
 <title>The Duck Truck – burgers en corn dogs in Rotterdam (Zuidplein)</title>
 <meta name="description" content="The Duck Truck & Corndogs Zuidplein: burgers met gekonfijte eend, kip, MRIJ rund of veggie op geroosterd brioche, en negen soorten corn dogs. Bestel via Thuisbezorgd of kom langs op Zuidplein hoog 751, Rotterdam.">
 <meta name="theme-color" content="#0b4a34">
@@ -75,43 +89,51 @@ p{margin:0}
 .btn svg{width:20px;height:20px;flex:none}
 .kop .btn{min-height:46px;padding:0 16px;font-size:15px;box-shadow:0 3px 0 var(--zwart)}
 
-/* hero */
+/* hero: gedeeld */
 .hero{background:var(--groen);color:#fff;position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1fr}
-.hero-foto{position:relative;height:clamp(290px,42vh,360px);overflow:hidden;background:#141a17}
-.beeld{position:absolute;left:0;top:0;width:100%;aspect-ratio:1400/1737}
-.beeld img{width:100%;height:100%;display:block}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+.hero-media{position:relative;overflow:hidden;background:#141a17}
+.hero-media img,.hero-video{display:block;width:100%;height:100%;object-fit:cover;object-position:50% var(--py,0%)}
+.hero-video{position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
 .video-aan .hero-video{opacity:1}
-.video-aan .lampen,.video-aan .vloergloed{display:none}
-.hero-foto .bron{position:absolute;right:10px;bottom:10px;z-index:3;background:rgba(0,0,0,.55);color:#fff;font-size:11px;padding:3px 8px;border-radius:99px}
-.weg{position:relative;height:16px;background:repeating-conic-gradient(var(--zwart) 0 25%,#fff 0 50%) 0 0/16px 16px;border-block:2px solid var(--zwart)}
-/* lampjes van hun lichtletters: overlay op de gemeten lampposities */
-.lampen{position:absolute;inset:0;pointer-events:none}
-.lamp{position:absolute;width:var(--lw,14px);height:var(--lw,14px);margin:calc(var(--lw,14px)/-2) 0 0 calc(var(--lw,14px)/-2);border-radius:50%;
-  background:radial-gradient(circle,#fffdf2 0 16%,rgba(255,226,150,.95) 30%,rgba(255,170,60,.45) 52%,rgba(255,140,30,0) 72%);
-  mix-blend-mode:screen;opacity:0;
-  animation:chase .55s ease-out var(--d) both, twinkel var(--t) ease-in-out calc(2.6s + var(--r)) infinite}
-@keyframes chase{0%{opacity:0;transform:scale(.6)}30%{opacity:1;transform:scale(2.3)}100%{opacity:.55;transform:scale(1)}}
-@keyframes twinkel{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.35)}}
-/* warme gloed die bij laden over de stenen vloer naar buiten uitvloeit */
-.vloergloed{position:absolute;left:0;right:0;top:72%;height:28%;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 30%);mask-image:linear-gradient(to bottom,transparent,#000 30%);pointer-events:none;mix-blend-mode:screen;
-  background:radial-gradient(60% 75% at 50% 0%,rgba(255,170,70,.55),rgba(255,140,40,.18) 55%,rgba(255,120,30,0) 80%);
-  transform-origin:50% 0;animation:uitvloei 2.4s cubic-bezier(.2,.7,.2,1) .9s both}
-@keyframes uitvloei{from{opacity:0;transform:scaleY(.05) scaleX(.5)}to{opacity:1;transform:scaleY(1) scaleX(1)}}
-.route-labels{display:flex;justify-content:space-between;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#bfe0cd;padding:10px 0 0}
-.route-labels b{color:var(--geel);font-weight:800}
-.hero-tekst{padding:14px 0 30px}
-.hero-tekst .plek{display:none;font-weight:700;font-size:14px;color:var(--geel);letter-spacing:.06em;text-transform:uppercase;margin-top:18px}
+.hero-media .bron{position:absolute;right:10px;top:10px;z-index:3;background:rgba(0,0,0,.55);color:#fff;font-size:11px;padding:3px 8px;border-radius:99px}
+.hero-tekst .plek{font-weight:700;font-size:13px;color:var(--geel);letter-spacing:.08em;text-transform:uppercase}
 .hero h1{font-size:clamp(30px,8.4vw,64px);margin-top:8px;text-transform:uppercase}
 .hero h1 .o{color:var(--oranje)}
-.hero .lead{margin-top:12px;color:#dbeae1;font-size:16px;max-width:40ch}
+.hero .lead{margin-top:12px;color:#dbeae1;font-size:16px;max-width:42ch}
 .hero-cta{display:grid;gap:12px;margin-top:18px;max-width:520px}
 .hero-cta .rij{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .hero-cta .btn{width:100%}
 .trust{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:14px;color:#cfe5d8}
 .trust a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--geel)}
 .sterren{color:var(--geel);letter-spacing:2px}
+.weg{height:16px;background:repeating-conic-gradient(var(--zwart) 0 25%,#fff 0 50%) 0 0/16px 16px;border-block:2px solid var(--zwart)}
+/* wisselknopje A/B (alleen met ?hero=) */
+.hero-wissel{position:absolute;z-index:6;right:10px;top:10px;display:none;gap:4px;background:rgba(0,0,0,.72);border:2px solid #000;border-radius:14px;padding:4px}
+.toon-wissel .hero-wissel{display:flex}
+.toon-wissel .hero-media .bron{display:none}
+.hero-wissel button{min-height:44px;min-width:56px;border:0;border-radius:10px;background:transparent;color:#fff;font:800 14px var(--body);cursor:pointer;padding:0 10px}
+.hero-wissel button[aria-pressed=true]{background:var(--geel);color:#000}
+
+/* hero A: video vult de hele hero, tekst eroverheen */
+[data-hero=a] .hero{height:calc(100svh - var(--hero-top,131px));min-height:560px;max-height:1000px}
+[data-hero=a] .hero-media{position:absolute;inset:0}
+[data-hero=a] .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to top,rgba(4,22,14,.95) 0%,rgba(4,22,14,.9) 24%,rgba(4,22,14,.72) 36%,rgba(4,22,14,.3) 46%,rgba(4,22,14,0) 56%)}
+[data-hero=a] .hero-tekst .plek,[data-hero=a] .hero h1,[data-hero=a] .trust{text-shadow:0 2px 14px rgba(0,0,0,.75),0 1px 2px rgba(0,0,0,.6)}
+[data-hero=a] .hero-tekst{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:0 20px 22px}
+[data-hero=a] .hero .lead{display:none}
+[data-hero=a] .hero h1{font-size:clamp(28px,8vw,64px)}
+[data-hero=a] .hero-cta{margin-top:14px}
+[data-hero=a] .hero-cta{grid-template-columns:1.35fr 1fr}
+[data-hero=a] .hero-cta .rij{display:contents}
+[data-hero=a] .hero-cta .rij .btn-groen{display:none}
+[data-hero=a] .trust{margin-top:16px;font-size:13px}
+[data-hero=a] .hero-b-only{display:none}
+
+/* hero B: tekst links, video rechts onafgesneden */
+[data-hero=b] .hero-media{aspect-ratio:1080/1340;width:100%}
+[data-hero=b] .hero-tekst{padding:22px 20px 34px}
+[data-hero=b] .hero-a-only{display:none}
 
 /* secties */
 section{scroll-margin-top:80px}
@@ -248,26 +270,30 @@ footer .klein{font-size:13px;color:#9fb0a6}
 .zweef.aan{transform:translateY(0);pointer-events:auto}
 .zweef .btn{min-height:54px;box-shadow:0 4px 0 var(--zwart)}
 
-/* pitch */
+/* Mo-knopje (opent pitch.html) */
 .demo{position:relative}
-.mo-knop{position:absolute;right:8px;top:6px;width:26px;height:22px;border-radius:6px;border:1px solid #3a3a3a;background:transparent;color:#7d8a83;font-weight:700;font-size:10px;cursor:pointer;font-family:var(--body);padding:0}
-.pitch{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.55);display:flex;justify-content:flex-end}
-.pitch[hidden]{display:none}
-.paneel{width:min(560px,100%);height:100%;overflow-y:auto;background:#fff;padding:22px 20px 40px;border-left:4px solid var(--zwart)}
-.paneel h2{font-size:28px;margin-top:6px}
-.paneel h3{font-family:var(--body);font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--zacht);margin-top:26px}
-.paneel .sluit{float:right;min-height:44px;min-width:44px;border:3px solid var(--zwart);border-radius:12px;background:#fff;font-weight:800;cursor:pointer}
-.voorna{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
-.voorna figure{margin:0}
-.voorna img{border:2px solid var(--zwart);border-radius:12px;width:100%;height:auto}
-.voorna figcaption{font-size:12px;color:var(--zacht);margin-top:6px;line-height:1.35}
-.paneel ul,.paneel ol{padding-left:20px;margin:10px 0 0;display:grid;gap:8px;font-size:15px}
-.reken{margin-top:10px;background:var(--tegel);border:2px solid var(--zwart);border-radius:14px;padding:16px;display:grid;gap:12px}
-.reken label{display:grid;gap:4px;font-weight:700;font-size:14px}
-.reken input[type=range]{width:100%;min-height:36px;accent-color:var(--oranje)}
-.reken .uit{font-size:15px}
-.reken .uit b{font-family:var(--kop);font-weight:400;font-size:24px;display:block}
-.reken .klein{font-size:12px;color:var(--zacht)}
+.mo-knop{position:absolute;right:8px;top:4px;min-width:30px;height:24px;border-radius:6px;border:1px solid #3a3a3a;background:transparent;color:#7d8a83;font-weight:700;font-size:10px;font-family:var(--body);text-decoration:none;display:grid;place-items:center}
+
+/* vestigingskiezer */
+.vk{background:var(--zwart);color:#fff;padding:26px 0 30px;border-bottom:3px solid var(--zwart)}
+.vk-kop{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
+.vk h2{font-size:clamp(24px,6vw,36px);margin:0}
+.vk-kop p{color:#b9c7bf;font-size:14px}
+.vk-keus{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:16px}
+.vk-keus button{appearance:none;cursor:pointer;min-height:64px;border:3px solid #2c3a33;background:#121a16;color:#fff;border-radius:14px;padding:10px 8px;text-align:left;font-family:var(--body);display:flex;flex-direction:column;gap:2px;justify-content:center}
+.vk-keus b{font-weight:800;font-size:clamp(15px,4.1vw,19px);line-height:1.1;letter-spacing:-.01em}
+.vk-keus small{font-size:12px;color:#a9b8b0;line-height:1.25}
+.vk-keus button[aria-checked=true]{border-color:var(--oranje);background:#2a1a0e;box-shadow:inset 0 0 0 2px var(--oranje)}
+.vk-keus button[aria-checked=true] small{color:#ffd9bf}
+.vk-paneel{margin-top:14px;display:grid;gap:14px;background:#fff;color:var(--tekst);border:3px solid #fff;border-radius:18px;padding:16px}
+.vk-info b{font-size:17px}
+.vk-info p{font-size:15px;color:var(--zacht);margin-top:2px}
+.vk-info .sterren{color:var(--oranje-d)}
+.vk-btns{display:grid;grid-template-columns:1.3fr 1fr;gap:10px}
+.vk-btns .btn{width:100%;padding:0 12px}
+.vk-pagina{grid-column:1/-1;font-weight:800;color:var(--groen);min-height:44px;display:flex;align-items:center;gap:6px}
+.prijsnoot{display:none;margin-top:8px;font-size:13px;font-weight:700;color:var(--oranje-d)}
+.andere-vest .prijsnoot{display:block}
 
 @media (min-width:720px){
   .tegels{grid-template-columns:repeat(4,1fr)}
@@ -280,44 +306,54 @@ footer .klein{font-size:13px;color:#9fb0a6}
 @media (min-width:980px){
   .nav{display:flex}
   .breed{display:inline}
-  .hero-tekst .plek{display:block}
   .hero .lead{font-size:17px}
   .kop .wrap{height:82px}
   .logo img{height:66px}
-  .hero-grid{grid-template-columns:1.05fr 1fr;min-height:560px}
-  .hero-foto{height:auto;min-height:560px;grid-row:1/3}
-  .weg{grid-column:1/-1;grid-row:3}
-  .hero-tekst{grid-column:2;grid-row:1/3;padding:56px 40px 40px 56px;align-self:center;max-width:640px}
-  .route-labels{grid-column:1/-1;grid-row:4;padding:10px 24px 18px}
+  /* A op desktop: video vult de hero vanaf 30% tot de rechterrand (zo blijven de gevelletters vrij van de tekst),
+     links diep groen dat in de video overloopt; de uitsnede schuift verticaal mee met de camera */
+  [data-hero=a] .hero{background:#04160e}
+  [data-hero=a] .hero-media{left:30%}
+  [data-hero=a] .hero::after{background:linear-gradient(to right,#04160e 0%,#04160e 30%,rgba(4,22,14,.55) 37%,rgba(4,22,14,0) 47%)}
+  [data-hero=a] .hero-tekst{left:max(20px,calc((100% - 1180px)/2));right:auto;top:0;bottom:0;width:min(560px,38%);padding:0;display:flex;flex-direction:column;justify-content:center}
+  [data-hero=a] .hero .lead{display:block}
+  [data-hero=a] .hero-cta{grid-template-columns:1fr 1fr}
+  [data-hero=a] .hero h1{font-size:clamp(36px,3.6vw,58px)}
+  /* B op desktop: tekst links, video rechts in zijn eigen verhouding (1080x1340), hoogte = hero min marge */
+  [data-hero=b] .hero{--hh:clamp(560px,calc(100svh - var(--hero-top,131px)),880px);--vh:calc(var(--hh) - 64px)}
+  [data-hero=b] .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) calc(var(--vh) * 1080 / 1340);align-items:center;column-gap:56px;
+    width:min(1180px,100% - 40px);margin-inline:auto;height:var(--hh);padding:24px 0 40px}
+  [data-hero=b] .hero-media{grid-column:2;grid-row:1;width:calc(var(--vh) * 1080 / 1340);height:var(--vh);aspect-ratio:auto;border:4px solid var(--zwart);border-radius:26px;
+    box-shadow:0 10px 0 var(--zwart),0 0 0 10px rgba(255,201,60,.16)}
+  [data-hero=b] .hero-tekst{grid-column:1;grid-row:1;padding:0;max-width:620px}
+  [data-hero=b] .hero-wissel{grid-column:2}
+  [data-hero=b] .hero h1{font-size:clamp(40px,4.4vw,64px)}
+  [data-hero=b] .weg{display:none}
   .cd-grid{grid-template-columns:1fr 1.05fr;align-items:center}
   .vest{grid-template-columns:1fr 1fr;align-items:stretch}
   .adres .btns{grid-template-columns:1fr 1fr}
   .zweef,.zweef.aan{display:none}
-  .hero-tekst{padding-top:36px;padding-bottom:100px}
   .kiosk{padding:16px}
   .stap{padding:24px 26px 6px}
   .mand{grid-template-columns:1fr auto;align-items:center;padding:18px 26px}
   .mand .btn{width:auto;min-width:300px}
   .slot .btns{grid-template-columns:1fr 1fr;max-width:640px}
-}
-@media (max-width:979px){
-  .hero-tekst{width:min(1180px,100% - 40px);margin-inline:auto}
-  .route-labels{width:min(1180px,100% - 40px);margin-inline:auto}
+  .vk-paneel{grid-template-columns:1fr auto;align-items:center;padding:18px 22px}
+  .vk-btns{grid-template-columns:auto auto auto;align-items:center}
+  .vk-pagina{grid-column:auto;padding:0 8px}
+  .vk-keus button{padding:12px 16px}
 }
 @media (max-width:400px){
   .hero-cta .rij .btn{font-size:15px;padding:0 10px}
   .tegel{padding:12px 10px}
 }
 @media (prefers-reduced-motion:reduce){
-  .lamp{animation:none!important;opacity:.6}
-  .vloergloed{animation:none!important}
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
 </style>
 </head>
 <body>
 
-<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> <button class="mo-knop" id="mo-knop" type="button" aria-label="Pitch-modus openen">Mo</button></div>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> <a class="mo-knop" href="pitch.html" aria-label="Pitch voor Mo openen">Mo</a></div>
 <p class="aankondiging"><span class="ster">★</span> 4,6 uit 300 Google-reviews · Zuidplein hoog 751<span class="breed">, Rotterdam</span></p>
 
 <header class="kop">
@@ -327,29 +363,29 @@ footer .klein{font-size:13px;color:#9fb0a6}
       <a href="#bestel">Burger kiezen</a>
       <a href="#corndogs">Corn dogs</a>
       <a href="#kaart">Kaart</a>
-      <a href="#zuidplein">Zuidplein</a>
+      <a href="#vestigingen">Vestigingen</a>
     </nav>
-    <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestellen</a>
+    <a class="btn btn-oranje" data-bestel href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestellen</a>
   </div>
 </header>
 
 <main id="top">
 <section class="hero" id="hero" aria-labelledby="hero-kop">
   <div class="hero-grid">
-    <!-- Hero-video: 10 s Kling 2.6 (Higgsfield) vanaf de opgeschoonde gevelfoto: één doorlopende dolly van de gevel naar de toonbank (img/hero-dolly.mp4, 1080p). Na afloop 1,8 s stil op de toonbank, fade terug naar de gevelfoto, dan opnieuw. Bij reduced motion of als video niet speelt: foto + lampjes-overlay.
-         Hero-foto: de originele Google Maps-gevelfoto (apr 2025), met AI opgeschoond (Nano Banana Pro via Higgsfield):
-         mensen, standaard en statafel verwijderd, scherper gemaakt. Lampjes en vloergloed zijn een CSS-overlay. -->
-    <div class="hero-foto" id="heroFoto">
-      <div class="beeld" id="beeld">
-        <img src="img/gevel-zuidplein-900.jpg" srcset="img/gevel-zuidplein-900.jpg 900w, img/gevel-zuidplein-1400.jpg 1400w" sizes="(min-width:980px) 52vw, 100vw" alt="De zaak op Zuidplein: oranje lichtletters 'The Duck Truck, burgers &amp; corn dogs' boven een zaak met zwart-witte tegelvloer en groene wand" width="1400" height="1737" fetchpriority="high">
-        <video class="hero-video" id="heroVideo" src="img/hero-dolly.mp4" poster="img/hero-dolly-poster.jpg" muted playsinline autoplay preload="auto" aria-hidden="true"></video>
-        <div class="vloergloed" aria-hidden="true"></div>
-        <div class="lampen" id="lampen" aria-hidden="true"></div>
-      </div>
+    <!-- Hero-video: 10 s Kling 2.6 (Higgsfield) vanaf de met AI opgeschoonde gevelfoto (Google Maps, apr 2025; mensen,
+         standaard en statafel verwijderd): één doorlopende dolly van de gevel naar de toonbank (img/hero-dolly.mp4,
+         1080x1340). Na afloop 1,8 s stil op de toonbank, fade naar het eerste beeld (poster), dan opnieuw.
+         Bij reduced motion of als de video niet speelt: het posterbeeld (eerste frame, de gevel). -->
+    <div class="hero-media" id="heroMedia">
+      <img id="heroPoster" src="img/hero-dolly-poster.jpg" alt="De zaak op Zuidplein: oranje lichtletters 'The Duck Truck, burgers &amp; corn dogs' boven de ingang, binnen een zwart-witte tegelvloer, een plantenwand en de toonbank" width="1080" height="1340" fetchpriority="high">
+      <video class="hero-video" id="heroVideo" src="img/hero-dolly.mp4" muted playsinline autoplay preload="auto" aria-hidden="true"></video>
       <span class="bron">De zaak op Zuidplein</span>
     </div>
-    <div class="weg" aria-hidden="true"></div>
-    <div class="route-labels" aria-hidden="true"><span><b>2017</b> · the best burger on wheels</span><span class="breed"><b>nu</b> · Zuidplein hoog 751</span></div>
+    <div class="hero-wissel" role="group" aria-label="Hero-variant">
+      <button type="button" data-zet-hero="a" aria-pressed="false">A · vol</button>
+      <button type="button" data-zet-hero="b" aria-pressed="false">B · split</button>
+    </div>
+    <div class="weg hero-b-only" aria-hidden="true"></div>
     <div class="hero-tekst">
       <p class="plek">Winkelcentrum Zuidplein · Rotterdam</p>
       <h1 id="hero-kop">Duckburgers <span class="o">&amp;</span> corn dogs op Zuidplein.</h1>
@@ -362,6 +398,28 @@ footer .klein{font-size:13px;color:#9fb0a6}
         </div>
       </div>
       <p class="trust"><span><span class="sterren" aria-hidden="true">★★★★★</span> <a href="https://maps.google.com/?cid=5119356036273146732" target="_blank" rel="noopener">4,6 uit 300 reviews</a> op Google</span><span>100% halal</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- Vestigingskiezer: zet alle knoppen met data-bestel / data-route om naar de gekozen vestiging (onthouden in
+     localStorage). Bronnen (9 nov 2026): adressen Google Maps + Thuisbezorgd; bestellinks theducktruckgroup.nl
+     (Binnenweg, Zuidplein) en the-duck-truck-rotterdam.nl (Markthal); scores Google, stand nov 2026. -->
+<section class="vk" id="vestigingen" aria-labelledby="vk-kop">
+  <div class="wrap">
+    <div class="vk-kop"><h2 id="vk-kop">Drie keer in Rotterdam</h2><p>Kies je vestiging. Bestellen en route gaan dan daarheen.</p></div>
+    <div class="vk-keus" role="radiogroup" aria-label="Vestiging">
+      <button type="button" role="radio" data-vest="markthal" aria-checked="false"><b>Markthal</b><small>Centrum</small></button>
+      <button type="button" role="radio" data-vest="binnenweg" aria-checked="false"><b>Binnenweg</b><small>Rotterdam-West</small></button>
+      <button type="button" role="radio" data-vest="zuidplein" aria-checked="true"><b>Zuidplein</b><small>Rotterdam-Zuid</small></button>
+    </div>
+    <div class="vk-paneel" aria-live="polite">
+      <div class="vk-info"><b id="vk-naam">The Duck Truck &amp; Corndogs Zuidplein</b><p id="vk-adres">Zuidplein hoog 751, 3083 BJ Rotterdam</p><p><span class="sterren" aria-hidden="true">★</span> <span id="vk-score">4,6 uit 300 reviews op Google</span></p></div>
+      <div class="vk-btns">
+        <a class="btn btn-oranje" data-bestel href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel hier</a>
+        <a class="btn btn-wit" data-route href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Duck+Truck+%26+Corndogs+Zuidplein%2C+Zuidplein+hoog+751%2C+3083+BJ+Rotterdam" target="_blank" rel="noopener">Route</a>
+        <a class="vk-pagina" id="vk-pagina" href="zuidplein.html">Alles over deze vestiging →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -395,7 +453,8 @@ footer .klein{font-size:13px;color:#9fb0a6}
             <button class="smaak" type="button" data-smaak="kimchi" aria-pressed="false">kimchi</button>
             <button class="smaak" type="button" data-smaak="asian" aria-pressed="false">Asian</button>
           </div>
-          <figure class="pan" id="pan"><img src="img/burgers.jpg" alt="Vier burgers van The Duck Truck op een rij, op geroosterd brioche" width="1440" height="270" loading="lazy" decoding="async"><figcaption>Foto ter illustratie: burgers van The Duck Truck (Breda)</figcaption></figure>
+          <!-- img/burgers.jpg: headerfoto van hun eigen Thuisbezorgd-pagina (Breda), met AI opgeschoond en verscherpt (Seedream via Higgsfield, 9 nov). -->
+          <figure class="pan" id="pan"><img src="img/burgers.jpg" alt="Vier burgers van The Duck Truck op een rij, op geroosterd brioche" width="1440" height="270" loading="lazy" decoding="async"><figcaption>Burgers van The Duck Truck</figcaption></figure>
           <p class="toppings" id="toppings" aria-live="polite"></p>
         </div>
 
@@ -411,8 +470,9 @@ footer .klein{font-size:13px;color:#9fb0a6}
           <div>
             <div class="boven"><span class="naam" id="m-naam">Duck burger blue</span><span class="bedrag" id="m-prijs">€ 10,90</span></div>
             <p class="uitleg" id="m-uitleg">Op Thuisbezorgd vind je hem onder Duck burgers.</p>
+            <p class="prijsnoot" style="color:var(--geel)">Prijzen van Zuidplein. Bij <span data-vest-kort>deze vestiging</span> kunnen ze afwijken: je ziet ze op Thuisbezorgd.</p>
           </div>
-          <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel op Thuisbezorgd</a>
+          <a class="btn btn-oranje" data-bestel href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel op Thuisbezorgd</a>
         </div>
       </div>
     </div>
@@ -432,6 +492,7 @@ footer .klein{font-size:13px;color:#9fb0a6}
         <div class="trap"><div class="t-kop"><span>4 soorten</span><b>€ 10,90</b></div><ul><li>Asian</li><li>Parmaco</li><li>Kimchi</li><li>Spicy green</li></ul></div>
         <div class="trap"><div class="t-kop"><span>4 soorten</span><b>€ 11,90</b></div><ul><li>Cheetos cheese</li><li>Blue Takis</li><li>Red Cheetos</li><li>Patato</li></ul></div>
         <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel corn dogs</a>
+        <p class="prijsnoot" style="color:var(--geel);margin-top:0">Corn dogs staan bij Zuidplein en de Binnenweg op de kaart. Deze knop gaat naar Zuidplein.</p>
       </div>
     </div>
   </div>
@@ -441,7 +502,8 @@ footer .klein{font-size:13px;color:#9fb0a6}
   <div class="wrap">
     <span class="label">De kaart</span>
     <h2 id="kaart-kop">Alles van Zuidplein, met prijs.</h2>
-    <p class="intro">Prijzen zoals op onze bestelpagina (november 2026). Tik op een categorie.</p>
+    <p class="intro">Prijzen zoals op onze bestelpagina van Zuidplein (november 2026). Tik op een categorie.</p>
+    <p class="prijsnoot">Je hebt <span data-vest-kort>een andere vestiging</span> gekozen: daar kunnen de prijzen afwijken. Check ze op Thuisbezorgd.</p>
     <div class="rail" role="tablist" aria-label="Categorieën" id="rail"></div>
     <div class="kaart" id="kaartlijst" role="tabpanel"></div>
     <div class="kaart-voet"><span>Sauzen en drankjes staan ook op Thuisbezorgd.</span><a class="btn btn-groen" href="#bestel">Twijfel je? Kies je burger</a></div>
@@ -491,6 +553,7 @@ footer .klein{font-size:13px;color:#9fb0a6}
     <h2 id="zp-kop">Zuidplein hoog 751.</h2>
     <p class="intro">The Duck Truck bestaat sinds 2017, "the best burger on wheels". Op Zuidplein staat de truck stil: een vaste zaak met een groene wand, het neonlogo en zitplekken.</p>
     <div class="vest">
+      <!-- img/interieur-neon.jpg: foto uit hun Google Maps-vermelding, met AI opgeschoond (Seedream via Higgsfield, 9 nov: blikjes weggehaald). -->
       <figure class="vest-foto"><img src="img/interieur-neon.jpg" alt="Binnen bij The Duck Truck Zuidplein: het neonlogo op de groene wand, en twee burgers met friet op een dienblad" width="503" height="592" loading="lazy" decoding="async"><figcaption>In de zaak op Zuidplein</figcaption></figure>
       <div class="adres">
         <h3>The Duck Truck &amp; Corndogs Zuidplein</h3>
@@ -503,17 +566,22 @@ footer .klein{font-size:13px;color:#9fb0a6}
           <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel via Thuisbezorgd</a>
           <a class="btn btn-wit" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Duck+Truck+%26+Corndogs+Zuidplein%2C+Zuidplein+hoog+751%2C+3083+BJ+Rotterdam" target="_blank" rel="noopener">Route plannen</a>
         </div>
+        <p style="margin-top:16px"><a href="zuidplein.html" style="font-weight:800;color:var(--groen)">Alles over Zuidplein op één pagina →</a></p>
       </div>
     </div>
 
-    <h3 style="font-size:clamp(22px,5.6vw,30px);margin-top:48px;text-transform:uppercase">The Duck Truck vind je ook in</h3>
+    <h3 style="font-size:clamp(22px,5.6vw,30px);margin-top:48px;text-transform:uppercase">Ook in Rotterdam</h3>
+    <div class="ook">
+      <a href="markthal.html"><span><b>Markthal</b><small>Dominee Jan Scharpstraat 298, unit 44</small></span><span class="pijl">Naar de pagina →</span></a>
+      <a href="binnenweg.html"><span><b>Nieuwe Binnenweg</b><small>Nieuwe Binnenweg 245 A</small></span><span class="pijl">Naar de pagina →</span></a>
+    </div>
+    <h3 style="font-size:clamp(20px,5vw,26px);margin-top:36px;text-transform:uppercase">En buiten Rotterdam</h3>
     <p class="intro" style="font-size:16px">Andere vestigingen van het merk. Bestellen gaat per vestiging via Thuisbezorgd.</p>
     <div class="ook">
-      <a href="https://www.thuisbezorgd.nl/menu/duckburger-binnenweg" target="_blank" rel="noopener"><span><b>Rotterdam · Nieuwe Binnenweg</b><small>Rotterdam-West</small></span><span class="pijl">Thuisbezorgd →</span></a>
       <a href="https://www.thuisbezorgd.nl/menu/the-duck-truck-westfield" target="_blank" rel="noopener"><span><b>Leidschendam · Westfield Mall</b><small>The Duck Truck Westfield</small></span><span class="pijl">Thuisbezorgd →</span></a>
       <a href="https://www.thuisbezorgd.nl/menu/the-duck-truck-breda" target="_blank" rel="noopener"><span><b>Breda · Ridderstraat 5</b><small>The Duck Truck Breda</small></span><span class="pijl">Thuisbezorgd →</span></a>
       <a href="https://www.thuisbezorgd.nl/menu/duckburger-nieuwegein" target="_blank" rel="noopener"><span><b>Nieuwegein · Passage 56</b><small>The Duck Truck Nieuwegein</small></span><span class="pijl">Thuisbezorgd →</span></a>
-    </div>
+</div>
   </div>
 </section>
 
@@ -537,7 +605,7 @@ footer .klein{font-size:13px;color:#9fb0a6}
     <h2 id="slot-kop">Zin in eend op brioche?</h2>
     <p class="intro" style="margin-inline:auto">Bezorgd via Thuisbezorgd, of aan tafel op Zuidplein.</p>
     <div class="btns">
-      <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel via Thuisbezorgd</a>
+      <a class="btn btn-oranje" data-bestel href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel via Thuisbezorgd</a>
       <a class="btn btn-wit" href="#bestel">Kies eerst je burger</a>
     </div>
   </div>
@@ -558,76 +626,13 @@ footer .klein{font-size:13px;color:#9fb0a6}
 </footer>
 
 <div class="zweef" id="zweef">
-  <a class="btn btn-oranje" href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel</a>
-  <a class="btn btn-wit" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Duck+Truck+%26+Corndogs+Zuidplein%2C+Zuidplein+hoog+751%2C+3083+BJ+Rotterdam" target="_blank" rel="noopener">Route</a>
-</div>
-
-<div class="pitch" id="pitch" hidden>
-  <div class="paneel" role="dialog" aria-modal="true" aria-labelledby="pitch-kop">
-    <button class="sluit" type="button" id="pitch-sluit" aria-label="Sluiten">✕</button>
-    <span class="label">Pitch-modus</span>
-    <h2 id="pitch-kop">The Duck Truck Zuidplein</h2>
-
-    <h3>Nu en straks</h3>
-    <div class="voorna">
-      <figure><img src="img/voor-merksite.jpg" alt="Huidige site theducktruck.nl op een telefoon" width="390" height="844" loading="lazy" decoding="async"><figcaption>Google Maps stuurt naar theducktruck.nl: foodtruck-site, nieuwste evenement juli 2023, Zuidplein niet op de homepage (alleen weggestopt onder Locaties), geen bestelknop.</figcaption></figure>
-      <figure><img src="img/voor-bestelsite.jpg" alt="Huidige bestelsite van Zuidplein op een telefoon" width="390" height="844" loading="lazy" decoding="async"><figcaption>Eigen bestelsite = Thuisbezorgd-sjabloon: alleen een menu, geen telefoon of e-mail.</figcaption></figure>
-      <figure><img src="img/na-mobiel.jpg" alt="De nieuwe site op een telefoon" width="390" height="844" loading="lazy" decoding="async"><figcaption><b>Straks:</b> deze site. Thuisbezorgd bovenaan, eigen zaak in beeld.</figcaption></figure>
-    </div>
-    <ul>
-      <li>Openingstijden spreken elkaar tegen: Google en de bezorgtijden op de bestelsite zeggen zondag dicht, Verkenrotterdam zegt zondag 11:00–19:30.</li>
-      <li>Op de bestelsite staat bij alle Veggie Duck burgers "MRIJ rund" in de omschrijving.</li>
-      <li>Halal staat alleen in de paginatitel van de contactpagina van de bestelsite, niet op de merksite.</li>
-    </ul>
-
-    <h3>Wat er beter is</h3>
-    <ol>
-      <li><b>Bestellen in 1 tik:</b> Thuisbezorgd bovenaan, in elke sectie en als vaste knop op de telefoon.</li>
-      <li><b>De hele kaart met prijzen</b> en wat erop zit, plus een burger-kiezer: vlees, smaak, los of menu.</li>
-      <li><b>Eén pagina voor Zuidplein:</b> adres, route, link naar de actuele tijden, 4,6 uit 300 reviews, halal; de andere vestigingen netjes apart.</li>
-    </ol>
-
-    <h3>Wat dit oplevert (voorbeeld)</h3>
-    <div class="reken">
-      <label>Extra bestellingen per week: <span id="r-n-uit">5</span><input type="range" id="r-n" min="1" max="40" step="1" value="5"></label>
-      <label>Gemiddelde bestelling: € <span id="r-b-uit">17,90</span><input type="range" id="r-b" min="8" max="40" step="0.5" value="17.9"></label>
-      <div class="uit">Extra omzet per jaar<b id="r-jaar">€ 4.654</b></div>
-      <div class="uit">€ 595 is de omzet van <b id="r-x" style="display:inline;font-size:20px">34</b> bestellingen.</div>
-      <p class="klein">Voorbeeld om samen in te vullen, geen belofte. Omzet, vóór de Thuisbezorgd-kosten. De standaardwaarde € 17,90 is de prijs van het Duckburger menu.</p>
-    </div>
-
-    <h3>Volgende stap</h3>
-    <ul>
-      <li>Dezelfde aanpak voor Papi Chulo.</li>
-      <li>Daarna eventueel één site voor alle vestigingen. Nu stuurt Google bij de Binnenweg bijvoorbeeld naar de bestelpagina van de Markthal.</li>
-    </ul>
-  </div>
+  <a class="btn btn-oranje" data-bestel href="https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs" target="_blank" rel="noopener">Bestel</a>
+  <a class="btn btn-wit" data-route href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Duck+Truck+%26+Corndogs+Zuidplein%2C+Zuidplein+hoog+751%2C+3083+BJ+Rotterdam" target="_blank" rel="noopener">Route</a>
 </div>
 
 <script>
 (function(){
 
-  /* ---------- hero: foto passend (cover) + lampjes op hun echte posities ---------- */
-  var LAMPEN=[[21.28,22.02],[21.3,25.56],[21.31,23.23],[21.32,24.39],[22.83,25.54],[22.84,22.05],[24.31,22.53],[24.39,24.9],[24.73,23.69],[27.31,23.21],[27.32,21.98],[27.36,24.42],[28.24,25.46],[30.05,25.43],[30.9,21.98],[30.9,23.21],[30.91,24.4],[33.57,23.8],[34.06,22.43],[34.13,25.1],[35.67,21.94],[35.72,25.56],[36.99,22.52],[37.12,24.83],[39.79,25.56],[39.8,22.02],[39.82,23.16],[39.84,24.38],[40.99,23.7],[41.17,16.09],[41.95,22.89],[42.62,16.08],[42.74,24.44],[43.21,21.93],[43.22,17.11],[43.25,18.35],[43.27,19.52],[43.58,25.58],[44.01,16.07],[45.33,16.05],[47.43,17.13],[47.47,15.99],[47.49,18.33],[47.5,19.47],[48.27,21.94],[48.65,17.56],[49.64,21.91],[49.95,17.52],[50.27,23.03],[50.29,24.23],[50.33,25.42],[51.07,21.92],[51.09,18.27],[51.11,17.1],[51.15,15.94],[51.15,19.45],[52.41,21.92],[53.99,15.91],[54.03,18.25],[54.04,17.07],[54.07,19.39],[54.56,25.46],[54.57,23.01],[54.6,24.16],[54.61,21.89],[55.48,17.55],[55.57,15.89],[55.58,19.43],[55.98,23.67],[56.07,21.9],[56.93,17.54],[57.1,15.86],[57.11,19.4],[57.21,24.39],[57.51,23.34],[57.6,22.11],[58.1,25.46],[60.52,23.02],[60.52,24.2],[60.53,21.82],[61.51,25.27],[63.31,25.29],[64.12,24.21],[64.16,23.06],[64.17,21.87],[66.96,23.6],[67.28,22.32],[67.49,24.87],[68.97,21.74],[69.04,25.38],[70.42,22.24],[70.46,24.62],[73.14,22.98],[73.16,21.76],[73.21,24.13],[73.21,25.29],[74.38,23.47],[75.46,22.56],[76.14,24.21],[76.57,21.67],[77.01,25.29]];
-  var heroFoto=document.getElementById("heroFoto"), beeld=document.getElementById("beeld"), lampen=document.getElementById("lampen");
-  LAMPEN.forEach(function(p,i){
-    var e=document.createElement("i"); e.className="lamp";
-    e.style.left=p[0]+"%"; e.style.top=p[1]+"%";
-    e.style.setProperty("--d",(0.35+(p[0]-20)/60*1.5).toFixed(2)+"s");
-    e.style.setProperty("--t",(2.6+((i*37)%30)/10).toFixed(1)+"s");
-    e.style.setProperty("--r",(((i*53)%40)/10).toFixed(1)+"s");
-    lampen.appendChild(e);
-  });
-  function pasHero(){
-    var cw=heroFoto.clientWidth, ch=heroFoto.clientHeight, ar=1737/1400;
-    var w=cw, h=cw*ar; if(h<ch){h=ch; w=ch/ar;}
-    var start=window.innerWidth>=980?0.11:0.125;
-    var top=Math.max(ch-h,Math.min(0,-h*start));
-    beeld.style.width=w+"px"; beeld.style.height=h+"px";
-    beeld.style.left=((cw-w)/2)+"px"; beeld.style.top=top+"px";
-    lampen.style.setProperty("--lw",Math.max(8,w*0.016)+"px");
-  }
-  pasHero(); window.addEventListener("resize",pasHero);
 
   /* ---------- menu (bestelpagina Zuidplein, 8 nov 2026) ---------- */
   var BRIOCHE = "Geroosterd brioche broodje, ";
@@ -714,26 +719,83 @@ footer .klein{font-size:13px;color:#9fb0a6}
     new IntersectionObserver(function(e){zuilZicht=e[0].isIntersecting;zet();},{threshold:0}).observe(document.querySelector(".kiosk"));
   } else zweef.classList.add("aan");
 
-  /* ---------- pitch ---------- */
-  var pitch=document.getElementById("pitch");
-  function open(){pitch.hidden=false;}
-  function dicht(){pitch.hidden=true;}
-  document.getElementById("mo-knop").addEventListener("click",open);
-  document.getElementById("pitch-sluit").addEventListener("click",dicht);
-  pitch.addEventListener("click",function(e){if(e.target===pitch)dicht();});
-  document.addEventListener("keydown",function(e){if(e.key==="Escape")dicht();});
-  if(/[?&]pitch\b/.test(location.search)) open();
-  var rn=document.getElementById("r-n"), rb=document.getElementById("r-b");
-  function reken(){
-    var n=+rn.value, b=+rb.value;
-    document.getElementById("r-n-uit").textContent=n;
-    document.getElementById("r-b-uit").textContent=b.toFixed(2).replace(".",",");
-    document.getElementById("r-jaar").textContent="€ "+Math.round(n*b*52).toLocaleString("nl-NL");
-    document.getElementById("r-x").textContent=Math.ceil(595/b);
+  /* ---------- vestigingskiezer (bronnen: Google Maps + Thuisbezorgd, 9 nov 2026) ---------- */
+  var VEST={
+    markthal:{naam:"The Duck Truck Markthal",kort:"de Markthal",adres:"Dominee Jan Scharpstraat 298, unit 44, 3011 GZ Rotterdam",score:"4,6 uit 498 reviews op Google",
+      bestel:"https://www.thuisbezorgd.nl/menu/the-duck-truck-1",route:"https://www.google.com/maps/dir/?api=1&destination=The+Duck+Truck+Markthal%2C+Dominee+Jan+Scharpstraat+298%2C+3011+GZ+Rotterdam",pagina:"markthal.html"},
+    binnenweg:{naam:"The Duck Truck & Corndogs Binnenweg",kort:"de Binnenweg",adres:"Nieuwe Binnenweg 245 A, 3021 GD Rotterdam",score:"4,6 uit 182 reviews op Google",
+      bestel:"https://www.thuisbezorgd.nl/menu/duckburger-binnenweg",route:"https://www.google.com/maps/dir/?api=1&destination=The+Duck+Truck+%26+Corndogs+Binnenweg%2C+Nieuwe+Binnenweg+245+A%2C+3021+GD+Rotterdam",pagina:"binnenweg.html"},
+    zuidplein:{naam:"The Duck Truck & Corndogs Zuidplein",kort:"Zuidplein",adres:"Zuidplein hoog 751, 3083 BJ Rotterdam",score:"4,6 uit 300 reviews op Google",
+      bestel:"https://www.thuisbezorgd.nl/menu/the-duck-truck-corndogs",route:"https://www.google.com/maps/dir/?api=1&destination=The+Duck+Truck+%26+Corndogs+Zuidplein%2C+Zuidplein+hoog+751%2C+3083+BJ+Rotterdam",pagina:"zuidplein.html"}
+  };
+  function kiesVest(k,bewaar){
+    var v=VEST[k]; if(!v) return;
+    document.querySelectorAll("[data-vest]").forEach(function(b){b.setAttribute("aria-checked",b.dataset.vest===k);});
+    document.querySelectorAll("[data-bestel]").forEach(function(a){a.href=v.bestel;});
+    document.querySelectorAll("[data-route]").forEach(function(a){a.href=v.route;});
+    document.querySelectorAll("[data-vest-kort]").forEach(function(e){e.textContent=v.kort;});
+    document.getElementById("vk-naam").textContent=v.naam;
+    document.getElementById("vk-adres").textContent=v.adres;
+    document.getElementById("vk-score").textContent=v.score;
+    document.getElementById("vk-pagina").href=v.pagina;
+    document.body.classList.toggle("andere-vest",k!=="zuidplein");
+    if(bewaar){try{localStorage.setItem("ddt-vestiging",k);}catch(e){}}
   }
-  rn.addEventListener("input",reken); rb.addEventListener("input",reken); reken();
+  document.querySelectorAll("[data-vest]").forEach(function(b){b.addEventListener("click",function(){kiesVest(b.dataset.vest,true);});});
+  (function(){var m=location.search.match(/[?&]vestiging=(markthal|binnenweg|zuidplein)/),k=null;
+    if(m)k=m[1]; else {try{k=localStorage.getItem("ddt-vestiging");}catch(e){}}
+    kiesVest(k&&VEST[k]?k:"zuidplein",!!m);})();
 })();
 </script>
-<script>(function(){var v=document.getElementById("heroVideo"),h=document.getElementById("heroFoto");if(!v||!h)return;if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){v.remove();return;}v.addEventListener("playing",function(){h.classList.add("video-aan");});v.addEventListener("ended",function(){setTimeout(function(){h.classList.remove("video-aan");setTimeout(function(){v.currentTime=0;var q=v.play();if(q&&q.catch)q.catch(function(){});},900);},1800);});var p=v.play();if(p&&p.catch)p.catch(function(){});})();</script>
+<script>
+/* ---------- hero: variant A/B, video-loop en meebewegende uitsnede ---------- */
+(function(){
+  var d=document.documentElement, hero=document.getElementById("hero"), media=document.getElementById("heroMedia"),
+      v=document.getElementById("heroVideo"), poster=document.getElementById("heroPoster");
+  /* camerapad: welk deel van de hoogte (0 = boven, 1 = onder) in beeld moet op tijdstip t (s): eerst de gevelletters, aan het eind de toonbank */
+  var PAD=[[0,.06],[3,.17],[6,.42],[10.04,.68]];
+  function pad(t){
+    if(t<=PAD[0][0])return PAD[0][1];
+    for(var i=1;i<PAD.length;i++){if(t<=PAD[i][0]){var a=PAD[i-1],b=PAD[i],f=(t-a[0])/(b[0]-a[0]);f=f*f*(3-2*f);return a[1]+(b[1]-a[1])*f;}}
+    return PAD[PAD.length-1][1];
+  }
+  function snijdtVerticaal(){return media.clientWidth/Math.max(1,media.clientHeight)>1080/1340+.01;}
+  function zetPos(t){
+    var y=snijdtVerticaal()?(pad(t)*100).toFixed(2)+"%":"50%";
+    if(v)v.style.objectPosition="50% "+y;
+  }
+  function zetPoster(){poster.style.objectPosition="50% "+(snijdtVerticaal()?(pad(0)*100).toFixed(2)+"%":"50%");}
+  function meet(){d.style.setProperty("--hero-top",Math.round(hero.getBoundingClientRect().top+window.scrollY)+"px");}
+  function kies(){
+    var m=window.__heroVast||(window.innerWidth<980?"a":"b");
+    if(d.getAttribute("data-hero")!==m)d.setAttribute("data-hero",m);
+    document.querySelectorAll("[data-zet-hero]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.zetHero===m);});
+    meet(); zetPoster(); zetPos(v?v.currentTime:0);
+  }
+  document.querySelectorAll("[data-zet-hero]").forEach(function(b){b.addEventListener("click",function(){
+    window.__heroVast=b.dataset.zetHero;
+    try{history.replaceState(null,"","?hero="+b.dataset.zetHero);}catch(e){}
+    kies();
+  });});
+  kies(); window.addEventListener("resize",kies); window.addEventListener("load",kies);
+  if(!v)return;
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){v.remove();v=null;return;}
+  var inBeeld=true;
+  function speel(){var q=v.play();if(q&&q.catch)q.catch(function(){});}
+  v.addEventListener("playing",function(){media.classList.add("video-aan");});
+  v.addEventListener("ended",function(){
+    setTimeout(function(){
+      media.classList.remove("video-aan");
+      setTimeout(function(){v.currentTime=0;zetPos(0);if(inBeeld)speel();},950);
+    },1800);
+  });
+  (function tik(){if(v&&!v.paused&&!v.ended)zetPos(v.currentTime);requestAnimationFrame(tik);})();
+  /* buiten beeld pauzeren, terug in beeld verder */
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(e){if(!v)return; inBeeld=e[0].isIntersecting; if(inBeeld){if(v.paused&&!v.ended)speel();} else if(!v.paused)v.pause();},{threshold:0}).observe(hero);
+  }
+  speel();
+})();
+</script>
 </body>
 </html>

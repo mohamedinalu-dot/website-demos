@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="nl">
+<!--
+  Pitch L247 The Duck Truck (Mohamedia, 9 nov 2026). Alleen voor Mo: niet gelinkt, behalve via het Mo-knopje en ?pitch op index.html.
+  Mobiel-eerst: Mo laat dit op zijn telefoon zien. Verhaal in 6 hoofdstukken; de fouten zijn een veegbare kaartenrij.
+  Elke fout zelf nagekeken op 9 nov 2026 (Playwright, iPhone-UA, Google Maps headless); screenshots in img/pitch-*.jpg.
+  Weggelaten omdat het niet (meer) klopt: "nieuwegein.png op theducktruckgroup.nl = interieur Zuidplein" (het is een
+  andere zaak: andere vloer en letters) en "bestelsite zegt zondag gesloten" (de bezorgtijden zeggen nu zo 10:30-18:30).
+  "Voor Mo"-notities staan standaard verborgen; tik op "Mo" rechtsboven om ze te tonen.
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The Duck Truck – waarom een eigen site (pitch)</title>
+<meta name="theme-color" content="#0b4a34">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Rethink+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--groen:#0b4a34;--groen-d:#06301f;--groen-l:#12603f;--oranje:#ff6a0d;--oranje-d:#e25500;--geel:#ffc93c;--zwart:#0b0b0b;--tegel:#f3f6f3;--tekst:#14201a;--zacht:#5b6a62;--rood:#c8321e;
+  --kop:"Bowlby One","Arial Black",sans-serif;--body:"Rethink Sans",system-ui,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:64px}
+body{margin:0;font-family:var(--body);color:var(--tekst);background:var(--tegel);line-height:1.5;font-size:18px;overflow-x:hidden}
+img{max-width:100%;display:block}figure{margin:0}a{color:inherit}p{margin:0}
+h1,h2,h3{font-family:var(--kop);font-weight:400;line-height:1.02;margin:0;overflow-wrap:break-word;text-transform:uppercase}
+.wrap{width:min(1100px,100% - 32px);margin-inline:auto}
+
+/* balk */
+.balk{position:sticky;top:0;z-index:50;background:var(--zwart);color:#fff;border-bottom:3px solid var(--oranje)}
+.balk .wrap{display:flex;align-items:center;gap:10px;height:56px}
+.balk img{height:38px;width:auto;flex:none}
+.hfst{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.hfst::-webkit-scrollbar{display:none}
+.hfst a{flex:none;min-height:44px;min-width:44px;display:grid;place-items:center;padding:0 10px;border-radius:10px;color:#b9c7bf;text-decoration:none;font-weight:800;font-size:14px}
+.hfst a.nu{background:var(--oranje);color:var(--zwart)}
+.mo{flex:none;min-height:44px;min-width:44px;border-radius:10px;border:2px solid #333;background:transparent;color:#8c9a92;font:800 13px var(--body);cursor:pointer}
+.mo[aria-pressed=true]{background:var(--geel);color:#000;border-color:var(--geel)}
+
+/* hoofdstukken */
+.h{padding:48px 0 56px;border-bottom:3px solid var(--zwart)}
+.nr{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--zacht)}
+.nr i{font-style:normal;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--oranje);color:var(--zwart);border:3px solid var(--zwart);font-family:var(--kop);font-size:16px}
+.h h2{font-size:clamp(32px,9vw,60px);margin-top:14px}
+.h h2 .o{color:var(--oranje)}
+.intro{margin-top:14px;font-size:clamp(18px,4.8vw,21px);max-width:40ch}
+.donker{background:var(--groen);color:#fff}.donker .nr{color:#bfe0cd}.donker .intro{color:#dbeae1}
+.zwart{background:var(--zwart);color:#fff}.zwart .nr{color:#b9c7bf}
+.momemo{display:none;margin-top:16px;background:#fff7d6;color:#3d3300;border:2px dashed #b38f00;border-radius:12px;padding:10px 14px;font-size:15px}
+.momemo b{color:#000}
+.toon-mo .momemo{display:block}
+
+/* telefoonlijst */
+.tel{width:min(300px,78vw);border:8px solid #111;border-radius:34px;overflow:hidden;background:#111;box-shadow:0 18px 40px -18px rgba(0,0,0,.6)}
+.tel img{width:100%;height:auto;border-radius:24px}
+.duo{display:grid;grid-template-columns:1fr;gap:26px;margin-top:28px;justify-items:center}
+.bijschrift{font-size:14px;color:var(--zacht);margin-top:10px;text-align:center;max-width:300px}
+.donker .bijschrift{color:#bfe0cd}
+.feit{display:grid;gap:10px;margin-top:22px}
+.feit div{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.18);border-radius:14px;padding:12px 14px;font-size:17px}
+.feit b{color:var(--geel)}
+
+/* foutkaarten */
+.rij-kop{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:26px}
+.teller{font-weight:800;font-size:15px;color:var(--zacht)}
+.pijlen{display:flex;gap:8px}
+.pijlen button{min-width:48px;min-height:48px;border-radius:12px;border:3px solid var(--zwart);background:#fff;font:800 20px var(--body);cursor:pointer;box-shadow:0 3px 0 var(--zwart)}
+.fouten{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 16px 22px;margin:0 -16px;scrollbar-width:thin;overscroll-behavior-x:contain}
+.fout{flex:0 0 min(86vw,380px);scroll-snap-align:center;background:#fff;border:3px solid var(--zwart);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 0 var(--zwart)}
+.fout-kop{background:var(--zwart);color:#fff;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+.fout-kop span{flex:none;font-family:var(--kop);font-size:22px;color:var(--oranje);line-height:1}
+.fout-kop h3{font-size:clamp(18px,5vw,22px);line-height:1.05}
+.fout-beeld{background:#e8ecea;border-bottom:3px solid var(--zwart);height:300px;overflow:hidden;position:relative}
+.fout-beeld img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.fout-beeld.twee{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--zwart)}
+.fout-beeld .tag{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11px;padding:3px 8px;border-radius:99px}
+.fout-beeld.twee figure{position:relative;overflow:hidden}
+.fout-beeld.twee img{object-position:0 0}
+.citaat{padding:18px 16px;background:#fff8ef;border-bottom:3px solid var(--zwart);font-size:16px}
+.citaat q{display:block;font-family:Georgia,serif;font-style:italic;font-size:18px;line-height:1.4}
+.citaat small{display:block;margin-top:8px;font-size:12px;color:var(--zacht)}
+.tijden{width:100%;border-collapse:collapse;font-size:15px}
+.tijden td{padding:7px 0;border-bottom:1px dashed #d5ddd8}.tijden td+td{text-align:right;font-weight:800;white-space:nowrap}
+.fout-tekst{padding:14px 16px 16px;display:grid;gap:10px;flex:1;min-width:0;align-content:start}
+.fout-tekst p{font-size:16px}
+.kost{background:#fff1e6;border-left:5px solid var(--oranje);padding:8px 12px;border-radius:0 10px 10px 0;font-weight:700;font-size:15px}
+.kans{background:#e9f6ee;border-left:5px solid var(--groen);padding:8px 12px;border-radius:0 10px 10px 0;font-weight:700;font-size:15px}
+.bron{margin-top:auto;font-size:12px;color:var(--zacht);overflow-wrap:anywhere}
+.bron a{color:var(--zacht)}
+
+/* voor / na */
+.vn{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.vn figure{display:grid;gap:8px;justify-items:center}
+.vn .tel{width:100%;border-width:6px;border-radius:26px}
+.vn .tel img{border-radius:18px}
+.vn figcaption{font-weight:800;font-size:15px;text-align:center}
+.vn .voor figcaption{color:var(--rood)}.vn .na figcaption{color:var(--groen)}
+.lijst{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px}
+.lijst li{display:flex;gap:12px;align-items:flex-start;font-size:17px;background:#fff;border:3px solid var(--zwart);border-radius:14px;padding:12px 14px}
+.lijst li::before{content:"✓";flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--oranje);border:2px solid var(--zwart);font-weight:800;font-size:15px}
+.knoppen{display:grid;gap:12px;margin-top:24px;max-width:520px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 20px;border-radius:14px;font-weight:800;font-size:17px;text-decoration:none;border:3px solid var(--zwart);font-family:var(--body);text-align:center;line-height:1.15}
+.btn-oranje{background:var(--oranje);color:var(--zwart);box-shadow:0 5px 0 var(--zwart)}
+.btn-wit{background:#fff;color:var(--zwart);box-shadow:0 5px 0 var(--zwart)}
+.duo-knop{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* site-plan */
+.plan{display:grid;gap:10px;margin-top:26px}
+.pag{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;background:#fff;color:var(--tekst);border:3px solid var(--zwart);border-radius:16px;padding:12px 14px;text-decoration:none;min-height:64px}
+.pag .n{width:44px;height:44px;border-radius:12px;background:var(--geel);border:2px solid var(--zwart);display:grid;place-items:center;font-family:var(--kop);font-size:20px}
+.pag b{display:block;font-size:17px}.pag small{display:block;font-size:13px;color:var(--zacht)}
+.pag .g{font-size:12px;font-weight:800;color:var(--groen);text-align:right;white-space:nowrap}
+.som{margin-top:16px;background:var(--oranje);color:var(--zwart);border:3px solid var(--zwart);border-radius:16px;padding:14px 16px;font-weight:800;font-size:18px;display:flex;justify-content:space-between;gap:12px;align-items:center;box-shadow:0 5px 0 var(--zwart)}
+.som span:last-child{font-family:var(--kop);font-weight:400;font-size:26px;white-space:nowrap}
+.later{margin-top:14px;font-size:15px;color:#dbeae1}
+
+/* rekensom */
+.reken{min-width:0;margin-top:24px;background:#fff;border:3px solid var(--zwart);border-radius:20px;padding:18px;display:grid;gap:18px;box-shadow:0 6px 0 var(--zwart)}
+.reken label{display:grid;gap:6px;font-weight:700;font-size:16px}
+.reken label span{font-family:var(--kop);font-weight:400;font-size:22px}
+.reken input[type=range]{width:100%;min-height:44px;accent-color:var(--oranje)}
+.uitkomst{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.uitkomst div{min-width:0}
+.uitkomst div{background:var(--tegel);border:2px solid var(--zwart);border-radius:14px;padding:12px}
+.uitkomst small{display:block;font-size:13px;color:var(--zacht);font-weight:700}
+.uitkomst b{display:block;font-family:var(--kop);font-weight:400;font-size:clamp(22px,6.4vw,30px);line-height:1.1;margin-top:4px}
+.reken .klein{font-size:13px;color:var(--zacht)}
+
+/* aanbod */
+.prijskaart{margin-top:24px;background:#fff;color:var(--tekst);border:4px solid var(--zwart);border-radius:24px;overflow:hidden;box-shadow:0 8px 0 var(--oranje)}
+.prijskaart .boven{background:var(--groen);color:#fff;padding:18px 18px 16px}
+.prijskaart .bedrag{font-family:var(--kop);font-size:clamp(48px,14vw,72px);line-height:1;color:var(--geel)}
+.prijskaart .boven p{margin-top:6px;color:#dbeae1;font-size:16px}
+.prijskaart ul{list-style:none;margin:0;padding:16px 18px 18px;display:grid;gap:8px;font-size:16px}
+.prijskaart li{display:flex;gap:10px}.prijskaart li::before{content:"✓";color:var(--groen);font-weight:800}
+.extra{display:grid;gap:8px;margin-top:18px}
+.extra div{display:flex;justify-content:space-between;gap:12px;align-items:center;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.2);border-radius:14px;padding:12px 14px;font-size:16px}
+.extra b{white-space:nowrap;color:var(--geel)}
+.stappen{list-style:none;counter-reset:s;padding:0;margin:22px 0 0;display:grid;gap:10px}
+.stappen li{counter-increment:s;display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:start;font-size:17px}
+.stappen li::before{content:counter(s);width:44px;height:44px;border-radius:12px;background:var(--oranje);color:var(--zwart);border:3px solid var(--zwart);display:grid;place-items:center;font-family:var(--kop);font-size:20px}
+.stappen b{display:block}
+.slot{padding:40px 0 60px;text-align:center;font-size:14px;color:#7d8a83;background:var(--zwart)}
+.slot a{color:var(--geel);font-weight:800}
+
+@media (max-width:420px){.balk img{display:none}}
+@media (min-width:760px){
+  .duo{grid-template-columns:1fr 1fr;align-items:start}
+  .vn{max-width:640px}
+  .fout{flex-basis:360px}
+  .knoppen{grid-template-columns:1fr 1fr;max-width:none}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="balk">
+  <div class="wrap">
+    <img src="logo-light.svg" alt="The Duck Truck" width="60" height="38">
+    <nav class="hfst" aria-label="Hoofdstukken">
+      <a href="#nu">1 Nu</a><a href="#fouten">2 Fouten</a><a href="#straks">3 Straks</a><a href="#vestigingen">4 Vestigingen</a><a href="#reken">5 Som</a><a href="#aanbod">6 Aanbod</a>
+    </nav>
+    <button class="mo" type="button" id="mo" aria-pressed="false" aria-label="Notities voor Mo tonen">Mo</button>
+  </div>
+</header>
+
+<main>
+<!-- 1 -->
+<section class="h donker" id="nu" aria-labelledby="t1">
+  <div class="wrap grid2">
+    <div>
+      <span class="nr"><i>1</i> Zo vindt een klant jullie nu</span>
+      <h2 id="t1">Google is jullie <span class="o">voordeur</span>.</h2>
+      <p class="intro">Wie "Duck Truck Zuidplein" zoekt, ziet dit. Sterk: 4,6 uit 300 reviews. Maar tik je op <b>Website</b>, dan gaat het mis.</p>
+      <div class="feit">
+        <div><span class="ster" style="color:var(--geel)">★</span><span>Zuidplein: 4,6 uit 300 · Markthal: 4,6 uit 498 · Binnenweg: 4,6 uit 182. Samen <b>bijna 1.000 reviews</b>.</span></div>
+        <div><span style="color:var(--geel);font-weight:800">→</span><span>De knop Website van Zuidplein gaat naar <b>theducktruck.nl</b>, de site van de foodtruck.</span></div>
+      </div>
+      <p class="momemo"><b>Voor Mo:</b> laat Edison zelf op zijn telefoon "Duck Truck Zuidplein" googelen en op Website tikken. Dan ziet hij het met eigen ogen.</p>
+    </div>
+    <figure style="justify-self:center;margin-top:26px">
+      <div class="tel"><img src="img/pitch-maps-zp.jpg" alt="Google Maps op een telefoon: The Duck Truck &amp; Corndogs Zuidplein, 4,6 uit 300 reviews, website theducktruck.nl" width="520" height="966"></div>
+      <figcaption class="bijschrift">Google Maps, Zuidplein · 9 nov 2026</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="h" id="fouten" aria-labelledby="t2">
+  <div class="wrap">
+    <span class="nr"><i>2</i> Wat een klant daarna tegenkomt</span>
+    <h2 id="t2">Elf dingen die <span class="o">bestellingen</span> kosten.</h2>
+    <p class="intro">Alles hieronder hebben we zelf nagekeken op 9 november. Geen kritiek op het eten: dat is goed, zie de reviews. Het gaat om wat er online staat.</p>
+    <div class="rij-kop"><span class="teller" id="teller" aria-live="polite">1 / 11</span><div class="pijlen"><button type="button" id="vorige" aria-label="Vorige fout">←</button><button type="button" id="volgende" aria-label="Volgende fout">→</button></div></div>
+    <div class="fouten" id="rail" tabindex="0" aria-label="Fouten, veeg opzij">
+
+      <article class="fout">
+        <div class="fout-kop"><span>01</span><h3>Google stuurt Zuidplein naar de foodtruck-site</h3></div>
+        <div class="fout-beeld"><img src="img/pitch-merk-home.jpg" alt="Homepage theducktruck.nl op een telefoon: burgerfoto en de tekst Welkom" width="520" height="1125" loading="lazy" decoding="async"><span class="tag">theducktruck.nl</span></div>
+        <div class="fout-tekst">
+          <p>De homepage noemt Zuidplein niet, heeft <b>geen bestelknop</b> en <b>geen telefoonnummer</b>. Wel een knop "Offerte aanvragen" voor de foodtruck.</p>
+          <p class="kost">Wie wil bestellen, moet zelf Thuisbezorgd gaan zoeken.</p>
+          <p class="bron">Bron: Google Maps (website-knop Zuidplein) en theducktruck.nl, 9 nov 2026.</p>
+        </div>
+      </article>
+
+      <article class="fout">
+        <div class="fout-kop"><span>02</span><h3>Nieuwste evenement: juli 2023</h3></div>
+        <div class="fout-beeld"><img src="img/pitch-events.jpg" alt="Het blok Evenementen op theducktruck.nl met data in juni en juli 2023" width="520" height="1072" loading="lazy" decoding="async"><span class="tag">theducktruck.nl</span></div>
+        <div class="fout-tekst">
+          <p>Het blok Evenementen op de homepage stopt bij TREK Den Bosch, <b>9 juli 2023</b>.</p>
+          <p class="kost">Wie op de homepage alleen evenementen uit 2023 ziet, gaat twijfelen of de agenda nog klopt.</p>
+          <p class="bron">Bron: theducktruck.nl, 9 nov 2026.</p>
+        </div>
+      </article>
+
+      <article class="fout">
+        <div class="fout-kop"><span>03</span><h3>De Google-tekst noemt Den Haag</h3></div>
+        <div class="citaat"><q>The Duck Truck bezoeken? Kom ons bezoeken in Den Haag, bij de HofHouse. Wij hebben daar een vaste foodcorner waar wij heerlijke DuckBurgers serveren</q><small>Omschrijving voor zoekmachines (meta description) van theducktruck.nl/locaties</small></div>
+        <div class="fout-tekst">
+          <p>Den Haag en de HofHouse staan <b>niet</b> in jullie eigen lijst met locaties. Rotterdam, met drie vestigingen, komt in die zin niet voor.</p>
+          <p class="kost">Google kan juist die zin onder de link laten zien als iemand naar jullie locaties zoekt.</p>
+          <p class="bron">Bron: broncode theducktruck.nl/locaties, 9 nov 2026.</p>
+        </div>
+      </article>
+
+      <article class="fout">
+        <div class="fout-kop"><span>04</span><h3>Binnenweg-klanten komen bij de Markthal uit</h3></div>
+        <div class="fout-beeld twee">
+          <figure><img src="img/pitch-maps-bw.jpg" alt="Google Maps Binnenweg met website the-duck-truck-rotterdam.nl" width="520" height="900" loading="lazy" decoding="async"><span class="tag">Google: Binnenweg</span></figure>
+          <figure><img src="img/pitch-mh-contact.jpg" alt="the-duck-truck-rotterdam.nl contactpagina met het adres Ds. Jan Scharpstraat 298 Unit 44" width="520" height="666" loading="lazy" decoding="async"><span class="tag">Daar: Markthal-adres</span></figure>
+        </div>
+        <div class="fout-tekst">
+          <p>Op Google linkt de Binnenweg naar the-duck-truck-rotterdam.nl. Daar staat het adres van de <b>Markthal</b>, en de bestelknop gaat naar de Markthal op Thuisbezorgd.</p>
+          <p class="kost">Een bestelling voor de Binnenweg komt bij een andere vestiging terecht, of de klant haakt af.</p>
+          <p class="bron">Bron: Google Maps Binnenweg, the-duck-truck-rotterdam.nl (+ /contact), 9 nov 2026.</p>
+        </div>
+      </article>
+
+      <article class="fout">
+        <div class="fout-kop"><span>05</span><h3>Twee adressen voor de Binnenweg</h3></div>
+        <div class="fout-beeld"><img src="img/pitch-locaties.jpg" alt="theducktruck.nl/locaties met Nieuwe binnenweg 256 C, 3021 GP Rotterdam" width="520" height="746" loading="lazy" decoding="async"><span class="tag">theducktruck.nl/locaties</span></div>
+        <div class="fout-tekst">
+          <p>De merksite zegt <b>Nieuwe Binnenweg 256 C</b> (3021 GP). Google en Thuisbezorgd zeggen <b>245 A</b> (3021 GD).</p>
+          <p class="kost">Wie het adres van de site in zijn navigatie zet, loopt naar het verkeerde nummer.</p>
+          <p class="bron">Bron: theducktruck.nl/locaties, Google Maps, Thuisbezorgd, 9 nov 2026.</p>
+        </div>
+      </article>
+
+      <article class="fout">
+        <div class="fout-kop"><span>06</span><h3>Eigen bestelsite: geen telefoon, geen e-mail</h3></div>
+        <div class="fout-beeld"><img src="img/pitch-zp-contact.jpg" alt="Contactpagina theducktruckcorndogsrotterdam.nl: alleen adres en bezorgtijden" width="520" height="1125" loading="lazy" decoding="async"><span class="tag">theducktruckcorndogsrotterdam.nl</span></div>
+        <div class="fout-tekst">
+          <p>De site van Zuidplein is een standaardsjabloon van Thuisbezorgd. Op "Contact" staan alleen het adres en de bezorgtijden.</p>
+          <p class="kost">Een vraag over allergie, een groep of een verloren bestelling? Er is geen nummer om te bellen.</p>
+          <p class="bron">Bron: theducktruckcorndogsrotterdam.nl/contact, 9 nov 2026.</p>
+        </div>
+      </article>
+
+      <article class="fout">
+        <div class="fout-kop"><span>07</span><h3>Drie verschillende tijden voor maandag</h3></div>
+        <div class="citaat" style="background:#fff">
+          <table class="tijden">
+            <tr><td>Google Maps (open)</td><td>11:30–19:00</td></tr>
+            <tr><td>Verkenrotterdam (open)</td><td>12:00–19:45</td></tr>
+            <tr><td>Eigen bestelsite (bezorgen)</td><td>11:30–18:30</td></tr>
+          </table>
+        </div>
+        <div class="fout-tekst">
+          <p>Zuidplein, maandag. Op vrijdag zegt Verkenrotterdam tot 20:45.</p>
+          <p class="kost">Wie Verkenrotterdam leest en om 19:30 komt, kan voor een dichte deur staan.</p>
+          <p class="bron">Bron: Google Maps (9 nov 2026), verkenrotterdam.nl, theducktruckcorndogsrotterdam.nl/contact.</p>
+        </div>
+      </article>
+
+      <article class="fout">
+        <div class="fout-kop"><span>08</span><h3>Veggie Duck burger met "MRIJ rund"</h3></div>
+        <div class="fout-beeld"><img src="img/pitch-veggie.jpg" alt="Bestelsite Zuidplein: Veggie Duck burger kimchi met in de omschrijving MRIJ rund met vijf kruiden" width="520" height="480" loading="lazy" decoding="async"><span class="tag">bestelsite Zuidplein</span></div>
+        <div class="fout-tekst">
+          <p>Bij <b>alle vijf</b> de Veggie Duck burgers staat "MRIJ rund" in de omschrijving.</p>
+          <p class="kost">Een vegetarische gast twijfelt en bestelt iets anders, of niets.</p>
+          <p class="bron">Bron: theducktruckcorndogsrotterdam.nl, 9 nov 2026.</p>
+        </div>
+      </article>
+
+      <article class="fout">
+        <div class="fout-kop"><span>09</span><h3>Halal staat niet waar klanten kijken</h3></div>
+        <div class="citaat"><q>The Duck Truck &amp; Corndogs Zuidplein - Contact - Burgers, 100% Halal, Patat bestellen</q><small>Paginatitel (het tabblad) van de contactpagina van de bestelsite</small></div>
+        <div class="fout-tekst">
+          <p>Thuisbezorgd noemt jullie "100% Halal", en het staat in het tabblad van de contactpagina. Maar niet op de merksite (waar Google naartoe stuurt) en niet zichtbaar op de bestelsite. Gasten noemen het wel in hun reviews.</p>
+          <p class="kost">Voor veel gasten op Zuidplein is dit een reden om te kiezen. Laat het zien op de plek waar Google ze heen stuurt.</p>
+          <p class="bron">Bron: theducktruck.nl, theducktruckcorndogsrotterdam.nl (+ /contact), Thuisbezorgd, 9 nov 2026.</p>
+        </div>
+      </article>
+
+      <article class="fout">
+        <div class="fout-kop"><span>10</span><h3>Groepspagina: Markthal ontbreekt, foto klopt niet</h3></div>
+        <div class="fout-beeld twee">
+          <figure><img src="img/pitch-groep.jpg" alt="theducktruckgroup.nl op een telefoon met de kaarten Binnenweg en Zuidplein" width="520" height="1125" loading="lazy" decoding="async"><span class="tag">bij "Zuidplein"</span></figure>
+          <figure><img src="img/pitch-foto-vergelijk.jpg" alt="Boven de foto bij Zuidplein op theducktruckgroup.nl, onder de foto van de Markthal-stand op markthal.nl: dezelfde houten toonbank" width="520" height="589" loading="lazy" decoding="async" style="object-position:50% 50%"><span class="tag">boven: groep · onder: markthal.nl</span></figure>
+        </div>
+        <div class="fout-tekst">
+          <p>theducktruckgroup.nl noemt vijf vestigingen, de Markthal niet. En bij "Zuidplein" staat een foto van de <b>Markthal-stand</b>: dezelfde houten toonbank als op markthal.nl.</p>
+          <p class="kost">Klanten zien een andere zaak dan waar ze naartoe gaan.</p>
+          <p class="bron">Bron: theducktruckgroup.nl (assets/zuidplein.jpg), markthal.nl, 9 nov 2026.</p>
+        </div>
+      </article>
+      <article class="fout">
+        <div class="fout-kop"><span>11</span><h3>Reviews krijgen geen antwoord</h3></div>
+        <div class="citaat" style="background:#fff">
+          <table class="tijden">
+            <tr><td>Zuidplein</td><td>0 van 20</td></tr>
+            <tr><td>Markthal</td><td>0 van 20</td></tr>
+            <tr><td>Binnenweg</td><td>0 van 20</td></tr>
+          </table>
+        </div>
+        <div class="fout-tekst">
+          <p>Van de laatste 20 Google-reviews per vestiging kreeg er geen enkele een antwoord.</p>
+          <p class="kans">Kans: een antwoord op reviews laat zien dat er iemand thuis is. Het Google-profiel op orde brengen kan als extra (€ 75).</p>
+          <p class="bron">Bron: Google Maps-reviews, laatste 20 per vestiging, 9 nov 2026.</p>
+        </div>
+      </article>
+
+    </div>
+    <p class="momemo"><b>Voor Mo:</b> begin met 01, 04 en 08: die voelt hij meteen. 10 alleen als de Markthal van hem is.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="h" id="straks" aria-labelledby="t3" style="background:#fff">
+  <div class="wrap grid2">
+    <div>
+      <span class="nr"><i>3</i> Zo wordt het</span>
+      <h2 id="t3">Van foodtruck-site naar <span class="o">bestel-site</span>.</h2>
+      <ul class="lijst">
+        <li>Bestellen bij de juiste vestiging in één tik, bovenaan en als vaste knop op de telefoon.</li>
+        <li>De hele kaart met prijzen, en een bestelzuil: vlees, smaak, los of menu.</li>
+        <li>Per vestiging een eigen pagina met het juiste adres, telefoon en route.</li>
+        <li>Halal en vegetarisch kloppen en staan in beeld.</li>
+        <li>Bewegend beeld als eerste scherm, gemaakt van jullie eigen gevelfoto.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="vn">
+        <figure class="voor"><div class="tel"><img src="img/pitch-merk-home.jpg" alt="Nu: theducktruck.nl op een telefoon" width="520" height="1125" loading="lazy" decoding="async"></div><figcaption>Nu</figcaption></figure>
+        <figure class="na"><div class="tel"><img src="img/pitch-na.jpg" alt="Straks: de nieuwe site met video van de zaak en de knop Bestel via Thuisbezorgd" width="520" height="1125" loading="lazy" decoding="async"></div><figcaption>Straks</figcaption></figure>
+      </div>
+      <div class="knoppen">
+        <a class="btn btn-oranje" href="index.html">Open de nieuwe site</a>
+        <div class="duo-knop"><a class="btn btn-wit" href="index.html?hero=a">Hero A</a><a class="btn btn-wit" href="index.html?hero=b">Hero B</a></div>
+      </div>
+      <p class="momemo"><b>Voor Mo:</b> A = video schermvullend, tekst eroverheen. B = tekst naast de volledige video. Op de site zelf wissel je met het knopje rechtsboven in de video.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="h donker" id="vestigingen" aria-labelledby="t4">
+  <div class="wrap grid2">
+    <div>
+      <span class="nr"><i>4</i> Drie vestigingen</span>
+      <h2 id="t4">Eén site. <span class="o">Elke</span> vestiging een eigen pagina.</h2>
+      <p class="intro">Geen drie losse sites, maar één. Elk Google-profiel linkt naar zijn eigen pagina, met de eigen bestelknop, route, tijden en reviews.</p>
+      <p class="momemo"><b>Voor Mo:</b> vraag eerst welke vestigingen van hem zijn. Elke vestiging heeft een eigen BV, en de Markthal staat niet op zijn groepspagina. Meer dan deze 5 pagina's of meerdere klanten: prijs eerst langs Mo/Ops.</p>
+    </div>
+    <div>
+      <div class="plan">
+        <a class="pag" href="index.html"><span class="n">1</span><span><b>Home</b><small>video, bestelzuil, kiezer</small></span><span class="g">alle profielen</span></a>
+        <a class="pag" href="index.html#kaart"><span class="n">2</span><span><b>Menu</b><small>de hele kaart met prijzen</small></span><span class="g"></span></a>
+        <a class="pag" href="markthal.html"><span class="n">3</span><span><b>Markthal</b><small>Ds. Jan Scharpstraat 298</small></span><span class="g">Google Markthal →</span></a>
+        <a class="pag" href="binnenweg.html"><span class="n">4</span><span><b>Binnenweg</b><small>Nieuwe Binnenweg 245 A</small></span><span class="g">Google Binnenweg →</span></a>
+        <a class="pag" href="zuidplein.html"><span class="n">5</span><span><b>Zuidplein</b><small>Zuidplein hoog 751</small></span><span class="g">Google Zuidplein →</span></a>
+      </div>
+      <div class="som"><span>5 pagina's = standaardpakket</span><span>€ 595</span></div>
+      <p class="later">Breda, Leidschendam of Nieuwegein erbij? Dat is een extra pagina: € 75 per stuk.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="h" id="reken" aria-labelledby="t5">
+  <div class="wrap grid2">
+    <div>
+      <span class="nr"><i>5</i> Rekensom</span>
+      <h2 id="t5">Wat levert het op?</h2>
+      <p class="intro">Vul het samen in. Dit is een voorbeeld, geen belofte.</p>
+    </div>
+    <div class="reken">
+      <label for="r-n">Extra bestellingen per week, alle vestigingen samen <span id="r-n-uit">5</span><input type="range" id="r-n" min="1" max="60" step="1" value="5"></label>
+      <label for="r-b">Gemiddelde bestelling <span>€ <span id="r-b-uit" style="font-size:inherit">17,90</span></span><input type="range" id="r-b" min="8" max="40" step="0.1" value="17.9"></label>
+      <div class="uitkomst">
+        <div><small>Extra omzet per jaar</small><b id="r-jaar">€ 4.654</b></div>
+        <div><small>€ 595 is de omzet van</small><b id="r-x">34</b><small>bestellingen</small></div>
+      </div>
+      <p class="klein">Voorbeeld om samen in te vullen, geen belofte. Omzet, vóór de kosten van Thuisbezorgd. De standaardwaarde € 17,90 is de prijs van het Duckburger menu op Zuidplein.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="h zwart" id="aanbod" aria-labelledby="t6">
+  <div class="wrap grid2">
+    <div>
+      <span class="nr"><i>6</i> Het aanbod</span>
+      <h2 id="t6">Live binnen <span class="o">48 uur</span>.</h2>
+      <div class="prijskaart">
+        <div class="boven"><div class="bedrag">€ 595</div><p>eenmalig · hosting inbegrepen</p></div>
+        <ul>
+          <li>Website tot 5 pagina's, gemaakt voor de telefoon</li>
+          <li>Op jullie eigen domein (dat blijft van jullie, wij koppelen het)</li>
+          <li>Bestelknoppen naar Thuisbezorgd, WhatsApp-knop</li>
+          <li>Contact- of offerteformulier</li>
+          <li>Google-reviews en locatie op de site</li>
+          <li>Basis-SEO, zodat Google de juiste pagina vindt</li>
+          <li>1 feedbackronde</li>
+          <li>Live binnen 48 uur na betaling</li>
+        </ul>
+      </div>
+      <div class="extra">
+        <div><span>Google Bedrijfsprofiel op orde</span><b>€ 75</b></div>
+        <div><span>Onderhoud</span><b>€ 25 / mnd</b></div>
+        <div><span>Extra pagina (bijv. Breda)</span><b>€ 75</b></div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:clamp(22px,6vw,30px);margin-top:36px">De volgende stap</h3>
+      <ol class="stappen">
+        <li><span><b>Ja zeggen</b>Je krijgt een betaallink.</span></li>
+        <li><span><b>Foto's, tijden en vestigingen doorgeven</b>Een korte vragenlijst.</span></li>
+        <li><span><b>Binnen 48 uur live</b>Daarna één feedbackronde.</span></li>
+        <li><span><b>Dan Papi Chulo</b>Zelfde aanpak: een eigen site, klaar voor de opening.</span></li>
+      </ol>
+      <p class="momemo"><b>Voor Mo:</b> eerst vragen welke vestigingen van Edison zijn; meerdere eigenaren/BV's = prijs eerst langs Mo. Geen andere kortingen dan in het aanbod.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="slot">
+  <p>Gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> · Rotterdam · <a href="index.html">naar de demo</a></p>
+</footer>
+
+<script>
+(function(){
+  /* hoofdstuk-balk */
+  var links=[].slice.call(document.querySelectorAll(".hfst a"));
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){var ja=a.getAttribute("href")==="#"+e.target.id;a.classList.toggle("nu",ja);if(ja&&a.scrollIntoView)a.parentNode.scrollTo({left:a.offsetLeft-60,behavior:"smooth"});});}});},{rootMargin:"-45% 0px -50% 0px"});
+    document.querySelectorAll("main > section").forEach(function(s){io.observe(s);});
+  }
+  /* Mo-notities */
+  var mo=document.getElementById("mo");
+  mo.addEventListener("click",function(){var aan=document.body.classList.toggle("toon-mo");mo.setAttribute("aria-pressed",aan);});
+  /* foutkaarten: teller + pijlen */
+  var rail=document.getElementById("rail"),kaarten=rail.querySelectorAll(".fout"),teller=document.getElementById("teller");
+  function huidig(){var m=rail.scrollLeft+rail.clientWidth/2,best=0,d=1e9;kaarten.forEach(function(k,i){var c=k.offsetLeft+k.offsetWidth/2,x=Math.abs(c-m);if(x<d){d=x;best=i;}});return best;}
+  function zet(){teller.textContent=(huidig()+1)+" / "+kaarten.length;}
+  function naar(i){i=Math.max(0,Math.min(kaarten.length-1,i));var k=kaarten[i];rail.scrollTo({left:k.offsetLeft-(rail.clientWidth-k.offsetWidth)/2,behavior:"smooth"});}
+  rail.addEventListener("scroll",function(){window.requestAnimationFrame(zet);},{passive:true});
+  document.getElementById("vorige").addEventListener("click",function(){naar(huidig()-1);});
+  document.getElementById("volgende").addEventListener("click",function(){naar(huidig()+1);});
+  rail.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){e.preventDefault();naar(huidig()+1);}if(e.key==="ArrowLeft"){e.preventDefault();naar(huidig()-1);}});
+  /* rekensom */
+  var rn=document.getElementById("r-n"),rb=document.getElementById("r-b");
+  function reken(){var n=+rn.value,b=+rb.value;
+    document.getElementById("r-n-uit").textContent=n;
+    document.getElementById("r-b-uit").textContent=b.toFixed(2).replace(".",",");
+    document.getElementById("r-jaar").textContent="€ "+Math.round(n*b*52).toLocaleString("nl-NL");
+    document.getElementById("r-x").textContent=Math.ceil(595/b);}
+  rn.addEventListener("input",reken);rb.addEventListener("input",reken);reken();
+  /* vangnet: lazy foto's na 3 s laden (screenshots) */
+  setTimeout(function(){document.querySelectorAll('img[loading="lazy"]').forEach(function(i){i.loading="eager";});},3000);
+})();
+</script>
+</body>
+</html>
