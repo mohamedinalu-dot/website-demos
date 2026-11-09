@@ -81,6 +81,9 @@ p{margin:0}
 .hero-foto{position:relative;height:clamp(290px,42vh,360px);overflow:hidden;background:#141a17}
 .beeld{position:absolute;left:0;top:0;width:100%;aspect-ratio:1400/1737}
 .beeld img{width:100%;height:100%;display:block}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+.video-aan .hero-video{opacity:1}
+.video-aan .lampen,.video-aan .vloergloed{display:none}
 .hero-foto .bron{position:absolute;right:10px;bottom:10px;z-index:3;background:rgba(0,0,0,.55);color:#fff;font-size:11px;padding:3px 8px;border-radius:99px}
 .weg{position:relative;height:16px;background:repeating-conic-gradient(var(--zwart) 0 25%,#fff 0 50%) 0 0/16px 16px;border-block:2px solid var(--zwart)}
 /* lampjes van hun lichtletters: overlay op de gemeten lampposities */
@@ -333,11 +336,13 @@ footer .klein{font-size:13px;color:#9fb0a6}
 <main id="top">
 <section class="hero" id="hero" aria-labelledby="hero-kop">
   <div class="hero-grid">
-    <!-- Hero-foto: de originele Google Maps-gevelfoto (apr 2025), met AI opgeschoond (Nano Banana Pro via Higgsfield):
+    <!-- Hero-video: 5 s Kling 2.6 (Higgsfield) vanaf de opgeschoonde gevelfoto, heen-en-terug geloopt (img/hero-zuidplein.mp4). Bij reduced motion of als video niet speelt: foto + lampjes-overlay.
+         Hero-foto: de originele Google Maps-gevelfoto (apr 2025), met AI opgeschoond (Nano Banana Pro via Higgsfield):
          mensen, standaard en statafel verwijderd, scherper gemaakt. Lampjes en vloergloed zijn een CSS-overlay. -->
     <div class="hero-foto" id="heroFoto">
       <div class="beeld" id="beeld">
         <img src="img/gevel-zuidplein-900.jpg" srcset="img/gevel-zuidplein-900.jpg 900w, img/gevel-zuidplein-1400.jpg 1400w" sizes="(min-width:980px) 52vw, 100vw" alt="De zaak op Zuidplein: oranje lichtletters 'The Duck Truck, burgers &amp; corn dogs' boven een zaak met zwart-witte tegelvloer en groene wand" width="1400" height="1737" fetchpriority="high">
+        <video class="hero-video" id="heroVideo" src="img/hero-zuidplein.mp4" poster="img/hero-zuidplein-poster.jpg" muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
         <div class="vloergloed" aria-hidden="true"></div>
         <div class="lampen" id="lampen" aria-hidden="true"></div>
       </div>
@@ -729,5 +734,6 @@ footer .klein{font-size:13px;color:#9fb0a6}
   rn.addEventListener("input",reken); rb.addEventListener("input",reken); reken();
 })();
 </script>
+<script>(function(){var v=document.getElementById("heroVideo"),h=document.getElementById("heroFoto");if(!v||!h)return;if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){v.remove();return;}v.addEventListener("playing",function(){h.classList.add("video-aan");});var p=v.play();if(p&&p.catch)p.catch(function(){});})();</script>
 </body>
 </html>
