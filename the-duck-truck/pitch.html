@@ -375,8 +375,8 @@ h1,h2,h3{font-family:var(--kop);font-weight:400;line-height:1.02;margin:0;overfl
         <a class="pag" href="binnenweg.html"><span class="n">4</span><span><b>Binnenweg</b><small>Nieuwe Binnenweg 245 A</small></span><span class="g">Google Binnenweg →</span></a>
         <a class="pag" href="zuidplein.html"><span class="n">5</span><span><b>Zuidplein</b><small>Zuidplein hoog 751</small></span><span class="g">Google Zuidplein →</span></a>
       </div>
-      <div class="som"><span>5 pagina's = standaardpakket</span><span>€ 595</span></div>
-      <p class="later">Breda, Leidschendam of Nieuwegein erbij? Dat is een extra pagina: € 75 per stuk.</p>
+      <div class="som"><span>Groepssite: 3 vestigingen, 5 pagina's</span><span>€ 1.295 <small style="font-size:.55em;font-weight:600">excl. btw</small></span></div>
+      <p class="later">Breda, Leidschendam of Nieuwegein erbij? Dat kan later als extra vestigingspagina; prijs in overleg.</p>
     </div>
   </div>
 </section>
@@ -394,7 +394,7 @@ h1,h2,h3{font-family:var(--kop);font-weight:400;line-height:1.02;margin:0;overfl
       <label for="r-b">Gemiddelde bestelling <span>€ <span id="r-b-uit" style="font-size:inherit">17,90</span></span><input type="range" id="r-b" min="8" max="40" step="0.1" value="17.9"></label>
       <div class="uitkomst">
         <div><small>Extra omzet per jaar</small><b id="r-jaar">€ 4.654</b></div>
-        <div><small>€ 595 is de omzet van</small><b id="r-x">34</b><small>bestellingen</small></div>
+        <div><small>€ 1.295 is de omzet van</small><b id="r-x">73</b><small>bestellingen</small></div>
       </div>
       <p class="klein">Voorbeeld om samen in te vullen, geen belofte. Omzet, vóór de kosten van Thuisbezorgd. De standaardwaarde € 17,90 is de prijs van het Duckburger menu op Zuidplein.</p>
     </div>
@@ -408,9 +408,9 @@ h1,h2,h3{font-family:var(--kop);font-weight:400;line-height:1.02;margin:0;overfl
       <span class="nr"><i>6</i> Het aanbod</span>
       <h2 id="t6">Live binnen <span class="o">48 uur</span>.</h2>
       <div class="prijskaart">
-        <div class="boven"><div class="bedrag">€ 595</div><p>eenmalig · hosting inbegrepen</p></div>
+        <div class="boven"><div class="bedrag">€ 1.295</div><p>excl. btw · eenmalig · hosting inbegrepen</p></div>
         <ul>
-          <li>Website tot 5 pagina's, gemaakt voor de telefoon</li>
+          <li>Eén groepssite voor de 3 Rotterdamse vestigingen: home, menu en een eigen pagina per vestiging</li>
           <li>Op jullie eigen domein (dat blijft van jullie, wij koppelen het)</li>
           <li>Bestelknoppen naar Thuisbezorgd, WhatsApp-knop</li>
           <li>Contact- of offerteformulier</li>
@@ -423,7 +423,7 @@ h1,h2,h3{font-family:var(--kop);font-weight:400;line-height:1.02;margin:0;overfl
       <div class="extra">
         <div><span>Google Bedrijfsprofiel op orde</span><b>€ 75</b></div>
         <div><span>Onderhoud</span><b>€ 25 / mnd</b></div>
-        <div><span>Extra pagina (bijv. Breda)</span><b>€ 75</b></div>
+        <div><span>Extra vestiging (bijv. Breda)</span><b>in overleg</b></div>
       </div>
     </div>
     <div>
@@ -470,7 +470,7 @@ h1,h2,h3{font-family:var(--kop);font-weight:400;line-height:1.02;margin:0;overfl
     document.getElementById("r-n-uit").textContent=n;
     document.getElementById("r-b-uit").textContent=b.toFixed(2).replace(".",",");
     document.getElementById("r-jaar").textContent="€ "+Math.round(n*b*52).toLocaleString("nl-NL");
-    document.getElementById("r-x").textContent=Math.ceil(595/b);}
+    document.getElementById("r-x").textContent=Math.ceil(1295/b);}
   rn.addEventListener("input",reken);rb.addEventListener("input",reken);reken();
   /* vangnet: lazy foto's na 3 s laden (screenshots) */
   setTimeout(function(){document.querySelectorAll('img[loading="lazy"]').forEach(function(i){i.loading="eager";});},3000);
