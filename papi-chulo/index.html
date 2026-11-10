@@ -3,16 +3,16 @@
 <!--
   Demo L246 Papi Chulo (Zuidplein Hoog, Rotterdam-Zuid), Mohamedia, 9 nov 2026. Zelfde eigenaar als The Duck Truck (L247).
   Concept in één zin: "De flyer wordt een site: een pre-launch-site die er al staat vóór de deuren opengaan."
-  Lay-out-archetype: GRAFFITIMUUR / AFFICHE. Zwarte muur met spuitnevel, Rotterdamse skyline als lijntekening,
+  Lay-out-archetype: GRAFFITIMUUR / AFFICHE. Zwarte muur, rustig: het logo als tag en 1 groot gerecht (Papi's Toast) als blikvanger,
   kronen als accent (alles uit hun eigen flyer). Menu = de vijf gerechten van de flyer als grote affichekaarten
   (2 groot + 3 klein op desktop, zoals op de flyer). Kiezer = "laat me weten"-bericht: gerechten -> langskomen/bezorgen -> naam,
   met een WhatsApp-bubbel die zich invult.
   Hero-beweging (eenmalig, daarna stil): de "tag" wordt gespoten. Een vervaagde spuitbaan onthult PAPI en dan CHULO
-  (twee halen, geen letter-voor-letter), daarna kroon, rode veeg en druppels die uitlopen; de skyline tekent zichzelf.
-  Geen Ken Burns, stoom, stempel, schuine fotokaart, lichtbord of lopende band.
+  (twee halen, geen letter-voor-letter), daarna kroon, rode veeg en druppels. Het gerecht komt op, zweeft licht en dampt (v2, 10 nov: skyline, spatten en strepen weg, graffiti is al druk genoeg).
+  Geen stempel, schuine fotokaart, lichtbord of lopende band. Menu-kaarten komen rustig in beeld bij scrollen.
   Kleuren uit de flyer: zwart, rood #e42521, geel #ffd21f, wit. Fonts: Permanent Marker (koppen) + Barlow (tekst).
   Logo: woordmerk in de geest van hun flyerlogo (graffitiletters + rode kroon), zonder (R). Paden via fontTools.
-  Foto's: uitsneden van hun eigen flyer (gefotografeerd door Mo, 9 nov 2026), label "van onze flyer".
+  Foto's: uitsneden van hun eigen flyer (gefotografeerd door Mo, 9 nov 2026), op 10 nov scherp gemaakt met Seedream 5.0 lite (zelfde gerecht, zelfde compositie, niets verzonnen), label "van onze flyer". Hero-beeld: dezelfde Papi's Toast vrijgezet op zwart.
   Onbekend en dus weggelaten: prijzen, openingstijden, openingsdatum, telefoon, socials, unitnummer.
   WhatsApp: nog geen nummer van de zaak -> wa.me zonder ontvanger (WA_NR leeg), uitleg in de pitch-modus.
   Thuisbezorgd: nog geen pagina -> knop toont een uitleg, geen link.
@@ -70,85 +70,98 @@ a{color:inherit}
 .btn-klein{min-height:44px;padding:8px 16px;font-size:15px}
 
 /* hero */
-.hero{position:relative;overflow:hidden;isolation:isolate;padding:34px 0 46px;
+.hero{position:relative;overflow:hidden;isolation:isolate;padding:26px 0 44px;
   background:
-   radial-gradient(70% 42% at 50% 30%,rgba(255,200,0,.26),transparent 72%),
-   radial-gradient(45% 30% at 0% 85%,rgba(228,37,33,.22),transparent 70%),
-   radial-gradient(40% 30% at 100% 70%,rgba(228,37,33,.16),transparent 70%),
+   radial-gradient(60% 34% at 50% 44%,rgba(255,170,30,.20),transparent 72%),
+   radial-gradient(50% 30% at 0% 100%,rgba(228,37,33,.14),transparent 70%),
    var(--zwart)}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.22;mix-blend-mode:screen;pointer-events:none;
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.16;mix-blend-mode:screen;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.6 -.75'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.deco{position:absolute;z-index:-1;pointer-events:none}
-.spat{width:240px;height:240px}
-.spat.r{left:-70px;top:30px;fill:var(--rood);opacity:.85}
-.spat.y{right:-80px;bottom:120px;fill:var(--geel);opacity:.7}
-.streep{right:-40px;top:-10px;width:300px;height:220px}
-.streep.b{left:-60px;right:auto;top:auto;bottom:-20px;width:280px;height:180px;transform:scaleX(-1)}
-.kroon-deco{color:var(--rood);opacity:.9}
-.kroon-deco.k1{left:14px;top:150px;width:70px;transform:rotate(-14deg)}
-.kroon-deco.k2{right:22px;top:330px;width:40px;color:#9a948a;transform:rotate(10deg)}
-.kroon-deco.k3{left:30px;bottom:40px;width:34px;opacity:.55;transform:rotate(8deg)}
-.hero-in{position:relative;text-align:center}
-.halal{position:absolute;right:0;top:-14px;width:84px;height:84px}
-.logo-vak{position:relative;width:min(480px,100%);margin:6px auto 0}
-.skyline{position:absolute;left:50%;bottom:16%;width:max(260%,900px);max-width:1500px;translate:-50% 0;z-index:-1;color:#e9e4da;opacity:.75}
-.skyline path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.tag{width:100%;height:auto;overflow:visible}
+.hero-in{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center}
+.logo-vak{position:relative;width:min(300px,70%);margin:0 auto;z-index:2}
+.tag{width:100%;height:auto;overflow:visible;display:block}
 .tag .kroon{fill:none;stroke:var(--rood);stroke-width:9;stroke-linejoin:round;stroke-linecap:round}
 .tag .cdot{fill:var(--rood)}
 .tag .veeg{fill:none;stroke:var(--rood);stroke-linecap:round}
 .tag .v1{stroke-width:13}.tag .v2{stroke-width:8}
 .tag .drip{fill:none;stroke:var(--geel);stroke-width:7;stroke-linecap:round}
 .tag .dot{fill:var(--geel)}
-.chip{display:inline-flex;align-items:center;gap:8px;background:var(--rood);color:#fff;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:13px;padding:7px 14px;margin-top:4px;clip-path:polygon(2% 10%,30% 0,70% 8%,100% 0,98% 55%,100% 100%,62% 92%,28% 100%,0 90%,3% 50%)}
-.hero h1{margin:14px auto 8px;font-size:clamp(30px,8.6vw,58px);line-height:1.04;max-width:16ch}
+
+/* het gerecht: 1 beeld, 1 rustige beweging */
+.gerecht{position:relative;width:128%;margin:-34px -14% -18px;z-index:1;animation:opkomst 1.5s cubic-bezier(.2,.7,.2,1) .55s both}
+.gerecht-in{position:relative;transform:translate3d(calc(var(--px,0)*-12px),calc(var(--py,0)*-8px),0);transition:transform .5s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.gloed{position:absolute;inset:8% 6%;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,176,32,.42),rgba(228,37,33,.12) 60%,transparent);filter:blur(26px);animation:gloed 7s ease-in-out infinite alternate}
+.gerecht img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:50% 52%;
+  -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 60%,transparent 96%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 60%,transparent 96%);
+  animation:zweven 9s ease-in-out 2s infinite alternate}
+.stoom{position:absolute;bottom:64%;left:calc(50% + var(--x));width:74px;height:150px;margin-left:-37px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.55),transparent);filter:blur(15px);opacity:0;pointer-events:none;animation:stoom var(--t) ease-in-out var(--d) infinite}
+.tagje{position:absolute;left:15%;bottom:11%;display:inline-flex;align-items:center;gap:8px;color:var(--geel);font-size:clamp(17px,4.6vw,22px);transform:rotate(-5deg);text-shadow:0 2px 12px #000,0 0 2px #000;animation:inval .6s ease-out 1.9s both}
+.tagje svg{width:34px;height:22px;flex:none}
+.halal{position:absolute;right:14%;top:10%;width:66px;height:66px;z-index:3;animation:inval .6s ease-out 1.7s both}
+
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--rood);color:#fff;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:13px;padding:7px 14px;position:relative;z-index:2;clip-path:polygon(2% 10%,30% 0,70% 8%,100% 0,98% 55%,100% 100%,62% 92%,28% 100%,0 90%,3% 50%)}
+.hero h1{margin:12px auto 8px;font-size:clamp(30px,8.6vw,56px);line-height:1.04;max-width:16ch}
 .hero h1 em{font-style:normal;color:var(--geel)}
 .hero .sub{margin:0 auto;max-width:34ch;color:#dcd6ca;font-size:clamp(16.5px,4.3vw,19px)}
-.knoppen{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:24px}
-.feiten{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin:30px 0 0;padding:0;list-style:none;color:var(--grijs);font-size:14.5px;font-weight:600}
+.knoppen{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:22px}
+.feiten{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin:26px 0 0;padding:0;list-style:none;color:var(--grijs);font-size:14.5px;font-weight:600}
 .feiten li{display:inline-flex;align-items:center;gap:7px}
 .feiten svg{width:16px;height:16px;color:var(--geel)}
-@media(max-width:520px){.kroon-deco.k2{display:none}.knoppen .btn{width:100%}.halal{width:66px;height:66px;top:-22px;right:-6px}}
-@media(min-width:900px){.hero{padding:40px 0 64px}.halal{width:110px;height:110px;right:20px;top:0}.kroon-deco.k1{left:6%;top:120px;width:120px}.kroon-deco.k2{right:9%;top:300px;width:60px}.spat.r{left:2%;top:60px;width:320px;height:320px}.spat.y{right:3%;width:320px;height:320px}.streep{width:460px;height:320px}}
+@media(max-width:520px){.knoppen .btn{width:100%}}
+@media(min-width:640px){.gerecht{width:min(760px,100%);margin:-30px auto -6px}.halal{width:84px;height:84px;right:8%;top:6%}.tagje{left:9%;bottom:9%}}
 
 @media(min-width:1000px){
-  .hero{padding:56px 0 70px}
-  .hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:20px 56px;align-items:center;text-align:left}
-  .hero-in>.halal{right:auto;left:calc(52% - 150px);top:-26px;width:104px;height:104px}
-  .streep{top:auto;bottom:-60px;right:-80px;width:380px;height:280px;opacity:.85}
-  .streep.b{display:none}
-  .spat.y{right:auto;left:1%;bottom:-110px}
-  .kroon-deco.k2{right:3%;top:40px}
-  .logo-vak{grid-row:1/span 6;margin:0;width:100%}
-  .hero-in>.chip{justify-self:start;margin-top:0}
-  .hero h1{margin:0;max-width:13ch}
+  .hero{padding:26px 0 44px;background:
+   radial-gradient(38% 52% at 73% 50%,rgba(255,170,30,.20),transparent 72%),
+   radial-gradient(40% 40% at 0% 100%,rgba(228,37,33,.14),transparent 70%),
+   var(--zwart)}
+  .hero-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:28px;align-items:center;align-content:center;justify-items:start;text-align:left;min-height:min(620px,calc(100vh - 190px))}
+  .hero-in>*{grid-column:1;position:relative;z-index:2}
+  .logo-vak{width:min(250px,100%);margin:0 0 4px -6px}
+  .gerecht{grid-column:2;grid-row:1/span 7;width:136%;max-width:none;margin:-4% -18% -4% -18%;align-self:center}
+  .gerecht img{aspect-ratio:4/3}
+  .halal{width:104px;height:104px;right:17%;top:9%}
+  .tagje{left:17%;bottom:13%;font-size:26px}
+  .hero h1{margin:12px 0 8px;max-width:13ch;font-size:clamp(40px,3.9vw,54px)}
   .hero .sub{margin:0}
-  .knoppen{justify-content:flex-start;margin-top:8px}
-  .feiten{justify-content:flex-start;margin-top:8px}
-  .hero-in>.mo-noot{margin:0}
-  .skyline{width:135%;left:50%}
+  .knoppen{justify-content:flex-start;margin-top:18px;gap:12px}.knoppen .btn{min-height:50px;padding:10px 20px;font-size:16px}
+  .feiten{justify-content:flex-start;margin-top:16px}
+  .hero-in>.mo-noot{margin:10px 0 0}
 }
-/* hero-animatie: eenmalig */
+/* hero-animatie */
 @keyframes teken{to{stroke-dashoffset:0}}
 @keyframes pop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
 @keyframes inval{from{opacity:0}to{opacity:1}}
+@keyframes opkomst{from{opacity:0;transform:translate3d(0,22px,0) scale(1.07)}to{opacity:1;transform:none}}
+@keyframes zweven{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(0,-9px,0) scale(1.025)}}
+@keyframes gloed{from{opacity:.6}to{opacity:1}}
+@keyframes stoom{0%{opacity:0;transform:translate3d(0,34px,0) scale(.7,.8)}28%{opacity:.5}62%{opacity:.22}100%{opacity:0;transform:translate3d(var(--dx),-130px,0) scale(1.5,1.7)}}
 .spuitbaan{stroke-dasharray:1 1;stroke-dashoffset:1}
 .spuitbaan.s1{animation:teken .6s cubic-bezier(.4,.1,.5,1) .3s forwards}
 .spuitbaan.s2{animation:teken .8s cubic-bezier(.4,.1,.5,1) .95s forwards}
-.tag .kroon,.tag .veeg,.tag .drip,.skyline path{stroke-dasharray:1 1;stroke-dashoffset:1}
+.tag .kroon,.tag .veeg,.tag .drip{stroke-dasharray:1 1;stroke-dashoffset:1}
 .tag .kroon{animation:teken .5s ease-out 1.75s forwards}
 .tag .cdot{opacity:0;transform-box:fill-box;transform-origin:50% 50%;animation:pop .3s ease-out 2.2s forwards}
 .tag .v1{animation:teken .45s ease-in-out 1.85s forwards}
 .tag .v2{animation:teken .4s ease-in-out 2.15s forwards}
 .tag .drip{animation:teken .7s cubic-bezier(.5,0,.9,.6) calc(1.9s + var(--d)) forwards}
 .tag .dot{opacity:0;animation:inval .15s linear calc(2.55s + var(--d)) forwards}
-.skyline path{animation:teken 2.4s ease-in-out .1s forwards}
 .hero .chip,.hero h1,.hero .sub,.hero .knoppen,.hero .feiten{animation:inval .6s ease-out both}
 .hero .chip{animation-delay:1.4s}.hero h1{animation-delay:1.5s}.hero .sub{animation-delay:1.6s}.hero .knoppen{animation-delay:1.7s}.hero .feiten{animation-delay:1.8s}
+/* menu: rustig in beeld komen */
+.js .aff{opacity:0;transform:translate3d(0,22px,0);transition:opacity .7s ease-out,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--w,0s)}
+.js .aff.in{opacity:1;transform:none}
+.aff .foto{overflow:hidden}
+.aff .foto img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+@media(hover:hover){.aff:hover .foto img{transform:scale(1.045)}}
 @media (prefers-reduced-motion:reduce){
-  .spuitbaan,.tag .kroon,.tag .veeg,.tag .drip,.skyline path{animation:none;stroke-dashoffset:0}
+  .spuitbaan,.tag .kroon,.tag .veeg,.tag .drip{animation:none;stroke-dashoffset:0}
   .tag .cdot,.tag .dot{animation:none;opacity:1}
-  .hero .chip,.hero h1,.hero .sub,.hero .knoppen,.hero .feiten{animation:none}
+  .hero .chip,.hero h1,.hero .sub,.hero .knoppen,.hero .feiten,.gerecht,.gerecht img,.gloed,.tagje,.halal{animation:none}
+  .stoom{display:none}
+  .gerecht-in{transform:none;transition:none}
+  .js .aff{opacity:1;transform:none;transition:none}
+  .aff .foto img{transition:none}
   html{scroll-behavior:auto}
 }
 
@@ -324,25 +337,9 @@ body.pitch-aan .mo-noot{display:block}
 
 <main id="top">
 <section class="hero" aria-labelledby="h1">
- <svg class="deco spat r" viewBox="0 0 240 240" aria-hidden="true"><circle cx="188" cy="86" r="0.7"/><circle cx="113" cy="123" r="1.1"/><circle cx="86" cy="179" r="3.5"/><circle cx="142" cy="135" r="2.0"/><circle cx="101" cy="148" r="1.9"/><circle cx="11" cy="156" r="0.7"/><circle cx="152" cy="114" r="0.7"/><circle cx="122" cy="114" r="3.9"/><circle cx="134" cy="94" r="3.8"/><circle cx="140" cy="76" r="0.7"/><circle cx="53" cy="89" r="0.7"/><circle cx="167" cy="182" r="0.7"/><circle cx="131" cy="168" r="0.7"/><circle cx="123" cy="129" r="0.7"/><circle cx="102" cy="128" r="0.7"/><circle cx="116" cy="117" r="0.8"/><circle cx="153" cy="140" r="1.5"/><circle cx="136" cy="188" r="0.7"/><circle cx="123" cy="116" r="3.9"/><circle cx="123" cy="144" r="0.7"/><circle cx="113" cy="122" r="0.7"/><circle cx="133" cy="177" r="4.9"/><circle cx="125" cy="105" r="1.3"/><circle cx="116" cy="114" r="1.8"/><circle cx="169" cy="136" r="0.7"/><circle cx="79" cy="138" r="0.7"/><circle cx="116" cy="120" r="0.7"/><circle cx="133" cy="66" r="3.4"/><circle cx="115" cy="38" r="0.7"/><circle cx="134" cy="74" r="0.7"/><circle cx="67" cy="105" r="3.9"/><circle cx="127" cy="59" r="0.7"/><circle cx="118" cy="119" r="0.7"/><circle cx="60" cy="150" r="0.7"/><circle cx="121" cy="120" r="2.6"/><circle cx="182" cy="139" r="0.7"/><circle cx="31" cy="114" r="2.6"/><circle cx="224" cy="131" r="1.4"/><circle cx="169" cy="84" r="2.1"/><circle cx="42" cy="38" r="4.5"/><circle cx="95" cy="75" r="2.6"/><circle cx="151" cy="129" r="0.7"/><circle cx="80" cy="130" r="5.2"/><circle cx="170" cy="110" r="0.7"/><circle cx="180" cy="139" r="1.6"/><circle cx="111" cy="70" r="1.7"/><circle cx="126" cy="97" r="1.7"/><circle cx="119" cy="126" r="0.7"/><circle cx="130" cy="86" r="2.1"/><circle cx="82" cy="145" r="0.7"/><circle cx="100" cy="108" r="0.9"/><circle cx="115" cy="70" r="0.7"/><circle cx="125" cy="120" r="1.1"/><circle cx="59" cy="90" r="0.9"/><circle cx="204" cy="150" r="2.7"/><circle cx="78" cy="180" r="2.9"/><circle cx="141" cy="148" r="1.0"/><circle cx="111" cy="126" r="0.7"/><circle cx="121" cy="122" r="0.7"/><circle cx="89" cy="145" r="2.6"/><circle cx="99" cy="162" r="2.2"/><circle cx="151" cy="153" r="3.0"/><circle cx="127" cy="69" r="0.7"/><circle cx="121" cy="167" r="1.0"/><circle cx="70" cy="124" r="1.7"/><circle cx="102" cy="140" r="2.0"/><circle cx="139" cy="103" r="0.7"/><circle cx="212" cy="127" r="0.7"/><circle cx="136" cy="86" r="0.7"/><circle cx="91" cy="117" r="0.7"/><circle cx="88" cy="94" r="5.1"/><circle cx="158" cy="184" r="0.7"/><circle cx="190" cy="144" r="0.7"/><circle cx="153" cy="151" r="5.3"/><circle cx="124" cy="104" r="0.7"/><circle cx="121" cy="157" r="4.1"/><circle cx="155" cy="100" r="0.7"/><circle cx="128" cy="116" r="0.7"/><circle cx="121" cy="162" r="0.7"/><circle cx="192" cy="106" r="2.2"/></svg>
- <svg class="deco spat y" viewBox="0 0 240 240" aria-hidden="true"><circle cx="102" cy="124" r="3.9"/><circle cx="139" cy="121" r="0.8"/><circle cx="163" cy="88" r="1.4"/><circle cx="149" cy="128" r="0.7"/><circle cx="99" cy="49" r="0.7"/><circle cx="122" cy="143" r="0.7"/><circle cx="63" cy="118" r="2.8"/><circle cx="98" cy="140" r="2.5"/><circle cx="135" cy="131" r="2.3"/><circle cx="59" cy="153" r="0.7"/><circle cx="119" cy="130" r="3.2"/><circle cx="132" cy="156" r="4.2"/><circle cx="152" cy="90" r="0.7"/><circle cx="136" cy="122" r="0.7"/><circle cx="161" cy="93" r="0.7"/><circle cx="83" cy="100" r="4.3"/><circle cx="126" cy="139" r="0.9"/><circle cx="121" cy="120" r="0.7"/><circle cx="76" cy="121" r="0.7"/><circle cx="105" cy="102" r="0.7"/><circle cx="93" cy="105" r="5.3"/><circle cx="175" cy="139" r="1.0"/><circle cx="102" cy="106" r="5.9"/><circle cx="151" cy="120" r="0.7"/><circle cx="111" cy="88" r="1.4"/><circle cx="130" cy="123" r="0.7"/><circle cx="88" cy="58" r="0.7"/><circle cx="94" cy="156" r="3.9"/><circle cx="80" cy="97" r="5.8"/><circle cx="107" cy="113" r="0.7"/><circle cx="127" cy="97" r="0.7"/><circle cx="78" cy="136" r="0.7"/><circle cx="133" cy="128" r="2.9"/><circle cx="136" cy="123" r="2.9"/><circle cx="147" cy="49" r="0.7"/><circle cx="120" cy="119" r="0.7"/><circle cx="126" cy="167" r="0.7"/><circle cx="127" cy="112" r="0.7"/><circle cx="98" cy="82" r="0.7"/><circle cx="197" cy="145" r="5.6"/><circle cx="174" cy="222" r="1.3"/><circle cx="166" cy="123" r="0.7"/><circle cx="133" cy="169" r="5.4"/><circle cx="94" cy="154" r="0.7"/><circle cx="108" cy="115" r="1.0"/><circle cx="115" cy="105" r="0.7"/><circle cx="98" cy="127" r="0.7"/><circle cx="179" cy="69" r="0.7"/><circle cx="117" cy="107" r="0.7"/><circle cx="200" cy="177" r="0.7"/><circle cx="89" cy="114" r="0.7"/><circle cx="131" cy="61" r="0.7"/><circle cx="144" cy="122" r="1.0"/><circle cx="84" cy="151" r="0.7"/><circle cx="64" cy="126" r="5.0"/><circle cx="139" cy="124" r="5.9"/><circle cx="163" cy="84" r="0.9"/><circle cx="134" cy="111" r="0.7"/><circle cx="96" cy="89" r="2.3"/><circle cx="118" cy="110" r="0.7"/><circle cx="103" cy="69" r="1.5"/><circle cx="135" cy="125" r="1.3"/><circle cx="102" cy="138" r="3.3"/><circle cx="117" cy="96" r="1.5"/><circle cx="165" cy="76" r="1.4"/><circle cx="114" cy="107" r="0.7"/><circle cx="142" cy="130" r="0.7"/><circle cx="176" cy="144" r="0.7"/><circle cx="109" cy="122" r="2.8"/><circle cx="119" cy="122" r="2.9"/><circle cx="181" cy="123" r="5.6"/><circle cx="138" cy="118" r="3.5"/><circle cx="136" cy="133" r="2.8"/><circle cx="130" cy="146" r="0.7"/><circle cx="183" cy="173" r="5.6"/><circle cx="66" cy="176" r="2.4"/><circle cx="75" cy="129" r="1.5"/><circle cx="121" cy="126" r="0.7"/><circle cx="103" cy="118" r="5.0"/><circle cx="168" cy="127" r="0.7"/></svg>
- <svg class="deco streep" viewBox="0 0 300 220" aria-hidden="true"><g fill="none" stroke-linecap="round"><path d="M40 210 L300 30" stroke="#ffd21f" stroke-width="22" opacity=".85"/><path d="M70 214 L300 58" stroke="#ffd21f" stroke-width="5" opacity=".6"/><path d="M20 196 L290 8" stroke="#ffd21f" stroke-width="3" opacity=".5"/><path d="M110 220 L300 92" stroke="#e42521" stroke-width="18" opacity=".8"/><path d="M140 222 L300 118" stroke="#e42521" stroke-width="4" opacity=".6"/></g></svg>
- <svg class="deco streep b" viewBox="0 0 300 220" aria-hidden="true"><g fill="none" stroke-linecap="round"><path d="M60 220 L300 60" stroke="#e42521" stroke-width="20" opacity=".7"/><path d="M90 222 L300 92" stroke="#e42521" stroke-width="4" opacity=".55"/><path d="M130 222 L300 120" stroke="#ffd21f" stroke-width="10" opacity=".6"/></g></svg>
- <svg class="deco kroon-deco k1" viewBox="0 0 120 70" aria-hidden="true"><use href="#kr"/></svg>
- <svg class="deco kroon-deco k2" viewBox="0 0 120 70" aria-hidden="true"><use href="#kr"/></svg>
- <svg class="deco kroon-deco k3" viewBox="0 0 120 70" aria-hidden="true"><use href="#kr"/></svg>
-
  <div class="wrap hero-in">
-  <svg class="halal" viewBox="0 0 120 120" role="img" aria-label="Halal">
-   <circle cx="60" cy="60" r="56" fill="#0b0b0c" stroke="#ffd21f" stroke-width="5"/>
-   <circle cx="60" cy="60" r="48" fill="none" stroke="#f6f3ec" stroke-width="1.5"/>
-   <text x="60" y="58" text-anchor="middle" fill="#f6f3ec" font-size="30" font-family="'Segoe UI','Noto Naskh Arabic','Geeza Pro',Tahoma,sans-serif" font-weight="700">حلال</text>
-   <text x="60" y="82" text-anchor="middle" fill="#f6f3ec" font-size="17" font-family="Barlow,sans-serif" font-weight="800" letter-spacing="1">HALAL</text>
-   <path d="M50 99 L52 89 L56 94 L60 86 L64 94 L68 89 L70 99 Q60 96 50 99Z" fill="none" stroke="#ffd21f" stroke-width="2.4" stroke-linejoin="round"/>
-  </svg>
 
   <div class="logo-vak">
-   <svg class="skyline" viewBox="0 0 1200 240" aria-hidden="true"><path pathLength="1" d="M0 236H1200 M30 236V190H80V236 M95 236V160H140V236 M105 175H130 M105 190H130 M155 236V200H200V236 M215 236V130H255V236 M235 130V112 M270 236V180H310V236 M336 236V64 M346 236V64 M326 88H356 M328 97H354 M341 64V14 M337 36H345 M380 206H660 M400 206V236 M640 206V236 M466 206L486 128L474 48 M480 206L498 128L486 48 M474 48H486 M478 62L430 206 M480 80L410 206 M486 60L540 206 M490 78L575 206 M494 96L610 206 M497 114L640 206 M684 236V128H714V236 M680 128V100H710V128 M724 236V96H756V236 M730 96V64H762V96 M766 236V116H796V236 M760 116V86H790V116 M830 236V54H868V236 M849 54V20 M838 80H860 M838 100H860 M838 120H860 M884 236V150H920V236 M934 236V110H966V236 M950 110V90 M980 236V176H1024V236 M1036 236V124H1072V236 M1086 236V160H1130V236 M1142 236V196H1190V236"/></svg>
    <svg class="tag" viewBox="0 0 560 372" role="img" aria-label="Papi Chulo">
 <defs>
 <filter id="spuit" filterUnits="userSpaceOnUse" x="-40" y="-40" width="640" height="460"><feGaussianBlur stdDeviation="9"/></filter>
@@ -361,6 +358,24 @@ body.pitch-aan .mo-noot{display:block}
 </g>
 </g>
 </svg>
+  </div>
+
+  <div class="gerecht">
+   <div class="gerecht-in">
+    <div class="gloed" aria-hidden="true"></div>
+    <img src="img/hero-toast.jpg" srcset="img/hero-toast-900.jpg 900w, img/hero-toast.jpg 1600w" sizes="(min-width:1000px) 56vw, 100vw" alt="Papi's Toast: gegrild brood, rijk belegd, met gesmolten kaassaus" width="1600" height="1200" fetchpriority="high" decoding="async">
+    <span class="stoom" style="--x:-16%;--dx:-18px;--t:7s;--d:1.6s" aria-hidden="true"></span>
+    <span class="stoom" style="--x:4%;--dx:14px;--t:8.5s;--d:3.4s" aria-hidden="true"></span>
+    <span class="stoom" style="--x:20%;--dx:26px;--t:7.6s;--d:5.1s" aria-hidden="true"></span>
+    <span class="tagje mark"><svg viewBox="0 0 34 22" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 18C9 17 20 13 30 5"/><path d="M21 4l9 1-3 9"/></svg>Papi's Toast</span>
+   </div>
+   <svg class="halal" viewBox="0 0 120 120" role="img" aria-label="Halal">
+   <circle cx="60" cy="60" r="56" fill="#0b0b0c" stroke="#ffd21f" stroke-width="5"/>
+   <circle cx="60" cy="60" r="48" fill="none" stroke="#f6f3ec" stroke-width="1.5"/>
+   <text x="60" y="58" text-anchor="middle" fill="#f6f3ec" font-size="30" font-family="'Segoe UI','Noto Naskh Arabic','Geeza Pro',Tahoma,sans-serif" font-weight="700">حلال</text>
+   <text x="60" y="82" text-anchor="middle" fill="#f6f3ec" font-size="17" font-family="Barlow,sans-serif" font-weight="800" letter-spacing="1">HALAL</text>
+   <path d="M50 99 L52 89 L56 94 L60 86 L64 94 L68 89 L70 99 Q60 96 50 99Z" fill="none" stroke="#ffd21f" stroke-width="2.4" stroke-linejoin="round"/>
+  </svg>
   </div>
 
   <span class="chip"><svg width="18" height="11" aria-hidden="true"><use href="#kr"/></svg> Coming soon</span>
@@ -385,23 +400,23 @@ body.pitch-aan .mo-noot{display:block}
   <p class="intro">Vijf gerechten, zo groot als op onze flyer. De prijzen zetten we hier zodra we opengaan.</p>
   <div class="affiches grid">
    <article class="aff groot">
-    <div class="foto"><img src="img/french-tacos.jpg" alt="French Tacos, gegrild en doorgesneden, met friet ernaast" width="1000" height="520" loading="lazy" decoding="async"><span class="bron">van onze flyer</span></div>
+    <div class="foto"><img src="img/french-tacos.jpg?v=2" alt="French Tacos, gegrild en doorgesneden, met friet ernaast" width="1600" height="899" loading="lazy" decoding="async"><span class="bron">van onze flyer</span></div>
     <div class="naam"><span class="ico"><svg aria-hidden="true"><use href="#i-tacos"/></svg></span><h3 class="mark"><span class="borstel">French Tacos</span><svg aria-hidden="true"><use href="#kr"/></svg></h3></div>
    </article>
    <article class="aff groot">
-    <div class="foto"><img src="img/papis-toast.jpg" alt="Papi's Toast: gegrild brood, rijk belegd" width="1000" height="513" loading="lazy" decoding="async"><span class="bron">van onze flyer</span></div>
+    <div class="foto"><img src="img/papis-toast.jpg?v=2" alt="Papi's Toast: gegrild brood, rijk belegd" width="1600" height="899" loading="lazy" decoding="async"><span class="bron">van onze flyer</span></div>
     <div class="naam"><span class="ico"><svg aria-hidden="true"><use href="#i-toast"/></svg></span><h3 class="mark"><span class="borstel">Papi's Toast</span><svg aria-hidden="true"><use href="#kr"/></svg></h3></div>
    </article>
    <article class="aff">
-    <div class="foto"><img src="img/pasta.jpg" alt="Pasta penne in een zwarte kom" width="740" height="518" loading="lazy" decoding="async"><span class="bron">van onze flyer</span></div>
+    <div class="foto"><img src="img/pasta.jpg?v=2" alt="Pasta penne in een zwarte kom" width="1200" height="800" loading="lazy" decoding="async"><span class="bron">van onze flyer</span></div>
     <div class="naam"><span class="ico"><svg aria-hidden="true"><use href="#i-pasta"/></svg></span><h3 class="mark"><span class="borstel">Pasta</span><svg aria-hidden="true"><use href="#kr"/></svg></h3></div>
    </article>
    <article class="aff">
-    <div class="foto"><img src="img/mac-cheese.jpg" alt="Mac &amp; Cheese in een zwarte kom, met een vork vol draderige kaas" width="740" height="673" loading="lazy" decoding="async"><span class="bron">van onze flyer</span></div>
+    <div class="foto"><img src="img/mac-cheese.jpg?v=2" alt="Mac &amp; Cheese in een zwarte kom, met een vork vol draderige kaas" width="1100" height="1100" loading="lazy" decoding="async"><span class="bron">van onze flyer</span></div>
     <div class="naam"><span class="ico"><svg aria-hidden="true"><use href="#i-mac"/></svg></span><h3 class="mark"><span class="borstel">Mac <span class="amp">&amp;</span> Cheese</span><svg aria-hidden="true"><use href="#kr"/></svg></h3></div>
    </article>
    <article class="aff">
-    <div class="foto"><img src="img/fish-chips.jpg" alt="Fish &amp; Chips met friet, saus en een partje citroen" width="740" height="582" loading="lazy" decoding="async"><span class="bron">van onze flyer</span></div>
+    <div class="foto"><img src="img/fish-chips.jpg?v=2" alt="Fish &amp; Chips met friet, saus en een partje citroen" width="1200" height="900" loading="lazy" decoding="async"><span class="bron">van onze flyer</span></div>
     <div class="naam"><span class="ico"><svg aria-hidden="true"><use href="#i-fish"/></svg></span><h3 class="mark"><span class="borstel">Fish <span class="amp">&amp;</span> Chips</span><svg aria-hidden="true"><use href="#kr"/></svg></h3></div>
    </article>
   </div>
@@ -598,7 +613,7 @@ body.pitch-aan .mo-noot{display:block}
     <li>Route naar Zuidplein Hoog, naast Optiek 010, in één tik.</li>
     <li>Een "laat me weten"-knop: klanten melden zich al vóór de opening.</li>
    </ul>
-   <p class="klein">De foto's komen van jullie flyer. Na de opening kunnen er eigen foto's van de zaak bij.</p>
+   <p class="klein">De foto's komen van jullie flyer en zijn scherp gemaakt voor het scherm. Na de opening kunnen er eigen foto's van de zaak bij.</p>
   </div>
  </div>
 </div>
@@ -608,6 +623,21 @@ body.pitch-aan .mo-noot{display:block}
   var WA_NR = ''; // nummer van de zaak: nog onbekend (wordt bij oplevering ingevuld, bijv. '316...')
   var d=document, b=d.body;
   function waLink(t){return 'https://wa.me/'+WA_NR+'?text='+encodeURIComponent(t);}
+
+  /* menu rustig in beeld + gerecht beweegt mee met de muis (alleen desktop) */
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(!rm&&'IntersectionObserver' in window){
+    d.documentElement.classList.add('js');
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    d.querySelectorAll('.aff').forEach(function(a,i){a.style.setProperty('--w',(i%3*0.09)+'s');io.observe(a);});
+    var alles=function(){d.querySelectorAll('.aff:not(.in)').forEach(function(a){a.classList.add('in');});};
+    setTimeout(alles,10000);window.addEventListener('beforeprint',alles);
+  }
+  var hero=d.querySelector('.hero'), gi=d.querySelector('.gerecht-in');
+  if(!rm&&gi&&window.matchMedia&&matchMedia('(hover:hover) and (min-width:1000px)').matches){
+    hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();gi.style.setProperty('--px',((e.clientX-r.left)/r.width-.5).toFixed(3));gi.style.setProperty('--py',((e.clientY-r.top)/r.height-.5).toFixed(3));});
+    hero.addEventListener('pointerleave',function(){gi.style.setProperty('--px',0);gi.style.setProperty('--py',0);});
+  }
 
   /* pitch-modus */
   var pitch=d.getElementById('pitch');
