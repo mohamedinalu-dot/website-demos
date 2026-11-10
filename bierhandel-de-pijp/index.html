@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<!--
+  L264 Restaurant Bierhandel De Pijp (Gaffelstraat 90-A, Rotterdam). Demo door Mohamedia, 10 nov 2026.
+  Concept in één zin: "Dezelfde zaal, toen en nu": de site leest als het register van een Rotterdams instituut,
+  met hun eigen foto uit 1966 en een recente foto vanaf precies dezelfde plek, die in de hero over elkaar schuiven.
+  Lay-out-archetype: TOEN/NU-VEEG + REGISTER. Hero = split (desktop) / stapel (mobiel): de zaal-foto met een
+  vergelijkingslijn die één keer van rechts naar links veegt (1966 zwart-wit -> nu in kleur) en daarna stil blijft
+  staan; de gast kan de lijn zelf verslepen. De kaart = een veegrij met foto's van hun eigen schoolborden.
+  Het verhaal = een genummerd register (zoals hun dassenregister), op grootboekpapier met kantlijn.
+  Geen marquee/band, geen stempel, geen schuine fotokaart, geen stoom, geen Ken Burns, geen licht-aan, geen letters één voor één.
+  Beeld: alleen foto's van hun eigen site (bierhandeldepijp.nl, uploads 2020 en juli 2026). Bovenste krijtbord met
+  oude prijzen weggesneden; borden zonder de stickerwand eronder; Heineken-bord op de boekomslag vervaagd.
+  1966-foto en recente foto uitgelijnd op de twee achterdeuren (schaal 1,65).
+  Logo: hun eigen logo (BIERHANDEL / embleem + DE PIJP ® / ROTTERDAM 1898) overgetrokken met potrace uit de JPG op hun site.
+  Bellen is de hoofdknop (vast 010-nummer; "Reserveren alleen telefonisch" op hun site).
+  WhatsApp aanzetten: zet WA_AAN op true (onderaan, in het script) of bekijk het vooraf met ?wa=1.
+  Pitch-paneel: knop "Mo" rechtsonder op desktop, of ?pitch in de URL.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Bierhandel De Pijp – Frans-Hollands restaurant in Rotterdam</title>
+<meta name="description" content="Restaurant Bierhandel De Pijp, Gaffelstraat 90-A in Rotterdam: Frans-Hollandse keuken van het schoolbord, open keuken en lange tafels. Lunch wo–vr 12:00–14:00, diner ma–za vanaf 17:30. Reserveren: bel 010 436 68 96.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@property --x{syntax:'<percentage>';inherits:true;initial-value:100%}
+:root{
+  --tabak:#21150e; --tabak2:#2e1e14; --hout:#4a301e; --oker:#c8932f; --oker-l:#e6b65a;
+  --groen:#13700c; --groen-d:#0d5408; --groen-l:#4cbc40; --papier:#eef0e6; --lijn:#c9d3e0; --kant:#b4372b;
+  --inkt:#1b1a17; --inkt2:#4d4a42; --krijt:#f1efe8; --lei:#1d2321;
+  --kop:'Young Serif',Georgia,serif; --tekst:'Instrument Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--tekst);font-size:17px;line-height:1.55;color:var(--inkt);background:var(--papier);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:400;line-height:1.08;margin:0;overflow-wrap:break-word}
+h2{font-size:clamp(30px,6.4vw,50px)}
+h3{font-size:clamp(20px,4.6vw,24px)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.oog{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:12px 22px;border-radius:6px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:var(--tekst);transition:background-color .2s,color .2s,border-color .2s;white-space:nowrap}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-p{background:var(--groen);color:#fff}
+.btn-p:hover{background:var(--groen-d)}
+.btn-l{background:transparent;color:var(--krijt);border-color:rgba(241,239,232,.55)}
+.btn-l:hover{border-color:var(--krijt)}
+.btn-d{background:transparent;color:var(--inkt);border-color:var(--inkt)}
+.btn-wa{background:#1f7a43;color:#fff}
+html:not(.wa) .wa-only{display:none!important}
+:focus-visible{outline:3px solid var(--oker-l);outline-offset:3px}
+
+/* demo-strook + aankondiging */
+.demo{background:#0f0a07;color:#d9d3c4;font-size:13px;text-align:center;padding:8px 14px}
+.demo a{color:#fff}
+.bericht{background:var(--groen-d);color:#fff;font-size:14px;text-align:center;padding:8px 14px}
+.bericht a{color:#fff;font-weight:700}
+
+/* header */
+.kop{background:var(--tabak);color:var(--krijt);position:sticky;top:0;z-index:40;border-bottom:1px solid rgba(255,255,255,.08)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:72px}
+.kop .merk{display:block;padding:8px 0}
+.kop .merk img{height:54px;width:auto}
+.kop nav{display:none;gap:26px;font-weight:600;font-size:15px}
+.kop nav a{text-decoration:none;opacity:.85}
+.kop nav a:hover{opacity:1}
+.kop .btn{min-height:46px;padding:10px 16px;font-size:15px}
+.kop .btn .lang{display:none}
+
+/* hero */
+.hero{background:var(--tabak);color:var(--krijt);position:relative;overflow:hidden}
+.zaal{position:relative;height:clamp(360px,52vh,470px);overflow:hidden;--x:12%;background:#111;touch-action:pan-y}
+.zaal picture,.zaal img{position:absolute;inset:0;width:100%;height:100%}
+.zaal img{object-fit:cover;object-position:50% 58%}
+.zaal .oud{clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.zaal.speel{animation:veeg 3.4s cubic-bezier(.65,0,.3,1) .5s both}
+@keyframes veeg{0%{--x:100%}22%{--x:100%}100%{--x:12%}}
+.zaal .streep{position:absolute;top:0;bottom:0;left:var(--x);width:3px;margin-left:-1.5px;background:var(--oker-l);box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+.zaal .greep{position:absolute;top:50%;left:var(--x);width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:var(--oker-l);color:var(--tabak);border:0;display:grid;place-items:center;cursor:ew-resize;touch-action:none;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.zaal .greep svg{width:24px;height:24px}
+.zaal .jaar{position:absolute;bottom:14px;font-size:13px;font-weight:700;letter-spacing:.08em;padding:6px 10px;border-radius:4px;background:rgba(15,10,7,.78);color:var(--krijt);pointer-events:none}
+.zaal .jaar.j1{left:12px}
+.zaal .jaar.j2{right:12px}
+.zaal .bron{position:absolute;top:10px;right:12px;font-size:11px;color:rgba(255,255,255,.8);background:rgba(15,10,7,.6);padding:3px 7px;border-radius:3px;pointer-events:none}
+.hero-tekst{padding:26px 0 34px}
+.hero .oog{color:var(--oker-l)}
+.hero h1{font-size:clamp(32px,8.6vw,56px);margin:10px 0 14px;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--groen-l)}
+.hero .lead{font-size:clamp(17px,4.3vw,19px);color:#e2dccd;max-width:34em;margin:0}
+.status{display:inline-flex;align-items:center;gap:9px;margin:18px 0 0;font-size:15px;font-weight:600;color:#fff;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);padding:8px 12px;border-radius:6px}
+.status i{width:9px;height:9px;border-radius:50%;background:#8a8174;flex:none}
+.status.open i{background:var(--groen-l);box-shadow:0 0 0 4px rgba(76,188,64,.2)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.trust{margin-top:28px;font-size:15px;color:#cfc7b6;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.trust b{color:#fff}
+.trust .st{color:var(--oker-l);letter-spacing:1px}
+.trust a{color:#fff}
+
+/* bord (kaart) */
+.bord{background:var(--lei);color:var(--krijt);padding:64px 0 56px;position:relative}
+.bord::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 0%,rgba(255,255,255,.06),transparent 60%);pointer-events:none}
+.bord .oog{color:var(--oker-l)}
+.bord h2{margin:10px 0 14px}
+.bord .intro{max-width:40em;color:#d6d4cc;margin:0}
+.gerechten{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.gerechten li{font-size:15px;border:1px dashed rgba(241,239,232,.4);padding:6px 11px;border-radius:4px;color:#eceae2}
+.rij{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:26px 20px 14px;margin:0 -20px;scrollbar-width:thin}
+.rij>*{min-width:0}
+.plaat{flex:0 0 min(78vw,330px);scroll-snap-align:start;margin:0;background:#2a1b12;padding:10px;border-radius:4px;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.plaat button{all:unset;display:block;cursor:zoom-in;width:100%}
+.plaat button:focus-visible{outline:3px solid var(--oker-l)}
+.plaat img{width:100%;height:330px;object-fit:cover;object-position:50% 0;border-radius:2px}
+.plaat figcaption{font-size:14px;padding:9px 2px 0;color:#d8d0bf}
+.plaat figcaption span{display:block}
+.plaat figcaption .t{font-weight:700;color:#fff}
+.bord .noot{font-size:14px;color:#b9b6ac;margin:8px 0 0;max-width:46em}
+.bord .acties{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+
+/* kiezer */
+.kiezer{background:var(--tabak2);color:var(--krijt);padding:64px 0}
+.kiezer .oog{color:var(--oker-l)}
+.kiezer h2{margin:10px 0 10px}
+.kiezer .intro{color:#d8d0bf;margin:0 0 26px;max-width:38em}
+.kz{display:grid;gap:22px}
+.kz>*{min-width:0}
+.stap h3{font-family:var(--tekst);font-weight:700;font-size:16px;margin:0 0 10px;display:flex;gap:10px;align-items:center}
+.stap h3 b{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--oker);color:var(--tabak);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{min-width:48px;font-family:var(--tekst);font-size:15px;font-weight:600;min-height:46px;padding:9px 14px;border-radius:6px;border:1.5px solid rgba(241,239,232,.35);background:transparent;color:var(--krijt);cursor:pointer}
+.chips button small{font-weight:500;opacity:.75}
+.chips button[aria-pressed=true]{background:var(--krijt);color:var(--tabak);border-color:var(--krijt)}
+.chips button:disabled{opacity:.38;cursor:not-allowed;text-decoration:line-through}
+.veld{display:block;width:100%;max-width:360px;min-height:48px;margin-top:4px;padding:10px 12px;font:inherit;font-size:16px;border-radius:6px;border:1.5px solid rgba(241,239,232,.35);background:rgba(0,0,0,.2);color:#fff}
+.bon{background:var(--papier);color:var(--inkt);border-radius:4px;padding:20px 18px 18px;position:relative;background-image:repeating-linear-gradient(transparent 0 29px,var(--lijn) 29px 30px);background-position:0 12px;border-left:4px solid var(--kant)}
+.bon .lbl{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--kant)}
+.bon p{font-family:var(--kop);font-size:clamp(18px,4.6vw,21px);line-height:30px;margin:6px 0 16px}
+.bon .knoppen{display:flex;flex-wrap:wrap;gap:10px}
+.bon .knoppen .btn{min-height:48px}
+.bon p.klein{font-family:var(--tekst);font-size:13px;line-height:1.5;color:var(--inkt2);margin:12px 0 0}
+
+/* waarom */
+.waarom{padding:64px 0}
+.waarom .oog{color:var(--kant)}
+.waarom h2{margin:10px 0 26px}
+.kaarten{display:grid;gap:16px}
+.kaarten>*{min-width:0}
+.kaart{background:#fff;border:1px solid #d8dccd;border-radius:6px;padding:22px 20px;overflow:hidden}
+.kaart .nr{font-family:var(--kop);font-size:15px;color:var(--kant)}
+.kaart h3{margin:6px 0 8px;font-size:clamp(20px,5vw,24px)}
+.kaart p{margin:0;color:var(--inkt2)}
+.kaart img{margin:-22px -20px 18px;width:calc(100% + 40px);max-width:none;height:200px;object-fit:cover}
+.kaart a{font-weight:600}
+
+/* reviews */
+.reviews{background:var(--hout);color:var(--krijt);padding:60px 0}
+.score{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.score .cijfer{font-family:var(--kop);font-size:64px;line-height:1}
+.score .st{color:var(--oker-l);font-size:22px;letter-spacing:2px}
+.score a{color:#fff}
+.rev{display:grid;gap:14px;margin-top:26px}
+.rev>*{min-width:0}
+.rev figure{margin:0;background:rgba(0,0,0,.18);border-left:3px solid var(--oker);padding:16px 18px;border-radius:0 6px 6px 0}
+.rev p{margin:0 0 8px;font-size:17px}
+.rev figcaption{font-size:14px;color:#d8cbb4;font-weight:600}
+.reviews .label{font-size:13px;color:#d0c3ac;margin-top:16px}
+
+/* register (verhaal) */
+.register{padding:64px 0;background:var(--papier);background-image:repeating-linear-gradient(transparent 0 33px,var(--lijn) 33px 34px)}
+.register .oog{color:var(--kant)}
+.register h2{margin:10px 0 8px}
+.register .intro{max-width:38em;color:var(--inkt2);margin:0 0 24px}
+.reg{list-style:none;padding:0;margin:0;border-top:2px solid var(--inkt)}
+.reg li{display:grid;grid-template-columns:92px 1fr;gap:0 16px;padding:14px 0;border-bottom:1px solid #b9c0b0;position:relative}
+.reg li>*{min-width:0}
+.reg .jr{font-family:var(--kop);font-size:20px;color:var(--kant);border-right:2px solid var(--kant);padding-right:10px}
+.reg .jr small{display:block;font-family:var(--tekst);font-size:12px;color:var(--inkt2)}
+.reg p{margin:0}
+.boek{display:grid;gap:20px;margin-top:34px;align-items:center;background:#fff;border:1px solid #d8dccd;border-radius:6px;padding:18px}
+.boek>*{min-width:0}
+.boek img{width:100%;max-width:340px;height:auto;border-radius:3px}
+.boek h3{margin:0 0 8px}
+.boek p{margin:0 0 10px;color:var(--inkt2)}
+
+/* stappen + faq */
+.stappen{padding:60px 0;background:#fff}
+.stappen .oog{color:var(--kant)}
+.stappen h2{margin:10px 0 24px}
+.drie{list-style:none;padding:0;margin:0;display:grid;gap:14px;counter-reset:s}
+.drie>*{min-width:0}
+.drie li{border:1px solid #d8dccd;border-radius:6px;padding:18px;counter-increment:s;position:relative;padding-left:68px}
+.drie li::before{content:counter(s);position:absolute;left:18px;top:16px;width:36px;height:36px;border-radius:50%;background:var(--groen);color:#fff;font-family:var(--kop);display:grid;place-items:center;font-size:18px}
+.drie b{display:block;font-size:17px}
+.drie span{color:var(--inkt2)}
+.faq{padding:60px 0;background:var(--papier)}
+.faq h2{margin:0 0 20px}
+.faq details{background:#fff;border:1px solid #d8dccd;border-radius:6px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:700;padding:15px 18px;min-height:48px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::after{content:"+";font-family:var(--kop);font-size:22px;line-height:1;color:var(--kant)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0;padding:0 18px 16px;color:var(--inkt2)}
+
+/* route */
+.route{background:var(--tabak);color:var(--krijt);padding:60px 0}
+.route .oog{color:var(--oker-l)}
+.route h2{margin:10px 0 20px}
+.route-grid{display:grid;gap:22px}
+.route-grid>*{min-width:0}
+.route address{font-style:normal;font-size:19px;line-height:1.5}
+.route .mini{color:#cfc7b6;font-size:15px;margin:6px 0 16px}
+.route .acties{display:flex;flex-wrap:wrap;gap:12px}
+.uren{width:100%;border-collapse:collapse;font-size:16px}
+.uren td{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.12);vertical-align:top}
+.uren td:last-child{text-align:right;color:#e8e1d2}
+.uren tr.vandaag td{color:var(--oker-l);font-weight:700}
+.kaartje{border:0;width:100%;height:280px;border-radius:6px;filter:grayscale(.3) contrast(1.05);background:#2a1b12}
+
+/* slot + footer */
+.slot{background:var(--groen-d);color:#fff;padding:56px 0;text-align:center}
+.slot h2{margin:0 0 10px}
+.slot p{margin:0 auto 22px;max-width:32em;color:#dfeedd}
+.slot .cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.slot .btn-p{background:#fff;color:var(--groen-d)}
+.slot .btn-l{border-color:rgba(255,255,255,.6);color:#fff}
+footer{background:#0f0a07;color:#bdb5a5;padding:34px 0 110px;font-size:14px}
+footer .wrap{display:grid;gap:14px}
+footer img{height:48px;width:auto}
+footer a{color:#fff}
+
+/* zwevend */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:flex;gap:10px;transform:translateY(140%);opacity:0;transition:transform .3s,opacity .3s;pointer-events:none}
+.zweef.aan{transform:none;opacity:1;pointer-events:auto}
+.zweef .btn{flex:1;min-height:52px;box-shadow:0 8px 20px rgba(0,0,0,.35);padding:12px 10px}
+.zweef .btn-l{background:var(--tabak);border-color:var(--tabak)}
+
+/* lichtbak */
+dialog.licht{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh}
+dialog.licht::backdrop{background:rgba(10,7,5,.9)}
+dialog.licht img{max-width:96vw;max-height:84vh;width:auto;height:auto}
+dialog.licht .sluit{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#fff;padding:8px 0}
+dialog.licht button{min-height:46px;min-width:46px;border-radius:6px;border:1.5px solid #fff;background:transparent;color:#fff;font:inherit;font-weight:700;cursor:pointer}
+
+/* pitch */
+.mo{position:fixed;right:16px;bottom:16px;z-index:60;width:46px;height:46px;border-radius:50%;border:0;background:var(--oker);color:var(--tabak);font-weight:800;font-family:var(--tekst);cursor:pointer;display:none;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.pitch{position:fixed;inset:0;z-index:70;background:rgba(10,7,5,.72);display:none;overflow-y:auto;padding:16px}
+.pitch.open{display:block}
+.pitch .pan{background:#fff;color:var(--inkt);max-width:900px;margin:0 auto;border-radius:8px;padding:22px 18px;position:relative}
+.pitch .x{position:absolute;right:10px;top:10px;width:46px;height:46px;border:0;background:#eee;border-radius:50%;font-size:24px;cursor:pointer}
+.pitch h2{font-size:26px;margin:0 50px 14px 0}
+.vn{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.vn>*{min-width:0}
+.vn figure{margin:0}
+.vn img{width:100%;height:auto;border:1px solid #ddd;border-radius:4px}
+.vn figcaption{font-size:13px;color:#555;margin-top:6px}
+.punten{padding-left:20px}
+.punten li{margin-bottom:10px}
+.reken{background:var(--papier);border-radius:6px;padding:16px;margin-top:16px}
+.reken label{display:block;margin-top:12px;font-weight:600}
+.reken input{width:100%;min-height:44px}
+.reken .uit{font-family:var(--kop);font-size:20px;margin-top:12px}
+.prijs{border:2px solid var(--groen);border-radius:6px;padding:14px 16px;margin-top:16px}
+.small{font-size:14px;color:#555}
+
+@media (min-width:760px){
+  .kop nav{display:flex}
+  .kop .btn .lang{display:inline}
+  .kaarten{grid-template-columns:repeat(3,1fr)}
+  .rev{grid-template-columns:repeat(3,1fr)}
+  .drie{grid-template-columns:repeat(3,1fr)}
+  .route-grid{grid-template-columns:1fr 1fr}
+  .boek{grid-template-columns:300px 1fr}
+  .kz{grid-template-columns:1.2fr 1fr;align-items:start}
+  .kz .bon{position:sticky;top:96px}
+  .reg li{grid-template-columns:130px 1fr}
+  .plaat{flex-basis:330px}
+}
+@media (min-width:980px){
+  .hero-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);height:clamp(620px,calc(100vh - 170px),760px)}
+  .hero h1{font-size:clamp(40px,3.9vw,54px)}
+  .hero-tekst{padding:56px 44px 56px max(20px,calc((100vw - 1180px)/2 + 20px));align-self:center}
+  .zaal{height:auto;min-height:0}
+  .zaal .jaar.j2{right:78px}
+  .zweef{display:none}
+}
+@media (max-width:979px){ .hero-in{display:flex;flex-direction:column} .zaal{order:-1;height:clamp(330px,46vh,430px)} .hero-tekst{padding:22px 20px 34px} }
+@media (max-width:520px){ .bericht .lang{display:none} }
+@media (max-width:400px){
+  .kop .merk img{height:46px}
+  .reg li{grid-template-columns:78px 1fr;gap:0 12px}
+  .reg .jr{font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  .zaal.speel{animation:none}
+  html{scroll-behavior:auto}
+  .zweef{transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a>.</div>
+<p class="bericht" style="margin:0"><b>4,6 ★</b> uit 556 Google-reviews<span class="lang"> · Reserveren: <a href="tel:+31104366896">010 436 68 96</a></span></p>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="Bierhandel De Pijp, naar boven"><img src="logo-light.svg" width="1509" height="582" alt="Bierhandel De Pijp, Rotterdam 1898"></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#kaart">Het bord</a>
+      <a href="#kiezer">Reserveren</a>
+      <a href="#verhaal">Sinds 1898</a>
+      <a href="#route">Route &amp; tijden</a>
+    </nav>
+    <a class="btn btn-p" href="tel:+31104366896"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>Bel<span class="lang">&nbsp;010 436 68 96</span></a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero" aria-labelledby="h1">
+  <div class="hero-in">
+    <div class="hero-tekst">
+      <div class="oog">Gaffelstraat · Rotterdam · sinds 1898</div>
+      <h1 id="h1">Frans-Hollands eten aan <em>lange tafels</em>, van het schoolbord.</h1>
+      <p class="lead">Een open keuken midden in de zaak, de gerechten met krijt op het bord, en aanschuiven naast wie er al zit. In een zijstraat van de Nieuwe Binnenweg.</p>
+      <div class="status" id="status" aria-live="polite"><i></i><span>Lunch wo–vr 12:00–14:00 · diner ma–za vanaf 17:30</span></div>
+      <div class="hero-cta">
+        <a class="btn btn-p" href="tel:+31104366896"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>Bel om te reserveren</a>
+        <a class="btn btn-l" href="#kiezer">Plan lunch of diner</a>
+      </div>
+      <p class="trust" style="margin-bottom:0"><span class="st" aria-hidden="true">★★★★★</span><span><b>4,6</b> uit 556 reviews op <a href="https://www.google.com/maps?cid=13264415922287864286" target="_blank" rel="noopener">Google</a></span><span>Gaffelstraat 90-A, Rotterdam</span></p>
+    </div>
+    <div class="zaal speel" id="zaal">
+      <picture>
+        <source media="(max-width:979px)" srcset="img/zaal-nu-staand.jpg">
+        <img src="img/zaal-nu-breed.jpg" width="1000" height="694" alt="De zaal van De Pijp: lange houten tafels, wanden vol foto's en bierviltjes, rechts de open keuken" fetchpriority="high">
+      </picture>
+      <picture class="oud">
+        <source media="(max-width:979px)" srcset="img/zaal-1966-staand.jpg">
+        <img src="img/zaal-1966-breed.jpg" width="1000" height="694" alt="Dezelfde zaal in 1966, in zwart-wit, met gasten aan de tafels en de keuken rechts">
+      </picture>
+      <span class="streep" aria-hidden="true"></span>
+      <button class="greep" id="greep" type="button" aria-label="Schuif tussen 1966 en nu (pijltjestoetsen)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></button>
+      <span class="jaar j1">1966</span>
+      <span class="jaar j2">Nu</span>
+      <span class="bron">Foto's: bierhandeldepijp.nl</span>
+    </div>
+  </div>
+</section>
+
+<section class="bord" id="kaart" aria-labelledby="h-bord">
+  <div class="wrap">
+    <div class="oog">Van het schoolbord</div>
+    <h2 id="h-bord">Wat er op het bord staat</h2>
+    <p class="intro">Frans-Hollandse keuken, dagelijks vers. De gerechten staan met krijt op het schoolbord, er is iedere maand een nieuw gerecht van de maand en de keuken speelt in op de seizoenen. Gerechten zoals:</p>
+    <ul class="gerechten">
+      <li>Tournedos</li><li>Gebakken mosselen</li><li>Scholfilets</li><li>Gebakken lever met spek en uien</li><li>Gestoofd rundvlees</li><li>Hollandse garnalen</li><li>Capucijners met spek</li>
+    </ul>
+    <div class="rij" role="list">
+      <figure class="plaat" role="listitem"><button type="button" data-groot="img/bord-specialiteiten.jpg" data-tekst="Bord: specialiteiten"><img src="img/bord-specialiteiten.jpg" width="720" height="803" alt="Krijtbord Specialiteiten, onder meer oesters, confit de canard, gegrilde kalfsribeye met brie en rode wijnsaus en gestoofd rundvlees met rode kool, met prijzen in euro" loading="lazy" decoding="async"></button><figcaption><span class="t">Specialiteiten</span><span>Tik om te vergroten</span></figcaption></figure>
+      <figure class="plaat" role="listitem"><button type="button" data-groot="img/bord-voor-en-vlees.jpg" data-tekst="Bord: voorgerechten en vleesgerechten"><img src="img/bord-voor-en-vlees.jpg" width="900" height="615" alt="Krijtborden met voorgerechten (onder meer Franse uiensoep en garnalenkroketten) en vleesgerechten (onder meer entrecote, tournedos en steak tartaar), met prijzen" loading="lazy" decoding="async"></button><figcaption><span class="t">Voorgerechten en vlees</span><span>Tik om te vergroten</span></figcaption></figure>
+      <figure class="plaat" role="listitem"><button type="button" data-groot="img/bord-vis.jpg" data-tekst="Bord: visgerechten"><img src="img/bord-vis.jpg" width="720" height="940" alt="Krijtbord Visgerechten, onder meer gebakken mosselen, gebakken tong en gebakken scholfilets, met prijzen" loading="lazy" decoding="async"></button><figcaption><span class="t">Vis</span><span>Tik om te vergroten</span></figcaption></figure>
+      <figure class="plaat" role="listitem"><button type="button" data-groot="img/bord-nagerechten.jpg" data-tekst="Bord: nagerechten"><img src="img/bord-nagerechten.jpg" width="720" height="946" alt="Krijtbord Nagerechten, onder meer flensjes, profiteroles, crème brûlée en een kaasplateau, met prijzen" loading="lazy" decoding="async"></button><figcaption><span class="t">Nagerechten</span><span>Tik om te vergroten</span></figcaption></figure>
+    </div>
+    <p class="noot">Foto's van onze borden, zoals ze op onze menupagina staan (juli 2026). Wat er vandaag op het bord staat, lees je in de zaak.</p>
+    <div class="acties">
+      <a class="btn btn-p" href="tel:+31104366896">Bel voor een plek</a>
+      <a class="btn btn-l" href="#kiezer">Plan lunch of diner</a>
+    </div>
+  </div>
+</section>
+
+<section class="kiezer" id="kiezer" aria-labelledby="h-kz">
+  <div class="wrap">
+    <div class="oog">Reserveren gaat telefonisch</div>
+    <h2 id="h-kz">Zet je reservering klaar</h2>
+    <p class="intro">Kies lunch of diner, met hoeveel je komt en welke dag. Dan staat hieronder precies wat je aan de telefoon zegt.</p>
+    <div class="kz">
+      <div>
+        <div class="stap"><h3><b>1</b> Lunch of diner?</h3><div class="chips" id="c-wat"></div></div>
+        <div class="stap" style="margin-top:20px"><h3><b>2</b> Met hoeveel personen?</h3><div class="chips" id="c-wie"></div></div>
+        <div class="stap" style="margin-top:20px"><h3><b>3</b> Welke dag?</h3><div class="chips" id="c-dag"></div></div>
+        <div class="stap" style="margin-top:20px"><h3><b>4</b> Hoe laat ongeveer?</h3><div class="chips" id="c-tijd"></div></div>
+        <div class="stap" style="margin-top:20px"><h3><b>5</b> Op welke naam? <small style="font-weight:500;opacity:.7">(mag leeg)</small></h3><input class="veld" id="naam" type="text" autocomplete="name" placeholder="Je naam" aria-label="Je naam"></div>
+      </div>
+      <div class="bon" aria-live="polite">
+        <div class="lbl" id="bon-lbl">Zeg dit aan de telefoon</div>
+        <p id="zin"></p>
+        <div class="knoppen">
+          <a class="btn btn-p" href="tel:+31104366896"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>Bel 010 436 68 96</a>
+          <a class="btn btn-wa wa-only" id="stuurwa" href="#">Stuur via WhatsApp</a>
+          <button class="btn btn-d" id="kopieer" type="button">Kopieer tekst</button>
+        </div>
+        <p class="klein">Lunch wo–vr 12:00–14:00 · diner ma–za vanaf 17:30 · zondag gesloten.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="waarom" aria-labelledby="h-w">
+  <div class="wrap">
+    <div class="oog">Waarom De Pijp</div>
+    <h2 id="h-w">Wat gasten over De Pijp schrijven</h2>
+    <div class="kaarten">
+      <article class="kaart">
+        <div class="nr">No. 1</div>
+        <h3>“Het oudste restaurant van Rotterdam”</h3>
+        <p>Zo noemen gasten De Pijp in hun reviews op <a href="https://www.google.com/maps?cid=13264415922287864286" target="_blank" rel="noopener">Google</a>. Ze schrijven over een iconische plek die ouderwets gezellig is.</p>
+      </article>
+      <article class="kaart">
+        <img src="img/keuken-flambe.jpg" width="457" height="306" alt="In de open keuken wordt een pan geflambeerd" loading="lazy" decoding="async">
+        <div class="nr">No. 2</div>
+        <h3>Eten uit de open keuken</h3>
+        <p>De keuken staat midden in de zaak. Op het bord staan onder meer de kalfsribeye met brie, de Franse uiensoep, confit de canard en gestoofd rundvlees.</p>
+      </article>
+      <article class="kaart">
+        <div class="nr">No. 3</div>
+        <h3>Aanschuiven aan lange tafels</h3>
+        <p>Eigen tafels zijn er niet: er zijn lange tafels en je schuift aan. Gasten schrijven dat het er druk en luid kan zijn. Bel dus even voor een plek.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" aria-labelledby="h-r">
+  <div class="wrap">
+    <h2 id="h-r" class="oog" style="font-family:var(--tekst);color:var(--oker-l)">Reviews op Google</h2>
+    <p class="score" style="margin:12px 0 0"><span class="cijfer">4,6</span><span class="st" aria-hidden="true">★★★★★</span><span>uit 556 reviews · <a href="https://www.google.com/maps?cid=13264415922287864286" target="_blank" rel="noopener">bekijk ze op Google</a></span></p>
+    <div class="rev">
+      <figure><p>Een oude bruine kroeg, heel gezellig, met uitstekend eten.</p><figcaption>Marius</figcaption></figure>
+      <figure><p>Een gezellige plek met heerlijk eten, en je voelt je welkom.</p><figcaption>Anne</figcaption></figure>
+      <figure><p>Fantastisch eten en een fantastische sfeer.</p><figcaption>Jon-Remi</figcaption></figure>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="register" id="verhaal" aria-labelledby="h-v">
+  <div class="wrap">
+    <div class="oog">Het register</div>
+    <h2 id="h-v">Drie eeuwen De Pijp</h2>
+    <p class="intro">Van bierhandel tot restaurant, van de Gelderschekade naar de Gaffelstraat.</p>
+    <ol class="reg">
+      <li><div class="jr">1898</div><p>De Pijp begint als bierhandel, met distributie en bottelarij, aan de Gelderschekade.</p></li>
+      <li><div class="jr">1940<small>14 mei</small></div><p>Het eerste pand wordt verwoest bij het bombardement op Rotterdam.</p></li>
+      <li><div class="jr">1940<small>15 augustus</small></div><p>“De nieuwe Pijp” gaat van start in een oude garage annex fietsenstalling aan de Gaffelstraat.</p></li>
+      <li><div class="jr">1941</div><p>Als de sociëteit van het Rotterdamsch Studenten Corps dicht moet, doet De Pijp tijdelijk dienst als ondergrondse sociëteit; in de oorlogsjaren is het een plek waar het studentenverzet samenkomt.</p></li>
+      <li><div class="jr">1988</div><p>Het eerste boek over De Pijp, en de grens van 1000 dassendragers gaat over: wie een genummerde Pijp-das heeft, staat in het dassenregister.</p></li>
+      <li><div class="jr">1998</div><p>Het tweede boek, bij het 100-jarig bestaan.</p></li>
+      <li><div class="jr">2013</div><p>Das nummer 2000 wordt bereikt.</p></li>
+    </ol>
+    <div class="boek">
+      <img src="img/boek.jpg" width="600" height="472" alt="Omslag van het boek 'Hij ging als een ander mens De Pijp uit', gasten en hun verhalen" loading="lazy" decoding="async">
+      <div>
+        <div class="oog" style="color:var(--kant)">Het derde boek</div>
+        <h3 style="margin-top:6px">Hij ging als een ander mens De Pijp uit</h3>
+        <p>200 pagina's met verhalen, literaire stukken, kunst en nooit eerder vertoonde foto's. Het boek is te koop in De Pijp, tijdens de openingsuren. Combineer je het met een lunch of diner, bel dan even om te reserveren.</p>
+        <a class="btn btn-d" href="#kiezer">Plan lunch of diner</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stappen" aria-labelledby="h-s">
+  <div class="wrap">
+    <div class="oog">Zo regel je het</div>
+    <h2 id="h-s">Van bellen tot aanschuiven</h2>
+    <ol class="drie">
+      <li><b>Kies je moment</b><span>Lunch op woensdag t/m vrijdag, diner van maandag t/m zaterdag.</span></li>
+      <li><b>Bel 010 436 68 96</b><span>Reserveren gaat telefonisch. De planner hierboven zet klaar wat je zegt.</span></li>
+      <li><b>Schuif aan</b><span>Aan de lange tafel, met de open keuken in de zaak en het bord aan de muur.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="h-f">
+  <div class="wrap">
+    <h2 id="h-f">Vaak gevraagd</h2>
+    <details><summary>Hoe reserveer ik?</summary><p>Telefonisch, op 010 436 68 96. Reserveren is aanbevolen.</p></details>
+    <details><summary>Waar staan de gerechten?</summary><p>Met krijt op de schoolborden in de zaak. Hierboven zie je foto's van de borden zoals ze op onze menupagina staan.</p></details>
+    <details><summary>Wanneer is er lunch?</summary><p>Woensdag, donderdag en vrijdag van 12:00 tot 14:00.</p></details>
+    <details><summary>Wanneer is er diner?</summary><p>Maandag tot en met zaterdag vanaf 17:30. Op zondag zijn we gesloten.</p></details>
+    <details><summary>Krijg ik een eigen tafel?</summary><p>Eigen tafels zijn er niet: er zijn lange tafels en je schuift aan.</p></details>
+    <details><summary>Kan ik met creditcard betalen?</summary><p>Ja, met Visa en Mastercard.</p></details>
+  </div>
+</section>
+
+<section class="route" id="route" aria-labelledby="h-rt">
+  <div class="wrap">
+    <div class="oog">Route &amp; tijden</div>
+    <h2 id="h-rt">Gaffelstraat 90-A</h2>
+    <div class="route-grid">
+      <div>
+        <address>Restaurant Bierhandel De Pijp<br>Gaffelstraat 90-A<br>3014 RM Rotterdam</address>
+        <p class="mini">In een zijstraat van de Nieuwe Binnenweg.</p>
+        <div class="acties">
+          <a class="btn btn-p" href="tel:+31104366896">Bel 010 436 68 96</a>
+          <a class="btn btn-l" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bierhandel%20De%20Pijp%2C%20Gaffelstraat%2090-A%2C%203014%20RM%20Rotterdam" target="_blank" rel="noopener">Route</a>
+        </div>
+        <table class="uren" id="uren" style="margin-top:24px">
+          <tr data-d="1"><td>Maandag</td><td>diner vanaf 17:30</td></tr>
+          <tr data-d="2"><td>Dinsdag</td><td>diner vanaf 17:30</td></tr>
+          <tr data-d="3"><td>Woensdag</td><td>lunch 12:00–14:00<br>diner vanaf 17:30</td></tr>
+          <tr data-d="4"><td>Donderdag</td><td>lunch 12:00–14:00<br>diner vanaf 17:30</td></tr>
+          <tr data-d="5"><td>Vrijdag</td><td>lunch 12:00–14:00<br>diner vanaf 17:30</td></tr>
+          <tr data-d="6"><td>Zaterdag</td><td>diner vanaf 17:30</td></tr>
+          <tr data-d="0"><td>Zondag</td><td>gesloten</td></tr>
+        </table>
+      </div>
+      <iframe class="kaartje" title="Kaart: Bierhandel De Pijp, Gaffelstraat 90-A, Rotterdam" src="https://maps.google.com/maps?q=Bierhandel%20De%20Pijp%2C%20Gaffelstraat%2090-A%2C%20Rotterdam&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="h-slot">
+  <div class="wrap">
+    <h2 id="h-slot">Schuif je aan?</h2>
+    <p>Bel voor een plek aan de lange tafel, of zet eerst je bezoek klaar in de planner.</p>
+    <div class="cta">
+      <a class="btn btn-p" href="tel:+31104366896">Bel 010 436 68 96</a>
+      <a class="btn btn-l" href="#kiezer">Plan lunch of diner</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-light.svg" width="1509" height="582" alt="Bierhandel De Pijp" loading="lazy" decoding="async">
+    <div>Restaurant Bierhandel De Pijp · Gaffelstraat 90-A, 3014 RM Rotterdam · <a href="tel:+31104366896">010 436 68 96</a> · <a href="mailto:info@bierhandeldepijp.nl">info@bierhandeldepijp.nl</a></div>
+    <div>Foto's: bierhandeldepijp.nl</div>
+    <div>Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> · Dit is een demo</div>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-hidden="true">
+  <a class="btn btn-p" href="tel:+31104366896" tabindex="-1">Bel</a>
+  <a class="btn btn-wa wa-only" href="#" data-wa="kort" tabindex="-1">App</a>
+  <a class="btn btn-l" href="#kiezer" tabindex="-1">Plan lunch of diner</a>
+</div>
+
+<dialog class="licht" id="licht" aria-label="Bord vergroot">
+  <div class="sluit"><span id="licht-t"></span><button type="button" id="licht-x" aria-label="Sluiten">×</button></div>
+  <img id="licht-img" src="img/bord-specialiteiten.jpg" width="720" height="803" alt="" loading="lazy" decoding="async">
+</dialog>
+
+<!-- Pitch-modus: alleen met ?pitch in de URL -->
+<button class="mo" id="mo" type="button" aria-label="Pitch-paneel">Mo</button>
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-labelledby="p-h">
+  <div class="pan">
+    <button class="x" id="pclose" type="button" aria-label="Sluiten">×</button>
+    <h2 id="p-h">De Pijp: nu en straks</h2>
+    <div class="vn">
+      <figure><img src="img/voor-site.jpg" width="390" height="844" alt="Huidige site van De Pijp op een telefoon" loading="lazy" decoding="async"><figcaption>Nu: bierhandeldepijp.nl op een telefoon (10 nov 2026). Gratis WordPress-thema; onderaan "Hestia | Ontwikkeld door ThemeIsle".</figcaption></figure>
+      <figure><img src="img/na-mobiel.jpg" width="390" height="844" alt="Deze demo op een telefoon: de zaal toen en nu, belknop bovenaan" loading="lazy" decoding="async"><figcaption>Straks: deze site, op jullie eigen domein.</figcaption></figure>
+    </div>
+    <h2 style="font-size:20px;margin-top:18px">Wat er concreet beter is</h2>
+    <ol class="punten">
+      <li><b>Bellen in één tik.</b> Op jullie site staat "Reserveren alleen telefonisch", maar 010-436 68 96 staat er als gewone tekst, zonder belknop, onderaan de pagina. Hier zit de belknop in de kop, in de hero en zwevend onderin, en de planner zet klaar wat de gast zegt.</li>
+      <li><b>De borden op de voorpagina.</b> De bordfoto's van juli staan nu op een aparte pagina achter het menu-icoon, niet op de homepage. Hier ziet een gast ze meteen, groot en te vergroten.</li>
+      <li><b>Open of dicht, in één blik.</b> Restaurant Guru zet jullie op "Temporarily closed". Hier staat bovenaan of er vandaag lunch of diner is, met de 4,6 uit 556 Google-reviews erbij.</li>
+    </ol>
+    <div class="reken">
+      <strong>Voorbeeld om samen in te vullen, geen belofte</strong>
+      <label for="r-k">Extra gasten per week via de site: <span id="r-kv">2</span></label>
+      <input type="range" id="r-k" min="1" max="20" value="2">
+      <label for="r-b">Gemiddelde besteding per gast: € <span id="r-bv">30</span></label>
+      <input type="range" id="r-b" min="15" max="70" step="5" value="30">
+      <div class="uit" id="r-uit"></div>
+    </div>
+    <div class="prijs"><b>€ 595 incl. btw, eenmalig.</b> Tot 5 pagina's, op jullie eigen domein, mobiel, belknop en route, Google-reviews, basis-SEO, hosting inbegrepen, live binnen 48 uur na betaling. Willen jullie meer dan 5 pagina's (bijvoorbeeld het dassenregister of het boek apart): € 75 per extra pagina.</div>
+    <p class="small">WhatsApp staat uit, omdat 010 436 68 96 een vast nummer is. Met een WhatsApp-nummer zetten we de knop aan.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ---------- instellingen ---------- */
+  // WhatsApp aanzetten: zet WA_AAN op true zodra er een WhatsApp-nummer is (zet het in WA_NUMMER, zonder + en spaties).
+  // Vooraf bekijken: ?wa=1 in de URL.
+  var WA_AAN = false;
+  var WA_NUMMER = '31104366896';
+  var params = new URLSearchParams(location.search);
+  if (params.get('wa') === '1') WA_AAN = true;
+  var LUNCH = {3:1,4:1,5:1}, L_VAN = 720, L_TOT = 840, D_VAN = 1050; // minuten na middernacht
+  var DAGEN = ['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+  var MAANDEN = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+  var KORT = 'Hoi De Pijp, ik heb een vraag.';
+  var nu = new Date(), mnu = nu.getHours()*60 + nu.getMinutes();
+  function wa(t){ return 'https://wa.me/' + WA_NUMMER + '?text=' + encodeURIComponent(t); }
+  if (WA_AAN) {
+    document.documentElement.classList.add('wa');
+    document.querySelectorAll('[data-wa="kort"]').forEach(function(a){ a.href = wa(KORT); a.target = '_blank'; a.rel = 'noopener'; });
+  }
+
+  /* ---------- vandaag open? ---------- */
+  (function(){
+    var st = document.getElementById('status'), d = nu.getDay(), t;
+    var lunch = !!LUNCH[d], diner = d !== 0;
+    if (lunch && mnu >= L_VAN && mnu < L_TOT) { st.classList.add('open'); t = 'Nu lunch, tot 14:00 · diner vanaf 17:30'; }
+    else if (lunch && mnu < L_VAN) { t = 'Vandaag lunch 12:00–14:00 · diner vanaf 17:30'; }
+    else if (diner && mnu >= D_VAN && mnu < 1320) { st.classList.add('open'); t = 'Vanavond diner, vanaf 17:30'; }
+    else if (diner && mnu >= D_VAN) { t = 'Vandaag diner vanaf 17:30'; }
+    else if (diner) { t = 'Vandaag diner vanaf 17:30'; }
+    else { t = 'Zondag gesloten · maandag diner vanaf 17:30'; }
+    st.querySelector('span').textContent = t;
+    var rij = document.querySelector('#uren tr[data-d="' + d + '"]'); if (rij) rij.classList.add('vandaag');
+  })();
+
+  /* ---------- toen/nu-veeg ---------- */
+  (function(){
+    var zaal = document.getElementById('zaal'), greep = document.getElementById('greep'), slepen = false;
+    function zet(p){ p = Math.max(0, Math.min(100, p)); zaal.classList.remove('speel'); zaal.style.animation = 'none'; zaal.style.setProperty('--x', p + '%'); greep.dataset.p = p; }
+    function vanX(x){ var r = zaal.getBoundingClientRect(); zet((x - r.left) / r.width * 100); }
+    greep.addEventListener('pointerdown', function(e){ slepen = true; greep.setPointerCapture(e.pointerId); vanX(e.clientX); });
+    greep.addEventListener('pointermove', function(e){ if (slepen) vanX(e.clientX); });
+    greep.addEventListener('pointerup', function(){ slepen = false; });
+    greep.addEventListener('pointercancel', function(){ slepen = false; });
+    greep.addEventListener('keydown', function(e){
+      var p = parseFloat(greep.dataset.p || '12');
+      if (e.key === 'ArrowLeft') { zet(p - 5); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { zet(p + 5); e.preventDefault(); }
+    });
+  })();
+
+  /* ---------- lichtbak voor de borden ---------- */
+  (function(){
+    var dlg = document.getElementById('licht'), img = document.getElementById('licht-img');
+    document.querySelectorAll('[data-groot]').forEach(function(b){
+      b.addEventListener('click', function(){
+        img.src = b.dataset.groot; img.alt = b.dataset.tekst; document.getElementById('licht-t').textContent = b.dataset.tekst;
+        if (dlg.showModal) dlg.showModal(); else window.open(b.dataset.groot, '_blank');
+      });
+    });
+    document.getElementById('licht-x').addEventListener('click', function(){ dlg.close(); });
+    dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+  })();
+
+  /* ---------- planner ---------- */
+  var keuze = {wat:'diner', wie:'met 2 personen', dag:0, tijd:'rond 18:30'};
+  function datum(i){ return new Date(nu.getFullYear(), nu.getMonth(), nu.getDate() + i); }
+  function kan(wat, i){
+    var d = datum(i).getDay();
+    if (d === 0) return false;
+    if (wat === 'lunch') return !!LUNCH[d] && !(i === 0 && mnu >= L_TOT);
+    return true;
+  }
+  function chips(id, opties, actief, cb){
+    var w = document.getElementById(id); w.innerHTML = '';
+    opties.forEach(function(o){
+      var b = document.createElement('button'); b.type = 'button';
+      b.innerHTML = o.html || o.label; b.setAttribute('aria-pressed', o.v === actief ? 'true' : 'false');
+      if (o.uit) b.disabled = true;
+      b.addEventListener('click', function(){ cb(o.v); });
+      w.appendChild(b);
+    });
+  }
+  function eersteDag(){ for (var i = 0; i < 14; i++) if (kan(keuze.wat, i)) return i; return 1; }
+  function tekenWat(){
+    chips('c-wat', [{v:'lunch',label:'Lunch <small>(wo–vr)</small>'},{v:'diner',label:'Diner <small>(ma–za)</small>'}], keuze.wat, function(v){
+      keuze.wat = v; keuze.tijd = v === 'lunch' ? 'rond 12:30' : 'rond 18:30';
+      if (!kan(v, keuze.dag)) keuze.dag = eersteDag();
+      tekenWat(); tekenDag(); tekenTijd(); update();
+    });
+  }
+  function tekenWie(){
+    chips('c-wie', [{v:'met 1 persoon',label:'1'},{v:'met 2 personen',label:'2'},{v:'met 3 of 4 personen',label:'3–4'},{v:'met 5 tot 8 personen',label:'5–8'},{v:'met een groter gezelschap',label:'Groter gezelschap'}], keuze.wie, function(v){ keuze.wie = v; tekenWie(); update(); });
+  }
+  function dagLabel(i){
+    var d = datum(i), dg = d.getDay(), kort = DAGEN[dg].slice(0,2), extra = '';
+    if (dg === 0) extra = ' <small>(dicht)</small>';
+    else if (keuze.wat === 'lunch' && !LUNCH[dg]) extra = ' <small>(geen lunch)</small>';
+    if (i === 0) return 'Vandaag' + extra;
+    if (i === 1) return 'Morgen' + extra;
+    return kort + ' ' + d.getDate() + '/' + (d.getMonth() + 1) + extra;
+  }
+  function tekenDag(){
+    var o = [];
+    for (var i = 0; i < 8; i++) o.push({v:i, html:dagLabel(i), uit:!kan(keuze.wat, i)});
+    if (!kan(keuze.wat, keuze.dag)) keuze.dag = eersteDag();
+    chips('c-dag', o, keuze.dag, function(v){ keuze.dag = v; tekenDag(); tekenTijd(); update(); });
+  }
+  function tekenTijd(){
+    var o = keuze.wat === 'lunch'
+      ? [{v:'rond 12:00',label:'12:00',m:720},{v:'rond 12:30',label:'12:30',m:750},{v:'rond 13:00',label:'13:00',m:780}]
+      : [{v:'rond 17:30',label:'17:30',m:1050},{v:'rond 18:30',label:'18:30',m:1110},{v:'rond 19:30',label:'19:30',m:1170},{v:'rond 20:30',label:'20:30',m:1230}];
+    o.forEach(function(x){ x.uit = keuze.dag === 0 && mnu > x.m - 15; });
+    var vrij = o.filter(function(x){ return !x.uit; });
+    if (!vrij.length) o.forEach(function(x){ x.uit = false; });
+    var h = o.filter(function(x){ return x.v === keuze.tijd; })[0];
+    if (!h || h.uit) keuze.tijd = (vrij[0] || o[0]).v;
+    chips('c-tijd', o, keuze.tijd, function(v){ keuze.tijd = v; tekenTijd(); update(); });
+  }
+  function dagTekst(i){
+    var d = datum(i);
+    if (i === 0) return 'vandaag';
+    if (i === 1) return 'morgen (' + DAGEN[d.getDay()] + ' ' + d.getDate() + ' ' + MAANDEN[d.getMonth()] + ')';
+    return DAGEN[d.getDay()] + ' ' + d.getDate() + ' ' + MAANDEN[d.getMonth()];
+  }
+  function bericht(){
+    var naam = document.getElementById('naam').value.trim();
+    var t = 'Goedendag, ik wil graag reserveren voor ' + (keuze.wat === 'lunch' ? 'de lunch' : 'het diner') + ', ' + dagTekst(keuze.dag) + ' ' + keuze.tijd + ', ' + keuze.wie + '.';
+    t += naam ? ' Op naam van ' + naam + '.' : '';
+    return t;
+  }
+  function update(){
+    var t = bericht();
+    document.getElementById('zin').textContent = t;
+    document.getElementById('bon-lbl').textContent = WA_AAN ? 'Je bericht' : 'Zeg dit aan de telefoon';
+    var s = document.getElementById('stuurwa');
+    if (WA_AAN) { s.href = wa(t); s.target = '_blank'; s.rel = 'noopener'; }
+  }
+  document.getElementById('naam').addEventListener('input', update);
+  document.getElementById('kopieer').addEventListener('click', function(){
+    var b = this, t = bericht();
+    function klaar(){ b.textContent = 'Gekopieerd'; setTimeout(function(){ b.textContent = 'Kopieer tekst'; }, 1800); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(klaar, function(){});
+  });
+  if (!kan('diner', 0)) keuze.dag = eersteDag();
+  tekenWat(); tekenWie(); tekenDag(); tekenTijd(); update();
+
+  /* ---------- zwevende knoppen ---------- */
+  (function(){
+    var z = document.getElementById('zweef'), heroUit = false, kiezerIn = false;
+    function zet(){ var aan = heroUit && !kiezerIn; z.classList.toggle('aan', aan); z.setAttribute('aria-hidden', aan ? 'false' : 'true');
+      z.querySelectorAll('a').forEach(function(a){ a.tabIndex = aan ? 0 : -1; }); }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(e){ heroUit = !e[0].isIntersecting; zet(); }).observe(document.getElementById('hero'));
+      new IntersectionObserver(function(e){ kiezerIn = e[0].isIntersecting; zet(); }, {rootMargin:'-30% 0px -30% 0px'}).observe(document.getElementById('kiezer'));
+    }
+  })();
+
+  /* ---------- pitch ---------- */
+  (function(){
+    var p = document.getElementById('pitch');
+    function open(){ p.classList.add('open'); }
+    document.getElementById('mo').addEventListener('click', open);
+    document.getElementById('pclose').addEventListener('click', function(){ p.classList.remove('open'); });
+    p.addEventListener('click', function(e){ if (e.target === p) p.classList.remove('open'); });
+    if (params.has('pitch')) { document.getElementById('mo').style.display = 'block'; open(); }
+    var k = document.getElementById('r-k'), b = document.getElementById('r-b');
+    function reken(){
+      var kv = +k.value, bv = +b.value, jaar = kv * bv * 52, n = Math.ceil(595 / bv);
+      document.getElementById('r-kv').textContent = kv; document.getElementById('r-bv').textContent = bv;
+      document.getElementById('r-uit').textContent = 'Voorbeeld: ' + kv + ' × € ' + bv + ' × 52 = € ' + jaar.toLocaleString('nl-NL') + ' per jaar. € 595 is de besteding van ' + n + ' gasten.';
+    }
+    k.addEventListener('input', reken); b.addEventListener('input', reken); reken();
+  })();
+})();
+</script>
+</body>
+</html>
