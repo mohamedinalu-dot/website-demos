@@ -1,0 +1,872 @@
+<!doctype html>
+<!--
+  L257 Patisserie Sweet and Spice (Goudseplein 261, Rotterdam-Rubroek) — demo door Mohamedia.
+  Concept in één zin: "Het draaiplateau van de patissier": hun eigen taarten staan op een draaischijf, zoals op de
+  draaitafel waarop een taart wordt afgewerkt, en jij draait zelf verder tot je de jouwe ziet.
+  Lay-out-archetype: DRAAIPLATEAU + ETIKETBALKEN. Hero = een 3D-ring van 8 eigen taartfoto's op een zwarte
+  draaischijf met roze rand. Bij het laden draait het plateau één keer rond en remt af op de eerste taart
+  (eenmalig, requestAnimationFrame, daarna stil; geen lus). Daarna kan de bezoeker zelf slepen of de pijlen gebruiken.
+  Sectiekoppen als de twee balken van hun gevelbord/logo (roze balk met zwarte letters, zwarte balk met roze letters),
+  stilstaand. Rubrieken als split-screen rijen, winkelsectie met een veegrij gebak, verhaal als cv-tijdlijn.
+  Geen marquee/band onder de hero, geen schuine fotokaart, geen stempel, geen stoom, geen Ken Burns,
+  geen "licht gaat aan", geen bord-/letteronthulling, geen idle-lus.
+  Beeld: alleen eigen foto's van patisseriesweetandspice.nl (bestanden met Facebook-/telefoonnamen, hun eigen werk;
+  stockfoto's van die site NIET gebruikt) en de gevelfoto uit hun Google Maps-vermelding (illy-logo en krijtprijs
+  op het raam vervaagd). Geen foto's met personen, geen taarten met merken/figuren van derden of namen van klanten.
+  Logo: hun eigen logo (twee balken, Bebas Neue) nagetekend als vectorpaden.
+  WhatsApp: nog niet bevestigd. Zet WA_AAN hieronder op true (of test met ?wa=1) als Ops het nummer bevestigt.
+-->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Patisserie Sweet and Spice – taarten op maat en Hongaars gebak in Rotterdam</title>
+<meta name="description" content="Feesttaarten, bruidstaarten, petit fours en Hongaars gebak van Patisserie Sweet and Spice, Goudseplein 261 in Rotterdam. Zaterdag open 10:00–17:00, dinsdag t/m vrijdag op afspraak.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Karla:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --roze:#E1325D; --roze-d:#B91E48; --roze-l:#FCE8EE; --poeder:#FBF3F5;
+  --inkt:#0B0B0B; --inkt-2:#1C1719; --grijs:#5E5458; --lijn:#EBDDE2; --wit:#fff;
+  --kaneel:#8A4A24;
+  --kop:'Bebas Neue',Impact,'Arial Narrow',sans-serif; --tekst:'Karla',system-ui,sans-serif;
+  --r:14px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--tekst);color:var(--inkt);background:var(--wit);font-size:17px;line-height:1.55;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:400;letter-spacing:.01em;line-height:.95;margin:0}
+p{margin:0 0 1em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.grid>*,.split>*,.hero-grid>*{min-width:0}
+:focus-visible{outline:3px solid var(--roze);outline-offset:3px}
+
+/* demo-strook + aankondiging */
+.demo{background:var(--inkt);color:#f4dbe2;font-size:13px;text-align:center;padding:7px 12px}
+.demo a{color:#fff;font-weight:700}
+.aank{background:var(--roze);color:var(--inkt);font-size:13.5px;font-weight:700;text-align:center;padding:7px 12px;line-height:1.35}
+.aank span{white-space:nowrap}
+
+/* header */
+.kop{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--lijn)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;height:68px}
+.kop .merk{display:block;flex:none}
+.kop .merk img{width:132px;height:49px}
+.nav{display:none;gap:22px;font-weight:600;font-size:15px}
+.nav a{text-decoration:none;padding:12px 0}
+.nav a:hover{color:var(--roze-d)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:12px 20px;border-radius:999px;font-weight:800;font-size:16px;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:var(--tekst);line-height:1.1;text-align:center}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-bel{background:var(--inkt);color:#fff}
+.btn-bel:hover{background:#2a2226}
+.btn-roze{background:var(--roze);color:var(--inkt)}
+.btn-roze:hover{background:#ea5277}
+.btn-wa{background:#1f8f4e;color:#fff}
+.btn-rand{background:#fff;color:var(--inkt);border-color:var(--inkt)}
+.btn-rand:hover{background:var(--roze-l)}
+.kop .btn{min-height:44px;padding:10px 16px;font-size:15px}
+
+/* etiketbalken (uit hun logo) */
+.balk{display:inline-block;font-family:var(--kop);font-size:clamp(17px,4.4vw,21px);letter-spacing:.06em;line-height:1;padding:7px 12px 5px}
+.balk.r{background:var(--roze);color:var(--inkt)}
+.balk.z{background:var(--inkt);color:var(--roze)}
+.balken{display:flex;flex-direction:column;align-items:flex-start;gap:5px;margin-bottom:16px}
+h2{font-size:clamp(40px,10.5vw,68px);margin-bottom:16px}
+h2 em{font-style:normal;color:var(--roze-d)}
+.lead{font-size:18px;color:var(--grijs);max-width:640px}
+section{padding:72px 0}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 70% at 50% 100%,#f9dbe3 0,rgba(249,219,227,0) 60%),var(--poeder);padding:22px 0 30px}
+.hero-grid{display:grid;gap:6px}
+.hero .plek{font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--roze-d);margin:0 0 8px}
+.hero h1{font-size:clamp(44px,12.4vw,96px);line-height:.9;margin:0 0 10px}
+.hero h1 .z{display:inline-block;background:var(--inkt);color:var(--roze);padding:.06em .14em 0;margin-top:.06em}
+.hero .sub{font-size:17px;color:var(--grijs);max-width:520px;margin:0}
+.intro{animation:opkomen .8s cubic-bezier(.2,.7,.2,1) both}
+.intro.d2{animation-delay:.12s}.intro.d3{animation-delay:.24s}
+@keyframes opkomen{from{opacity:0;translate:0 14px}to{opacity:1;translate:0 0}}
+
+.plateau{position:relative;height:292px;margin:6px -20px 0;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
+.plateau:active{cursor:grabbing}
+.scene{position:absolute;inset:0;perspective:900px;perspective-origin:50% 0%}
+.ring,.schijf{position:absolute;left:50%;top:46%;transform-style:preserve-3d}
+.ring{width:0;height:0}
+.taart{position:absolute;left:calc(var(--w) / -2);top:calc(var(--h) / -2);width:var(--w);height:var(--h);margin:0;border-radius:var(--r);overflow:hidden;
+  transform:rotateY(var(--a)) translateZ(var(--rr));backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#eee;
+  box-shadow:0 18px 30px -14px rgba(60,10,25,.45)}
+.taart img{width:100%;height:100%;object-fit:cover}
+.schijf{width:var(--d);height:var(--d);margin:calc(var(--d) / -2) 0 0 calc(var(--d) / -2);border-radius:50%;
+  background:
+   radial-gradient(circle,transparent 0 calc(50% - 15px),var(--roze) calc(50% - 15px) calc(50% - 9px),var(--inkt) calc(50% - 9px)),
+   repeating-conic-gradient(from 0deg,#2b2428 0 2deg,var(--inkt) 2deg 15deg);
+  box-shadow:0 0 0 2px #000}
+.schijf::after{content:"";position:absolute;inset:38%;border-radius:50%;background:radial-gradient(circle,#3a3236,#0b0b0b 70%)}
+.plateau-bedien{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px}
+.pijl{width:46px;height:46px;border-radius:50%;border:2px solid var(--inkt);background:#fff;display:grid;place-items:center;cursor:pointer;flex:none}
+.pijl:hover{background:var(--roze-l)}
+.pijl svg{width:20px;height:20px}
+.onderschrift{flex:1;text-align:center;font-size:15px;line-height:1.3;min-width:0}
+.onderschrift b{display:block;font-weight:700}
+.onderschrift small{color:var(--grijs);font-size:13px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px}
+.hero-cta .btn{flex:1 1 140px;padding:12px 14px}
+.lang{display:none}
+@media (min-width:430px){.kort{display:none}.lang{display:inline}}
+.trust{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:15px;color:var(--grijs);margin:0}
+.trust a{font-weight:700;color:var(--inkt)}
+.sterren{color:var(--roze);letter-spacing:1px;font-size:17px}
+.tijden-hero{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;padding:0;list-style:none;font-size:14px;font-weight:700}
+.tijden-hero li{background:#fff;border:1px solid var(--lijn);border-radius:999px;padding:6px 12px}
+
+/* rubrieken */
+.rubriek{display:grid;gap:22px;align-items:center;padding:34px 0;border-top:1px solid var(--lijn)}
+.rubriek:first-of-type{border-top:0}
+.rubriek h3{font-size:clamp(34px,8.6vw,52px);margin-bottom:12px}
+.rubriek ul{margin:0 0 18px;padding-left:20px}
+.rubriek li{margin:3px 0}
+.foto{border-radius:var(--r);overflow:hidden;background:var(--roze-l)}
+.foto img{width:100%;height:100%;object-fit:cover}
+.duo{display:grid;grid-template-columns:1.3fr 1fr;gap:10px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.trio .foto{aspect-ratio:4/5}
+.tekstlink{font-weight:800;color:var(--roze-d);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;gap:6px}
+.tekstlink:hover{text-decoration:underline}
+.mini{font-size:14px;color:var(--grijs)}
+
+/* winkel */
+.winkel{background:var(--inkt);color:#f6eaee}
+.winkel h2{color:#fff}
+.winkel h2 em{color:var(--roze)}
+.winkel .lead{color:#d8c6cc}
+.winkel .balk.z,footer .balk.z{box-shadow:inset 0 0 0 1px #4a3a40}
+.winkel-grid{display:grid;gap:22px;align-items:start}
+.uren{background:var(--inkt-2);border:1px solid #3a2f33;border-radius:var(--r);padding:20px}
+.uren dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:0 0 6px}
+.uren dt{font-weight:800;color:#fff}
+.uren dd{margin:0}
+.rij{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 14px;margin:26px -20px 0;scrollbar-width:thin}
+.rij figure{flex:0 0 62%;max-width:300px;margin:0;scroll-snap-align:start}
+.rij .foto{aspect-ratio:1}
+.rij figcaption{font-size:13px;color:#cdb9c0;margin-top:6px}
+.rij figcaption span{display:block}
+
+/* verhaal */
+.verhaal{background:var(--poeder)}
+.citaat{font-family:var(--kop);font-size:clamp(30px,7.4vw,46px);line-height:1;margin:0 0 22px;max-width:820px}
+.citaat::before{content:"\201C";color:var(--roze)}
+.citaat::after{content:"\201D";color:var(--roze)}
+.lijnen{list-style:none;margin:0;padding:0;border-left:4px solid var(--inkt);display:grid;gap:0}
+.lijnen li{position:relative;padding:12px 0 12px 22px}
+.lijnen li::before{content:"";position:absolute;left:-10px;top:19px;width:16px;height:16px;border-radius:50%;background:var(--roze);border:3px solid var(--poeder)}
+.lijnen b{display:block;font-family:var(--kop);font-size:24px;font-weight:400;letter-spacing:.03em;line-height:1}
+.lijnen span{color:var(--grijs)}
+.invloed{margin-top:22px;background:#fff;border-radius:var(--r);padding:18px 20px;border:1px solid var(--lijn)}
+
+/* kiezer */
+.kiezer{background:#fff}
+.kies-kaart{border:2px solid var(--inkt);border-radius:20px;padding:20px;background:#fff;box-shadow:8px 8px 0 var(--roze)}
+.stap{margin:0 0 22px}
+.stap>legend,.stap-kop{font-family:var(--kop);font-size:26px;letter-spacing:.03em;margin:0 0 10px;padding:0;display:flex;align-items:center;gap:10px}
+.stap-kop i{font-style:normal;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--inkt);color:var(--roze);font-size:18px;flex:none}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+.tegels{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.tegel{position:relative;display:block;border:2px solid var(--lijn);border-radius:14px;overflow:hidden;cursor:pointer;background:#fff;text-align:left;padding:0;font:inherit;min-height:44px}
+.tegel img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.tegel span{display:block;padding:9px 11px;font-weight:800;font-size:15px;line-height:1.2}
+.tegel[aria-pressed=true]{border-color:var(--roze);box-shadow:0 0 0 3px var(--roze)}
+.tegel[aria-pressed=true] span{background:var(--roze)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:10px 15px;border-radius:999px;border:2px solid var(--lijn);background:#fff;font:inherit;font-weight:700;font-size:15px;cursor:pointer;color:var(--inkt)}
+.chip[aria-pressed=true]{background:var(--inkt);color:#fff;border-color:var(--inkt)}
+.veld{display:grid;gap:6px;margin-bottom:12px}
+.veld label{font-weight:700;font-size:15px}
+.veld input,.veld select{min-height:48px;border:2px solid var(--lijn);border-radius:12px;padding:10px 12px;font:inherit;background:#fff;color:var(--inkt);width:100%}
+.velden{display:grid;gap:0 12px}
+.noot{font-size:14px;color:var(--grijs);margin:8px 0 0}
+.bericht{background:var(--poeder);border:1px dashed var(--roze);border-radius:14px;padding:14px 16px;font-size:15px;white-space:pre-line;margin:0 0 14px;min-height:96px}
+.uit-knoppen{display:flex;flex-wrap:wrap;gap:10px}
+.uit-knoppen .btn{flex:1 1 180px}
+.kiezer-grid{display:grid;gap:26px}
+
+/* reviews */
+.reviews{background:var(--poeder)}
+.score{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.score b{font-family:var(--kop);font-size:84px;font-weight:400;line-height:.8}
+.waarom{display:grid;gap:12px;margin-bottom:34px}
+.waarom article{background:#fff;border-radius:var(--r);padding:20px;border-top:6px solid var(--roze)}
+.waarom article:nth-child(2){border-top-color:var(--inkt)}
+.waarom h3{font-size:30px;margin-bottom:8px}
+.waarom p{margin:0;color:var(--grijs)}
+.quotes{display:grid;gap:12px}
+.quotes blockquote{margin:0;background:#fff;border-radius:var(--r);padding:20px;border:1px solid var(--lijn)}
+.quotes p{font-size:18px;margin:0 0 10px}
+.quotes cite{font-style:normal;font-weight:800}
+.label{font-size:14px;color:var(--grijs);margin-top:14px}
+
+/* stappen */
+.stappen{display:grid;gap:12px;counter-reset:s;list-style:none;margin:0;padding:0}
+.stappen li{counter-increment:s;border:2px solid var(--inkt);border-radius:var(--r);padding:20px 20px 18px;position:relative}
+.stappen li::before{content:counter(s);font-family:var(--kop);font-size:52px;line-height:.8;color:var(--roze);display:block;margin-bottom:8px}
+.stappen h3{font-size:28px;margin-bottom:6px}
+.stappen p{margin:0;color:var(--grijs)}
+
+/* faq */
+.faq details{border-bottom:1px solid var(--lijn)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 40px 18px 0;font-weight:800;font-size:18px;position:relative;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:6px;top:12px;font-family:var(--kop);font-size:34px;color:var(--roze-d)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--grijs);margin:0 0 18px}
+
+/* bezoek */
+.bezoek-grid{display:grid;gap:22px;align-items:center}
+.bezoek .foto{aspect-ratio:1000/522}
+.adres{font-size:19px;font-weight:700;margin:0 0 12px}
+.bezoek .uren{background:var(--poeder);border-color:var(--lijn)}
+.bezoek .uren dt{color:var(--inkt)}
+
+/* slot */
+.slot{background:var(--roze);text-align:center}
+.slot h2{font-size:clamp(44px,12vw,84px)}
+.slot p{font-size:18px;max-width:560px;margin:0 auto 22px}
+.slot .uit-knoppen{justify-content:center;max-width:560px;margin:0 auto}
+.slot .btn-rand{border-color:var(--inkt)}
+
+/* footer */
+footer{background:var(--inkt);color:#cdbcc2;padding:44px 0 110px;font-size:15px}
+.voet-grid{display:grid;gap:22px}
+footer a{color:#fff}
+footer img{width:160px;height:59px}
+.mo-knop{background:none;border:1px solid #3d3236;color:#8d7c82;border-radius:999px;min-height:44px;min-width:44px;padding:0 14px;font:inherit;font-size:13px;cursor:pointer}
+
+/* zwevende CTA */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:flex;gap:8px;padding:8px;background:rgba(11,11,11,.94);border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.3);
+  transition:opacity .25s ease,visibility .25s;opacity:0;visibility:hidden}
+.zweef.aan{opacity:1;visibility:visible}
+.zweef .btn{flex:1;min-height:48px;padding:10px 12px;font-size:15px}
+
+/* pitch */
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(11,11,11,.55);display:flex;justify-content:flex-end}
+.pitch-paneel{background:#fff;width:min(560px,100%);height:100%;overflow:auto;padding:22px 20px 40px}
+.pitch-paneel h2{font-size:42px}
+.pitch-paneel h3{font-size:26px;margin:22px 0 10px}
+.sluit{float:right;width:44px;height:44px;border-radius:50%;border:2px solid var(--inkt);background:#fff;font-size:22px;cursor:pointer}
+.voorna{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.voorna figure{margin:0}
+.voorna img{border-radius:10px;border:1px solid var(--lijn);width:100%;height:auto}
+.voorna figcaption{font-size:13px;color:var(--grijs);margin-top:5px}
+.na-kaart{border-radius:10px;background:var(--poeder);padding:12px;font-size:14px;border:1px solid var(--lijn)}
+.na-kaart img{border:0;border-radius:0;width:130px;height:auto;margin-bottom:8px}
+.punten{padding-left:20px;margin:0}
+.punten li{margin-bottom:10px}
+.som label{display:flex;justify-content:space-between;font-weight:700;font-size:15px;margin-top:12px}
+.som input[type=range]{width:100%;min-height:44px;accent-color:var(--roze)}
+.som-uit{background:var(--inkt);color:#fff;border-radius:12px;padding:14px 16px;margin-top:12px}
+.som-uit b{color:var(--roze);font-size:20px}
+
+@media (min-width:600px){
+  .tegels{grid-template-columns:repeat(3,1fr)}
+  .velden{grid-template-columns:1fr 1fr}
+  .waarom,.quotes,.stappen{grid-template-columns:repeat(3,1fr)}
+  .rij figure{flex-basis:34%}
+}
+@media (min-width:900px){
+  body{font-size:18px}
+  .nav{display:flex}
+  .kop .merk img{width:150px;height:56px}
+  .hero{padding:44px 0 56px}
+  .hero-grid{grid-template-columns:1fr 1.05fr;grid-template-areas:"tekst draai" "acties draai";gap:0 40px;align-items:end}
+  .hero-grid>:first-child{grid-area:tekst}
+  .draai{grid-area:draai;align-self:center}
+  .acties{grid-area:acties;align-self:start;padding-top:26px}
+  .plateau{height:480px;margin:0}
+  .scene{perspective-origin:50% 8%}
+  .hero h1{font-size:clamp(64px,6.3vw,90px)}
+  .rubriek{grid-template-columns:1fr 1.1fr;gap:48px;padding:56px 0}
+  .rubriek.om>:first-child{order:2}
+  .winkel-grid{grid-template-columns:1.3fr 1fr;gap:40px}
+  .kiezer-grid{grid-template-columns:.8fr 1.2fr;gap:44px;align-items:start}
+  .verhaal-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+  .bezoek-grid{grid-template-columns:1.2fr 1fr;gap:48px}
+  .voet-grid{grid-template-columns:1.2fr 1fr 1fr}
+  .zweef{display:none}
+  .rij{margin:26px 0 0;padding:4px 0 14px}
+  .rij figure{flex-basis:23%}
+  footer{padding-bottom:44px}
+  section{padding:96px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .intro{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>.</div>
+<div class="aank"><span>★ 4,8 uit 47 Google-reviews</span> · <span>za 10:00–17:00 open</span></div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="Patisserie Sweet and Spice, naar boven"><img src="logo-dark.svg" width="150" height="56" alt="Patisserie Sweet and Spice"></a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <a href="#maken">Taarten</a><a href="#winkel">Winkel</a><a href="#verhaal">Over ons</a><a href="#kiezer">Aanvragen</a><a href="#bezoek">Bezoek</a>
+    </nav>
+    <a class="btn btn-bel" href="tel:+31648564658" aria-label="Bel 06 48 56 46 58"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Bel</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero" aria-label="Introductie">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="plek intro">Patisserie · Goudseplein 261 · Rotterdam</p>
+      <h1 class="intro d2">Taarten op maat <span class="z">voor elk feest</span></h1>
+      <p class="sub intro d3">Feest- en bruidstaarten, petit fours en elke zaterdag Hongaarse lekkernijen in de winkel.</p>
+      <ul class="tijden-hero intro d3" aria-label="Openingstijden">
+        <li>Za 10:00–17:00 open</li><li>Di t/m vr op afspraak</li>
+      </ul>
+    </div>
+    <div class="draai">
+      <div class="plateau" id="plateau" aria-roledescription="draaiplateau" aria-label="Taarten uit onze bakkerij. Sleep of gebruik de pijlen.">
+        <div class="scene">
+          <div class="schijf" aria-hidden="true"></div>
+          <div class="ring" id="ring">
+            <figure class="taart"><img src="img/taart-1.jpg" width="480" height="640" alt="Witte taart met rode rozen en een rood lint"></figure>
+            <figure class="taart"><img src="img/taart-2.jpg" width="480" height="640" alt="Witte taart met perzikkleurige rozen en gipskruid"></figure>
+            <figure class="taart"><img src="img/taart-3.jpg" width="480" height="640" alt="Kleurrijke taart met regenboog, lolly's en een eenhoorn"></figure>
+            <figure class="taart"><img src="img/taart-4.jpg" width="480" height="640" alt="Turquoise taart met een bloesemboom"></figure>
+            <figure class="taart"><img src="img/taart-5.jpg" width="480" height="640" alt="Hoge witte taart met goud en rozen"></figure>
+            <figure class="taart"><img src="img/taart-6.jpg" width="480" height="640" alt="Witte taart van twee lagen met donkerrode rozen"></figure>
+            <figure class="taart"><img src="img/taart-8.jpg" width="480" height="640" alt="Witte taart van vier lagen met herfstbloemen"></figure>
+          </div>
+        </div>
+      </div>
+      <div class="plateau-bedien">
+        <button class="pijl" type="button" id="vorige" aria-label="Vorige taart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <p class="onderschrift" aria-live="polite"><b id="taart-naam">Witte taart met rode rozen</b><small id="taart-tel">1 van 7 · sleep om te draaien</small></p>
+        <button class="pijl" type="button" id="volgende" aria-label="Volgende taart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <div class="acties">
+      <div class="hero-cta">
+        <a class="btn btn-wa cta-wa" hidden data-wa-tekst="Hallo Sweet and Spice, ik wil graag een taart aanvragen."><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>WhatsApp</a>
+        <a class="btn btn-bel" href="tel:+31648564658" aria-label="Bel 06 48 56 46 58"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="kort">Bel ons</span><span class="lang">Bel 06 48 56 46 58</span></a>
+        <a class="btn btn-roze" href="#kiezer">Taart aanvragen</a>
+      </div>
+      <p class="trust"><span class="sterren" aria-hidden="true">★★★★★</span> <span><a href="https://www.google.com/maps?cid=16119542461687739798" target="_blank" rel="noopener">4,8 uit 47 reviews op Google</a> · Rotterdam-Rubroek</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="maken" aria-labelledby="maken-kop">
+  <div class="wrap">
+    <div class="balken"><span class="balk r">Uit onze bakkerij</span><span class="balk z">Frans · Hongaars · Amerikaans</span></div>
+    <h2 id="maken-kop">Elke taart begint <em>bij jouw idee.</em></h2>
+    <p class="lead">Onze taarten worden altijd in overleg met je samengesteld: samen bepalen we grootte, uitstraling en smaak.</p>
+
+    <div class="rubriek">
+      <div>
+        <h3>Feest- en verjaardagstaarten</h3>
+        <p>Voor verjaardagen, jubilea en andere belangrijke momenten. De decoratie wordt met de hand gemaakt in onze patisserie, bijvoorbeeld:</p>
+        <ul><li>bloemen</li><li>portretfoto's</li><li>hobby-symbolen en sportattributen</li><li>werklogo's</li></ul>
+        <p>Voor de smaak kies je uit onze winkelfavorieten, of je doet zelf een suggestie.</p>
+        <a class="tekstlink" href="#kiezer" data-kies="feest">Feesttaart aanvragen →</a>
+      </div>
+      <div class="duo">
+        <div class="foto" style="aspect-ratio:3/4"><img src="img/feest-1.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Aangesneden taart met regenbooglagen en spikkels"></div>
+        <div style="display:grid;gap:10px">
+          <div class="foto" style="aspect-ratio:1"><img src="img/feest-2.jpg" width="500" height="500" loading="lazy" decoding="async" alt="Groene kikkertaart"></div>
+          <div class="foto" style="aspect-ratio:1"><img src="img/feest-3.jpg" width="500" height="500" loading="lazy" decoding="async" alt="Pastelkleurige taart met viooltjes"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rubriek om">
+      <div>
+        <h3>Bruidstaarten</h3>
+        <p>Volledig op maat. Tijdens een proefsessie proef je een aantal smaken en bespreken we je wensen. Heb je al ideeën of voorbeelden? Neem ze gerust mee. We hebben ook zelf een uitgebreide collectie foto's van bruidstaarten die we eerder maakten.</p>
+        <p>Desgewenst maken we bijpassende bedankjes, in dezelfde stijl als de taart.</p>
+        <a class="tekstlink" href="#kiezer" data-kies="bruid">Proefsessie aanvragen →</a>
+      </div>
+      <div class="trio">
+        <div class="foto"><img src="img/bruid-1.jpg" width="768" height="960" loading="lazy" decoding="async" alt="Bruidstaart van vijf lagen met witte en roze rozen"></div>
+        <div class="foto"><img src="img/bruid-2.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="Zeshoekige bruidstaart met witte bloemetjes"></div>
+        <div class="foto"><img src="img/bruid-3.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="Witte taart van drie lagen met roze bloemen"></div>
+      </div>
+    </div>
+
+    <div class="rubriek">
+      <div>
+        <h3>Petit fours en desserts</h3>
+        <p>Onze petit fours zijn er voor feesten, high teas, breaks of als traktatie. Elke petit four wordt zorgvuldig gemaakt en versierd.</p>
+        <a class="tekstlink" href="#kiezer" data-kies="petit">Petit fours aanvragen →</a>
+      </div>
+      <div style="display:grid;gap:10px">
+        <div class="foto" style="aspect-ratio:3/1"><img src="img/petitfours-rij.jpg" width="1000" height="333" loading="lazy" decoding="async" alt="Rijen petit fours met roze bloemetjes en chocolade"></div>
+        <div class="duo" style="grid-template-columns:1fr 1fr">
+          <div class="foto" style="aspect-ratio:1"><img src="img/petitfours-1.jpg" width="700" height="700" loading="lazy" decoding="async" alt="Chocoladetaartjes met room en een rood bloemetje"></div>
+          <div class="foto" style="aspect-ratio:1"><img src="img/petitfours-2.jpg" width="700" height="875" loading="lazy" decoding="async" alt="Plakken chocoladegebak met rode stippen"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rubriek om">
+      <div>
+        <h3>Zakelijk en horeca</h3>
+        <p>Niet iedere ondernemer kan zelf patisserie maken. Daarom leveren we met plezier aan zakelijke klanten en de horeca: ambachtelijk gemaakt, zodat het niet lijkt op fabrieksgebak.</p>
+        <ul><li>Altijd één vast contactpersoon</li><li>Exclusieve producten voor jouw bedrijf</li><li>Advies over verkoop, promotie en houdbaarheid</li></ul>
+        <a class="tekstlink" href="#kiezer" data-kies="zakelijk">Horeca-tarieven aanvragen →</a>
+      </div>
+      <div class="foto" style="aspect-ratio:1000/854"><img src="img/zakelijk.jpg" width="1000" height="854" loading="lazy" decoding="async" alt="Drie taarten op de toonbank voor het bord van Patisserie Sweet and Spice"></div>
+    </div>
+  </div>
+</section>
+
+<section class="winkel" id="winkel" aria-labelledby="winkel-kop">
+  <div class="wrap">
+    <div class="winkel-grid">
+      <div>
+        <div class="balken"><span class="balk r">De winkel</span><span class="balk z">Elke zaterdag</span></div>
+        <h2 id="winkel-kop">Zaterdag ligt de <em>vitrine vol.</em></h2>
+        <p class="lead">Elke zaterdag een wisselend assortiment: ons standaard assortiment Hongaarse lekkernijen, en eigen creaties met Franse en internationale invloeden. Standaard taarten, koekjes en bakkerijproducten liggen er elke zaterdag.</p>
+        <p class="lead">Het assortiment is seizoensgebonden, maar je favoriete smaken kun je altijd bestellen.</p>
+      </div>
+      <div class="uren">
+        <dl>
+          <dt>Zaterdag</dt><dd>10:00–17:00, zonder afspraak</dd>
+          <dt>Di t/m vr</dt><dd>op afspraak, om je bestelling op te halen of te bespreken</dd>
+        </dl>
+        <p class="mini" style="color:#bfaab1;margin:10px 0 14px">Goudseplein 261, Rotterdam</p>
+        <a class="btn btn-roze" style="width:100%" href="tel:+31648564658">Afspraak maken: 06 48 56 46 58</a>
+      </div>
+    </div>
+    <div class="rij" tabindex="0" aria-label="Foto's uit de winkel, veeg opzij">
+      <figure><div class="foto" style="aspect-ratio:4/3"><img src="img/vitrine.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Vitrine met gebakjes en taartpunten"></div><figcaption><span>De vitrine</span></figcaption></figure>
+      <figure><div class="foto"><img src="img/gebak-1.jpg" width="640" height="640" loading="lazy" decoding="async" alt="Gebak met poedersuiker en een broodje met spiraal van chocolade"></div><figcaption><span>Met poedersuiker</span></figcaption></figure>
+      <figure><div class="foto"><img src="img/gebak-2.jpg" width="640" height="640" loading="lazy" decoding="async" alt="Gebakjes met maanzaad en vanille op een plank"></div><figcaption><span>Met maanzaad en room</span></figcaption></figure>
+      <figure><div class="foto"><img src="img/gebak-3.jpg" width="640" height="640" loading="lazy" decoding="async" alt="Hartvormige koekjes met jam"></div><figcaption><span>Koekjes met jam</span></figcaption></figure>
+      <figure><div class="foto"><img src="img/gebak-4.jpg" width="640" height="640" loading="lazy" decoding="async" alt="Mand met gebakken kipfeltjes"></div><figcaption><span>Vers uit de oven</span></figcaption></figure>
+      <figure><div class="foto"><img src="img/gebak-5.jpg" width="640" height="640" loading="lazy" decoding="async" alt="Blokjes cake met chocolade en kokos"></div><figcaption><span>Met chocolade en kokos</span></figcaption></figure>
+      <figure><div class="foto"><img src="img/gebak-6.jpg" width="640" height="640" loading="lazy" decoding="async" alt="Bakken met hartig en zoet gebak"></div><figcaption><span>Uit de bakken</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="verhaal" id="verhaal" aria-labelledby="verhaal-kop">
+  <div class="wrap verhaal-grid">
+    <div>
+      <div class="balken"><span class="balk z">Over ons</span><span class="balk r">Sinds maart 2016</span></div>
+      <h2 id="verhaal-kop">Van Gerbeaud naar <em>het Goudseplein.</em></h2>
+      <p class="citaat">Geboren in Hongarije, wist ik al op veertienjarige leeftijd dat ik patissier wilde worden.</p>
+      <div class="invloed">
+        <p style="margin:0">Onze creaties zijn een samensmelting van Franse, Hongaarse en Amerikaanse invloeden, verrijkt met specerijen van over de hele wereld. Van trendy tot traditioneel.</p>
+      </div>
+    </div>
+    <ol class="lijnen" aria-label="Ons verhaal">
+      <li><b>De opleiding</b><span>Aan de Gundel vakschool en in patisserie Gerbeaud.</span></li>
+      <li><b>1997</b><span>Begin van de carrière, bij Gerbeaud.</span></li>
+      <li><b>Naar Rotterdam</b><span>Gehaald door restaurant Engels.</span></li>
+      <li><b>Negen jaar Des Indes</b><span>Chef Patissier bij Hotel Des Indes in Den Haag.</span></li>
+      <li><b>Maart 2016</b><span>De deuren van Patisserie Sweet and Spice gaan open, aan het Goudseplein 261.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="kiezer" id="kiezer" aria-labelledby="kiezer-kop">
+  <div class="wrap kiezer-grid">
+    <div>
+      <div class="balken"><span class="balk r">Aanvragen</span><span class="balk z">In een minuut</span></div>
+      <h2 id="kiezer-kop">Wat <em>vier je?</em></h2>
+      <p class="lead">Kies wat je zoekt, vul in wat je al weet en je aanvraag staat klaar. Daarna bel je ons, of je stuurt hem op.</p>
+      <p class="noot">Suikervrij, notenvrij, lactosevrij of veganistisch kan op verzoek, vanaf 10 personen. Glutenvrij kunnen we helaas niet maken: er wordt dagelijks met bloem gewerkt.</p>
+    </div>
+    <div class="kies-kaart">
+      <fieldset class="stap">
+        <legend class="stap-kop"><i>1</i>Waarvoor?</legend>
+        <div class="tegels" id="soorten">
+          <button type="button" class="tegel" data-soort="feest" aria-pressed="false"><img src="img/kies-feest.jpg" width="360" height="360" loading="lazy" decoding="async" alt=""><span>Feesttaart</span></button>
+          <button type="button" class="tegel" data-soort="bruid" aria-pressed="false"><img src="img/kies-bruid.jpg" width="360" height="360" loading="lazy" decoding="async" alt=""><span>Bruidstaart</span></button>
+          <button type="button" class="tegel" data-soort="petit" aria-pressed="false"><img src="img/kies-petit.jpg" width="360" height="360" loading="lazy" decoding="async" alt=""><span>Petit fours</span></button>
+          <button type="button" class="tegel" data-soort="zakelijk" aria-pressed="false"><img src="img/kies-zakelijk.jpg" width="360" height="360" loading="lazy" decoding="async" alt=""><span>Zakelijk &amp; horeca</span></button>
+          <button type="button" class="tegel" data-soort="winkel" aria-pressed="false"><img src="img/kies-winkel.jpg" width="360" height="360" loading="lazy" decoding="async" alt=""><span>Bestelling ophalen</span></button>
+        </div>
+      </fieldset>
+
+      <fieldset class="stap" id="stap2" hidden>
+        <legend class="stap-kop"><i>2</i><span id="stap2-kop">Details</span></legend>
+        <div id="opties"></div>
+      </fieldset>
+
+      <fieldset class="stap" id="stap3" hidden>
+        <legend class="stap-kop"><i>3</i>Wanneer?</legend>
+        <div class="velden">
+          <div class="veld"><label for="datum" id="datum-label">Datum</label><input type="date" id="datum"></div>
+          <div class="veld"><label for="naam">Je naam (mag leeg)</label><input type="text" id="naam" autocomplete="given-name" maxlength="40"></div>
+        </div>
+        <p class="stap-kop" style="font-size:20px;margin-top:4px">Ophalen of langskomen</p>
+        <div class="chips" id="moment">
+          <button type="button" class="chip" data-v="op zaterdag (10:00–17:00)" aria-pressed="false">Zaterdag 10:00–17:00</button>
+          <button type="button" class="chip" data-v="op afspraak, dinsdag t/m vrijdag" aria-pressed="false">Di t/m vr op afspraak</button>
+        </div>
+      </fieldset>
+
+      <div id="uit" hidden>
+        <p class="stap-kop" style="font-size:22px">Je aanvraag</p>
+        <p class="bericht" id="bericht"></p>
+        <div class="uit-knoppen">
+          <a class="btn btn-wa cta-wa" id="stuur-wa" hidden data-wa-dyn="1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>Stuur via WhatsApp</a>
+          <a class="btn btn-bel" href="tel:+31648564658">Bel 06 48 56 46 58</a>
+          <a class="btn btn-rand" id="stuur-mail" href="mailto:patisseriesweetandspice@gmail.com">Mail deze aanvraag</a>
+          <button class="btn btn-rand" type="button" id="kopieer">Kopieer tekst</button>
+        </div>
+        <p class="noot" id="mail-noot">Per mail kan een antwoord iets langer duren dan telefonisch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" aria-labelledby="reviews-kop">
+  <div class="wrap">
+    <div class="balken"><span class="balk r">Reviews</span><span class="balk z">Google</span></div>
+    <h2 id="reviews-kop">Wat er over <em>de taarten</em> geschreven wordt.</h2>
+    <div class="score"><b>4,8</b><span class="sterren" aria-hidden="true">★★★★★</span><p style="margin:0">uit 47 reviews op <a href="https://www.google.com/maps?cid=16119542461687739798" target="_blank" rel="noopener">Google</a></p></div>
+    <div class="waarom">
+      <article><h3>Over de taart</h3><p>Klanten schrijven dat hun idee precies werd nagemaakt.</p></article>
+      <article><h3>Over het gebak</h3><p>In de reviews komt het Hongaarse gebak terug, zoals pogácsa.</p></article>
+      <article><h3>Over de ontvangst</h3><p>Klanten noemen de eigenaresse vriendelijk en behulpzaam, en de prijzen betaalbaar.</p></article>
+    </div>
+    <div class="quotes">
+      <blockquote><p>Een heerlijke taart, en een heel vriendelijke prijs.</p><cite>Mariame</cite></blockquote>
+      <blockquote><p>De eigenaresse was vriendelijk en behulpzaam, en wist precies hoe ze het idee kon namaken.</p><cite>Femke</cite></blockquote>
+      <blockquote><p>Alles perfect, lekker en vers.</p><cite>R.</cite></blockquote>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section id="werkwijze" aria-labelledby="werkwijze-kop">
+  <div class="wrap">
+    <div class="balken"><span class="balk z">Zo gaat het</span></div>
+    <h2 id="werkwijze-kop">Van idee <em>tot ophalen.</em></h2>
+    <ol class="stappen">
+      <li><h3>Vertel wat je viert</h3><p>Stel je aanvraag samen of bel ons: gelegenheid, idee en datum.</p></li>
+      <li><h3>Samen samenstellen</h3><p>Grootte, uitstraling en smaak bepalen we in overleg. Voor een bruidstaart plannen we een proefsessie.</p></li>
+      <li><h3>Ophalen</h3><p>Op zaterdag tussen 10:00 en 17:00 in de winkel, of dinsdag t/m vrijdag op afspraak.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" id="faq" aria-labelledby="faq-kop" style="padding-top:0">
+  <div class="wrap" style="max-width:860px">
+    <div class="balken"><span class="balk r">Vragen</span></div>
+    <h2 id="faq-kop">Goed om <em>te weten.</em></h2>
+    <details><summary>Waarom is de winkel alleen op zaterdag open?</summary><p>Zo nemen we door de week de tijd om bestellingen en producten zorgvuldig voor te bereiden, voor horeca- en particuliere klanten. Door de week kun je altijd een afspraak maken om een bestelling op te halen of te bespreken.</p></details>
+    <details><summary>Kan ik online bestellen?</summary><p>Online afrekenen kan nog niet; we verkopen vooral in de winkel en aan horecaklanten. Je bestelling regel je door te bellen<span class="cta-wa-tekst" hidden>, een WhatsApp te sturen</span> of te mailen naar patisseriesweetandspice@gmail.com. Een antwoord per mail kan iets langer duren.</p></details>
+    <details><summary>Kunnen jullie rekening houden met een dieet?</summary><p>Ja. Op verzoek maken we suikervrije, notenvrije, lactosevrije en veganistische producten, vanaf 10 personen. Glutenvrij kunnen we helaas niet aanbieden, omdat er dagelijks met bloem wordt gewerkt in onze bakkerij.</p></details>
+    <details><summary>Hoe gaat het bij een bruidstaart?</summary><p>Tijdens een proefsessie proef je een aantal smaken en bespreken we je wensen. Neem gerust ideeën of voorbeelden mee. Bijpassende bedankjes in dezelfde stijl kunnen we ook maken.</p></details>
+    <details><summary>Ik wil veel producten tegelijk. Kan dat?</summary><p>Ja. Neem voor grote bestellingen of evenementen vooraf contact op, zodat we zeker genoeg kunnen maken.</p></details>
+    <details><summary>Wat ligt er op zaterdag in de winkel?</summary><p>Een wisselend assortiment: Hongaarse lekkernijen en eigen creaties met Franse en internationale invloeden, plus elke zaterdag onze standaard taarten, koekjes en bakkerijproducten.</p></details>
+  </div>
+</section>
+
+<section class="bezoek" id="bezoek" aria-labelledby="bezoek-kop" style="padding-top:0">
+  <div class="wrap bezoek-grid">
+    <div class="foto"><img src="img/gevel.jpg" width="1000" height="522" loading="lazy" decoding="async" alt="De gevel van Patisserie Sweet and Spice met het roze en zwarte bord"></div>
+    <div>
+      <div class="balken"><span class="balk r">Bezoek</span><span class="balk z">Rubroek</span></div>
+      <h2 id="bezoek-kop">Zoek het <em>roze bord.</em></h2>
+      <p class="adres">Goudseplein 261<br>3031 ZH Rotterdam</p>
+      <div class="uren">
+        <dl>
+          <dt>Zaterdag</dt><dd>10:00–17:00, zonder afspraak</dd>
+          <dt>Di t/m vr</dt><dd>op afspraak</dd>
+        </dl>
+      </div>
+      <div class="uit-knoppen" style="margin-top:16px">
+        <a class="btn btn-bel" href="tel:+31648564658">Bel 06 48 56 46 58</a>
+        <a class="btn btn-rand" href="https://www.google.com/maps/dir/?api=1&amp;destination=Goudseplein+261%2C+3031+ZH+Rotterdam" target="_blank" rel="noopener">Route</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="slot-kop">
+  <div class="wrap">
+    <h2 id="slot-kop">Wat wordt jouw taart?</h2>
+    <p>Vertel ons je idee. Samen maken we er een taart van die het middelpunt van je feest wordt.</p>
+    <div class="uit-knoppen">
+      <a class="btn btn-wa cta-wa" hidden data-wa-tekst="Hallo Sweet and Spice, ik heb een vraag over een taart.">WhatsApp</a>
+      <a class="btn btn-bel" href="tel:+31648564658">Bel 06 48 56 46 58</a>
+      <a class="btn btn-rand" href="#kiezer">Taart aanvragen</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap voet-grid">
+    <div>
+      <img src="logo-light.svg" width="160" height="59" alt="Patisserie Sweet and Spice" loading="lazy" decoding="async">
+      <p style="margin-top:14px">Goudseplein 261, 3031 ZH Rotterdam<br>Zaterdag 10:00–17:00 · di t/m vr op afspraak</p>
+    </div>
+    <div>
+      <p><a href="tel:+31648564658">06 48 56 46 58</a><br><a href="mailto:patisseriesweetandspice@gmail.com">patisseriesweetandspice@gmail.com</a></p>
+      <p><a href="https://www.instagram.com/patisseriesweetandspice" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=100040650745150" target="_blank" rel="noopener">Facebook</a></p>
+    </div>
+    <div>
+      <p>Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+      <button class="mo-knop" type="button" id="mo-knop" aria-label="Pitch-paneel">Mo</button>
+    </div>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-hidden="true">
+  <a class="btn btn-wa cta-wa" hidden data-wa-tekst="Hallo Sweet and Spice, ik wil graag een taart aanvragen." tabindex="-1">WhatsApp</a>
+  <a class="btn btn-roze" href="tel:+31648564658" tabindex="-1">Bel</a>
+  <a class="btn btn-rand" href="#kiezer" tabindex="-1" style="border-color:#fff">Taart aanvragen</a>
+</div>
+
+<div class="pitch" id="pitch" hidden role="dialog" aria-modal="true" aria-labelledby="pitch-kop">
+  <div class="pitch-paneel">
+    <button class="sluit" type="button" id="pitch-sluit" aria-label="Sluiten">×</button>
+    <h2 id="pitch-kop">Sweet and Spice: nu en straks</h2>
+    <h3>Voor en na</h3>
+    <div class="voorna">
+      <figure><img src="img/voor-site.jpg" width="480" height="1039" loading="lazy" decoding="async" alt="Bovenkant van patisseriesweetandspice.nl op een telefoon"><figcaption>Nu: patisseriesweetandspice.nl op een telefoon (9 nov 2026)</figcaption></figure>
+      <figure><div class="na-kaart"><img src="logo-dark.svg" width="130" height="48" alt="">Straks: deze site. Bovenaan meteen de taarten op het draaiplateau, bellen in één tik, de openingstijden en een knop om een taart aan te vragen.</div></figure>
+    </div>
+    <h3>Wat er concreet beter is</h3>
+    <ol class="punten">
+      <li><b>Bellen in één tik.</b> Op de huidige site is 06 48564658 op geen enkele pagina aan te tikken; op de telefoon staat het nummer pas onderaan de homepage. Hier zit het in de kop van de pagina, in de hero en in de zwevende knop.</li>
+      <li><b>Openingstijden meteen duidelijk.</b> Op de telefoon staan ze niet op de homepage; op de computer alleen "Zaterdag: 10:00 - 17:00 uur" in de bovenbalk. Dat je dinsdag t/m vrijdag op afspraak kunt komen, staat pas op de contactpagina en bij het winkelassortiment. Hier staat het in de hero.</li>
+      <li><b>Een taart aanvragen zonder typen.</b> In jullie eigen FAQ staat dat WhatsApp de makkelijkste manier is om jullie te bereiken, maar de site heeft geen WhatsApp-knop. Hier kiest de klant gelegenheid, details en datum en staat de aanvraag klaar.</li>
+    </ol>
+    <h3>Wat dit oplevert</h3>
+    <div class="som">
+      <p class="mini" style="margin:0">Voorbeeld, samen invullen. Geen belofte: alleen een rekensom met jullie eigen getallen.</p>
+      <label for="s-klanten">Extra bestellingen per week <span id="v-klanten">1</span></label>
+      <input type="range" id="s-klanten" min="0" max="10" step="1" value="1">
+      <label for="s-besteding">Gemiddelde besteding per bestelling <span id="v-besteding">€&nbsp;30</span></label>
+      <input type="range" id="s-besteding" min="5" max="300" step="5" value="30">
+      <div class="som-uit" id="som-uit"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== Instellingen (Ops) ===== */
+// WhatsApp staat UIT tot Ops bevestigt dat 06 48564658 WhatsApp heeft. Dan op true zetten.
+// Voor een preview zonder wijziging: voeg ?wa=1 toe aan de URL.
+const WA_AAN = false;
+const WA_NUMMER = '31648564658';
+const MAIL = 'patisseriesweetandspice@gmail.com';
+
+const zoek = new URLSearchParams(location.search);
+const waAan = WA_AAN || zoek.get('wa') === '1';
+const minderBeweging = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const waLink = t => 'https://wa.me/' + WA_NUMMER + '?text=' + encodeURIComponent(t);
+
+/* ===== WhatsApp-knoppen aan/uit ===== */
+if (waAan) {
+  document.querySelectorAll('.cta-wa').forEach(a => {
+    if (a.dataset.waTekst) a.href = waLink(a.dataset.waTekst);
+    a.target = '_blank'; a.rel = 'noopener'; a.hidden = false;
+  });
+  document.querySelectorAll('.cta-wa-tekst').forEach(s => s.hidden = false);
+  document.querySelector('#zweef a[href^="tel:"]').hidden = true;
+}
+
+/* ===== Draaiplateau ===== */
+const plateau = document.getElementById('plateau');
+const ring = document.getElementById('ring');
+const schijf = plateau.querySelector('.schijf');
+const kaarten = [...ring.children];
+const N = kaarten.length, STAP = 360 / N;
+const namen = kaarten.map(k => k.querySelector('img').alt);
+const kortNaam = ['Witte taart met rode rozen','Perzikkleurige rozen','Regenboog en eenhoorn','Bloesemboom op turquoise','Wit en goud, hoog opgebouwd','Twee lagen, donkerrode rozen','Vier lagen herfstbloemen'];
+const naamEl = document.getElementById('taart-naam'), telEl = document.getElementById('taart-tel');
+let hoek = 0, straal = 240, huidig = -1, anim = null;
+
+function maat() {
+  const breed = plateau.clientWidth;
+  const w = Math.round(breed >= 480 ? Math.min(290, breed * 0.46) : Math.min(184, breed * 0.48));
+  const h = Math.round(w * 4 / 3);
+  straal = Math.round((w / 2) / Math.tan(Math.PI / N)) + 14;
+  ring.style.setProperty('--w', w + 'px'); ring.style.setProperty('--h', h + 'px'); ring.style.setProperty('--rr', straal + 'px');
+  kaarten.forEach((k, i) => k.style.setProperty('--a', (i * STAP) + 'deg'));
+  schijf.style.setProperty('--d', (straal * 2 + 56) + 'px');
+  schijf.dataset.y = h / 2 + 4;
+  teken();
+}
+function teken() {
+  ring.style.transform = 'translateZ(' + (-straal) + 'px) rotateY(' + hoek + 'deg)';
+  schijf.style.transform = 'translateY(' + schijf.dataset.y + 'px) translateZ(' + (-straal) + 'px) rotateX(90deg) rotateZ(' + (-hoek) + 'deg)';
+  kaarten.forEach((k, i) => {
+    let d = ((i * STAP + hoek) % 360 + 540) % 360 - 180;
+    const f = (Math.cos(d * Math.PI / 180) + 1) / 2;
+    k.style.filter = 'brightness(' + (0.55 + 0.45 * f).toFixed(3) + ')';
+  });
+  const voor = ((Math.round(-hoek / STAP) % N) + N) % N;
+  if (voor !== huidig) { huidig = voor; naamEl.textContent = kortNaam[voor]; telEl.textContent = (voor + 1) + ' van ' + N + ' · sleep om te draaien'; }
+}
+const zacht = t => 1 - Math.pow(1 - t, 3);
+function draaiNaar(doel, ms, klaar) {
+  cancelAnimationFrame(anim);
+  const van = hoek, t0 = performance.now();
+  if (minderBeweging || ms <= 0) { hoek = doel; teken(); klaar && klaar(); return; }
+  const stap = nu => {
+    const t = Math.min(1, (nu - t0) / ms);
+    hoek = van + (doel - van) * zacht(t); teken();
+    if (t < 1) anim = requestAnimationFrame(stap); else klaar && klaar();
+  };
+  anim = requestAnimationFrame(stap);
+}
+maat();
+addEventListener('resize', maat);
+// Eenmalige intro: het plateau draait één keer rond en remt af op de eerste taart. Daarna stil.
+if (!minderBeweging) { hoek = 360 + STAP * 0.5; teken(); setTimeout(() => draaiNaar(0, 2600), 250); }
+
+document.getElementById('volgende').addEventListener('click', () => draaiNaar(Math.round(hoek / STAP) * STAP - STAP, 520));
+document.getElementById('vorige').addEventListener('click', () => draaiNaar(Math.round(hoek / STAP) * STAP + STAP, 520));
+let sleep = null;
+plateau.addEventListener('pointerdown', e => { cancelAnimationFrame(anim); sleep = { x: e.clientX, h: hoek, id: e.pointerId, bewogen: false }; });
+plateau.addEventListener('pointermove', e => {
+  if (!sleep || e.pointerId !== sleep.id) return;
+  const dx = e.clientX - sleep.x;
+  if (!sleep.bewogen && Math.abs(dx) > 6) { sleep.bewogen = true; try { plateau.setPointerCapture(e.pointerId); } catch (_) {} }
+  if (sleep.bewogen) { hoek = sleep.h + dx * 0.32; teken(); }
+});
+const loslaten = () => { if (!sleep) return; const was = sleep.bewogen; sleep = null; if (was) draaiNaar(Math.round(hoek / STAP) * STAP, 420); };
+plateau.addEventListener('pointerup', loslaten);
+plateau.addEventListener('pointercancel', loslaten);
+plateau.addEventListener('keydown', e => { if (e.key === 'ArrowRight') document.getElementById('volgende').click(); if (e.key === 'ArrowLeft') document.getElementById('vorige').click(); });
+plateau.tabIndex = 0;
+
+/* ===== Kiezer ===== */
+const OPTIES = {
+  feest: { naam: 'een feesttaart', kop: 'Je taart', groepen: [
+    { id: 'deco', label: 'Decoratie', keuzes: ['Bloemen', 'Portretfoto', 'Hobby of sport', 'Werklogo', 'Nog geen idee'] },
+    { id: 'pers', label: 'Aantal personen', keuzes: ['Tot 10', '10–20', '20–30', 'Meer dan 30'] },
+    { id: 'dieet', label: 'Dieet (vanaf 10 personen)', keuzes: ['Geen', 'Suikervrij', 'Notenvrij', 'Lactosevrij', 'Veganistisch'], multi: true } ], datum: 'Datum van je feest' },
+  bruid: { naam: 'een bruidstaart', kop: 'Je bruidstaart', groepen: [
+    { id: 'wat', label: 'Waarvoor bel of schrijf je?', keuzes: ['Proefsessie plannen', 'Eerst een vraag'] },
+    { id: 'gasten', label: 'Aantal gasten', keuzes: ['Tot 50', '50–100', 'Meer dan 100', 'Weet ik nog niet'] },
+    { id: 'bedank', label: 'Bijpassende bedankjes?', keuzes: ['Ja, graag', 'Nee', 'Misschien'] } ], datum: 'Trouwdatum' },
+  petit: { naam: 'petit fours', kop: 'Je petit fours', groepen: [
+    { id: 'voor', label: 'Waarvoor?', keuzes: ['Feest', 'High tea', 'Break', 'Traktatie'] },
+    { id: 'pers', label: 'Aantal personen', keuzes: ['Tot 10', '10–25', '25–50', 'Meer dan 50'] } ], datum: 'Datum' },
+  zakelijk: { naam: 'patisserie voor mijn zaak', kop: 'Je zaak', groepen: [
+    { id: 'wat', label: 'Wat wil je?', keuzes: ['Horeca-tarieven aanvragen', 'Vrijblijvende afspraak'] },
+    { id: 'soort', label: 'Soort zaak', keuzes: ['Horeca', 'Kantoor of bedrijf', 'Anders'] } ], datum: 'Vanaf wanneer?' },
+  winkel: { naam: 'een bestelling', kop: 'Je bestelling', groepen: [
+    { id: 'wat', label: 'Wat wil je doen?', keuzes: ['Een bestelling ophalen', 'Een bestelling bespreken'] } ], datum: 'Welke dag?' }
+};
+const keuze = { soort: null, sel: {}, moment: null };
+const stap2 = document.getElementById('stap2'), stap3 = document.getElementById('stap3'), uit = document.getElementById('uit');
+const optiesEl = document.getElementById('opties'), berichtEl = document.getElementById('bericht');
+
+function kiesSoort(s) {
+  keuze.soort = s; keuze.sel = {};
+  document.querySelectorAll('#soorten .tegel').forEach(t => t.setAttribute('aria-pressed', t.dataset.soort === s));
+  const o = OPTIES[s];
+  document.getElementById('stap2-kop').textContent = o.kop;
+  document.getElementById('datum-label').textContent = o.datum;
+  optiesEl.innerHTML = '';
+  o.groepen.forEach(g => {
+    const p = document.createElement('p'); p.className = 'noot'; p.style.cssText = 'margin:6px 0 8px;font-weight:700;color:#0B0B0B'; p.textContent = g.label;
+    const c = document.createElement('div'); c.className = 'chips'; c.style.marginBottom = '10px';
+    g.keuzes.forEach(k => {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = k; b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', () => {
+        let lijst = keuze.sel[g.id] || [];
+        if (g.multi) {
+          if (k === 'Geen') lijst = lijst.includes('Geen') ? [] : ['Geen'];
+          else { lijst = lijst.filter(x => x !== 'Geen'); lijst = lijst.includes(k) ? lijst.filter(x => x !== k) : lijst.concat(k); }
+        } else lijst = lijst[0] === k ? [] : [k];
+        keuze.sel[g.id] = lijst;
+        [...c.children].forEach(x => x.setAttribute('aria-pressed', lijst.includes(x.textContent)));
+        bouw();
+      });
+      c.appendChild(b);
+    });
+    optiesEl.append(p, c);
+  });
+  stap2.hidden = false; stap3.hidden = false; uit.hidden = false;
+  bouw();
+}
+document.querySelectorAll('#soorten .tegel').forEach(t => t.addEventListener('click', () => kiesSoort(t.dataset.soort)));
+document.querySelectorAll('[data-kies]').forEach(a => a.addEventListener('click', () => kiesSoort(a.dataset.kies)));
+document.querySelectorAll('#moment .chip').forEach(b => b.addEventListener('click', () => {
+  keuze.moment = keuze.moment === b.dataset.v ? null : b.dataset.v;
+  document.querySelectorAll('#moment .chip').forEach(x => x.setAttribute('aria-pressed', x.dataset.v === keuze.moment));
+  bouw();
+}));
+document.getElementById('datum').addEventListener('input', bouw);
+document.getElementById('naam').addEventListener('input', bouw);
+
+function datumTekst(v) {
+  if (!v) return '';
+  const d = new Date(v + 'T12:00:00');
+  return d.toLocaleDateString('nl-NL', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+}
+function tekst() {
+  if (!keuze.soort) return '';
+  const o = OPTIES[keuze.soort];
+  const r = ['Hallo Sweet and Spice, ik wil graag ' + o.naam + ' aanvragen.'];
+  o.groepen.forEach(g => { const l = keuze.sel[g.id]; if (l && l.length) r.push(g.label.replace(/ \(.*\)$/, '').replace(/\?$/, '') + ': ' + l.join(', ').toLowerCase()); });
+  const dt = datumTekst(document.getElementById('datum').value);
+  if (dt) r.push(o.datum + ': ' + dt);
+  if (keuze.moment) r.push('Ophalen of langskomen: ' + keuze.moment);
+  const n = document.getElementById('naam').value.trim();
+  r.push(n ? 'Groet, ' + n : 'Groet');
+  return r.join('\n');
+}
+function bouw() {
+  const t = tekst();
+  berichtEl.textContent = t;
+  const wa = document.getElementById('stuur-wa');
+  if (waAan) wa.href = waLink(t);
+  document.getElementById('stuur-mail').href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent('Aanvraag via de website') + '&body=' + encodeURIComponent(t);
+}
+document.getElementById('kopieer').addEventListener('click', async e => {
+  try { await navigator.clipboard.writeText(tekst()); e.target.textContent = 'Gekopieerd'; setTimeout(() => e.target.textContent = 'Kopieer tekst', 1800); } catch (_) {}
+});
+
+/* ===== Zwevende CTA: na de hero, niet als de kiezer in beeld is ===== */
+const zweef = document.getElementById('zweef');
+let heroZicht = true, kiezerZicht = false;
+const zetZweef = () => { const aan = !heroZicht && !kiezerZicht; zweef.classList.toggle('aan', aan); zweef.setAttribute('aria-hidden', !aan); zweef.querySelectorAll('a').forEach(a => a.tabIndex = aan ? 0 : -1); };
+new IntersectionObserver(([e]) => { heroZicht = e.isIntersecting; zetZweef(); }).observe(document.getElementById('hero'));
+new IntersectionObserver(([e]) => { kiezerZicht = e.isIntersecting; zetZweef(); }, { threshold: 0.25 }).observe(document.querySelector('.kies-kaart'));
+
+/* ===== Pitch-paneel (alleen voor Mo; ?pitch of de Mo-knop in de footer) ===== */
+const pitch = document.getElementById('pitch');
+const sk = document.getElementById('s-klanten'), sb = document.getElementById('s-besteding');
+const euro = n => '€ ' + Math.round(n).toLocaleString('nl-NL');
+function som() {
+  const k = +sk.value, b = +sb.value;
+  document.getElementById('v-klanten').textContent = k;
+  document.getElementById('v-besteding').textContent = euro(b);
+  const jaar = k * b * 52, terug = Math.ceil(595 / b);
+  document.getElementById('som-uit').innerHTML = k * b === 0 ? 'Schuif om een voorbeeld in te vullen.' :
+    'Extra omzet per jaar in dit voorbeeld: <b>' + euro(jaar) + '</b><br>De site (€ 595) is terugverdiend na <b>' + terug + '</b> extra ' + (terug === 1 ? 'bestelling' : 'bestellingen') + '.';
+}
+sk.addEventListener('input', som); sb.addEventListener('input', som); som();
+const openPitch = () => { pitch.hidden = false; document.getElementById('pitch-sluit').focus(); };
+document.getElementById('mo-knop').addEventListener('click', openPitch);
+document.getElementById('pitch-sluit').addEventListener('click', () => pitch.hidden = true);
+pitch.addEventListener('click', e => { if (e.target === pitch) pitch.hidden = true; });
+addEventListener('keydown', e => { if (e.key === 'Escape') pitch.hidden = true; });
+if (zoek.has('pitch')) openPitch();
+</script>
+</body>
+</html>
