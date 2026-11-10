@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<!--
+  L258 By Merve (Crooswijkseweg 126, Rotterdam-Oud-Crooswijk). Demo door Mohamedia, 9 nov 2026.
+  Concept in één zin: "De roze marmeren toonbank van By Merve": op hun marmer wordt het deeg uitgerold
+  met de deegroller uit hun eigen logo, en daarna dubbelgevouwen tot een gözleme.
+  Lay-out-archetype: VITRINE MET NAAMBORDJES. Hero = marmeren werkblad (eigen gegenereerde textuur, geen foto)
+  met een SVG-scène die één keer afspeelt: deegbal -> deegroller rolt heen en terug -> vel vouwt dubbel ->
+  bakvlekjes. Daarna stil (geen lus). Het "menu" is een glazen vitrineplank met zwarte naambordjes
+  (zoals het "Baklava"-bordje in hun vitrine), alleen gerechten die in het dossier staan, zonder prijzen.
+  Geen marquee/band, geen stempel, geen schuine fotokaart, geen stoom, geen Ken Burns, geen licht-aan, geen stories.
+  Beeld: geen eigen foto's in de demo (dossier: alleen klantfoto's op Maps). Logo nagetekend van de sticker op hun
+  bakjes (zichtbaar op de hoofdfoto in Google Maps): handgeschreven "By Merve", roze penseelstreek, deegroller.
+  WhatsApp: vast 010-nummer, dus bellen is de hoofdknop. WhatsApp aanzetten: zet WA_AAN op true (onderaan, in het script),
+  of bekijk het met ?wa in de URL.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>By Merve – Turks ontbijt en lunch in Rotterdam</title>
+<meta name="description" content="By Merve aan de Crooswijkseweg 126 in Rotterdam-Oud-Crooswijk: Turks ontbijt en lunch, gözleme en koffie. Maandag t/m zaterdag 09:30–17:30, zondag 12:00–17:30. Bel 010 254 2741.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2b2427; --ink2:#5b4e52; --blush:#f3d9d6; --rose:#d9a3a1; --rose-d:#94494a;
+  --pist:#7c9a2e; --pist-d:#4b6614; --paper:#fffaf9; --slate:#1f1b1c; --dough:#f4e2c0;
+  --r:18px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Figtree,system-ui,sans-serif;color:var(--ink);background:var(--paper);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,sans-serif;line-height:1.04;margin:0;letter-spacing:-.01em;overflow-wrap:break-word}
+h2{font-size:clamp(30px,7.4vw,52px);font-weight:800}
+h3{font-size:clamp(19px,5vw,23px);font-weight:700}
+p{margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.grid>*{min-width:0}
+.eyebrow{font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--rose-d)}
+section{padding:72px 0}
+@media (min-width:900px){section{padding:104px 0}}
+
+/* demo-strook + balk */
+.demo{background:var(--ink);color:#fff;font-size:13px;text-align:center;padding:7px 14px}
+.demo a{color:#fff;font-weight:700}
+.bar{background:var(--pist-d);color:#fff;font-size:14px;text-align:center;padding:8px 14px;font-weight:600}
+.bar a{text-decoration:none}
+
+/* header */
+.top{background:var(--paper);border-bottom:1px solid #efdcd9;position:relative;z-index:5}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:72px}
+.top .logo img{height:68px;width:auto}
+.nav{display:none;gap:26px;font-weight:600;font-size:15px}
+.nav a{text-decoration:none;padding:12px 0}
+.nav a:hover{color:var(--rose-d)}
+@media (min-width:900px){.nav{display:flex}}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:0 22px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:inherit;line-height:1.1;text-align:center;transition:background-color .2s,color .2s,border-color .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-p{background:var(--pist-d);color:#fff}
+.btn-p:hover{background:#3d5410}
+.btn-l{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-l:hover{background:var(--ink);color:#fff}
+.btn-wa{background:#1f7a44;color:#fff}
+.btn-sm{min-height:44px;padding:0 16px;font-size:15px}
+.wa-only{display:none!important}
+html.wa .wa-only{display:inline-flex!important}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:#f7e8e5 url(img/marmer.jpg) center/cover;padding:30px 0 40px}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:16px;background:linear-gradient(#c79693,#a97573);opacity:.55}
+.hero .wrap{display:grid;gap:8px;position:relative;z-index:1}
+.status{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.78);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:700;width:max-content;max-width:100%}
+.status i{width:9px;height:9px;border-radius:50%;background:#9a8c8f;flex:none}
+.status.open i{background:#3f9a3a;box-shadow:0 0 0 4px rgba(63,154,58,.18)}
+.hero h1{font-size:clamp(44px,12.4vw,92px);font-weight:800;margin-top:14px;color:var(--ink)}
+.hero h1 em{font-style:normal;color:var(--rose-d);display:block}
+.hero .sub{font-size:clamp(17px,4.4vw,20px);color:var(--ink2);max-width:34em;margin-top:12px}
+.scene{display:block;width:100%;max-width:560px;margin:8px auto 0;aspect-ratio:400/300;height:auto}
+@media (max-width:599px){.scene{width:calc(100% + 40px);max-width:none;margin:8px -20px 0}}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.hero .cta .btn{flex:1 1 200px}
+.trust{margin-top:28px;font-size:15px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:6px 16px}
+.trust a{font-weight:700;color:var(--ink)}
+.trust .st{color:#c7832a;letter-spacing:1px}
+@media (min-width:900px){
+  .hero{padding:56px 0 76px}
+  .hero .wrap{grid-template-columns:1.05fr 1fr;align-items:center;column-gap:40px}
+  .hero .txt{grid-column:1;grid-row:1}
+  .scene{grid-column:2;grid-row:1;max-width:600px;margin:0}
+  .hero .cta .btn{flex:0 0 auto}
+  .hero .txt2{grid-column:1;grid-row:2}
+  .hero .scene{grid-row:1 / span 2}
+}
+
+/* scène-animatie: alles staat standaard in de eindstand (reduced motion = eindbeeld) */
+.sc-grow,.sc-flap,.sc-pin,.sc-shadow{transform-box:view-box}
+.sc-grow,.sc-shadow{transform-origin:196px 98px}
+.sc-flap{transform-origin:0 0;transform:translate(0,196px) scaleY(-1)}
+.sc-under{opacity:1}
+.sc-spots,.sc-tag{opacity:1}
+.sc-shtop{opacity:0}
+.sc-pin{transform-origin:0 0;transform:translate(266px,236px) rotate(-8deg) scale(.8)}
+@media (prefers-reduced-motion:no-preference){
+  .sc-move{animation:move .85s cubic-bezier(.6,0,.3,1) 2.35s both}
+  .sc-grow,.sc-shadow{animation:grow 1.9s cubic-bezier(.45,.05,.3,1) .35s both}
+  .sc-pin{animation:pin 3.6s ease-in-out .35s both}
+  .sc-flap{animation:fold .85s cubic-bezier(.6,0,.3,1) 2.35s both}
+  .sc-under{animation:under .85s linear 2.35s both}
+  .sc-spots{animation:fade .7s ease-out 3.1s both}
+  .sc-shtop{animation:shtop .85s linear 2.35s both}
+  .sc-tag{animation:tag .5s ease-out 3.9s both}
+}
+@keyframes move{from{transform:translateY(44px)}to{transform:none}}
+@keyframes grow{0%{transform:scale(.24,.27)}46%{transform:scale(.66,.6)}100%{transform:scale(1)}}
+@keyframes pin{0%{transform:translate(200px,70px)}24%{transform:translate(200px,236px)}53%,80%{transform:translate(200px,22px)}100%{transform:translate(266px,236px) rotate(-8deg) scale(.8)}}
+@keyframes fold{0%{transform:translate(0,0) scaleY(1)}100%{transform:translate(0,196px) scaleY(-1)}}
+@keyframes under{0%,49%{opacity:0}51%,100%{opacity:1}}
+@keyframes shtop{0%{opacity:.32}100%{opacity:0}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes tag{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* vitrine */
+.vitrine{background:#fff}
+.vitrine .kop{display:grid;gap:14px;max-width:720px}
+.vitrine .kop p{color:var(--ink2)}
+.kast{margin-top:40px;border-radius:22px;background:linear-gradient(180deg,#fbf3f2,#f5e6e4);padding:26px 16px 8px;border:1px solid #ecd6d3}
+.plank{position:relative;display:flex;flex-wrap:wrap;gap:12px 10px;justify-content:center;padding:6px 4px 22px;margin-bottom:22px}
+.plank::after{content:"";position:absolute;left:-6px;right:-6px;bottom:0;height:12px;border-radius:3px;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(210,225,228,.7) 45%,#1f1b1c 46%,#2d2729)}
+.bord{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:8px 16px 8px 14px;border-radius:10px;background:var(--slate);color:#fff;border:2px solid var(--slate);font:600 16px/1.15 "Bricolage Grotesque",sans-serif;cursor:pointer;box-shadow:0 6px 14px rgba(43,36,39,.18);transition:background-color .2s,color .2s}
+.bord svg{width:16px;height:16px;flex:none;fill:none;stroke:var(--rose);stroke-width:2}
+.bord[aria-pressed=true]{background:#fff;color:var(--ink)}
+.bord[aria-pressed=true] svg{fill:var(--rose-d);stroke:var(--rose-d)}
+.kast-noot{display:grid;gap:14px;margin-top:22px;align-items:center}
+.kast-noot p{font-size:15px;color:var(--ink2)}
+.lijstje{font-weight:700}
+@media (min-width:900px){.kast{padding:36px 36px 12px}.kast-noot{grid-template-columns:1fr auto}.bord{font-size:18px}}
+
+/* kiezer */
+.kiezer{background:var(--blush)}
+.kz{display:grid;gap:22px;margin-top:34px}
+.stap{background:#fff;border-radius:var(--r);padding:20px 18px;box-shadow:0 1px 0 #ead2cf}
+.stap h3{display:flex;gap:10px;align-items:baseline;margin-bottom:14px}
+.stap h3 b{font-size:15px;color:var(--rose-d);font-family:Figtree,sans-serif}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{min-height:46px;padding:0 15px;border-radius:12px;border:2px solid #e3cfcc;background:#fff;color:var(--ink);font:600 15px/1.15 Figtree,sans-serif;cursor:pointer;text-align:left}
+.chips button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chips button:disabled{opacity:.4;cursor:not-allowed}
+.chips small{font-weight:500;opacity:.8}
+.veld{display:grid;gap:6px;margin-top:12px;font-weight:600;font-size:15px}
+.veld input,.veld textarea{font:inherit;font-weight:400;min-height:48px;padding:10px 14px;border-radius:12px;border:2px solid #e3cfcc;background:#fff;color:var(--ink);width:100%}
+.veld textarea{min-height:90px;resize:vertical}
+.bon{background:var(--ink);color:#fff;border-radius:var(--r);padding:22px 20px;display:grid;gap:14px;align-content:start}
+.bon .lbl{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--rose)}
+.bon pre{margin:0;white-space:pre-wrap;font:500 16px/1.5 Figtree,sans-serif;background:rgba(255,255,255,.07);border-radius:12px;padding:14px;overflow-wrap:anywhere}
+.bon .acties{display:grid;gap:10px}
+.bon .btn-l{color:#fff;border-color:rgba(255,255,255,.7)}
+.bon .btn-l:hover{background:#fff;color:var(--ink)}
+.bon .klein{font-size:14px;color:#e6d6d8}
+@media (min-width:900px){.kz{grid-template-columns:1.3fr 1fr;align-items:start}.kz .stappen{display:grid;gap:18px}.bon{position:sticky;top:20px}}
+.stappen{display:grid;gap:14px}
+
+/* waarom */
+.waarom .kaarten{display:grid;gap:16px;margin-top:34px}
+.kaart{border-radius:var(--r);padding:24px 22px;background:#fff;border:1px solid #efdcd9;display:grid;gap:10px;align-content:start}
+.kaart .ic{width:52px;height:52px;border-radius:14px;background:var(--blush);display:grid;place-items:center}
+.kaart .ic svg{width:28px;height:28px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kaart p{color:var(--ink2)}
+@media (min-width:760px){.waarom .kaarten{grid-template-columns:repeat(3,1fr)}}
+
+/* reviews */
+.reviews{background:var(--ink);color:#fff}
+.reviews .eyebrow{color:var(--rose)}
+.score{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 22px;margin-top:10px}
+.score .num{font:800 clamp(72px,20vw,128px)/.9 "Bricolage Grotesque",sans-serif}
+.score .st{color:#e7b04a;font-size:24px;letter-spacing:2px}
+.score a{color:#fff;font-weight:700}
+.revs{display:grid;gap:16px;margin-top:36px}
+.rev{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:22px 20px;display:grid;gap:10px}
+.rev p{font-size:18px;line-height:1.45}
+.rev b{color:var(--rose);font-weight:700}
+.revnoot{margin-top:18px;font-size:14px;color:#cdbfc2}
+@media (min-width:760px){.revs{grid-template-columns:repeat(3,1fr)}}
+
+/* stappen */
+.zo ol{list-style:none;padding:0;margin:34px 0 0;display:grid;gap:14px;counter-reset:s}
+.zo li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:start;background:#fff;border-radius:var(--r);padding:18px;border:1px solid #efdcd9}
+.zo li::before{content:counter(s);width:56px;height:56px;border-radius:50%;background:var(--pist-d);color:#fff;display:grid;place-items:center;font:800 24px "Bricolage Grotesque",sans-serif}
+.zo li p{color:var(--ink2)}
+@media (min-width:760px){.zo ol{grid-template-columns:repeat(3,1fr)}.zo li{grid-template-columns:1fr}}
+
+/* faq */
+.faq{background:#fff}
+.faq details{border-bottom:1px solid #ecd6d3}
+.faq summary{list-style:none;cursor:pointer;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;font:700 clamp(17px,4.6vw,20px)/1.25 "Bricolage Grotesque",sans-serif;padding:14px 0}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:28px;color:var(--rose-d);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 18px;color:var(--ink2);max-width:46em}
+.faq .lijst{margin-top:26px;max-width:820px}
+
+/* kom langs */
+.langs{background:#f7e8e5 url(img/marmer.jpg) center/cover}
+.langs .grid{display:grid;gap:18px;margin-top:30px}
+.blok{background:#fff;border-radius:var(--r);padding:24px 20px;display:grid;gap:14px;align-content:start}
+.blok address{font-style:normal;font-size:19px;font-weight:600;line-height:1.4}
+.uren{width:100%;border-collapse:collapse;font-size:16px}
+.uren td{padding:9px 0;border-bottom:1px solid #f0e1df}
+.uren td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.uren tr.vandaag td{font-weight:700;color:var(--pist-d)}
+.blok .acties{display:flex;flex-wrap:wrap;gap:10px}
+.blok .acties .btn{flex:1 1 180px}
+@media (min-width:900px){.langs .grid{grid-template-columns:1fr 1fr}}
+
+/* slot */
+.slot{background:var(--pist-d);color:#fff;text-align:center}
+.slot h2{color:#fff}
+.slot p{margin:14px auto 0;max-width:34em;color:#e8efd9}
+.slot .cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+.slot .btn-p{background:#fff;color:var(--pist-d)}
+.slot .btn-l{color:#fff;border-color:#fff}
+.slot .btn-l:hover{background:#fff;color:var(--pist-d)}
+
+/* footer */
+footer{background:var(--ink);color:#e6d6d8;padding:44px 0 120px;font-size:15px}
+footer .wrap{display:grid;gap:18px}
+footer img{height:58px;width:auto}
+footer a{color:#fff}
+footer .door{border-top:1px solid rgba(255,255,255,.15);padding-top:16px;font-size:14px}
+@media (min-width:900px){footer{padding-bottom:44px}}
+
+/* zwevende CTA (mobiel) */
+.float{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;gap:10px;transform:translateY(140%);transition:transform .3s ease;pointer-events:none}
+.float.show{transform:none;pointer-events:auto}
+.float .btn{flex:1;box-shadow:0 10px 24px rgba(43,36,39,.25);min-height:54px}
+.float .btn-l{background:#fff}
+@media (min-width:900px){.float{display:none}}
+
+/* pitch (alleen Mo) */
+.mo{position:fixed;left:14px;bottom:14px;z-index:60;width:44px;height:44px;border-radius:50%;border:0;background:var(--ink);color:#fff;font:700 13px Figtree,sans-serif;opacity:.35;cursor:pointer;display:none}
+.mo:hover{opacity:1}
+@media (min-width:900px){.mo{display:block}}
+html.pitch-aan .mo{display:block}
+.pitch{position:fixed;inset:0;z-index:90;background:rgba(31,27,28,.62);display:none;overflow-y:auto;padding:14px}
+.pitch.open{display:block}
+.pan{background:#fff;border-radius:22px;max-width:980px;margin:0 auto;padding:22px 18px 28px}
+.pan h2{font-size:clamp(24px,6vw,32px)}
+.pan .close{float:right;width:44px;height:44px;border-radius:50%;border:0;background:var(--blush);font-size:24px;cursor:pointer}
+.vn{display:grid;gap:14px;margin:18px 0 22px}
+.vn figure{margin:0;display:grid;gap:8px;align-content:start}
+.vn figcaption{font-size:14px;color:var(--ink2)}
+.vn img{border-radius:14px;border:1px solid #eee;max-height:520px;width:auto;margin:0 auto}
+.na{border-radius:14px;background:#f7e8e5 url(img/marmer.jpg) center/500px;min-height:300px;display:grid;place-items:center;gap:12px;padding:24px;text-align:center}
+.na img{border:0;max-height:none;width:200px;height:auto}
+.na span{font:700 20px/1.2 "Bricolage Grotesque",sans-serif}
+.punten{padding-left:20px;display:grid;gap:10px;margin:12px 0}
+.reken{background:var(--blush);border-radius:16px;padding:18px;display:grid;gap:10px;margin-top:18px}
+.reken input{width:100%;min-height:44px}
+.reken .uit{font:800 26px/1.2 "Bricolage Grotesque",sans-serif}
+.reken .uit small{display:block;font:500 14px/1.45 Figtree,sans-serif;color:var(--ink2);margin-top:6px}
+.small{font-size:14px;color:var(--ink2)}
+@media (min-width:760px){.vn{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></div>
+<div class="bar"><p><a href="https://www.google.com/maps?cid=3608727503879451051" target="_blank" rel="noopener">4,8 ★ uit 290 Google-reviews · Crooswijkseweg 126</a></p></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="By Merve, naar boven"><img src="logo-dark.svg" width="144" height="68" alt="By Merve"></a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <a href="#vitrine">Op de kaart</a>
+      <a href="#kiezer">Plan je bezoek</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#langs">Kom langs</a>
+    </nav>
+    <a class="btn btn-p btn-sm" href="tel:+31102542741" aria-label="Bel 010 254 2741"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Bel</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero" aria-labelledby="h1">
+  <div class="wrap">
+    <div class="txt">
+      <span class="status" id="status"><i></i><span>Ma–za 09:30–17:30 · zo 12:00–17:30</span></span>
+      <h1 id="h1">Turks ontbijt <em>in Crooswijk.</em></h1>
+      <p class="sub">Gözleme, menemen, çılbır, pişi en sucuk. Van ontbijt tot lunch, aan de Crooswijkseweg 126.</p>
+    </div>
+
+    <svg class="scene" viewBox="0 0 400 300" role="img" aria-label="Illustratie: een deegbal wordt uitgerold en dubbelgevouwen tot een goudbruine gözleme op een houten plank">
+      <defs>
+        <radialGradient id="dg" gradientUnits="userSpaceOnUse" cx="196" cy="98" r="176" gradientTransform="translate(196 98) scale(1 .7) translate(-196 -98)"><stop offset="0" stop-color="#fbf0db"/><stop offset=".7" stop-color="#f3ddb3"/><stop offset="1" stop-color="#e8c993"/></radialGradient>
+        <radialGradient id="du" gradientUnits="userSpaceOnUse" cx="196" cy="128" r="180" gradientTransform="translate(196 128) scale(1 .72) translate(-196 -128)"><stop offset="0" stop-color="#f7d486"/><stop offset=".55" stop-color="#e9b35c"/><stop offset="1" stop-color="#c98537"/></radialGradient>
+        <linearGradient id="plk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b47b48"/><stop offset=".55" stop-color="#9f683a"/><stop offset="1" stop-color="#8a572e"/></linearGradient>
+        <linearGradient id="hout" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3b98a"/><stop offset=".5" stop-color="#c9935f"/><stop offset="1" stop-color="#a87444"/></linearGradient>
+        <linearGradient id="hout2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c08a58"/><stop offset="1" stop-color="#8a5a32"/></linearGradient>
+      </defs>
+      <!-- houten plank met handvat -->
+      <g>
+        <path d="M40 66h302a24 24 0 0 1 24 24v50h20a16 16 0 0 1 16 16v20a16 16 0 0 1-16 16h-20v58a24 24 0 0 1-24 24H40a24 24 0 0 1-24-24V90a24 24 0 0 1 24-24z" fill="#8a4f4f" opacity=".16"/>
+        <path d="M34 60h302a24 24 0 0 1 24 24v50h20a16 16 0 0 1 16 16v20a16 16 0 0 1-16 16h-20v58a24 24 0 0 1-24 24H34a24 24 0 0 1-24-24V84a24 24 0 0 1 24-24z" fill="#6f421e"/>
+        <path d="M34 52h302a24 24 0 0 1 24 24v50h20a16 16 0 0 1 16 16v20a16 16 0 0 1-16 16h-20v58a24 24 0 0 1-24 24H34a24 24 0 0 1-24-24V76a24 24 0 0 1 24-24z" fill="url(#plk)"/>
+        <circle cx="381" cy="152" r="6" fill="#6f421e"/>
+        <g fill="none" stroke="#7a4924" stroke-linecap="round" opacity=".4" stroke-width="1.4">
+          <path d="M22 84c60-6 120 4 190-2s110 2 140-2"/><path d="M18 120c80 6 150-6 230 0s80-4 106 0"/><path d="M18 168c70-6 140 6 210 0s96 4 124-2"/><path d="M22 214c66 6 130-6 200 0s100-4 128 0"/><path d="M30 252c80-4 160 4 300-2"/>
+        </g>
+        <path d="M34 54h302a22 22 0 0 1 22 22" fill="none" stroke="#d6a26c" stroke-width="2" opacity=".7"/>
+      </g>
+      <!-- deeg: schuift tijdens het vouwen naar het midden van de plank -->
+      <g class="sc-move">
+        <g class="sc-shadow" fill="#3e200c"><path d="M35 104A164 118 0 0 0 363 104Z" opacity=".32"/><path class="sc-shtop" d="M35 104A164 118 0 0 1 363 104Z" opacity=".32"/></g>
+        <g class="sc-grow">
+          <!-- onderste helft van het vel (blijft liggen) -->
+          <path d="M32 98A164 116 0 0 0 360 98Z" fill="url(#dg)"/>
+          <g fill="#fff" opacity=".7"><circle cx="110" cy="130" r="1.4"/><circle cx="170" cy="168" r="1.7"/><circle cx="236" cy="150" r="1.2"/><circle cx="290" cy="122" r="1.5"/><circle cx="206" cy="118" r="1.1"/></g>
+          <!-- bovenste helft: klapt om langs de middellijn -->
+          <g class="sc-flap">
+            <path d="M32 98A164 116 0 0 1 360 98Z" fill="url(#dg)"/>
+            <g fill="#fff" opacity=".75"><circle cx="120" cy="56" r="1.6"/><circle cx="160" cy="36" r="1.2"/><circle cx="214" cy="28" r="1.8"/><circle cx="262" cy="46" r="1.3"/><circle cx="300" cy="72" r="1.5"/><circle cx="92" cy="80" r="1.2"/><circle cx="188" cy="62" r="1.1"/><circle cx="240" cy="78" r="1.6"/></g>
+            <path class="sc-under" d="M32 98A164 116 0 0 1 360 98Z" fill="url(#du)"/>
+          </g>
+          <!-- gebakken: goudbruin, donkere bakvlekken, knapperige rand -->
+          <g class="sc-spots">
+            <g fill="#6e3a14">
+              <ellipse cx="96" cy="122" rx="11" ry="6" transform="rotate(-12 96 122)" opacity=".42"/>
+              <ellipse cx="140" cy="150" rx="15" ry="8" transform="rotate(8 140 150)" opacity=".5"/>
+              <ellipse cx="128" cy="118" rx="6" ry="4" opacity=".55"/>
+              <ellipse cx="186" cy="132" rx="10" ry="5" transform="rotate(-6 186 132)" opacity=".46"/>
+              <ellipse cx="214" cy="178" rx="16" ry="8" transform="rotate(-10 214 178)" opacity=".44"/>
+              <ellipse cx="248" cy="128" rx="12" ry="6" transform="rotate(14 248 128)" opacity=".5"/>
+              <ellipse cx="286" cy="154" rx="10" ry="6" transform="rotate(-18 286 154)" opacity=".46"/>
+              <ellipse cx="316" cy="118" rx="8" ry="4" opacity=".42"/>
+              <ellipse cx="172" cy="190" rx="7" ry="4" opacity=".4"/>
+              <ellipse cx="262" cy="184" rx="6" ry="3" opacity=".48"/>
+              <ellipse cx="72" cy="108" rx="5" ry="3" opacity=".5"/>
+              <ellipse cx="340" cy="108" rx="5" ry="3" opacity=".45"/>
+              <ellipse cx="226" cy="112" rx="5" ry="3" opacity=".55"/>
+              <ellipse cx="110" cy="164" rx="6" ry="3" opacity=".4"/>
+            </g>
+            <g fill="#4a2208" opacity=".55"><circle cx="142" cy="150" r="3"/><circle cx="216" cy="176" r="3.4"/><circle cx="249" cy="127" r="2.6"/><circle cx="287" cy="153" r="2.4"/><circle cx="97" cy="122" r="2.2"/><circle cx="187" cy="132" r="2"/></g>
+            <path d="M33 98A163 115 0 0 0 359 98" fill="none" stroke="#8f521f" stroke-width="7" opacity=".6"/>
+            <path d="M33 98A163 115 0 0 0 359 98" fill="none" stroke="#5a2a0c" stroke-width="3" stroke-dasharray="5 10" stroke-linecap="round" opacity=".55"/>
+            <path d="M46 101A150 104 0 0 0 346 101" fill="none" stroke="#ffe0a0" stroke-width="2" opacity=".45"/>
+            <path d="M36 102H356" stroke="#9c5a22" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+            <path d="M36 98H356" stroke="#f9dc9f" stroke-width="4" stroke-linecap="round" opacity=".95"/>
+          </g>
+        </g>
+      </g>
+      <!-- de deegroller uit het logo; eindigt schuin naast de gözleme op de plank -->
+      <g class="sc-pin">
+        <rect x="-112" y="5" width="226" height="16" rx="8" fill="#5a3422" opacity=".22"/>
+        <rect x="-150" y="-4" width="48" height="8" rx="4" fill="url(#hout2)" stroke="#2b2427" stroke-width="1.4"/>
+        <rect x="102" y="-4" width="48" height="8" rx="4" fill="url(#hout2)" stroke="#2b2427" stroke-width="1.4"/>
+        <rect x="-112" y="-10" width="224" height="20" rx="10" fill="url(#hout)" stroke="#2b2427" stroke-width="1.6"/>
+        <path d="M-94 -4H94" stroke="#fff" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      <!-- naambordje zoals in hun vitrine, met klemmetje aan de plank -->
+      <g class="sc-tag">
+        <g transform="translate(24 224) rotate(-4)">
+          <rect x="2" y="4" width="120" height="40" rx="8" fill="#2b2427" opacity=".2"/>
+          <rect x="0" y="0" width="120" height="40" rx="8" fill="#1f1b1c"/>
+          <text x="15" y="26" fill="#fff" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="18">gözleme</text>
+          <path d="M104 16c-2-3-7-2-7 2 0 3 7 7 7 7s7-4 7-7c0-4-5-5-7-2z" fill="none" stroke="#d9a3a1" stroke-width="1.6"/>
+          <rect x="52" y="-7" width="16" height="11" rx="2.5" fill="#c9a25a" stroke="#2b2427" stroke-width="1.2"/>
+        </g>
+      </g>
+    </svg>
+
+    <div class="txt2">
+      <div class="cta">
+        <a class="btn btn-p" href="tel:+31102542741"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Bel 010 254 2741</a>
+        <a class="btn btn-l" href="#kiezer">Plan je ontbijt</a>
+        <a class="btn btn-wa wa-only" href="#" data-wa="kort">App ons</a>
+      </div>
+      <p class="trust"><span><span class="st">★★★★★</span> <a href="https://www.google.com/maps?cid=3608727503879451051" target="_blank" rel="noopener">4,8 uit 290 Google-reviews</a></span><span>Crooswijkseweg 126, Rotterdam</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="vitrine" id="vitrine" aria-labelledby="h-vit">
+  <div class="wrap">
+    <div class="kop">
+      <span class="eyebrow">Op de kaart</span>
+      <h2 id="h-vit">Van gözleme tot poğaça</h2>
+      <p>Dit zijn gerechten die gasten in hun reviews noemen. Tik aan waar je zin in hebt, dan zetten we het in je bericht.</p>
+    </div>
+    <div class="kast" role="group" aria-label="Gerechten">
+      <div class="plank" id="plank1"></div>
+      <div class="plank" id="plank2"></div>
+    </div>
+    <div class="kast-noot">
+      <p><span class="lijstje" id="lijstje">Nog niets aangetikt.</span> Vraag naar wat er vandaag is: bel even of kom langs.</p>
+      <a class="btn btn-p" href="#kiezer">Plan je bezoek</a>
+    </div>
+  </div>
+</section>
+
+<section class="kiezer" id="kiezer" aria-labelledby="h-kz">
+  <div class="wrap">
+    <span class="eyebrow">Even regelen</span>
+    <h2 id="h-kz">Plan je ontbijt of lunch</h2>
+    <div class="kz grid">
+      <div class="stappen">
+        <div class="stap">
+          <h3><b>1</b> Waarvoor kom je?</h3>
+          <div class="chips" id="c-wat"></div>
+        </div>
+        <div class="stap" id="s-wie">
+          <h3><b>2</b> Met hoeveel?</h3>
+          <div class="chips" id="c-wie"></div>
+        </div>
+        <div class="stap" id="s-vraag" hidden>
+          <h3><b>2</b> Wat wil je vragen?</h3>
+          <label class="veld">Je vraag<textarea id="vraag" placeholder="Bijvoorbeeld over de kaart of een groep"></textarea></label>
+        </div>
+        <div class="stap" id="s-dag">
+          <h3><b>3</b> Welke dag?</h3>
+          <div class="chips" id="c-dag"></div>
+          <div class="chips" id="c-mom" style="margin-top:12px"></div>
+          <label class="veld">Je naam (mag leeg blijven)<input id="naam" autocomplete="given-name"></label>
+        </div>
+      </div>
+      <div class="bon" aria-live="polite">
+        <span class="lbl" id="bon-lbl">Zeg dit aan de telefoon</span>
+        <pre id="bericht"></pre>
+        <div class="acties">
+          <a class="btn btn-wa wa-only" id="stuurwa" href="#">Stuur via WhatsApp</a>
+          <a class="btn btn-p" id="belbon" href="tel:+31102542741">Bel 010 254 2741</a>
+          <button class="btn btn-l" type="button" id="kopieer">Kopieer tekst</button>
+        </div>
+        <p class="klein">Open ma–za 09:30–17:30, zondag 12:00–17:30.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="waarom" aria-labelledby="h-wa">
+  <div class="wrap">
+    <span class="eyebrow">Uit de reviews</span>
+    <h2 id="h-wa">Waarom By Merve</h2>
+    <div class="kaarten grid">
+      <div class="kaart">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14h16M6 14a6 6 0 0 1 12 0"/><path d="M3 18h18"/><path d="M12 5v3"/></svg></div>
+        <h3>Vers bereid</h3>
+        <p>Gasten schrijven dat alles vers wordt bereid.</p>
+      </div>
+      <div class="kaart">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></div>
+        <h3>Aardige eigenaren</h3>
+        <p>Reviews noemen aardige eigenaren en een rustige, schone zaak.</p>
+      </div>
+      <div class="kaart">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V11l8-6 8 6v10"/><path d="M9 21v-5a3 3 0 0 1 6 0v5"/></svg></div>
+        <h3>Ook een gebedsruimte</h3>
+        <p>Gasten noemen in hun reviews ook een gebedsruimte.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" aria-labelledby="h-rv">
+  <div class="wrap">
+    <span class="eyebrow">Google-reviews</span>
+    <h2 id="h-rv">Wat gasten schrijven</h2>
+    <div class="score">
+      <span class="num">4,8</span>
+      <p><span class="st" aria-hidden="true">★★★★★</span><br><a href="https://www.google.com/maps?cid=3608727503879451051" target="_blank" rel="noopener">290 reviews op Google</a></p>
+    </div>
+    <div class="revs grid">
+      <div class="rev"><p>Alles is lekker en wordt vers bereid.</p><b>Fatima</b></div>
+      <div class="rev"><p>Een hele fijne, schone zaak, en een aanwinst voor de Crooswijkseweg.</p><b>Amer</b></div>
+      <div class="rev"><p>Favoriete halal Turkse zaak in Rotterdam, met voor ieder wat wils.</p><b>Yasmina</b></div>
+    </div>
+    <p class="revnoot">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="zo" aria-labelledby="h-zo">
+  <div class="wrap">
+    <span class="eyebrow">Zo simpel</span>
+    <h2 id="h-zo">Van zin tot tafel</h2>
+    <ol>
+      <li><div><h3>Kies je moment</h3><p>Ontbijt of lunch: ma–za vanaf 09:30, zondag vanaf 12:00.</p></div></li>
+      <li><div><h3>Bel even</h3><p>Op 010 254 2741. De planner hierboven zet klaar wat je wilt zeggen.</p></div></li>
+      <li><div><h3>Kom langs</h3><p>Crooswijkseweg 126, in Oud-Crooswijk.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="h-faq">
+  <div class="wrap">
+    <span class="eyebrow">Veelgestelde vragen</span>
+    <h2 id="h-faq">Vóór je komt</h2>
+    <div class="lijst">
+      <details><summary>Wanneer zijn jullie open?</summary><p>Maandag tot en met zaterdag van 09:30 tot 17:30, zondag van 12:00 tot 17:30.</p></details>
+      <details><summary>Waar zitten jullie?</summary><p>Crooswijkseweg 126, 3034 HP Rotterdam, in Oud-Crooswijk. <a href="https://www.google.com/maps/dir/?api=1&amp;destination=By%20Merve%2C%20Crooswijkseweg%20126%2C%203034%20HP%20Rotterdam" target="_blank" rel="noopener">Route in Google Maps</a>.</p></details>
+      <details><summary>Kan ik een tafel vastleggen?</summary><p>Bel even naar 010 254 2741, dan hoor je of er plek is.</p></details>
+      <details><summary>Waar vind ik de kaart?</summary><p>Bel even of kom langs, dan hoor je wat er vandaag is. Gasten noemen in reviews onder meer gözleme, menemen, çılbır, pişi en Istanbul-poğaça.</p></details>
+      <details><summary>Kan ik cheesecake laten bezorgen?</summary><p>Bel even, dan hoor je wat er kan.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="langs" id="langs" aria-labelledby="h-langs">
+  <div class="wrap">
+    <span class="eyebrow">Kom langs</span>
+    <h2 id="h-langs">Aan de Crooswijkseweg</h2>
+    <div class="grid">
+      <div class="blok">
+        <address>By Merve<br>Crooswijkseweg 126<br>3034 HP Rotterdam</address>
+        <div class="acties">
+          <a class="btn btn-p" href="https://www.google.com/maps/dir/?api=1&amp;destination=By%20Merve%2C%20Crooswijkseweg%20126%2C%203034%20HP%20Rotterdam" target="_blank" rel="noopener">Route</a>
+          <a class="btn btn-l" href="tel:+31102542741">Bel 010 254 2741</a>
+        </div>
+      </div>
+      <div class="blok">
+        <h3>Openingstijden</h3>
+        <table class="uren" id="uren">
+          <tr data-d="1"><td>Maandag</td><td>09:30–17:30</td></tr>
+          <tr data-d="2"><td>Dinsdag</td><td>09:30–17:30</td></tr>
+          <tr data-d="3"><td>Woensdag</td><td>09:30–17:30</td></tr>
+          <tr data-d="4"><td>Donderdag</td><td>09:30–17:30</td></tr>
+          <tr data-d="5"><td>Vrijdag</td><td>09:30–17:30</td></tr>
+          <tr data-d="6"><td>Zaterdag</td><td>09:30–17:30</td></tr>
+          <tr data-d="0"><td>Zondag</td><td>12:00–17:30</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="h-slot">
+  <div class="wrap">
+    <h2 id="h-slot">Zin in een Turks ontbijt?</h2>
+    <p>Bel even of plan je bezoek. Je vindt ons aan de Crooswijkseweg 126.</p>
+    <div class="cta">
+      <a class="btn btn-p" href="tel:+31102542741">Bel 010 254 2741</a>
+      <a class="btn btn-l" href="#kiezer">Plan je bezoek</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-light.svg" width="123" height="58" alt="By Merve" loading="lazy" decoding="async">
+    <div>By Merve · Crooswijkseweg 126, 3034 HP Rotterdam · <a href="tel:+31102542741">010 254 2741</a></div>
+    <div class="door">Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a> · Dit is een demo</div>
+  </div>
+</footer>
+
+<div class="float" id="float" aria-hidden="true">
+  <a class="btn btn-p" href="tel:+31102542741" tabindex="-1">Bel</a>
+  <a class="btn btn-wa wa-only" href="#" data-wa="kort" tabindex="-1">App</a>
+  <a class="btn btn-l" href="#kiezer" tabindex="-1">Plan je bezoek</a>
+</div>
+
+<!-- Pitch-modus: alleen voor Mo (knop "Mo" linksonder op desktop, of ?pitch in de URL) -->
+<button class="mo" id="mo" type="button" aria-label="Pitch-paneel">Mo</button>
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-labelledby="p-h">
+  <div class="pan">
+    <button class="close" id="pclose" type="button" aria-label="Sluiten">×</button>
+    <h2 id="p-h">By Merve: nu en straks</h2>
+    <div class="vn">
+      <figure><img src="img/voor-google.jpg" width="408" height="892" alt="Google Maps-profiel van By Merve: bij website staat 'Website toevoegen'" loading="lazy" decoding="async"><figcaption>Nu: Google Maps, 9 nov 2026. Geen website; onderaan staat "Website toevoegen".</figcaption></figure>
+      <figure><div class="na"><img src="logo-dark.svg" width="200" height="95" alt="" loading="lazy" decoding="async"><span>Eigen site met kaart, tijden en bel-knop.</span></div><figcaption>Straks: deze site, op jullie eigen domein</figcaption></figure>
+    </div>
+    <h2 style="font-size:20px">Wat er concreet beter is</h2>
+    <ol class="punten">
+      <li><b>Jullie eigen plek online.</b> Nu staat er bij Google geen website ("Website toevoegen"). Wie "By Merve" zoekt, komt bij gidsen uit, niet bij een eigen site van jullie.</li>
+      <li><b>De kaart staat erop.</b> Jullie menu staat nu nergens online, alleen losse gerechten in reviews. Bij oplevering zetten we jullie eigen kaart met prijzen erop; de gerechten in deze demo komen uit reviews.</li>
+      <li><b>Bellen, route en "nu open" in één tik.</b> Op Restaurant Guru staat geen telefoonnummer. Hier staat 010 254 2741 bovenaan, en de planner zet klaar wat een gast wil zeggen.</li>
+    </ol>
+    <p class="small">Nog niet in de demo: jullie eigen foto's (vitrine, gerechten, zaak). Die komen erin bij oplevering. Hebben jullie WhatsApp op een nummer, dan zetten we de WhatsApp-knop aan.</p>
+    <div class="reken">
+      <strong>Rekensom (voorbeeld, geen belofte)</strong>
+      <label for="r-k">Extra gasten per week via de site: <span id="r-kv">3</span></label>
+      <input type="range" id="r-k" min="1" max="30" value="3">
+      <label for="r-b">Gemiddelde besteding per gast: € <span id="r-bv">12</span></label>
+      <input type="range" id="r-b" min="5" max="40" value="12">
+      <div class="uit" id="r-uit"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ---------- instellingen ---------- */
+  // WhatsApp aanzetten: zet WA_AAN op true zodra vaststaat dat 010 254 2741 op WhatsApp zit
+  // (of zet een ander WhatsApp-nummer in WA_NUMMER, zonder + en spaties). Met ?wa in de URL kun je het vooraf bekijken.
+  var WA_AAN = false;
+  var WA_NUMMER = '31102542741';
+  var TEL = '010 254 2741';
+  var UREN = {0:[720,1050],1:[570,1050],2:[570,1050],3:[570,1050],4:[570,1050],5:[570,1050],6:[570,1050]}; // minuten na middernacht
+  var GERECHTEN = [['Gözleme','Menemen','Çılbır','Pişi','Istanbul-poğaça'],['Sarma','Sucuk','Platbroden','Kipwraps','Cheesecake']];
+  var DAGEN = ['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+  var MAANDEN = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+  var waAan = WA_AAN || /[?&]wa\b/.test(location.search);
+  var KORT = 'Hoi By Merve, ik heb een vraag.';
+  var zin = [];
+  var keuze = {wat:'Ontbijt', wie:'met z\'n tweeën', dag:0, mom:'in de ochtend'};
+  var heroUit = false, kiezerIn = false;
+  var nu = new Date();
+  function hhmm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');}
+  function wa(t){return 'https://wa.me/'+WA_NUMMER+'?text='+encodeURIComponent(t);}
+
+  if (waAan) {
+    document.documentElement.classList.add('wa');
+    document.querySelectorAll('[data-wa="kort"]').forEach(function(a){a.href=wa(KORT);a.target='_blank';a.rel='noopener';});
+  }
+
+  /* ---------- open / dicht ---------- */
+  (function(){
+    var st = document.getElementById('status'), d = nu.getDay(), m = nu.getHours()*60+nu.getMinutes(), u = UREN[d], t;
+    if (m >= u[0] && m < u[1]) { st.classList.add('open'); t = 'Nu open · tot '+hhmm(u[1]); }
+    else if (m < u[0]) { t = 'Vandaag open vanaf '+hhmm(u[0]); }
+    else { var n = (d+1)%7; t = 'Morgen open vanaf '+hhmm(UREN[n][0]); }
+    st.querySelector('span').textContent = t;
+    var rij = document.querySelector('#uren tr[data-d="'+d+'"]'); if (rij) rij.classList.add('vandaag');
+  })();
+
+  /* ---------- vitrine ---------- */
+  var HART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>';
+  GERECHTEN.forEach(function(rij, i){
+    var plank = document.getElementById('plank'+(i+1));
+    rij.forEach(function(g){
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'bord'; b.setAttribute('aria-pressed','false'); b.dataset.g = g;
+      b.innerHTML = '<span>'+g+'</span>'+HART;
+      b.addEventListener('click', function(){
+        var k = zin.indexOf(g);
+        if (k < 0) zin.push(g); else zin.splice(k,1);
+        b.setAttribute('aria-pressed', k < 0 ? 'true' : 'false');
+        if (g === 'Cheesecake' && k < 0 && zin.length === 1) { keuze.wat = 'Cheesecake'; tekenWat(); }
+        update();
+      });
+      plank.appendChild(b);
+    });
+  });
+
+  /* ---------- kiezer ---------- */
+  function chips(id, opties, actief, cb){
+    var w = document.getElementById(id); w.innerHTML = '';
+    opties.forEach(function(o){
+      var b = document.createElement('button'); b.type = 'button';
+      b.innerHTML = o.html || o.label; b.setAttribute('aria-pressed', o.v === actief ? 'true' : 'false');
+      if (o.uit) b.disabled = true;
+      b.addEventListener('click', function(){ cb(o.v); });
+      w.appendChild(b);
+    });
+  }
+  function tekenWat(){
+    chips('c-wat', [{v:'Ontbijt',label:'Ontbijt'},{v:'Lunch',label:'Lunch'},{v:'Cheesecake',label:'Cheesecake'},{v:'Vraag',label:'Iets vragen'}], keuze.wat, function(v){
+      keuze.wat = v;
+      if (v === 'Lunch' && keuze.mom === 'in de ochtend') keuze.mom = 'rond de lunch';
+      if (v === 'Ontbijt' && DAGEN[datum(keuze.dag).getDay()] !== 'zondag') keuze.mom = 'in de ochtend';
+      tekenWat(); tekenMom(); update();
+    });
+    var vraag = keuze.wat === 'Vraag', cake = keuze.wat === 'Cheesecake';
+    document.getElementById('s-wie').hidden = vraag || cake;
+    document.getElementById('s-vraag').hidden = !vraag;
+    document.getElementById('s-dag').querySelector('h3').innerHTML = '<b>'+(vraag?'3':(cake?'2':'3'))+'</b> '+(cake?'Voor welke dag?':'Welke dag?');
+    document.getElementById('c-mom').hidden = cake || vraag;
+  }
+  function tekenWie(){
+    chips('c-wie', [{v:'alleen',label:'Alleen'},{v:'met z\'n tweeën',label:'Met z\'n tweeën'},{v:'met 3 of 4 personen',label:'3–4 personen'},{v:'met 5 of meer personen',label:'5 of meer'},{v:'met vriendinnen',label:'Met vriendinnen'}], keuze.wie, function(v){ keuze.wie = v; tekenWie(); update(); });
+  }
+  function datum(i){ return new Date(nu.getFullYear(), nu.getMonth(), nu.getDate()+i); }
+  function dagLabel(i){
+    var d = datum(i), kort = DAGEN[d.getDay()].slice(0,2), extra = d.getDay() === 0 ? ' <small>(vanaf 12:00)</small>' : '';
+    if (i === 0) return 'Vandaag'+extra;
+    if (i === 1) return 'Morgen'+extra;
+    return kort+' '+d.getDate()+'/'+(d.getMonth()+1)+extra;
+  }
+  function tekenDag(){
+    var o = [];
+    for (var i = 0; i < 7; i++) {
+      var dicht = i === 0 && (nu.getHours()*60+nu.getMinutes()) >= UREN[nu.getDay()][1];
+      o.push({v:i, html:dagLabel(i), uit:dicht});
+    }
+    if (o[0].uit && keuze.dag === 0) keuze.dag = 1;
+    chips('c-dag', o, keuze.dag, function(v){ keuze.dag = v; if (datum(v).getDay() === 0 && keuze.mom === 'in de ochtend') keuze.mom = 'rond de lunch'; tekenDag(); tekenMom(); update(); });
+  }
+  function tekenMom(){
+    var zondag = datum(keuze.dag).getDay() === 0, m = nu.getHours()*60+nu.getMinutes(), vandaag = keuze.dag === 0;
+    var o = [
+      {v:'in de ochtend', html:'Ochtend'+(zondag?' <small>(zo dicht)</small>':''), uit: zondag || (vandaag && m >= 690)},
+      {v:'rond de lunch', label:'Rond de lunch', uit: vandaag && m >= 840},
+      {v:'in de middag', label:'Middag'}
+    ];
+    var huidig = o.filter(function(x){ return x.v === keuze.mom; })[0];
+    if (huidig && huidig.uit) keuze.mom = o.filter(function(x){ return !x.uit; })[0].v;
+    chips('c-mom', o, keuze.mom, function(v){ keuze.mom = v; tekenMom(); update(); });
+  }
+  function dagTekst(i){
+    var d = datum(i);
+    if (i === 0) return 'vandaag';
+    if (i === 1) return 'morgen ('+DAGEN[d.getDay()]+')';
+    return DAGEN[d.getDay()]+' '+d.getDate()+' '+MAANDEN[d.getMonth()];
+  }
+  function bericht(){
+    var t, naam = document.getElementById('naam').value.trim(), dag = dagTekst(keuze.dag);
+    if (keuze.wat === 'Vraag') {
+      var v = document.getElementById('vraag').value.trim();
+      t = 'Hoi By Merve, ik heb een vraag'+(v ? ': '+v : '.');
+    } else if (keuze.wat === 'Cheesecake') {
+      t = 'Hoi By Merve, ik wil graag cheesecake bestellen voor '+dag+'. Kan dat, en kan het bezorgd worden?';
+    } else {
+      t = 'Hoi By Merve, ik wil graag '+(keuze.wat === 'Ontbijt' ? 'komen ontbijten' : 'komen lunchen')+' '+keuze.wie+', '+dag+' '+keuze.mom+'. Is er plek?';
+    }
+    var lijst = zin.filter(function(g){ return !(keuze.wat === 'Cheesecake' && g === 'Cheesecake'); });
+    if (lijst.length && keuze.wat !== 'Vraag') t += ' Ik heb zin in '+lijst.map(function(g){return g.toLowerCase();}).join(', ').replace(/, ([^,]*)$/,' en $1')+'.';
+    if (naam) t += ' Groet, '+naam;
+    return t;
+  }
+  function update(){
+    var t = bericht();
+    document.getElementById('bericht').textContent = t;
+    document.getElementById('bon-lbl').textContent = waAan ? 'Je bericht' : 'Zeg dit aan de telefoon';
+    var s = document.getElementById('stuurwa');
+    if (waAan) { s.href = wa(t); s.target = '_blank'; s.rel = 'noopener'; }
+    var l = document.getElementById('lijstje');
+    l.textContent = zin.length ? 'Op je lijstje: '+zin.join(', ')+'.' : 'Nog niets aangetikt.';
+  }
+  document.getElementById('naam').addEventListener('input', update);
+  document.getElementById('vraag').addEventListener('input', update);
+  document.getElementById('kopieer').addEventListener('click', function(){
+    var b = this, t = bericht();
+    if (navigator.clipboard) navigator.clipboard.writeText(t).then(function(){ b.textContent = 'Gekopieerd'; setTimeout(function(){ b.textContent = 'Kopieer tekst'; }, 1800); });
+  });
+  tekenWat(); tekenWie(); tekenDag(); tekenMom(); update();
+
+  /* ---------- zwevende CTA ---------- */
+  var fl = document.getElementById('float');
+  function zet(){
+    var s = heroUit && !kiezerIn;
+    fl.classList.toggle('show', s); fl.setAttribute('aria-hidden', s ? 'false' : 'true');
+    fl.querySelectorAll('a').forEach(function(a){ a.tabIndex = s ? 0 : -1; });
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){ heroUit = !es[0].isIntersecting; zet(); }, {threshold:0}).observe(document.getElementById('hero'));
+    new IntersectionObserver(function(es){ kiezerIn = es[0].isIntersecting; zet(); }, {threshold:0, rootMargin:'-25% 0px -25% 0px'}).observe(document.getElementById('kiezer'));
+  }
+
+  /* ---------- pitch (na alle variabelen) ---------- */
+  var pitch = document.getElementById('pitch'), mo = document.getElementById('mo');
+  var rk = document.getElementById('r-k'), rb = document.getElementById('r-b');
+  function reken(){
+    var k = +rk.value, b = +rb.value, jaar = k*b*52, terug = Math.ceil(595/b);
+    document.getElementById('r-kv').textContent = k; document.getElementById('r-bv').textContent = b;
+    document.getElementById('r-uit').innerHTML = '€ '+jaar.toLocaleString('nl-NL')+' per jaar<small>'+k+' × € '+b+' × 52 weken. De site (€ 595) is terugverdiend na '+terug+' gasten van € '+b+'. Dit is omzet, geen winst. Voorbeeldgetallen: vul ze samen in.</small>';
+  }
+  function open(){ pitch.classList.add('open'); reken(); }
+  function sluit(){ pitch.classList.remove('open'); }
+  mo.addEventListener('click', open);
+  document.getElementById('pclose').addEventListener('click', sluit);
+  pitch.addEventListener('click', function(e){ if (e.target === pitch) sluit(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') sluit(); });
+  rk.addEventListener('input', reken); rb.addEventListener('input', reken);
+  if (/[?&]pitch\b/.test(location.search)) { document.documentElement.classList.add('pitch-aan'); open(); }
+})();
+</script>
+</body>
+</html>
