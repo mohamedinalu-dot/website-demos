@@ -1,0 +1,732 @@
+<!doctype html>
+<!--
+  Demo L259 Haila Beauty Clinic (Crooswijkseweg 173, Rotterdam), Mohamedia, 9 nov 2026.
+  Concept in één zin: "Zone voor zone": een huidkliniek die precies werkt, getoond met hun eigen laserfoto,
+  waarop bij het laden de witte behandelzones op de benen één voor één worden ingetekend (zoals de behandelaar
+  dat op de huid doet) en de GentleMax-kop daarna één keer groen oplicht op het contactpunt.
+  Lay-out-archetype: BEHANDELKAART MET ZONES. De pagina leest als een behandelkaart uit de kliniek: dunne
+  meetlijnen, genummerde zones (01 advies, 02 laser, 03 huid, 04 ogen & nagels) als lijst met rijen die je aantikt,
+  daarna een donkere voor/na-wand (vaste tweeluiken, geen schuif) en een afspraakhulp als behandelplan.
+  Hero: split (tekst + eigen foto, recht, rond hoekje) in plaats van full-bleed; geen ticker/band, geen schuine
+  fotokaart, geen stempel, geen Ken Burns, geen stoom, geen licht-gaat-aan, geen letters één voor één, geen
+  voor/na-schuif, geen idle-lus. Beweging: SVG-lijnen (stroke-dashoffset) eenmalig + één groene puls, daarna stil.
+  Beeld: alle foto's van hailabeautyclinic.nl (eigen fotoshoot met HAILA-logo op muur/jassen, voor/na met eigen
+  watermerk). Hero-foto: de originele witte markeerlijnen op de benen zijn digitaal weggehaald en worden in de
+  animatie op (bijna) dezelfde plek opnieuw getekend; verder onbewerkt. De bleke dienstfoto's zijn in contrast
+  hersteld (hun site legt er een lichte waas over). Logo: hun eigen logo (HAILA / THE SKIN SPECIALIST)
+  nagetekend in Montserrat, omgezet naar paden.
+  WhatsApp: nummer (06) is niet bevestigd als WhatsApp. Daarom is bellen de hoofdknop. Ops zet WhatsApp aan met
+  WA_AAN = true hieronder in het script (of bekijk het vooraf met ?wa=1).
+-->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Haila Beauty Clinic – huidverbetering en laserontharing in Rotterdam</title>
+<meta name="description" content="Haila Beauty Clinic, Crooswijkseweg 173 in Rotterdam: laserontharing met de GentleMax Pro Plus, microneedling, peelings, Aqua Dermabrasie, Cosmelan, lash lifting en gratis huid- en productadvies. 4,9 uit 180 Google-reviews.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.jpg">
+<style>
+:root{
+  --ink:#16302E;--ink2:#22423E;--ink3:#0E2120;
+  --porc:#F4F4F1;--mist:#E6EBE8;--line:#CBD3CF;
+  --taupe:#B6A38C;--taupe-l:#D9C8B0;--taupe-d:#7A6448;
+  --laser:#93D8A6;--txt:#1E2B2A;--mut:#5A6664;
+  --head:"Urbanist",system-ui,sans-serif;--body:"Hanken Grotesk",system-ui,sans-serif;
+  --r:18px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--porc);color:var(--txt);font-family:var(--body);font-size:17px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--head);font-weight:500;line-height:1.08;letter-spacing:-.01em;margin:0;overflow-wrap:break-word}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.eyebrow{font-family:var(--head);font-size:13px;letter-spacing:.26em;text-transform:uppercase;font-weight:600;color:var(--taupe-d)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font-family:var(--head);font-weight:600;font-size:17px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;white-space:nowrap;transition:background-color .2s,color .2s,border-color .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-main{background:var(--ink);color:#fff}
+.btn-main:hover{background:var(--ink2)}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn-light{background:var(--taupe-l);color:var(--ink3)}
+.btn-light:hover{background:#fff}
+.btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+/* 1. demo-strook + 2. aankondiging */
+.demo{background:var(--ink3);color:#cfd8d5;font-size:13px;text-align:center;padding:7px 14px}
+.demo a{color:#fff}
+.ann{background:var(--mist);font-size:14px;text-align:center;padding:8px 14px;color:var(--ink)}
+.ann b{font-weight:700}
+@media (max-width:520px){.ann-x{display:none}}
+
+/* 3. header */
+header{position:sticky;top:0;z-index:40;background:rgba(244,244,241,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.hd .logo img{height:46px;width:auto}
+.nav{display:flex;gap:28px;font-family:var(--head);font-weight:500;font-size:16px}
+.nav a{text-decoration:none;color:var(--ink);padding:10px 0}
+.nav a:hover{color:var(--taupe-d)}
+.hd .btn{min-height:46px;padding:0 18px;font-size:16px}
+.hd .num{display:inline}
+@media (max-width:900px){.nav{display:none}}
+@media (max-width:420px){.hd .num{display:none}.hd .logo img{height:40px}}
+
+/* 4. hero */
+.hero{padding:34px 0 56px}
+.hero-g{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);gap:48px;align-items:center}
+.hero-g>*{min-width:0}
+.hero h1{font-size:clamp(38px,5.2vw,68px);font-weight:400;margin:14px 0 18px}
+.hero h1 em{font-style:normal;font-weight:600;color:var(--ink)}
+.hero h1 .t{color:var(--taupe-d)}
+.hero p.sub{font-size:18px;color:var(--mut);max-width:34em;margin:0 0 26px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-top:28px;font-size:15px;color:var(--mut)}
+.trust a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--taupe)}
+.tap{display:inline-flex;align-items:center;min-height:44px;vertical-align:middle}
+.stars{color:var(--taupe-d);letter-spacing:2px}
+.zonefoto{position:relative;border-radius:26px;overflow:hidden;background:#e9e4de;height:min(74vh,640px);box-shadow:0 30px 70px -30px rgba(22,48,46,.45)}
+.zonefoto svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.zonefoto .cap{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.9);color:var(--ink);font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;font-family:var(--head);letter-spacing:.04em}
+.z{fill:none;stroke:#fff;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;opacity:.92;stroke-dasharray:1;stroke-dashoffset:1;animation:teken var(--d,.9s) cubic-bezier(.55,.1,.35,1) var(--w,0s) forwards}
+@keyframes teken{to{stroke-dashoffset:0}}
+.puls{fill:none;stroke:var(--laser);stroke-width:3;opacity:0;transform-box:fill-box;transform-origin:center;animation:puls 1.3s ease-out 3.1s both}
+@keyframes puls{0%{opacity:.95;transform:scale(.2)}100%{opacity:0;transform:scale(1.9)}}
+.gloed{fill:var(--laser);opacity:0;animation:gloed 1.6s ease-out 3.05s forwards}
+@keyframes gloed{0%{opacity:0}30%{opacity:.55}100%{opacity:.22}}
+@media (prefers-reduced-motion:reduce){.z{animation:none;stroke-dashoffset:0}.puls{display:none}.gloed{animation:none;opacity:.22}}
+@media (max-width:900px){
+  .hero{padding:0 0 44px}
+  .hero-g{grid-template-columns:minmax(0,1fr);gap:22px}
+  .hero-g .foto{order:-1;margin:0 -20px}
+  .zonefoto{height:clamp(270px,36vh,400px);border-radius:0 0 26px 26px;box-shadow:none}
+  .hero .eyebrow{letter-spacing:.16em}
+  .hero h1{font-size:clamp(34px,9.4vw,46px);margin:10px 0 14px}
+  .hero p.sub{font-size:17px;margin-bottom:22px}
+  .trust{margin-top:28px}
+}
+@media (max-width:420px){.ctas .btn{flex:1 1 100%}}
+
+/* meetlijn-scheiding */
+.ruler{height:14px;background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 12px) bottom/100% 8px no-repeat,linear-gradient(var(--line),var(--line)) bottom/100% 1px no-repeat}
+
+section{scroll-margin-top:84px}
+.sec{padding:84px 0}
+.sec-h{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:end;margin-bottom:40px}
+.sec-h>*{min-width:0}
+.sec-h h2{font-size:clamp(32px,4.4vw,52px);font-weight:400}
+.sec-h p{margin:0;color:var(--mut)}
+@media (max-width:800px){.sec{padding:64px 0}.sec-h{grid-template-columns:minmax(0,1fr);gap:14px;margin-bottom:28px}}
+
+/* behandelkaart */
+.kaart{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 56px;align-items:start}
+.kaart>*{min-width:0}
+.zone{border-top:1px solid var(--ink);padding:22px 0 30px}
+.zone-k{display:flex;align-items:baseline;gap:14px;margin-bottom:10px}
+.zone-k .n{font-family:var(--head);font-size:14px;font-weight:700;letter-spacing:.18em;color:var(--taupe-d)}
+.zone-k h3{font-size:clamp(24px,2.6vw,30px);font-weight:500}
+.rij{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;min-height:56px;padding:12px 4px;background:none;border:0;border-bottom:1px solid var(--line);font:inherit;color:var(--txt);text-align:left;cursor:pointer}
+.rij:hover{background:var(--mist)}
+.rij span:first-child{min-width:0;overflow-wrap:break-word}
+.rij .tag{flex:none;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--mist);border:1px solid var(--line);padding:3px 9px;border-radius:999px}
+.rij .tag.g{background:#e3f3e7;border-color:#bfe2c8}
+.rij .pijl{flex:none;color:var(--taupe-d);font-size:20px}
+.zone figure{margin:18px 0 0;border-radius:var(--r);overflow:hidden;background:#eee}
+.zone figure img{width:100%;height:240px;object-fit:cover}
+.zone figcaption{font-size:13.5px;color:var(--mut);padding:8px 2px 0;background:var(--porc)}
+.pak{margin-top:16px;display:grid;gap:10px}
+.pak div{display:flex;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.pak div>*{min-width:0}
+.pak b{font-family:var(--head);font-size:19px;font-weight:600;white-space:nowrap}
+@media (max-width:380px){.pak div{flex-direction:column;gap:4px}}
+.pak small{display:block;color:var(--mut);font-size:14px}
+.bron{font-size:13px;color:var(--mut);margin-top:10px}
+@media (max-width:800px){.kaart{grid-template-columns:minmax(0,1fr)}.zone figure img{height:210px}}
+
+/* voor/na */
+.vn{background:var(--ink);color:#e9efec}
+.vn .sec-h h2{color:#fff}
+.vn .sec-h p{color:#b9c7c3}
+.vn .eyebrow{color:var(--taupe-l)}
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+.duo>*{min-width:0}
+.paar{margin:0}
+.paar .ims{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px;border-radius:var(--r);overflow:hidden}
+.paar .ims>div{position:relative;min-width:0}
+.paar img{width:100%;aspect-ratio:1/1;height:auto;object-fit:cover}
+.paar .lb{position:absolute;top:10px;left:10px;background:rgba(14,33,32,.78);color:#fff;font-family:var(--head);font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.paar .lb.na{background:var(--taupe-l);color:var(--ink3)}
+.paar figcaption{margin-top:10px;font-size:14px;color:#b9c7c3}
+@media (max-width:800px){.duo{grid-template-columns:minmax(0,1fr);gap:30px}}
+
+/* waarom */
+.drie{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.drie>*{min-width:0}
+.kaartje{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.kaartje .n{font-family:var(--head);font-weight:700;color:var(--taupe-d);letter-spacing:.18em;font-size:13px}
+.kaartje h3{font-size:clamp(21px,2.2vw,25px);margin:12px 0 8px;font-weight:600}
+.kaartje p{margin:0;color:var(--mut);font-size:16px}
+.erk{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px}
+.erk span{font-size:14px;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:var(--mist);color:var(--ink)}
+@media (max-width:860px){.drie{grid-template-columns:minmax(0,1fr)}}
+
+/* reviews */
+.rv{background:var(--mist)}
+.score{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:28px}
+.score .big{font-family:var(--head);font-size:64px;font-weight:300;line-height:1;color:var(--ink)}
+.score a{font-weight:600;color:var(--ink)}
+.rv .drie blockquote{margin:0;background:#fff;border-radius:var(--r);padding:24px;border:1px solid var(--line)}
+.rv blockquote p{margin:0 0 14px;font-size:17px}
+.rv blockquote footer{font-family:var(--head);font-weight:700;color:var(--taupe-d)}
+.label{font-size:14px;color:var(--mut);margin-top:18px}
+
+/* kiezer */
+.kz{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:36px;align-items:start}
+.kz>*{min-width:0}
+.stap{margin-bottom:28px}
+.stap h3{font-size:20px;font-weight:600;margin-bottom:12px;display:flex;gap:12px;align-items:baseline}
+.stap h3 .n{font-size:13px;letter-spacing:.18em;color:var(--taupe-d);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:46px;padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font:inherit;font-size:15.5px;color:var(--txt);cursor:pointer;text-align:left;max-width:100%;overflow-wrap:break-word}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip small{display:block;font-size:12.5px;opacity:.75}
+.naam{width:100%;min-height:50px;border:1.5px solid var(--line);border-radius:14px;padding:10px 14px;font:inherit;background:#fff}
+.plan{position:sticky;top:92px;background:var(--ink);color:#e9efec;border-radius:22px;padding:26px;overflow:hidden}
+.plan h3{color:#fff;font-size:24px;font-weight:500;margin-bottom:6px}
+.plan .ruler{opacity:.35;margin:14px 0 16px}
+.plan dl{margin:0 0 18px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;font-size:15.5px}
+.plan dt{color:var(--taupe-l);font-weight:600}
+.plan dd{margin:0;min-width:0;overflow-wrap:break-word}
+.plan .acts{display:grid;gap:10px}
+.plan .acts .btn{width:100%;white-space:normal;text-align:center}
+.plan .tip{font-size:14px;color:#b9c7c3;margin:14px 0 0}
+@media (max-width:900px){.kz{grid-template-columns:minmax(0,1fr)}.plan{position:static}}
+
+/* stappen + faq */
+.stp{counter-reset:s;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.stp>*{min-width:0}
+.stp li{list-style:none;border-top:1px solid var(--ink);padding-top:18px}
+.stp li b{display:block;font-family:var(--head);font-size:22px;font-weight:600;margin:6px 0}
+.stp li span{color:var(--mut)}
+.stp .n{font-family:var(--head);font-size:13px;letter-spacing:.18em;color:var(--taupe-d);font-weight:700}
+@media (max-width:800px){.stp{grid-template-columns:minmax(0,1fr)}}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;min-height:60px;padding:14px 0;font-family:var(--head);font-weight:600;font-size:19px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:26px;color:var(--taupe-d);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0 0 18px;color:var(--mut)}
+
+/* contact */
+.ct{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+.ct>*{min-width:0}
+.blok{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px}
+.blok h3{font-size:24px;font-weight:600;margin-bottom:10px}
+.blok address{font-style:normal;font-size:18px;margin-bottom:18px}
+.uren{width:100%;border-collapse:collapse;font-size:16px}
+.uren td{padding:9px 0;border-bottom:1px solid var(--mist)}
+.uren td:last-child{text-align:right}
+.uren tr.nu td{font-weight:700;color:var(--ink)}
+.uren tr.dicht td{color:var(--mut)}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:800px){.ct{grid-template-columns:minmax(0,1fr)}}
+
+/* slot */
+.slot{background:var(--ink);color:#fff;text-align:center;padding:80px 0}
+.slot h2{font-size:clamp(32px,4.6vw,54px);font-weight:300;max-width:16em;margin:0 auto 14px}
+.slot p{color:#b9c7c3;margin:0 auto 28px;max-width:34em}
+.slot .ctas{justify-content:center}
+
+footer.ft{background:var(--ink3);color:#9fb0ac;padding:44px 0 110px;font-size:14.5px}
+.ft-g{display:flex;flex-wrap:wrap;gap:22px 40px;justify-content:space-between;align-items:flex-start}
+.ft img{height:48px;width:auto}
+.ft a{color:#dfe7e4}
+
+/* zwevende CTA (mobiel) */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:flex;gap:8px;padding:8px;background:rgba(14,33,32,.96);border-radius:999px;box-shadow:0 14px 40px rgba(0,0,0,.3);transform:translateY(140%);transition:transform .3s}
+.zweef.aan{transform:none}
+.zweef .btn{flex:1;min-height:48px;padding:0 12px;font-size:16px}
+@media (min-width:901px){.zweef{display:none}}
+
+/* pitch (alleen Mo) */
+.mo{margin-top:18px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.85);color:var(--mut);font:600 12px var(--head);cursor:pointer;opacity:.55}
+.mo:hover{opacity:1}
+.pitch{position:fixed;inset:0;z-index:60;background:rgba(8,18,17,.6);display:flex;justify-content:flex-end}
+.pitch .pp{width:min(560px,100%);height:100%;overflow-y:auto;background:var(--porc);padding:26px 22px 60px}
+.pitch h2{font-size:28px;margin-bottom:4px}
+.pitch h3{font-size:19px;font-weight:700;margin:26px 0 10px}
+.pitch .sl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.pitch .sl>*{min-width:0}
+.pitch figure{margin:0}
+.pitch figure img{border:1px solid var(--line);border-radius:12px;width:100%;height:auto}
+.pitch figcaption{font-size:13px;color:var(--mut);margin-top:6px}
+.pitch .nu-shot span{font-size:14px;line-height:1.45}.pitch .nu-shot .btn{min-height:44px;font-size:15px;padding:0 14px;white-space:normal}
+.pitch .nu-shot{border-radius:12px;background:var(--ink);color:#fff;padding:16px;font-size:14.5px;display:flex;flex-direction:column;justify-content:center;gap:8px;min-height:200px}
+.pitch ol{padding-left:20px;margin:0}
+.pitch li{margin-bottom:12px}
+.pitch label{display:block;font-weight:600;margin-top:14px;font-size:15px}
+.pitch input[type=range]{width:100%;min-height:44px}
+.pitch .uit{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:14px}
+.pitch .uit b{font-family:var(--head);font-size:26px;color:var(--ink)}
+.pitch .x{position:sticky;top:0;float:right;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:22px;cursor:pointer}
+.pitch .klein{font-size:13px;color:var(--mut)}
+</style>
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></div>
+<div class="ann"><b>4,9 ★</b> uit 180 Google-reviews<span class="ann-x"> · Gratis proefbehandeling laserontharing</span></div>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="#top" aria-label="Haila Beauty Clinic, naar boven"><img src="logo-dark.svg" alt="Haila, the skin specialist" width="411" height="104"></a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <a href="#behandelingen">Behandelingen</a>
+      <a href="#voor-na">Voor &amp; na</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-main js-main" href="tel:+31614346767"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><span class="js-main-t">Bel</span> <span class="num">06 14 34 67 67</span></a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="wrap hero-g">
+    <div class="tekst">
+      <div class="eyebrow">Beauty clinic · Crooswijkseweg 173</div>
+      <h1>Laser&shy;ontharing en <em>huid&shy;verbetering</em> <span class="t">in Rotterdam.</span></h1>
+      <p class="sub">Van een gratis proefbehandeling laser tot microneedling, peelings en lash lifting. Twijfel je wat je huid nodig heeft? Begin met gratis huid- en productadvies.</p>
+      <div class="ctas">
+        <a class="btn btn-main js-main" href="tel:+31614346767"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><span class="js-main-t">Bel</span>&nbsp;06 14 34 67 67</a>
+        <a class="btn btn-line" href="#afspraak">Stel je afspraak samen</a>
+      </div>
+      <div class="trust"><span><span class="stars" aria-hidden="true">★★★★★</span> <b>4,9</b> uit <a href="https://www.google.com/maps/search/?api=1&amp;query=Haila+Beauty+Clinic+Crooswijkseweg+173+Rotterdam" target="_blank" rel="noopener" class="tap">180 Google-reviews</a></span><span>Di t/m za open</span></div>
+    </div>
+    <div class="foto">
+      <div class="zonefoto">
+        <svg id="zsvg" viewBox="0 0 1600 1068" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Laserontharing op de benen met de GentleMax Pro Plus, met ingetekende behandelzones">
+          <image href="img/hero.jpg" x="0" y="0" width="1600" height="1068"/>
+          <g>
+            <path class="z" pathLength="1" style="--w:.35s;--d:1.1s" d="M152 520 L195 569 L240 615 L288 658 L338 698 L389 735 L442 770 L496 804 L550 835 L606 866 L661 895 L716 923 L772 950 L826 978"/>
+            <path class="z" pathLength="1" style="--w:1.05s;--d:1.1s" d="M330 578 L386 598 L443 621 L499 645 L555 670 L612 696 L668 722 L725 748 L782 772 L839 796 L896 819 L954 840 L1011 858 L1069 873"/>
+            <path class="z" pathLength="1" style="--w:1.75s;--d:.4s" d="M376 716 L355 737 L334 758 L315 779 L296 800 L278 822"/>
+            <path class="z" pathLength="1" style="--w:2.05s;--d:.4s" d="M641 885 L624 903 L610 922 L599 942 L590 963 L585 985"/>
+            <path class="z" pathLength="1" style="--w:2.35s;--d:.4s" d="M741 724 L723 746 L707 768 L691 791 L677 814 L664 838"/>
+            <path class="z" pathLength="1" style="--w:2.65s;--d:.4s" d="M490 627 L473 642 L458 657 L446 673 L436 688 L429 705"/>
+          </g>
+          <ellipse class="gloed" cx="522" cy="634" rx="46" ry="16"/>
+          <circle class="puls" cx="522" cy="636" r="60"/>
+        </svg>
+        <span class="cap">GentleMax Pro Plus</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="ruler" aria-hidden="true"></div></div>
+
+<section class="sec" id="behandelingen">
+  <div class="wrap">
+    <div class="sec-h">
+      <div><div class="eyebrow">De behandelkaart</div><h2>Kies je zone. Tik op een behandeling.</h2></div>
+      <p>Elke behandeling hieronder zet je direct in de afspraakhulp. Daarna bel je, of boek je online.</p>
+    </div>
+    <div class="kaart">
+        <div class="zone">
+          <div class="zone-k"><span class="n">01</span><h3>Advies &amp; scan</h3></div>
+          <button class="rij" data-beh="advies"><span>Huid- en productadvies</span><span class="tag g">gratis</span></button>
+          <button class="rij" data-beh="scan"><span>Haila's Scan &amp; Glam</span><span class="pijl" aria-hidden="true">→</span></button>
+          <figure><img style="height:300px;object-position:50% 72%" src="img/huidmodel.jpg" alt="Handen met een model van de huidlagen in de kliniek, met de HAILA-letters op de muur" width="440" height="500" loading="lazy" decoding="async"><figcaption>In de kliniek: een model van de huidlagen.</figcaption></figure>
+        </div>
+        <div class="zone">
+          <div class="zone-k"><span class="n">02</span><h3>Laserontharing</h3></div>
+          <button class="rij" data-beh="laser" data-var="Gratis proefbehandeling"><span>Proefbehandeling laserontharing</span><span class="tag g">gratis</span></button>
+          <button class="rij" data-beh="laser"><span>Laserontharing met de GentleMax Pro Plus</span><span class="pijl" aria-hidden="true">→</span></button>
+          <div class="pak">
+            <div><span>Full body zonder gezicht<small>6 behandelingen · duo: €999</small></span><b>€1099 p.p.</b></div>
+            <div><span>Full body inclusief gezicht<small>duo: €1299</small></span><b>€1399 p.p.</b></div>
+          </div>
+          <p class="bron">Prijzen zoals op onze boekingspagina (Salonized).</p>
+          <figure><img src="img/laser-apparaat.jpg" alt="Het GentleMax Pro Plus-laserapparaat in de behandelkamer" width="700" height="500" loading="lazy" decoding="async"><figcaption>De GentleMax Pro Plus in de behandelkamer.</figcaption></figure>
+        </div>
+        <div class="zone">
+          <div class="zone-k"><span class="n">03</span><h3>Huidverbetering</h3></div>
+          <button class="rij" data-beh="micro"><span>Microneedling met de Dermapen 4</span><span class="pijl" aria-hidden="true">→</span></button>
+          <button class="rij" data-beh="peeling"><span>Peelings</span><span class="pijl" aria-hidden="true">→</span></button>
+          <button class="rij" data-beh="aqua"><span>Aqua Dermabrasie</span><span class="pijl" aria-hidden="true">→</span></button>
+          <button class="rij" data-beh="cosmelan"><span>Cosmelan en Dermamelan</span><span class="pijl" aria-hidden="true">→</span></button>
+          <button class="rij" data-beh="dermaplaning"><span>Dermaplaning</span><span class="pijl" aria-hidden="true">→</span></button>
+          <button class="rij" data-beh="back"><span>Back facial</span><span class="pijl" aria-hidden="true">→</span></button>
+        </div>
+        <div class="zone">
+          <div class="zone-k"><span class="n">04</span><h3>Ogen &amp; nagels</h3></div>
+          <button class="rij" data-beh="lash"><span>Lash lifting</span><span class="pijl" aria-hidden="true">→</span></button>
+          <button class="rij" data-beh="nagels"><span>Schimmel- en kalknagels</span><span class="pijl" aria-hidden="true">→</span></button>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec vn" id="voor-na">
+  <div class="wrap">
+    <div class="sec-h">
+      <div><div class="eyebrow">Voor &amp; na</div><h2>Zie het verschil, op de huid zelf.</h2></div>
+      <p>Twee resultaten uit onze kliniek, met ons eigen watermerk.</p>
+    </div>
+    <div class="duo">
+      <figure class="paar">
+        <div class="ims">
+          <div><img src="img/voorna-huid-voor.jpg" alt="Huid rond de neus, voor de behandeling" width="600" height="600" loading="lazy" decoding="async"><span class="lb">Voor</span></div>
+          <div><img src="img/voorna-huid-na.jpg" alt="Huid rond de neus, na de behandeling" width="600" height="600" loading="lazy" decoding="async"><span class="lb na">Na</span></div>
+        </div>
+        <figcaption>Huid · voor en na</figcaption>
+      </figure>
+      <figure class="paar">
+        <div class="ims">
+          <div><img src="img/voorna-nek-voor.jpg" alt="Nek met haargroei, voor de behandeling" width="600" height="600" loading="lazy" decoding="async"><span class="lb">Voor</span></div>
+          <div><img src="img/voorna-nek-na.jpg" alt="Nek, na de behandeling" width="600" height="600" loading="lazy" decoding="async"><span class="lb na">Na</span></div>
+        </div>
+        <figcaption>Nek · voor en na</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="waarom">
+  <div class="wrap">
+    <div class="sec-h">
+      <div><div class="eyebrow">Waarom Haila</div><h2>Wat in de reviews steeds terugkomt.</h2></div>
+      <p>Drie thema's uit de reviews op Google.</p>
+    </div>
+    <div class="drie">
+      <div class="kaartje"><span class="n">01</span><h3>Tijd voor intake en huidscan</h3><p>Klanten schrijven dat er uitgebreid de tijd wordt genomen voor de intake en de huidscan.</p></div>
+      <div class="kaartje"><span class="n">02</span><h3>Duidelijke uitleg</h3><p>Klanten schrijven dat de uitleg duidelijk is.</p></div>
+      <div class="kaartje"><span class="n">03</span><h3>Resultaat dat je ziet</h3><p>Klanten schrijven over zichtbaar resultaat, aan de huid en aan de haargroei. Er komen ook klanten uit Amsterdam.</p></div>
+    </div>
+    <div class="erk"><span>Aangesloten bij ANBOS</span><span>Geregistreerd bij Vektis</span></div>
+  </div>
+</section>
+
+<section class="sec rv" id="reviews">
+  <div class="wrap">
+    <div class="score">
+      <span class="big">4,9</span>
+      <div><div class="stars" aria-hidden="true">★★★★★</div><div>uit 180 reviews op <a href="https://www.google.com/maps/search/?api=1&amp;query=Haila+Beauty+Clinic+Crooswijkseweg+173+Rotterdam" target="_blank" rel="noopener" class="tap">Google</a></div></div>
+    </div>
+    <div class="drie">
+      <blockquote><p>Er werd echt de tijd genomen voor de huidscan.</p><footer>Zynah</footer></blockquote>
+      <blockquote><p>Topservice, en een lieve eigenaar.</p><footer>Dounia</footer></blockquote>
+      <blockquote><p>De beste kliniek van de stad.</p><footer>Danjela</footer></blockquote>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="sec" id="afspraak">
+  <div class="wrap">
+    <div class="sec-h">
+      <div><div class="eyebrow">Afspraakhulp</div><h2>Jouw behandelplan in drie tikken.</h2></div>
+      <p>Kies behandeling en dag. Je plan staat rechts klaar: bel ons en noem het, of boek direct online.</p>
+    </div>
+    <div class="kz" id="kiezer">
+      <div>
+        <div class="stap"><h3><span class="n">01</span>Behandeling</h3><div class="chips" id="k-beh"></div></div>
+        <div class="stap"><h3><span class="n">02</span><span id="k-var-t">Keuze</span></h3><div class="chips" id="k-var"><span class="bron" style="margin:0">Kies eerst een behandeling.</span></div></div>
+        <div class="stap"><h3><span class="n">03</span>Dag</h3><div class="chips" id="k-dag"></div><p class="bron">Maandag en zondag gesloten.</p></div>
+        <div class="stap"><h3><span class="n">04</span>Je naam <small style="font-weight:400;color:var(--mut)">(mag ook later)</small></h3><input class="naam" id="k-naam" type="text" autocomplete="given-name" placeholder="Voornaam"></div>
+      </div>
+      <aside class="plan" aria-live="polite">
+        <h3>Behandelplan</h3>
+        <div class="ruler" aria-hidden="true"></div>
+        <dl>
+          <dt>Behandeling</dt><dd id="p-beh">nog kiezen</dd>
+          <dt>Keuze</dt><dd id="p-var">nog kiezen</dd>
+          <dt>Dag</dt><dd id="p-dag">nog kiezen</dd>
+        </dl>
+        <div class="acts">
+          <a class="btn btn-light" id="k-wa" href="#" target="_blank" rel="noopener" hidden>Stuur via WhatsApp</a>
+          <a class="btn btn-light" id="k-bel" href="tel:+31614346767">Bel 06 14 34 67 67</a>
+          <a class="btn btn-ghost" href="https://haila-beauty-clinic.salonized.com/" target="_blank" rel="noopener">Online boeken</a>
+        </div>
+        <p class="tip" id="k-tip">Noem je plan aan de telefoon, dan weten we meteen waar je voor komt.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="zo" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-h"><div><div class="eyebrow">Zo gaat het</div><h2>Zo plan je je behandeling.</h2></div></div>
+    <ol class="stp" style="padding:0;margin:0">
+      <li><span class="n">01</span><b>Kies je behandeling</b><span>Op de behandelkaart of in de afspraakhulp. Twijfel? Kies gratis huid- en productadvies.</span></li>
+      <li><span class="n">02</span><b>Bel of boek online</b><span>Bel 06 14 34 67 67, of plan zelf via onze boekingspagina op Salonized.</span></li>
+      <li><span class="n">03</span><b>Kom langs</b><span>Crooswijkseweg 173 in Rotterdam. Dinsdag t/m zaterdag open.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec faq" id="faq" style="padding-top:20px">
+  <div class="wrap" style="max-width:860px">
+    <div class="eyebrow">Vragen</div>
+    <h2 style="font-size:clamp(30px,4vw,46px);font-weight:400;margin:8px 0 18px">Vragen over je behandeling</h2>
+    <details><summary>Is de proefbehandeling laserontharing echt gratis?</summary><p>Ja. Je kunt een gratis proefbehandeling laserontharing inplannen.</p></details>
+    <details><summary>Met welk apparaat wordt er gelaserd?</summary><p>Met de GentleMax Pro Plus.</p></details>
+    <details><summary>Wat kost een laserpakket full body?</summary><p>Full body zonder gezicht (6 behandelingen): €1099 p.p., duo €999. Full body inclusief gezicht: €1399 p.p., duo €1299. Zo staat het op onze boekingspagina.</p></details>
+    <details><summary>Ik weet niet welke behandeling bij mijn huid past.</summary><p>Begin met gratis huid- en productadvies. Plan het via de afspraakhulp, bel ons of boek online.</p></details>
+    <details><summary>Kan ik online boeken?</summary><p>Ja, via onze boekingspagina op <a href="https://haila-beauty-clinic.salonized.com/" target="_blank" rel="noopener">Salonized</a>.</p></details>
+    <details><summary>Verkopen jullie ook producten?</summary><p>Ja, we hebben een webshop.</p></details>
+  </div>
+</section>
+
+<section class="sec" id="contact" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-h"><div><div class="eyebrow">Contact &amp; route</div><h2>De route naar de behandelkamer.</h2></div></div>
+    <div class="ct">
+      <div class="blok">
+        <h3>Haila Beauty Clinic</h3>
+        <address>Crooswijkseweg 173<br>3031 XC Rotterdam</address>
+        <div class="links">
+          <a class="btn btn-main js-main" href="tel:+31614346767"><span class="js-main-t">Bel</span>&nbsp;06 14 34 67 67</a>
+          <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=Crooswijkseweg+173,+3031+XC+Rotterdam" target="_blank" rel="noopener">Route</a>
+        </div>
+        <p style="margin:20px 0 0;font-size:15.5px;color:var(--mut)">Mail: <a href="mailto:info@hailabeautyclinic.nl">info@hailabeautyclinic.nl</a><br>Instagram: <a href="https://www.instagram.com/hailabeautyclinic" target="_blank" rel="noopener">@hailabeautyclinic</a></p>
+      </div>
+      <div class="blok">
+        <h3>Openingstijden</h3>
+        <table class="uren" id="uren">
+          <tr data-d="1" class="dicht"><td>Maandag</td><td>gesloten</td></tr>
+          <tr data-d="2"><td>Dinsdag</td><td>10:00 – 18:00</td></tr>
+          <tr data-d="3"><td>Woensdag</td><td>10:00 – 18:00</td></tr>
+          <tr data-d="4"><td>Donderdag</td><td>10:00 – 18:00</td></tr>
+          <tr data-d="5"><td>Vrijdag</td><td>10:00 – 21:00</td></tr>
+          <tr data-d="6"><td>Zaterdag</td><td>10:00 – 20:00</td></tr>
+          <tr data-d="0" class="dicht"><td>Zondag</td><td>gesloten</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <div class="wrap">
+    <h2>Benieuwd wat jouw huid nodig heeft?</h2>
+    <p>Plan gratis huid- en productadvies, of een gratis proefbehandeling laserontharing.</p>
+    <div class="ctas">
+      <a class="btn btn-light js-main" href="tel:+31614346767"><span class="js-main-t">Bel</span>&nbsp;06 14 34 67 67</a>
+      <a class="btn btn-ghost" href="https://haila-beauty-clinic.salonized.com/" target="_blank" rel="noopener">Online boeken</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="ft">
+  <div class="wrap ft-g">
+    <div><img src="logo-light.svg" alt="Haila, the skin specialist" width="411" height="104" loading="lazy" decoding="async"><p style="margin:14px 0 0">Crooswijkseweg 173, 3031 XC Rotterdam<br><a href="tel:+31614346767">06 14 34 67 67</a> · <a href="mailto:info@hailabeautyclinic.nl">info@hailabeautyclinic.nl</a></p></div>
+    <div><p style="margin:0">Foto's: Haila Beauty Clinic.<br>Website door <a href="https://mohamedia.nl">Mohamedia</a></p><button class="mo" id="mo" type="button" aria-label="Pitch-paneel">Mo</button></div>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-hidden="true">
+  <a class="btn btn-light js-main" href="tel:+31614346767" tabindex="-1"><span class="js-main-t">Bel</span>&nbsp;ons</a>
+  <a class="btn btn-ghost" href="#afspraak" tabindex="-1">Afspraakhulp</a>
+</div>
+
+<div class="pitch" id="pitch" hidden>
+  <div class="pp" role="dialog" aria-label="Pitch voor Mo">
+    <button class="x" id="pitch-x" type="button" aria-label="Sluiten">×</button>
+    <h2>Haila: hun site naast de nieuwe</h2>
+    <p class="klein">Alleen voor het gesprek. Klanten zien dit paneel niet.</p>
+
+    <h3>Voor / na</h3>
+    <div class="sl">
+      <figure><img src="img/voor-mobiel.jpg" alt="Huidige site op de telefoon" width="390" height="844" loading="lazy" decoding="async"><figcaption>Nu: hailabeautyclinic.nl op de telefoon. Geen belknop in beeld, ook niet in het menu.</figcaption></figure>
+      <div class="nu-shot"><b>Straks: deze site</b><span>Belknop bovenin en zwevend, gratis proefbehandeling meteen bovenaan, laserprijzen op de behandelkaart, afspraakhulp met dag.</span><a class="btn btn-light" href="#top" id="pitch-top">Bekijk bovenaan</a></div>
+    </div>
+    <figure style="margin-top:14px"><img src="img/voor-desktop-balk.jpg" alt="Bovenbalk van de huidige site op de computer" width="800" height="52" loading="lazy" decoding="async"><figcaption>Nu, op de computer: achter "0614346767" bovenin zit de link tel:000123456789, een nummer dat niet bestaat.</figcaption></figure>
+    <figure style="margin-top:14px"><img src="img/voor-tijden.jpg" alt="Twee verschillende lijsten met openingstijden op de huidige site" width="790" height="299" loading="lazy" decoding="async"><figcaption>Nu: links de pagina "Afspraak maken" (di gesloten, zo open), rechts de footer (di open, zo gesloten).</figcaption></figure>
+
+    <h3>Drie dingen die beter worden</h3>
+    <ol>
+      <li><b>Bellen werkt meteen.</b> Nu zit op de computer achter het nummer bovenin tel:000123456789, en op de telefoon staat het nummer pas in de footer, na zo'n 19 schermen scrollen. Hier: belknop in de kop, in de hero en zwevend.</li>
+      <li><b>Eén set openingstijden.</b> Nu spreken de pagina "Afspraak maken" en de footer elkaar tegen (dinsdag en zondag). Hier staan de tijden van jullie Salonized.</li>
+      <li><b>Laser verkoopt zichzelf.</b> Gratis proefbehandeling, de GentleMax en de full-body-pakketten met prijs staan bovenaan de behandelkaart, en de afspraakhulp zet behandeling en dag in één plan.</li>
+    </ol>
+
+    <h3>Wat dit oplevert (rekenvoorbeeld)</h3>
+    <p class="klein">Vul samen in. Dit is een voorbeeld, geen belofte.</p>
+    <label for="r-n">Extra klanten per week: <span id="r-n-v">1</span></label>
+    <input type="range" id="r-n" min="0" max="10" step="1" value="1">
+    <label for="r-b">Gemiddelde besteding per klant (voorbeeld): €<span id="r-b-v">60</span></label>
+    <input type="range" id="r-b" min="20" max="400" step="5" value="60">
+    <div class="uit">Extra omzet per jaar: <b id="r-jaar">€ 3.120</b><br>De site (€595) is terugverdiend na <b id="r-terug">10</b> klanten.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ===== Instellingen (Ops) =====
+  // WhatsApp op 06 14 34 67 67 is nog niet bevestigd. Bevestigd? Zet WA_AAN op true.
+  var WA_AAN = false;
+  var WA_NUM = "31614346767";
+  var TEL = "tel:+31614346767";
+  var params = new URLSearchParams(location.search);
+  if (params.get("wa") === "1") WA_AAN = true;
+
+  var $ = function(s, c){ return (c || document).querySelector(s); };
+  var $$ = function(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  var BEH = [
+    {id:"advies", n:"Huid- en productadvies (gratis)"},
+    {id:"scan", n:"Haila's Scan & Glam"},
+    {id:"laser", n:"Laserontharing", vt:"Laser", v:["Gratis proefbehandeling","Full body zonder gezicht, 6 behandelingen (€1099 p.p.)","Full body zonder gezicht, duo (€999)","Full body inclusief gezicht (€1399 p.p.)","Full body inclusief gezicht, duo (€1299)","Weet ik nog niet"]},
+    {id:"micro", n:"Microneedling (Dermapen 4)"},
+    {id:"peeling", n:"Peeling"},
+    {id:"aqua", n:"Aqua Dermabrasie"},
+    {id:"cosmelan", n:"Cosmelan / Dermamelan"},
+    {id:"dermaplaning", n:"Dermaplaning"},
+    {id:"back", n:"Back facial"},
+    {id:"lash", n:"Lash lifting"},
+    {id:"nagels", n:"Schimmel- en kalknagels"}
+  ];
+  var STD_VAR = ["Eerste keer bij Haila","Ik kom al bij jullie"];
+  var UREN = {2:"10–18",3:"10–18",4:"10–18",5:"10–21",6:"10–20"};
+  var DAGN = ["zo","ma","di","wo","do","vr","za"];
+  var MAAND = ["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"];
+  var keuze = {beh:null, v:null, dag:null};
+
+  var elBeh = $("#k-beh"), elVar = $("#k-var"), elDag = $("#k-dag"), elNaam = $("#k-naam");
+  var elWa = $("#k-wa"), elBel = $("#k-bel"), elTip = $("#k-tip");
+
+  function chip(label, small, on){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.setAttribute("aria-pressed", "false");
+    b.textContent = label;
+    if (small){ var s = document.createElement("small"); s.textContent = small; b.appendChild(s); }
+    b.addEventListener("click", on);
+    return b;
+  }
+  function druk(box, btn){ $$(".chip", box).forEach(function(c){ c.setAttribute("aria-pressed", c === btn ? "true" : "false"); }); }
+
+  BEH.forEach(function(b){
+    var c = chip(b.n, null, function(){ kiesBeh(b.id); });
+    c.dataset.id = b.id; elBeh.appendChild(c);
+  });
+
+  function kiesBeh(id, v){
+    var b = BEH.filter(function(x){ return x.id === id; })[0]; if (!b) return;
+    keuze.beh = b; keuze.v = null;
+    druk(elBeh, $$(".chip", elBeh).filter(function(c){ return c.dataset.id === id; })[0]);
+    $("#k-var-t").textContent = b.vt || "Keuze";
+    elVar.innerHTML = "";
+    (b.v || STD_VAR).forEach(function(o){
+      var c = chip(o, null, function(){ keuze.v = o; druk(elVar, c); update(); });
+      elVar.appendChild(c);
+      if (v && v === o){ keuze.v = o; c.setAttribute("aria-pressed","true"); }
+    });
+    update();
+  }
+
+  // komende open dagen (di t/m za), vanaf morgen
+  (function(){
+    var d = new Date(); d.setHours(12,0,0,0);
+    var n = 0;
+    var g = chip("Geen voorkeur", null, function(){ keuze.dag = "geen voorkeur"; druk(elDag, g); update(); });
+    elDag.appendChild(g);
+    for (var i = 1; i <= 14 && n < 8; i++){
+      var x = new Date(d.getTime() + i*864e5), wd = x.getDay();
+      if (!UREN[wd]) continue;
+      (function(x, wd){
+        var lab = DAGN[wd] + " " + x.getDate() + " " + MAAND[x.getMonth()];
+        var c = chip(lab, UREN[wd] + " uur", function(){ keuze.dag = lab; druk(elDag, c); update(); });
+        elDag.appendChild(c);
+      })(x, wd);
+      n++;
+    }
+  })();
+
+  function bericht(){
+    var r = ["Hoi Haila Beauty Clinic, ik wil graag een afspraak maken."];
+    if (keuze.beh) r.push("Behandeling: " + keuze.beh.n);
+    if (keuze.v) r.push("Keuze: " + keuze.v);
+    if (keuze.dag) r.push("Voorkeur dag: " + keuze.dag);
+    var nm = elNaam.value.trim();
+    r.push("Mijn naam: " + (nm || ""));
+    return r.join("\n");
+  }
+  function update(){
+    $("#p-beh").textContent = keuze.beh ? keuze.beh.n : "nog kiezen";
+    $("#p-var").textContent = keuze.v || "nog kiezen";
+    $("#p-dag").textContent = keuze.dag || "nog kiezen";
+    elWa.href = "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent(bericht());
+  }
+  elNaam.addEventListener("input", update);
+
+  $$(".rij").forEach(function(r){
+    r.addEventListener("click", function(){
+      kiesBeh(r.dataset.beh, r.dataset.var);
+      $("#afspraak").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+    });
+  });
+
+  // WhatsApp aan/uit (Ops)
+  if (WA_AAN){
+    elWa.hidden = false;
+    elBel.className = "btn btn-ghost";
+    elTip.textContent = "Je bericht staat klaar in WhatsApp. Even versturen, klaar.";
+    $$(".js-main").forEach(function(a){
+      a.href = "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent("Hoi Haila Beauty Clinic, ik wil graag een afspraak maken.");
+      a.target = "_blank"; a.rel = "noopener";
+      var t = $(".js-main-t", a); if (t) t.textContent = "App";
+    });
+  }
+  update();
+
+  // hero: op smalle schermen inzoomen op benen + laserkop
+  var zs = $("#zsvg");
+  function vb(){ zs.setAttribute("viewBox", matchMedia("(max-width:900px)").matches ? "230 250 1040 818" : "0 0 1600 1068"); }
+  vb(); addEventListener("resize", vb);
+
+  // uren: vandaag markeren
+  var tr = $('#uren tr[data-d="' + new Date().getDay() + '"]'); if (tr) tr.classList.add("nu");
+
+  // zwevende CTA: na de hero, niet als de afspraakhulp in beeld is
+  var zweef = $("#zweef"), heroUit = false, kzIn = false;
+  function zet(){ var aan = heroUit && !kzIn; zweef.classList.toggle("aan", aan); zweef.setAttribute("aria-hidden", aan ? "false" : "true"); $$("a", zweef).forEach(function(a){ a.tabIndex = aan ? 0 : -1; }); }
+  if ("IntersectionObserver" in window){
+    new IntersectionObserver(function(e){ heroUit = !e[0].isIntersecting; zet(); }).observe($("#hero"));
+    new IntersectionObserver(function(e){ kzIn = e[0].isIntersecting; zet(); }, {threshold: .15}).observe($("#kiezer"));
+  }
+
+  // rekenvoorbeeld
+  var rn = $("#r-n"), rb = $("#r-b");
+  function eur(x){ return "€ " + Math.round(x).toLocaleString("nl-NL"); }
+  function reken(){
+    var n = +rn.value, b = +rb.value;
+    $("#r-n-v").textContent = n; $("#r-b-v").textContent = b;
+    $("#r-jaar").textContent = eur(n * b * 52);
+    $("#r-terug").textContent = Math.ceil(595 / b);
+  }
+  rn.addEventListener("input", reken); rb.addEventListener("input", reken); reken();
+
+  // pitch-paneel (pas na alle variabelen hierboven)
+  var pitch = $("#pitch");
+  function open(){ pitch.hidden = false; document.body.style.overflow = "hidden"; }
+  function dicht(){ pitch.hidden = true; document.body.style.overflow = ""; }
+  $("#mo").addEventListener("click", open);
+  $("#pitch-x").addEventListener("click", dicht);
+  $("#pitch-top").addEventListener("click", dicht);
+  pitch.addEventListener("click", function(e){ if (e.target === pitch) dicht(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !pitch.hidden) dicht(); });
+  if (params.has("pitch")) open();
+})();
+</script>
+</body>
+</html>
