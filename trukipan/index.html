@@ -127,6 +127,8 @@ html[data-kleur=geel] .licht h2 .b{color:#111;background:linear-gradient(transpa
 .ph img{position:absolute;left:12%;top:12%;width:76%;height:76%;object-fit:contain;transform:translate(var(--dx,0%),var(--dy,0%));filter:drop-shadow(0 14px 16px rgba(0,0,0,.65))}
 .licht .ph::before{border-color:var(--acc);background:var(--paper-card);box-shadow:none}
 .licht .ph img{filter:drop-shadow(0 10px 12px rgba(0,0,0,.28))}
+/* eigen foto's met achtergrond: rond bijgesneden binnen de ring, zelfde middelpunt */
+.ph.rond img,.licht .ph.rond img{left:7%;top:7%;width:86%;height:86%;object-fit:cover;border-radius:50%;filter:none}
 
 /* formulieren */
 .form-kaart{background:var(--card);border:1px solid var(--card-line);border-radius:26px;padding:30px 28px;min-width:0}
@@ -308,6 +310,7 @@ footer.site .by{border-top:1px solid var(--card-line);margin-top:36px;padding-to
 .ontbijt-fotos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:6px 0 14px;max-width:560px}
 .ontbijt-fotos figure{margin:0;text-align:center;min-width:0}
 .ontbijt-fotos .ph{--ph:170px}
+.cat h3 .tijd{font-size:.62em;font-weight:700;letter-spacing:.02em;white-space:nowrap;opacity:.85}
 .ontbijt-fotos figcaption{font-size:13.5px;font-weight:700;line-height:1.25;margin-top:6px;color:#3c3a38}
 .halal{display:flex;align-items:center;gap:16px;background:#111;color:#fff;border-radius:20px;padding:18px 22px;margin:8px 0 40px}
 .halal strong{font-weight:900;font-stretch:72%;font-size:30px;line-height:1;text-transform:uppercase;color:#fff;flex:none}
@@ -496,7 +499,7 @@ html[data-kleur=rood] .s{background:rgba(0,0,0,.18);border-color:rgba(255,255,25
   <p class="lead reveal">Garnalen van de grill, burgers op een Johnny Cake, loaded fries en een Piña Colada erbij.</p>
   <div class="bento">
    <figure class="dish-card c-big reveal"><div class="ph"><img src="img/shrimps.webp" alt="Truk'i Pan met garnalen, rijst en salade" width="464" height="325" loading="lazy" decoding="async" style="--dx:-2.7%;--dy:-0.5%"></div><figcaption><h3>Truk'i Pan Shrimps<small>Middel</small></h3><span class="price">€ 16,95</span></figcaption></figure>
-   <figure class="dish-card c2 reveal"><div class="ph"><img src="img/jcburger.webp" alt="Burger op een Johnny Cake met kaas, tomaat en sla" width="654" height="448" loading="lazy" decoding="async" style="--dx:-0.0%;--dy:0.6%"></div><figcaption><h3>Single Johnny Cake Burger</h3><span class="price">€ 9,50</span></figcaption></figure>
+   <figure class="dish-card c2 reveal"><div class="ph rond"><img src="img/jay-burger.webp" alt="Johnny Cake Burger met burger, gesmolten kaas, bacon, gebakken ei, tomaat, rode ui, sla en saus" width="900" height="900" loading="lazy" decoding="async"></div><figcaption><h3>Single Johnny Cake Burger</h3><span class="price">€ 9,50</span></figcaption></figure>
    <figure class="dish-card c3 reveal"><div class="ph"><img src="img/truffel.webp" alt="Truffel Loaded Fries in een bakje" width="647" height="837" loading="lazy" decoding="async" style="--dx:3.4%;--dy:-5.0%"></div><figcaption><h3>Truffel Loaded Fries</h3><span class="price">€ 4,95</span></figcaption></figure>
    <figure class="dish-card c4 reveal"><div class="ph"><img src="img/jcsteak.webp" alt="Johnny Cake Steak &amp; Cheese" width="500" height="483" loading="lazy" decoding="async" style="--dx:0.1%;--dy:0.5%"></div><figcaption><h3>Johnny Cake Steak &amp; Cheese</h3><span class="price">€ 7,95</span></figcaption></figure>
    <figure class="dish-card c5 reveal"><div class="ph"><img src="img/pina.webp" alt="Piña Colada in een beker" width="600" height="808" loading="lazy" decoding="async" style="--dx:-0.1%;--dy:6.1%"></div><figcaption><h3>Piña Colada</h3><span class="price">€ 5,10</span></figcaption></figure>
@@ -577,10 +580,10 @@ html[data-kleur=rood] .s{background:rgba(0,0,0,.18);border-color:rgba(255,255,25
     <li><span class="n">Lemmetje</span><b>€ 5,10</b></li>
     <li><span class="n">Truk'i Pan Shrimps Middel</span><b>€ 16,95</b></li>
    </ul></div>
-   <div class="cat" data-c="ontbijt"><h3>Ontbijt</h3>
+   <div class="cat" data-c="ontbijt"><h3>Ontbijt <span class="tijd">· 10:00–12:00</span></h3>
     <div class="ontbijt-fotos">
-     <figure><div class="ph"><img src="img/jc-zalm.webp" alt="Johnny Cake met gerookte zalm, sla en rode ui" width="640" height="435" loading="lazy" decoding="async" style="--dx:-0.7%;--dy:-1.5%"></div><figcaption>Gerookte Zalm</figcaption></figure>
-     <figure><div class="ph"><img src="img/jc-gezond.webp" alt="Johnny Cake met kaas, ei, komkommer en tomaat" width="640" height="399" loading="lazy" decoding="async" style="--dx:-0.7%;--dy:-1.6%"></div><figcaption>Gezond</figcaption></figure>
+     <figure><div class="ph"><img src="img/jay-zalm.webp" alt="Johnny Cake met gerookte zalm, rode ui, komkommer, sla en roomkaas met dille" width="900" height="631" loading="lazy" decoding="async" style="--dx:-0.7%;--dy:-1.7%"></div><figcaption>Gerookte Zalm</figcaption></figure>
+     <figure><div class="ph rond"><img src="img/jay-gezond.webp" alt="Johnny Cake met plakken kaas, gekookt ei, komkommer en tomaat op een houten plank" width="900" height="900" loading="lazy" decoding="async"></div><figcaption>Gezond</figcaption></figure>
      <figure><div class="ph"><img src="img/jc-plain.webp" alt="Een Johnny Cake zonder beleg" width="640" height="619" loading="lazy" decoding="async"></div><figcaption>Plain</figcaption></figure>
     </div>
    <ul>
@@ -670,7 +673,7 @@ html[data-kleur=rood] .s{background:rgba(0,0,0,.18);border-color:rgba(255,255,25
    <p>Prijzen zoals op onze online bestelpagina op 11 november 2026; daar zie je altijd de actuele prijzen en opties. Raadpleeg het personeel voor informatie over allergenen. <a href="#bestel">Zo bestel je</a>.</p>
    <div class="btns"><a class="btn btn-main" href="https://online.byonesix.com/truki-pan-to-go-rotterdam/" target="_blank" rel="noopener">Bestel online</a></div>
   </div>
-  <p class="mo-noot"><b>Mo:</b> het menu is gelijk aan de bestelpagina van 11 november, met Ontbijt als eigen knop. Double Johnny Cake Burger: € 10,10 (bevestigd door Jay, 11 nov). Ontbijttijden: nog niet vastgesteld; Jay denkt aan 10:00–12:00 als hij om 10:00 opengaat. Zodra dat vaststaat, zetten we het erbij.</p>
+  <p class="mo-noot"><b>Mo:</b> het menu is gelijk aan de bestelpagina van 11 november, met Ontbijt als eigen knop. Double Johnny Cake Burger: € 10,10 (bevestigd door Jay, 11 nov). Ontbijt 10:00–12:00 (bevestigd door Jay, 11 nov) staat bij Ontbijt in het menu en in de FAQ. Let op: de openingstijden hieronder zeggen nog 11:00 (Zuidplein.nl); zodra Jay echt om 10:00 opengaat, passen we die aan. De foto's van Gerookte Zalm, Gezond en de Single Johnny Cake Burger zijn nu Jay's eigen foto's.</p>
  </div>
 </section>
 
@@ -805,7 +808,7 @@ html[data-kleur=rood] .s{background:rgba(0,0,0,.18);border-color:rgba(255,255,25
   <div class="list">
    <details><summary>Is alles halal?</summary><p>Ja. Bij Truk'i Pan To Go is alles 100% halal.</p></details>
    <details><summary>Wat is een Truk'i Pan?</summary><p>Truk'i Pan To Go is geïnspireerd op Truk'i Pan op Curaçao: Caribische grillgerechten zoals gegrilde steak, kip, spareribs of garnalen, met friet, verse salade, vers brood, een wrap of een Johnny Cake.</p></details>
-   <details><summary>Hebben jullie ook ontbijt?</summary><p>Ja. Bij Ontbijt op het menu staan onder andere de Johnny Cake Gerookte Zalm, de Johnny Cake Ei &amp; Kalkoenspek, koffie en verse muntthee. <a href="#menu" data-menu="ontbijt">Bekijk het ontbijt</a>.</p></details>
+   <details><summary>Hebben jullie ook ontbijt?</summary><p>Ja, ontbijt is er van 10:00 tot 12:00. Bij Ontbijt op het menu staan onder andere de Johnny Cake Gerookte Zalm, de Johnny Cake Ei &amp; Kalkoenspek, koffie en verse muntthee. <a href="#menu" data-menu="ontbijt">Bekijk het ontbijt</a>.</p></details>
    <details><summary>Kan ik er ook eten?</summary><p>Ja. Op de online bestelpagina kies je tussen afhalen en hier opeten.</p></details>
    <details><summary>Waar vind ik jullie?</summary><p>Op Zuidplein Hoog 502, 3083 BM Rotterdam, in Winkelcentrum Zuidplein.</p></details>
    <details><summary>Hoe laat zijn jullie open?</summary><p>Maandag tot en met donderdag van 11:00 tot 19:00, vrijdag van 11:00 tot 21:00, zaterdag van 11:00 tot 19:00 en zondag van 12:00 tot 18:00.</p></details>
