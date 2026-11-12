@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Nefis KebaP – Turkse grill en kalfsdöner in Rotterdam-Zuid</title>
+<meta name="description" content="Nefis KebaP aan de Wolphaertsbocht 93 in Rotterdam: Turkse grill, kalfsdöner, soepen en tapas. Stel je bestelling samen en stuur hem via WhatsApp, of bel 06 23 60 03 45.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Sansita:wght@700;800&display=swap" rel="stylesheet">
+<!--
+  L267 Nefis KebaP (Wolphaertsbocht 93, Rotterdam, Oud-Charlois). Demo door Mohamedia, 11 nov 2026.
+  Concept in één zin: "De hoek van de Wolphaertsbocht": de site is hun eigen hoekpand; antraciet tegelwerk, wit kozijn,
+  rode gevelletters en de twee blauwe straatnaamborden die op hun gevel hangen.
+  Lay-out-archetype: TEGELGEVEL MET KOZIJN + KAART ALS UITKLAPLIJST. Hero = tekst bovenaan op de tegelwand, daaronder
+  hun gevelfoto (Google Maps) recht in een wit kozijn. Hero-beweging: de foto schuift één keer horizontaal van het
+  straatnaambord naar de gevelletters (object-position, geen zoom) en staat daarna stil. De kaart = uitklaplijst per
+  categorie (details/summary) met plus/min; de zwevende knop is tegelijk het mandje.
+  Geen ticker, geen stempel, geen schuine fotokaart, geen stoom, geen zoom, geen "licht gaat aan", geen letters één voor één,
+  geen getekende onderstreping, geen onthuld bord.
+  Bronnen: dossier leads/L267/dossier.md + "Aanvulling Design" (kaart van hun eigen bestelpagina, gevelfoto en logo, 11 nov 2026).
+  Prijzen staan bewust niet op de pagina (alleen bezorgprijzen van de bestelpagina bekend).
+-->
+<style>
+:root{
+  --muur:#2e3238; --muur2:#3a3f46; --voeg:#24282d; --kozijn:#f7f4ed; --papier:#faf7f1; --papier2:#efe9dd;
+  --ink:#1f2226; --ink2:#575c64; --lijn:#ded6c6;
+  --rood:#cf2439; --rood-d:#a81b2d; --rood-l:#ff6b76;
+  --steen:#8a4631; --steen-d:#6f3525; --steen-l:#e9c7b3;
+  --amber:#e3ad55; --blad:#4f6e3c; --bord:#1f4f9e;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:17px;line-height:1.55;color:var(--ink);background:var(--papier)}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:"Sansita",Georgia,serif;font-weight:800;line-height:1.08;margin:0;overflow-wrap:break-word}
+h2{font-size:clamp(28px,6.4vw,44px)}
+h3{font-size:clamp(20px,5vw,24px);font-weight:700}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{scroll-margin-top:16px}
+.demo-strook{background:#111316;color:#d8dade;font-size:13px;text-align:center;padding:7px 14px}
+.demo-strook a{color:#fff}
+.meld{background:var(--rood);color:#fff;font-size:14.5px;font-weight:600;text-align:center;padding:8px 14px}
+.meld a{color:#fff;text-underline-offset:3px}
+
+/* tegelwand */
+.tegel{background-color:var(--muur);background-image:linear-gradient(var(--voeg) 2px,transparent 2px),linear-gradient(90deg,var(--voeg) 2px,transparent 2px);background-size:104px 44px;color:#fff}
+.kop{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:14px;padding-bottom:6px}
+.kop .logo-link{display:block;line-height:0}
+.kop img{height:40px;width:auto}
+.kop nav{display:none;gap:26px;font-weight:600;font-size:15.5px}
+.kop nav a{text-decoration:none;padding:12px 0}
+.kop nav a:hover{color:var(--amber)}
+.bel{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:2px solid rgba(255,255,255,.55);border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap;background:var(--muur)}
+.bel svg{width:17px;height:17px;flex:none}
+
+.hero{padding:18px 0 40px}
+.hero-grid{display:grid;gap:22px}
+.hero-grid>*{min-width:0}
+.borden{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.bord{background:var(--bord);color:#fff;font-weight:700;font-size:13.5px;letter-spacing:.02em;padding:5px 11px;border-radius:5px;box-shadow:inset 0 0 0 2px var(--bord),inset 0 0 0 3.5px rgba(255,255,255,.9)}
+h1{font-size:clamp(34px,9.4vw,62px);letter-spacing:-.005em}
+h1 em{font-style:normal;color:var(--rood-l);display:block}
+.hero .sub{margin-top:14px;color:#dfe1e5;font-size:17.5px;max-width:34em}
+.knoppen{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:0 20px;border-radius:9px;font-weight:700;font-size:16.5px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-rood{background:var(--rood);color:#fff}
+.btn-rood:hover{background:var(--rood-d)}
+.btn-wit{background:var(--kozijn);color:var(--ink)}
+.btn-lijn{border:2px solid currentColor;background:transparent}
+.score{margin-top:28px;font-size:15px;color:#dfe1e5}
+.score a{color:#fff;text-underline-offset:3px}
+.score b{color:var(--amber)}
+.kozijn{margin:0;background:var(--kozijn);padding:9px;border-radius:3px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.kozijn .ruit{overflow:hidden;aspect-ratio:358/300;background:#1c1f23}
+.kozijn .ruit img{width:100%;height:100%;object-fit:cover;object-position:100% 50%;animation:schuif 7s cubic-bezier(.45,0,.2,1) .7s both}
+@keyframes schuif{from{object-position:0% 50%}to{object-position:100% 50%}}
+.kozijn figcaption{color:var(--ink2);font-size:12.5px;padding:7px 2px 0}
+
+/* kaart */
+.kaart{padding:56px 0 64px}
+.oog{font-weight:700;font-size:13.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--rood);margin-bottom:10px}
+.intro{margin-top:12px;color:var(--ink2);max-width:40em}
+.kaart-grid{display:grid;gap:26px;margin-top:28px}
+.kaart-grid>*{min-width:0}
+.stap-kop{display:flex;align-items:baseline;gap:10px;margin:0 0 12px}
+.stap-kop .nr{font-family:"Sansita",serif;font-weight:800;font-size:22px;color:var(--rood)}
+.stap-kop h3{font-size:21px}
+details.cat{background:#fff;border:1px solid var(--lijn);border-radius:10px;margin-bottom:10px}
+details.cat summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:8px 16px;font-family:"Sansita",serif;font-weight:700;font-size:20px}
+details.cat summary::-webkit-details-marker{display:none}
+details.cat summary .n{font-family:"Hanken Grotesk",sans-serif;font-size:13.5px;font-weight:600;color:var(--ink2);margin-left:auto}
+details.cat summary .n.aan{color:#fff;background:var(--rood);border-radius:99px;padding:2px 10px}
+details.cat summary::after{content:"";width:10px;height:10px;border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(45deg);margin:0 4px 4px 2px;flex:none}
+details.cat[open] summary::after{transform:rotate(-135deg);margin-bottom:-4px}
+details.cat .noot{padding:0 16px 10px;color:var(--ink2);font-size:14.5px;font-style:italic}
+.gerecht{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid var(--papier2)}
+.gerecht .naam{font-weight:700;font-size:16.5px;display:block;overflow-wrap:break-word}
+.gerecht .oms{color:var(--ink2);font-size:14.5px;line-height:1.4;display:block;margin-top:2px}
+.tel{display:flex;align-items:center;gap:2px}
+.tel button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--lijn);background:var(--papier);font-size:22px;line-height:1;font-weight:600;color:var(--ink);cursor:pointer;font-family:inherit}
+.tel button.plus{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tel .aantal{min-width:22px;text-align:center;font-weight:700}
+.keuze{display:flex;flex-wrap:wrap;gap:8px}
+.keuze button{min-height:48px;padding:0 16px;border-radius:9px;border:1.5px solid var(--lijn);background:#fff;font:inherit;font-weight:600;font-size:15.5px;color:var(--ink);cursor:pointer}
+.keuze button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.keuze button:disabled{opacity:.45;cursor:default}
+.hint{color:var(--ink2);font-size:14.5px;margin-top:8px}
+.blok{background:#fff;border:1px solid var(--lijn);border-radius:10px;padding:16px;margin-bottom:14px}
+.bon{background:var(--muur);color:#fff;border-radius:10px;padding:18px 16px}
+.bon h3{font-size:21px;margin-bottom:8px}
+.bon ul{list-style:none;margin:0 0 4px;padding:0}
+.bon li{padding:5px 0;border-bottom:1px dashed rgba(255,255,255,.22);font-size:15.5px}
+.bon .leeg{color:#c9ccd1;font-size:15.5px}
+.bon .regel{font-size:15px;color:#dfe1e5;margin-top:8px}
+.bon .btn{width:100%;margin-top:14px}
+.bon .of{font-size:14.5px;color:#dfe1e5;margin-top:12px;text-align:center}
+.bon .of a{color:#fff;font-weight:700;text-underline-offset:3px}
+
+/* waarom */
+.waarom{background:var(--papier2);padding:56px 0}
+.drie{display:grid;gap:14px;margin-top:26px}
+.drie>*{min-width:0}
+.kaartje{background:#fff;border-radius:10px;padding:20px 18px;border-top:5px solid var(--muur)}
+.kaartje:nth-child(2){border-top-color:var(--rood)}
+.kaartje:nth-child(3){border-top-color:var(--blad)}
+.kaartje h3{margin-bottom:8px}
+.kaartje p{color:var(--ink2);font-size:16px}
+
+/* reviews: baksteen */
+.reviews{background:var(--steen);color:#fff;padding:56px 0}
+.reviews .oog{color:var(--steen-l)}
+.cijfer{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin-top:14px}
+.cijfer .groot{font-family:"Sansita",serif;font-weight:800;font-size:64px;line-height:1}
+.cijfer a{color:#fff;text-underline-offset:3px;font-weight:600;display:inline-flex;align-items:center;min-height:44px}
+.reviews .kaartje{background:var(--steen-d);border-top:0;color:#fff}
+.reviews .kaartje p{color:#fff}
+.reviews .kaartje .wie{display:block;margin-top:10px;font-weight:700;color:var(--steen-l);font-size:15px}
+.label{margin-top:16px;font-size:14px;color:var(--steen-l)}
+
+/* stappen */
+.zo{padding:56px 0}
+.stappen{display:grid;gap:14px;margin-top:26px;counter-reset:s;list-style:none;padding:0}
+.stappen>*{min-width:0}
+.stappen li{counter-increment:s;background:#fff;border:1px solid var(--lijn);border-radius:10px;padding:18px 18px 18px 66px;position:relative}
+.stappen li::before{content:counter(s);position:absolute;left:16px;top:16px;width:36px;height:36px;border-radius:50%;background:var(--rood);color:#fff;font-family:"Sansita",serif;font-weight:800;font-size:19px;display:grid;place-items:center}
+.stappen b{display:block;font-size:17.5px}
+.stappen span{color:var(--ink2);font-size:15.5px}
+
+/* faq */
+.faq{background:var(--papier2);padding:56px 0}
+.faq details{background:#fff;border-radius:10px;margin-top:10px;border:1px solid var(--lijn)}
+.faq summary{cursor:pointer;min-height:56px;padding:14px 16px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:24px;line-height:1;color:var(--rood);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 16px 16px;color:var(--ink2)}
+.faq-lijst{margin-top:22px;max-width:760px}
+
+/* adres */
+.adres{padding:56px 0}
+.adres-grid{display:grid;gap:24px;margin-top:24px;align-items:center}
+.adres-grid>*{min-width:0}
+.adres dl{margin:0;display:grid;gap:14px}
+.adres dt{font-weight:700;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.adres dd{margin:2px 0 0;font-size:18px;font-weight:600}
+.adres dd a{text-underline-offset:3px;display:inline-flex;align-items:center;min-height:44px}
+.adres .knoppen{margin-top:22px}
+.adres figure{margin:0;background:var(--kozijn);padding:8px;border-radius:3px;box-shadow:0 10px 26px rgba(0,0,0,.16)}
+.adres figure img{width:100%;height:auto}
+.adres figcaption{font-size:12.5px;color:var(--ink2);padding-top:6px}
+
+/* slot */
+.slot{padding:60px 0;text-align:center}
+.slot h2{max-width:16em;margin:0 auto}
+.slot p{color:#dfe1e5;margin:14px auto 0;max-width:32em}
+.slot .knoppen{justify-content:center;margin-top:24px}
+footer{background:#17191c;color:#b9bdc4;font-size:14.5px;padding:34px 0 96px}
+footer .wrap{display:grid;gap:14px}
+footer img{height:34px;width:auto}
+footer a{color:#fff;text-underline-offset:3px}
+
+/* zwevende knop = mandje */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;transform:translateY(140%);transition:transform .3s ease;visibility:hidden}
+.zweef.aan{transform:none;visibility:visible}
+.zweef a{display:flex;align-items:center;justify-content:center;gap:9px;min-height:54px;border-radius:12px;background:var(--rood);color:#fff;font-weight:700;font-size:16.5px;text-decoration:none;box-shadow:0 10px 28px rgba(0,0,0,.35)}
+.zweef svg{width:20px;height:20px}
+
+/* pitch (alleen met ?pitch) */
+.mo{display:none;position:fixed;left:12px;bottom:78px;z-index:45;width:46px;height:46px;border-radius:50%;border:0;background:#111316;color:#fff;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit}
+.pitch{display:none;position:fixed;inset:0;z-index:60;background:rgba(15,17,19,.72);overflow-y:auto;padding:14px}
+.pitch.open{display:block}
+.pitch .pan{background:#fff;color:var(--ink);max-width:760px;margin:0 auto;border-radius:14px;padding:22px 18px 24px;position:relative}
+.pitch h2{font-size:26px;padding-right:50px}
+.pitch h3{font-size:20px;margin-top:22px}
+.pitch .x{position:absolute;right:10px;top:10px;width:44px;height:44px;border-radius:50%;border:0;background:var(--papier2);font-size:22px;cursor:pointer}
+.vn{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.vn figure{margin:0}
+.vn img{width:100%;height:auto;border:1px solid var(--lijn);border-radius:10px}
+.vn figcaption{font-size:13.5px;color:var(--ink2);margin-top:6px;line-height:1.4}
+.vn figcaption b{color:var(--ink)}
+.punten{margin:12px 0 0;padding-left:22px}
+.punten li{margin-top:10px;font-size:16px}
+.reken{background:var(--papier);border:1px solid var(--lijn);border-radius:10px;padding:16px;margin-top:20px}
+.reken strong{display:block;margin-bottom:8px}
+.reken label{display:block;font-size:15px;margin-top:10px;font-weight:600}
+.reken input{width:100%;height:44px;accent-color:var(--rood)}
+.reken .uit{margin-top:10px;font-weight:700;font-size:16.5px}
+.prijs{margin-top:18px;background:var(--muur);color:#fff;border-radius:10px;padding:16px;font-size:15.5px}
+.prijs b{display:block;font-size:18px;margin-bottom:4px}
+
+/* mobiel: gevelfoto in het eerste scherm, straatbordjes erboven, kop eronder */
+@media (max-width:979px){
+  .hero{padding-top:14px}
+  .hero-grid{gap:0}
+  .hero-tekst{display:contents}
+  .borden{order:-2}
+  .kozijn{order:-1;margin-bottom:22px}
+}
+@media (min-width:760px){
+  .kop nav{display:flex}
+  .drie,.stappen{grid-template-columns:repeat(3,1fr)}
+  .adres-grid{grid-template-columns:1fr 1.1fr}
+  .pitch .pan{padding:28px 30px 30px}
+}
+@media (min-width:980px){
+  .kop img{height:46px}
+  .hero{padding:34px 0 70px}
+  .hero-grid{grid-template-columns:1.02fr 1fr;gap:54px;align-items:center}
+  .kozijn .ruit{aspect-ratio:5/4.3}
+  .kaart-grid{grid-template-columns:1.25fr 1fr;gap:34px;align-items:start}
+  .zijkant{position:sticky;top:16px}
+  .zweef{left:auto;right:20px;bottom:20px;width:330px}
+  .mo{bottom:20px;left:20px}
+}
+@media (max-width:359px){
+  .bel span{display:none}
+  .btn{padding:0 14px;font-size:15.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .kozijn .ruit img{animation-duration:.01s;animation-delay:0s}
+  .zweef{transition:none}
+}
+</style>
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+
+<div class="demo-strook">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></div>
+<div class="meld">4,6 ★ uit 283 Google-reviews · Wolphaertsbocht 93, Rotterdam</div>
+
+<div class="tegel">
+  <header class="wrap kop">
+    <a class="logo-link" href="#top" aria-label="Nefis KebaP, naar boven"><img src="logo-light.svg" width="275" height="40" alt="Nefis KebaP"></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#bestel">De kaart</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#adres">Adres en route</a>
+    </nav>
+    <a class="bel" href="tel:+31623600345" aria-label="Bel Nefis KebaP: 06 23 60 03 45"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>06 23 60 03 45</span></a>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-tekst">
+        <div class="borden" aria-label="Op de hoek van de Wolphaertsbocht en de Karel de Stoutestraat">
+          <span class="bord">Wolphaertsbocht</span><span class="bord">Karel de Stoutestraat</span>
+        </div>
+        <h1>Adana, kalfsdöner en çorba. <em>App of bel, en haal het op.</em></h1>
+        <p class="sub">Turkse grill, dürüm, soepen en tapas van Nefis KebaP in Rotterdam-Zuid. Stel je bestelling samen op de kaart en stuur hem in één bericht door.</p>
+        <div class="knoppen">
+          <a class="btn btn-rood" data-wa="kort" href="https://wa.me/31623600345?text=Hoi%20Nefis%20KebaP%2C%20ik%20wil%20graag%20iets%20bestellen%20om%20af%20te%20halen." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.3-.4A8 8 0 0 1 12 4zm-3 3.6c-.2 0-.5 0-.8.4-.3.3-1 1-1 2.400s1 2.800 1.200 3c.1.200 2 3.200 5 4.400 2.400 1 2.900.8 3.400.7.500 0 1.700-.7 1.900-1.300.2-.700.2-1.200.2-1.300-.1-.200-.3-.200-.6-.400l-2-1c-.3 0-.5-.1-.7.200l-.9 1.100c-.200.200-.300.200-.600.100-.300-.200-1.200-.500-2.300-1.400-.9-.800-1.400-1.700-1.600-2-.2-.300 0-.500.100-.600l.5-.5.3-.5v-.5L10 8.200c-.2-.5-.4-.6-.6-.6z"/></svg>Bestel via WhatsApp</a>
+          <a class="btn btn-wit" href="#bestel">Bekijk de kaart</a>
+        </div>
+        <p class="score"><b>4,6 ★</b> uit 283 reviews op <a href="https://www.google.com/maps?cid=8953060516499522642" target="_blank" rel="noopener">Google</a> · Wolphaertsbocht 93, Rotterdam</p>
+      </div>
+      <figure class="kozijn">
+        <div class="ruit"><img src="img/gevel.jpg" width="1100" height="609" alt="De gevel van Nefis KebaP: antraciet tegelwerk, rode en witte gevelletters en de straatnaamborden Wolphaertsbocht en Karel de Stoutestraat" fetchpriority="high"></div>
+        <figcaption>Onze gevel op de hoek. Foto: Google Maps.</figcaption>
+      </figure>
+    </div>
+  </section>
+</div>
+
+<main>
+<section class="kaart" id="bestel">
+  <div class="wrap">
+    <p class="oog">De kaart</p>
+    <h2>Tik aan wat je wilt, wij krijgen het in één bericht.</h2>
+    <p class="intro">Klap een categorie open en zet je gerechten erbij met de plus. Je bestelling staat daarna klaar als WhatsApp-bericht; je verstuurt hem zelf.</p>
+
+    <div class="kaart-grid">
+      <div>
+        <div class="stap-kop"><span class="nr">1</span><h3>Kies van de kaart</h3></div>
+        <div id="cats"></div>
+      </div>
+
+      <div class="zijkant">
+        <div class="stap-kop"><span class="nr">2</span><h3>Bij de grill</h3></div>
+        <div class="blok">
+          <div class="keuze" id="bij" role="group" aria-label="Bijgerecht bij de grill">
+            <button type="button" data-v="bulgur" aria-pressed="false" disabled>Bulgur</button>
+            <button type="button" data-v="patat" aria-pressed="false" disabled>Patat</button>
+          </div>
+          <p class="hint">Gerechten van de grill serveren we naar keuze met bulgur of patat, met lavas en groente. Kies eerst iets van de grill.</p>
+        </div>
+
+        <div class="stap-kop"><span class="nr">3</span><h3>Wanneer haal je het op?</h3></div>
+        <div class="blok">
+          <div class="keuze" id="wanneer" role="group" aria-label="Wanneer ophalen">
+            <button type="button" data-v="vandaag, zo snel mogelijk" aria-pressed="true">Zo snel mogelijk</button>
+            <button type="button" data-v="vandaag, later" aria-pressed="false">Vandaag, later</button>
+            <button type="button" data-v="morgen" aria-pressed="false">Morgen</button>
+            <button type="button" data-v="een andere dag" aria-pressed="false">Andere dag</button>
+          </div>
+        </div>
+
+        <div class="bon" aria-live="polite">
+          <h3>Je bestelling</h3>
+          <p class="leeg" id="leeg">Nog niets gekozen. Tik op een plus in de kaart.</p>
+          <ul id="lijst"></ul>
+          <p class="regel" id="regel"></p>
+          <a class="btn btn-rood" id="stuur" href="https://wa.me/31623600345?text=Hoi%20Nefis%20KebaP%2C%20ik%20wil%20graag%20iets%20bestellen%20om%20af%20te%20halen." target="_blank" rel="noopener">Stuur via WhatsApp</a>
+          <p class="of">Liever bellen? <a href="tel:+31623600345">06 23 60 03 45</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="waarom">
+  <div class="wrap">
+    <p class="oog">Waarom Nefis KebaP</p>
+    <h2>Waar gasten op Google over schrijven.</h2>
+    <div class="drie">
+      <div class="kaartje"><h3>Vers eten en vlees</h3><p>Gasten schrijven in hun reviews dat het eten lekker en vers is, en noemen daarbij het vlees.</p></div>
+      <div class="kaartje"><h3>Vriendelijk geholpen</h3><p>In reviews komt terug dat het personeel vriendelijk is; één gast bedankt de "Nefis Kebap-familie".</p></div>
+      <div class="kaartje"><h3>Een gezellige, schone zaak</h3><p>Gasten noemen de zaak gezellig en schoon.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <p class="oog">Reviews</p>
+    <h2>Zo beoordelen gasten ons.</h2>
+    <div class="cijfer"><span class="groot">4,6</span><span>★ uit 283 reviews op <a href="https://www.google.com/maps?cid=8953060516499522642" target="_blank" rel="noopener">Google</a></span></div>
+    <div class="drie">
+      <div class="kaartje"><p>Vindt de kwaliteit perfect en bedankt de familie van Nefis Kebap.</p><span class="wie">Yiğit</span></div>
+      <div class="kaartje"><p>At er heerlijk, noemt het personeel vriendelijk en de zaak gezellig.</p><span class="wie">Isabel</span></div>
+      <div class="kaartje"><p>Kort en duidelijk: goed eten, vriendelijke mensen.</p><span class="wie">Mehmet</span></div>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="zo">
+  <div class="wrap">
+    <p class="oog">Zo werkt het</p>
+    <h2>Van kaart tot afhalen in drie stappen.</h2>
+    <ol class="stappen">
+      <li><b>Kies van de kaart</b><span>Zet je gerechten erbij met de plus. Bij de grill kies je bulgur of patat.</span></li>
+      <li><b>Stuur je bericht of bel</b><span>Je bestelling staat klaar in WhatsApp. Bellen kan ook: 06 23 60 03 45.</span></li>
+      <li><b>Haal het op</b><span>Wolphaertsbocht 93, op de hoek met de Karel de Stoutestraat.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <p class="oog">Vragen</p>
+    <h2>Goed om te weten.</h2>
+    <div class="faq-lijst">
+      <details><summary>Wat krijg ik bij een gerecht van de grill?</summary><p>Alle grillspecialiteiten serveren we naar keuze met bulgur of patat, met lavas en groente.</p></details>
+      <details><summary>Wat is pittig en wat niet?</summary><p>Adana kebap is pittig gekruid. Urfa kebap is hetzelfde handgehakte lams-kalfsvlees, maar niet pittig.</p></details>
+      <details><summary>Staat er ook iets zonder vlees op de kaart?</summary><p>Ja. Çiğköfte zijn vegetarische balletjes van bulgur, ui, tomaat en kruiden. Onder Tapas staan ook hummus, ezme, cacık, babagannuş en salata.</p></details>
+      <details><summary>Kan ik ook laten bezorgen?</summary><p>Bezorgen gaat via <a href="https://www.nefiskebap-rotterdam.nl/" target="_blank" rel="noopener">onze bestelpagina</a>. Afhalen regel je hier via WhatsApp of telefonisch.</p></details>
+      <details><summary>Waar zitten jullie precies?</summary><p>Aan de Wolphaertsbocht 93 in Rotterdam, op de hoek met de Karel de Stoutestraat. Je herkent de zaak aan de antraciet gevel met de rode en witte letters.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="adres" id="adres">
+  <div class="wrap">
+    <p class="oog">Adres en route</p>
+    <h2>Je vindt ons op de hoek.</h2>
+    <div class="adres-grid">
+      <div>
+        <dl>
+          <div><dt>Adres</dt><dd>Wolphaertsbocht 93, Rotterdam</dd></div>
+          <div><dt>Bellen of appen</dt><dd><a href="tel:+31623600345">06 23 60 03 45</a></dd></div>
+          <div><dt>Open?</dt><dd>Bel of app ons even voor de tijden van vandaag.</dd></div>
+        </dl>
+        <div class="knoppen">
+          <a class="btn btn-rood" href="https://www.google.com/maps/dir/?api=1&destination=Wolphaertsbocht+93%2C+Rotterdam" target="_blank" rel="noopener">Route naar de zaak</a>
+          <a class="btn btn-lijn" href="tel:+31623600345">Bel ons</a>
+        </div>
+      </div>
+      <figure>
+        <img src="img/hoek.jpg" width="1000" height="203" alt="De straatnaamborden Wolphaertsbocht en Karel de Stoutestraat op de hoek van het pand" loading="lazy" decoding="async">
+        <figcaption>De straatnaamborden boven onze deur. Foto: Google Maps.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="slot tegel">
+  <div class="wrap">
+    <h2>Trek in iets van de grill?</h2>
+    <p>Stuur je bestelling via WhatsApp of bel 06 23 60 03 45. Ophalen doe je aan de Wolphaertsbocht 93.</p>
+    <div class="knoppen">
+      <a class="btn btn-rood" data-wa="kort" href="https://wa.me/31623600345?text=Hoi%20Nefis%20KebaP%2C%20ik%20wil%20graag%20iets%20bestellen%20om%20af%20te%20halen." target="_blank" rel="noopener">Bestel via WhatsApp</a>
+      <a class="btn btn-wit" href="#bestel">Naar de kaart</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-light.svg" width="234" height="34" alt="Nefis KebaP" loading="lazy" decoding="async">
+    <p>Nefis KebaP · Wolphaertsbocht 93, Rotterdam · <a href="tel:+31623600345">06 23 60 03 45</a></p>
+    <p>Gevelfoto's: Google Maps. Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef"><a id="zweef-a" href="https://wa.me/31623600345?text=Hoi%20Nefis%20KebaP%2C%20ik%20wil%20graag%20iets%20bestellen%20om%20af%20te%20halen." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.400L3 21l1.600-5.400A8.500 8.500 0 1 1 21 12z"/></svg><span id="zweef-t">Bestel via WhatsApp</span></a></div>
+
+<!-- Pitch-modus: alleen met ?pitch in de URL -->
+<button class="mo" id="mo" type="button" aria-label="Pitch-paneel">Mo</button>
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-labelledby="p-h">
+  <div class="pan">
+    <button class="x" id="pclose" type="button" aria-label="Sluiten">×</button>
+    <h2 id="p-h">Nefis KebaP: nu en straks</h2>
+    <div class="vn">
+      <figure><img src="img/voor-site.jpg" width="585" height="1266" alt="De huidige bestelpagina van Nefis Kebap op een telefoon" loading="lazy" decoding="async"><figcaption><b>Nu:</b> nefiskebap-rotterdam.nl op een telefoon (11 nov 2026).</figcaption></figure>
+      <figure><img src="img/na-mobiel.jpg" width="585" height="1266" alt="Deze demo op een telefoon: de gevel van Nefis KebaP met bestelknop" loading="lazy" decoding="async"><figcaption><b>Straks:</b> deze site, op jullie eigen domein.</figcaption></figure>
+    </div>
+    <h3>Wat er concreet beter is</h3>
+    <ol class="punten">
+      <li><b>Bellen of appen in één tik.</b> Op de contactpagina van nefiskebap-rotterdam.nl staan het adres en de bezorgtijden, maar geen telefoonnummer. Hier staat 06 23 60 03 45 in de kop, bij de kaart en in de zwevende knop.</li>
+      <li><b>Jullie eigen gevel en naam eerst.</b> De huidige pagina opent op een telefoon met een cookiemelding over het onderste deel van het scherm. Hier ziet een gast meteen jullie gevel, de kaart en de bestelknop.</li>
+      <li><b>Eén plek waar de gegevens kloppen.</b> In het colofon van de huidige pagina staat onder Nefis Kebap ook "casa di mamma" met "Boergoensestraat, 3082KA Rotterdam". Klopt dat nog?</li>
+    </ol>
+    <div class="reken">
+      <strong>Voorbeeld om samen in te vullen, geen belofte</strong>
+      <label for="r-k">Extra bestellingen per week via de site: <span id="r-kv">3</span></label>
+      <input type="range" id="r-k" min="1" max="30" value="3">
+      <label for="r-b">Gemiddelde bestelling (voorbeeld): € <span id="r-bv">20</span></label>
+      <input type="range" id="r-b" min="10" max="60" step="5" value="20">
+      <div class="uit" id="r-uit"></div>
+    </div>
+    <div class="prijs"><b>€ 595 excl. btw (€ 719,95 incl. btw), eenmalig.</b> Website tot 5 pagina's op jullie eigen domein (het domein betaal en bezit je zelf, wij koppelen het), mobiel, WhatsApp-knop, contactformulier, Google-reviews en locatie, basis-SEO, 1 feedbackronde, hosting inbegrepen. Live binnen 48 uur na betaling.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NUMMER = '31623600345';
+  var KORT = 'Hoi Nefis KebaP, ik wil graag iets bestellen om af te halen.';
+  function wa(t){ return 'https://wa.me/' + NUMMER + '?text=' + encodeURIComponent(t); }
+
+  /* Kaart: namen en omschrijvingen van hun eigen bestelpagina (11 nov 2026), zonder prijzen en zonder dranken. */
+  var KAART = [
+    {c:'Soepen', g:[
+      ['Kelle paça çorbası','Soep van lamsvlees met azijn, knoflook en rode peper'],
+      ['Vitamin çorbası','Linzensoep gecombineerd met kelle paça en beenmerg'],
+      ['Mercimek çorbası','Linzensoep']]},
+    {c:'Tapas', g:[
+      ['Babagannuş','Fijngesneden aubergine, tomaat en paprika van de grill met vers gesneden peterselie'],
+      ['Salata','Fijngesneden frisse salade met granaatappeldressing'],
+      ['Cacık','Huisgemaakte verse yoghurt met komkommer, mint en een vleugje knoflook'],
+      ['Ezme','Ambachtelijk bereide tomatentapenade met verse groente en kruiden'],
+      ['Hummus','Gepureerde kikkererwten met verschillende kruiden, olijfolie en knoflook'],
+      ['Çiğköfte','Vegetarische balletjes van bulgur, ui, tomaten en verschillende kruiden']]},
+    {c:'Kalfsdöner', g:[
+      ['Zurna et döner','Döner opgerold in extra lang lavasbrood met patat, augurk, pittige peper, speciale saus en salade. Een traditioneel gerecht uit Hatay'],
+      ['Pilav üstü et döner','Turkse rijst met döner erop, geserveerd met uien, groente en lavasbrood'],
+      ['Dürüm et döner','Döner opgerold in lavasbrood met uien, tomaat en salade'],
+      ['Beyti et döner','Dungesneden döner in een wrap, gegrild en geserveerd met yoghurt en een romige saus met knoflook'],
+      ['Et döner','Döner geserveerd met uien, groente en lavasbrood']]},
+    {c:'Grill', grill:1, noot:'Naar keuze met bulgur of patat, met lavas en groente.', g:[
+      ['Adana kebap','Handgehakt, pittig gekruid lams-kalfsvlees aan de spies. 2 spiezen'],
+      ['Urfa kebap','Handgehakt lams-kalfsvlees aan de spies, niet pittig. 2 spiezen'],
+      ['Kuzu şiş','Malse stukjes lamsvlees, gemarineerd met kruiden. 2 spiezen'],
+      ['Tavuk şiş','Gemarineerde kipblokjes aan de spies. 2 spiezen'],
+      ['Tavuk kanat','Gemarineerde kipvleugelspiezen'],
+      ['Tavuk pirzola','Kippendijen, gegrild en op smaak gebracht met kruiden'],
+      ['Nefis tavuk kebabı','Gekruid kipgehakt van de grill'],
+      ['Pirzola','Malse lamskoteletten'],
+      ['Ciğer','Gemarineerde blokjes kalfslever aan de spies. 2 spiezen'],
+      ['Mix grill','Keuze uit 2 spiezen'],
+      ['Mix grill speciaal','4 soorten van de grill: Adana, lamsspies, kipspies en kipvleugelspies'],
+      ['Mix grill Nefis speciaal, 2 personen','Voor 2 personen: Adana, lamsspies, kipspies en kipvleugelspies']]},
+    {c:'Specials', g:[
+      ['Beyti sarma','Adana opgerold in vers lavasbrood, opgediend met tomatensaus en yoghurt'],
+      ['Iskender','Gemarineerd dönervlees op Turks brood, overgoten met warme tomatensaus en gesmolten boter, met yoghurt'],
+      ['Saç kavurma','Fijngesneden lamsvlees bereid met tomaat, paprika en ui, met rijst']]},
+    {c:'Dürüm', noot:'Onze dürüm en lavasbroodjes worden ambachtelijk bereid.', g:[
+      ['Adana dürüm','Pittige Adana kebap van de grill in lavasbrood met uien, tomaat en salade'],
+      ['Urfa dürüm','Urfa kebap van de grill (niet pittig) in lavasbrood met uien, tomaat en salade'],
+      ['Kuzu şiş dürüm','Gegrilde lamsstukjes in lavasbrood met uien, tomaat en salade'],
+      ['Tavuk şiş dürüm','Gegrilde stukjes kip in lavasbrood met uien, tomaat en salade'],
+      ['Nefis tavuk kebap dürüm','Gekruid kipgehakt van de grill in lavasbrood met frisse groenten']]},
+    {c:'Kindermenu', g:[
+      ['Köfte menu','Gekruide gehaktballetjes met patat en een pakje drinken'],
+      ['Tavuk şiş kindermenu','Gekruide kipspies met patat en een pakje drinken']]},
+    {c:'Desserts', g:[
+      ['Künefe','Krokant engelenhaar gevuld met künefe-kaas, warm geserveerd met suikersiroop en pistachenoten'],
+      ['Sütlaç','Ambachtelijk bereide rijstpudding met een gekarameliseerd laagje'],
+      ['Katmer','Zoet filodeeg gevuld met room en pistachenoten, met warme honingsiroop']]}
+  ];
+
+  var order = {};            // naam -> aantal
+  var grillNamen = {};
+  var bij = '', wanneer = 'vandaag, zo snel mogelijk';
+  var cats = document.getElementById('cats');
+
+  KAART.forEach(function(cat, ci){
+    var d = document.createElement('details'); d.className = 'cat'; if (ci === 3) d.open = true;
+    var s = document.createElement('summary');
+    var t = document.createElement('span'); t.textContent = cat.c;
+    var n = document.createElement('span'); n.className = 'n'; n.textContent = cat.g.length + ' gerechten';
+    s.appendChild(t); s.appendChild(n); d.appendChild(s);
+    if (cat.noot){ var p = document.createElement('div'); p.className = 'noot'; p.textContent = cat.noot; d.appendChild(p); }
+    cat.g.forEach(function(g){
+      if (cat.grill) grillNamen[g[0]] = 1;
+      var r = document.createElement('div'); r.className = 'gerecht';
+      var l = document.createElement('div');
+      var a = document.createElement('span'); a.className = 'naam'; a.textContent = g[0];
+      var o = document.createElement('span'); o.className = 'oms'; o.textContent = g[1];
+      l.appendChild(a); l.appendChild(o);
+      var tel = document.createElement('div'); tel.className = 'tel';
+      var min = document.createElement('button'); min.type = 'button'; min.textContent = '−'; min.setAttribute('aria-label', 'Eén minder: ' + g[0]); min.hidden = true;
+      var aant = document.createElement('span'); aant.className = 'aantal'; aant.hidden = true;
+      var plus = document.createElement('button'); plus.type = 'button'; plus.className = 'plus'; plus.textContent = '+'; plus.setAttribute('aria-label', 'Voeg toe: ' + g[0]);
+      function zet(v){
+        if (v <= 0) delete order[g[0]]; else order[g[0]] = v;
+        min.hidden = aant.hidden = !(v > 0); aant.textContent = v > 0 ? v : '';
+        var som = 0; cat.g.forEach(function(x){ som += order[x[0]] || 0; });
+        n.textContent = som ? som + ' gekozen' : cat.g.length + ' gerechten'; n.classList.toggle('aan', som > 0);
+        werkBij();
+      }
+      plus.addEventListener('click', function(){ zet((order[g[0]] || 0) + 1); });
+      min.addEventListener('click', function(){ zet((order[g[0]] || 0) - 1); });
+      tel.appendChild(min); tel.appendChild(aant); tel.appendChild(plus);
+      r.appendChild(l); r.appendChild(tel); d.appendChild(r);
+    });
+    cats.appendChild(d);
+  });
+
+  function groep(id, cb){
+    var el = document.getElementById(id);
+    el.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if (!b || b.disabled) return;
+      el.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      cb(b.getAttribute('data-v'));
+    });
+  }
+  groep('bij', function(v){ bij = v; werkBij(); });
+  groep('wanneer', function(v){ wanneer = v; werkBij(); });
+
+  var lijst = document.getElementById('lijst'), leeg = document.getElementById('leeg'), regel = document.getElementById('regel');
+  var stuur = document.getElementById('stuur'), zweefA = document.getElementById('zweef-a'), zweefT = document.getElementById('zweef-t');
+
+  function werkBij(){
+    var namen = Object.keys(order), totaal = 0, heeftGrill = false;
+    lijst.textContent = '';
+    namen.forEach(function(nm){
+      totaal += order[nm]; if (grillNamen[nm]) heeftGrill = true;
+      var li = document.createElement('li'); li.textContent = order[nm] + '× ' + nm; lijst.appendChild(li);
+    });
+    document.querySelectorAll('#bij button').forEach(function(b){ b.disabled = !heeftGrill; if (!heeftGrill) b.setAttribute('aria-pressed', 'false'); });
+    if (!heeftGrill) bij = '';
+    leeg.hidden = totaal > 0;
+    var r = [];
+    if (heeftGrill) r.push('Bij de grill: ' + (bij || 'nog kiezen'));
+    r.push('Ophalen: ' + wanneer);
+    regel.textContent = totaal ? r.join(' · ') : '';
+    var bericht = KORT;
+    if (totaal){
+      bericht = 'Hoi Nefis KebaP, ik wil graag bestellen om af te halen:\n' +
+        namen.map(function(nm){ return '- ' + order[nm] + 'x ' + nm; }).join('\n') +
+        (heeftGrill && bij ? '\nBij de grill: ' + bij : '') +
+        '\nOphalen: ' + wanneer +
+        '\nKunnen jullie de prijs en de afhaaltijd bevestigen?';
+    }
+    stuur.href = zweefA.href = wa(bericht);
+    stuur.textContent = totaal ? 'Stuur bestelling via WhatsApp (' + totaal + ')' : 'Stuur via WhatsApp';
+    zweefT.textContent = totaal ? 'Verstuur bestelling via WhatsApp (' + totaal + ')' : 'Bestel via WhatsApp';
+  }
+  werkBij();
+
+  /* zwevende knop zodra de hero uit beeld is */
+  var zweef = document.getElementById('zweef');
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){ zweef.classList.toggle('aan', !e[0].isIntersecting); }, {threshold:0}).observe(document.getElementById('top'));
+  } else { zweef.classList.add('aan'); }
+
+  /* pitch: staat na alle variabelen */
+  var params = new URLSearchParams(location.search);
+  var pitch = document.getElementById('pitch'), mo = document.getElementById('mo');
+  function openPitch(){ pitch.classList.add('open'); }
+  mo.addEventListener('click', openPitch);
+  document.getElementById('pclose').addEventListener('click', function(){ pitch.classList.remove('open'); });
+  pitch.addEventListener('click', function(e){ if (e.target === pitch) pitch.classList.remove('open'); });
+  var rk = document.getElementById('r-k'), rb = document.getElementById('r-b');
+  function reken(){
+    var k = +rk.value, b = +rb.value, jaar = k * b * 52, n = Math.ceil(595 / b);
+    document.getElementById('r-kv').textContent = k; document.getElementById('r-bv').textContent = b;
+    document.getElementById('r-uit').textContent = 'Voorbeeld: ' + k + ' × € ' + b + ' × 52 = € ' + jaar.toLocaleString('nl-NL') + ' per jaar. € 595 excl. btw is de omzet van ' + n + ' bestellingen.';
+  }
+  rk.addEventListener('input', reken); rb.addEventListener('input', reken); reken();
+  if (params.has('pitch')) { mo.style.display = 'block'; openPitch(); }
+})();
+</script>
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
