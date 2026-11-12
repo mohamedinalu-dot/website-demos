@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<!--
+  Demo L266 Kapsalon "The Golden Hair" (Katendrechtse Lagedijk 194-A, Rotterdam-Zuid / Tarwewijk), Mohamedia, 12 nov 2026.
+  Concept in één zin: "De blauwe magnoliawand": de handgeschilderde blauwe bloemenwand uit hun eigen salon
+  groeit bij het laden één keer uit de salonfoto naar buiten (takken tekenen zich, bloemen gaan open), daarna staat alles stil.
+  Lay-out-archetype: SALONFOTO MET OVERLOPENDE WANDSCHILDERING + MAKE-UPPALET. Hero = hun eigen salonfoto recht in een
+  dunne gouden binnenlijn, met getekende magnoliatakken die over de rand van de foto lopen; diensten als twee kolommen
+  (haar | make-up); de afsprakenhulp is een make-uppalet met ronde napjes per make-upstijl.
+  Bewust niet: lopende band/marquee, schuine fotokaart, ronde/draaiende stempel, stoom, Ken Burns, licht-gaat-aan,
+  letters één voor één, rolluik, spiegel (Lismahyra), staalkaart (Breeze), smalle hoofdletters over full-bleed foto.
+  Beweging: SVG stroke-dashoffset (takken) + bloemen die eenmalig opengaan (scale/rotate op een binnen-groep), daarna stil.
+  prefers-reduced-motion = eindbeeld.
+  Beeld: img/salon-hoofd.jpg en img/salon-wasplek.jpg zijn uitsneden van de hoofdfoto op hun Google Maps-vermelding,
+  geüpload door "Kapsalon The Golden Hair" zelf (jun 2023; opname sep 2022), opgehaald via
+  maps?cid=3605356845868504535 (lh3 grass-cs, origineel 3024x4032). Persoon alleen van achteren; reclameposter (ander merk +
+  model), productenvitrine, spullen op de vensterbank en oorkondes vervaagd. Geen portfoliofoto's van de Wix-site
+  gebruikt (portretten van modellen; merklogo's van derden op die pagina).
+  Telefoon: 06 24 48 22 20 = Google Maps (dossier [1], zelf gezien op Maps 12 nov). WhatsApp is niet bevestigd: de knop
+  zet het bericht klaar en de tekst noemt bellen als alternatief. Geen openingstijden (QA-eis L266). Geen eigenaarsnaam.
+  Pitch-paneel voor Mo: ?pitch in de URL.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kapsalon The Golden Hair – kapper en make-up artist in Rotterdam-Zuid</title>
+<meta name="description" content="Kapsalon The Golden Hair aan de Katendrechtse Lagedijk 194-A in de Tarwewijk, Rotterdam-Zuid. Knippen, wenkbrauwen, hairstyling en make-up voor bruid, gala of avond. 4,6 uit 20 Google-reviews.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Commissioner:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F7FA; --wall:#E6EEF6; --wall2:#D9E5F1; --line:#D3DDE8;
+  --ink:#2A1117; --ink2:#5E4A50; --wine:#5C1F2A; --wine2:#7A2C3A; --wine-d:#3E131C;
+  --gold:#A87A22; --gold-l:#E6C47A; --gold-p:#F3E4BE;
+  --blue:#4E8EC6; --blue-l:#A8CBEA; --blue-d:#2D6697; --tulle:#E8DAD3;
+  --r:14px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Commissioner,system-ui,sans-serif;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:Gloock,Georgia,serif;font-weight:400;line-height:1.08;margin:0;letter-spacing:-.005em;overflow-wrap:break-word}
+h2{font-size:clamp(32px,7.4vw,52px)}
+h3{font-size:clamp(21px,5vw,26px)}
+p{margin:0 0 1em}
+.wrap{width:min(1160px,100% - 40px);margin:0 auto}
+.grid>*{min-width:0}
+.eyebrow{font:600 13px/1.3 Commissioner,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+section{padding:72px 0}
+@media (min-width:900px){section{padding:104px 0}}
+
+/* knoppen: geen transition op transform */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font:600 16px/1 Commissioner,sans-serif;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-p{background:var(--wine);color:#fff}
+.btn-p:hover{background:var(--wine-d)}
+.btn-o{border-color:var(--wine);color:var(--wine);background:transparent}
+.btn-o:hover{background:var(--wine);color:#fff}
+.btn-g{background:var(--gold-l);color:var(--wine-d)}
+.btn-g:hover{background:#f0d48f}
+.btn-l{border-color:rgba(255,255,255,.55);color:#fff}
+.btn-l:hover{background:#fff;color:var(--wine)}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+
+/* 1. demo-strook */
+.demo{background:var(--wine-d);color:#F4E6E9;font-size:13.5px;text-align:center;padding:7px 12px;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap}
+.demo a{color:var(--gold-l);font-weight:600}
+#mo{display:none;min-width:44px;min-height:44px;border-radius:999px;border:1px solid var(--gold-l);background:transparent;color:var(--gold-l);font:700 14px Commissioner,sans-serif;cursor:pointer;padding:0 14px}
+html.pitch-aan #mo{display:inline-flex;align-items:center;justify-content:center}
+
+/* 2. aankondigingsbalk */
+.balk{margin:0;background:var(--wall2);color:var(--ink);text-align:center;font-size:14.5px;padding:9px 14px}
+.balk a{text-decoration:none;font-weight:600}
+.balk .ster{color:var(--gold)}
+
+/* 3. header */
+.kop{background:var(--bg);border-bottom:1px solid var(--line)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:70px}
+.logo img{height:44px;width:auto}
+.kop nav{display:none;gap:4px}
+.kop nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;text-decoration:none;font-weight:500;font-size:15.5px;color:var(--ink2);border-radius:8px}
+.kop nav a:hover{color:var(--wine);background:var(--wall)}
+.kop .btn{min-height:46px;padding:0 18px;font-size:15px}
+@media (min-width:900px){.kop nav{display:flex}.logo img{height:52px}}
+
+/* 4. hero */
+.hero{padding:0 0 56px;background:linear-gradient(180deg,var(--bg) 0%,var(--wall) 100%);overflow:hidden}
+.hero-g{display:grid;gap:0}
+.h-foto{position:relative;margin:0 -20px}
+.h-lijst{position:relative;overflow:hidden;height:min(46svh,440px);min-height:330px;background:var(--wall2)}
+.h-lijst img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.h-lijst::after{content:"";position:absolute;inset:12px;border:1px solid rgba(230,196,122,.85);pointer-events:none}
+.h-foto figcaption{position:absolute;left:24px;top:22px;font-size:12px;color:#fff;background:rgba(42,17,23,.55);padding:4px 10px;border-radius:999px;z-index:3}
+.tak{position:absolute;z-index:2;pointer-events:none;overflow:visible}
+.tak-l{left:-2px;bottom:34px;width:34%;max-width:210px}
+.tak-r{right:-2px;top:6px;width:50%;max-width:280px}
+.tak .steel{fill:none;stroke:var(--blue-d);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:groei 1.9s cubic-bezier(.3,.6,.3,1) .25s forwards}
+.tak .zij{stroke-width:1.7;animation-delay:.9s;animation-duration:1.2s}
+.bloem .open{transform-box:fill-box;transform-origin:50% 50%;transform:scale(0) rotate(-40deg);opacity:0;animation:bloei .9s cubic-bezier(.2,.9,.25,1.15) var(--d,1.2s) forwards}
+@keyframes groei{to{stroke-dashoffset:0}}
+@keyframes bloei{to{transform:scale(1) rotate(0);opacity:1}}
+.h-tekst{position:relative;z-index:4;background:var(--bg);margin:-30px -4px 0;padding:22px 20px 0;border-radius:22px 22px 0 0}
+.h-tekst h1{font-size:clamp(34px,9vw,62px);color:var(--wine)}
+.nw{white-space:nowrap}
+.h-tekst h1 em{font-style:normal;color:var(--gold)}
+.lead{font-size:clamp(17px,4.3vw,20px);color:var(--ink2);margin:12px 0 20px;max-width:34em}
+.trust{margin:28px 0 0;font-size:15px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:4px 14px}
+.trust b{color:var(--ink)}
+.trust .ster{color:var(--gold)}
+@media (min-width:900px){
+  .hero{padding:56px 0 96px}
+  .hero-g{grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+  .h-tekst{order:1;margin:0;padding:0;background:none;border-radius:0}
+  .h-foto{order:2;margin:0}
+  .h-lijst{height:auto;aspect-ratio:4/5;min-height:0;border-radius:6px}
+  .h-lijst img{height:100%}
+  .tak-l{left:-64px;bottom:40px;width:40%}
+  .tak-r{right:-56px;top:-40px;width:52%}
+}
+
+/* 5. haar & make-up */
+.diensten{background:var(--bg)}
+.d-g{display:grid;gap:36px}
+.d-kol{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 22px}
+.d-kol h3{color:var(--wine);margin-bottom:6px}
+.d-kol .sub{color:var(--ink2);font-size:15.5px;margin-bottom:16px}
+.lijst{list-style:none;margin:0;padding:0}
+.lijst li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line);font-weight:500}
+.lijst li:last-child{border-bottom:0}
+.lijst li span{color:var(--ink2);font-weight:400;font-size:14.5px;text-align:right}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.chips li{padding:7px 13px;border-radius:999px;background:var(--wall);font-size:15px;font-weight:500;color:var(--ink)}
+.d-foto{margin:0;border-radius:var(--r);overflow:hidden;position:relative}
+.d-foto img{width:100%;height:auto;aspect-ratio:640/846;object-fit:cover}
+.d-foto figcaption{font-size:13px;color:var(--ink2);padding:10px 2px 0}
+.d-intro{max-width:40em;margin-bottom:34px}
+.d-intro p{color:var(--ink2)}
+@media (min-width:900px){.d-g{grid-template-columns:1fr 1fr .8fr;align-items:start}}
+
+/* 6. kiezer (make-uppalet) */
+.kiezer{background:var(--wine);color:#fff;position:relative;overflow:hidden}
+.kiezer .eyebrow{color:var(--gold-l)}
+.kiezer h2{color:#fff}
+.kiezer .intro{color:#EBD6DA;max-width:36em;margin:12px 0 30px}
+.k-g{display:grid;gap:22px}
+.stap{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--r);padding:20px 18px}
+.stap h3{font-family:Commissioner,sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-l);margin-bottom:14px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tab{min-height:48px;border-radius:12px;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:#fff;font:600 15.5px Commissioner,sans-serif;cursor:pointer;padding:0 6px}
+.tab[aria-pressed=true]{background:var(--gold-l);border-color:var(--gold-l);color:var(--wine-d)}
+.opties{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.opt{min-height:46px;padding:0 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:#fff;font:500 15.5px Commissioner,sans-serif;cursor:pointer}
+.opt[aria-pressed=true]{background:#fff;color:var(--wine);border-color:#fff;font-weight:600}
+.palet{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:12px 8px;margin-top:16px;padding:16px 12px;border-radius:18px;background:linear-gradient(160deg,#2b0d13,#16070a);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.nap{display:flex;flex-direction:column;align-items:center;gap:8px;min-height:44px;background:none;border:0;color:#F4E6E9;font:500 13.5px/1.25 Commissioner,sans-serif;cursor:pointer;padding:4px 2px;text-align:center}
+.nap i{display:block;width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.55),rgba(255,255,255,0) 42%),var(--c);box-shadow:inset 0 -4px 8px rgba(0,0,0,.28),0 0 0 3px #3a1a20,0 0 0 4px rgba(255,255,255,.14)}
+.nap[aria-pressed=true] i{box-shadow:inset 0 -4px 8px rgba(0,0,0,.28),0 0 0 3px #3a1a20,0 0 0 6px var(--gold-l)}
+.nap[aria-pressed=true]{color:#fff;font-weight:700}
+.datum{margin-top:12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.datum label{font-size:15px;color:#EBD6DA}
+.veld{min-height:48px;border-radius:12px;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;font:500 16px Commissioner,sans-serif;padding:0 14px;color-scheme:dark;max-width:100%}
+.veld::placeholder{color:#cfb3b9}
+.bon{background:#fff;color:var(--ink);border-radius:var(--r);padding:22px 20px;position:relative}
+.bon h3{font-family:Gloock,serif;font-size:26px;color:var(--wine);margin-bottom:10px;text-transform:none;letter-spacing:0}
+.bon pre{white-space:pre-wrap;font:500 16px/1.55 Commissioner,sans-serif;background:var(--wall);border-radius:10px;padding:14px;margin:0 0 16px;color:var(--ink)}
+.bon .btns .btn{flex:1 1 220px}
+.bon .klein{font-size:14px;color:var(--ink2);margin:14px 0 0}
+.bon .klein a{font-weight:600}
+@media (min-width:900px){.k-g{grid-template-columns:1.15fr .85fr;align-items:start}.bon{position:sticky;top:20px}}
+
+/* 7. waarom */
+.waarom{background:var(--wall)}
+.w-g{display:grid;gap:16px;margin-top:34px}
+.kaart{background:#fff;border-radius:var(--r);padding:26px 22px;border:1px solid var(--line);position:relative;overflow:hidden}
+.kaart .nr{font-family:Gloock,serif;font-size:44px;line-height:1;color:var(--blue-l);margin-bottom:10px}
+.kaart h3{color:var(--wine);margin-bottom:10px;font-size:clamp(20px,5vw,25px)}
+.kaart p{color:var(--ink2);margin:0}
+@media (min-width:900px){.w-g{grid-template-columns:repeat(3,1fr)}}
+
+/* 8. reviews */
+.reviews{background:var(--bg)}
+.score{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin:16px 0 30px}
+.score b{font-family:Gloock,serif;font-weight:400;font-size:64px;line-height:1;color:var(--wine)}
+.score .ster{color:var(--gold);font-size:24px;letter-spacing:2px}
+.score span{color:var(--ink2)}
+.r-g{display:grid;gap:16px}
+.rev{background:#fff;border-left:4px solid var(--gold-l);border-radius:0 var(--r) var(--r) 0;padding:20px 20px 18px}
+.rev p{margin:0 0 10px;font-size:17px}
+.rev .wie{font-weight:700;color:var(--wine);margin:0}
+.label{font-size:14px;color:var(--ink2);margin-top:20px}
+.label a{font-weight:600}
+@media (min-width:900px){.r-g{grid-template-columns:repeat(3,1fr)}}
+
+/* 9. stappen */
+.stappen{background:var(--wall);padding-top:64px}
+.s-g{display:grid;gap:14px;margin-top:30px;counter-reset:s}
+.s{background:#fff;border-radius:var(--r);padding:22px 20px;display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start;border:1px solid var(--line)}
+.s::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--wine);color:var(--gold-l);font:400 24px Gloock,serif}
+.s h3{font-family:Commissioner,sans-serif;font-weight:700;font-size:18px;margin:4px 0 4px;color:var(--ink)}
+.s p{margin:0;color:var(--ink2);font-size:16px}
+@media (min-width:900px){.s-g{grid-template-columns:repeat(3,1fr)}}
+
+/* 10. faq */
+.faq{background:var(--bg)}
+.faq details{border-bottom:1px solid var(--line);padding:4px 0}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:56px;font-weight:600;font-size:17.5px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:400 28px Gloock,serif;color:var(--gold);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--ink2);margin:0 0 16px}
+.faq .wrap{max-width:820px}
+
+/* 11. locatie */
+.locatie{background:var(--wall)}
+.l-g{display:grid;gap:24px;margin-top:28px}
+.adres{background:#fff;border-radius:var(--r);padding:24px 22px;border:1px solid var(--line)}
+.adres p{margin:0 0 6px}
+.adres .groot{font-family:Gloock,serif;font-size:26px;line-height:1.2;color:var(--wine);margin-bottom:12px}
+.adres .btns{margin-top:20px}
+.kaartje{border-radius:var(--r);overflow:hidden;min-height:300px;background:var(--wall2);border:1px solid var(--line)}
+.kaartje iframe{width:100%;height:100%;min-height:300px;border:0;display:block}
+@media (min-width:900px){.l-g{grid-template-columns:.9fr 1.1fr}}
+
+/* 12. slot */
+.slot{background:var(--wine-d);color:#fff;text-align:center;position:relative;overflow:hidden}
+.slot h2{color:#fff;max-width:16em;margin:0 auto 14px}
+.slot h2 em{font-style:normal;color:var(--gold-l)}
+.slot p{color:#E5CCD1;max-width:34em;margin:0 auto 26px}
+.slot .btns{justify-content:center}
+.slot svg.deco{position:absolute;opacity:.18;width:260px;right:-60px;bottom:-40px;pointer-events:none}
+
+/* 13. footer */
+footer{background:#1d080c;color:#D9C2C7;padding:44px 0 30px;font-size:15px}
+footer .f-g{display:grid;gap:22px}
+footer img{height:46px;width:auto}
+footer a{color:#fff}
+footer .bron{font-size:13px;color:#B79EA4;margin-top:8px}
+@media (min-width:900px){footer .f-g{grid-template-columns:1.2fr 1fr 1fr}}
+
+/* 14. zwevende CTA */
+#float{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;gap:8px;padding:8px;border-radius:999px;background:rgba(62,19,28,.94);box-shadow:0 10px 30px rgba(0,0,0,.25);transform:translateY(140%);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+#float.show{transform:none;opacity:1;visibility:visible}
+#float .btn{flex:1;min-height:48px;padding:0 12px;font-size:15px}
+@media (min-width:900px){#float{display:none}}
+
+/* pitch */
+#pitch{position:fixed;inset:0;z-index:60;background:rgba(29,8,12,.62);display:none;overflow-y:auto;padding:16px}
+#pitch.open{display:block}
+.pp{background:#fff;max-width:900px;margin:0 auto;border-radius:16px;padding:26px 20px 28px;position:relative}
+.pp h2{font-size:clamp(28px,6.6vw,42px);color:var(--wine);margin-bottom:6px}
+.pp h3{font-family:Commissioner,sans-serif;font-size:17px;font-weight:700;margin:26px 0 10px}
+#pclose{position:absolute;right:12px;top:12px;min-width:44px;min-height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:22px;cursor:pointer}
+.vn{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vn figure{margin:0}
+.vn img{width:100%;height:auto;max-height:440px;object-fit:cover;object-position:top;border-radius:10px;border:1px solid var(--line)}
+.vn figcaption{font-size:13px;color:var(--ink2);margin-top:6px}
+.punten{padding-left:20px;margin:0}
+.punten li{margin-bottom:8px}
+.reken{background:var(--wall);border-radius:12px;padding:18px;margin-top:10px}
+.reken label{display:block;font-weight:600;font-size:15px;margin-top:12px}
+.reken input{width:100%;min-height:44px;accent-color:var(--wine)}
+.uit{font-family:Gloock,serif;font-size:32px;margin-top:12px;color:var(--wine)}
+.uit small{display:block;font-family:Commissioner,sans-serif;font-size:13.5px;color:var(--ink2);margin-top:6px;line-height:1.45}
+.prijs{background:var(--wine);color:#fff;border-radius:12px;padding:16px 18px;margin-top:20px}
+.prijs b{font-size:19px}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .tak .steel{animation:none;stroke-dashoffset:0}
+  .bloem .open{animation:none;transform:none;opacity:1}
+  #float{transition:none}
+}
+</style>
+
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+
+<div class="demo">
+  <span>Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></span>
+  <button type="button" id="mo" aria-label="Open het pitch-paneel">Mo</button>
+</div>
+<p class="balk"><a href="#reviews"><span class="ster">★</span> 4,6 uit 20 Google-reviews</a> · kapsalon én make-up</p>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Kapsalon The Golden Hair, naar boven"><img src="logo-dark.svg" alt="Kapsalon The Golden Hair" width="226" height="52"></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#diensten">Haar &amp; make-up</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#route">Route</a>
+      <a href="#kiezer">Afspraak</a>
+    </nav>
+    <a class="btn btn-p" href="tel:+31624482220" aria-label="Bel 06 24 48 22 20"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Bel</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="wrap hero-g grid">
+    <figure class="h-foto">
+      <div class="h-lijst">
+        <img src="img/salon-hoofd.jpg" alt="In de salon: lange blonde krullen, van achteren gezien, tussen de wasplekken en de blauwe bloemenwand" width="820" height="1025" fetchpriority="high">
+      </div>
+      <!-- getekende takken naar de blauwe magnoliawand in de salon -->
+      <svg class="tak tak-l" viewBox="0 0 200 320" aria-hidden="true">
+        <defs>
+          <radialGradient id="blauw" cx="50%" cy="100%" r="100%"><stop offset="0" stop-color="#2D6697"/><stop offset=".5" stop-color="#5A98CE"/><stop offset="1" stop-color="#CFE4F6"/></radialGradient>
+          <g id="m">
+            <path d="M0 0C-11-7-15-24-8-36C-3-44 6-43 9-34C13-22 7-7 0 0Z" fill="url(#blauw)" fill-opacity=".88" transform="rotate(-70)"/>
+            <path d="M0 0C-11-7-15-24-8-36C-3-44 6-43 9-34C13-22 7-7 0 0Z" fill="url(#blauw)" fill-opacity=".88" transform="rotate(70)"/>
+            <path d="M0 0C-11-7-15-24-8-36C-3-44 6-43 9-34C13-22 7-7 0 0Z" fill="url(#blauw)" fill-opacity=".9" transform="rotate(-28)"/>
+            <path d="M0 0C-11-7-15-24-8-36C-3-44 6-43 9-34C13-22 7-7 0 0Z" fill="url(#blauw)" fill-opacity=".9" transform="rotate(28)"/>
+            <path d="M0 0C-11-7-15-24-8-36C-3-44 6-43 9-34C13-22 7-7 0 0Z" fill="url(#blauw)" fill-opacity=".95"/>
+            <path d="M0 0V-26M0 0L-8-22M0 0L8-22" stroke="#2D6697" stroke-width=".9" opacity=".55" fill="none"/>
+            <circle r="3" fill="#2D6697"/>
+          </g>
+        </defs>
+        <path class="steel" pathLength="1" d="M4 318C20 282 30 246 40 206S58 128 84 92S120 44 132 16"/>
+        <path class="steel zij" pathLength="1" d="M40 206C60 196 80 194 100 178"/>
+        <path class="steel zij" pathLength="1" d="M66 120C50 104 40 86 36 64"/>
+        <g class="bloem" transform="translate(132 18) rotate(18)"><g class="open" style="--d:1.75s"><use href="#m"/></g></g>
+        <g class="bloem" transform="translate(102 176) rotate(62) scale(.85)"><g class="open" style="--d:1.5s"><use href="#m"/></g></g>
+        <g class="bloem" transform="translate(36 62) rotate(-22) scale(.8)"><g class="open" style="--d:1.9s"><use href="#m"/></g></g>
+      </svg>
+      <svg class="tak tak-r" viewBox="0 0 240 200" aria-hidden="true">
+        <path class="steel" pathLength="1" d="M240 18C214 26 190 40 172 62S140 112 118 136S84 170 62 182"/>
+        <path class="steel zij" pathLength="1" d="M172 62C160 46 142 36 122 34"/>
+        <path class="steel zij" pathLength="1" d="M128 124C146 132 160 148 166 166"/>
+        <g class="bloem" transform="translate(120 34) rotate(-70) scale(.9)"><g class="open" style="--d:1.55s"><use href="#m"/></g></g>
+        <g class="bloem" transform="translate(62 182) rotate(-110) scale(.85)"><g class="open" style="--d:1.95s"><use href="#m"/></g></g>
+        <g class="bloem" transform="translate(166 168) rotate(160) scale(.7)"><g class="open" style="--d:1.7s"><use href="#m"/></g></g>
+      </svg>
+      <figcaption>Foto: Google-profiel van de salon</figcaption>
+    </figure>
+
+    <div class="h-tekst">
+      <p class="eyebrow">Kapsalon &amp; make-up · Tarwewijk</p>
+      <h1>Kapper en <span class="nw">make-up</span> <em>in <span class="nw">Rotterdam-Zuid</span></em></h1>
+      <p class="lead">Knippen, wenkbrauwen en hairstyling. En make-up voor je bruiloft, gala of avond uit.</p>
+      <div class="btns cta">
+        <a class="btn btn-p" href="https://wa.me/31624482220?text=Hoi%20The%20Golden%20Hair%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.6-.3z"/></svg>App voor een afspraak</a>
+        <a class="btn btn-o" href="#kiezer">Stel je afspraak samen</a>
+      </div>
+      <p class="trust"><span><span class="ster">★</span> <b>4,6</b> uit 20 Google-reviews</span><span>Katendrechtse Lagedijk 194-A</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="diensten" id="diensten">
+  <div class="wrap">
+    <div class="d-intro">
+      <p class="eyebrow">Haar &amp; make-up</p>
+      <h2>Twee vakken onder één dak</h2>
+      <p style="margin-top:14px">De salon is een kapsalon én een make-upadres. Hieronder wat de salon zelf noemt en wat klanten in hun reviews beschrijven.</p>
+    </div>
+    <div class="d-g grid">
+      <div class="d-kol">
+        <h3>In de kappersstoel</h3>
+        <p class="sub">Voor dames en heren</p>
+        <ul class="lijst">
+          <li>Knippen</li>
+          <li>Wenkbrauwen</li>
+          <li>Hairstyling</li>
+        </ul>
+      </div>
+      <div class="d-kol">
+        <h3>Make-up</h3>
+        <p class="sub">Stijlen uit het make-upportfolio van de salon</p>
+        <ul class="chips">
+          <li>Bridal</li><li>Arabische bruid</li><li>Gala &amp; Feest</li><li>Avond</li><li>1001 Nacht</li><li>Glamour</li><li>Naturel</li><li>Getinte huid</li><li>Rijpe huid</li><li>Drag Queen</li>
+        </ul>
+        <p class="sub" style="margin:16px 0 0">In een review vertelt een klant dat meerdere collega's samen zijn opgemaakt.</p>
+      </div>
+      <figure class="d-foto">
+        <img src="img/salon-wasplek.jpg" alt="De wasplekken met bordeauxrode stoelen bij het raam" width="640" height="846" loading="lazy" decoding="async">
+        <figcaption>De wasplekken bij het raam</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="kiezer" id="kiezer">
+  <div class="wrap">
+    <p class="eyebrow">Afspraak</p>
+    <h2>Kies je behandeling</h2>
+    <p class="intro">Tik aan wat je wilt en wanneer het je uitkomt. Je bericht staat daarna klaar in WhatsApp; liever bellen kan ook.</p>
+    <div class="k-g grid">
+      <div>
+        <div class="stap">
+          <h3>1 · Waarvoor kom je?</h3>
+          <div class="tabs" role="group" aria-label="Soort behandeling">
+            <button type="button" class="tab" data-soort="haar" aria-pressed="true">Haar</button>
+            <button type="button" class="tab" data-soort="brauw" aria-pressed="false">Wenkbrauwen</button>
+            <button type="button" class="tab" data-soort="makeup" aria-pressed="false">Make-up</button>
+          </div>
+          <div id="k-haar">
+            <div class="opties" role="group" aria-label="Wat wil je laten doen">
+              <button type="button" class="opt" data-haar="knippen" aria-pressed="true">Knippen</button>
+              <button type="button" class="opt" data-haar="hairstyling" aria-pressed="false">Hairstyling</button>
+            </div>
+            <div class="opties" role="group" aria-label="Voor wie">
+              <button type="button" class="opt" data-voor="dames" aria-pressed="true">Dames</button>
+              <button type="button" class="opt" data-voor="heren" aria-pressed="false">Heren</button>
+            </div>
+          </div>
+          <div id="k-makeup" hidden>
+            <div class="palet" role="group" aria-label="Make-upstijl">
+              <button type="button" class="nap" data-mu="Bridal" style="--c:#EFE3DC" aria-pressed="true"><i></i>Bridal</button>
+              <button type="button" class="nap" data-mu="Arabische bruid" style="--c:#8E2B3A" aria-pressed="false"><i></i>Arabische bruid</button>
+              <button type="button" class="nap" data-mu="Gala &amp; Feest" style="--c:#C24A6B" aria-pressed="false"><i></i>Gala &amp; Feest</button>
+              <button type="button" class="nap" data-mu="Avond" style="--c:#3B2B4F" aria-pressed="false"><i></i>Avond</button>
+              <button type="button" class="nap" data-mu="1001 Nacht" style="--c:#1F4E79" aria-pressed="false"><i></i>1001 Nacht</button>
+              <button type="button" class="nap" data-mu="Glamour" style="--c:#C9A04A" aria-pressed="false"><i></i>Glamour</button>
+              <button type="button" class="nap" data-mu="Naturel" style="--c:#D7B49B" aria-pressed="false"><i></i>Naturel</button>
+              <button type="button" class="nap" data-mu="Getinte huid" style="--c:#8A5A3C" aria-pressed="false"><i></i>Getinte huid</button>
+              <button type="button" class="nap" data-mu="Rijpe huid" style="--c:#C99B8A" aria-pressed="false"><i></i>Rijpe huid</button>
+              <button type="button" class="nap" data-mu="Drag Queen" style="--c:#7B3FA0" aria-pressed="false"><i></i>Drag Queen</button>
+            </div>
+          </div>
+        </div>
+        <div class="stap" style="margin-top:14px">
+          <h3>2 · Wanneer komt het je uit?</h3>
+          <div class="opties" role="group" aria-label="Wanneer" style="margin-top:0">
+            <button type="button" class="opt" data-wanneer="deze week" aria-pressed="true">Deze week</button>
+            <button type="button" class="opt" data-wanneer="volgende week" aria-pressed="false">Volgende week</button>
+            <button type="button" class="opt" data-wanneer="datum" aria-pressed="false">Op een datum</button>
+            <button type="button" class="opt" data-wanneer="nog niet zeker" aria-pressed="false">Weet ik nog niet</button>
+          </div>
+          <div class="datum" id="k-datum" hidden>
+            <label for="datum">Datum (bijv. je bruiloft of feest)</label>
+            <input class="veld" type="date" id="datum">
+          </div>
+          <div class="datum">
+            <label for="naam">Je naam (mag leeg)</label>
+            <input class="veld" type="text" id="naam" autocomplete="given-name" placeholder="Voornaam">
+          </div>
+        </div>
+      </div>
+
+      <div class="bon" aria-live="polite">
+        <h3>Je bericht</h3>
+        <pre id="bericht"></pre>
+        <div class="btns">
+          <a class="btn btn-p" id="stuur" href="https://wa.me/31624482220?text=Hoi%20The%20Golden%20Hair%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>Verstuur via WhatsApp</a>
+          <button type="button" class="btn btn-o" id="kopieer">Kopieer tekst</button>
+        </div>
+        <p class="klein">Liever bellen? <a href="tel:+31624482220">06 24 48 22 20</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="waarom" id="waarom">
+  <div class="wrap">
+    <p class="eyebrow">Waarom The Golden Hair</p>
+    <h2>Wat klanten terugzien</h2>
+    <div class="w-g grid">
+      <div class="kaart"><div class="nr">01</div><h3>Klanten blijven jaren</h3><p>Klanten schrijven dat ze al 15 tot 25 jaar komen, en één familie sinds 1995.</p></div>
+      <div class="kaart"><div class="nr">02</div><h3>Tijd voor je haar</h3><p>Klanten schrijven dat er tijd voor je wordt genomen en dat er goed geknipt wordt.</p></div>
+      <div class="kaart"><div class="nr">03</div><h3>Haar, brauwen én make-up</h3><p>Reviews noemen mooie wenkbrauwen en collega's die samen zijn opgemaakt.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <p class="eyebrow">Reviews</p>
+    <h2>Wat klanten schrijven</h2>
+    <div class="score"><b>4,6</b><span class="ster" aria-hidden="true">★★★★★</span><span>uit 20 reviews op Google</span></div>
+    <div class="r-g grid">
+      <div class="rev"><p>Een lieve kapper, mooie wenkbrauwen, en al 25 jaar klant.</p><p class="wie">Boter Bloem</p></div>
+      <div class="rev"><p>Volgens Ramtin de beste kapper van Rotterdam: er wordt tijd voor je genomen en goed geknipt.</p><p class="wie">Ramtin</p></div>
+      <div class="rev"><p>Arnie komt al meer dan vijftien jaar naar deze kapper.</p><p class="wie">Arnie</p></div>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd. <a href="https://www.google.com/maps?cid=3605356845868504535" target="_blank" rel="noopener">Alle reviews op Google bekijken</a></p>
+  </div>
+</section>
+
+<section class="stappen" id="werkwijze">
+  <div class="wrap">
+    <p class="eyebrow">Zo werkt het</p>
+    <h2>In drie tikken een afspraak</h2>
+    <div class="s-g grid">
+      <div class="s"><div><h3>Kies je behandeling</h3><p>Haar, wenkbrauwen of een make-upstijl.</p></div></div>
+      <div class="s"><div><h3>Kies wanneer</h3><p>Deze week, volgende week of de datum van je feest.</p></div></div>
+      <div class="s"><div><h3>Verstuur of bel</h3><p>Je bericht staat klaar in WhatsApp. Bellen kan op <span class="nw">06 24 48 22 20</span>.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <p class="eyebrow">Vragen</p>
+    <h2>Goed om te weten</h2>
+    <div style="margin-top:26px">
+      <details><summary>Doet de salon ook make-up voor een bruiloft?</summary><p>Bridal en Arabische bruid staan in het make-upportfolio van de salon. Kies de stijl hierboven en zet je datum erbij.</p></details>
+      <details><summary>Wat kost een behandeling?</summary><p>Vraag het even via WhatsApp of bel <span class="nw">06 24 48 22 20</span>, dan hoor je de prijs voor jouw wens.</p></details>
+      <details><summary>Wanneer kan ik terecht?</summary><p>Je plant je afspraak via WhatsApp of telefoon.</p></details>
+      <details><summary>Waar zit de salon?</summary><p>Aan de Katendrechtse Lagedijk 194-A, 3081 ZE Rotterdam, in de Tarwewijk.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="locatie" id="route">
+  <div class="wrap">
+    <p class="eyebrow">Route</p>
+    <h2>Langskomen in de Tarwewijk</h2>
+    <div class="l-g grid">
+      <div class="adres">
+        <p class="groot">Katendrechtse Lagedijk 194-A<br>3081 ZE Rotterdam</p>
+        <p>Telefoon: <a href="tel:+31624482220">06 24 48 22 20</a></p>
+        <p>Je plant je afspraak via WhatsApp of telefoon.</p>
+        <div class="btns cta">
+          <a class="btn btn-p" href="https://www.google.com/maps/dir/?api=1&amp;destination=Katendrechtse+Lagedijk+194-A%2C+3081+ZE+Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+          <a class="btn btn-o" href="#kiezer">Afspraak samenstellen</a>
+        </div>
+      </div>
+      <div class="kaartje"><iframe title="Kaart: Katendrechtse Lagedijk 194-A, Rotterdam" src="https://maps.google.com/maps?q=Katendrechtse%20Lagedijk%20194-A%2C%203081%20ZE%20Rotterdam&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <svg class="deco" viewBox="0 0 120 120" aria-hidden="true"><use href="#m" transform="translate(60 80) scale(1.6)"/></svg>
+  <div class="wrap">
+    <h2>Nieuw haar, of een look <em>voor je feest?</em></h2>
+    <p>Stuur je wens via WhatsApp of bel de salon.</p>
+    <div class="btns cta">
+      <a class="btn btn-g" href="https://wa.me/31624482220?text=Hoi%20The%20Golden%20Hair%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener">App voor een afspraak</a>
+      <a class="btn btn-l" href="tel:+31624482220">Bel 06 24 48 22 20</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap f-g">
+    <div>
+      <img src="logo-light.svg" alt="Kapsalon The Golden Hair" width="226" height="52" loading="lazy">
+      <p style="margin-top:14px">Kapsalon en make-up in de Tarwewijk, Rotterdam-Zuid.</p>
+    </div>
+    <div>
+      <p>Katendrechtse Lagedijk 194-A<br>3081 ZE Rotterdam</p>
+      <p><a href="tel:+31624482220">06 24 48 22 20</a></p>
+    </div>
+    <div>
+      <p>Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+      <p class="bron">Foto's: uitsneden van de foto op het Google-profiel van de salon (2023); merken en affiches vervaagd. Reviews: Google.</p>
+    </div>
+  </div>
+</footer>
+
+<div id="float" aria-hidden="true">
+  <a class="btn btn-g" href="https://wa.me/31624482220?text=Hoi%20The%20Golden%20Hair%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener" tabindex="-1">App voor een afspraak</a>
+  <a class="btn btn-l" href="tel:+31624482220" tabindex="-1">Bel</a>
+</div>
+
+<div id="pitch" role="dialog" aria-modal="true" aria-labelledby="p-titel">
+  <div class="pp">
+    <button type="button" id="pclose" aria-label="Sluit">×</button>
+    <p class="eyebrow">Pitch</p>
+    <h2 id="p-titel">The Golden Hair: nu en straks</h2>
+
+    <h3>Voor en na</h3>
+    <div class="vn">
+      <figure><img src="img/voor-wix.jpg" alt="De huidige Wix-pagina op een telefoon" width="390" height="750" loading="lazy"><figcaption>Nu: de pagina achter de websiteknop op Google (mmotaref.wixsite.com/maryam), op de telefoon</figcaption></figure>
+      <figure><img src="img/na-mobiel.jpg" alt="De nieuwe site op een telefoon" width="390" height="844" loading="lazy"><figcaption>Straks: deze site op dezelfde telefoon</figcaption></figure>
+    </div>
+
+    <h3>Wat er straks beter is</h3>
+    <ol class="punten">
+      <li><b>Naam, adres en nummer staan erop.</b> Op de huidige pagina staan geen salonnaam, geen adres en geen telefoonnummer, en bovenaan staat de Wix-reclamebalk. Hier staat alles in het eerste scherm, met een belknop.</li>
+      <li><b>Knoppen die naar jullie gaan.</b> Nu gaan de Facebook-, Pinterest- en Instagram-knoppen naar de accounts van Wix zelf, en openen "Reviews" en "Contact" in het menu gewoon de homepage. Hier gaat elke knop naar de salon: bellen, WhatsApp, route.</li>
+      <li><b>Kapsalon en make-up samen.</b> De make-upstijlen (Bridal, Arabische bruid, Gala &amp; Feest…) staan naast het kappersdeel, met een afsprakenhulp die het bericht klaarzet, en de 4,6 uit 20 reviews als bewijs.</li>
+    </ol>
+
+    <h3>Rekensom om samen in te vullen</h3>
+    <div class="reken">
+      <strong>Voorbeeld om samen in te vullen, geen belofte</strong>
+      <label for="r-k">Extra klanten per week via de site: <span id="r-kv">1</span></label>
+      <input type="range" id="r-k" min="1" max="15" value="1">
+      <label for="r-b">Gemiddelde besteding per afspraak: € <span id="r-bv">30</span></label>
+      <input type="range" id="r-b" min="10" max="300" step="5" value="30">
+      <div class="uit" id="r-uit"></div>
+    </div>
+    <div class="prijs"><b>€ 595 eenmalig, excl. btw (€ 719,95 incl.).</b><br>Site tot 5 pagina's, eigen domein koppelen, hosting inbegrepen, live binnen 48 uur na betaling.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NUMMER = '31624482220';
+  function wa(t){ return 'https://wa.me/' + NUMMER + '?text=' + encodeURIComponent(t); }
+  var k = {soort:'haar', haar:'knippen', voor:'dames', mu:'Bridal', wanneer:'deze week'};
+  var $ = function(s, c){ return (c || document).querySelector(s); };
+  var $$ = function(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  function druk(groep, attr, waarde){
+    $$(groep).forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute(attr) === waarde ? 'true' : 'false'); });
+  }
+  function fmtDatum(v){
+    if (!v) return '';
+    var d = new Date(v + 'T12:00:00');
+    return d.toLocaleDateString('nl-NL', {weekday:'long', day:'numeric', month:'long'});
+  }
+  function bericht(){
+    var wat;
+    if (k.soort === 'haar') wat = k.haar.charAt(0).toUpperCase() + k.haar.slice(1) + ' (' + k.voor + ')';
+    else if (k.soort === 'brauw') wat = 'Wenkbrauwen';
+    else wat = 'Make-up: ' + k.mu;
+    var wanneer = k.wanneer;
+    if (k.wanneer === 'datum') { var d = fmtDatum($('#datum').value); wanneer = d ? 'op ' + d : 'op een datum (die laat ik nog weten)'; }
+    var naam = $('#naam').value.trim();
+    return 'Hoi The Golden Hair, ik wil graag een afspraak maken.\n' +
+      'Voor: ' + wat + '\n' +
+      'Wanneer: ' + wanneer + '\n' +
+      (naam ? 'Naam: ' + naam + '\n' : '') +
+      'Kunnen jullie laten weten wat er kan?';
+  }
+  function update(){
+    var t = bericht();
+    $('#bericht').textContent = t;
+    $('#stuur').href = wa(t);
+    $('#k-haar').hidden = k.soort !== 'haar';
+    $('#k-makeup').hidden = k.soort !== 'makeup';
+    $('#k-datum').hidden = k.wanneer !== 'datum';
+  }
+  $$('.tab').forEach(function(b){ b.addEventListener('click', function(){ k.soort = b.dataset.soort; druk('.tab', 'data-soort', k.soort); update(); }); });
+  $$('[data-haar]').forEach(function(b){ b.addEventListener('click', function(){ k.haar = b.dataset.haar; druk('[data-haar]', 'data-haar', k.haar); update(); }); });
+  $$('[data-voor]').forEach(function(b){ b.addEventListener('click', function(){ k.voor = b.dataset.voor; druk('[data-voor]', 'data-voor', k.voor); update(); }); });
+  $$('[data-mu]').forEach(function(b){ b.addEventListener('click', function(){ k.mu = b.dataset.mu; druk('[data-mu]', 'data-mu', k.mu); update(); }); });
+  $$('[data-wanneer]').forEach(function(b){ b.addEventListener('click', function(){ k.wanneer = b.dataset.wanneer; druk('[data-wanneer]', 'data-wanneer', k.wanneer); update(); }); });
+  $('#datum').addEventListener('input', update);
+  $('#naam').addEventListener('input', update);
+  $('#kopieer').addEventListener('click', function(){
+    var b = this;
+    if (navigator.clipboard) navigator.clipboard.writeText(bericht()).then(function(){ b.textContent = 'Gekopieerd'; setTimeout(function(){ b.textContent = 'Kopieer tekst'; }, 1800); });
+  });
+  update();
+
+  /* zwevende CTA: na de hero, niet zolang de afsprakenhulp in beeld is */
+  var fl = $('#float'), heroUit = false, kiezerIn = false;
+  function zet(){
+    var s = heroUit && !kiezerIn;
+    fl.classList.toggle('show', s); fl.setAttribute('aria-hidden', s ? 'false' : 'true');
+    $$('a', fl).forEach(function(a){ a.tabIndex = s ? 0 : -1; });
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){ heroUit = !es[0].isIntersecting; zet(); }, {threshold:0}).observe($('#hero'));
+    new IntersectionObserver(function(es){ kiezerIn = es[0].isIntersecting; zet(); }, {threshold:0, rootMargin:'-25% 0px -25% 0px'}).observe($('#kiezer'));
+  }
+
+  /* pitch-paneel (alleen met ?pitch) */
+  var pitch = $('#pitch'), rk = $('#r-k'), rb = $('#r-b');
+  function reken(){
+    var a = +rk.value, b = +rb.value, jaar = a * b * 52, n = Math.ceil(595 / b);
+    $('#r-kv').textContent = a; $('#r-bv').textContent = b;
+    $('#r-uit').innerHTML = '€ ' + jaar.toLocaleString('nl-NL') + ' per jaar<small>' + a + ' × € ' + b + ' × 52 weken. € 595 is de omzet van ' + n + ' afspra' + (n === 1 ? 'ak' : 'ken') + ' van € ' + b + '. Dit is omzet, geen winst. Voorbeeldgetallen: vul ze samen in.</small>';
+  }
+  function open(){ pitch.classList.add('open'); reken(); }
+  function sluit(){ pitch.classList.remove('open'); }
+  $('#mo').addEventListener('click', open);
+  $('#pclose').addEventListener('click', sluit);
+  pitch.addEventListener('click', function(e){ if (e.target === pitch) sluit(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') sluit(); });
+  rk.addEventListener('input', reken); rb.addEventListener('input', reken);
+  if (/[?&]pitch\b/.test(location.search)) { document.documentElement.classList.add('pitch-aan'); open(); }
+})();
+</script>
+
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
