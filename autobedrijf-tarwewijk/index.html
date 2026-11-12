@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<!--
+  Autobedrijf Tarwewijk (L269) — concept: "het dashboard van je buurtgarage".
+  Lay-out-archetype: BENTO-DASHBOARD. Tekst en knoppen eerst, daaronder een tegelraster:
+  foto-tegel (hun eigen gevel met bord, recht en stil), een score-meter (4,7 van 5),
+  een open/dicht-lampje en een beltegel. Lichte betonkleur als basis, hun bord (antraciet + goud) als kop.
+  Hero-beweging: de wijzer van de score-meter loopt één keer naar 4,7; het statuslampje knippert twee keer en staat daarna stil.
+  Bewust niet: kentekenplaat (StarLine), rolluik, "licht gaat aan", bord dat onthuld wordt, Ken Burns,
+  lopende band, schuine fotokaart, stempel, grote foto met zware kop eronder, navy + getekende onderstreping.
+  Logo: nagetekend naar hun gevelbord (gouden embleem met ster, T en lauwertakken + wit woordmerk).
+  Foto: Google Maps (bezoeker, april 2024), bijgesneden; het kenteken van de auto op de brug is vervaagd.
+  Kleuren: beton, antraciet, bordgoud, hefbrug-rood, staalgrijs, signaalgroen. Fonts: Lexend + Figtree.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Autobedrijf Tarwewijk – garage en APK in Rotterdam-Zuid</title>
+<meta name="description" content="Autobedrijf Tarwewijk, Wolphaertsbocht 450 in Rotterdam-Zuid: APK, onderhoud en reparatie. 4,7 uit 105 Google-reviews. Bel 010 290 0059 of vraag een afspraak aan.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --beton:#ecebe6;--beton2:#e1e0d9;--papier:#f8f7f3;--wit:#fff;
+  --antra:#17181b;--antra2:#22242a;--antra3:#2e3138;
+  --goud:#e0b85c;--goud2:#b88a2e;--goud3:#7d5a18;
+  --rood:#b8271e;--staal:#59636e;--staal2:#8b949d;--groen:#2f8f5b;--lijn:#d3d1c8;
+  --r:16px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--beton);color:var(--antra);font:400 17px/1.6 Figtree,system-ui,sans-serif;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:Lexend,system-ui,sans-serif;font-weight:600;line-height:1.12;margin:0;letter-spacing:-.015em;overflow-wrap:break-word}
+h2{font-size:clamp(27px,6.4vw,42px)}
+h3{font-size:clamp(18px,4.6vw,21px)}
+p{margin:0}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+.oog{font:600 13px/1.3 Lexend,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--goud3);margin:0 0 12px}
+.donker .oog{color:var(--goud)}
+section{padding:clamp(56px,9vw,96px) 0}
+.intro{max-width:640px;margin-top:14px;color:var(--staal)}
+.donker{background:var(--antra);color:#f3f2ee}
+.donker .intro{color:#b9bdc4}
+
+.demo{background:var(--goud);color:#17181b;text-align:center;font:600 13px/1.35 Figtree,sans-serif;padding:7px 12px}
+.bar{background:var(--antra2);color:#c9ccd1;font-size:14px;text-align:center;padding:8px 12px}
+.bar b{color:#fff;font-weight:600}
+.bar a{text-decoration:none}
+@media (max-width:899px){.bar{display:none}}
+
+/* kop = hun gevelbord */
+.kop{background:var(--antra);position:sticky;top:0;z-index:40;border-bottom:1px solid #000}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.logo-link{display:block;flex:0 1 auto;min-width:0}
+.logo-link img{height:38px;width:auto}
+.nav{display:none;gap:26px;font:500 15px Figtree,sans-serif;color:#d5d7db}
+.nav a{text-decoration:none;padding:12px 0}
+.nav a:hover{color:var(--goud)}
+.kop-bel{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;background:var(--goud);color:#17181b;font:600 15px Lexend,sans-serif;text-decoration:none;white-space:nowrap}
+.kop-bel span{display:none}
+@media (min-width:900px){.nav{display:flex}.logo-link img{height:46px}.kop-bel span{display:inline}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:12px;font:600 16px Lexend,sans-serif;text-decoration:none;border:0;cursor:pointer;transition:background-color .2s,color .2s,box-shadow .2s}
+.btn-a{background:var(--antra);color:#fff;box-shadow:inset 0 -3px 0 var(--goud2)}
+.btn-a:hover{background:var(--antra3)}
+.btn-b{background:var(--wit);color:var(--antra);box-shadow:inset 0 0 0 1.5px var(--antra)}
+.btn-b:hover{background:var(--beton2)}
+.btn-g{background:var(--goud);color:#17181b}
+.btn-g:hover{background:#ecc873}
+.btn-l{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px #6d727b}
+.btn svg{flex:none}
+
+/* hero: bento */
+.hero{padding:clamp(28px,5vw,56px) 0 clamp(40px,6vw,72px)}
+.hero-grid{display:grid;gap:26px}
+.hero-grid>*{min-width:0}
+.hero h1{font-size:clamp(31px,8.2vw,56px);font-weight:600;max-width:13em}
+.hero h1 em{font-style:normal;color:var(--goud3)}
+.hero .sub{margin-top:14px;color:var(--staal);max-width:34em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero-cta .btn{flex:1 1 150px}
+.onder-cta{margin-top:26px;font-size:15px;color:var(--staal)}
+.onder-cta a{font-weight:600;color:var(--antra)}
+.bento{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bento>*{min-width:0}
+.tegel{background:var(--wit);border-radius:var(--r);padding:16px;border:1px solid var(--lijn)}
+.t-foto{grid-column:1/-1;padding:0;overflow:hidden;position:relative;background:var(--antra);border-color:var(--antra)}
+.t-foto img{width:100%;height:auto;aspect-ratio:1000/503;object-fit:cover}
+.t-foto figcaption{position:absolute;left:10px;bottom:10px;background:rgba(23,24,27,.82);color:#e9e9e6;font-size:12.5px;padding:4px 9px;border-radius:999px}
+figure{margin:0}
+.t-meter{text-align:center;text-decoration:none;display:block}
+.meter{width:100%;max-width:170px;margin:0 auto;display:block}
+.meter .baan{fill:none;stroke:var(--beton2);stroke-width:12;stroke-linecap:round}
+.meter .vul{fill:none;stroke:var(--goud2);stroke-width:12;stroke-linecap:round;stroke-dasharray:251.3;stroke-dashoffset:15.1;animation:vul 1.6s cubic-bezier(.3,.8,.3,1) .3s both}
+.meter .wijzer{transform-origin:100px 100px;transform:rotate(79.2deg);animation:wijs 1.6s cubic-bezier(.3,.8,.3,1) .3s both}
+@keyframes vul{from{stroke-dashoffset:251.3}to{stroke-dashoffset:15.1}}
+@keyframes wijs{from{transform:rotate(-90deg)}to{transform:rotate(79.2deg)}}
+.cijfer{font:600 30px/1 Lexend,sans-serif;margin-top:2px}
+.cijfer small{font:500 14px Figtree,sans-serif;color:var(--staal)}
+.klein{font-size:13.5px;line-height:1.35;color:var(--staal);margin-top:6px}
+.t-status{display:flex;flex-direction:column;justify-content:space-between;gap:10px;background:var(--antra);color:#f3f2ee;border-color:var(--antra)}
+.lamp{display:inline-flex;align-items:center;gap:9px;font:600 16px/1.2 Lexend,sans-serif}
+.lamp i{width:12px;height:12px;border-radius:50%;background:var(--staal2);flex:none}
+.lamp.open i{background:#4fd08a;animation:adem 2.6s ease-in-out 2}
+.lamp.dicht i{background:#e2584e}
+@keyframes adem{0%,100%{box-shadow:0 0 0 0 rgba(79,208,138,.55)}60%{box-shadow:0 0 0 8px rgba(79,208,138,0)}}
+.t-status .klein{color:#b9bdc4}
+.t-status a{color:var(--goud);font-weight:600;font-size:14.5px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+@media (min-width:900px){
+  .hero-grid{grid-template-columns:1fr 1.08fr;align-items:center;gap:48px}
+  .hero-cta .btn{flex:0 0 auto}
+}
+@media (prefers-reduced-motion:reduce){.meter .vul,.meter .wijzer,.lamp.open i{animation:none}html{scroll-behavior:auto}}
+
+/* afspraak */
+.afs-grid{display:grid;gap:22px;margin-top:30px}
+.afs-grid>*{min-width:0}
+.stap{background:var(--antra2);border:1px solid var(--antra3);border-radius:var(--r);padding:18px}
+.stap+.stap{margin-top:12px}
+.stap legend,.stap .lab{font:600 15px Lexend,sans-serif;color:#fff;padding:0;margin-bottom:12px;display:block}
+.stap legend b,.stap .lab b{color:var(--goud);font-weight:600;margin-right:6px}
+fieldset{border:0;margin:0;min-width:0}
+fieldset.stap{border:1px solid var(--antra3)}
+.keuzes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.keuzes.dagen{grid-template-columns:repeat(3,1fr)}
+.keuzes label{position:relative;display:block;min-width:0}
+.keuzes input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.keuzes span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:8px 10px;border-radius:10px;background:var(--antra);border:1.5px solid var(--antra3);font:500 15px/1.2 Figtree,sans-serif;color:#e4e5e8;overflow-wrap:anywhere}
+.keuzes input:checked+span{background:var(--goud);border-color:var(--goud);color:#17181b;font-weight:600}
+.keuzes input:focus-visible+span{outline:2px solid #fff;outline-offset:2px}
+.veld{width:100%;min-height:50px;border-radius:10px;border:1.5px solid var(--antra3);background:var(--antra);color:#fff;font:400 16px Figtree,sans-serif;padding:10px 14px}
+.veld::placeholder{color:#868c95}
+.veld:focus{outline:2px solid var(--goud);outline-offset:1px}
+.bon{background:var(--papier);color:var(--antra);border-radius:var(--r);padding:22px;align-self:start}
+.bon h3{font-size:19px}
+.bon dl{margin:14px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:16px}
+.bon dt{color:var(--staal)}
+.bon dd{margin:0;font-weight:600;overflow-wrap:anywhere}
+.bon hr{border:0;border-top:1px dashed var(--lijn);margin:18px 0}
+.bon .btn{width:100%}
+.bon .of{font-size:14.5px;color:var(--staal);margin:16px 0 10px}
+.bon form{display:grid;gap:8px}
+.bon .veld{background:#fff;color:var(--antra);border-color:var(--lijn)}
+.bon .veld:focus{outline-color:var(--goud2)}
+.melding{background:#fff6dc;border:1px solid #e6cf8d;border-radius:10px;padding:12px 14px;font-size:15px;margin-top:10px}
+@media (min-width:900px){.afs-grid{grid-template-columns:1.25fr .9fr;gap:28px}.bon{position:sticky;top:92px}}
+
+/* waarom */
+.kaarten{display:grid;gap:14px;margin-top:30px}
+.kaarten>*{min-width:0}
+.kaart{background:var(--wit);border:1px solid var(--lijn);border-radius:var(--r);padding:22px;border-top:4px solid var(--goud2)}
+.kaart:nth-child(2){border-top-color:var(--rood)}
+.kaart:nth-child(3){border-top-color:var(--staal)}
+.kaart p{margin-top:8px;color:var(--staal)}
+@media (min-width:800px){.kaarten{grid-template-columns:repeat(3,1fr)}}
+
+/* reviews */
+.rev{background:var(--beton2)}
+.rev-kop{display:grid;gap:18px;align-items:end}
+.score{display:inline-flex;align-items:baseline;gap:10px;text-decoration:none}
+.score b{font:600 54px/1 Lexend,sans-serif}
+.score span{color:var(--staal);font-size:15.5px;text-decoration:underline;text-underline-offset:3px}
+.revs{display:grid;gap:14px;margin-top:26px}
+.revs>*{min-width:0}
+.revs article{background:var(--papier);border-radius:var(--r);padding:20px;border:1px solid var(--lijn)}
+.revs article b{display:block;font:600 16px Lexend,sans-serif;margin-bottom:6px}
+.label{font-size:14px;color:var(--staal);margin-top:16px}
+.antwoord{margin-top:22px;background:var(--antra);color:#f3f2ee;border-radius:var(--r);padding:20px;display:grid;gap:6px}
+.antwoord q{font:500 clamp(20px,5vw,26px)/1.25 Lexend,sans-serif;color:var(--goud);quotes:"“" "”"}
+.antwoord span{font-size:14.5px;color:#b9bdc4}
+@media (min-width:800px){.rev-kop{grid-template-columns:1fr auto}.revs{grid-template-columns:repeat(3,1fr)}}
+
+/* stappen */
+.stappen{display:grid;gap:14px;margin-top:30px;counter-reset:s;list-style:none;padding:0}
+.stappen>*{min-width:0}
+.stappen li{counter-increment:s;background:var(--wit);border:1px solid var(--lijn);border-radius:var(--r);padding:20px 20px 20px 72px;position:relative}
+.stappen li::before{content:counter(s);position:absolute;left:20px;top:20px;width:38px;height:38px;border-radius:10px;background:var(--antra);color:var(--goud);font:600 18px/38px Lexend,sans-serif;text-align:center}
+.stappen p{color:var(--staal);margin-top:4px}
+@media (min-width:800px){.stappen{grid-template-columns:repeat(3,1fr)}}
+
+/* faq */
+.faq{max-width:760px;margin-top:26px}
+.faq details{border-bottom:1px solid var(--lijn)}
+.faq summary{cursor:pointer;list-style:none;font:500 17.5px/1.35 Lexend,sans-serif;padding:16px 36px 16px 0;position:relative;min-height:52px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:12px;font:400 26px/1 Lexend,sans-serif;color:var(--goud3)}
+.faq details[open] summary::after{content:"–"}
+.faq p{padding:0 0 18px;color:var(--staal)}
+
+/* kom langs */
+.langs{display:grid;gap:22px;margin-top:30px}
+.langs>*{min-width:0}
+.gegevens{background:var(--antra2);border-radius:var(--r);padding:22px;border:1px solid var(--antra3)}
+.gegevens address{font-style:normal;font:500 19px/1.45 Lexend,sans-serif}
+.uren{width:100%;border-collapse:collapse;margin:16px 0 6px;font-size:16px}
+.uren td{padding:7px 0;border-bottom:1px solid var(--antra3)}
+.uren td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.uren tr.nu td{color:var(--goud);font-weight:600}
+.gegevens .klein{color:#a4a9b1}
+.langs-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.langs-cta .btn{flex:1 1 140px}
+.kaartvak{border-radius:var(--r);overflow:hidden;min-height:300px;background:var(--antra2);border:1px solid var(--antra3)}
+.kaartvak iframe{width:100%;height:100%;min-height:300px;border:0;display:block}
+@media (min-width:900px){.langs{grid-template-columns:.9fr 1.1fr}}
+
+.slot{text-align:center;background:var(--goud)}
+.slot h2{max-width:16em;margin-inline:auto}
+.slot p{margin:12px auto 0;max-width:34em;color:#3b2f12}
+.slot-cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:24px}
+.slot .btn-b{box-shadow:none}
+
+footer{background:var(--antra);color:#a4a9b1;padding:36px 0 110px;font-size:14.5px}
+footer .wrap{display:grid;gap:14px}
+footer img{height:34px;width:auto}
+footer a{color:#e4e5e8}
+
+.zweef{position:fixed;left:10px;right:10px;bottom:10px;z-index:60;display:flex;gap:8px;padding:8px;background:rgba(23,24,27,.96);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.3);transform:translateY(140%);visibility:hidden;transition:transform .3s,visibility .3s}
+.zweef.aan{transform:none;visibility:visible}
+.zweef .btn{flex:1;min-height:48px;padding:0 10px;font-size:15px}
+@media (min-width:900px){.zweef{display:none}footer{padding-bottom:36px}}
+
+/* pitch (alleen met ?pitch) */
+.mo{position:fixed;right:12px;bottom:84px;z-index:70;width:46px;height:46px;border-radius:50%;border:0;background:var(--antra);color:var(--goud);font:600 14px Lexend,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.35);cursor:pointer}
+.pitch{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.7);overflow:auto;padding:14px}
+.pitch-in{background:var(--papier);color:var(--antra);border-radius:18px;max-width:860px;margin:0 auto;padding:22px;position:relative}
+.pitch h2{font-size:clamp(22px,5.4vw,30px);padding-right:48px}
+.pitch h3{margin:24px 0 10px;font-size:18px}
+.pitch-x{position:absolute;right:12px;top:12px;width:44px;height:44px;border-radius:50%;border:0;background:var(--beton2);font-size:24px;cursor:pointer}
+.vn{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.vn>*{min-width:0}
+.vn figure{background:#fff;border:1px solid var(--lijn);border-radius:12px;overflow:hidden}
+.vn img{width:100%;height:auto}
+.vn figcaption{padding:10px 12px;font-size:14px;line-height:1.4}
+.vn figcaption b{display:block;font:600 14px Lexend,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--goud3)}
+.pitch ol{margin:0;padding-left:22px;display:grid;gap:8px}
+.som{background:#fff;border:1px solid var(--lijn);border-radius:12px;padding:16px;display:grid;gap:14px}
+.som label{display:grid;gap:4px;font-size:15px}
+.som output{font-weight:700}
+.som input[type=range]{width:100%;height:44px;accent-color:var(--goud2)}
+.som .uit{font:600 19px/1.35 Lexend,sans-serif}
+.som .uit small{display:block;font:400 14.5px/1.4 Figtree,sans-serif;color:var(--staal);margin-top:4px}
+.prijs{margin-top:18px;background:var(--antra);color:#fff;border-radius:12px;padding:16px}
+.prijs b{font:600 22px Lexend,sans-serif;color:var(--goud)}
+.prijs p{font-size:15px;color:#c9ccd1;margin-top:4px}
+</style>
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door Mohamedia</div>
+<div class="bar"><a href="#reviews"><b>4,7 ★</b> uit 105 Google-reviews</a> · Wolphaertsbocht 450, Rotterdam-Zuid</div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="logo-link" href="#top" aria-label="Autobedrijf Tarwewijk, naar boven"><img src="logo-light.svg" alt="Autobedrijf Tarwewijk" width="233" height="38"></a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <a href="#afspraak">Afspraak</a><a href="#reviews">Reviews</a><a href="#vragen">Vragen</a><a href="#route">Adres en route</a>
+    </nav>
+    <a class="kop-bel" href="tel:+31102900059" aria-label="Bel 010 290 0059">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+      Bel<span>&nbsp;010 290 0059</span>
+    </a>
+  </div>
+</header>
+
+<main id="top" class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="oog">Garage · Rotterdam-Zuid</p>
+      <h1>APK, onderhoud en reparatie in de <em>Tarwewijk</em>.</h1>
+      <p class="sub">Je vindt ons aan de Wolphaertsbocht 450. Bel voor een afspraak, of kies hieronder waarvoor je komt en op welke dag.</p>
+      <div class="hero-cta">
+        <a class="btn btn-a" href="tel:+31102900059">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+          Bel 010 290 0059</a>
+        <a class="btn btn-b" href="#afspraak">Afspraak aanvragen</a>
+      </div>
+      <p class="onder-cta">Liever eerst kijken waar het is? <a href="#route">Adres en route</a></p>
+    </div>
+
+    <div class="bento">
+      <figure class="tegel t-foto">
+        <img src="img/werkplaats.jpg" alt="De werkplaats van Autobedrijf Tarwewijk met het gevelbord erboven en hefbruggen binnen" width="1000" height="503">
+        <figcaption>Foto: Google Maps, april 2024</figcaption>
+      </figure>
+      <a class="tegel t-meter" href="https://www.google.com/maps?cid=16963776169111690802" target="_blank" rel="noopener" aria-label="4,7 van 5 uit 105 Google-reviews, bekijk op Google">
+        <svg class="meter" viewBox="0 0 200 112" aria-hidden="true">
+          <path class="baan" d="M20 100A80 80 0 0 1 180 100"/>
+          <path class="vul" d="M20 100A80 80 0 0 1 180 100"/>
+          <g class="wijzer"><path d="M100 100L96.500 96 100 34 103.500 96Z" fill="#17181b"/></g>
+          <circle cx="100" cy="100" r="8" fill="#17181b"/><circle cx="100" cy="100" r="3" fill="#e0b85c"/>
+        </svg>
+        <p class="cijfer">4,7 <small>van 5</small></p>
+        <p class="klein">105 reviews op Google</p>
+      </a>
+      <div class="tegel t-status">
+        <div>
+          <p class="lamp" id="lamp"><i></i><span id="lamptekst">Ma t/m za open</span></p>
+          <p class="klein" id="lampsub">Ma–vr 08:30–18:00, za 09:00–15:00</p>
+        </div>
+        <a href="#route">Alle tijden →</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section class="donker" id="afspraak">
+  <div class="wrap">
+    <p class="oog">Afspraak aanvragen</p>
+    <h2>Zeg waarvoor je komt, en wanneer.</h2>
+    <p class="intro">Drie keuzes, dan heb je alles bij de hand als je belt.</p>
+    <div class="afs-grid">
+      <div>
+        <fieldset class="stap">
+          <legend><b>1</b>Waarvoor kom je?</legend>
+          <div class="keuzes" id="k-dienst">
+            <label><input type="radio" name="dienst" value="APK" checked><span>APK</span></label>
+            <label><input type="radio" name="dienst" value="Onderhoud of grote beurt"><span>Onderhoud of grote beurt</span></label>
+            <label><input type="radio" name="dienst" value="Reparatie"><span>Reparatie</span></label>
+            <label><input type="radio" name="dienst" value="Iets anders"><span>Iets anders</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="stap">
+          <legend><b>2</b>Welke dag past je?</legend>
+          <div class="keuzes dagen" id="k-dag"></div>
+        </fieldset>
+        <fieldset class="stap">
+          <legend><b>3</b>Welk dagdeel?</legend>
+          <div class="keuzes" id="k-deel">
+            <label><input type="radio" name="deel" value="in de ochtend" checked><span>Ochtend</span></label>
+            <label><input type="radio" name="deel" value="in de middag"><span>Middag</span></label>
+          </div>
+        </fieldset>
+        <div class="stap">
+          <label class="lab" for="auto">Je auto <span style="font-weight:400;color:#a4a9b1">(mag, hoeft niet)</span></label>
+          <input class="veld" id="auto" type="text" maxlength="60" placeholder="Merk, type en bouwjaar" autocomplete="off">
+        </div>
+      </div>
+
+      <aside class="bon" aria-live="polite">
+        <h3>Jouw aanvraag</h3>
+        <dl>
+          <dt>Waarvoor</dt><dd id="b-dienst">APK</dd>
+          <dt>Wanneer</dt><dd id="b-dag"></dd>
+          <dt id="b-auto-l" hidden>Auto</dt><dd id="b-auto" hidden></dd>
+        </dl>
+        <hr>
+        <a class="btn btn-a" href="tel:+31102900059">Bel en geef dit door</a>
+        <p class="of">Of laat je naam en nummer achter:</p>
+        <form id="aanvraag" novalidate>
+          <input class="veld" id="naam" type="text" placeholder="Je naam" autocomplete="name" aria-label="Je naam" required>
+          <input class="veld" id="tel" type="tel" placeholder="Je telefoonnummer" autocomplete="tel" aria-label="Je telefoonnummer" required>
+          <button class="btn btn-g" type="submit">Verstuur aanvraag</button>
+        </form>
+        <p class="melding" id="melding" hidden></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="waarom">
+  <div class="wrap">
+    <p class="oog">Waarom Autobedrijf Tarwewijk</p>
+    <h2>Wat klanten op Google over ons schrijven.</h2>
+    <div class="kaarten">
+      <div class="kaart"><h3>Eerlijk en betaalbaar</h3><p>Klanten schrijven dat ze hier eerlijk geholpen zijn, en raden ons aan als je geen dure dealer wilt.</p></div>
+      <div class="kaart"><h3>Snel geholpen</h3><p>Klanten schrijven dat ze meteen geholpen zijn, ook als het om iets kleins ging.</p></div>
+      <div class="kaart"><h3>APK en grote beurt</h3><p>Klanten schrijven dat hun APK of grote beurt netjes en op afspraak is gedaan.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="rev" id="reviews">
+  <div class="wrap">
+    <div class="rev-kop">
+      <div>
+        <p class="oog">Reviews</p>
+        <h2>4,7 van 5, uit 105 reviews.</h2>
+      </div>
+      <a class="score" href="https://www.google.com/maps?cid=16963776169111690802" target="_blank" rel="noopener"><b>4,7</b><span>van 5 op Google, 105 reviews</span></a>
+    </div>
+    <div class="revs">
+      <article><b>Mohamed</b><p>Noemt het een fijne garage met eerlijke mensen, waar je meteen geholpen wordt.</p></article>
+      <article><b>Ronald</b><p>Raadt de garage aan aan iedereen die geen dure dealer wil.</p></article>
+      <article><b>H.</b><p>Vat het samen als professioneel, snel en eerlijk.</p></article>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+    <div class="antwoord">
+      <q>altijd welkom</q>
+      <span>Zo antwoorden wij op Google op een review.</span>
+    </div>
+  </div>
+</section>
+
+<section id="zo-werkt-het">
+  <div class="wrap">
+    <p class="oog">Zo werkt het</p>
+    <h2>Van keuze tot afspraak.</h2>
+    <ol class="stappen">
+      <li><h3>Kies waarvoor je komt</h3><p>APK, onderhoud, reparatie of iets anders.</p></li>
+      <li><h3>Kies een dag</h3><p>Maandag tot en met zaterdag, ochtend of middag.</p></li>
+      <li><h3>Bel ons</h3><p>Geef je keuze door op 010 290 0059 en spreek een tijd af.</p></li>
+    </ol>
+    <p style="margin-top:24px"><a class="btn btn-a" href="#afspraak">Afspraak aanvragen</a></p>
+  </div>
+</section>
+
+<section id="vragen" style="padding-top:0">
+  <div class="wrap">
+    <p class="oog">Veelgestelde vragen</p>
+    <h2>Kort antwoord.</h2>
+    <div class="faq">
+      <details><summary>Waar zit Autobedrijf Tarwewijk?</summary><p>Aan de Wolphaertsbocht 450, 3081 KZ Rotterdam, in de Tarwewijk in Rotterdam-Zuid.</p></details>
+      <details><summary>Wanneer zijn jullie open?</summary><p>Maandag tot en met vrijdag van 08:30 tot 18:00 en zaterdag van 09:00 tot 15:00. Zondag zijn we gesloten. Op feestdagen kan het anders zijn; bel bij twijfel even.</p></details>
+      <details><summary>Kan ik bij jullie terecht voor de APK?</summary><p>Ja. Bel 010 290 0059 of vraag hierboven een afspraak aan.</p></details>
+      <details><summary>Hoe maak ik een afspraak?</summary><p>Bel 010 290 0059. Kies eerst op deze pagina waarvoor je komt en welke dag je past, dan heb je alles bij de hand.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="donker" id="route">
+  <div class="wrap">
+    <p class="oog">Adres, tijden en route</p>
+    <h2>Hier vind je ons.</h2>
+    <div class="langs">
+      <div class="gegevens">
+        <address>Autobedrijf Tarwewijk<br>Wolphaertsbocht 450<br>3081 KZ Rotterdam</address>
+        <table class="uren" id="uren">
+          <tr data-d="1"><td>Maandag</td><td>08:30–18:00</td></tr>
+          <tr data-d="2"><td>Dinsdag</td><td>08:30–18:00</td></tr>
+          <tr data-d="3"><td>Woensdag</td><td>08:30–18:00</td></tr>
+          <tr data-d="4"><td>Donderdag</td><td>08:30–18:00</td></tr>
+          <tr data-d="5"><td>Vrijdag</td><td>08:30–18:00</td></tr>
+          <tr data-d="6"><td>Zaterdag</td><td>09:00–15:00</td></tr>
+          <tr data-d="0"><td>Zondag</td><td>Gesloten</td></tr>
+        </table>
+        <p class="klein">Op feestdagen kan het anders zijn. Bel bij twijfel even.</p>
+        <div class="langs-cta">
+          <a class="btn btn-g" href="https://www.google.com/maps/dir/?api=1&destination=Autobedrijf+Tarwewijk%2C+Wolphaertsbocht+450%2C+3081+KZ+Rotterdam" target="_blank" rel="noopener">Route</a>
+          <a class="btn btn-l" href="tel:+31102900059">Bel 010 290 0059</a>
+        </div>
+      </div>
+      <div class="kaartvak">
+        <iframe title="Kaart: Wolphaertsbocht 450, Rotterdam" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Autobedrijf+Tarwewijk%2C+Wolphaertsbocht+450%2C+3081+KZ+Rotterdam&z=16&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <div class="wrap">
+    <h2>APK bijna verlopen, of hoor je iets geks?</h2>
+    <p>Bel ons, of vraag een afspraak aan voor de dag die jou past.</p>
+    <div class="slot-cta">
+      <a class="btn btn-a" href="tel:+31102900059">Bel 010 290 0059</a>
+      <a class="btn btn-b" href="#afspraak">Afspraak aanvragen</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-light.svg" alt="Autobedrijf Tarwewijk" width="208" height="34" loading="lazy" decoding="async">
+    <p>Wolphaertsbocht 450, 3081 KZ Rotterdam · <a href="tel:+31102900059">010 290 0059</a></p>
+    <p>Foto: Google Maps, geplaatst door een bezoeker (april 2024).</p>
+    <p>Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef">
+  <a class="btn btn-g" href="tel:+31102900059">Bel</a>
+  <a class="btn btn-l" href="#afspraak">Afspraak aanvragen</a>
+</div>
+
+<button class="mo" id="mo" type="button" aria-label="Pitch-paneel" hidden>Mo</button>
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-labelledby="p-titel" hidden>
+  <div class="pitch-in">
+    <button class="pitch-x" id="pitch-x" type="button" aria-label="Sluiten">×</button>
+    <h2 id="p-titel">Autobedrijf Tarwewijk: nu en straks</h2>
+    <div class="vn">
+      <figure>
+        <img src="img/voor-google-websiteknop.jpg" alt="De gidspagina die nu achter de websiteknop op Google zit" width="390" height="844" loading="lazy" decoding="async">
+        <figcaption><b>Nu</b>De knop 'Website' op jullie Google-vermelding gaat via nlcompanies.org naar nldirecmapi.com: een Engelstalige gidspagina met 4.6 en 92 reviews. Gezien op 11 november 2026.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/na-mobiel.jpg" alt="De nieuwe site van Autobedrijf Tarwewijk op een telefoon" width="390" height="844" loading="lazy" decoding="async">
+        <figcaption><b>Straks</b>Jullie eigen site, met jullie eigen bord, 4,7 uit 105 reviews en bellen in één tik.</figcaption>
+      </figure>
+    </div>
+    <h3>Wat er concreet beter wordt</h3>
+    <ol>
+      <li>De knop 'Website' op Google gaat naar jullie eigen site in het Nederlands, in plaats van naar een gidspagina van een ander.</li>
+      <li>Bellen in één tik, en een afspraak aanvragen met dienst en dag er al bij.</li>
+      <li>Adres, tijden en route op één plek. Het adres autobedrijftarwewijk.nl opent op dit moment geen site (nagekeken op 11 november 2026); een eigen domein koppelen wij voor je.</li>
+    </ol>
+    <h3>Wat dit oplevert: voorbeeld om samen in te vullen, geen belofte</h3>
+    <div class="som">
+      <label>Extra klanten per week via de site: <output id="o-k">1</output>
+        <input type="range" id="r-k" min="0" max="10" step="1" value="1"></label>
+      <label>Gemiddelde rekening per klant: <output id="o-b">€ 80</output>
+        <input type="range" id="r-b" min="20" max="500" step="10" value="80"></label>
+      <p class="uit" id="uit"></p>
+    </div>
+    <div class="prijs">
+      <b>€ 595 excl. btw</b> (€ 719,95 incl. btw), eenmalig
+      <p>Live binnen 48 uur na betaling. Hosting inbegrepen. Het domein betaal en bezit je zelf; wij koppelen het.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)};
+  var UREN={1:[510,1080],2:[510,1080],3:[510,1080],4:[510,1080],5:[510,1080],6:[540,900]};
+  var DAG=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+  var KORT=['zo','ma','di','wo','do','vr','za'];
+  var MND=['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'];
+  function hhmm(m){return ('0'+Math.floor(m/60)).slice(-2)+':'+('0'+m%60).slice(-2)}
+
+  /* statuslampje */
+  var nu=new Date(), d=nu.getDay(), min=nu.getHours()*60+nu.getMinutes(), u=UREN[d];
+  var lamp=$('#lamp'), lt=$('#lamptekst'), ls=$('#lampsub');
+  if(u&&min>=u[0]&&min<u[1]){lamp.classList.add('open');lt.textContent='Nu open';ls.textContent='Vandaag tot '+hhmm(u[1]);}
+  else{
+    lamp.classList.add('dicht');lt.textContent='Nu gesloten';
+    var n=d, stap=(u&&min<u[0])?0:1, t;
+    for(var i=stap;i<8;i++){n=(d+i)%7;if(UREN[n]){t=i;break;}}
+    ls.textContent=(t===0?'Vandaag':t===1?'Morgen':DAG[n].charAt(0).toUpperCase()+DAG[n].slice(1))+' open vanaf '+hhmm(UREN[n][0]);
+  }
+  var rij=document.querySelector('#uren tr[data-d="'+d+'"]'); if(rij) rij.classList.add('nu');
+
+  /* dagkiezer: de eerstvolgende zes open dagen (zondag gesloten) */
+  var kd=$('#k-dag'), html='', teller=0;
+  for(var j=1;teller<6&&j<14;j++){
+    var x=new Date(nu.getFullYear(),nu.getMonth(),nu.getDate()+j), wd=x.getDay();
+    if(!UREN[wd]) continue;
+    var lang=DAG[wd]+' '+x.getDate()+' '+MND[x.getMonth()];
+    html+='<label><input type="radio" name="dag" value="'+lang+'" data-wd="'+wd+'"'+(teller===0?' checked':'')+'><span>'+KORT[wd]+' '+x.getDate()+' '+MND[x.getMonth()]+'</span></label>';
+    teller++;
+  }
+  kd.innerHTML=html;
+
+  function gekozen(n){var e=document.querySelector('input[name='+n+']:checked');return e?e.value:''}
+  function bij(){
+    $('#b-dienst').textContent=gekozen('dienst');
+    $('#b-dag').textContent=gekozen('dag')+', '+gekozen('deel');
+    var a=$('#auto').value.trim();
+    $('#b-auto').textContent=a;$('#b-auto').hidden=!a;$('#b-auto-l').hidden=!a;
+    $('#melding').hidden=true;
+  }
+  document.querySelectorAll('#afspraak input').forEach(function(e){e.addEventListener('input',bij);e.addEventListener('change',bij)});
+  bij();
+
+  $('#aanvraag').addEventListener('submit',function(e){
+    e.preventDefault();
+    var m=$('#melding'), naam=$('#naam').value.trim(), tel=$('#tel').value.trim();
+    if(!naam||tel.replace(/\D/g,'').length<9){m.textContent='Vul je naam en een telefoonnummer in.';m.hidden=false;return;}
+    m.innerHTML='Dit is een demo: je aanvraag is <b>niet verstuurd</b>. Bel <a href="tel:+31102900059">010 290 0059</a> om je afspraak te maken.';
+    m.hidden=false;
+  });
+
+  /* zwevende knoppen: aan zodra de hero uit beeld is, uit zolang de aanvraag in beeld is */
+  var zweef=$('#zweef'), heroUit=false, afsIn=false;
+  function zet(){zweef.classList.toggle('aan',heroUit&&!afsIn)}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(r){heroUit=!r[0].isIntersecting;zet()}).observe($('.hero'));
+    new IntersectionObserver(function(r){afsIn=r[0].isIntersecting;zet()},{threshold:.12}).observe($('#afspraak'));
+  }
+
+  /* pitch: alleen met ?pitch in de URL */
+  var pitch=$('#pitch'), mo=$('#mo'), rk=$('#r-k'), rb=$('#r-b');
+  function euro(n){return '€ '+Math.round(n).toLocaleString('nl-NL')}
+  function som(){
+    var k=+rk.value, b=+rb.value;
+    $('#o-k').textContent=k;$('#o-b').textContent=euro(b);
+    $('#uit').innerHTML=k+' × '+euro(b)+' × 52 weken = '+euro(k*b*52)+' per jaar<small>€ 595 is de omzet van '+Math.ceil(595/b)+' klanten van '+euro(b)+'. Voorbeeld, geen belofte.</small>';
+  }
+  function pOpen(){pitch.hidden=false;document.body.style.overflow='hidden'}
+  function pDicht(){pitch.hidden=true;document.body.style.overflow=''}
+  rk.addEventListener('input',som);rb.addEventListener('input',som);som();
+  mo.addEventListener('click',pOpen);
+  $('#pitch-x').addEventListener('click',pDicht);
+  pitch.addEventListener('click',function(e){if(e.target===pitch)pDicht()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')pDicht()});
+  if(/[?&]pitch\b/.test(location.search)){mo.hidden=false;pOpen();}
+})();
+</script>
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
