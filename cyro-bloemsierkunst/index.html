@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<!--
+  Demo L268 Cyro Bloemsierkunst (Wolphaertsbocht 81, Rotterdam-Charlois), Mohamedia, 12 nov 2026.
+  Concept in één zin: "Het kaartje in het boeket": de eigenaar staat met een boeket in kraftpapier in de deur, en bij het
+  laden zwaait één bloemistenkaartje op een steeltje in het boeket en komt tot stilstand; de afsprakenhulp schrijft zo'n kaartje.
+  Lay-out-archetype: ETALAGEKAART + EMMERRIJ. Mobiel: eerst kop + knoppen, dan de pui-foto als staande kaart op kraftpapier
+  met het onderschrift eronder. Desktop: etalagekaart links, tekst rechts.
+  Daaronder een horizontale scroll-galerij ("emmerrij") met hun eigen werk en winkel; kiezer = bloemenkaartje op kraftpapier.
+  Bewust niet: kozijn/tegelgevel (Nefis KebaP, zelfde straat), volle pui als hero met tekst op de stoep (Heren Kapsalon 010),
+  marquee/band, schuine fotokaart, ronde stempel, stoom, Ken Burns, licht-gaat-aan, letters één voor één, rolluik,
+  navy met getekende onderstreping, bord/logo-onthulling.
+  Beweging: alleen het kaartje (CSS keyframes, eenmalig, forwards). prefers-reduced-motion = eindbeeld.
+  Beeld (herkansing 12 nov): alle foto's van facebook.com/cyrobloemsierkunst, door Cyro zelf geplaatst. Winkelserie
+  (pui/binnen/toonbank/planten) = post 4 feb 2025, fbid 1168843091916875 / 1168843188583532 / 1168843105250207 /
+  1168843218583529; stuk-blauw = fbid 2721761804503302 (7 okt 2019); rouwkrans = fbid 4237037996309001 ("herdenkingskrans",
+  4 mei 2021; tekst op het lint vervaagd).
+  Telefoon: vast 010 481 3803 (dossier [1], ook zelf gezien op Google Maps 12 nov). Geen WhatsApp: alleen bellen + route.
+  Geen openingstijden, geen bezorg-/webshopclaims, geen eigenaarsnaam. Pitch-paneel: ?pitch in de URL.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cyro Bloemsierkunst – bloemist in Rotterdam-Charlois</title>
+<meta name="description" content="Cyro Bloemsierkunst, bloemist aan de Wolphaertsbocht 81 in Charlois, Rotterdam-Zuid, sinds 1982. Boeketten, rouwwerk en bedrijfsboeketten. 4,8 uit 48 Google-reviews. Bel 010 481 38 03.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F8F5; --mist:#E8EFEA; --mist2:#DCE7E0; --line:#D2DDD5;
+  --ink:#16275A; --ink2:#4A5672; --blue:#1A7FB2; --blue-d:#11618A; --sky:#9FD3EE;
+  --pink:#D9467C; --pink-d:#B8325F; --pink-l:#F7D3E0; --sun:#F3B93B;
+  --leaf:#24493B; --leaf-d:#183329; --kraft:#E7D5B8; --kraft-d:#CDB28A;
+  --r:16px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Figtree,system-ui,sans-serif;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:"Young Serif",Georgia,serif;font-weight:400;line-height:1.1;margin:0;overflow-wrap:break-word}
+h2{font-size:clamp(30px,7vw,48px)}
+h3{font-size:clamp(20px,4.8vw,24px)}
+p{margin:0 0 1em}
+.wrap{width:min(1160px,100% - 40px);margin:0 auto}
+.grid>*{min-width:0}
+.oog{font:700 13px/1.3 Figtree,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);margin:0 0 12px}
+section{padding:72px 0}
+@media (min-width:900px){section{padding:100px 0}}
+.nw{white-space:nowrap}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:12px;font:700 16px/1 Figtree,sans-serif;text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap;transition:background-color .2s,color .2s,border-color .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-p{background:var(--pink);color:#fff}
+.btn-p:hover{background:var(--pink-d)}
+.btn-o{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-o:hover{background:var(--ink);color:#fff}
+.btn-w{background:#fff;color:var(--leaf)}
+.btn-w:hover{background:var(--kraft)}
+.btn-l{border-color:rgba(255,255,255,.6);color:#fff}
+.btn-l:hover{background:#fff;color:var(--leaf)}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+
+/* demo-strook + balk */
+.demo{background:var(--ink);color:#E6EAF5;font-size:13.5px;text-align:center;padding:7px 12px;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap}
+.demo a{color:var(--sky);font-weight:600}
+#mo{display:none;min-width:44px;min-height:44px;border-radius:999px;border:1px solid var(--sky);background:transparent;color:var(--sky);font:700 14px Figtree,sans-serif;cursor:pointer;padding:0 14px}
+html.pitch-aan #mo{display:inline-flex;align-items:center;justify-content:center}
+.balk{margin:0;background:var(--pink-l);color:var(--ink);text-align:center;font-size:14.5px;padding:0 14px}
+.balk a{display:inline-block;padding:11px 0;line-height:1.4;text-decoration:none;font-weight:600}
+.balk .ster{color:var(--pink);margin-right:4px}
+
+/* header */
+.kop{background:var(--bg);border-bottom:1px solid var(--line)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:76px}
+.logo img{height:52px;width:auto}
+.kop nav{display:none;gap:4px}
+.kop nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;text-decoration:none;font-weight:500;font-size:15.5px;color:var(--ink2);border-radius:8px}
+.kop nav a:hover{color:var(--ink);background:var(--mist)}
+.kop .btn{min-height:46px;padding:0 16px;font-size:15px}
+@media (min-width:900px){.kop nav{display:flex}.logo img{height:58px}}
+
+/* hero */
+.hero{padding:22px 0 56px;background:linear-gradient(180deg,var(--bg),var(--mist))}
+.hero-g{display:grid}
+/* mobiel: eerst de kop, dan de etalage als staande kaart met een kraftrand */
+.h-foto{position:relative;margin:22px 0 0;padding:10px 10px 0;background:var(--kraft);border-radius:20px;background-image:repeating-linear-gradient(115deg,rgba(255,255,255,.14) 0 2px,transparent 2px 9px)}
+.h-raam{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:12px;background:var(--mist2)}
+.h-raam img{width:100%;height:100%;object-fit:cover;object-position:30% 50%}
+.h-foto figcaption{font-size:13.5px;color:#5a4a33;padding:9px 4px 11px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.h-foto figcaption b{color:var(--ink);font-weight:700}
+/* het kaartje op een steeltje */
+.kaartje{position:absolute;z-index:2;left:38%;top:6.3%;width:112px;transform-origin:50% 100%;animation:zwaai 2.4s cubic-bezier(.3,.7,.3,1) .35s both}
+.kaartje .steel{display:block;width:4px;height:104px;margin:-2px auto 0;background:linear-gradient(#5f7f52,#2f4a2a);border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.5)}
+.kaartje .kaart{background:#fff;border-radius:6px;padding:10px 12px 11px;box-shadow:0 10px 24px rgba(22,39,90,.28);text-align:center;transform:rotate(-4deg);border-top:4px solid var(--pink)}
+.kaartje b{display:block;font:400 21px/1.05 "Young Serif",serif;color:var(--ink)}
+.kaartje span{display:block;font-size:12.5px;color:var(--ink2);margin-top:3px;letter-spacing:.04em}
+@keyframes zwaai{
+  0%{transform:translateY(-70px) rotate(-8deg);opacity:0}
+  18%{opacity:1}
+  40%{transform:translateY(0) rotate(32deg)}
+  58%{transform:rotate(10deg)}
+  74%{transform:rotate(22deg)}
+  88%{transform:rotate(16.5deg)}
+  100%{transform:rotate(18deg);opacity:1}
+}
+.h-tekst{position:relative;z-index:4}
+.h-tekst h1{font-size:clamp(36px,9.4vw,64px);color:var(--ink)}
+.h-tekst h1 em{font-style:normal;color:var(--blue)}
+.lead{font-size:clamp(17px,4.3vw,20px);color:var(--ink2);margin:12px 0 18px;max-width:32em}
+.trust{margin:28px 0 0;font-size:15px;color:var(--ink2);display:none;flex-wrap:wrap;gap:4px 16px}
+.trust a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+.trust b{color:var(--ink)}
+.trust .ster{color:var(--pink);margin-right:4px}
+@media (min-width:900px){
+  .hero{padding:60px 0 100px}
+  .trust{display:flex}
+  .hero-g{grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
+  .h-foto{order:1;margin:0}
+  .h-tekst{order:2}
+  .h-raam{aspect-ratio:5/6}
+  .kaartje{left:39.5%;top:10.5%;width:140px}
+  .kaartje .steel{height:116px}
+}
+
+/* emmerrij */
+.emmers{background:var(--bg);padding-bottom:64px}
+.e-kop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:10px 30px;margin-bottom:26px}
+.e-kop p{color:var(--ink2);max-width:30em;margin:0}
+.rij{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 16px;margin:0 -20px;scrollbar-width:thin}
+.rij figure{flex:0 0 min(74vw,300px);margin:0;scroll-snap-align:start}
+.rij img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r);background:var(--mist2)}
+.rij figcaption{font-size:14.5px;color:var(--ink2);padding:10px 2px 0}
+.rij figcaption span{display:block}
+.rij figcaption .t{color:var(--ink);font-weight:600}
+.e-bron{font-size:13px;color:var(--ink2);margin:6px 0 0}
+@media (min-width:1100px){.rij{margin:0;padding:4px 0 16px}}
+
+/* kiezer */
+.kiezer{background:var(--leaf);color:#fff}
+.kiezer .oog{color:var(--pink-l)}
+.kiezer h2{color:#fff}
+.kiezer .intro{color:#D5E3DB;max-width:36em;margin:12px 0 30px}
+.k-g{display:grid;gap:22px}
+.stap{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:var(--r);padding:20px 18px;margin-bottom:14px}
+.stap h3{font:700 15px/1.3 Figtree,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--pink-l);margin-bottom:14px}
+.opties{display:flex;flex-wrap:wrap;gap:8px}
+.opt{min-height:46px;padding:0 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:500 15.5px Figtree,sans-serif;cursor:pointer}
+.opt[aria-pressed=true]{background:#fff;color:var(--leaf);border-color:#fff;font-weight:700}
+.kleur{display:inline-flex;align-items:center;gap:8px}
+.kleur i{width:16px;height:16px;border-radius:50%;background:var(--c);box-shadow:0 0 0 1.5px rgba(255,255,255,.7)}
+.veld{min-height:48px;width:100%;border-radius:12px;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;font:500 16px Figtree,sans-serif;padding:10px 14px;color-scheme:dark}
+.veld::placeholder{color:#a9c2b5}
+.rij2{display:grid;gap:10px;margin-top:12px}
+.rij2 label{font-size:15px;color:#D5E3DB}
+textarea.veld{min-height:84px;resize:vertical}
+/* kraftpapier met kaartje */
+.kraft{background:var(--kraft);border-radius:var(--r);padding:26px 18px 22px;position:relative;color:var(--ink);background-image:repeating-linear-gradient(115deg,rgba(255,255,255,.12) 0 2px,transparent 2px 9px)}
+.kraft .kaart{background:#fff;border-radius:8px;padding:18px 18px 16px;border-top:5px solid var(--pink);box-shadow:0 8px 20px rgba(80,60,30,.18)}
+.kraft h3{font-family:"Young Serif",serif;font-size:24px;color:var(--ink);margin-bottom:10px}
+.kraft pre{white-space:pre-wrap;font:500 16px/1.55 Figtree,sans-serif;margin:0;color:var(--ink)}
+.kraft .btns{margin-top:18px}
+.kraft .btns .btn{flex:1 1 200px}
+.kraft .klein{font-size:14.5px;color:#5a4a33;margin:14px 0 0}
+@media (min-width:900px){.k-g{grid-template-columns:1.1fr .9fr;align-items:start}.kraft{position:sticky;top:20px}}
+
+/* waarom */
+.waarom{background:var(--mist)}
+.w-g{display:grid;gap:16px;margin-top:32px}
+.blad{background:#fff;border-radius:var(--r);padding:26px 22px;border:1px solid var(--line)}
+.blad svg{width:38px;height:38px;margin-bottom:12px}
+.blad h3{margin-bottom:10px}
+.blad p{color:var(--ink2);margin:0}
+@media (min-width:900px){.w-g{grid-template-columns:repeat(3,1fr)}}
+
+/* reviews */
+.reviews{background:var(--bg)}
+.score{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin:14px 0 30px}
+.score b{font:400 64px/1 "Young Serif",serif;color:var(--ink)}
+.score .ster{color:var(--pink);font-size:24px;letter-spacing:2px}
+.score span{color:var(--ink2)}
+.r-g{display:grid;gap:16px}
+.rev{background:#fff;border-radius:var(--r);padding:22px 20px;border:1px solid var(--line);position:relative}
+.rev::before{content:"";position:absolute;left:20px;top:-1px;width:44px;height:4px;background:var(--pink);border-radius:0 0 4px 4px}
+.rev p{margin:0 0 10px}
+.rev .wie{font-weight:700;margin:0}
+.antw{margin-top:22px;background:var(--mist);border-radius:var(--r);padding:18px 20px}
+.antw p{margin:0}
+.antw q{font-family:"Young Serif",serif;color:var(--ink)}
+.label{font-size:14px;color:var(--ink2);margin-top:18px}
+.label a{font-weight:600}
+@media (min-width:900px){.r-g{grid-template-columns:repeat(3,1fr)}}
+
+/* stappen */
+.stappen{background:var(--mist)}
+.s-g{display:grid;gap:14px;margin-top:30px;counter-reset:s}
+.s{background:#fff;border-radius:var(--r);padding:22px 20px;display:grid;grid-template-columns:50px 1fr;gap:14px;align-items:start;border:1px solid var(--line)}
+.s::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:50px;height:50px;border-radius:50%;background:var(--blue);color:#fff;font:400 22px "Young Serif",serif}
+.s h3{font:700 18px/1.3 Figtree,sans-serif;margin:4px 0}
+.s p{margin:0;color:var(--ink2);font-size:16px}
+@media (min-width:900px){.s-g{grid-template-columns:repeat(3,1fr)}}
+
+/* faq */
+.faq .wrap{max-width:820px}
+.faq details{border-bottom:1px solid var(--line);padding:4px 0}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:56px;font-weight:600;font-size:17.5px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:400 28px "Young Serif",serif;color:var(--pink);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--ink2);margin:0 0 16px}
+.faq-lijst{margin-top:24px}
+
+/* route */
+.route{background:var(--mist)}
+.l-g{display:grid;gap:24px;margin-top:28px}
+.adres{background:#fff;border-radius:var(--r);padding:24px 22px;border:1px solid var(--line)}
+.adres p{margin:0 0 8px}
+.adres .groot{font:400 26px/1.2 "Young Serif",serif;margin-bottom:14px}
+.adres .btns{margin-top:20px}
+.kaartvak{border-radius:var(--r);overflow:hidden;min-height:300px;background:var(--mist2);border:1px solid var(--line)}
+.kaartvak iframe{width:100%;height:100%;min-height:300px;border:0;display:block}
+@media (min-width:900px){.l-g{grid-template-columns:.9fr 1.1fr}}
+
+/* slot */
+.slot{background:var(--ink);color:#fff;text-align:center}
+.slot h2{color:#fff;max-width:15em;margin:0 auto 14px}
+.slot h2 em{font-style:normal;color:var(--pink-l)}
+.slot p{color:#C9D1E8;max-width:32em;margin:0 auto 26px}
+.slot .btns{justify-content:center}
+
+footer{background:#0f1c42;color:#C9D1E8;padding:44px 0 30px;font-size:15px}
+footer .f-g{display:grid;gap:22px}
+footer img{height:52px;width:auto}
+footer a{color:#fff}
+footer .bron{font-size:13px;color:#9aa6c6;margin-top:8px}
+@media (min-width:900px){footer .f-g{grid-template-columns:1.2fr 1fr 1fr}}
+
+/* zwevende CTA */
+#float{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;gap:8px;padding:8px;border-radius:18px;background:rgba(22,39,90,.95);box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+#float.show{opacity:1;visibility:visible}
+#float .btn{flex:1;min-height:48px;padding:0 12px;font-size:15px}
+@media (min-width:900px){#float{display:none}}
+
+/* pitch */
+#pitch{position:fixed;inset:0;z-index:60;background:rgba(15,28,66,.62);display:none;overflow-y:auto;padding:16px}
+#pitch.open{display:block}
+.pp{background:#fff;max-width:900px;margin:0 auto;border-radius:16px;padding:26px 20px 28px;position:relative}
+.pp h2{font-size:clamp(28px,6.6vw,40px);margin-bottom:6px}
+.pp h3{font:700 17px Figtree,sans-serif;margin:26px 0 10px}
+#pclose{position:absolute;right:12px;top:12px;min-width:44px;min-height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:22px;cursor:pointer}
+.vn{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vn figure{margin:0}
+.vn img{width:100%;height:auto;max-height:440px;object-fit:cover;object-position:top;border-radius:10px;border:1px solid var(--line)}
+.vn figcaption{font-size:13px;color:var(--ink2);margin-top:6px}
+.punten{padding-left:20px;margin:0}
+.punten li{margin-bottom:8px}
+.reken{background:var(--mist);border-radius:12px;padding:18px;margin-top:10px}
+.reken label{display:block;font-weight:600;font-size:15px;margin-top:12px}
+.reken input{width:100%;min-height:44px;accent-color:var(--pink)}
+.uit{font:400 30px "Young Serif",serif;margin-top:12px}
+.uit small{display:block;font:400 13.5px/1.45 Figtree,sans-serif;color:var(--ink2);margin-top:6px}
+.prijs{background:var(--ink);color:#fff;border-radius:12px;padding:16px 18px;margin-top:20px}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .kaartje{animation:none;transform:rotate(18deg)}
+  #float{transition:none}
+}
+</style>
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+
+<div class="demo">
+  <span>Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a></span>
+  <button type="button" id="mo" aria-label="Open het pitch-paneel">Mo</button>
+</div>
+<p class="balk"><a href="#reviews"><span class="ster">★</span>4,8 uit 48 Google-reviews · bloemist in Charlois sinds 1982</a></p>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Cyro Bloemsierkunst, naar boven"><img src="logo-dark.svg" alt="Cyro Bloemsierkunst" width="194" height="68"></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#werk">Ons werk</a>
+      <a href="#kiezer">Boeket samenstellen</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#route">Route</a>
+    </nav>
+    <a class="btn btn-p" href="tel:+31104813803" aria-label="Bel 010 481 38 03"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Bel</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="wrap hero-g grid">
+    <div class="h-tekst">
+      <p class="oog">Bloemist in Rotterdam-Zuid</p>
+      <h1>Boeketten en rouwwerk <em>uit Charlois</em></h1>
+      <p class="lead">Al sinds 1982 een bloemist in Rotterdam-Zuid. Stel je boeket samen en bel de winkel, of kom langs.</p>
+      <div class="btns cta">
+        <a class="btn btn-p" href="tel:+31104813803"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Bel 010 481 38 03</a>
+        <a class="btn btn-o" href="#kiezer">Stel je boeket samen</a>
+      </div>
+      <p class="trust"><a href="#reviews"><span class="ster">★</span><b>4,8</b>&nbsp;uit 48 Google-reviews</a><a href="#route">Wolphaertsbocht 81</a></p>
+    </div>
+
+    <figure class="h-foto">
+      <div class="h-raam">
+        <img src="img/winkel-pui.jpg" alt="De bloemist staat met een boeket in bruin papier in de deur van Wolphaertsbocht 81, met het blauwe kozijn en planten op de stoep" width="1080" height="720" fetchpriority="high">
+      </div>
+      <div class="kaartje" aria-hidden="true">
+        <div class="kaart"><b>Cyro</b><span>sinds 1982</span></div>
+        <i class="steel"></i>
+      </div>
+      <figcaption><span><b>Wolphaertsbocht 81</b>, de winkel in Charlois</span><span>Foto: Facebook van Cyro, feb 2025</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="emmers" id="werk">
+  <div class="wrap">
+    <div class="e-kop">
+      <div>
+        <p class="oog">Uit de winkel</p>
+        <h2>Bloemen, planten en stukken</h2>
+      </div>
+      <p>Een kijkje in de winkel en werk van Cyro. Veeg opzij voor meer.</p>
+    </div>
+    <div class="rij" tabindex="0" aria-label="Foto's van de winkel en het werk">
+      <figure><img src="img/winkel-binnen.jpg" alt="Bloemen in rieten manden langs de wand van de winkel" width="414" height="590" loading="lazy" decoding="async"><figcaption><span class="t">De winkel</span><span>Manden vol bloemen langs de wand</span></figcaption></figure>
+      <figure><img src="img/stuk-blauw.jpg" alt="Een hoog stuk met blauwe ridderspoor en groen in een houten kist" width="500" height="750" loading="lazy" decoding="async"><figcaption><span class="t">Een stuk in een kist</span><span>Blauw, geel en veel groen</span></figcaption></figure>
+      <figure><img src="img/winkel-toonbank.jpg" alt="Zicht door de winkel naar de toonbank, met bloemen op de voorgrond" width="394" height="590" loading="lazy" decoding="async"><figcaption><span class="t">Naar de toonbank</span><span>Dahlia's en lelies vooraan</span></figcaption></figure>
+      <figure><img src="img/rouwkrans.jpg" alt="Een herdenkingskrans met witte rozen en lelies en een wit lint" width="560" height="882" loading="lazy" decoding="async"><figcaption><span class="t">Herdenkingskrans</span><span>Witte rozen en lelies, met lint (mei 2021)</span></figcaption></figure>
+      <figure><img src="img/winkel-planten.jpg" alt="Glazen terraria op een houten bank en groene planten in potten" width="493" height="590" loading="lazy" decoding="async"><figcaption><span class="t">Planten</span><span>Terraria en groen in potten</span></figcaption></figure>
+    </div>
+    <p class="e-bron">Alle foto's komen van de <a href="https://www.facebook.com/cyrobloemsierkunst/photos" target="_blank" rel="noopener">Facebook-pagina van Cyro Bloemsierkunst</a>: de winkel (februari 2025), het stuk in de kist (oktober 2019) en de herdenkingskrans (mei 2021).</p>
+  </div>
+</section>
+
+<section class="kiezer" id="kiezer">
+  <div class="wrap">
+    <p class="oog">Je boeket op een kaartje</p>
+    <h2>Stel je boeket samen</h2>
+    <p class="intro">Tik aan wat je zoekt. Je krijgt een kaartje met je wensen; bel de winkel en lees het voor, dan weet de bloemist meteen wat je bedoelt.</p>
+    <div class="k-g grid">
+      <div>
+        <div class="stap">
+          <h3>1 · Wat zoek je?</h3>
+          <div class="opties" role="group" aria-label="Soort">
+            <button type="button" class="opt" data-wat="een boeket" aria-pressed="true">Boeket</button>
+            <button type="button" class="opt" data-wat="rouwwerk" aria-pressed="false">Rouwwerk</button>
+            <button type="button" class="opt" data-wat="een bedrijfsboeket" aria-pressed="false">Bedrijfsboeket</button>
+          </div>
+        </div>
+        <div class="stap">
+          <h3>2 · Welke kleuren?</h3>
+          <div class="opties" role="group" aria-label="Kleuren">
+            <button type="button" class="opt kleur" data-kleur="wit" style="--c:#fff" aria-pressed="false"><i></i>Wit</button>
+            <button type="button" class="opt kleur" data-kleur="roze" style="--c:#F58FB0" aria-pressed="false"><i></i>Roze</button>
+            <button type="button" class="opt kleur" data-kleur="blauw en paars" style="--c:#5B63C9" aria-pressed="false"><i></i>Blauw en paars</button>
+            <button type="button" class="opt kleur" data-kleur="vrolijk en kleurrijk" style="--c:conic-gradient(#F3B93B,#D9467C,#1A7FB2,#5BA85B,#F3B93B)" aria-pressed="false"><i></i>Kleurrijk</button>
+            <button type="button" class="opt" data-kleur="laat de bloemist kiezen" aria-pressed="true">Laat de bloemist kiezen</button>
+          </div>
+        </div>
+        <div class="stap">
+          <h3>3 · Voor wanneer?</h3>
+          <div class="opties" role="group" aria-label="Wanneer">
+            <button type="button" class="opt" data-wanneer="zo snel mogelijk" aria-pressed="true">Zo snel mogelijk</button>
+            <button type="button" class="opt" data-wanneer="datum" aria-pressed="false">Op een datum</button>
+          </div>
+          <div class="rij2" id="k-datum" hidden>
+            <label for="datum">Datum</label>
+            <input class="veld" type="date" id="datum">
+          </div>
+          <div class="rij2">
+            <label for="tekst">Tekst op het kaartje of lint (mag leeg)</label>
+            <textarea class="veld" id="tekst" maxlength="160" placeholder="Bijvoorbeeld: Gefeliciteerd!"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="kraft" aria-live="polite">
+        <div class="kaart">
+          <h3>Je kaartje</h3>
+          <pre id="bericht"></pre>
+        </div>
+        <div class="btns">
+          <a class="btn btn-p" href="tel:+31104813803"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Bel 010 481 38 03</a>
+          <button type="button" class="btn btn-o" id="kopieer">Kopieer</button>
+        </div>
+        <p class="klein">Aan de telefoon hoor je wat er kan en wat het kost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="waarom" id="waarom">
+  <div class="wrap">
+    <p class="oog">Waarom Cyro</p>
+    <h2>Wat klanten opvalt</h2>
+    <div class="w-g grid">
+      <div class="blad"><svg viewBox="0 0 40 40" aria-hidden="true"><g fill="#D9467C"><ellipse cx="20" cy="11" rx="6" ry="8.5"/><ellipse cx="20" cy="11" rx="6" ry="8.5" transform="rotate(72 20 20)"/><ellipse cx="20" cy="11" rx="6" ry="8.5" transform="rotate(144 20 20)"/><ellipse cx="20" cy="11" rx="6" ry="8.5" transform="rotate(216 20 20)"/><ellipse cx="20" cy="11" rx="6" ry="8.5" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="4.5" fill="#F3B93B"/></svg><h3>Boeketten met eigen smaak</h3><p>Klanten schrijven dat je deze boeketten nergens anders ziet, gemaakt door een vakman met smaak.</p></div>
+      <div class="blad"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 34C10 27 4 20 4 13a8 8 0 0 1 16-3 8 8 0 0 1 16 3c0 7-6 14-16 21z" fill="#1A7FB2"/></svg><h3>Vriendelijk, zonder drukte</h3><p>Klanten schrijven over een heel vriendelijke eigenaar, zonder opdringerige verkoop.</p></div>
+      <div class="blad"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 36V14" stroke="#24493B" stroke-width="3" stroke-linecap="round"/><path d="M20 22c-8 0-12-5-12-11 7 0 12 4 12 11zM20 18c0-7 5-12 12-12 0 7-4 12-12 12z" fill="#5BA85B"/></svg><h3>Klanten blijven komen</h3><p>Een klant schrijft hier al 38 jaar te komen. De zaak bestaat sinds 1982.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <p class="oog">Uit de Google-reviews</p>
+    <h2>Bloemen waar mensen over vertellen</h2>
+    <div class="score"><b>4,8</b><span class="ster" aria-hidden="true">★★★★★</span><span>uit 48 reviews op Google</span></div>
+    <div class="r-g grid">
+      <div class="rev"><p>De beste bloemenwinkel van Charlois, met een heel vriendelijke en vakkundige eigenaar.</p><p class="wie">Samu</p></div>
+      <div class="rev"><p>Echt prachtige boeketten, die je nergens anders tegenkomt.</p><p class="wie">Puck</p></div>
+      <div class="rev"><p>Een fijne winkel, en goed geholpen bij het kiezen van een online bestelling.</p><p class="wie">Dora</p></div>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd. <a href="https://www.google.com/maps?cid=10216077351676997396" target="_blank" rel="noopener">Alle reviews op Google bekijken</a></p>
+    <div class="antw"><p>De winkel antwoordt zelf op bijna elke review, bijvoorbeeld: <q>Bedankt voor je leuke reactie</q> en <q>Ben blij met je spontane reactie</q>.</p></div>
+  </div>
+</section>
+
+<section class="stappen" id="werkwijze">
+  <div class="wrap">
+    <p class="oog">Van de kiezer naar de toonbank</p>
+    <h2>Van wens naar boeket</h2>
+    <div class="s-g grid">
+      <div class="s"><div><h3>Kies wat je zoekt</h3><p>Boeket, rouwwerk of bedrijfsboeket, met de kleuren die je mooi vindt.</p></div></div>
+      <div class="s"><div><h3>Bel de winkel</h3><p>Lees je kaartje voor op <span class="nw">010 481 38 03</span>, of kom langs aan de Wolphaertsbocht 81.</p></div></div>
+      <div class="s"><div><h3>De bloemist maakt het</h3><p>Aan de telefoon of in de winkel spreek je de rest af.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <p class="oog">Over je bloemen</p>
+    <h2>Voor je belt</h2>
+    <div class="faq-lijst">
+      <details><summary>Kan ik rouwwerk laten maken?</summary><p>Ja, klanten noemen rouwboeketten in hun reviews. Bel de winkel om je wensen door te geven.</p></details>
+      <details><summary>Maken jullie ook bedrijfsboeketten?</summary><p>Bedrijfsboeketten worden in de reviews genoemd. Bel even, dan hoor je wat er kan.</p></details>
+      <details><summary>Wat kost een boeket?</summary><p>Dat hangt af van je wensen. Bel <span class="nw">010 481 38 03</span>, dan hoor je het meteen.</p></details>
+      <details><summary>Wanneer kan ik langskomen?</summary><p>Bel even of kom langs aan de Wolphaertsbocht 81.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="route" id="route">
+  <div class="wrap">
+    <p class="oog">Adres en route</p>
+    <h2>De winkel aan de Wolphaertsbocht</h2>
+    <div class="l-g grid">
+      <div class="adres">
+        <p class="groot">Wolphaertsbocht 81<br>3082 AE Rotterdam</p>
+        <p>Telefoon: <a class="nw" href="tel:+31104813803">010 481 38 03</a></p>
+        <div class="btns cta">
+          <a class="btn btn-p" href="https://www.google.com/maps/dir/?api=1&amp;destination=Wolphaertsbocht+81%2C+3082+AE+Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+          <a class="btn btn-o" href="tel:+31104813803">Bel de winkel</a>
+        </div>
+      </div>
+      <div class="kaartvak"><iframe title="Kaart: Wolphaertsbocht 81, Rotterdam" src="https://maps.google.com/maps?q=Cyro%20Bloemsierkunst%2C%20Wolphaertsbocht%2081%2C%203082%20AE%20Rotterdam&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <div class="wrap">
+    <h2>Bloemen voor iemand <em>die je wilt verrassen?</em></h2>
+    <p>Stel je boeket samen of bel de winkel in Charlois.</p>
+    <div class="btns cta">
+      <a class="btn btn-p" href="tel:+31104813803">Bel 010 481 38 03</a>
+      <a class="btn btn-l" href="#kiezer">Stel je boeket samen</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap f-g">
+    <div>
+      <img src="logo-light.svg" alt="Cyro Bloemsierkunst" width="194" height="68" loading="lazy" decoding="async">
+      <p style="margin-top:14px">Bloemist in Charlois, Rotterdam-Zuid, sinds 1982.</p>
+    </div>
+    <div>
+      <p>Wolphaertsbocht 81<br>3082 AE Rotterdam</p>
+      <p><a href="tel:+31104813803">010 481 38 03</a></p>
+    </div>
+    <div>
+      <p>Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+      <p class="bron">Foto's: <a href="https://www.facebook.com/cyrobloemsierkunst/photos" target="_blank" rel="noopener">facebook.com/cyrobloemsierkunst</a> (winkel feb 2025, stukken 2019 en 2021); tekst op het lint vervaagd. Reviews: Google.</p>
+    </div>
+  </div>
+</footer>
+
+<div id="float" aria-hidden="true">
+  <a class="btn btn-p" href="tel:+31104813803" tabindex="-1">Bel de winkel</a>
+  <a class="btn btn-l" href="#kiezer" tabindex="-1">Boeket samenstellen</a>
+</div>
+
+<div id="pitch" role="dialog" aria-modal="true" aria-labelledby="p-titel">
+  <div class="pp">
+    <button type="button" id="pclose" aria-label="Sluit">×</button>
+    <p class="oog">Pitch</p>
+    <h2 id="p-titel">Cyro: van foutpagina naar etalage</h2>
+    <h3>Dezelfde telefoon, nu en straks</h3>
+    <div class="vn">
+      <figure><img src="img/voor-site.jpg" alt="Foutpagina 404 op bloemsierkunstcyro.nl" width="390" height="844" loading="lazy"><figcaption>Nu: bloemsierkunstcyro.nl geeft een foutpagina (gezien 10 nov 2026)</figcaption></figure>
+      <figure><img src="img/na-mobiel.jpg" alt="De nieuwe site op een telefoon" width="390" height="844" loading="lazy"><figcaption>Straks: deze site op dezelfde telefoon</figcaption></figure>
+    </div>
+    <h3>Wat Cyro straks wint</h3>
+    <ol class="punten">
+      <li><b>Een site die het doet.</b> Op bloemsierkunstcyro.nl staat nu een foutpagina, en bij jullie Google-vermelding staat geen website. Hier staan adres, nummer en reviews meteen bovenaan.</li>
+      <li><b>Een boeket samenstellen in een paar tikken.</b> Klanten kiezen boeket, rouwwerk of bedrijfsboeket, kleuren en datum, en bellen dan met hun wensen al op een rij.</li>
+      <li><b>Jullie eigen werk en winkel in beeld.</b> Foto's van de winkel en jullie stukken, met de 4,8 uit 48 reviews erbij.</li>
+    </ol>
+    <h3>Samen uitrekenen: wat brengen een paar boeketten extra op?</h3>
+    <div class="reken">
+      <strong>Voorbeeld om samen in te vullen, geen belofte</strong>
+      <label for="r-k">Extra bestellingen per week via de site: <span id="r-kv">1</span></label>
+      <input type="range" id="r-k" min="1" max="15" value="1">
+      <label for="r-b">Gemiddelde bestelling: € <span id="r-bv">30</span></label>
+      <input type="range" id="r-b" min="10" max="250" step="5" value="30">
+      <div class="uit" id="r-uit"></div>
+    </div>
+    <div class="prijs"><b>€ 595 eenmalig, excl. btw (€ 719,95 incl.).</b><br>Site tot 5 pagina's, eigen domein koppelen, hosting inbegrepen, live binnen 48 uur na betaling.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var k = {wat:'een boeket', kleur:'laat de bloemist kiezen', wanneer:'zo snel mogelijk'};
+  var $ = function(s, c){ return (c || document).querySelector(s); };
+  var $$ = function(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  function druk(attr, waarde){ $$('['+attr+']').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute(attr) === waarde ? 'true' : 'false'); }); }
+  function fmtDatum(v){ if (!v) return ''; return new Date(v + 'T12:00:00').toLocaleDateString('nl-NL', {weekday:'long', day:'numeric', month:'long'}); }
+  function bericht(){
+    var wanneer = k.wanneer;
+    if (k.wanneer === 'datum') { var d = fmtDatum($('#datum').value); wanneer = d ? 'op ' + d : 'op een datum (die noem ik aan de telefoon)'; }
+    var t = $('#tekst').value.trim();
+    return 'Ik zoek ' + k.wat + '.\n' +
+      'Kleuren: ' + k.kleur + '.\n' +
+      'Voor: ' + wanneer + '.\n' +
+      (t ? 'Op het kaartje: "' + t + '"\n' : '') +
+      'Wat kan er en wat kost het?';
+  }
+  function update(){ $('#bericht').textContent = bericht(); $('#k-datum').hidden = k.wanneer !== 'datum'; }
+  ['wat','kleur','wanneer'].forEach(function(n){
+    $$('[data-' + n + ']').forEach(function(b){ b.addEventListener('click', function(){ k[n] = b.getAttribute('data-' + n); druk('data-' + n, k[n]); update(); }); });
+  });
+  $('#datum').addEventListener('input', update);
+  $('#tekst').addEventListener('input', update);
+  $('#kopieer').addEventListener('click', function(){
+    var b = this;
+    if (navigator.clipboard) navigator.clipboard.writeText(bericht()).then(function(){ b.textContent = 'Gekopieerd'; setTimeout(function(){ b.textContent = 'Kopieer'; }, 1800); });
+  });
+  update();
+
+  var fl = $('#float'), heroUit = false, kiezerIn = false;
+  function zet(){
+    var s = heroUit && !kiezerIn;
+    fl.classList.toggle('show', s); fl.setAttribute('aria-hidden', s ? 'false' : 'true');
+    $$('a', fl).forEach(function(a){ a.tabIndex = s ? 0 : -1; });
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){ heroUit = !es[0].isIntersecting; zet(); }, {threshold:0}).observe($('#hero'));
+    new IntersectionObserver(function(es){ kiezerIn = es[0].isIntersecting; zet(); }, {threshold:0, rootMargin:'-25% 0px -25% 0px'}).observe($('#kiezer'));
+  }
+
+  var pitch = $('#pitch'), rk = $('#r-k'), rb = $('#r-b');
+  function reken(){
+    var a = +rk.value, b = +rb.value, jaar = a * b * 52, n = Math.ceil(595 / b);
+    $('#r-kv').textContent = a; $('#r-bv').textContent = b;
+    $('#r-uit').innerHTML = '€ ' + jaar.toLocaleString('nl-NL') + ' per jaar<small>' + a + ' × € ' + b + ' × 52 weken. € 595 is de omzet van ' + n + ' bestelling' + (n === 1 ? '' : 'en') + ' van € ' + b + '. Dit is omzet, geen winst. Voorbeeldgetallen: vul ze samen in.</small>';
+  }
+  function open(){ pitch.classList.add('open'); reken(); }
+  function sluit(){ pitch.classList.remove('open'); }
+  $('#mo').addEventListener('click', open);
+  $('#pclose').addEventListener('click', sluit);
+  pitch.addEventListener('click', function(e){ if (e.target === pitch) sluit(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') sluit(); });
+  rk.addEventListener('input', reken); rb.addEventListener('input', reken);
+  if (/[?&]pitch\b/.test(location.search)) { document.documentElement.classList.add('pitch-aan'); open(); }
+})();
+</script>
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
