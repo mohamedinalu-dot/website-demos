@@ -21,6 +21,7 @@
 <link rel="preload" href="fonts/manrope-300-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="site.css">
+<script>document.documentElement.classList.add("js")</script>
 
 
 <!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
@@ -112,10 +113,22 @@
     </div>
     <p class="voetregel">Voorbeeld van onze kaart. Wat er vandaag ligt, zie je in de vitrine.</p>
   </div>
-  <figure class="muur rv">
-    <div class="boog"><img src="img/v3-menu-muur-kaart.webp" alt="De kaart van La Fuga in goudletters op de verlichte boogmuur: smoothies en matcha" width="826" height="1564" loading="lazy" decoding="async"></div>
-    <figcaption>Onze kaart, in goudletters op de boogmuur.</figcaption>
-  </figure>
+  <figure class="kaartbord muur" aria-label="De kaart van La Fuga">
+  <div class="kb-in">
+    <img class="kb-logo" src="logo-light.svg" alt="La Fuga" width="120" height="40">
+    <h3>Cakes</h3>
+    <p>Lemon Merengue Cake <span>·</span> Passion Fruit Cake <span>·</span> Raspberry White Chocolate <span>·</span> Cinnamon Bun Cake <span>·</span> Grandma's Tiramisu <span>·</span> Red Velvet Cake <span>·</span> Snicker Cake <span>·</span> San Sebastian Cake <span>·</span> Pistachio Cake</p>
+    <h3>Mini cakes</h3>
+    <p>Passion Fruit Mini <span>·</span> Pistachio Mini</p>
+    <h3>Matcha</h3>
+    <p>Strawberry Matcha <span>·</span> Mango Matcha <span>·</span> Latte Matcha</p>
+    <h3>Smoothies</h3>
+    <p>Strawberry Banana Mirage <span>·</span> Coconut Silk Dream <small>mango &amp; coco's</small> <span>·</span> Honey Blue <small>blueberry's, banana, honey</small> <span>·</span> Honeyed Sandstorm <small>avocado, dates, walnut &amp; honey</small> <span>·</span> Pina Colada <span>·</span> Santorini Sunset <small>strawberry, banana &amp; jus d'orange</small></p>
+    <h3>Mojito</h3>
+    <p>Regular <span>·</span> Strawberry <span>·</span> Passion Fruit <span>·</span> Blue Lagoon</p>
+    <p class="kb-voet">Voorbeeld van onze kaart</p>
+  </div>
+</figure>
 </section>
 
 <section class="sec slotband donker binnen" aria-labelledby="h-zin">

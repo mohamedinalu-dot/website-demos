@@ -88,25 +88,23 @@ p{margin:0 0 1em}
 .boog{margin:0;overflow:hidden;border-radius:999px 999px 4px 4px;background:var(--walnoot)}
 .boog video,.boog img{width:100%;height:100%;object-fit:cover}
 
-/* hero: schermvullende vitrinevideo, geblurd, met zwevende cheesecakes */
-.hero{position:relative;min-height:calc(100svh - 48px);display:flex;align-items:flex-end;overflow:hidden;background:#3A3029;color:var(--ivoor);isolation:isolate}
+/* hero: vitrinevideo als zachte kleurwolk (sterk geblurd), taarten in een eigen zone */
+.hero{position:relative;overflow:hidden;background:#4A3C31;color:var(--ivoor);isolation:isolate;padding-top:84px}
 .hero .achter{position:absolute;inset:0;z-index:-2;overflow:hidden}
-.hero .achter video{position:absolute;left:-8%;top:-8%;width:116%;height:116%;max-width:none;object-fit:cover;filter:blur(16px) saturate(1.08)}
-.hero .waas{position:absolute;inset:0;z-index:-1;background:rgba(62,49,39,.52)}
-.wolk{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero .achter video{position:absolute;left:-15%;top:-15%;width:130%;height:130%;max-width:none;object-fit:cover;filter:blur(34px) saturate(.8)}
+.hero .waas{position:absolute;inset:0;z-index:-1;background:rgba(78,63,51,.66)}
+.wolk{position:relative;height:84vw;max-height:380px;margin:10px calc(-1 * var(--rand)) 14px;pointer-events:none}
 .koek{position:absolute;will-change:transform}
-.koek img{display:block;width:100%;height:auto;filter:drop-shadow(0 24px 20px rgba(26,18,12,.5));
+.koek img{display:block;width:100%;height:auto;filter:drop-shadow(0 22px 18px rgba(26,18,12,.45));
   animation:zweef var(--t,7s) ease-in-out var(--v,0s) infinite alternate}
-@keyframes zweef{from{transform:translateY(-9px) rotate(calc(var(--r,0deg) - 3deg))}to{transform:translateY(11px) rotate(calc(var(--r,0deg) + 3deg))}}
-.k1{width:58vw;top:14%;right:-12%;--r:8deg;--t:7.5s}
-.k2{width:44vw;top:21%;left:-12%;--r:-10deg;--t:6.4s;--v:-2s}
-.k3{width:21vw;top:10%;left:12%;--r:-6deg;--t:5.6s;--v:-1s}
-.k4{display:none}
-.k5,.k6{display:none}
-.hero .tekst{position:relative;z-index:2;width:100%;padding:0 var(--rand) 34px}
+@keyframes zweef{from{transform:translateY(-6px) rotate(calc(var(--r,0deg) - 2deg))}to{transform:translateY(8px) rotate(calc(var(--r,0deg) + 2deg))}}
+.k1{width:62vw;max-width:290px;top:0;right:2vw;--r:6deg;--t:7.5s}
+.k2{width:46vw;max-width:215px;bottom:40px;left:3vw;--r:-8deg;--t:6.4s;--v:-2s;z-index:1}
+.k3,.k4,.k5,.k6{display:none}
+.hero .tekst{position:relative;z-index:2;padding:0 var(--rand) 34px}
 .hero h1{font-weight:300;font-size:clamp(56px,16vw,150px);letter-spacing:-.015em;line-height:.9;color:var(--ivoor)}
-.hero .plek{margin:12px 0 14px;font-size:15px;color:#E0D5C6}
-.hero .intro{max-width:34ch;font-size:17px;line-height:1.55;color:#F3EDE4}
+.hero .plek{margin:12px 0 0;font-size:15px;color:#E0D5C6}
+.hero .intro{max-width:34ch;font-size:17px;line-height:1.55;color:#F3EDE4;margin:0}
 .hero .knoppen{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 22px}
 .hero .knop{border-color:var(--ivoor);color:var(--ivoor)}
 .hero .knop.vol{background:var(--ivoor);color:var(--walnoot)}
@@ -115,16 +113,20 @@ p{margin:0 0 1em}
 .hero .feit{display:flex;flex-wrap:wrap;gap:0 24px;font-size:15px;border-top:1px solid rgba(233,225,213,.35);padding-top:8px}
 .hero .feit a{display:inline-flex;align-items:center;min-height:44px;color:var(--ivoor);text-decoration-color:rgba(233,225,213,.5);text-underline-offset:4px}
 @media(max-width:959px){.hero .knoppen .knop{flex:1 1 160px}}
+@media(max-width:1059px){.kopbalk nav .knop.vol{display:none}}
 @media(min-width:960px){
-  .hero{align-items:center;min-height:calc(100svh - 32px)}
-  .hero .tekst{padding:120px 40px 60px var(--zij);max-width:calc(var(--zij) + 640px);width:auto}
+  .hero{display:flex;align-items:center;min-height:calc(100svh - 32px);padding-top:0}
+  .hero .tekst{position:static;padding:120px 40px 60px var(--zij);max-width:calc(var(--zij) + 640px)}
+  .hero .titel,.hero .rest{position:relative;z-index:2}
+  .hero .plek{margin-bottom:14px}
+  .wolk{position:absolute;inset:0;height:auto;max-height:none;margin:0;z-index:0}
   .hero h1{font-size:clamp(84px,8vw,148px)}
   .hero .intro{font-size:19px}
-  .koek{right:auto}
+  .koek{right:auto;bottom:auto;max-width:none}
   .k1{width:30vw;left:66vw;top:13%;--r:6deg}
   .k6{display:block;width:14vw;left:50vw;top:11%;--r:-8deg;--t:7s;--v:-1.5s}
   .k2{width:21vw;left:49vw;top:57%}
-  .k3{width:6.5vw;left:57vw;top:34%}
+  .k3{display:block;width:6.5vw;left:57vw;top:34%}
   .k5{display:block;width:15vw;left:78vw;top:63%;--r:-4deg;--t:8s;--v:-4s}
 }
 @media (prefers-reduced-motion:reduce){.koek img{animation:none}#intro{display:none!important}}
@@ -446,4 +448,63 @@ footer .paginas a{min-height:40px}
   .knop.lijn:hover{background:none;color:var(--walnoot)}
   .donker .knop.lijn:hover,.hero .knop.lijn:hover{background:none;color:var(--ivoor)}
   .rond:hover{background:var(--room);color:var(--walnoot)}
+}
+
+
+/* ---------- v5 (Mo, 13 nov middag) ---------- */
+/* vitrine: verticaal scrollen werkt altijd, foto's niet te slepen */
+.rail{touch-action:pan-x pan-y;overscroll-behavior-x:contain}
+.rail img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none}
+
+/* Cake match alleen op mobiel */
+@media(min-width:960px){.alleen-mobiel{display:none!important}}
+
+/* rolband met Google-reviews */
+.reviews{background:var(--room);overflow:hidden;padding-left:0;padding-right:0}
+.reviews .kopregel{align-items:end}
+.rol{overflow:hidden;padding:6px 0 10px}
+.rol-in{display:flex;gap:16px;width:max-content;padding-left:var(--zij);animation:rol 70s linear infinite}
+.rol-in .kopie{display:flex;gap:16px}
+.rol:hover .rol-in,.rol:focus-within .rol-in{animation-play-state:paused}
+@keyframes rol{to{transform:translateX(-50%)}}
+.rev{flex:none;width:min(78vw,340px);margin:0;background:var(--ivoor);border:1px solid var(--lijn);border-radius:6px;padding:22px 22px 18px;display:flex;flex-direction:column;gap:12px}
+.rev .sterren{display:flex;gap:2px;color:#A88A55}
+.rev .ster{width:16px;height:16px}
+.rev blockquote{margin:0;font:400 21px/1.35 var(--kop);color:var(--houtskool)}
+.rev figcaption{margin-top:auto;font-size:14px;color:var(--grijs)}
+@media (prefers-reduced-motion:reduce){.rol{overflow-x:auto}.rol-in{animation:none}.rol-in .kopie{display:none}}
+
+/* kaartbord: boog, walnoot, goudletters (geen foto) */
+.kaartbord{margin:0;background:var(--walnoot);border-radius:999px 999px 10px 10px;padding:10px;color:#D9BD86}
+.kb-in{border:1px solid rgba(217,189,134,.55);border-radius:999px 999px 6px 6px;padding:clamp(70px,20vw,110px) clamp(18px,5vw,44px) 30px;text-align:center}
+.kb-logo{width:clamp(96px,26vw,132px);margin:0 auto 14px;opacity:.95}
+.kaartbord h3{font:500 clamp(26px,7vw,34px)/1.1 var(--kop);color:#E2C893;margin:22px 0 8px}
+.kaartbord p{margin:0;font:400 clamp(17px,4.6vw,20px)/1.5 var(--kop);color:#D9BD86}
+.kaartbord p span{color:rgba(217,189,134,.55);padding:0 2px}
+.kaartbord small{font:400 .82em var(--kop);color:rgba(217,189,134,.75)}
+.kaartbord .kb-voet{margin-top:26px;padding-top:14px;border-top:1px solid rgba(217,189,134,.35);font:400 14px var(--tekst);color:rgba(233,225,213,.75)}
+.kaart .kaartbord.muur{max-width:520px}
+@media(min-width:960px){.kaart .kaartbord.muur{position:sticky;top:24px}}
+
+/* cheesecakepagina: rustige, chique fade (eenmalig); zonder JS of met minder beweging gewoon zichtbaar */
+.js .fade{opacity:0;transform:translateY(22px) scale(.98);transition:opacity .75s cubic-bezier(.2,.6,.2,1),transform .75s cubic-bezier(.2,.6,.2,1)}
+.js .fade.in{opacity:1;transform:none}
+.js .taart>div.fade{transition-delay:.12s}
+@media (prefers-reduced-motion:reduce){.js .fade{opacity:1;transform:none;transition:none}}
+.taart .bord{margin:0;display:flex;justify-content:center}
+.taart .bord img{max-width:min(100%,640px)}
+.taart.mini .bord img{max-width:min(58vw,300px)}
+.taart.mini{min-height:auto;padding-top:64px;padding-bottom:80px}
+
+/* formulieren: altijd binnen de lijnen */
+.form,.form label{grid-template-columns:minmax(0,1fr)}
+.form input,.form textarea{max-width:100%;min-width:0;box-sizing:border-box}
+.form input[type=file]{width:100%;overflow:hidden}
+.twee>*{min-width:0}
+
+/* kaart-klik op mobiel: kleiner en helemaal in beeld */
+@media(max-width:959px){
+  .mm-kaart{aspect-ratio:16/11}
+  .mm-kaart .mk-inhoud{padding:12px 14px;gap:6px}
+  .mm-kaart .mk-uitleg{font-size:11.5px}
 }

@@ -206,10 +206,10 @@ document.querySelectorAll(".mm-kaart").forEach(function(k){
   function start(){ if (!loopt && zicht) { loopt = true; requestAnimationFrame(stap); } }
   function stap(){
     x += (doelX - x) * .08; y += (doelY - y) * .08;
-    var sy = Math.min(window.scrollY, hero.offsetHeight);
+    var mob = window.innerWidth < 960, sy = mob ? 0 : Math.min(window.scrollY, hero.offsetHeight), f = mob ? .3 : 1;
     koeken.forEach(function(k){
       var d = +k.getAttribute("data-diepte") || 1;
-      k.style.transform = "translate3d(" + (x * 46 * d).toFixed(1) + "px," + (y * 36 * d - sy * .18 * d).toFixed(1) + "px,0)";
+      k.style.transform = "translate3d(" + (x * 46 * d * f).toFixed(1) + "px," + (y * 36 * d * f - sy * .18 * d).toFixed(1) + "px,0)";
     });
     var beweegt = Math.abs(doelX - x) > .002 || Math.abs(doelY - y) > .002 || sy !== vorigeY;
     vorigeY = sy;
@@ -218,25 +218,17 @@ document.querySelectorAll(".mm-kaart").forEach(function(k){
   start();
 })();
 
-/* cheesecakepagina: elke taart draait en schuift in beeld bij het scrollen */
+/* cheesecakepagina: rustige fade + 22px omhoog + schaal .98 -> 1, eenmalig */
 (function(){
-  var borden = [].slice.call(document.querySelectorAll("[data-draai]"));
-  if (!borden.length || rustig) return;
-  var bezig = false;
-  function zet(){
-    bezig = false;
-    var h = window.innerHeight;
-    borden.forEach(function(b){
-      var r = b.parentNode.getBoundingClientRect();
-      if (r.bottom < -200 || r.top > h + 200) return;
-      var p = 1 - Math.max(0, Math.min(1, (r.top + r.height / 2 - h / 2) / (h * .75)));
-      var kant = +b.getAttribute("data-draai") || 1, q = 1 - p, ver = window.innerWidth >= 960 ? 8 : 22;
-      b.style.transform = "translate3d(" + (q * ver * kant).toFixed(2) + "vw,0,0) rotate(" + (q * 32 * kant).toFixed(1) + "deg) scale(" + (.82 + .18 * p).toFixed(3) + ")";
-    });
-  }
-  window.addEventListener("scroll", function(){ if (!bezig) { bezig = true; requestAnimationFrame(zet); } }, {passive:true});
-  window.addEventListener("resize", zet);
-  zet();
+  var els = [].slice.call(document.querySelectorAll(".fade"));
+  if (!els.length) return;
+  /* geautomatiseerde browsers (QA-screenshots, scrollen niet) zien alles meteen; bezoekers krijgen de fade */
+  if (rustig || navigator.webdriver || !("IntersectionObserver" in window)) { els.forEach(function(e){ e.classList.add("in"); }); return; }
+  var io = new IntersectionObserver(function(ents){
+    ents.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, {rootMargin:"0px 0px -12% 0px"});
+  els.forEach(function(e){ io.observe(e); });
+  window.addEventListener("beforeprint", function(){ els.forEach(function(e){ e.classList.add("in"); }); });
 })();
 
 /* Cake match: swipe rechts = lekker, links = niets voor mij */
@@ -244,11 +236,11 @@ document.querySelectorAll(".mm-kaart").forEach(function(k){
   var sec = document.getElementById("match");
   if (!sec) return;
   var taarten = [
-    {n:"Red velvet cheesecake", w:"Romig wit, met red velvet-kruim", f:"img/cut-cheesecake-redvelvet.webp", b:900, h:740},
+    {n:"Red velvet cheesecake", w:"Romig wit, met red velvet-kruim", f:"img/cut-cheesecake-redvelvet.webp", b:1200, h:1000},
     {n:"Lotus mini cheesecake", w:"Met een Lotus-koekje", f:"img/cut-mini-lotus.webp", b:670, h:812},
-    {n:"Cheesecake met karamel en chocolade", w:"Karamel, met stukjes chocoladereep", f:"img/cut-cheesecake-karamel.webp", b:900, h:724},
-    {n:"Pistache cheesecake", w:"Pistache, op een bodem van kruim", f:"img/cut-cheesecake-pistache.webp", b:900, h:716},
-    {n:"Cheesecake met room en limoen", w:"Toefjes room en schijfjes limoen", f:"img/cut-cheesecake-citroen.webp", b:900, h:599}
+    {n:"Cheesecake met karamel en chocolade", w:"Karamel, met stukjes chocoladereep", f:"img/cut-cheesecake-karamel.webp", b:1200, h:984},
+    {n:"Pistache cheesecake", w:"Pistache, op een bodem van kruim", f:"img/cut-cheesecake-pistache.webp", b:1189, h:853},
+    {n:"Cheesecake met room en limoen", w:"Toefjes room en schijfjes limoen", f:"img/cut-cheesecake-citroen.webp", b:1200, h:727}
   ];
   var stapel = sec.querySelector(".stapel"), spel = sec.querySelector(".spel"), uit = sec.querySelector(".uitslag"),
       teller = sec.querySelector(".teller"), lekker = [], beurt = 0;
