@@ -1,0 +1,434 @@
+<!doctype html>
+<!-- Concept: "satijnen lookbook" — een beauty-boutique als glossy campagne, zwart met magenta satijn.
+     Archetype: donkere hero met boogvormige eigen raamfoto + bewegend satijnen lint (SVG), daarna fotoverhaal
+     in blush-crème met genummerde productregels, winkelblok met uren/kaart, webshop-teaser. Geen marquee, geen Ken Burns. -->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>WIG ON – pruiken en raw hair in Rotterdam</title>
+<meta name="description" content="WIG ON (WIGON) aan de Aert van Nesstraat 58 in Rotterdam centrum: pruiken, raw hair bundels, nails en verzorging. Net geopend, kom langs.">
+<meta name="theme-color" content="#120B10">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root{--zwart:#120B10;--zwart2:#1d1219;--roze:#E0157A;--roze2:#FF4FA6;--blush:#FBEFF3;--blush2:#F5DCE6;--tekst:#2a1d24;--grijs:#6d5a64;
+  --satijn:linear-gradient(115deg,#7a0a43 0%,#E0157A 22%,#ff9bcf 34%,#E0157A 46%,#a30d58 62%,#ff6fb7 78%,#c0106a 100%);
+  --kop:"Bodoni Moda",Didot,"Times New Roman",serif;--body:"Manrope",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--tekst);background:var(--blush);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.demo{background:#000;color:#f6d6e5;font-size:13px;text-align:center;padding:8px 16px}
+.demo a{color:#fff;font-weight:600}
+.balk{background:var(--satijn);background-size:200% 100%;color:#fff;font-size:13px;font-weight:600;letter-spacing:.06em;text-align:center;padding:9px 16px;text-transform:uppercase}
+/* header */
+.kop{background:var(--zwart);border-bottom:1px solid rgba(255,79,166,.18)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.kop .logo img{height:34px;width:auto}
+.kop nav{display:flex;gap:6px}
+.kop nav a{color:#f3dbe6;text-decoration:none;font-size:14px;font-weight:600;padding:12px 12px;min-height:44px;display:inline-flex;align-items:center}
+.kop nav a:hover{color:var(--roze2)}
+@media(max-width:760px){.kop nav{display:none}}
+/* knoppen */
+.knop{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;transition:background-color .2s,color .2s,border-color .2s,box-shadow .2s;white-space:nowrap}
+.knop svg{width:20px;height:20px;flex:none}
+.knop.vol{background:var(--roze);color:#fff;box-shadow:0 10px 30px -10px rgba(224,21,122,.8)}
+.knop.vol:hover{background:#c40f69}
+.knop.lijn{border-color:rgba(255,255,255,.55);color:#fff}
+.knop.lijn:hover{border-color:var(--roze2);color:var(--roze2)}
+.knop.donker{border-color:var(--zwart);color:var(--zwart)}
+.knop.donker:hover{background:var(--zwart);color:#fff}
+/* hero */
+.hero{position:relative;background:radial-gradient(120% 80% at 80% 10%,#3a0f27 0%,var(--zwart) 55%);color:#fff;overflow:hidden;isolation:isolate}
+.lint{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.lint svg{position:absolute;width:160%;left:-30%;top:8%;height:auto;opacity:.95}
+.lint .golf{animation:golf 9s ease-in-out infinite alternate;transform-origin:50% 50%}
+.lint .golf2{animation:golf 12s ease-in-out infinite alternate-reverse;transform-origin:50% 50%}
+@keyframes golf{from{transform:translateX(-4%) skewY(-2deg)}to{transform:translateX(4%) skewY(3deg)}}
+.lint stop.glans{animation:glans 6s ease-in-out infinite alternate}
+@keyframes glans{from{stop-color:#ff5fae}to{stop-color:#ffd0e8}}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:56px 0 72px}
+.hero .eyebrow{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--roze2);font-weight:700;margin-bottom:18px}
+.hero h1{font-family:var(--kop);font-weight:500;font-size:clamp(44px,7vw,92px);line-height:.98;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;background:linear-gradient(100deg,#ff4fa6,#ffc2e1 45%,#ff4fa6 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{font-size:18px;color:#f0d7e3;max-width:34ch;margin:22px 0 32px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero .feit{margin-top:32px;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14px;color:#e6c3d4}
+.hero .feit span{display:inline-flex;align-items:center;gap:8px}
+.hero .feit svg{width:16px;height:16px;color:var(--roze2)}
+.boog{position:relative;justify-self:center;width:min(440px,100%)}
+.boog .frame{border-radius:240px 240px 24px 24px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 40px 80px -30px rgba(224,21,122,.55);border:1px solid rgba(255,79,166,.35)}
+.boog .frame img{width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+.boog figcaption{position:absolute;left:-18px;bottom:28px;background:#fff;color:var(--zwart);font-size:13px;font-weight:700;padding:10px 16px;border-radius:999px;box-shadow:0 12px 30px -12px rgba(0,0,0,.5)}
+@media(max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;gap:34px;padding:28px 0 56px}
+  .boog{order:-1;width:min(250px,66%)}
+  .boog .frame{aspect-ratio:5/6}
+  .boog figcaption{left:50%;transform:translateX(-50%);bottom:-16px;white-space:nowrap}
+  .hero h1{font-size:clamp(38px,10.6vw,56px)}
+  .hero .eyebrow{margin-bottom:10px}
+  .hero .lead{margin:16px 0 24px}
+  .balk{font-size:11px;letter-spacing:.04em}
+  .hero .lead{font-size:17px}
+  .hero-cta .knop{flex:1 1 140px}
+}
+/* secties */
+section{padding:96px 0}
+section.hero{padding:0}
+.label{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--roze)}
+h2{font-family:var(--kop);font-weight:500;font-size:clamp(34px,5vw,58px);line-height:1.04;margin:10px 0 18px;color:var(--zwart)}
+h2 em{font-style:italic;color:var(--roze)}
+.intro{max-width:52ch;color:var(--grijs);font-size:17px}
+/* aanbod */
+.aanbod .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.aanbod .foto{position:sticky;top:24px;border-radius:24px;overflow:hidden;aspect-ratio:3/4;background:var(--blush2)}
+.aanbod .foto img{width:100%;height:100%;object-fit:cover;object-position:60% 55%}
+.rijen{list-style:none;margin-top:36px;border-top:1px solid var(--blush2)}
+.rijen li{display:grid;grid-template-columns:64px 1fr;gap:6px 18px;padding:28px 0;border-bottom:1px solid var(--blush2)}
+.rijen .nr{font-family:var(--kop);font-style:italic;font-size:34px;color:var(--roze);line-height:1}
+.rijen h3{font-family:var(--kop);font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:var(--zwart)}
+.rijen p{grid-column:2;color:var(--grijs)}
+@media(max-width:860px){
+  section{padding:68px 0}
+  section.hero{padding:0}
+  .aanbod .wrap{grid-template-columns:1fr;gap:28px}
+  .aanbod .foto{position:relative;top:0;aspect-ratio:4/5}
+  .rijen li{grid-template-columns:48px 1fr}
+  .rijen .nr{font-size:28px}
+}
+/* raam */
+.raam{background:var(--zwart);color:#fff;padding:0;position:relative;overflow:hidden}
+.raam .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:0;align-items:stretch;width:100%;max-width:none}
+.raam .groot{min-height:520px}
+.raam .groot img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.raam .tekst{padding:64px 48px;display:flex;flex-direction:column;justify-content:center;background:var(--satijn);background-size:220% 220%;animation:satijn 14s ease-in-out infinite alternate}
+@keyframes satijn{from{background-position:0% 30%}to{background-position:100% 70%}}
+.raam .tekst p.groot-citaat{font-family:var(--kop);font-style:italic;font-size:clamp(30px,3.6vw,46px);line-height:1.1}
+.raam .tekst small{display:block;margin-top:18px;font-size:14px;opacity:.9}
+@media(max-width:860px){.raam .wrap{grid-template-columns:1fr}.raam .groot{min-height:0;aspect-ratio:1000/595}.raam .tekst{padding:44px 24px}}
+/* winkel */
+.winkel .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.adres{font-size:19px;font-weight:600;color:var(--zwart);margin:8px 0 4px}
+.adres-sub{color:var(--grijs);margin-bottom:26px}
+.uren{width:100%;border-collapse:collapse;margin:8px 0 28px;font-size:16px}
+.uren th{text-align:left;font-weight:600;color:var(--zwart);padding:12px 0;border-bottom:1px solid var(--blush2)}
+.uren td{text-align:right;padding:12px 0;border-bottom:1px solid var(--blush2);font-variant-numeric:tabular-nums}
+.uren tr.vandaag th,.uren tr.vandaag td{color:var(--roze)}
+.winkel .knoppen{display:flex;flex-wrap:wrap;gap:12px}
+.mm-kaart{--mk-bg:var(--zwart);--mk-fg:#fff;--mk-accent:#FF4FA6;--mk-lijn:rgba(255,79,166,.10);
+  position:relative;aspect-ratio:4/3;width:100%;border-radius:24px;overflow:hidden;background:var(--mk-bg);color:var(--mk-fg)}
+.mm-kaart .mk-raster{position:absolute;inset:0;background:linear-gradient(var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px}
+.mm-kaart .mk-weg{position:absolute;background:rgba(255,255,255,.14);border-radius:6px}
+.mm-kaart .mk-inhoud{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mm-kaart .mk-pin{width:46px;height:46px;filter:drop-shadow(0 0 14px var(--mk-accent))}
+.mm-kaart .mk-adres{font-weight:700;line-height:1.35}
+.mm-kaart .mk-knop{min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--mk-accent);background:transparent;color:var(--mk-fg);font:inherit;font-weight:700;cursor:pointer}
+.mm-kaart .mk-knop:hover,.mm-kaart .mk-knop:focus-visible{background:var(--mk-accent);color:var(--mk-bg)}
+.mm-kaart .mk-uitleg{font-size:12px;opacity:.7;max-width:30ch}
+.mm-kaart iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.deurfoto{margin-top:20px;border-radius:24px;overflow:hidden;aspect-ratio:16/10}
+.deurfoto img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+@media(max-width:860px){.winkel .wrap{grid-template-columns:1fr;gap:36px}.winkel .knoppen .knop{flex:1 1 150px}}
+/* webshop */
+.shop{padding:0 0 96px}
+.shop .kaart{position:relative;border-radius:32px;overflow:hidden;background:var(--zwart);color:#fff;padding:64px 56px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;isolation:isolate}
+.shop .kaart::before{content:"";position:absolute;right:-120px;top:-80px;width:520px;height:520px;border-radius:50%;background:var(--satijn);background-size:200% 200%;filter:blur(2px);opacity:.85;z-index:-1;animation:satijn 12s ease-in-out infinite alternate}
+.shop h2{color:#fff}
+.shop h2 em{color:var(--roze2)}
+.shop p{color:#efd3e0;max-width:44ch}
+.shop .url{justify-self:end;font-family:var(--kop);font-style:italic;font-size:clamp(34px,4.4vw,56px);color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.4)}
+.shop .url small{display:block;font-family:var(--body);font-style:normal;font-size:13px;letter-spacing:.2em;text-transform:uppercase;opacity:.85;text-align:right}
+@media(max-width:860px){.shop{padding-bottom:68px}.shop .kaart{grid-template-columns:1fr;padding:44px 24px}.shop .url{justify-self:start}.shop .url small{text-align:left}.shop .kaart::before{width:380px;height:380px;right:-180px;top:auto;bottom:-200px}}
+/* slot */
+.slot{background:var(--zwart);color:#fff;text-align:center;position:relative;overflow:hidden}
+.slot h2{color:#fff;max-width:16ch;margin-inline:auto}
+.slot h2 em{color:var(--roze2)}
+.slot p{color:#e9cbd9;margin-bottom:30px}
+.slot .hero-cta{justify-content:center}
+footer{background:#0b0709;color:#cdb2bf;padding:48px 0 110px;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-start}
+footer img{height:28px;width:auto;margin-bottom:12px}
+footer a{color:#fff}
+footer .door a{display:inline-block;padding:10px 0}
+@media(min-width:861px){footer{padding-bottom:48px}}
+/* zwevende knoppen */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:none;gap:10px;padding:8px;border-radius:999px;background:rgba(18,11,16,.92);backdrop-filter:blur(8px);box-shadow:0 14px 40px -12px rgba(0,0,0,.6);opacity:0;transform:translateY(120%);transition:opacity .25s,transform .25s}
+.zweef .knop{flex:1;min-height:48px;padding:0 14px;font-size:15px}
+.zweef.aan{opacity:1;transform:none}
+@media(max-width:860px){.zweef{display:flex}}
+/* pitch */
+.mo{position:fixed;right:14px;bottom:84px;z-index:60;width:48px;height:48px;border-radius:50%;border:0;background:var(--zwart);color:var(--roze2);font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.35);cursor:pointer;display:none}
+@media(min-width:861px){.mo{bottom:20px}}
+.pitch{position:fixed;inset:0;z-index:70;background:rgba(10,6,8,.72);display:none;overflow-y:auto;padding:20px 12px}
+.pitch.open{display:block}
+.pp{max-width:760px;margin:0 auto;background:#fff;border-radius:22px;padding:24px 22px 28px;color:var(--tekst)}
+.pp-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--roze)}
+.pp-sluit{width:44px;height:44px;border-radius:50%;border:0;background:var(--blush);font-size:24px;cursor:pointer}
+.pp h2{font-size:clamp(24px,4vw,34px);margin:10px 0 18px}
+.pp h3{font-family:var(--kop);font-weight:500;font-size:22px;margin:28px 0 12px;color:var(--zwart)}
+.vn{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.vn figure{background:var(--blush);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:10px}
+.vn figcaption{font-size:14px}
+.nu-mock{flex:1;min-height:260px;border-radius:10px;background:#f4f4f4;border:1px solid #ddd;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;text-align:center;color:#444;font-size:14px}
+.nu-mock .veld{width:80%;height:38px;border:1px solid #bbb;border-radius:6px;background:#fff}
+.nu-mock .url{font-family:monospace;font-size:12px;color:#777}
+.vn .na img{border-radius:10px;width:100%;max-height:420px;object-fit:cover;object-position:top}
+.reken{background:var(--blush);border-radius:16px;padding:18px}
+.reken label{display:flex;justify-content:space-between;font-weight:600;font-size:15px;margin-top:8px}
+.reken input{width:100%;accent-color:var(--roze);height:44px}
+.uitkomst{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.uitkomst div{background:#fff;border-radius:12px;padding:12px}
+.uitkomst small{display:block;font-size:12px;color:var(--grijs);line-height:1.35}
+.uitkomst strong{font-size:20px;color:var(--zwart)}
+.klein{font-size:13px;color:var(--grijs);margin-top:10px}
+.punten{padding-left:20px;display:grid;gap:10px}
+@media(max-width:600px){.vn{grid-template-columns:1fr}.uitkomst{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+<link rel="stylesheet" href="fonts/fonts.css">
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></symbol>
+  <symbol id="i-klok" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18zM12 7v5l3 2"/></symbol>
+  <symbol id="i-loop" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M5 12h14M13 6l6 6l-6 6"/></symbol>
+</svg>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></div>
+<div class="balk">Net geopend · Aert van Nesstraat 58, Rotterdam</div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="WIGON, naar boven"><img src="logo-light.svg" alt="WIGON" width="147" height="34"></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#winkel-aanbod">In de winkel</a>
+      <a href="#langs">Adres en tijden</a>
+      <a href="#webshop">Webshop</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="lint" aria-hidden="true">
+    <svg viewBox="0 0 1600 700" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="sat" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#5e0834"/>
+          <stop offset=".35" stop-color="#E0157A"/>
+          <stop class="glans" offset=".5" stop-color="#ff5fae"/>
+          <stop offset=".65" stop-color="#E0157A"/>
+          <stop offset="1" stop-color="#5e0834"/>
+        </linearGradient>
+        <linearGradient id="sat2" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#ff4fa6" stop-opacity="0"/>
+          <stop offset=".5" stop-color="#ffb3d9" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#ff4fa6" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path class="golf" fill="url(#sat)" opacity=".55" d="M0 470C260 360 420 600 760 470S1250 250 1600 380V470C1250 330 1060 560 760 560S260 470 0 560Z"/>
+      <path class="golf2" fill="url(#sat2)" d="M0 520C300 430 520 640 820 520S1300 330 1600 430V470C1300 390 1110 590 820 580S300 500 0 580Z"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">WIG ON · Rotterdam</p>
+      <h1>Raw hair &amp; pruiken, <em>midden in de stad.</em></h1>
+      <p class="lead">Wanden vol pruiken, haarbundels en nails &amp; verzorging. Net open aan de Aert van Nesstraat. Kom gerust binnen om rond te kijken.</p>
+      <div class="hero-cta">
+        <a class="knop vol" href="#langs"><svg aria-hidden="true"><use href="#i-loop"/></svg>Kom langs</a>
+        <a class="knop lijn" href="https://www.google.com/maps/search/?api=1&amp;query=WIG+ON+Aert+van+Nesstraat+58+Rotterdam" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Route</a>
+      </div>
+      <p class="feit"><span><svg aria-hidden="true"><use href="#i-pin"/></svg>Hoek Karel Doormanstraat</span><span><svg aria-hidden="true"><use href="#i-klok"/></svg>Net geopend</span></p>
+    </div>
+    <figure class="boog">
+      <div class="frame"><img src="img/raam.webp" alt="Het roze etalageraam van WIGON met de woorden Raw hair en Nails" width="800" height="777" fetchpriority="high"></div>
+      <figcaption>Ons raam aan de Aert van Nesstraat</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="aanbod" id="winkel-aanbod">
+  <div class="wrap">
+    <figure class="foto"><img src="img/rekken.webp" alt="De winkel van binnen: pruiken op hoofden, haarbundels en roze verzorgingsproducten in verlichte rekken" width="520" height="1140"></figure>
+    <div>
+      <p class="label">In de winkel</p>
+      <h2>Alles voor je haar, <em>in één ruimte.</em></h2>
+      <p class="intro">Geen plaatjes op een scherm: bij WIG ON zie je het haar in het echt, in verlichte rekken van vloer tot plafond.</p>
+      <ul class="rijen">
+        <li><span class="nr">01</span><h3>Pruiken</h3><p>Wanden vol pruiken op hoofden, in verschillende lengtes en kleuren. Je ziet meteen hoe ze vallen.</p></li>
+        <li><span class="nr">02</span><h3>Raw hair bundels</h3><p>Haarbundels in de rekken, voor wie zelf een look samenstelt.</p></li>
+        <li><span class="nr">03</span><h3>Nails &amp; verzorging</h3><p>Planken met nagel- en verzorgingsproducten, zodat je alles in één keer meeneemt.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="raam" aria-label="De winkel van buiten">
+  <div class="wrap">
+    <div class="groot"><img src="img/gevel.webp" alt="De gevel van WIGON op nummer 58, met een open deur en het roze raam" width="1000" height="595"></div>
+    <div class="tekst">
+      <p class="groot-citaat">Roze raam, open deur, nummer 58.</p>
+      <small>Zo herken je de winkel aan de Aert van Nesstraat, op de hoek met de Karel Doormanstraat.</small>
+    </div>
+  </div>
+</section>
+
+<section class="winkel" id="langs">
+  <div class="wrap">
+    <div>
+      <p class="label">Net geopend in Rotterdam centrum</p>
+      <h2>Kom langs, <em>kijk rond.</em></h2>
+      <p class="adres">Aert van Nesstraat 58</p>
+      <p class="adres-sub">3012 CB Rotterdam · hoek Karel Doormanstraat</p>
+      <table class="uren" aria-label="Openingstijden">
+        <tbody>
+          <tr data-dag="1"><th scope="row">Maandag</th><td>11:00 – 18:00</td></tr>
+          <tr data-dag="2"><th scope="row">Dinsdag</th><td>10:00 – 18:00</td></tr>
+          <tr data-dag="3"><th scope="row">Woensdag</th><td>10:00 – 18:00</td></tr>
+          <tr data-dag="5"><th scope="row">Vrijdag</th><td>10:00 – 18:00</td></tr>
+          <tr data-dag="6"><th scope="row">Zaterdag</th><td>10:00 – 18:00</td></tr>
+          <tr data-dag="0"><th scope="row">Zondag</th><td>11:00 – 18:00</td></tr>
+        </tbody>
+      </table>
+      <div class="knoppen">
+        <a class="knop vol" href="https://www.google.com/maps/search/?api=1&amp;query=WIG+ON+Aert+van+Nesstraat+58+Rotterdam" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Plan je route</a>
+      </div>
+    </div>
+    <div>
+      <div class="mm-kaart" data-src="https://maps.google.com/maps?q=Aert%20van%20Nesstraat%2058%2C%203012%20CB%20Rotterdam&amp;z=16&amp;output=embed" data-titel="Kaart: WIG ON, Aert van Nesstraat 58, Rotterdam">
+        <div class="mk-raster" aria-hidden="true"></div>
+        <div class="mk-weg" style="left:-5%;right:-5%;top:58%;height:12px;transform:rotate(-8deg)" aria-hidden="true"></div>
+        <div class="mk-weg" style="top:-5%;bottom:-5%;left:36%;width:10px;transform:rotate(12deg)" aria-hidden="true"></div>
+        <div class="mk-inhoud">
+          <svg class="mk-pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="var(--mk-accent)" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          <p class="mk-adres">WIG ON<br>Aert van Nesstraat 58<br>3012 CB Rotterdam</p>
+          <button type="button" class="mk-knop">Toon kaart</button>
+          <p class="mk-uitleg">De kaart komt van Google Maps en laadt pas als je klikt.</p>
+        </div>
+      </div>
+      <figure class="deurfoto"><img src="img/deur.webp" alt="Door de glazen deur: het WIGON-logo en de verlichte rekken binnen" width="520" height="657"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="shop" id="webshop">
+  <div class="wrap">
+    <div class="kaart">
+      <div>
+        <p class="label" style="color:var(--roze2)">Binnenkort</p>
+        <h2>Onze webshop <em>is in de maak.</em></h2>
+        <p>Straks kun je ook online bestellen. Tot die tijd ligt alles klaar in de winkel aan de Aert van Nesstraat.</p>
+      </div>
+      <p class="url"><small>Binnenkort online</small>wigon.nl</p>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <div class="wrap">
+    <p class="label" style="color:var(--roze2)">WIG ON</p>
+    <h2>Zie het haar <em>in het echt.</em></h2>
+    <p>Aert van Nesstraat 58, Rotterdam centrum.</p>
+    <div class="hero-cta">
+      <a class="knop vol" href="#langs"><svg aria-hidden="true"><use href="#i-klok"/></svg>Openingstijden</a>
+      <a class="knop lijn" href="https://www.google.com/maps/search/?api=1&amp;query=WIG+ON+Aert+van+Nesstraat+58+Rotterdam" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Route</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="logo-light.svg" alt="WIGON" width="121" height="28">
+      <p>Aert van Nesstraat 58, 3012 CB Rotterdam</p>
+      <p>Foto's: WIG ON, Google-bedrijfsprofiel</p>
+    </div>
+    <p class="door">Website door <a href="https://mohamedia.nl" target="_blank" rel="noopener">Mohamedia</a></p>
+  </div>
+</footer>
+
+<nav class="zweef" id="zweef" aria-label="Snel naar de winkel">
+  <a class="knop vol" href="#langs"><svg aria-hidden="true"><use href="#i-loop"/></svg>Kom langs</a>
+  <a class="knop lijn" href="https://www.google.com/maps/search/?api=1&amp;query=WIG+ON+Aert+van+Nesstraat+58+Rotterdam" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Route</a>
+</nav>
+
+<button class="mo" id="pitch-knop" type="button" aria-label="Pitch-paneel openen">Mo</button>
+<!-- Pitch-paneel: alleen voor Mo in het gesprek. Knop verschijnt alleen met ?pitch in de URL. -->
+<div class="pitch" id="pitch" role="dialog" aria-modal="true" aria-labelledby="pp-titel">
+  <div class="pp">
+    <div class="pp-top"><span>WIG ON · nu en straks</span><button class="pp-sluit" id="pp-sluit" type="button" aria-label="Sluiten">×</button></div>
+    <h2 id="pp-titel">Wie nu wigon.nl opent, krijgt een wachtwoordscherm.</h2>
+    <div class="vn">
+      <figure><div class="nu-mock" role="img" aria-label="wigon.nl vraagt nu om een wachtwoord"><span class="url">wigon.nl</span><b>Wachtwoord vereist</b><span class="veld"></span></div><figcaption><b>Nu:</b> de webshop staat nog op slot, er is nog geen site met adres en tijden.</figcaption></figure>
+      <figure class="na"><img src="img/na-mobiel.jpg" alt="De nieuwe site van WIG ON op een telefoon" width="390" height="844" loading="lazy"><figcaption><b>Straks:</b> jullie winkel, adres en tijden op de telefoon.</figcaption></figure>
+    </div>
+
+    <h3>Samen invullen: een paar klanten extra per week</h3>
+    <div class="reken">
+      <label for="r-klanten">Extra klanten per week <output id="o-klanten">2</output></label><input type="range" id="r-klanten" min="0" max="30" step="1" value="2">
+      <label for="r-besteding">Gemiddelde besteding per klant <output id="o-besteding">€ 50</output></label><input type="range" id="r-besteding" min="10" max="400" step="10" value="50">
+      <div class="uitkomst">
+        <div><small>Per week</small><strong id="u-week">€ 100</strong></div>
+        <div><small>Per jaar</small><strong id="u-jaar">€ 5.200</strong></div>
+        <div><small>€ 595 excl. btw (€ 719,95 incl. btw) is de omzet van</small><strong id="u-klanten">12 klanten</strong></div>
+      </div>
+      <p class="klein">Voorbeeld, geen belofte. Jullie kiezen de getallen; het gaat om omzet, niet om winst.</p>
+    </div>
+
+    <h3>Drie dingen die straks anders zijn</h3>
+    <ol class="punten">
+      <li><b>Gevonden worden nu de winkel net open is.</b> Wie WIG ON googelt, ziet straks de winkel zelf, met adres en openingstijden, in plaats van een slot.</li>
+      <li><b>Route in één tik.</b> Op de telefoon blijven "Kom langs" en "Route" onderaan in beeld. Kaart en lettertypen laden zonder cookies van derden, dus geen cookiebanner nodig.</li>
+      <li><b>Klaar voor de webshop.</b> Zodra de Shopify-shop live gaat, kan de knop "Bestel online" er zo bij.</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+// kaart pas na klik
+document.querySelectorAll('.mm-kaart').forEach(function(k){
+  var b=k.querySelector('.mk-knop'); if(!b) return;
+  b.addEventListener('click',function(){
+    var f=document.createElement('iframe');
+    f.src=k.getAttribute('data-src'); f.title=k.getAttribute('data-titel')||'Kaart';
+    f.loading='eager'; f.referrerPolicy='no-referrer-when-downgrade'; f.allowFullscreen=true;
+    k.innerHTML=''; k.appendChild(f);
+  });
+});
+// vandaag markeren in de tabel
+(function(){var r=document.querySelector('.uren tr[data-dag="'+new Date().getDay()+'"]'); if(r) r.classList.add('vandaag');})();
+// zwevende knoppen zodra de hero uit beeld is
+(function(){
+  var z=document.getElementById('zweef'), h=document.getElementById('hero');
+  if(!('IntersectionObserver' in window)){z.classList.add('aan');return;}
+  new IntersectionObserver(function(e){z.classList.toggle('aan',!e[0].isIntersecting);},{threshold:0}).observe(h);
+})();
+// pitch-paneel
+(function(){
+  var knop=document.getElementById('pitch-knop'), p=document.getElementById('pitch');
+  if(/[?&]pitch/.test(location.search)){knop.style.display='block';}
+  knop.addEventListener('click',function(){p.classList.add('open');});
+  document.getElementById('pp-sluit').addEventListener('click',function(){p.classList.remove('open');});
+  p.addEventListener('click',function(e){if(e.target===p)p.classList.remove('open');});
+  var k=document.getElementById('r-klanten'), b=document.getElementById('r-besteding');
+  var eur=function(n){return '€ '+n.toLocaleString('nl-NL');};
+  function reken(){
+    var kl=+k.value, be=+b.value, w=kl*be;
+    document.getElementById('o-klanten').textContent=kl;
+    document.getElementById('o-besteding').textContent=eur(be);
+    document.getElementById('u-week').textContent=eur(w);
+    document.getElementById('u-jaar').textContent=eur(w*52);
+    document.getElementById('u-klanten').textContent=Math.ceil(595/be)+' klanten';
+  }
+  k.addEventListener('input',reken); b.addEventListener('input',reken); reken();
+})();
+</script>
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
