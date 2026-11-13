@@ -441,7 +441,6 @@ footer .paginas a{min-height:40px}
 .taart>div{position:relative;z-index:1}
 .minis.een{grid-template-columns:minmax(0,1fr)}
 .minis.een img{max-width:220px}
-.plateau a:last-child img{max-width:78%;margin:0 auto}
 @media(max-width:959px){.uitslag .groot{width:min(64vw,360px)}.uitslag .label{margin-top:14px}.uitslag h3{font-size:clamp(32px,8.6vw,48px)}.uitslag .knoppen{margin-top:16px}}
 .uitslag .groot.staand{width:min(44vw,240px)}
 @media (hover:none){
@@ -508,3 +507,31 @@ footer .paginas a{min-height:40px}
   .mm-kaart .mk-inhoud{padding:12px 14px;gap:6px}
   .mm-kaart .mk-uitleg{font-size:11.5px}
 }
+.taart.mini .bord{justify-content:flex-start}
+
+/* v6 (Mo): geen zwevende taarten; scherpe vitrinevideo in een boog */
+.wolk,.koek{display:none!important}
+.hero-boog{width:78vw;max-width:360px;aspect-ratio:4/5;margin:24px auto 24px;border-radius:999px 999px 4px 4px;background:#3A3029}
+.hero-boog video{display:block;width:100%;height:100%;object-fit:cover}
+@media(min-width:960px){
+  .hero .tekst{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,40%);grid-template-rows:auto auto;column-gap:clamp(40px,5vw,96px);align-items:center;
+    max-width:none;width:100%;padding:110px var(--zij) 60px}
+  .hero .titel{grid-column:1;grid-row:1;align-self:end}
+  .hero .rest{grid-column:1;grid-row:2;align-self:start}
+  .hero-boog{grid-column:2;grid-row:1 / span 2;justify-self:end;width:auto;max-width:100%;height:min(560px,calc(100svh - 200px));margin:0}
+}
+.taart .bord{justify-content:flex-start}
+
+/* v7 (Mo): geen uitsneden van citroen en Lotus-mini; echte foto's in de match en bij de minis */
+.plateau>a:nth-child(3){grid-column:1 / -1;justify-self:center;width:calc(50% - 7px)}
+@media(min-width:960px){.plateau{grid-template-columns:repeat(3,minmax(0,1fr))}.plateau>a:nth-child(3){grid-column:auto;width:auto}}
+.mkaart{justify-content:flex-start;padding:12px 12px 18px;gap:10px}
+.mkaart img.foto{width:100%;height:auto;flex:1 1 auto;min-height:0;max-height:none;object-fit:cover;border-radius:10px;filter:none}
+.mkaart h3{margin-top:4px}
+.uitslag-boog{width:min(64vw,300px);aspect-ratio:4/5;margin:0 auto;animation:landt .9s cubic-bezier(.2,.9,.25,1.15) both}
+.uitslag-boog img{width:100%;height:100%;object-fit:cover}
+@media(min-width:960px){.uitslag-boog{width:min(30vw,340px)}}
+.mini-boog{width:min(100%,420px);aspect-ratio:4/5}
+.taart .bord .mini-boog img{width:100%;height:100%;max-width:none;object-fit:cover;filter:none}
+@media (prefers-reduced-motion:reduce){.uitslag-boog{animation:none}}
+@media(max-width:959px){.uitslag-boog{width:min(50vw,230px)}}

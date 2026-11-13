@@ -3,10 +3,10 @@ var rustig = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)")
 
 /* hero-video: reduced-motion = stilstaande poster */
 (function(){
-  var v = document.getElementById("vitrine-video");
-  if (!v) return;
-  if (rustig) { v.removeAttribute("autoplay"); v.pause(); return; }
-  var p = v.play && v.play(); if (p && p.catch) p.catch(function(){});
+  document.querySelectorAll("video.vv").forEach(function(v){
+    if (rustig) { v.removeAttribute("autoplay"); v.pause(); return; }
+    var p = v.play && v.play(); if (p && p.catch) p.catch(function(){});
+  });
 })();
 
 /* zwevende knoppen zodra de hero uit beeld is */
@@ -185,39 +185,6 @@ document.querySelectorAll(".mm-kaart").forEach(function(k){
   document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !m.hidden) uit(); });
 })();
 
-/* zwevende cheesecakes: zweven (CSS) + meebewegen met muis, vinger en scroll, elk op een eigen diepte */
-(function(){
-  var hero = document.querySelector(".hero"), koeken = [].slice.call(document.querySelectorAll(".koek"));
-  if (!hero || !koeken.length || rustig) return;
-  var doelX = 0, doelY = 0, x = 0, y = 0, zicht = true, loopt = false;
-  function richt(cx, cy){
-    var b = hero.getBoundingClientRect();
-    doelX = (cx - b.left) / b.width - .5;
-    doelY = (cy - b.top) / b.height - .5;
-    start();
-  }
-  window.addEventListener("pointermove", function(e){ if (e.pointerType === "mouse") richt(e.clientX, e.clientY); }, {passive:true});
-  hero.addEventListener("touchstart", function(e){ var t = e.touches[0]; richt(t.clientX, t.clientY); }, {passive:true});
-  hero.addEventListener("touchmove", function(e){ var t = e.touches[0]; richt(t.clientX, t.clientY); }, {passive:true});
-  hero.addEventListener("touchend", function(){ doelX = 0; doelY = 0; start(); }, {passive:true});
-  window.addEventListener("scroll", start, {passive:true});
-  if ("IntersectionObserver" in window) new IntersectionObserver(function(e){ zicht = e[0].isIntersecting; if (zicht) start(); }).observe(hero);
-  var vorigeY = -1;
-  function start(){ if (!loopt && zicht) { loopt = true; requestAnimationFrame(stap); } }
-  function stap(){
-    x += (doelX - x) * .08; y += (doelY - y) * .08;
-    var mob = window.innerWidth < 960, sy = mob ? 0 : Math.min(window.scrollY, hero.offsetHeight), f = mob ? .3 : 1;
-    koeken.forEach(function(k){
-      var d = +k.getAttribute("data-diepte") || 1;
-      k.style.transform = "translate3d(" + (x * 46 * d * f).toFixed(1) + "px," + (y * 36 * d * f - sy * .18 * d).toFixed(1) + "px,0)";
-    });
-    var beweegt = Math.abs(doelX - x) > .002 || Math.abs(doelY - y) > .002 || sy !== vorigeY;
-    vorigeY = sy;
-    if (beweegt) requestAnimationFrame(stap); else loopt = false;
-  }
-  start();
-})();
-
 /* cheesecakepagina: rustige fade + 22px omhoog + schaal .98 -> 1, eenmalig */
 (function(){
   var els = [].slice.call(document.querySelectorAll(".fade"));
@@ -236,11 +203,12 @@ document.querySelectorAll(".mm-kaart").forEach(function(k){
   var sec = document.getElementById("match");
   if (!sec) return;
   var taarten = [
-    {n:"Red velvet cheesecake", w:"Romig wit, met red velvet-kruim", f:"img/cut-cheesecake-redvelvet.webp", b:1200, h:1000},
-    {n:"Lotus mini cheesecake", w:"Met een Lotus-koekje", f:"img/cut-mini-lotus.webp", b:670, h:812},
-    {n:"Cheesecake met karamel en chocolade", w:"Karamel, met stukjes chocoladereep", f:"img/cut-cheesecake-karamel.webp", b:1200, h:984},
-    {n:"Pistache cheesecake", w:"Pistache, op een bodem van kruim", f:"img/cut-cheesecake-pistache.webp", b:1189, h:853},
-    {n:"Cheesecake met room en limoen", w:"Toefjes room en schijfjes limoen", f:"img/cut-cheesecake-citroen.webp", b:1200, h:727}
+    {n:"Red velvet cheesecake", w:"Met red velvet-kruim", f:"img/v3-cheesecake-redvelvet.webp", pos:"50% 74%"},
+    {n:"Lotus mini cheesecake", w:"Met een Lotus-koekje", f:"img/v3-lotus-minis.webp", pos:"50% 50%"},
+    {n:"Cheesecake met karamel en chocolade", w:"Uit de vitrine", f:"img/v3-cheesecake-karamel.webp", pos:"50% 72%"},
+    {n:"Macarons", w:"In alle kleuren", f:"img/v3-macarons.webp", pos:"50% 55%"},
+    {n:"Pistache cheesecake", w:"Uit de vitrine", f:"img/v3-cheesecake-pistache.webp", pos:"50% 66%"},
+    {n:"Brownies", w:"Met stukjes chocoladereep", f:"img/v3-brownies.webp", pos:"50% 58%"}
   ];
   var stapel = sec.querySelector(".stapel"), spel = sec.querySelector(".spel"), uit = sec.querySelector(".uitslag"),
       teller = sec.querySelector(".teller"), lekker = [], beurt = 0;
@@ -251,7 +219,7 @@ document.querySelectorAll(".mm-kaart").forEach(function(k){
       var k = document.createElement("article");
       k.className = "mkaart";
       k.innerHTML = '<span class="st ja" aria-hidden="true">Lekker</span><span class="st nee" aria-hidden="true">Niets voor mij</span>' +
-        '<img src="' + t.f + '" alt="" width="' + t.b + '" height="' + t.h + '" draggable="false"><h3>' + esc(t.n) + '</h3><p>' + esc(t.w) + '</p>';
+        '<img class="foto" src="' + t.f + '" alt="" width="900" height="1600" style="object-position:' + t.pos + '" draggable="false"><h3>' + esc(t.n) + '</h3><p>' + esc(t.w) + '</p>';
       k._t = t; stapel.appendChild(k);
     });
     schik(); spel.hidden = false; uit.hidden = true; uit.innerHTML = "";
@@ -286,7 +254,7 @@ document.querySelectorAll(".mm-kaart").forEach(function(k){
         '<div class="knoppen"><a class="knop vol" href="tel:+31102035909">Bel om te reserveren</a><button type="button" class="knop lijn opnieuw">Opnieuw</button></div>';
     } else {
       var m = lekker[Math.floor(Math.random() * lekker.length)];
-      uit.innerHTML = '<img class="groot' + (m.h > m.b ? ' staand' : '') + '" src="' + m.f + '" alt="' + esc(m.n) + '" width="' + m.b + '" height="' + m.h + '">' +
+      uit.innerHTML = '<figure class="boog uitslag-boog"><img src="' + m.f + '" alt="' + esc(m.n) + '" width="900" height="1600" style="object-position:' + m.pos + '"></figure>' +
         '<p class="label">Jouw match' + (lekker.length > 1 ? ' (je vond er ' + lekker.length + ' lekker)' : '') + '</p><h3>' + esc(m.n) + '</h3>' +
         '<p class="hint">Kom hem proeven: bel om te reserveren.</p>' +
         '<div class="knoppen"><a class="knop vol" href="tel:+31102035909">Bel om te reserveren</a><button type="button" class="knop lijn opnieuw">Opnieuw</button></div>';
