@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kapsalon Hairfy – kapsalon in Rotterdam-IJsselmonde</title>
+<meta name="description" content="Kapsalon Hairfy aan het Prinsenplein 56 a in Rotterdam-IJsselmonde. Voor dames, heren en kinderen: knippen, balayage, highlights, krullen, vlechten en locs. 4,8 uit 121 Google-reviews.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!--
+  Demo L271 Kapsalon Hairfy (Prinsenplein 56 a, Groot-IJsselmonde), Mohamedia, 14 nov 2026.
+  Concept in één zin: "Het visitekaartje van de salon": een witte salonwand met zwarte spiegellijsten en goud,
+  zoals hun eigen zaak, en een keuzehulp die eindigt in hun zwart-gouden visitekaartje met je bericht erop.
+  Lay-out-archetype: STAANDE VIDEO + VISITEKAARTJE. Mobiel: hun eigen salonvideo vult het eerste scherm, de kop
+  staat onderin op een verloop. Desktop: kop links op wit, de video rechts in een zwarte spiegellijst met gouden
+  binnenrand (hun spiegels), in de eigen 9:16-verhouding, niet gecropt. Daarna een behandelingenlijst als
+  kaart met twee eigen foto's, de keuzehulp (wie → behandeling → dag) en een houten lamellenstrook als scheiding.
+  Hero-beweging: alleen hun eigen video (Instagram-reel DfGJPyJAaSF: barberplek → kroonluchter → logowand),
+  geen extra animatie. Reduced motion = stilstaand logowandbeeld.
+  Bewust NIET: boogspiegel/ledlijn (ZALAL, zelfde route), navy + getekende onderstreping, band onder de hero,
+  stempel, schuine fotokaart, Ken Burns, stoom, licht dat aangaat, letters één voor één, onthuld bord/logo.
+  Palet: wand #fbfaf7 / vloer #e4e3df / beton #8b8d8c, spiegelzwart #121212 / #1d1d1d, goud #c9a24c /
+  champagne #e3c98b / donkergoud #7c5c18, lamel #a36a3c / #6e4423.
+  Fonts (zelf gehost, fonts/): Josefin Sans (koppen, art-deco zoals hun kroonluchter en spiegels) + Figtree.
+  Logo: hun eigen embleem (kroon met sterren, ring, profiel man + vrouw) overgetrokken van hun Instagram-profielfoto,
+  met "KAPSALON HAIRFY" in Cinzel als paden (zoals op hun visitekaartje).
+-->
+<style>
+:root{--wand:#fbfaf7;--vloer:#e4e3df;--beton:#8b8d8c;--zwart:#121212;--zwart2:#1d1d1d;--goud:#c9a24c;--champ:#e3c98b;
+  --goud-d:#7c5c18;--lamel:#a36a3c;--lamel-d:#6e4423;--inkt:#161616;--grijs:#55575a;
+  --kop:'Josefin Sans',system-ui,sans-serif;--tekst:'Figtree',system-ui,-apple-system,Segoe UI,sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--tekst);font-size:17px;line-height:1.6;color:var(--inkt);background:var(--wand);overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:600;line-height:1.08;margin:0 0 .5em;overflow-wrap:break-word}
+h2{font-size:clamp(30px,7vw,50px);font-weight:300;letter-spacing:-.01em}
+h2 b{font-weight:600}
+h3{font-size:clamp(20px,5vw,24px)}
+p{margin:0 0 1em}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.grid>*{min-width:0}
+.oog{font:600 13px var(--tekst);letter-spacing:.18em;text-transform:uppercase;color:var(--goud-d);margin-bottom:14px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:6px;
+  font:700 16px/1.1 var(--tekst);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap;
+  transition:background-color .2s,color .2s,border-color .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.goud{background:var(--goud);color:var(--zwart)}
+.btn.goud:hover{background:var(--champ)}
+.btn.zwart{background:var(--zwart);color:#fff}
+.btn.zwart:hover{background:#000}
+.btn.rand{border-color:currentColor;background:transparent}
+.knoppen{display:flex;flex-wrap:wrap;gap:12px}
+
+/* demo-strook, aankondiging, kop */
+.demo{background:var(--zwart);color:#cfcac0;font-size:13px;text-align:center;padding:8px 14px}
+.demo a{color:var(--champ)}
+.demo .pitchknop{display:none}
+body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--champ);background:transparent;color:var(--champ);font:700 13px var(--tekst);cursor:pointer;align-items:center}
+.aank{background:var(--vloer);font-size:14px;font-weight:600;text-align:center;padding:0 14px;border-bottom:1px solid #d3d1cb}
+.aank a{display:inline-flex;align-items:center;gap:6px;min-height:44px;text-decoration:none}
+.aank a:hover{text-decoration:underline}
+.aank .st{color:var(--goud-d)}
+.kop{background:var(--wand);border-bottom:1px solid #e2dfd8}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:76px}
+.kop .merk{display:inline-flex;align-items:center;min-height:44px;min-width:0}
+.kop .merk img{width:178px;height:auto}
+.kop nav{display:none;gap:4px}
+.kop nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;text-decoration:none;font-weight:600;font-size:15px;color:#3a3a3a}
+.kop nav a:hover{color:var(--goud-d)}
+.kop .btn{min-height:46px;padding:0 16px;font-size:15px}
+@media (max-width:380px){.kop .merk img{width:146px}.kop .btn{padding:0 12px}}
+@media (min-width:920px){.kop nav{display:flex}}
+
+/* hero */
+.hero{position:relative;background:var(--zwart);color:#fff;padding:0}
+.hero .beeld{position:relative;height:min(72svh,640px);min-height:480px;overflow:hidden;background:#0b0b0b}
+.hero video,.hero .beeld>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .beeld::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(10,10,10,.55) 58%,rgba(10,10,10,.94) 100%)}
+.hero .tekst{position:relative;z-index:2;margin-top:-210px;padding:0 20px 34px}
+.hero .oog{color:var(--champ)}
+.hero h1{font-size:clamp(40px,11.5vw,76px);font-weight:300;letter-spacing:-.015em;margin-bottom:14px}
+.hero h1 b{font-weight:600;color:var(--champ)}
+.hero .lead{font-size:18px;color:#e6e2da;max-width:32em;margin-bottom:22px}
+.hero .btn.rand{color:#fff}
+.hero .btn.rand:hover{background:rgba(255,255,255,.08)}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin:26px 0 0;font-size:15px;color:#cfcac0}
+.trust a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#fff;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(227,201,139,.5)}
+.sterren{color:var(--goud);letter-spacing:2px}
+.hero .bron{position:absolute;z-index:3;top:12px;right:12px;font-size:11px;color:#d8d3c8;background:rgba(0,0,0,.45);padding:4px 10px;border-radius:999px}
+@media (min-width:920px){
+  .hero{background:var(--wand);color:var(--inkt);padding:56px 0 72px}
+  .hero .in{width:min(1180px,100% - 40px);margin-inline:auto;display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center}
+  .hero .tekst{margin:0;padding:0;order:1}
+  .hero .oog{color:var(--goud-d)}
+  .hero h1 b{color:var(--goud-d)}
+  .hero .lead{color:#3c3c3c}
+  .hero .btn.rand{color:var(--inkt)}
+  .hero .btn.rand:hover{background:rgba(0,0,0,.05)}
+  .trust{color:var(--grijs)}
+  .trust a{color:var(--inkt)}
+  .hero .spiegel{order:2;padding:14px;background:var(--zwart);border-radius:6px;box-shadow:0 30px 60px -30px rgba(0,0,0,.55)}
+  .hero .beeld{width:calc(min(640px,72vh) * 720 / 1280);height:min(640px,72vh);min-height:0}
+  .hero .beeld::after{background:none;inset:8px;border:2px solid var(--goud);border-radius:2px;z-index:2}
+}
+
+/* lamellen-strook */
+.lamellen{height:22px;background:repeating-linear-gradient(90deg,var(--lamel) 0 9px,var(--lamel-d) 9px 12px)}
+
+/* secties */
+section{padding:72px 0}
+@media (min-width:920px){section{padding:100px 0}}
+.intro{max-width:40em;color:var(--grijs);font-size:18px}
+.donker{background:var(--zwart);color:#fff}
+.donker .oog{color:var(--champ)}
+.donker .intro,.donker p{color:#d4d0c8}
+.vloer{background:var(--vloer)}
+
+/* behandelingen */
+.menu .wrap{display:grid;gap:22px}
+@media (min-width:920px){.menu .wrap{grid-template-columns:1.05fr .95fr;gap:28px 48px;align-items:start}.menu .kopblok{grid-column:1/-1}}
+.lijst{background:#fff;border:1px solid #e2dfd8;border-radius:8px;padding:8px 22px}
+.lijst h3{font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--goud-d);margin:20px 0 6px}
+.lijst ul{list-style:none;margin:0 0 10px;padding:0}
+.lijst li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px dashed #d9d5cc;font-size:18px}
+.lijst li:last-child{border-bottom:0}
+.lijst li span{color:var(--grijs);font-size:14px;text-align:right}
+.lijst .noot{font-size:14px;color:var(--grijs);margin:10px 0 14px}
+.fotos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fotos figure{margin:0}
+.fotos img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:6px}
+.fotos figcaption{font-size:13px;color:var(--grijs);margin-top:6px}
+
+/* keuzehulp */
+.kiezer .wrap{display:grid;gap:34px}
+@media (min-width:920px){.kiezer .wrap{grid-template-columns:1.1fr .9fr;align-items:start;gap:56px}}
+.stap{border:0;margin:0 0 26px;padding:0;min-width:0}
+.stap legend{font:600 20px var(--kop);margin-bottom:12px;padding:0;color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{min-height:48px;padding:0 18px;border-radius:6px;border:1px solid #4a4a4a;background:var(--zwart2);color:#eee;
+  font:600 16px var(--tekst);cursor:pointer;transition:background-color .15s,border-color .15s,color .15s}
+.chip:hover{border-color:var(--champ)}
+.chip[aria-pressed="true"]{background:var(--goud);border-color:var(--goud);color:var(--zwart)}
+.chip small{font-weight:400;opacity:.8}
+.kaartje{background:#0c0c0c;color:#f1ead9;border-radius:10px;padding:26px 24px 24px;border:1px solid rgba(201,162,76,.55);
+  box-shadow:0 26px 50px -24px rgba(0,0,0,.9),inset 0 0 0 6px #0c0c0c,inset 0 0 0 7px rgba(201,162,76,.35)}
+.kaartje .kk{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.kaartje .kk img{width:46px;height:auto}
+.kaartje .kk b{font:600 15px var(--kop);letter-spacing:.2em;text-transform:uppercase;color:var(--champ)}
+.kaartje .bericht{font-size:18px;line-height:1.5;border-top:1px solid rgba(201,162,76,.35);border-bottom:1px solid rgba(201,162,76,.35);padding:16px 0;margin:0 0 18px;color:#fff}
+.kaartje .knoppen{flex-direction:column}
+.kaartje .btn{width:100%}
+.kaartje .btn.rand{color:var(--champ)}
+.kaartje small{display:block;color:#b5ae9f;margin-top:12px;font-size:14px}
+@media (min-width:920px){.kaartje{position:sticky;top:24px}}
+
+/* waarom */
+.drie{display:grid;gap:16px;margin-top:30px}
+@media (min-width:920px){.drie{grid-template-columns:repeat(3,1fr)}}
+.drie article{border-top:3px solid var(--goud);padding:22px 4px 0}
+.drie .nr{font:300 40px var(--kop);color:var(--goud-d);line-height:1;margin-bottom:10px}
+.drie p{color:var(--grijs);margin:0}
+
+/* reviews */
+.reviews .wrap{display:grid;gap:28px}
+@media (min-width:920px){.reviews .wrap{grid-template-columns:.75fr 1.25fr;gap:56px;align-items:start}}
+.score{font:600 clamp(40px,9vw,56px)/1 var(--kop);margin:0 0 8px}
+.score small{font-size:.4em;font-weight:300;color:var(--grijs)}
+.bronlink{display:inline-flex;align-items:center;min-height:44px;font-weight:700;color:var(--goud-d)}
+.citaten{display:grid;gap:14px}
+.citaat{background:#fff;border:1px solid #e2dfd8;border-radius:8px;padding:20px 22px}
+.citaat p{margin:0 0 8px}
+.citaat b{font:600 17px var(--kop);letter-spacing:.04em}
+.label{font-size:14px;color:var(--grijs);margin-top:6px}
+
+/* stappen */
+.stappen ol{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:14px;counter-reset:s}
+@media (min-width:920px){.stappen ol{grid-template-columns:repeat(3,1fr);gap:20px}}
+.stappen li{counter-increment:s;background:var(--zwart2);border:1px solid #333;border-radius:8px;padding:22px}
+.stappen li::before{content:"0" counter(s);display:block;font:300 34px var(--kop);color:var(--champ);margin-bottom:8px}
+.stappen li b{display:block;font-size:18px;color:#fff;margin-bottom:4px}
+.stappen li span{color:#cfcac0}
+.stappen li a{color:var(--champ);font-weight:700;white-space:nowrap}
+
+/* faq */
+.faq .wrap{max-width:840px}
+details{background:#fff;border:1px solid #e2dfd8;border-radius:8px;margin-bottom:10px}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;padding:14px 20px;font-weight:700;font-size:17px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:300 30px var(--kop);color:var(--goud-d);flex:none}
+details[open] summary::after{content:"–"}
+details p{padding:0 20px 18px;margin:0;color:#3c3c3c}
+details a{font-weight:700;white-space:nowrap}
+
+/* bezoek */
+.bezoek .wrap{display:grid;gap:30px}
+@media (min-width:920px){.bezoek .wrap{grid-template-columns:1fr 1fr;gap:56px;align-items:start}}
+.adres{font-size:19px;line-height:1.5;margin-bottom:16px}
+.adres b{font:600 24px var(--kop)}
+.uren{width:100%;border-collapse:collapse;margin:8px 0 10px;font-size:17px}
+.uren th,.uren td{padding:9px 0;border-bottom:1px solid #d6d3cc;text-align:left;font-weight:400}
+.uren td{text-align:right;font-variant-numeric:tabular-nums}
+.uren tr.vandaag th,.uren tr.vandaag td{font-weight:700;color:var(--goud-d)}
+.uren-noot{font-size:14px;color:var(--grijs);margin-bottom:22px}
+.rechts{display:grid;gap:16px}
+.rechts figure{margin:0}
+.rechts figure img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 40%;border-radius:8px}
+.rechts figcaption{font-size:13px;color:var(--grijs);margin-top:6px}
+.mm-kaart{--mk-bg:#121212;--mk-fg:#f4efe4;--mk-accent:#c9a24c;--mk-lijn:rgba(255,255,255,.06);
+  position:relative;aspect-ratio:16/10;width:100%;border-radius:8px;overflow:hidden;background:var(--mk-bg);color:var(--mk-fg)}
+.mm-kaart .mk-raster{position:absolute;inset:0;background:linear-gradient(var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px}
+.mm-kaart .mk-weg{position:absolute;background:rgba(255,255,255,.12);border-radius:6px}
+.mm-kaart .mk-inhoud{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mm-kaart .mk-pin{width:44px;height:44px}
+.mm-kaart .mk-adres{font-weight:700;line-height:1.35;margin:0}
+.mm-kaart .mk-knop{min-height:44px;padding:0 20px;border-radius:6px;border:2px solid var(--mk-accent);background:transparent;color:var(--mk-fg);font:inherit;font-weight:700;cursor:pointer}
+.mm-kaart .mk-knop:hover,.mm-kaart .mk-knop:focus-visible{background:var(--mk-accent);color:var(--mk-bg)}
+.mm-kaart .mk-uitleg{font-size:12px;opacity:.75;max-width:30ch;margin:0}
+.mm-kaart iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* slot */
+.slot{text-align:center}
+.slot h2{font-size:clamp(32px,8vw,60px)}
+.slot p{max-width:32em;margin-inline:auto;margin-bottom:26px}
+.slot .knoppen{justify-content:center}
+.slot .btn.rand{color:var(--champ)}
+
+/* footer */
+footer{background:#0b0b0b;color:#b9b3a8;padding:48px 0 110px;font-size:15px;border-top:1px solid #2a2a2a}
+footer .wrap{display:grid;gap:22px}
+footer img{width:200px;height:auto}
+footer a{color:#e9e3d6}
+footer .klein{font-size:13px;color:#8f897e}
+@media (min-width:920px){footer{padding-bottom:48px}footer .wrap{grid-template-columns:1fr 1fr;align-items:end}}
+
+/* zwevende knop */
+.zweef{position:fixed;left:14px;right:14px;bottom:14px;z-index:40;display:flex;opacity:0;transform:translateY(130%);pointer-events:none;transition:opacity .25s,transform .25s}
+.zweef.aan{opacity:1;transform:none;pointer-events:auto}
+.zweef .btn{width:100%;min-height:56px;box-shadow:0 10px 30px -8px rgba(0,0,0,.6)}
+@media (min-width:920px){.zweef{display:none}}
+
+/* pitchpaneel (alleen met ?pitch) */
+.pitch-paneel{position:fixed;inset:0;z-index:60;background:rgba(10,10,10,.74);overflow-y:auto;padding:16px}
+.pitch-in{background:#fff;color:var(--inkt);max-width:980px;margin:0 auto;border-radius:12px;padding:24px 20px 28px}
+.pitch-in h2{font-size:clamp(26px,5vw,36px);font-weight:600}
+.pitch-in h3{margin-top:24px}
+.pitch-sluit{float:right;min-height:44px;min-width:44px;border-radius:6px;border:2px solid var(--zwart);background:transparent;font:700 15px var(--tekst);cursor:pointer;padding:0 16px}
+.vn{display:grid;gap:16px;margin-top:10px}
+@media (min-width:760px){.vn{grid-template-columns:1fr 1fr}}
+.vn figure{margin:0;background:var(--vloer);border-radius:10px;padding:12px}
+.vn img{width:100%;height:340px;object-fit:contain;background:#fff;border-radius:6px}
+.vn figcaption{font-size:14px;margin-top:8px}
+.pitch-in ol{padding-left:22px}
+.pitch-in li{margin-bottom:8px}
+.reken{background:var(--vloer);border-radius:10px;padding:18px}
+.reken label{display:block;font-weight:700;margin-top:10px}
+.reken input[type=range]{width:100%;min-height:44px;accent-color:var(--goud-d)}
+.uitkomst{font-size:19px;margin-top:12px}
+.prijs{display:grid;gap:12px}
+@media (min-width:760px){.prijs{grid-template-columns:1fr 1fr 1fr}}
+.prijs div{border:2px solid var(--vloer);border-radius:10px;padding:16px}
+.prijs div.eerst{border-color:var(--goud)}
+.prijs b{display:block;font:600 22px var(--kop)}
+.prijs small{color:var(--grijs)}
+</style>
+<link rel="stylesheet" href="fonts/fonts.css">
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>.<button type="button" class="pitchknop" id="pitchOpen">Pitch openen</button></div>
+<div class="aank"><a href="https://www.google.com/maps?cid=8903536446715681229" target="_blank" rel="noopener"><span class="st">★</span> 4,8 uit 121 Google-reviews · Prinsenplein 56 a</a></div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="Kapsalon Hairfy, naar boven"><img src="logo-dark.svg" alt="Kapsalon Hairfy" width="160" height="60"></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#behandelingen">Behandelingen</a>
+      <a href="#keuzehulp">Afspraak</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#bezoek">Openingstijden</a>
+    </nav>
+    <a class="btn zwart" href="tel:+31648106699"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>Bellen</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="top" aria-labelledby="h1">
+  <div class="in grid">
+    <div class="spiegel">
+      <div class="beeld">
+        <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="img/salon-poster.jpg" aria-label="Rondgang door Kapsalon Hairfy: een kapperplek met barberpaal, de kroonluchter boven de stoelen en de houten wand met het logo">
+          <source src="img/salon.mp4" type="video/mp4">
+        </video>
+        <span class="bron">Video: onze Instagram</span>
+      </div>
+    </div>
+    <div class="tekst">
+      <p class="oog">Kapsalon · Prinsenplein, IJsselmonde</p>
+      <h1 id="h1">Voor dames, heren <b>en kinderen.</b></h1>
+      <p class="lead">Knippen, balayage, highlights, krullen, vlechten en locs. Aan het Prinsenplein 56 a in Rotterdam.</p>
+      <div class="knoppen">
+        <a class="btn goud" href="https://wa.me/31648106699?text=Hoi%20Kapsalon%20Hairfy%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20terecht%3F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>Afspraak via WhatsApp</a>
+        <a class="btn rand" href="#keuzehulp">Kies je behandeling</a>
+      </div>
+      <p class="trust"><a href="https://www.google.com/maps?cid=8903536446715681229" target="_blank" rel="noopener"><span class="sterren" aria-hidden="true">★★★★★</span> 4,8 uit 121 reviews op Google</a> <span>Rotterdam-IJsselmonde</span></p>
+    </div>
+  </div>
+</section>
+<div class="lamellen" aria-hidden="true"></div>
+
+<section class="menu" id="behandelingen" aria-labelledby="menu-kop">
+  <div class="wrap grid">
+    <div class="kopblok">
+      <p class="oog">Behandelingen</p>
+      <h2 id="menu-kop">Van een frisse coupe <b>tot balayage en locs.</b></h2>
+    </div>
+    <div class="lijst">
+      <h3>Knippen en föhnen</h3>
+      <ul>
+        <li>Damesknipbeurt</li>
+        <li>Kinderknipbeurt</li>
+        <li>Föhnen</li>
+      </ul>
+      <h3>Kleur</h3>
+      <ul>
+        <li>Balayage</li>
+        <li>Highlights</li>
+      </ul>
+      <h3>Krullen, vlechten en verzorging</h3>
+      <ul>
+        <li>Krullend haar</li>
+        <li>Vlechten</li>
+        <li>Locs</li>
+        <li>Keratinebehandeling</li>
+      </ul>
+      <p class="noot">Wat het kost hangt af van je haar. Vraag het even via WhatsApp, dan hoor je het vooraf.</p>
+    </div>
+    <div class="fotos">
+      <figure>
+        <img src="img/werk-bob.webp" alt="Een klant van achteren gezien in de kappersstoel, met een strak geknipte bob tot op de kaaklijn" width="750" height="960" loading="lazy" decoding="async">
+        <figcaption>Een strakke bob, van achteren.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/werk-fade.webp" alt="Een klant van opzij en achteren gezien, met een korte fade in de nek en langer haar bovenop" width="600" height="953" loading="lazy" decoding="async">
+        <figcaption>Een fade in de nek.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="donker kiezer" id="keuzehulp" aria-labelledby="kiezer-kop">
+  <div class="wrap grid">
+    <div>
+      <p class="oog">Afspraak</p>
+      <h2 id="kiezer-kop">Drie keuzes, <b>en je kaartje is klaar.</b></h2>
+      <p class="intro">Kies voor wie, wat en welke dag. Je bericht staat dan op het kaartje en gaat met één tik naar de salon via WhatsApp.</p>
+      <fieldset class="stap">
+        <legend>1 · Voor wie?</legend>
+        <div class="chips" data-groep="wie">
+          <button type="button" class="chip" aria-pressed="true" data-waarde="voor mij">Voor mij</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="voor mijn kind">Voor mijn kind</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="voor twee personen">Met z'n tweeën</button>
+        </div>
+      </fieldset>
+      <fieldset class="stap">
+        <legend>2 · Wat wil je laten doen?</legend>
+        <div class="chips" data-groep="wat">
+          <button type="button" class="chip" aria-pressed="true" data-waarde="knippen">Knippen</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="föhnen">Föhnen</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="balayage">Balayage</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="highlights">Highlights</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="krullend haar">Krullen</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="vlechten">Vlechten</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="locs">Locs</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="een keratinebehandeling">Keratine</button>
+        </div>
+      </fieldset>
+      <fieldset class="stap">
+        <legend>3 · Welke dag?</legend>
+        <div class="chips" data-groep="dag">
+          <button type="button" class="chip" aria-pressed="false" data-waarde="maandag">Ma <small>9–18</small></button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="dinsdag">Di <small>8:30–18</small></button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="woensdag">Wo <small>8:30–18</small></button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="donderdag">Do <small>8:30–18</small></button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="vrijdag">Vr <small>8:30–20</small></button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="zaterdag">Za <small>9–18</small></button>
+          <button type="button" class="chip" aria-pressed="true" data-waarde="">Maakt niet uit</button>
+        </div>
+      </fieldset>
+    </div>
+    <div class="kaartje" aria-live="polite">
+      <div class="kk"><img src="favicon.svg" alt="" width="46" height="55" loading="lazy" decoding="async"><b>Kapsalon Hairfy</b></div>
+      <p class="bericht" id="bericht">Hoi Kapsalon Hairfy, ik wil graag een afspraak voor mij, voor knippen. Wanneer kan ik terecht?</p>
+      <div class="knoppen">
+        <a class="btn goud" id="waKnop" href="https://wa.me/31648106699?text=Hoi%20Kapsalon%20Hairfy%2C%20ik%20wil%20graag%20een%20afspraak%20voor%20mij%2C%20voor%20knippen.%20Wanneer%20kan%20ik%20terecht%3F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>Verstuur via WhatsApp</a>
+        <a class="btn rand" href="tel:+31648106699">Of bel 06 48 10 66 99</a>
+      </div>
+      <small>Het bericht gaat naar 06 48 10 66 99, het nummer van Kapsalon Hairfy.</small>
+    </div>
+  </div>
+</section>
+
+<section class="waarom" aria-labelledby="waarom-kop">
+  <div class="wrap">
+    <p class="oog">Waarom Hairfy</p>
+    <h2 id="waarom-kop">Waar klanten <b>over beginnen.</b></h2>
+    <p class="intro">Drie dingen die terugkomen in de reviews op Google.</p>
+    <div class="drie">
+      <article>
+        <div class="nr">01</div>
+        <h3>Vakkundig</h3>
+        <p>Klanten schrijven dat er met jaren ervaring geknipt wordt.</p>
+      </article>
+      <article>
+        <div class="nr">02</div>
+        <h3>Zoals op je foto</h3>
+        <p>Klanten schrijven dat het resultaat er net zo uitziet als de foto die ze meenamen.</p>
+      </article>
+      <article>
+        <div class="nr">03</div>
+        <h3>Ook bij lastig haar</h3>
+        <p>Klanten noemen een vriendelijke ontvangst, een schone salon en hulp bij moeilijk haar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="vloer reviews" id="reviews" aria-labelledby="rev-kop">
+  <div class="wrap grid">
+    <div>
+      <p class="oog">Google-reviews</p>
+      <h2 id="rev-kop">Uit de stoel, <b>op Google.</b></h2>
+      <p class="score">4,8 <small>van 5</small></p>
+      <a class="bronlink" href="https://www.google.com/maps?cid=8903536446715681229" target="_blank" rel="noopener">Lees alle reviews op Google →</a>
+    </div>
+    <div>
+      <div class="citaten">
+        <div class="citaat"><p>Noemt Hairfy de beste kapper van Rotterdam-Zuid.</p><b>Abdelghani</b></div>
+        <div class="citaat"><p>Is blij met de nieuwe look: het resultaat is precies zoals op de foto.</p><b>Ilona</b></div>
+        <div class="citaat"><p>Is altijd erg tevreden over het kapsel en over de vriendelijke service.</p><b>yassine010zz</b></div>
+      </div>
+      <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+    </div>
+  </div>
+</section>
+
+<section class="donker stappen" aria-labelledby="stap-kop">
+  <div class="wrap">
+    <p class="oog">Zo werkt het</p>
+    <h2 id="stap-kop">Van appje <b>naar de stoel.</b></h2>
+    <ol>
+      <li><b>Kies je behandeling</b><span>Voor wie, wat en welke dag: de <a href="#keuzehulp">keuzehulp</a> zet het op een rij.</span></li>
+      <li><b>Stuur het bericht</b><span>Via WhatsApp, of bel <a href="tel:+31648106699">06 48 10 66 99</a>. Langskomen kan ook.</span></li>
+      <li><b>Kom naar het Prinsenplein</b><span>Prinsenplein 56 a, naast Bakkerij Prins.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="faq-kop">
+  <div class="wrap">
+    <p class="oog">Vragen</p>
+    <h2 id="faq-kop">Goed om <b>vooraf te weten.</b></h2>
+    <details>
+      <summary>Knippen jullie ook kinderen?</summary>
+      <p>Ja, een kinderknipbeurt staat bij onze behandelingen.</p>
+    </details>
+    <details>
+      <summary>Doen jullie ook krullen, vlechten en locs?</summary>
+      <p>Ja. Krullend haar, vlechten en locs staan alle drie bij onze behandelingen, net als balayage, highlights en een keratinebehandeling.</p>
+    </details>
+    <details>
+      <summary>Hoe maak ik een afspraak?</summary>
+      <p>Bel <a href="tel:+31648106699">06 48 10 66 99</a> of kom langs in de salon. Een appje sturen kan ook, met de keuzehulp hierboven.</p>
+    </details>
+    <details>
+      <summary>Wat kost een behandeling?</summary>
+      <p>Dat hangt af van je haar en wat je wilt. Vraag het via WhatsApp, dan weet je het vooraf.</p>
+    </details>
+    <details>
+      <summary>Zijn jullie op zondag open?</summary>
+      <p>Nee, op zondag is de salon dicht. Maandag tot en met zaterdag zijn we open, op vrijdag tot 20:00.</p>
+    </details>
+  </div>
+</section>
+
+<section class="vloer bezoek" id="bezoek" aria-labelledby="bezoek-kop">
+  <div class="wrap grid">
+    <div>
+      <p class="oog">Bezoek</p>
+      <h2 id="bezoek-kop">Prinsenplein, <b>Groot-IJsselmonde.</b></h2>
+      <p class="adres"><b>Kapsalon Hairfy</b><br>Prinsenplein 56 a<br>3078 GX Rotterdam</p>
+      <table class="uren" aria-label="Openingstijden">
+        <tbody>
+          <tr data-dag="1"><th>Maandag</th><td>09:00 – 18:00</td></tr>
+          <tr data-dag="2"><th>Dinsdag</th><td>08:30 – 18:00</td></tr>
+          <tr data-dag="3"><th>Woensdag</th><td>08:30 – 18:00</td></tr>
+          <tr data-dag="4"><th>Donderdag</th><td>08:30 – 18:00</td></tr>
+          <tr data-dag="5"><th>Vrijdag</th><td>08:30 – 20:00</td></tr>
+          <tr data-dag="6"><th>Zaterdag</th><td>09:00 – 18:00</td></tr>
+          <tr data-dag="0"><th>Zondag</th><td>gesloten</td></tr>
+        </tbody>
+      </table>
+      <p class="uren-noot">Op feestdagen kan het anders zijn. Bel bij twijfel even.</p>
+      <div class="knoppen">
+        <a class="btn zwart" href="https://www.google.com/maps/dir/?api=1&amp;destination=Kapsalon+Hairfy%2C+Prinsenplein+56+a%2C+3078+GX+Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+        <a class="btn rand" href="tel:+31648106699">Bel 06 48 10 66 99</a>
+      </div>
+    </div>
+    <div class="rechts">
+      <figure>
+        <img src="img/salon-station.webp" alt="Een kapperplek in de salon: zwarte kast met gouden lijnen, een barberpaal en lampen boven de spiegel" width="600" height="920" loading="lazy" decoding="async">
+        <figcaption>Een van de kapperplekken in de salon.</figcaption>
+      </figure>
+      <div class="mm-kaart" data-src="https://maps.google.com/maps?q=Kapsalon%20Hairfy%2C%20Prinsenplein%2056%20a%2C%203078%20GX%20Rotterdam&amp;z=16&amp;output=embed" data-titel="Kaart: Kapsalon Hairfy, Prinsenplein 56 a, Rotterdam">
+        <div class="mk-raster" aria-hidden="true"></div>
+        <div class="mk-weg" style="left:-5%;right:-5%;top:58%;height:12px;transform:rotate(-16deg)" aria-hidden="true"></div>
+        <div class="mk-weg" style="top:-5%;bottom:-5%;left:30%;width:10px;transform:rotate(10deg)" aria-hidden="true"></div>
+        <div class="mk-inhoud">
+          <svg class="mk-pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="var(--mk-accent)" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          <p class="mk-adres">Prinsenplein 56 a<br>3078 GX Rotterdam</p>
+          <button type="button" class="mk-knop">Toon kaart</button>
+          <p class="mk-uitleg">De kaart komt van Google Maps en laadt pas als je klikt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="donker slot" aria-labelledby="slot-kop">
+  <div class="wrap">
+    <p class="oog">Kapsalon Hairfy</p>
+    <h2 id="slot-kop">Toe aan <b>iets nieuws?</b></h2>
+    <p>Stuur een appje met je wens, of bel de salon aan het Prinsenplein.</p>
+    <div class="knoppen">
+      <a class="btn goud" href="https://wa.me/31648106699?text=Hoi%20Kapsalon%20Hairfy%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20terecht%3F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>Afspraak via WhatsApp</a>
+      <a class="btn rand" href="tel:+31648106699">Bel 06 48 10 66 99</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="logo-light.svg" alt="Kapsalon Hairfy" width="200" height="75" loading="lazy" decoding="async">
+      <p>Prinsenplein 56 a, 3078 GX Rotterdam · <a href="tel:+31648106699">06 48 10 66 99</a><br><a href="https://www.instagram.com/kapsalonhairfy/" target="_blank" rel="noopener">Instagram @kapsalonhairfy</a></p>
+    </div>
+    <div>
+      <p class="klein">Video en foto's: Instagram @kapsalonhairfy (reels DfGJPyJAaSF en DdjsDN7gV1s) en de hoofdfoto van Kapsalon Hairfy op Google Maps. Reviews: Google. Openingstijden en behandelingen: Fresha.</p>
+      <p>Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-hidden="true">
+  <a class="btn goud" href="https://wa.me/31648106699?text=Hoi%20Kapsalon%20Hairfy%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20terecht%3F" target="_blank" rel="noopener" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>Afspraak via WhatsApp</a>
+</div>
+
+<div class="pitch-paneel" id="pitch" hidden role="dialog" aria-modal="true" aria-labelledby="pitch-kop">
+  <div class="pitch-in">
+    <button type="button" class="pitch-sluit" id="pitchDicht">Sluiten</button>
+    <h2 id="pitch-kop">Van alleen Instagram naar een eigen site</h2>
+    <div class="vn">
+      <figure>
+        <img src="img/voor-maps.jpg" alt="Het Google Maps-profiel van Kapsalon Hairfy, met als website instagram.com" width="410" height="892" loading="lazy" decoding="async">
+        <figcaption><b>Nu:</b> op Google Maps staat bij website alleen instagram.com (bekeken op 14 november 2026).</figcaption>
+      </figure>
+      <figure>
+        <img src="img/na-mobiel.jpg" alt="Deze nieuwe site op een telefoon" width="585" height="1266" loading="lazy" decoding="async">
+        <figcaption><b>Straks:</b> een eigen site met jullie salonvideo, behandelingen en openingstijden.</figcaption>
+      </figure>
+    </div>
+
+    <h3>Wat er voor jullie verandert</h3>
+    <ol>
+      <li>De websiteknop op Google opent jullie eigen site, met alles op één plek, in plaats van alleen Instagram.</li>
+      <li>Alle behandelingen en openingstijden staan er, en de keuzehulp zet het WhatsApp-bericht klaar: voor wie, wat en welke dag.</li>
+      <li>Jullie eigen salon in beeld: de video van de zaak, jullie logo met de kroon en de 4,8 sterren uit 121 reviews.</li>
+    </ol>
+
+    <h3>Samen uitrekenen</h3>
+    <div class="reken">
+      <p><small>Voorbeeld, geen belofte. Vul samen in wat realistisch is.</small></p>
+      <label for="rKlanten">Extra klanten per week via de site: <output id="oKlanten">1</output></label>
+      <input type="range" id="rKlanten" min="0" max="10" step="1" value="1">
+      <label for="rBedrag">Gemiddelde besteding per bezoek (voorbeeld): € <output id="oBedrag">25</output></label>
+      <input type="range" id="rBedrag" min="10" max="150" step="5" value="25">
+      <p class="uitkomst">Per jaar: <b id="uJaar">€ 1.300</b> extra omzet.<br>€ 595 is de omzet van <b id="uAantal">24</b> bezoeken.</p>
+    </div>
+
+    <h3>Kosten en onderhoud</h3>
+    <div class="prijs">
+      <div class="eerst"><small>Website</small><b>€ 595 eenmalig</b>excl. btw (€ 719,95 incl. btw). Tot 5 pagina's, eigen domein, hosting inbegrepen, live binnen 48 uur na betaling.</div>
+      <div class="eerst"><small>Beheer, verplicht: maandbedrag</small><b>€ 25 per maand</b>excl. btw (€ 30,25 incl. btw). Wij passen alles voor jullie aan.</div>
+      <div><small>Of: klantportaal</small><b>€ 249 eenmalig</b>excl. btw (€ 301,29 incl. btw). Alleen als je liever zelf aanpast.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* keuzehulp */
+  var keuze={wie:'voor mij',wat:'knippen',dag:''};
+  var bericht=document.getElementById('bericht'), waK=document.getElementById('waKnop');
+  function tekst(){return 'Hoi Kapsalon Hairfy, ik wil graag een afspraak '+keuze.wie+', voor '+keuze.wat+(keuze.dag?', op '+keuze.dag:'')+'. Wanneer kan ik terecht?';}
+  function bijwerken(){var t=tekst();bericht.textContent=t;waK.href='https://wa.me/31648106699?text='+encodeURIComponent(t);}
+  document.querySelectorAll('.chips').forEach(function(g){
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('.chip'); if(!b) return;
+      g.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed',c===b?'true':'false');});
+      keuze[g.getAttribute('data-groep')]=b.getAttribute('data-waarde'); bijwerken();
+    });
+  });
+  bijwerken();
+
+  /* vandaag in de urentabel */
+  var r=document.querySelector('.uren tr[data-dag="'+new Date().getDay()+'"]'); if(r) r.classList.add('vandaag');
+
+  /* video: stil bij reduced motion */
+  var v=document.getElementById('heroVideo');
+  if(v && window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause();}
+
+  /* kaart pas laden na klik */
+  document.querySelectorAll('.mm-kaart').forEach(function(k){
+    var b=k.querySelector('.mk-knop'); if(!b) return;
+    b.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src=k.getAttribute('data-src'); f.title=k.getAttribute('data-titel')||'Kaart';
+      f.loading='lazy'; f.referrerPolicy='no-referrer-when-downgrade'; f.allowFullscreen=true;
+      k.innerHTML=''; k.appendChild(f);
+    });
+  });
+
+  /* zwevende knop: zodra de hero uit beeld is, niet boven het kaartje */
+  var zweef=document.getElementById('zweef'), heroUit=false, kaartIn=false;
+  function zet(){var aan=heroUit&&!kaartIn; zweef.classList.toggle('aan',aan); zweef.setAttribute('aria-hidden',aan?'false':'true'); zweef.querySelector('a').tabIndex=aan?0:-1;}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){heroUit=!e[0].isIntersecting;zet();}).observe(document.querySelector('.hero'));
+    new IntersectionObserver(function(e){kaartIn=e[0].isIntersecting;zet();},{threshold:.15}).observe(document.querySelector('.kaartje'));
+  }
+
+  /* pitch (alleen met ?pitch) */
+  var paneel=document.getElementById('pitch');
+  var rK=document.getElementById('rKlanten'), rB=document.getElementById('rBedrag');
+  function reken(){
+    var k=+rK.value,b=+rB.value;
+    document.getElementById('oKlanten').textContent=k; document.getElementById('oBedrag').textContent=b;
+    document.getElementById('uJaar').textContent='€ '+(k*b*52).toLocaleString('nl-NL');
+    document.getElementById('uAantal').textContent=Math.ceil(595/b);
+  }
+  rK.addEventListener('input',reken); rB.addEventListener('input',reken); reken();
+  if(/[?&]pitch\b/.test(location.search)){
+    document.body.classList.add('pitch');
+    document.getElementById('pitchOpen').addEventListener('click',function(){paneel.hidden=false;});
+    document.getElementById('pitchDicht').addEventListener('click',function(){paneel.hidden=true;});
+    paneel.addEventListener('click',function(e){if(e.target===paneel) paneel.hidden=true;});
+  }
+})();
+</script>
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
