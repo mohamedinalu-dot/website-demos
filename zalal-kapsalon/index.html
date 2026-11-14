@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ZALAL Kapsalon – kapper in Rotterdam-Beverwaard</title>
+<meta name="description" content="ZALAL Kapsalon in winkelcentrum Beverwaard, Oude Watering 279A in Rotterdam. Knippen en scheren voor heren en jongens. 4,8 uit 36 Google-reviews. Bel 06 87 06 87 31.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts/fonts.css">
+<!--
+  Demo L270 ZALAL Kapsalon (Oude Watering 279A, winkelcentrum Beverwaard), Mohamedia, 13 nov 2026.
+  Concept in één zin: "Voor de spiegel": de pagina is hun eigen werkplek, met de gouden boogspiegels,
+  de zwarte lamellenwand en de zwarte marmeren vloer met gouden aders uit hun eigen Maps-foto.
+  Lay-out-archetype: IN DE SPIEGEL (v2, 14 nov, na QA V3 vs. WIG ON). Hun spiegelfoto vult het hele eerste scherm
+  (mobiel: de spiegel staand; desktop: de brede zaal), met een donkere waas. De gouden ledlijn tekent zich als grote
+  boog óm het tekstblok, zodat de kop in hun spiegel staat. Geen fotokaart in boogvorm, geen onderschrift boven de kop,
+  geen eyebrow, kop in één kleur. Daarna wisselen lichte stenen vlakken (kleur van hun kasten) en donkere lamellenvlakken.
+  De keuzehulp eindigt in een "briefje" (WhatsApp-bericht naar hun 06-nummer als hoofdknop, bellen als tweede).
+  Hero-beweging uit hun eigen zaak: de ledboog tekent zich één keer vanaf de top naar beide kanten
+  (stroke-dashoffset), daarna verschijnt de binnenste stippellijn (meander). Daarna staat alles stil.
+  Bewust NIET: full-bleed nachtfoto met tekst op de stoep (L265), split-screen met logo-onthulling (Batu),
+  raamkader/logo als folie (La Vie), weekrooster met palen (Moes), band onder de hero, stempel, schuine
+  fotokaart, Ken Burns, stoom, licht dat aangaat, letters één voor één.
+  Palet: lamel #1c1e22 / #26292f, steen #e9e4db / kast #cfc8bb, goud #c9a03a / donkergoud #7a5c12,
+  marmerader #b9682b, kaap-geel #f2c230, wit #f6f3ec.
+  Fonts (zelf gehost, fonts/): Marcellus (koppen, klassieke kapitalen bij het meandermotief op hun spiegels) + Manrope.
+  Foto: hoofdfoto op Google Maps (cid 17111693013549889556), merknamen op flessen, kaap en
+  luchtkoeler vervaagd. Geen personen in beeld.
+-->
+<style>
+:root{--lamel:#1c1e22;--lamel2:#26292f;--steen:#e9e4db;--kast:#cfc8bb;--goud:#c9a03a;--goud-l:#e2bd5f;--goud-d:#7a5c12;
+  --ader:#b9682b;--kaap:#f2c230;--wit:#f6f3ec;--inkt:#17181b;--grijs:#5d5a54;
+  --kop:'Marcellus',Georgia,serif;--tekst:'Manrope',system-ui,-apple-system,Segoe UI,sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--tekst);font-size:17px;line-height:1.6;color:var(--inkt);background:var(--steen);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:400;line-height:1.12;margin:0 0 .5em;letter-spacing:.01em;overflow-wrap:break-word}
+h2{font-size:clamp(30px,6.4vw,46px)}
+h3{font-size:clamp(21px,5vw,25px)}
+p{margin:0 0 1em}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.grid>*{min-width:0}
+.oog{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--goud-d);margin-bottom:14px}
+.donker .oog,.hero .oog{color:var(--goud-l)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;
+  font:700 16px/1.1 var(--tekst);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap;
+  transition:background-color .2s,color .2s,border-color .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.geel{background:var(--kaap);color:var(--inkt)}
+.btn.geel:hover{background:#ffd54a}
+.btn.donker-k{background:var(--lamel);color:var(--wit)}
+.btn.donker-k:hover{background:#000}
+.btn.rand{border-color:currentColor;background:transparent}
+.btn.rand:hover{background:rgba(255,255,255,.08)}
+.knoppen{display:flex;flex-wrap:wrap;gap:12px}
+
+/* demo-strook, aankondiging, kop */
+.demo{background:#0f1012;color:#cfcac0;font-size:13px;text-align:center;padding:8px 14px}
+.demo a{color:var(--goud-l)}
+.demo .pitchknop{display:none}
+body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--goud-l);background:transparent;color:var(--goud-l);font:700 13px var(--tekst);cursor:pointer;align-items:center}
+.aank{background:var(--goud);color:var(--inkt);font-size:14px;font-weight:600;text-align:center;padding:0 14px}
+.aank a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+.aank a:hover{text-decoration:underline}
+.kop{background:var(--lamel);border-bottom:1px solid rgba(226,189,95,.25)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:72px}
+.kop .merk{display:inline-flex;align-items:center;min-height:44px;min-width:0}
+.kop .merk img{width:150px;height:auto}
+.kop nav{display:none;gap:4px}
+.kop nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;color:#d9d4ca;text-decoration:none;font-weight:600;font-size:15px}
+.kop nav a:hover{color:var(--goud-l)}
+.kop .btn{min-height:46px;padding:0 18px;font-size:15px}
+@media (max-width:380px){.kop .merk img{width:124px}.kop .btn{padding:0 14px}.kop .btn .lang{display:none}}
+@media (min-width:900px){.kop nav{display:flex}}
+
+/* hero: hun spiegel vult het scherm, de ledboog loopt om de tekst */
+.hero{position:relative;color:var(--wit);overflow:hidden;background:var(--lamel);isolation:isolate;
+  min-height:max(600px,calc(100svh - 150px));display:flex;align-items:flex-end;padding:120px 0 34px}
+.hero-foto{position:absolute;inset:0;z-index:-2}
+.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(20,21,24,.2) 0%,rgba(20,21,24,.42) 34%,rgba(20,21,24,.8) 70%,rgba(17,18,20,.96) 100%)}
+.hero .wrap{position:relative}
+.spiegeltekst{position:relative;text-align:center;padding:132px 22px 22px;max-width:560px;margin-inline:auto}
+.ledboog{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:-1;pointer-events:none}
+.ledboog .glas{fill:rgba(16,17,20,.42)}
+.led{fill:none;stroke:var(--goud-l);stroke-width:4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;
+  filter:drop-shadow(0 0 5px rgba(242,194,80,.85));animation:teken 2.2s cubic-bezier(.55,.1,.25,1) .35s both}
+.meander{fill:none;stroke:var(--goud);stroke-width:2;stroke-dasharray:7 4;opacity:0;animation:verschijn .8s ease 2.3s both}
+@keyframes teken{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes verschijn{from{opacity:0}to{opacity:.9}}
+@media (prefers-reduced-motion:reduce){.led{stroke-dashoffset:0}.meander{opacity:.9}}
+.hero h1{font-size:clamp(32px,9vw,64px);margin-bottom:14px;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.hero .lead{font-size:17px;color:#e6e1d7;max-width:30em;margin:0 auto 22px}
+.hero .knoppen{justify-content:center;margin-bottom:18px}
+.hero .btn.rand{color:var(--wit);background:rgba(16,17,20,.35)}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2px 14px;font-size:15px;color:#cfc9bd;margin:0}
+.trust a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--wit);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(226,189,95,.5)}
+.sterren{color:var(--kaap);letter-spacing:2px}
+.fotonoot{position:absolute;right:12px;bottom:8px;font-size:11px;color:rgba(246,243,236,.6);margin:0}
+@media (max-width:899px){.hero .knoppen .btn{flex:1 1 100%}}
+@media (min-width:900px){
+  .hero{min-height:680px;align-items:center;padding:70px 0}
+  .hero-foto img{object-position:30% 40%}
+  .hero::before{background:linear-gradient(90deg,rgba(17,18,20,.9) 0%,rgba(17,18,20,.72) 42%,rgba(17,18,20,.25) 75%,rgba(17,18,20,.15) 100%),
+    linear-gradient(0deg,rgba(17,18,20,.6),transparent 40%)}
+  .spiegeltekst{margin-left:0;padding:140px 56px 36px;max-width:640px}
+  .hero h1{font-size:58px}
+}
+
+/* secties */
+section{padding:72px 0}
+.donker{background:var(--lamel);color:var(--wit);
+  background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 3px,transparent 3px 15px)}
+.donker p{color:#d6d1c7}
+.kast{background:var(--kast)}
+.intro{max-width:40em;color:var(--grijs);font-size:18px}
+.donker .intro{color:#cfc9bd}
+@media (min-width:900px){section{padding:96px 0}}
+
+/* keuzehulp */
+.kiezer .wrap{display:grid;gap:34px}
+@media (min-width:900px){.kiezer .wrap{grid-template-columns:1.15fr .85fr;align-items:start}}
+.stap{border:0;margin:0 0 26px;padding:0}
+.stap legend{font-family:var(--kop);font-size:21px;margin-bottom:12px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{min-height:48px;padding:0 20px;border-radius:999px;border:2px solid #b9b1a3;background:var(--wit);color:var(--inkt);
+  font:600 16px var(--tekst);cursor:pointer;transition:background-color .15s,border-color .15s,color .15s}
+.chip:hover{border-color:var(--lamel)}
+.chip[aria-pressed="true"]{background:var(--lamel);border-color:var(--lamel);color:var(--wit)}
+.briefje{position:relative;background:var(--wit);border-radius:4px 4px 18px 18px;padding:28px 24px 24px;
+  box-shadow:0 18px 40px -22px rgba(23,24,27,.55);border-top:6px solid var(--goud)}
+.briefje h3{margin-bottom:6px}
+.briefje .bericht{font-size:18px;line-height:1.5;background:var(--steen);border-left:3px solid var(--ader);padding:14px 16px;margin:14px 0 18px;border-radius:0 10px 10px 0}
+.briefje .knoppen{flex-direction:column}
+.briefje .btn{width:100%}
+.briefje small{display:block;color:var(--grijs);margin-top:12px;font-size:14px}
+@media (min-width:900px){.briefje{position:sticky;top:24px}}
+
+/* waarom */
+.kaarten{display:grid;gap:18px;margin-top:34px}
+@media (min-width:900px){.kaarten{grid-template-columns:1fr 1.2fr 1fr;align-items:stretch}}
+.kaart{background:var(--lamel2);border:1px solid rgba(226,189,95,.22);border-radius:22px;padding:26px 24px;display:flex;flex-direction:column}
+.kaart .nr{font-family:var(--kop);color:var(--goud-l);font-size:20px;margin-bottom:10px}
+.kaart h3{color:var(--wit)}
+.kaart p{margin:0}
+.kaart figure{margin:18px -24px -26px;border-radius:0 0 22px 22px;overflow:hidden}
+.kaart figure img{width:100%;height:240px;object-fit:cover;object-position:60% 40%}
+.kaart figcaption{font-size:12px;color:#a7a196;padding:10px 24px 14px;background:#202227}
+
+/* reviews */
+.reviews .wrap{display:grid;gap:30px}
+@media (min-width:900px){.reviews .wrap{grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}}
+.score{font-family:var(--kop);font-size:clamp(46px,11vw,64px);line-height:1;margin:0 0 6px}
+.score small{font-size:.42em;color:var(--grijs)}
+.bron{display:inline-flex;align-items:center;min-height:44px;font-weight:700;color:var(--goud-d)}
+.citaten{display:grid;gap:14px}
+.citaat{background:var(--wit);border-radius:18px;padding:22px 22px 20px;border-left:4px solid var(--goud)}
+.citaat p{margin:0 0 8px;font-size:17px}
+.citaat b{font-family:var(--kop);font-weight:400;font-size:19px}
+.label{font-size:14px;color:var(--grijs);margin-top:4px}
+
+/* stappen */
+.stappen .wrap{display:grid;gap:34px;align-items:center}
+@media (min-width:900px){.stappen .wrap{grid-template-columns:1.2fr .8fr;gap:64px}}
+.stappen ol{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px;counter-reset:s}
+.stappen li{counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;background:rgba(255,255,255,.04);border:1px solid rgba(226,189,95,.2);border-radius:18px;padding:18px}
+.stappen li::before{content:counter(s);font-family:var(--kop);font-size:26px;width:52px;height:52px;border-radius:50% 50% 8px 8px;display:grid;place-items:center;background:var(--goud);color:var(--inkt)}
+.stappen li b{display:block;font-size:18px;color:var(--wit);margin-bottom:2px}
+.stappen li span{color:#cfc9bd}
+.stappen li a{color:var(--goud-l);font-weight:700;white-space:nowrap}
+.spiegel{margin:0;justify-self:center;width:min(360px,100%)}
+.spiegel img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:38% 50%;border-radius:14px;border-top:5px solid var(--goud)}
+.spiegel figcaption{font-size:12px;color:#a7a196;margin-top:10px;text-align:center}
+
+/* faq */
+.faq .wrap{max-width:820px}
+details{background:var(--wit);border-radius:16px;margin-bottom:12px;border:1px solid #d8d1c4}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;padding:14px 20px;font-weight:700;font-size:17px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--kop);font-size:28px;color:var(--goud-d);flex:none}
+details[open] summary::after{content:"–"}
+details p{padding:0 20px 18px;margin:0;color:#3c3a36}
+details a{font-weight:700;white-space:nowrap}
+
+/* route */
+.route .wrap{display:grid;gap:30px;align-items:center}
+@media (min-width:900px){.route .wrap{grid-template-columns:.9fr 1.1fr;gap:56px}}
+.adres{font-size:19px;line-height:1.5;margin-bottom:18px}
+.adres b{font-family:var(--kop);font-weight:400;font-size:24px}
+.uren-noot{color:#cfc9bd;margin-bottom:24px}
+.mm-kaart{--mk-bg:#141518;--mk-fg:#f6f3ec;--mk-accent:#e2bd5f;--mk-lijn:rgba(255,255,255,.06);
+  position:relative;aspect-ratio:4/3;width:100%;border-radius:22px;overflow:hidden;background:var(--mk-bg);color:var(--mk-fg);border:1px solid rgba(226,189,95,.3)}
+.mm-kaart .mk-raster{position:absolute;inset:0;background:linear-gradient(var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px}
+.mm-kaart .mk-weg{position:absolute;background:rgba(255,255,255,.12);border-radius:6px}
+.mm-kaart .mk-water{position:absolute;background:rgba(120,170,200,.16);border-radius:8px}
+.mm-kaart .mk-inhoud{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mm-kaart .mk-pin{width:46px;height:46px;filter:drop-shadow(0 0 14px var(--mk-accent))}
+.mm-kaart .mk-adres{font-weight:700;line-height:1.35;margin:0}
+.mm-kaart .mk-knop{min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--mk-accent);background:transparent;color:var(--mk-fg);font:inherit;font-weight:700;cursor:pointer}
+.mm-kaart .mk-knop:hover,.mm-kaart .mk-knop:focus-visible{background:var(--mk-accent);color:var(--mk-bg)}
+.mm-kaart .mk-uitleg{font-size:12px;opacity:.75;max-width:30ch;margin:0}
+.mm-kaart iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* slot */
+.slot{text-align:center;background:var(--goud);color:var(--inkt)}
+.slot h2{font-size:clamp(32px,7vw,54px)}
+.slot p{max-width:32em;margin-inline:auto;margin-bottom:26px}
+.slot .knoppen{justify-content:center}
+.slot .btn.rand{color:var(--inkt)}
+.slot .btn.rand:hover{background:rgba(0,0,0,.06)}
+
+/* footer */
+footer{background:#111214;color:#b9b3a8;padding:48px 0 110px;font-size:15px}
+footer .wrap{display:grid;gap:22px}
+footer img{width:160px;height:auto}
+footer a{color:#e5dfd3}
+footer .klein{font-size:13px;color:#8f897e}
+@media (min-width:900px){footer{padding-bottom:48px}footer .wrap{grid-template-columns:1fr 1fr;align-items:end}}
+
+/* zwevende knop */
+.zweef{position:fixed;left:14px;right:14px;bottom:14px;z-index:40;display:flex;opacity:0;transform:translateY(130%);pointer-events:none;
+  transition:opacity .25s,transform .25s}
+.zweef.aan{opacity:1;transform:none;pointer-events:auto}
+.zweef .btn{width:100%;min-height:56px;box-shadow:0 10px 30px -8px rgba(0,0,0,.6)}
+@media (min-width:900px){.zweef{display:none}}
+
+/* pitchpaneel (alleen met ?pitch) */
+.pitch-paneel{position:fixed;inset:0;z-index:60;background:rgba(10,10,12,.72);overflow-y:auto;padding:16px}
+.pitch-in{background:var(--wit);color:var(--inkt);max-width:980px;margin:0 auto;border-radius:22px;padding:24px 20px 28px}
+.pitch-in h2{font-size:clamp(26px,5vw,36px)}
+.pitch-in h3{margin-top:24px}
+.pitch-sluit{float:right;min-height:44px;min-width:44px;border-radius:999px;border:2px solid var(--lamel);background:transparent;font:700 15px var(--tekst);cursor:pointer;padding:0 16px}
+.nunu{display:grid;gap:16px;margin-top:10px}
+@media (min-width:760px){.nunu{grid-template-columns:1fr 1fr}}
+.nunu figure{margin:0;background:var(--steen);border-radius:16px;padding:12px}
+.nunu img{width:100%;height:320px;object-fit:contain;background:#fff;border-radius:10px}
+.nunu figcaption{font-size:14px;margin-top:8px}
+.pitch-in ol{padding-left:22px}
+.pitch-in li{margin-bottom:8px}
+.reken{background:var(--steen);border-radius:16px;padding:18px}
+.reken label{display:block;font-weight:700;margin-top:10px}
+.reken input[type=range]{width:100%;min-height:44px;accent-color:var(--goud-d)}
+.reken output{font-weight:800}
+.uitkomst{font-size:19px;margin-top:12px}
+.prijs{display:grid;gap:12px}
+@media (min-width:760px){.prijs{grid-template-columns:1fr 1fr 1fr}}
+.prijs div{border:2px solid var(--kast);border-radius:16px;padding:16px}
+.prijs div.eerst{border-color:var(--goud)}
+.prijs b{display:block;font-family:var(--kop);font-weight:400;font-size:22px}
+.prijs small{color:var(--grijs)}
+</style>
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>.<button type="button" class="pitchknop" id="pitchOpen">Pitch openen</button></div>
+<div class="aank"><a href="https://www.google.com/maps?cid=17111693013549889556" target="_blank" rel="noopener">4,8 ★ uit 36 Google-reviews · winkelcentrum Beverwaard</a></div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="ZALAL Kapsalon, naar boven"><img src="logo-light.svg" alt="ZALAL Kapsalon" width="187" height="60"></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#kiezer">Keuzehulp</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#route">Route</a>
+    </nav>
+    <a class="btn geel" href="tel:+31687068731"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg><span>Bel<span class="lang"> ons</span></span></a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="top" aria-labelledby="h1">
+  <picture class="hero-foto">
+    <source media="(min-width:900px)" srcset="img/zaal-breed.webp" width="1440" height="736">
+    <img src="img/spiegelboog.webp" alt="Een spiegel in ZALAL Kapsalon met een gouden verlichte boog en meanderrand, voor een lamellenwand" width="776" height="1200" fetchpriority="high">
+  </picture>
+  <div class="wrap">
+    <div class="spiegeltekst">
+      <svg class="ledboog" id="ledboog" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="glas" d="M0 100V30A50 30 0 0 1 100 30V100z"/>
+        <path class="meander" d="M3 100V31A47 28 0 0 1 97 31V100"/>
+        <path class="led" pathLength="1" d="M50 0A50 30 0 0 0 0 30V100"/>
+        <path class="led" pathLength="1" d="M50 0A50 30 0 0 1 100 30V100"/>
+      </svg>
+      <h1 id="h1">Heren en jongens netjes geknipt</h1>
+      <p class="lead">Knippen en scheren in winkelcentrum Beverwaard, Oude Watering 279A in Rotterdam.</p>
+      <div class="knoppen">
+        <a class="btn geel" href="https://wa.me/31687068731?text=Hoi%20ZALAL%20Kapsalon%2C%20ik%20wil%20graag%20langskomen.%20Wanneer%20kan%20ik%20terecht%3F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>App ons</a>
+        <a class="btn rand" href="#kiezer">Stel je bezoek samen</a>
+      </div>
+      <p class="trust"><a href="https://www.google.com/maps?cid=17111693013549889556" target="_blank" rel="noopener"><span class="sterren" aria-hidden="true">★★★★★</span> 4,8 uit 36 reviews op Google</a></p>
+    </div>
+  </div>
+  <p class="fotonoot">Foto: hoofdfoto op Google Maps</p>
+</section>
+
+<section class="kiezer" id="kiezer" aria-labelledby="kiezer-kop">
+  <div class="wrap grid">
+    <div>
+      <p class="oog">Keuzehulp</p>
+      <h2 id="kiezer-kop">Wie neemt er plaats, en waarvoor?</h2>
+      <p class="intro">Kies hieronder, dan staat je appje aan ons klaar. Versturen via WhatsApp, of meteen bellen.</p>
+      <fieldset class="stap">
+        <legend>1 · Knippen, scheren of allebei?</legend>
+        <div class="chips" data-groep="wat">
+          <button type="button" class="chip" aria-pressed="true" data-waarde="knippen">Knippen</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="scheren">Scheren</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="knippen en scheren">Knippen en scheren</button>
+        </div>
+      </fieldset>
+      <fieldset class="stap">
+        <legend>2 · Voor wie?</legend>
+        <div class="chips" data-groep="wie">
+          <button type="button" class="chip" aria-pressed="true" data-waarde="">Voor mij</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde=" voor mijn zoon">Voor mijn zoon</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde=" voor mij en mijn zoon">Wij samen</button>
+        </div>
+      </fieldset>
+      <fieldset class="stap">
+        <legend>3 · Wanneer komt het uit?</legend>
+        <div class="chips" data-groep="wanneer">
+          <button type="button" class="chip" aria-pressed="true" data-waarde="vandaag">Vandaag</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="morgen">Morgen</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="later deze week">Later deze week</button>
+          <button type="button" class="chip" aria-pressed="false" data-waarde="wanneer het jullie uitkomt">Maakt niet uit</button>
+        </div>
+      </fieldset>
+    </div>
+    <div class="briefje" aria-live="polite">
+      <h3>Je briefje</h3>
+      <p class="bericht" id="bericht">Hoi, ik wil graag langskomen voor knippen, vandaag. Kan dat?</p>
+      <div class="knoppen">
+        <a class="btn donker-k" id="waKnop" href="https://wa.me/31687068731?text=Hoi%2C%20ik%20wil%20graag%20langskomen%20voor%20knippen%2C%20vandaag.%20Kan%20dat%3F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>Stuur via WhatsApp</a>
+        <a class="btn rand" href="tel:+31687068731">Of bel 06 87 06 87 31</a>
+      </div>
+      <small>Het bericht gaat naar 06 87 06 87 31, het nummer van ZALAL Kapsalon.</small>
+    </div>
+  </div>
+</section>
+
+<section class="donker waarom" aria-labelledby="waarom-kop">
+  <div class="wrap">
+    <p class="oog">Uit de reviews</p>
+    <h2 id="waarom-kop">Wat klanten na hun knipbeurt schreven.</h2>
+    <p class="intro">Drie dingen die klanten van ZALAL op Google noemen.</p>
+    <div class="kaarten grid">
+      <article class="kaart">
+        <div class="nr">I</div>
+        <h3>Jaren dezelfde stoel</h3>
+        <p>Klanten schrijven dat ze hier al jaren komen. Eén klant noemt meer dan vijf jaar.</p>
+      </article>
+      <article class="kaart">
+        <div class="nr">II</div>
+        <h3>Ook voor de kleinsten</h3>
+        <p>Moeders schrijven over de knipbeurt van hun zoon.</p>
+        <figure>
+          <img src="img/stoel-kind.webp" alt="Een kappersstoel met een vrolijke kapperscape met tekenfiguurtjes, op een zwarte marmeren vloer" width="600" height="810" loading="lazy" decoding="async">
+          <figcaption>Een cape met tekenfiguurtjes over de stoel.</figcaption>
+        </figure>
+      </article>
+      <article class="kaart">
+        <div class="nr">III</div>
+        <h3>Koffie, en rustig de tijd</h3>
+        <p>Klanten noemen de koffie, een betaalbare prijs en dat er rustig de tijd wordt genomen.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" aria-labelledby="rev-kop">
+  <div class="wrap grid">
+    <div>
+      <p class="oog">Google-reviews</p>
+      <h2 id="rev-kop">Drie klanten, in het kort.</h2>
+      <p class="score">4,8 <small>van 5</small></p>
+      <p>Uit 36 reviews op Google.</p>
+      <a class="bron" href="https://www.google.com/maps?cid=17111693013549889556" target="_blank" rel="noopener">Alle reviews op Google bekijken →</a>
+    </div>
+    <div>
+      <div class="citaten">
+        <div class="citaat"><p>Komt al meer dan vijf jaar bij deze kapper.</p><b>Joël</b></div>
+        <div class="citaat"><p>Wordt hier altijd goed geholpen, krijgt altijd koffie en vindt het betaalbaar.</p><b>Guerden</b></div>
+        <div class="citaat"><p>Eindelijk een barber die knippen en scheren echt beheerst, en dan ook nog op loopafstand.</p><b>Umut</b></div>
+      </div>
+      <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+    </div>
+  </div>
+</section>
+
+<section class="donker stappen" aria-labelledby="stap-kop">
+  <div class="wrap grid">
+    <div>
+      <p class="oog">Zo gaat het</p>
+      <h2 id="stap-kop">Drie stappen naar een verse coupe.</h2>
+      <ol>
+        <li><div><b>Kies wat je wilt</b><span>Knippen, scheren of allebei, en voor wie. De <a href="#kiezer">keuzehulp</a> zet het voor je op een rij.</span></div></li>
+        <li><div><b>App of bel</b><span>Stuur je bericht via WhatsApp of bel <a href="tel:+31687068731">06 87 06 87 31</a>, en vraag wanneer je terecht kunt.</span></div></li>
+        <li><div><b>Kom naar het winkelcentrum</b><span>Oude Watering 279A, in winkelcentrum Beverwaard.</span></div></li>
+      </ol>
+    </div>
+    <figure class="spiegel">
+      <img src="img/zaal-900.webp" alt="Het interieur van ZALAL Kapsalon: kappersstoelen voor spiegels met gouden boogverlichting en een zwarte marmeren vloer" width="900" height="892" loading="lazy" decoding="async">
+      <figcaption>De zaak, met de stoelen op de marmeren vloer.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="faq kast" aria-labelledby="faq-kop">
+  <div class="wrap">
+    <p class="oog">Vragen</p>
+    <h2 id="faq-kop">Kort gevraagd bij de spiegel.</h2>
+    <details>
+      <summary>Knippen jullie ook kinderen?</summary>
+      <p>Ja. In de reviews schrijven moeders over de knipbeurt van hun zoon.</p>
+    </details>
+    <details>
+      <summary>Doen jullie ook scheren?</summary>
+      <p>Ja, knippen en scheren allebei.</p>
+    </details>
+    <details>
+      <summary>Waar zitten jullie precies?</summary>
+      <p>Aan de Oude Watering 279A, 3077 RG Rotterdam, in winkelcentrum Beverwaard.</p>
+    </details>
+    <details>
+      <summary>Wanneer kan ik langskomen?</summary>
+      <p>App of bel even voor je komt: <a href="tel:+31687068731">06 87 06 87 31</a>. Dan weet je meteen of het uitkomt.</p>
+    </details>
+  </div>
+</section>
+
+<section class="donker route" id="route" aria-labelledby="route-kop">
+  <div class="wrap grid">
+    <div>
+      <p class="oog">Route</p>
+      <h2 id="route-kop">In winkelcentrum Beverwaard.</h2>
+      <p class="adres"><b>ZALAL Kapsalon</b><br>Oude Watering 279A<br>3077 RG Rotterdam</p>
+      <p class="uren-noot">App of bel even voor de tijden van vandaag.</p>
+      <div class="knoppen">
+        <a class="btn geel" href="https://www.google.com/maps/dir/?api=1&amp;destination=ZALAL+Kapsalon%2C+Oude+Watering+279A%2C+3077+RG+Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+        <a class="btn rand" href="tel:+31687068731">Bel 06 87 06 87 31</a>
+      </div>
+    </div>
+    <div class="mm-kaart" data-src="https://maps.google.com/maps?q=ZALAL%20Kapsalon%2C%20Oude%20Watering%20279A%2C%203077%20RG%20Rotterdam&amp;z=16&amp;output=embed" data-titel="Kaart: ZALAL Kapsalon, Oude Watering 279A, Rotterdam">
+      <div class="mk-raster" aria-hidden="true"></div>
+      <div class="mk-water" style="left:-5%;right:-5%;top:44%;height:16px;transform:rotate(-14deg)" aria-hidden="true"></div>
+      <div class="mk-weg" style="left:-5%;right:-5%;top:60%;height:10px;transform:rotate(-9deg)" aria-hidden="true"></div>
+      <div class="mk-weg" style="top:-5%;bottom:-5%;left:62%;width:10px;transform:rotate(8deg)" aria-hidden="true"></div>
+      <div class="mk-inhoud">
+        <svg class="mk-pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="var(--mk-accent)" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        <p class="mk-adres">Oude Watering 279A<br>3077 RG Rotterdam</p>
+        <button type="button" class="mk-knop">Toon kaart</button>
+        <p class="mk-uitleg">De kaart komt van Google Maps en laadt pas als je klikt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="slot-kop">
+  <div class="wrap">
+    <h2 id="slot-kop">Tijd voor de kapper?</h2>
+    <p>Stuur een appje of bel ZALAL Kapsalon in winkelcentrum Beverwaard.</p>
+    <div class="knoppen">
+      <a class="btn donker-k" href="https://wa.me/31687068731?text=Hoi%20ZALAL%20Kapsalon%2C%20ik%20wil%20graag%20langskomen.%20Wanneer%20kan%20ik%20terecht%3F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>App ZALAL Kapsalon</a>
+      <a class="btn rand" href="tel:+31687068731">Bel 06 87 06 87 31</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="logo-light.svg" alt="ZALAL Kapsalon" width="187" height="60" loading="lazy" decoding="async">
+      <p>Oude Watering 279A, 3077 RG Rotterdam<br>Winkelcentrum Beverwaard · <a href="tel:+31687068731">06 87 06 87 31</a></p>
+    </div>
+    <div>
+      <p class="klein">Foto: hoofdfoto van ZALAL Kapsalon op Google Maps. Reviews: Google.</p>
+      <p>Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-hidden="true">
+  <a class="btn geel" href="https://wa.me/31687068731?text=Hoi%20ZALAL%20Kapsalon%2C%20ik%20wil%20graag%20langskomen.%20Wanneer%20kan%20ik%20terecht%3F" target="_blank" rel="noopener" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>App ZALAL Kapsalon</a>
+</div>
+
+<div class="pitch-paneel" id="pitch" hidden role="dialog" aria-modal="true" aria-labelledby="pitch-kop">
+  <div class="pitch-in">
+    <button type="button" class="pitch-sluit" id="pitchDicht">Sluiten</button>
+    <h2 id="pitch-kop">Wie op Google op 'Website' tikt</h2>
+    <div class="nunu">
+      <figure>
+        <img src="img/voor-gids.jpg" alt="De gidssite NLmapNew.com met ZALAL Kapsalon, 5,0 uit 8 reviews, in het Engels" width="900" height="593" loading="lazy" decoding="async">
+        <figcaption><b>Nu:</b> de websiteknop op Google opent een Engelstalige gidssite met 5,0 uit 8 reviews (bekeken op 13 november 2026).</figcaption>
+      </figure>
+      <figure>
+        <img src="img/na-mobiel.jpg" alt="Deze nieuwe site op een telefoon" width="585" height="1266" loading="lazy" decoding="async">
+        <figcaption><b>Straks:</b> jullie eigen site, met jullie eigen zaak in beeld.</figcaption>
+      </figure>
+    </div>
+
+    <h3>Wat er beter wordt</h3>
+    <ol>
+      <li>De websiteknop op Google wijst naar jullie eigen site, niet naar een gidssite met andere cijfers (daar 5,0 uit 8, op Google 4,8 uit 36).</li>
+      <li>Appen of bellen in één tik, en een keuzehulp die het bericht klaarzet: wat, voor wie en wanneer.</li>
+      <li>De zaak zelf in beeld: de gouden spiegels en de marmeren vloer, met de 4,8 sterren van klanten ernaast.</li>
+    </ol>
+
+    <h3>Even narekenen, samen</h3>
+    <div class="reken">
+      <p><small>Voorbeeld, geen belofte. Vul samen in wat realistisch is.</small></p>
+      <label for="rKlanten">Extra klanten per week via de site: <output id="oKlanten">1</output></label>
+      <input type="range" id="rKlanten" min="0" max="10" step="1" value="1">
+      <label for="rBedrag">Gemiddelde besteding per bezoek (voorbeeld): € <output id="oBedrag">15</output></label>
+      <input type="range" id="rBedrag" min="10" max="50" step="1" value="15">
+      <p class="uitkomst">Per jaar: <b id="uJaar">€ 780</b> extra omzet.<br>€ 595 is de omzet van <b id="uAantal">40</b> bezoeken.</p>
+    </div>
+
+    <h3>De investering</h3>
+    <div class="prijs">
+      <div class="eerst"><small>Website</small><b>€ 595 eenmalig</b>excl. btw (€ 719,95 incl. btw). Tot 5 pagina's, eigen domein, hosting inbegrepen, live binnen 48 uur na betaling.</div>
+      <div class="eerst"><small>Beheer, verplicht: maandbedrag</small><b>€ 25 per maand</b>excl. btw (€ 30,25 incl. btw). Wij passen alles voor jullie aan.</div>
+      <div><small>Of: klantportaal</small><b>€ 249 eenmalig</b>excl. btw (€ 301,29 incl. btw). Alleen als je liever zelf aanpast.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* keuzehulp */
+  var keuze={wat:'knippen',wie:'',wanneer:'vandaag'};
+  var bericht=document.getElementById('bericht'), waK=document.getElementById('waKnop');
+  function tekst(){return 'Hoi, ik wil graag langskomen voor '+keuze.wat+keuze.wie+', '+keuze.wanneer+'. Kan dat?';}
+  function bijwerken(){var t=tekst();bericht.textContent=t;waK.href='https://wa.me/31687068731?text='+encodeURIComponent(t);}
+  document.querySelectorAll('.chips').forEach(function(g){
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('.chip'); if(!b) return;
+      g.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed',c===b?'true':'false');});
+      keuze[g.getAttribute('data-groep')]=b.getAttribute('data-waarde'); bijwerken();
+    });
+  });
+  bijwerken();
+
+  /* ledboog in echte pixels (zelfde dikte op elk scherm) */
+  var boog=document.getElementById('ledboog');
+  function boogMaat(){
+    var r=boog.getBoundingClientRect(),w=Math.round(r.width),h=Math.round(r.height); if(!w||!h) return;
+    var rx=w/2-2,ry=Math.min(rx*.8,h*.32),t=ry+2,ps=boog.querySelectorAll('path');
+    boog.setAttribute('viewBox','0 0 '+w+' '+h);
+    ps[0].setAttribute('d','M2 '+h+'V'+t+'A'+rx+' '+ry+' 0 0 1 '+(w-2)+' '+t+'V'+h+'z');
+    ps[1].setAttribute('d','M14 '+h+'V'+(t+6)+'A'+(rx-12)+' '+(ry-10)+' 0 0 1 '+(w-14)+' '+(t+6)+'V'+h);
+    ps[2].setAttribute('d','M'+w/2+' 2A'+rx+' '+ry+' 0 0 0 2 '+t+'V'+h);
+    ps[3].setAttribute('d','M'+w/2+' 2A'+rx+' '+ry+' 0 0 1 '+(w-2)+' '+t+'V'+h);
+  }
+  boogMaat(); window.addEventListener('resize',boogMaat);
+
+  /* kaart pas laden na klik */
+  document.querySelectorAll('.mm-kaart').forEach(function(k){
+    var b=k.querySelector('.mk-knop'); if(!b) return;
+    b.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src=k.getAttribute('data-src'); f.title=k.getAttribute('data-titel')||'Kaart';
+      f.loading='lazy'; f.referrerPolicy='no-referrer-when-downgrade'; f.allowFullscreen=true;
+      k.innerHTML=''; k.appendChild(f);
+    });
+  });
+
+  /* zwevende appknop: zodra de hero uit beeld is, niet boven de keuzehulp */
+  var zweef=document.getElementById('zweef'), heroUit=false, kiezerIn=false;
+  function zet(){var aan=heroUit&&!kiezerIn; zweef.classList.toggle('aan',aan); zweef.setAttribute('aria-hidden',aan?'false':'true'); zweef.querySelector('a').tabIndex=aan?0:-1;}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){heroUit=!e[0].isIntersecting;zet();}).observe(document.querySelector('.hero'));
+    new IntersectionObserver(function(e){kiezerIn=e[0].isIntersecting;zet();},{threshold:.15}).observe(document.querySelector('.briefje'));
+  }
+
+  /* pitch (alleen met ?pitch) */
+  var paneel=document.getElementById('pitch');
+  var rK=document.getElementById('rKlanten'), rB=document.getElementById('rBedrag');
+  function reken(){
+    var k=+rK.value,b=+rB.value;
+    document.getElementById('oKlanten').textContent=k; document.getElementById('oBedrag').textContent=b;
+    document.getElementById('uJaar').textContent='€ '+(k*b*52).toLocaleString('nl-NL');
+    document.getElementById('uAantal').textContent=Math.ceil(595/b);
+  }
+  rK.addEventListener('input',reken); rB.addEventListener('input',reken); reken();
+  if(/[?&]pitch\b/.test(location.search)){
+    document.body.classList.add('pitch');
+    document.getElementById('pitchOpen').addEventListener('click',function(){paneel.hidden=false;});
+    document.getElementById('pitchDicht').addEventListener('click',function(){paneel.hidden=true;});
+    paneel.addEventListener('click',function(e){if(e.target===paneel) paneel.hidden=true;});
+  }
+})();
+</script>
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
