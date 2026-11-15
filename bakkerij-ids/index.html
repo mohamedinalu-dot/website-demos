@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Bakkerij Ids – zuurdesembakkerij in Rotterdam-Noord</title>
+<meta name="description" content="Bakkerij Ids, zuurdesembakkerij aan de Treubstraat 9B in Rotterdam-Noord: handgemaakt zuurdesembrood, croissants, kouign amann en filterkoffie. Open wo–za 8–16 en zo 9–13. 4,8 uit 143 Google-reviews.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!--
+  Demo L280 Bakkerij Ids (Treubstraat 9B, Rotterdam-Noord), Mohamedia, 14 nov 2026.
+  Concept in één zin: "Het deeg rijst als hun wolkenletters": de hemelsblauwe kleur van hun deur en logo als
+  bakkersblauw, met een wolkenrand die bij het laden één keer opbolt als deeg dat rijst, en hun stoepbord
+  (blauwe lijst, zwart krijtbord) als menukaart.
+  Lay-out-archetype: SPLIT-SCREEN + KRIJTBORD-ALS-OBJECT. Mobiel: hun gevelfoto recht en volle breedte bovenaan,
+  daaronder een blauw tekstvlak met een wolkenrand (hun logovorm) dat één keer omhoog rijst over de foto
+  (eenmalig, daarna stil). Desktop: blauw tekstvlak links met de wolkenrand verticaal, gevelfoto rechts op volle hoogte.
+  Daarna kiezer (vragen of iets er ligt), het krijtbord met het assortiment, het verhaal met de croissantfoto
+  rechts, reviews, stappen, FAQ, route.
+  Bewust NIET: vitrine met inschuivende bakplaten (L273 Pronto, zelfde niche), puntgevel/bierviltjes (L272),
+  boogspiegel met ledlijn (L270), foto in een vormkader, eyebrow + tweekleurige kop, lopende band, stempel,
+  schuine fotokaart, Ken Burns, stoom, licht dat aangaat, letters één voor één, crème + serif + terracotta.
+  Palet: nacht #14314d, deurblauw/logo #64a5d7, licht #dcebf7 / #eef5fb, krijtbord #1e2327, lijst #7fa9c2,
+  baksteen #9c4b33 (alleen accent), korst #c8893f (sterren).
+  Fonts (zelf gehost, fonts/): Familjen Grotesk (koppen) + Instrument Sans (tekst).
+  Logo: hun eigen wolkenlogo "Ids" (bakkerij-ids.nl/files/bakkerijids.svg), paden overgenomen en afgerond.
+  Foto's: gevel + croissants van hun eigen site (fotografie Mik Nieuwenhof), donkere overlay eruit gehaald.
+-->
+<style>
+:root{--nacht:#14314d;--nacht2:#1c4166;--lucht:#64a5d7;--lucht-d:#4a8cc2;--licht:#dcebf7;--licht2:#eef5fb;--wit:#fff;
+  --bord:#1e2327;--lijst:#7fa9c2;--steen:#9c4b33;--korst:#c8893f;--inkt:#13202c;--grijs:#4c5966;
+  --kop:'Familjen Grotesk',system-ui,sans-serif;--tekst:'Instrument Sans',system-ui,-apple-system,Segoe UI,sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--tekst);font-size:17px;line-height:1.6;color:var(--inkt);background:var(--wit);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:700;line-height:1.08;margin:0 0 .45em;letter-spacing:-.015em;overflow-wrap:break-word}
+h2{font-size:clamp(30px,6.4vw,50px)}
+h3{font-size:clamp(20px,4.6vw,24px);font-weight:600}
+p{margin:0 0 1em}
+.wrap{width:min(1140px,100% - 40px);margin-inline:auto}
+.grid>*{min-width:0}
+section{padding:72px 0}
+@media (min-width:900px){section{padding:104px 0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:14px;
+  font:600 16px/1.1 var(--tekst);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap;
+  transition:background-color .2s,color .2s,border-color .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.hoofd{background:var(--nacht);color:#fff}
+.btn.hoofd:hover{background:var(--nacht2)}
+.btn.licht{background:#fff;color:var(--nacht);border-color:#fff}
+.btn.licht:hover{background:var(--licht2)}
+.btn.rand{border-color:currentColor;background:transparent}
+.btn.rand:hover{background:rgba(20,49,77,.06)}
+.knoppen{display:flex;flex-wrap:wrap;gap:12px}
+
+/* demo-strook, aankondiging, kop */
+.demo{background:var(--nacht);color:#cfe0ef;font-size:13px;text-align:center;padding:8px 14px}
+.demo a{color:#fff}
+.demo .pitchknop{display:none}
+body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid #fff;background:transparent;color:#fff;font:600 13px var(--tekst);cursor:pointer;align-items:center}
+.aank{background:var(--licht);color:var(--nacht);font-size:14px;font-weight:600;text-align:center;padding:0 14px}
+.aank a{display:inline-flex;align-items:center;gap:6px;min-height:44px;text-decoration:none}
+.aank a:hover{text-decoration:underline}
+.aank .ster{color:var(--korst)}
+.kop{background:#fff;border-bottom:1px solid var(--licht)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:74px}
+.kop .merk{display:inline-flex;align-items:center;gap:10px;min-height:44px;min-width:0;text-decoration:none}
+.kop .merk img{width:86px;height:59px}
+.kop .merk span{font-family:var(--kop);font-weight:600;font-size:15px;line-height:1.2;color:var(--grijs)}
+.kop nav{display:none;gap:2px}
+.kop nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;text-decoration:none;font-weight:600;font-size:15px}
+.kop nav a:hover{color:var(--lucht-d)}
+.kop .btn{min-height:46px;padding:0 16px;font-size:15px}
+@media (max-width:420px){.kop .merk span{display:none}}
+@media (max-width:340px){.kop .btn .lang{display:none}}
+@media (min-width:960px){.kop nav{display:flex}}
+
+/* hero: gevel + rijzend blauw vlak met wolkenrand */
+.hero{position:relative;background:var(--lucht);overflow:hidden;padding:0}
+.hero .foto{position:relative;height:clamp(250px,34vh,330px);overflow:hidden;background:#3a2b25}
+.hero .foto img{width:100%;height:100%;object-fit:cover;object-position:6% 62%}
+.hero .vlak{position:relative;background:var(--lucht);color:var(--nacht);padding:6px 20px 34px;margin-top:-34px;z-index:2;
+  transform-origin:50% 100%;animation:rijs 1.5s cubic-bezier(.3,1.25,.5,1) .25s both}
+.wolk{position:absolute;left:-10px;right:-10px;top:-31px;height:34px;pointer-events:none;transform-origin:50% 100%;
+  animation:bol 1.5s cubic-bezier(.3,1.4,.5,1) .35s both}
+.wolk svg{width:100%;height:100%;display:block}
+/* na de intro: animatie eraf, zodat volledige screenshots het eindbeeld tonen (les L217) */
+.hero .vlak.klaar,.wolk.klaar{animation:rust .01s both}
+@keyframes rust{from{transform:none}to{transform:none}}
+@keyframes rijs{0%{transform:translateY(70px) scaleY(.9)}100%{transform:translateY(0) scaleY(1)}}
+@keyframes bol{0%{transform:scaleY(.15)}100%{transform:scaleY(1)}}
+.hero .naam{display:none;width:210px;height:auto;margin:0 0 10px}
+@media (min-width:900px){.hero .naam{display:block}}
+.hero h1{font-size:clamp(31px,8.4vw,60px);margin-bottom:.32em;max-width:15ch}
+.hero .sub{font-size:17px;max-width:42ch;margin-bottom:20px}
+.hero .knoppen .btn{flex:1 1 150px}
+.hero .trust{margin:26px 0 0;font-size:14px;font-weight:600;display:flex;flex-wrap:wrap;gap:4px 14px}
+.hero .trust a{display:inline-flex;align-items:center;gap:6px;min-height:44px;text-decoration:none}
+.hero .trust a:hover{text-decoration:underline}
+.hero .trust .ster{color:var(--nacht)}
+@media (min-width:900px){
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);min-height:640px}
+  .hero .foto{order:2;height:auto;min-height:640px}
+  .hero .foto img{position:absolute;inset:0;object-position:12% 60%}
+  .hero .vlak{margin:0;padding:64px 64px 56px max(32px,calc((100vw - 1140px)/2));display:flex;flex-direction:column;justify-content:center;
+    animation-name:rijsD}
+  .wolk{left:auto;right:-46px;top:-10px;bottom:-10px;width:50px;height:auto;transform-origin:0 50%;animation-name:bolD}
+  .hero .knoppen .btn{flex:0 0 auto}
+}
+@keyframes rijsD{0%{transform:translateY(60px);clip-path:inset(30% -60px 0 0)}100%{transform:translateY(0);clip-path:inset(0 -60px 0 0)}}
+@keyframes bolD{0%{transform:scaleX(.15)}100%{transform:scaleX(1)}}
+
+/* kiezer */
+.kiezer{background:var(--licht2)}
+.kiezer .kopblok{max-width:680px;margin-bottom:28px}
+.kiezer .kopblok p{color:var(--grijs)}
+.kz{display:grid;gap:22px}
+@media (min-width:900px){.kz{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:start}}
+.stap{background:#fff;border:1px solid var(--licht);border-radius:18px;padding:20px;margin-bottom:14px}
+.stap h3{display:flex;align-items:center;gap:10px;font-size:19px}
+.stap h3 b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--lucht);color:var(--nacht);font-size:15px;flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{min-height:46px;padding:0 16px;border-radius:999px;border:2px solid var(--licht);background:#fff;color:var(--nacht);font:600 15px var(--tekst);cursor:pointer}
+.chip:hover{border-color:var(--lucht)}
+.chip[aria-pressed=true]{background:var(--nacht);border-color:var(--nacht);color:#fff}
+.chip small{font-weight:400;opacity:.8}
+.dicht{font-size:14px;color:var(--grijs);margin:12px 0 0}
+.briefje{background:var(--nacht);color:#fff;border-radius:18px;padding:24px;position:sticky;top:16px}
+.briefje h3{color:#fff}
+.briefje .bericht{background:#fff;color:var(--inkt);border-radius:14px 14px 14px 4px;padding:14px 16px;font-size:16px;min-height:96px;margin:0 0 18px}
+.briefje .btn{width:100%}
+.briefje .klein{font-size:13px;color:#b9cfe3;margin:12px 0 0}
+
+/* krijtbord */
+.plank .kopblok{max-width:640px;margin-bottom:30px}
+.bord{position:relative;background:var(--bord);color:#f4f6f7;border:14px solid var(--lijst);border-radius:6px;
+  box-shadow:inset 0 0 0 2px #5f8aa3,0 18px 40px rgba(20,49,77,.18);padding:30px 24px;
+  background-image:radial-gradient(ellipse at 20% 15%,rgba(255,255,255,.06),transparent 55%),radial-gradient(ellipse at 85% 80%,rgba(255,255,255,.045),transparent 50%)}
+.bord .kolommen{display:grid;gap:26px}
+@media (min-width:760px){.bord{padding:44px 48px}.bord .kolommen{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 56px}}
+@media (min-width:1080px){.bord .kolommen{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.bord h3{font-size:clamp(20px,5vw,24px);text-transform:lowercase;letter-spacing:.01em;color:var(--lucht);border-bottom:2px dashed rgba(255,255,255,.28);padding-bottom:8px;margin-bottom:12px}
+.bord ul{list-style:none;margin:0;padding:0;font-family:var(--kop);font-size:19px;line-height:1.5}
+.bord li{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.bord li a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border-radius:50%;color:#cfe3f3;text-decoration:none;font-size:13px;font-family:var(--tekst)}
+.bord li a:hover{background:rgba(255,255,255,.1)}
+.bord .bordvoet{margin:28px 0 0;padding-top:18px;border-top:2px dashed rgba(255,255,255,.28);font-size:15px;color:#d5dde3}
+.bord .pijl{display:block;width:120px;height:20px;margin-bottom:6px;color:#fff}
+
+/* verhaal */
+.verhaal{background:#fff}
+.verhaal .grid{display:grid;gap:34px;align-items:center}
+@media (min-width:900px){.verhaal .grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px}}
+.verhaal figure{margin:0}
+.verhaal figure img{width:100%;height:auto;aspect-ratio:1000/706;object-fit:cover;border-radius:22px}
+.verhaal figcaption{font-size:13px;color:var(--grijs);margin-top:8px}
+.feiten{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px}
+.feiten li{display:flex;gap:14px;align-items:flex-start;background:var(--licht2);border-radius:14px;padding:14px 16px}
+.feiten svg{width:26px;height:26px;flex:none;color:var(--lucht-d);margin-top:2px}
+
+/* waarom */
+.waarom{background:var(--nacht);color:#fff}
+.waarom .kaarten{display:grid;gap:16px;margin-top:28px}
+@media (min-width:860px){.waarom .kaarten{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.waarom .kaart{background:var(--nacht2);border-radius:20px;padding:26px 24px;border-top:6px solid var(--lucht)}
+.waarom .kaart p{color:#d3e2ef;margin:0}
+
+/* reviews */
+.reviews .top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:26px}
+.reviews .score{display:flex;align-items:center;gap:14px}
+.reviews .score b{font-family:var(--kop);font-size:clamp(34px,7vw,48px);line-height:1;color:var(--nacht)}
+.reviews .score .sterren{color:var(--korst);font-size:20px;letter-spacing:2px}
+.reviews .score a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+.rv{display:grid;gap:16px}
+@media (min-width:860px){.rv{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.rv article{background:var(--licht2);border-radius:20px;padding:24px}
+.rv article p{margin:0 0 12px}
+.rv article footer{font-weight:600;color:var(--nacht)}
+.label{font-size:13px;color:var(--grijs);margin:16px 0 0}
+
+/* stappen */
+.stappen{background:var(--licht)}
+.stappen ol{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:16px;counter-reset:s}
+@media (min-width:860px){.stappen ol{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.stappen li{background:#fff;border-radius:20px;padding:24px;counter-increment:s;position:relative}
+.stappen li::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--nacht);color:#fff;font:700 20px var(--kop);margin-bottom:14px}
+.stappen li p{margin:0;color:var(--grijs)}
+
+/* faq */
+.faq .lijst{max-width:780px}
+.faq details{border-bottom:1px solid var(--licht)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;font:600 18px/1.3 var(--kop);padding:10px 0}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:26px;color:var(--lucht-d);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0 0 18px;color:var(--grijs)}
+
+/* route */
+.route{background:var(--licht2)}
+.route .grid{display:grid;gap:28px}
+@media (min-width:900px){.route .grid{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:start}}
+.uren{list-style:none;margin:0 0 22px;padding:0;background:#fff;border-radius:18px;overflow:hidden}
+.uren li{display:flex;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid var(--licht)}
+.uren li:last-child{border-bottom:0}
+.uren li.vandaag{background:var(--lucht);color:var(--nacht);font-weight:600}
+.uren .dicht{color:var(--grijs);margin:0;font-size:inherit}
+.contact{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:6px}
+.contact a{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-weight:600;text-decoration:none;white-space:nowrap}
+.contact a:hover{text-decoration:underline}
+.contact svg{width:20px;height:20px;color:var(--lucht-d)}
+.mm-kaart{--mk-bg:var(--nacht);--mk-fg:#fff;--mk-accent:var(--lucht);--mk-lijn:rgba(255,255,255,.07);
+  position:relative;aspect-ratio:4/3;width:100%;border-radius:20px;overflow:hidden;background:var(--mk-bg);color:var(--mk-fg)}
+.mm-kaart .mk-raster{position:absolute;inset:0;background:linear-gradient(var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px}
+.mm-kaart .mk-weg{position:absolute;background:rgba(255,255,255,.13);border-radius:6px}
+.mm-kaart .mk-inhoud{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mm-kaart .mk-pin{width:46px;height:46px;filter:drop-shadow(0 0 14px var(--mk-accent))}
+.mm-kaart .mk-adres{font-weight:600;line-height:1.35;margin:0}
+.mm-kaart .mk-knop{min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--mk-accent);background:transparent;color:var(--mk-fg);font:inherit;font-weight:600;cursor:pointer}
+.mm-kaart .mk-knop:hover,.mm-kaart .mk-knop:focus-visible{background:var(--mk-accent);color:var(--mk-bg)}
+.mm-kaart .mk-uitleg{font-size:12px;opacity:.75;max-width:30ch;margin:0}
+.mm-kaart iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* slot */
+.slot{background:var(--lucht);color:var(--nacht);text-align:center}
+.slot p{max-width:46ch;margin:0 auto 24px}
+.slot .knoppen{justify-content:center}
+
+/* footer */
+.voet{background:var(--nacht);color:#cfe0ef;padding:48px 0 110px;font-size:15px}
+.voet .grid{display:grid;gap:24px}
+@media (min-width:860px){.voet .grid{grid-template-columns:auto 1fr auto;align-items:start}}
+.voet img{width:110px;height:76px}
+.voet a{color:#fff}
+.voet p{margin:0 0 6px}
+@media (min-width:900px){.voet{padding-bottom:48px}}
+
+/* zwevende CTA (mobiel) */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:flex;gap:10px;transform:translateY(140%);transition:transform .3s ease}
+.zweef.aan{transform:none}
+.zweef .btn{flex:1;box-shadow:0 10px 28px rgba(20,49,77,.3)}
+.zweef .btn.bel{flex:0 0 auto;background:#fff;color:var(--nacht);border-color:var(--nacht)}
+@media (min-width:900px){.zweef{display:none}}
+
+/* pitchpaneel (alleen ?pitch) */
+.paneel{position:fixed;inset:0;z-index:100;background:rgba(10,24,38,.6);display:flex;justify-content:flex-end}
+.paneel .in{background:#fff;width:min(560px,100%);height:100%;overflow-y:auto;padding:24px 22px 40px}
+.paneel h2{font-size:28px}
+.paneel h3{font-size:20px;margin-top:26px}
+.paneel .sluit{float:right;min-height:44px;min-width:44px;border-radius:50%;border:1px solid var(--licht);background:#fff;font-size:22px;cursor:pointer}
+.vn{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vn figure{margin:0}
+.vn img{width:100%;height:auto;aspect-ratio:390/844;object-fit:cover;object-position:top;border-radius:12px;border:1px solid var(--licht)}
+.vn figcaption{font-size:13px;color:var(--grijs);margin-top:6px}
+.punten{padding-left:20px}
+.punten li{margin-bottom:8px}
+.reken label{display:block;font-weight:600;margin:14px 0 4px}
+.reken input{width:100%;min-height:44px;accent-color:var(--nacht)}
+.reken .uit{background:var(--licht2);border-radius:14px;padding:14px 16px;margin-top:14px}
+.reken .uit b{font-family:var(--kop);font-size:24px;color:var(--nacht)}
+.prijs{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.prijs li{background:var(--licht2);border-radius:14px;padding:14px 16px}
+.prijs li b{display:block;font-family:var(--kop);font-size:18px;color:var(--nacht)}
+.klein{font-size:13px;color:var(--grijs)}
+</style>
+<link rel="stylesheet" href="fonts/fonts.css">
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>. <button type="button" class="pitchknop" id="pitchOpen">Mo</button></div>
+<div class="aank"><a href="https://www.google.com/maps?cid=6170149953030093213" target="_blank" rel="noopener"><span class="ster">★</span> 4,8 uit 143 Google-reviews · wo–za 8–16, zo 9–13</a></div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="Bakkerij Ids, naar boven"><img src="logo-dark.svg" alt="Bakkerij Ids" width="86" height="59"><span>Zuurdesembakkerij<br>Rotterdam-Noord</span></a>
+    <nav aria-label="Hoofdmenu"><a href="#plank">Assortiment</a><a href="#verhaal">Over Ids</a><a href="#reviews">Reviews</a><a href="#route">Route &amp; tijden</a></nav>
+    <a class="btn hoofd" href="tel:+31648085686"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span class="lang">Bel</span> 06 48 08 56 86</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="foto"><img src="img/gevel.webp" alt="De gevel van Bakkerij Ids aan de Treubstraat: blauwe deuren met witte wolken op het glas, het uithangbord en het stoepbord met zuurdesem, filterkoffie en croissants" width="960" height="678" fetchpriority="high"></div>
+  <div class="vlak">
+    <div class="wolk" aria-hidden="true"></div>
+    <img class="naam" src="logo-dark.svg" alt="" width="210" height="144">
+    <h1>Je buurtbakker voor zuurdesem en croissants</h1>
+    <p class="sub">Handgemaakt brood van biologische bloem, water, zout en zuurdesem, in het hart van Rotterdam-Noord.</p>
+    <div class="knoppen cta-hero">
+      <a class="btn hoofd" href="https://wa.me/31648085686?text=Hoi%20Bakkerij%20Ids%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7a11.6 11.6 0 0 1-4.5-4c-.3-.5-1.1-1.6-1.1-3s.7-2.1 1-2.4a1 1 0 0 1 .8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.3.5-.5.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.3z"/></svg>App de bakkerij</a>
+      <a class="btn licht" href="#kiezer">Ligt het er vandaag?</a>
+    </div>
+    <p class="trust"><a href="https://www.google.com/maps?cid=6170149953030093213" target="_blank" rel="noopener"><span class="ster">★★★★★</span> 4,8 uit 143 Google-reviews</a><a href="#route">Treubstraat 9B, Rotterdam</a></p>
+  </div>
+</section>
+
+<section class="kiezer" id="kiezer">
+  <div class="wrap">
+    <div class="kopblok">
+      <h2>Ligt het er vandaag?</h2>
+      <p>Het menu wisselt elke week. Kies wat je zoekt en op welke dag je langskomt, dan staat je vraag klaar in WhatsApp.</p>
+    </div>
+    <div class="kz grid">
+      <div>
+        <div class="stap"><h3><b>1</b>Waar heb je zin in?</h3><div class="chips" id="soort"></div></div>
+        <div class="stap"><h3><b>2</b>Welke precies?</h3><div class="chips" id="product"></div></div>
+        <div class="stap"><h3><b>3</b>Wanneer kom je langs?</h3><div class="chips" id="dag"></div><p class="dicht">Maandag en dinsdag is de bakkerij dicht.</p></div>
+      </div>
+      <aside class="briefje" aria-live="polite">
+        <h3>Je appje aan de bakker</h3>
+        <p class="bericht" id="bericht"></p>
+        <a class="btn licht" id="kzKnop" href="https://wa.me/31648085686?text=Hoi%20Bakkerij%20Ids" target="_blank" rel="noopener">Verstuur via WhatsApp</a>
+        <p class="klein">Je bericht gaat naar 06 48 08 56 86. Je kunt het in WhatsApp nog aanpassen.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="plank" id="plank">
+  <div class="wrap">
+    <div class="kopblok">
+      <h2>Wat er op de plank ligt</h2>
+      <p>Zoals op het stoepbord voor de deur: zuurdesem, viennoiserie, iets zoets en filterkoffie.</p>
+    </div>
+    <div class="bord">
+      <div class="kolommen">
+        <div><h3>Zuurdesembrood</h3><ul>
+          <li>Klassiek Desem <a href="#kiezer" data-kies="Klassiek Desem" aria-label="Vraag naar Klassiek Desem">vraag</a></li>
+          <li>Meerzaden <a href="#kiezer" data-kies="Meerzaden" aria-label="Vraag naar Meerzaden">vraag</a></li>
+          <li>Half Volkoren Tarwe <a href="#kiezer" data-kies="Half Volkoren Tarwe" aria-label="Vraag naar Half Volkoren Tarwe">vraag</a></li>
+          <li>Spelt Volkoren <a href="#kiezer" data-kies="Spelt Volkoren" aria-label="Vraag naar Spelt Volkoren">vraag</a></li>
+          <li>Baguettes <a href="#kiezer" data-kies="Baguettes" aria-label="Vraag naar Baguettes">vraag</a></li>
+          <li>Rozijnenbrood <a href="#kiezer" data-kies="Rozijnenbrood" aria-label="Vraag naar Rozijnenbrood">vraag</a></li>
+        </ul></div>
+        <div><h3>Viennoiserie</h3><ul>
+          <li>Croissant <a href="#kiezer" data-kies="Croissant" aria-label="Vraag naar Croissant">vraag</a></li>
+          <li>Kaas Croissant <a href="#kiezer" data-kies="Kaas Croissant" aria-label="Vraag naar Kaas Croissant">vraag</a></li>
+          <li>Pain au Chocolat <a href="#kiezer" data-kies="Pain au Chocolat" aria-label="Vraag naar Pain au Chocolat">vraag</a></li>
+          <li>Kouign Amann <a href="#kiezer" data-kies="Kouign Amann" aria-label="Vraag naar Kouign Amann">vraag</a></li>
+        </ul></div>
+        <div><h3>Zoet</h3><ul>
+          <li>Cannelé <a href="#kiezer" data-kies="Cannelé" aria-label="Vraag naar Cannelé">vraag</a></li>
+          <li>Gateau Breton <a href="#kiezer" data-kies="Gateau Breton" aria-label="Vraag naar Gateau Breton">vraag</a></li>
+          <li>Chocolate Chip <a href="#kiezer" data-kies="Chocolate Chip" aria-label="Vraag naar Chocolate Chip">vraag</a></li>
+          <li>Sprids <a href="#kiezer" data-kies="Sprids" aria-label="Vraag naar Sprids">vraag</a></li>
+        </ul></div>
+        <div><h3>Om erbij te drinken</h3><ul>
+          <li>Filterkoffie van Schot</li>
+          <li>Thee en ijsthee van Wilderland</li>
+        </ul></div>
+      </div>
+      <p class="bordvoet"><svg class="pijl" viewBox="0 0 120 20" aria-hidden="true"><path d="M2 10h110m-10-7 10 7-10 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Het menu wisselt elke week, maar veel klassiekers zijn altijd in de winkel.</p>
+    </div>
+  </div>
+</section>
+
+<section class="verhaal" id="verhaal">
+  <div class="wrap grid">
+    <div>
+      <h2>Vernoemd naar opa Ids</h2>
+      <p>De bakkerij is vernoemd naar opa Ids, die al bakker was in Friesland. Nu gaat de traditie verder aan de Treubstraat, als buurtbakker: een plek waar mensen een praatje met elkaar kunnen maken, en hopelijk niet alleen komen voor het brood en de croissants.</p>
+      <ul class="feiten">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 14c0-5 3.6-8 8-8s8 3 8 8v4H4zM8 10l1 3m3-4v4m4-3-1 3"/></svg><span>Elk brood is handgemaakt, met alleen biologische bloem, water, zout en zuurdesem.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Een lange rijs van 24 uur of langer geeft het brood zijn smaak en structuur.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></svg><span>Zo veel mogelijk met lokale producten.</span></li>
+      </ul>
+    </div>
+    <figure><img src="img/croissants.webp" alt="Een bakplaat vol croissants met diepbruine, gelaagde korst" width="1000" height="706" loading="lazy" decoding="async"><figcaption>Croissants van Ids. Foto: Mik Nieuwenhof.</figcaption></figure>
+  </div>
+</section>
+
+<section class="waarom" id="waarom">
+  <div class="wrap">
+    <h2>Waarom Ids</h2>
+    <div class="kaarten">
+      <div class="kaart"><h3>Zuurdesem en croissants</h3><p>Klanten schrijven over het zuurdesem en de croissants; één review noemt de croissants beter dan in Frankrijk.</p></div>
+      <div class="kaart"><h3>Al sinds de opening</h3><p>Klanten schrijven dat ze al sinds de opening bij Ids komen.</p></div>
+      <div class="kaart"><h3>Vlot, vriendelijk, klein terras</h3><p>Klanten schrijven over snelle en vriendelijke bediening, en over het kleine terras.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="top">
+      <h2>Uit 143 Google-reviews</h2>
+      <div class="score"><b>4,8</b><span class="sterren" aria-label="4,8 van 5 sterren">★★★★★</span><a href="https://www.google.com/maps?cid=6170149953030093213" target="_blank" rel="noopener">Bekijk op Google</a></div>
+    </div>
+    <div class="rv">
+      <article><p>Noemt Ids de beste bakkerij van de buurt, en vindt de croissants beter dan in Frankrijk.</p><footer>Pit</footer></article>
+      <article><p>Komt al bij Ids sinds de bakkerij openging.</p><footer>Mark</footer></article>
+      <article><p>Noemt het de beste bakkerij in de omgeving.</p><footer>Marit</footer></article>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="stappen" id="zo">
+  <div class="wrap">
+    <h2>Zo vraag je het na</h2>
+    <ol>
+      <li><h3>Kies je brood</h3><p>Tik in de kiezer of op het bord aan wat je zoekt.</p></li>
+      <li><h3>Kies je dag</h3><p>Woensdag tot en met zaterdag van 8 tot 16 uur, zondag van 9 tot 13 uur.</p></li>
+      <li><h3>Verstuur je appje</h3><p>Je vraag staat klaar in WhatsApp; je verstuurt hem met één tik.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap lijst">
+    <h2>Vragen aan de toonbank</h2>
+    <details><summary>Wanneer is de bakkerij open?</summary><p>Woensdag tot en met zaterdag van 8:00 tot 16:00 en zondag van 9:00 tot 13:00. Maandag en dinsdag is de bakkerij dicht.</p></details>
+    <details><summary>Wat zit er in het brood?</summary><p>Elk brood is handgemaakt en bevat alleen biologische bloem, water, zout en zuurdesem.</p></details>
+    <details><summary>Waarom zuurdesem?</summary><p>Door de lange rijs, van 24 uur of langer, krijgt het brood zijn karakteristieke smaak en structuur.</p></details>
+    <details><summary>Is het assortiment elke week hetzelfde?</summary><p>Het menu wisselt elke week, maar veel klassiekers zijn altijd in de winkel. Vraag het gerust even na via WhatsApp.</p></details>
+    <details><summary>Kan ik er ook koffie halen?</summary><p>Ja: filterkoffie van Schot, en thee en ijsthee van Wilderland.</p></details>
+  </div>
+</section>
+
+<section class="route" id="route">
+  <div class="wrap grid">
+    <div>
+      <h2>Treubstraat 9B, Rotterdam-Noord</h2>
+      <ul class="uren" id="uren">
+        <li data-d="3"><span>Woensdag</span><span>8:00 – 16:00</span></li>
+        <li data-d="4"><span>Donderdag</span><span>8:00 – 16:00</span></li>
+        <li data-d="5"><span>Vrijdag</span><span>8:00 – 16:00</span></li>
+        <li data-d="6"><span>Zaterdag</span><span>8:00 – 16:00</span></li>
+        <li data-d="0"><span>Zondag</span><span>9:00 – 13:00</span></li>
+        <li data-d="1"><span>Maandag</span><span class="dicht">dicht</span></li>
+        <li data-d="2"><span>Dinsdag</span><span class="dicht">dicht</span></li>
+      </ul>
+      <ul class="contact">
+        <li><a href="tel:+31648085686"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>06 48 08 56 86</a></li>
+        <li><a href="mailto:info@bakkerij-ids.nl"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg>info@bakkerij-ids.nl</a></li>
+        <li><a href="https://www.instagram.com/bakkerij.ids/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/></svg>@bakkerij.ids</a></li>
+      </ul>
+      <div class="knoppen cta-route">
+        <a class="btn hoofd" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bakkerij%20Ids%2C%20Treubstraat%209B%2C%203038%20XW%20Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+        <a class="btn rand" href="https://wa.me/31648085686?text=Hoi%20Bakkerij%20Ids%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener">App de bakkerij</a>
+      </div>
+    </div>
+    <div class="mm-kaart" data-src="https://maps.google.com/maps?q=Bakkerij%20Ids%2C%20Treubstraat%209B%2C%203038%20XW%20Rotterdam&amp;z=16&amp;output=embed" data-titel="Kaart: Bakkerij Ids, Treubstraat 9B, Rotterdam">
+      <div class="mk-raster" aria-hidden="true"></div>
+      <div class="mk-weg" style="left:-5%;right:-5%;top:58%;height:12px;transform:rotate(-8deg)" aria-hidden="true"></div>
+      <div class="mk-weg" style="top:-5%;bottom:-5%;left:36%;width:10px;transform:rotate(12deg)" aria-hidden="true"></div>
+      <div class="mk-inhoud">
+        <svg class="mk-pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="var(--mk-accent)" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        <p class="mk-adres">Treubstraat 9B<br>3038 XW Rotterdam</p>
+        <button type="button" class="mk-knop">Toon kaart</button>
+        <p class="mk-uitleg">De kaart komt van Google Maps en laadt pas als je klikt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot" id="slot">
+  <div class="wrap">
+    <h2>Vers desem halen?</h2>
+    <p>Woensdag tot en met zondag aan de Treubstraat 9B. Even vragen of je favoriet er ligt? App of bel de bakkerij.</p>
+    <div class="knoppen">
+      <a class="btn hoofd" href="https://wa.me/31648085686?text=Hoi%20Bakkerij%20Ids%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener">App de bakkerij</a>
+      <a class="btn rand" href="tel:+31648085686">Bel 06 48 08 56 86</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="voet">
+  <div class="wrap grid">
+    <img src="logo-light.svg" alt="Bakkerij Ids" width="110" height="76">
+    <div>
+      <p><b>Bakkerij Ids</b> · zuurdesembakkerij · Treubstraat 9B, 3038 XW Rotterdam</p>
+      <p>Wo–za 8–16 · zo 9–13 · <a href="tel:+31648085686">06 48 08 56 86</a> · <a href="mailto:info@bakkerij-ids.nl">info@bakkerij-ids.nl</a></p>
+      <p>Foto's: Mik Nieuwenhof, van bakkerij-ids.nl.</p>
+    </div>
+    <p>Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-hidden="true">
+  <a class="btn hoofd" href="https://wa.me/31648085686?text=Hoi%20Bakkerij%20Ids%2C%20ik%20heb%20een%20vraag%3A%20" target="_blank" rel="noopener" tabindex="-1">App de bakkerij</a>
+  <a class="btn bel" href="tel:+31648085686" tabindex="-1" aria-label="Bel de bakkerij">Bel</a>
+</div>
+
+<div class="paneel" id="paneel" hidden>
+  <div class="in">
+    <button type="button" class="sluit" id="pitchDicht" aria-label="Sluiten">×</button>
+    <h2>Van vier links naar een bakkerssite</h2>
+    <div class="vn">
+      <figure><img src="img/voor-site.jpg" alt="Nu: de informatiepagina van bakkerij-ids.nl op een telefoon" width="390" height="844" loading="lazy"><figcaption>Nu: bakkerij-ids.nl/informatie op een telefoon</figcaption></figure>
+      <figure><img src="img/na-mobiel.jpg" alt="Straks: deze nieuwe site op een telefoon" width="390" height="844" loading="lazy"><figcaption>Straks: deze site op een telefoon</figcaption></figure>
+    </div>
+    <h3>Wat Ids erbij krijgt</h3>
+    <ol class="punten">
+      <li>Bellen werkt in één tik. Nu opent het nummer op de informatiepagina een foutpagina (404).</li>
+      <li>Tijden, adres en de 4,8 uit 143 reviews staan meteen bovenaan. Nu toont de homepage vier links en het adres.</li>
+      <li>Bij elk product een vraag-knop naar WhatsApp, en een assortiment dat je elke week kunt bijwerken.</li>
+    </ol>
+    <h3>Reken mee aan de toonbank</h3>
+    <div class="reken">
+      <p class="klein">Voorbeeld om samen in te vullen, geen belofte.</p>
+      <label for="rk1">Extra klanten per week: <span id="rk1v"></span></label>
+      <input type="range" id="rk1" min="1" max="30" value="3">
+      <label for="rk2">Gemiddelde besteding: € <span id="rk2v"></span></label>
+      <input type="range" id="rk2" min="3" max="40" value="8">
+      <div class="uit"><p style="margin:0">Per jaar: <b id="rkJaar"></b></p><p class="klein" style="margin:6px 0 0">€ 595 is de omzet van <span id="rkN"></span> bezoeken.</p></div>
+    </div>
+    <h3>Wat het kost</h3>
+    <ul class="prijs">
+      <li><b>Website: € 595 eenmalig</b>excl. btw (€ 719,95 incl. btw). Tot 5 pagina's, mobiel, eigen domein gekoppeld, WhatsApp-knop, Google-reviews en route, live binnen 48 uur na betaling. Hosting inbegrepen.</li>
+      <li><b>Beheer: € 25 per maand</b>excl. btw (€ 30,25 incl. btw). Wij passen het aan, bijvoorbeeld het assortiment van die week.</li>
+      <li><b>Of het klantportaal: € 249 eenmalig</b>excl. btw (€ 301,29 incl. btw). Je past het assortiment zelf aan.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NR='31648085686';
+  var SOORT={'Zuurdesembrood':['Klassiek Desem','Meerzaden','Half Volkoren Tarwe','Spelt Volkoren','Baguettes','Rozijnenbrood'],
+    'Viennoiserie':['Croissant','Kaas Croissant','Pain au Chocolat','Kouign Amann'],
+    'Zoet':['Cannelé','Gateau Breton','Chocolate Chip','Sprids']};
+  var DAGEN=[['woensdag','wo','8–16'],['donderdag','do','8–16'],['vrijdag','vr','8–16'],['zaterdag','za','8–16'],['zondag','zo','9–13']];
+  var st={s:'Viennoiserie',p:'Croissant',d:null};
+  var elS=document.getElementById('soort'),elP=document.getElementById('product'),elD=document.getElementById('dag');
+  function chip(tekst,aan,fn,klein){var b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('aria-pressed',aan?'true':'false');
+    b.innerHTML=tekst+(klein?' <small>'+klein+'</small>':'');b.addEventListener('click',fn);return b}
+  function teken(){
+    elS.innerHTML='';Object.keys(SOORT).forEach(function(s){elS.appendChild(chip(s,st.s===s,function(){st.s=s;if(SOORT[s].indexOf(st.p)<0)st.p=SOORT[s][0];teken()}))});
+    elP.innerHTML='';SOORT[st.s].forEach(function(p){elP.appendChild(chip(p,st.p===p,function(){st.p=p;teken()}))});
+    elD.innerHTML='';DAGEN.forEach(function(d){elD.appendChild(chip(d[1].charAt(0).toUpperCase()+d[1].slice(1),st.d===d[0],function(){st.d=d[0];teken()},d[2]))});
+    var dag=st.d?'op '+st.d:'vandaag';
+    var t='Hoi Bakkerij Ids, ligt er '+dag+' '+st.p+'? Dan kom ik langs. Groet,';
+    document.getElementById('bericht').textContent=t;
+    document.getElementById('kzKnop').href='https://wa.me/'+NR+'?text='+encodeURIComponent(t);
+  }
+  teken();
+  document.querySelectorAll('[data-kies]').forEach(function(a){a.addEventListener('click',function(){
+    var p=a.getAttribute('data-kies');Object.keys(SOORT).forEach(function(s){if(SOORT[s].indexOf(p)>=0){st.s=s;st.p=p}});teken()})});
+
+  // vandaag in de urenlijst
+  var v=new Date().getDay();var li=document.querySelector('#uren li[data-d="'+v+'"]');if(li)li.classList.add('vandaag');
+
+  // kaart laden met één klik
+  document.querySelectorAll('.mm-kaart').forEach(function(k){var b=k.querySelector('.mk-knop');if(!b)return;
+    b.addEventListener('click',function(){var f=document.createElement('iframe');f.src=k.getAttribute('data-src');f.title=k.getAttribute('data-titel')||'Kaart';
+      f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';f.allowFullscreen=true;k.innerHTML='';k.appendChild(f)})});
+
+  // wolkenrand: hun logovorm als rand van het blauwe vlak (rondjes van wisselende grootte)
+  var w=document.querySelector('.wolk');
+  function wolk(){
+    var vert=matchMedia('(min-width:900px)').matches,L=vert?w.offsetHeight:w.offsetWidth,H=vert?50:34,x=0,i=0,d='';
+    var maten=vert?[34,46,28,40,52,32,44,38]:[22,30,18,26,34,20,28,24];
+    while(x<L+40){var r=maten[i%maten.length]/2+ (i%3);d+='M'+(x)+' '+H+'a'+r+' '+r+' 0 0 1 '+(2*r)+' 0z';x+=2*r-(vert?9:6);i++}
+    var vb=vert?'0 0 '+H+' '+L:'0 0 '+L+' '+H;
+    var tr=vert?' transform="rotate(90) translate(0 -'+H+')"':'';
+    w.innerHTML='<svg viewBox="'+vb+'" preserveAspectRatio="none"><g'+tr+'><rect x="0" y="'+(H-2)+'" width="'+(L+40)+'" height="4" fill="#64a5d7"/><path fill="#64a5d7" d="'+d+'"/></g></svg>';
+  }
+  wolk();addEventListener('resize',wolk);
+  [document.querySelector('.hero .vlak'),w].forEach(function(el){el.addEventListener('animationend',function(e){if(e.target===el)el.classList.add('klaar')})});
+
+  // zwevende CTA: na de hero, niet zolang de kiezer in beeld is
+  var z=document.getElementById('zweef'),heroUit=false,kiezerIn=false;
+  function zet(){var aan=heroUit&&!kiezerIn;z.classList.toggle('aan',aan);z.setAttribute('aria-hidden',aan?'false':'true');
+    z.querySelectorAll('a').forEach(function(a){a.tabIndex=aan?0:-1})}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){heroUit=!e[0].isIntersecting;zet()}).observe(document.getElementById('hero'));
+    new IntersectionObserver(function(e){kiezerIn=e[0].isIntersecting;zet()},{threshold:.25}).observe(document.querySelector('.kz'));
+  }
+
+  // pitchpaneel: alleen met ?pitch
+  if(/[?&]pitch\b/.test(location.search)){
+    document.body.classList.add('pitch');
+    var pn=document.getElementById('paneel');
+    document.getElementById('pitchOpen').addEventListener('click',function(){pn.hidden=false});
+    document.getElementById('pitchDicht').addEventListener('click',function(){pn.hidden=true});
+    pn.addEventListener('click',function(e){if(e.target===pn)pn.hidden=true});
+    var a=document.getElementById('rk1'),b=document.getElementById('rk2');
+    function reken(){var k=+a.value,e=+b.value;document.getElementById('rk1v').textContent=k;document.getElementById('rk2v').textContent=e;
+      document.getElementById('rkJaar').textContent='€ '+(k*e*52).toLocaleString('nl-NL');
+      document.getElementById('rkN').textContent=Math.ceil(595/e)}
+    a.addEventListener('input',reken);b.addEventListener('input',reken);reken();
+  }
+})();
+</script>
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
