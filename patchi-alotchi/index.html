@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Patchi Alotchi – kapper in Rotterdam</title>
+<meta name="description" content="Patchi Alotchi, kapsalon aan de Mathenesserweg 59C in Rotterdam-Spangen. Knippen, baard trimmen en vormen, keratine en haarstyling, ook voor kinderen. 4,8 uit 230 Google-reviews. App of bel 06 87 95 69 53.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!--
+  Demo L285 Patchi Alotchi (Mathenesserweg 59C, Rotterdam-Spangen), Mohamedia, 15 nov 2026.
+  Concept in één zin: "Cape af": je zit in hun stoel; de navy kappersmantel met de gouden meanderrand (zoals hun capes)
+  wordt bij het laden in één zwaai afgeslagen en daaronder zit hun eigen zaak (touwlampen, verlichte spiegels).
+  Het zwarte gevelbord met gouden letters is de kopbalk, hun ronde raambadge (SINCE 2005 / HAIRSHOP) is het logo,
+  en het lint uit die badge is de vorm van de keuzehulp-uitkomst.
+  Lay-out-archetype: NAAST ELKAAR OP MOBIEL (kop links, staande fotostrook rechts op een flessengroene wand die tot
+  de schermrand doorloopt; pas daaronder introregel, knoppen en het scorelint). Desktop: zelfde opbouw, breder.
+  Hero-beweging: de cape zwaait één keer weg (1,4 s, daarna stil, reduced motion = geen cape).
+  Bewust NIET: kop -> foto volle breedte -> knoppen -> score (G&L, Bergweg, MAE, Ids); foto in boog/vormkader;
+  eyebrow + tweekleurige kop; schuine fotokaart; stempel; band onder de hero; Ken Burns; stoom; licht dat aangaat;
+  letters één voor één; scheerschuim (Bergweg); rolluik (L225); ledlijn die zich tekent (ZALAL).
+  Palet uit hun zaak: gevelzwart #141518, goud van de letters #e0b54a, flessengroen van de wand #1d4a3b,
+  navy van de raambadge #1f2d5a, kalkwit van de muren #f2f3ef, amber van de touwlampen #f0a23c (alleen accent).
+  Fonts (zelf gehost): Arvo (slab, zoals de letters op hun badge) + Figtree (tekst).
+  Logo: hun ronde raambadge nagetekend (ring, PATCHI ALOTCHI boven, HAIRSHOP onder, lint SINCE | 2005, gezicht met
+  kuif, bril en baard). Letters Arvo Bold naar paden.
+  Foto: hoofdfoto van hun eigen Google Maps-vermelding (geüpload door "Patchi Alotchi", maart 2023), uitsnede links
+  boven de mensen; doosje en poster zacht vervaagd.
+-->
+<style>
+:root{--zwart:#141518;--zwart2:#1d1f23;--goud:#e0b54a;--goud-d:#a77d1f;--groen:#1d4a3b;--groen-d:#123328;--groen-l:#2b634f;
+  --navy:#1f2d5a;--navy-d:#16213f;--kalk:#f2f3ef;--kalk2:#e6e8e2;--amber:#f0a23c;--inkt:#17201c;--grijs:#55605a;
+  --kop:'Arvo',Georgia,serif;--tekst:'Figtree',system-ui,sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--kalk);color:var(--inkt);font:400 17px/1.6 var(--tekst);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--kop);font-weight:700;line-height:1.12;margin:0 0 .5em;overflow-wrap:break-word}
+h2{font-size:clamp(28px,6.4vw,46px)}
+h3{font-size:clamp(19px,4.6vw,23px)}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.grid>*{min-width:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font:700 17px var(--tekst);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap}
+.btn svg{width:22px;height:22px;flex:none}
+.btn-goud{background:var(--goud);color:var(--zwart)}
+.btn-goud:hover{background:#ecc562}
+.btn-lijn{border-color:var(--zwart);color:var(--zwart);background:transparent}
+.btn-lijn:hover{background:var(--zwart);color:var(--kalk)}
+.btn-lijn-l{border-color:var(--goud);color:var(--goud);background:transparent}
+
+/* demo-strook + aankondiging */
+.demo{background:#0b0c0e;color:#c9cbc6;font-size:13px;text-align:center;padding:9px 16px}
+.demo a{color:#fff}
+.demo .pitchknop{display:none}
+body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--goud);background:transparent;color:var(--goud);font:700 13px var(--tekst);cursor:pointer;align-items:center}
+.aank{background:var(--groen-d);color:#e9efe9;font-size:14px;text-align:center}
+.aank a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;text-decoration:none}
+.aank b{color:var(--goud);font-weight:700}
+
+/* kopbalk = hun gevelbord */
+.gevel{background:var(--zwart);border-bottom:3px solid var(--goud-d)}
+.gevel .wrap{display:flex;align-items:center;gap:14px;min-height:76px}
+.merk{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.merk img{width:84px;height:60px;flex:none}
+.merk span{font:700 clamp(17px,4.6vw,24px)/1.1 var(--kop);color:var(--goud);letter-spacing:.06em}
+.gevel nav{margin-left:auto;display:flex;gap:6px;align-items:center}
+.gevel nav a.l{display:none;color:#d8d9d4;text-decoration:none;font-weight:600;min-height:44px;align-items:center;padding:0 12px}
+.gevel nav a.l:hover{color:var(--goud)}
+.gevel .btn{min-height:44px;padding:0 16px;font-size:15px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--kalk)}
+.hero .wrap{position:relative}
+.hero-grid{display:grid;grid-template-columns:1fr 46%;grid-template-areas:"kop wand" "onder onder";align-items:stretch}
+.hero-tekst{grid-area:kop}
+.wand{grid-area:wand}
+.hero-onder{grid-area:onder}
+.hero-tekst{padding:26px 14px 22px 0;display:flex;flex-direction:column;justify-content:center}
+.hero-tekst .plek{font-weight:600;font-size:14px;color:var(--grijs);margin:0 0 10px}
+.hero h1{font-size:clamp(32px,9vw,76px);margin:0;color:var(--zwart)}
+.wand{position:relative;margin-right:-20px;background:var(--groen);padding:22px 0 22px 14px}
+.wand::after{content:"";position:absolute;left:14px;right:0;bottom:8px;height:8px;background:var(--mnd) repeat-x 0 0/16px 8px;opacity:.8}
+.raam{position:relative;overflow:hidden;height:100%;min-height:380px;background:var(--navy-d)}
+.raam img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:22% 42%}
+.cape{position:absolute;inset:-2px;transform-origin:100% 0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.07),rgba(0,0,0,.18)),
+    repeating-linear-gradient(90deg,rgba(0,0,0,.0) 0 22px,rgba(0,0,0,.16) 22px 30px,rgba(255,255,255,.05) 30px 36px),
+    var(--navy);
+  animation:capeAf 1.4s cubic-bezier(.55,.05,.35,1) .9s both}
+.cape::after{content:"";position:absolute;left:0;right:0;bottom:18px;height:16px;background:var(--mnd2) repeat-x 0 0/32px 16px}
+.cape::before{content:"";position:absolute;left:50%;top:-40px;width:120px;height:80px;margin-left:-60px;border-radius:50%;background:var(--groen);box-shadow:0 0 0 6px var(--goud)}
+@keyframes capeAf{
+  0%{transform:none}
+  22%{transform:translate(-3%,1%) rotate(-2.5deg)}
+  85%{opacity:1}
+  100%{transform:translate(160%,-45%) rotate(22deg);opacity:0;visibility:hidden}
+}
+.hero-onder{padding:22px 0 34px}
+.hero-onder .intro{max-width:560px;font-size:18px;color:#2c3530}
+.knoppen{display:flex;flex-wrap:wrap;gap:12px;margin:6px 0 30px}
+.lint{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:#fff;min-height:48px;padding:0 30px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 16px) 50%,100% 100%,0 100%,16px 50%);text-decoration:none;font-weight:600;font-size:15px}
+.lint b{color:var(--goud);font-family:var(--kop);font-size:20px}
+
+/* meanderlijn als scheiding (rand van hun capes) */
+.meander{height:12px;background:var(--mnd3) repeat-x center/24px 12px;opacity:.9}
+
+/* kiezer */
+.kiezer{background:var(--groen);color:#eef3ef;padding:64px 0 72px}
+.kiezer h2{color:#fff}
+.kiezer .uitleg{max-width:600px;color:#cfe0d6}
+.kgrid{display:grid;gap:28px;margin-top:26px}
+.stap h3{font-family:var(--tekst);font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--goud);margin:0 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{min-height:46px;padding:8px 16px;border-radius:12px;border:2px solid rgba(255,255,255,.28);background:transparent;color:#fff;font:600 16px var(--tekst);cursor:pointer;text-align:left}
+.chip:hover{border-color:var(--goud)}
+.chip[aria-pressed=true]{background:var(--goud);border-color:var(--goud);color:var(--zwart)}
+.chip small{display:block;font-weight:400;font-size:12px;opacity:.8}
+.uitkomst{background:var(--navy);color:#fff;padding:26px 22px 24px;position:relative}
+.uitkomst .band{display:block;margin:-26px -22px 18px;background:var(--goud);color:var(--zwart);font:700 15px var(--kop);letter-spacing:.08em;text-transform:uppercase;padding:12px 34px;
+  clip-path:polygon(0 0,100% 0,calc(100% - 18px) 50%,100% 100%,0 100%,18px 50%);text-align:center}
+.uitkomst dl{margin:0 0 14px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px}
+.uitkomst dt{color:#aab4d4;font-size:14px}
+.uitkomst dd{margin:0;font-weight:700}
+.bericht{background:rgba(255,255,255,.08);border-left:3px solid var(--goud);padding:12px 14px;font-size:15px;margin:0 0 18px}
+.uitkomst .btn{width:100%}
+
+/* waarom */
+.waarom{padding:70px 0}
+.kaarten{display:grid;gap:16px;margin-top:24px}
+.kaart{background:#fff;border:1px solid var(--kalk2);border-top:5px solid var(--groen);padding:24px 22px;border-radius:4px}
+.kaart svg{width:40px;height:40px;margin-bottom:12px;color:var(--groen)}
+.kaart h3{font-size:clamp(19px,5vw,23px)}
+.kaart p{margin:0;color:#3b4540}
+
+/* reviews */
+.reviews{background:var(--zwart);color:#e7e8e3;padding:70px 0}
+.reviews h2{color:#fff}
+.score{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin:0 0 26px}
+.score .cijfer{font:700 clamp(40px,10vw,56px)/1 var(--kop);color:var(--goud)}
+.score a{display:inline-flex;align-items:center;min-height:44px;color:#e7e8e3}
+.rlijst{display:grid;gap:16px}
+.rev{border:1px solid #33363b;padding:22px;border-radius:4px;background:var(--zwart2)}
+.rev p{margin:0 0 10px;font-size:17px}
+.rev b{color:var(--goud);font-family:var(--kop)}
+.label{font-size:14px;color:#a9aca5;margin-top:18px}
+
+/* stappen */
+.stappen{padding:70px 0}
+.sgrid{display:grid;gap:18px;margin-top:22px;counter-reset:s}
+.sgrid div{position:relative;padding:22px 20px 20px 74px;background:#fff;border:1px solid var(--kalk2);border-radius:4px}
+.sgrid div::before{counter-increment:s;content:counter(s);position:absolute;left:18px;top:18px;width:40px;height:40px;border-radius:50%;background:var(--navy);color:var(--goud);font:700 20px/40px var(--kop);text-align:center}
+.sgrid h3{margin-bottom:6px}
+.sgrid p{margin:0;color:#3b4540}
+
+/* faq */
+.faq{padding:0 0 70px}
+.faq details{background:#fff;border:1px solid var(--kalk2);border-radius:4px;margin-bottom:10px}
+.faq summary{min-height:56px;display:flex;align-items:center;padding:12px 20px;font-weight:700;cursor:pointer;list-style:none}
+.faq summary::after{content:"+";margin-left:auto;font:700 24px var(--kop);color:var(--groen)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 20px 18px;margin:0;color:#3b4540}
+.faq a{display:inline-flex;align-items:center;min-height:44px}
+
+/* route */
+.route{background:var(--groen-d);color:#e9efe9;padding:70px 0}
+.route h2{color:#fff}
+.rgrid{display:grid;gap:26px;align-items:center}
+.adres{font-size:19px;margin-bottom:18px}
+.adres b{color:#fff}
+.route .knoppen{margin-bottom:0}
+.mm-kaart{--mk-bg:#0f2a21;--mk-fg:#fff;--mk-accent:#e0b54a;--mk-lijn:rgba(255,255,255,.07);
+  position:relative;aspect-ratio:4/3;width:100%;border-radius:6px;overflow:hidden;background:var(--mk-bg);color:var(--mk-fg)}
+.mm-kaart .mk-raster{position:absolute;inset:0;background:linear-gradient(var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px}
+.mm-kaart .mk-weg{position:absolute;background:rgba(255,255,255,.14);border-radius:6px}
+.mm-kaart .mk-water{position:absolute;background:rgba(110,160,190,.25)}
+.mm-kaart .mk-inhoud{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mm-kaart .mk-pin{width:46px;height:46px}
+.mm-kaart .mk-adres{font-weight:700;line-height:1.35;margin:0}
+.mm-kaart .mk-knop{min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--mk-accent);background:transparent;color:var(--mk-fg);font:inherit;font-weight:700;cursor:pointer}
+.mm-kaart .mk-knop:hover,.mm-kaart .mk-knop:focus-visible{background:var(--mk-accent);color:var(--mk-bg)}
+.mm-kaart .mk-uitleg{font-size:12px;opacity:.75;max-width:30ch;margin:0}
+.mm-kaart iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* slot */
+.slot{background:var(--zwart);color:#fff;text-align:center;padding:64px 0;border-top:3px solid var(--goud-d)}
+.slot img{margin:0 auto 18px;width:168px;height:120px}
+.slot h2{color:var(--goud)}
+.slot p{color:#cfd1cb;max-width:520px;margin:0 auto 24px}
+.slot .knoppen{justify-content:center;margin-bottom:0}
+.slot .btn-lijn-l:hover{background:var(--goud);color:var(--zwart)}
+
+footer{background:#0b0c0e;color:#a9aca5;font-size:14px;padding:30px 0 96px}
+footer .wrap{display:grid;gap:10px}
+footer a{color:#e7e8e3}
+
+/* zwevende knop */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;transform:translateY(140%);transition:transform .3s ease}
+.zweef.aan{transform:none}
+.zweef .btn{width:100%;box-shadow:0 10px 28px rgba(0,0,0,.35)}
+
+/* pitch */
+.pitch-paneel{position:fixed;inset:0;z-index:60;background:rgba(10,12,14,.8);overflow-y:auto;padding:16px}
+.pitch-in{background:#fff;color:var(--inkt);max-width:980px;margin:0 auto;border-radius:10px;padding:24px 20px 28px}
+.pitch-in h2{font-size:clamp(26px,5vw,36px)}
+.pitch-in h3{margin-top:26px}
+.pitch-sluit{float:right;min-height:44px;min-width:44px;border-radius:999px;border:2px solid var(--zwart);background:transparent;font:700 15px var(--tekst);cursor:pointer;padding:0 16px}
+.nunu{display:grid;grid-template-columns:1fr 1fr;gap:14px;clear:both}
+.nunu figure{margin:0}
+.nunu img{width:100%;height:auto;border:1px solid var(--kalk2);border-radius:8px}
+.nunu figcaption{font-size:14px;margin-top:6px}
+.pitch-in ol{padding-left:22px}
+.pitch-in li{margin-bottom:8px}
+.reken{background:var(--kalk);padding:18px;border-radius:8px}
+.reken label{display:block;font-weight:600;margin-top:10px}
+.reken input{width:100%;min-height:44px;accent-color:var(--groen)}
+.reken .uitk{font-size:18px;margin:10px 0 0}
+.prijs{display:grid;gap:12px}
+.prijs div{border:2px solid var(--kalk2);border-radius:8px;padding:14px 16px}
+.prijs .eerst{border-color:var(--groen)}
+.prijs small{display:block;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--grijs)}
+.prijs b{display:block;font:700 22px var(--kop)}
+
+@media (min-width:700px){
+  .kaarten{grid-template-columns:repeat(3,1fr)}
+  .rlijst{grid-template-columns:repeat(3,1fr)}
+  .sgrid{grid-template-columns:repeat(3,1fr)}
+  .prijs{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:900px){
+  .wrap{padding:0 40px}
+  .gevel nav a.l{display:inline-flex}
+  .hero-grid{grid-template-columns:1fr 44%;grid-template-areas:"kop wand" "onder wand";grid-template-rows:1fr auto}
+  .hero-tekst{padding:64px 48px 6px 0;justify-content:flex-end}
+  .hero-onder{padding:22px 48px 64px 0}
+  .wand{margin-right:calc(-1*max(40px,(100vw - 1160px)/2 + 40px));padding:40px 0 40px 28px}
+  .wand::after{left:28px;bottom:14px}
+  .raam{min-height:600px}
+  .raam img{object-position:30% 45%}
+  .kgrid{grid-template-columns:1.25fr 1fr;align-items:start}
+  .uitkomst{position:sticky;top:20px}
+  .rgrid{grid-template-columns:1fr 1.1fr}
+  .zweef{display:none}
+}
+@media (max-width:420px){
+  .merk img{width:64px;height:46px}
+  .merk span{font-size:15px;letter-spacing:.04em}
+  .gevel .btn{padding:0 14px}
+  .hero-tekst{padding-right:12px}
+  .knoppen .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .cape{display:none}
+  html{scroll-behavior:auto}
+  .zweef{transition:none}
+}
+</style>
+<style>
+/* meanderpatronen (rand van hun capes), als data-URI */
+:root{
+  --mnd:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 8'%3E%3Cpath d='M0 7H6V1H2V5H4' fill='none' stroke='%23e0b54a' stroke-width='1.2'/%3E%3Cpath d='M8 7H14V1H10V5H12' fill='none' stroke='%23e0b54a' stroke-width='1.2'/%3E%3C/svg%3E");
+  --mnd2:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 16'%3E%3Cpath d='M0 15H14V1H4V11H10V5H7' fill='none' stroke='%23e0b54a' stroke-width='2'/%3E%3Cpath d='M16 15H30V1H20V11H26V5H23' fill='none' stroke='%23e0b54a' stroke-width='2'/%3E%3Cpath d='M0 15.5H32' stroke='%23e0b54a' stroke-width='1'/%3E%3C/svg%3E");
+  --mnd3:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'%3E%3Cpath d='M0 11H10V1H3V8H7V4H5' fill='none' stroke='%231d4a3b' stroke-width='1.4'/%3E%3Cpath d='M12 11H22V1H15V8H19V4H17' fill='none' stroke='%231d4a3b' stroke-width='1.4'/%3E%3C/svg%3E");
+}
+</style>
+<link rel="stylesheet" href="fonts/fonts.css">
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>.<button type="button" class="pitchknop" id="pitchOpen">Mo</button></div>
+
+<div class="aank"><a href="#route">Kapsalon in Spangen · <b>Mathenesserweg 59C</b></a></div>
+
+<header class="gevel">
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="Patchi Alotchi, naar boven">
+      <img src="logo-light.svg" alt="Logo Patchi Alotchi" width="84" height="60">
+      <span>PATCHI ALOTCHI</span>
+    </a>
+    <nav aria-label="Hoofdmenu">
+      <a class="l" href="#kiezer">Afspraak</a>
+      <a class="l" href="#reviews">Reviews</a>
+      <a class="l" href="#route">Route</a>
+      <a class="btn btn-goud" href="https://wa.me/31687956953?text=Hoi%20Patchi%20Alotchi%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener" aria-label="App Patchi Alotchi via WhatsApp">App</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap">
+    <div class="hero-grid grid">
+      <div class="hero-tekst">
+        <p class="plek">Rotterdam-Spangen</p>
+        <h1 id="h1">Kapper voor groot en klein.</h1>
+      </div>
+      <div class="wand">
+        <div class="raam">
+          <img src="img/zaak.jpg" alt="Binnen bij Patchi Alotchi: touwlampen, een tv aan de muur en verlichte spiegels met schappen" width="720" height="1017" fetchpriority="high">
+          <div class="cape" aria-hidden="true"></div>
+        </div>
+      </div>
+    <div class="hero-onder">
+      <p class="intro">Knippen, baard trimmen en vormen, een keratinebehandeling of haarstyling. Kies wat je wilt, en je afspraakbericht staat klaar in WhatsApp.</p>
+      <div class="knoppen">
+        <a class="btn btn-goud" href="https://wa.me/31687956953?text=Hoi%20Patchi%20Alotchi%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
+          App voor een afspraak
+        </a>
+        <a class="btn btn-lijn" href="#kiezer">Kies je behandeling</a>
+      </div>
+      <a class="lint" href="https://www.google.com/maps?cid=3820402815183177656" target="_blank" rel="noopener"><b>4,8 ★</b> uit 230 reviews op Google</a>
+    </div>
+    </div>
+  </div>
+</section>
+
+<div class="meander" aria-hidden="true"></div>
+
+<section class="kiezer" id="kiezer" aria-labelledby="kiezer-kop">
+  <div class="wrap">
+    <h2 id="kiezer-kop">Wie neemt er plaats in de stoel?</h2>
+    <p class="uitleg">Drie keuzes, en je bericht aan de zaak staat klaar. Versturen doe je zelf in WhatsApp.</p>
+    <div class="kgrid grid">
+      <div>
+        <div class="stap"><h3>1. Voor wie</h3><div class="chips" id="cWie"></div></div>
+        <div class="stap" style="margin-top:24px"><h3>2. Wat wil je laten doen</h3><div class="chips" id="cWat"></div></div>
+        <div class="stap" style="margin-top:24px"><h3>3. Welke dag</h3><div class="chips" id="cDag"></div></div>
+      </div>
+      <div class="uitkomst" id="uitkomst" aria-live="polite">
+        <span class="band">Jouw afspraakbericht</span>
+        <dl>
+          <dt>Voor</dt><dd id="aWie"></dd>
+          <dt>Wat</dt><dd id="aWat"></dd>
+          <dt>Dag</dt><dd id="aDag"></dd>
+        </dl>
+        <p class="bericht" id="bericht"></p>
+        <a class="btn btn-goud" id="waKnop" href="https://wa.me/31687956953" target="_blank" rel="noopener">Verstuur via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="waarom" aria-labelledby="waarom-kop">
+  <div class="wrap">
+    <h2 id="waarom-kop">Wat klanten opvalt bij Patchi Alotchi</h2>
+    <div class="kaarten">
+      <div class="kaart">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="14" cy="12" r="5"/><circle cx="28" cy="16" r="4"/><path d="M5 34c1-7 5-11 9-11s8 4 9 11M21 34c1-5 3.5-8 7-8s6 3 7 8"/></g></svg>
+        <h3>Ook voor de kleintjes</h3>
+        <p>Klanten schrijven dat kinderen hier snel en netjes geknipt worden.</p>
+      </div>
+      <div class="kaart">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10" cy="29" r="5"/><circle cx="22" cy="31" r="5"/><path d="M13.5 25.5 32 6M18.5 27 8 8"/></g></svg>
+        <h3>Ervaren handen</h3>
+        <p>In de reviews noemen klanten de kapper ervaren.</p>
+      </div>
+      <div class="kaart">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="17" cy="17" r="10"/><path d="M24.5 24.5 34 34M12 17h10M17 12v10"/></g></svg>
+        <h3>Oog voor detail</h3>
+        <p>Klanten schrijven over oog voor detail en een professionele aanpak.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" aria-labelledby="rev-kop">
+  <div class="wrap">
+    <h2 id="rev-kop">Uit de reviews op Google</h2>
+    <div class="score">
+      <span class="cijfer">4,8 ★</span>
+      <a href="https://www.google.com/maps?cid=3820402815183177656" target="_blank" rel="noopener">uit 230 reviews op Google (stand 15 november 2026)</a>
+    </div>
+    <div class="rlijst">
+      <div class="rev"><p>Amar knipte beide zoons, van 8 en 10, snel en netjes.</p><b>Daan</b></div>
+      <div class="rev"><p>Mustafa is een heel goede en ervaren barber.</p><b>Mario</b></div>
+      <div class="rev"><p>Mooie knipbeurt, perfect oog voor detail en heel professioneel.</p><b>Rafat</b></div>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="stappen" aria-labelledby="stap-kop">
+  <div class="wrap">
+    <h2 id="stap-kop">Van bericht naar kappersstoel</h2>
+    <div class="sgrid">
+      <div><h3>Kies</h3><p>In de keuzehulp kies je voor wie, wat en welke dag.</p></div>
+      <div><h3>Verstuur</h3><p>Je bericht staat klaar in WhatsApp. Je verstuurt het zelf.</p></div>
+      <div><h3>Kom langs</h3><p>Spreek een tijd af en kom naar de Mathenesserweg 59C.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="faq-kop">
+  <div class="wrap">
+    <h2 id="faq-kop">Vragen aan de kapper</h2>
+    <details><summary>Wat kan ik hier laten doen?</summary><p>Knippen, baard trimmen en vormen, een keratinebehandeling, haarstyling en gezichtsbehandelingen.</p></details>
+    <details><summary>Kan mijn kind hier ook geknipt worden?</summary><p>Ja. Op Google schrijft een klant over twee zoons van 8 en 10 die hier snel en netjes geknipt werden.</p></details>
+    <details><summary>Wanneer kan ik terecht?</summary><p>Je plant je afspraak via WhatsApp, of je belt even.</p></details>
+    <details><summary>Kan ik ook bellen?</summary><p>Ja, op <a href="tel:+31687956953" style="white-space:nowrap">06 87 95 69 53</a>.</p></details>
+  </div>
+</section>
+
+<section class="route" id="route" aria-labelledby="route-kop">
+  <div class="wrap rgrid grid">
+    <div>
+      <h2 id="route-kop">Zo vind je de zaak</h2>
+      <p class="adres"><b>Patchi Alotchi</b><br>Mathenesserweg 59C<br>3027 HG Rotterdam (Spangen)</p>
+      <div class="knoppen">
+        <a class="btn btn-goud" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mathenesserweg%2059C%2C%203027%20HG%20Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+        <a class="btn btn-lijn-l" href="tel:+31687956953">Bel 06 87 95 69 53</a>
+      </div>
+    </div>
+    <div class="mm-kaart" data-src="https://maps.google.com/maps?q=Mathenesserweg%2059C%2C%203027%20HG%20Rotterdam&amp;z=16&amp;output=embed" data-titel="Kaart: Patchi Alotchi, Mathenesserweg 59C, Rotterdam">
+      <div class="mk-raster" aria-hidden="true"></div>
+      <div class="mk-water" style="top:-10%;bottom:-10%;right:14%;width:9%;transform:rotate(-14deg)" aria-hidden="true"></div>
+      <div class="mk-weg" style="left:-5%;right:-5%;top:52%;height:12px;transform:rotate(-24deg)" aria-hidden="true"></div>
+      <div class="mk-weg" style="top:-5%;bottom:-5%;left:40%;width:8px;transform:rotate(-30deg)" aria-hidden="true"></div>
+      <div class="mk-inhoud">
+        <svg class="mk-pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="#e0b54a" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        <p class="mk-adres">Mathenesserweg 59C<br>3027 HG Rotterdam</p>
+        <button type="button" class="mk-knop">Toon kaart</button>
+        <p class="mk-uitleg">De kaart komt van Google Maps en laadt pas als je klikt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="slot-kop">
+  <div class="wrap">
+    <img src="logo-light.svg" alt="" width="168" height="120" loading="lazy" decoding="async">
+    <h2 id="slot-kop">Tijd voor een knipbeurt?</h2>
+    <p>Stuur een appje met wat je wilt en wanneer het je uitkomt.</p>
+    <div class="knoppen">
+      <a class="btn btn-goud" href="https://wa.me/31687956953?text=Hoi%20Patchi%20Alotchi%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener">App Patchi Alotchi</a>
+      <a class="btn btn-lijn-l" href="#kiezer">Naar de keuzehulp</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0"><b style="color:#fff">Patchi Alotchi</b> · Mathenesserweg 59C, 3027 HG Rotterdam · <a href="tel:+31687956953" style="white-space:nowrap">06 87 95 69 53</a></p>
+    <p style="margin:0">Foto: eigen foto van Patchi Alotchi op hun Google Maps-vermelding (maart 2023). Logo nagetekend naar de badge op hun raam.</p>
+    <p style="margin:0">Website door <a href="https://mohamedia.nl">Mohamedia</a>. Dit is een demo.</p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-hidden="true">
+  <a class="btn btn-goud" href="https://wa.me/31687956953?text=Hoi%20Patchi%20Alotchi%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener" tabindex="-1">App voor een afspraak</a>
+</div>
+
+<div class="pitch-paneel" id="pitch" hidden role="dialog" aria-modal="true" aria-labelledby="pitch-kop">
+  <div class="pitch-in">
+    <button type="button" class="pitch-sluit" id="pitchDicht">Sluiten</button>
+    <h2 id="pitch-kop">Patchi Alotchi op een eigen plek</h2>
+    <div class="nunu">
+      <figure>
+        <img src="img/voor-treatwell.jpg" alt="Het Treatwell-profiel van Patchi Alotchi op een telefoon" width="585" height="1266" loading="lazy" decoding="async">
+        <figcaption><b>Nu:</b> de websiteknop op Google gaat naar dit Treatwell-profiel (bekeken 15 november 2026).</figcaption>
+      </figure>
+      <figure>
+        <img src="img/na-mobiel.jpg" alt="Deze nieuwe site op een telefoon" width="585" height="1266" loading="lazy" decoding="async">
+        <figcaption><b>Straks:</b> jullie eigen zaak, badge en gouden letters, met meteen een knop om te appen.</figcaption>
+      </figure>
+    </div>
+
+    <h3>Drie dingen die straks beter zijn</h3>
+    <ol>
+      <li>De websiteknop op Google gaat nu naar Treatwell. Straks gaat hij naar jullie eigen site, met jullie eigen foto en jullie badge.</li>
+      <li>Een klant tikt in één keer naar WhatsApp, met voor wie, wat en welke dag al ingevuld.</li>
+      <li>De 4,8 uit 230 reviews op Google, het adres en de route staan samen op één plek.</li>
+    </ol>
+
+    <h3>Even narekenen, als voorbeeld</h3>
+    <div class="reken">
+      <p><small>Voorbeeld, geen belofte. Vul samen in wat realistisch is.</small></p>
+      <label for="rKlanten">Extra klanten per week via de site: <output id="oKlanten">1</output></label>
+      <input type="range" id="rKlanten" min="0" max="10" step="1" value="1">
+      <label for="rBedrag">Gemiddelde besteding (voorbeeld): € <output id="oBedrag">20</output></label>
+      <input type="range" id="rBedrag" min="10" max="80" step="5" value="20">
+      <p class="uitk">Per jaar: <b id="uJaar">€ 1.040</b> extra omzet.<br>€ 595 is de omzet van <b id="uAantal">30</b> klanten.</p>
+    </div>
+
+    <h3>Prijs en beheer</h3>
+    <div class="prijs">
+      <div class="eerst"><small>Website</small><b>€ 595 eenmalig</b>excl. btw (€ 719,95 incl. btw). Tot 5 pagina's, eigen domein, hosting inbegrepen, live binnen 48 uur na betaling.</div>
+      <div class="eerst"><small>Beheer: maandbedrag</small><b>€ 25 per maand</b>excl. btw (€ 30,25 incl. btw). Wij passen het voor je aan.</div>
+      <div><small>Of: klantportaal</small><b>€ 249 eenmalig</b>excl. btw (€ 301,29 incl. btw). Als je liever zelf aanpast.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var nummer='31687956953';
+  var $=function(i){return document.getElementById(i);};
+  var WIE=[
+    {n:'Voor mezelf',kort:'mezelf',wat:['Knippen','Baard trimmen en vormen','Knippen en baard','Keratinebehandeling','Haarstyling','Gezichtsbehandeling']},
+    {n:'Voor mijn kind',kort:'mijn kind',wat:['Knippen']},
+    {n:'Voor mij en mijn kind',kort:'mij en mijn kind',wat:['Knippen, voor allebei','Knippen en baard voor mij, knippen voor mijn kind']}
+  ];
+  var MAAND=['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+  var DAG=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+  var dagen=[{n:'Zo snel mogelijk',lang:null}];
+  var nu=new Date();
+  for(var i=1;i<=7;i++){var d=new Date(nu.getFullYear(),nu.getMonth(),nu.getDate()+i);
+    dagen.push({n:DAG[d.getDay()].slice(0,2).replace(/^./,function(c){return c.toUpperCase();})+' '+d.getDate()+' '+MAAND[d.getMonth()].slice(0,3),lang:DAG[d.getDay()]+' '+d.getDate()+' '+MAAND[d.getMonth()]});}
+  var st={w:0,t:0,d:0};
+  function chip(tekst,aan,klik){var b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('aria-pressed',aan?'true':'false');b.textContent=tekst;b.addEventListener('click',klik);return b;}
+  function teken(){
+    var W=WIE[st.w], T=W.wat[st.t], D=dagen[st.d];
+    var a=$('cWie');a.innerHTML='';WIE.forEach(function(x,i){a.appendChild(chip(x.n,i===st.w,function(){st.w=i;st.t=0;teken();}));});
+    var b=$('cWat');b.innerHTML='';W.wat.forEach(function(x,i){b.appendChild(chip(x,i===st.t,function(){st.t=i;teken();}));});
+    var c=$('cDag');c.innerHTML='';dagen.forEach(function(x,i){c.appendChild(chip(x.n,i===st.d,function(){st.d=i;teken();}));});
+    $('aWie').textContent=W.n.replace(/^Voor /,'').replace(/^./,function(c){return c.toUpperCase();});
+    $('aWat').textContent=T; $('aDag').textContent=D.lang?D.lang.replace(/^./,function(c){return c.toUpperCase();}):'Zo snel mogelijk';
+    var t='Hoi Patchi Alotchi, ik wil graag een afspraak maken voor '+W.kort+': '+T.charAt(0).toLowerCase()+T.slice(1)+'.';
+    t+= D.lang ? ' Kan het op '+D.lang+'? Welke tijden zijn er vrij?' : ' Wanneer is er plek?';
+    $('bericht').textContent=t; $('waKnop').href='https://wa.me/'+nummer+'?text='+encodeURIComponent(t);
+  }
+  teken();
+
+  /* kaart pas laden na klik */
+  document.querySelectorAll('.mm-kaart').forEach(function(k){
+    var b=k.querySelector('.mk-knop'); if(!b) return;
+    b.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src=k.getAttribute('data-src'); f.title=k.getAttribute('data-titel')||'Kaart';
+      f.loading='lazy'; f.referrerPolicy='no-referrer-when-downgrade'; f.allowFullscreen=true;
+      k.innerHTML=''; k.appendChild(f);
+    });
+  });
+
+  /* zwevende knop: zodra de hero uit beeld is, niet over de keuzehulp */
+  var zweef=$('zweef'), heroUit=false, kiezerIn=false;
+  function zet(){var aan=heroUit&&!kiezerIn; zweef.classList.toggle('aan',aan); zweef.setAttribute('aria-hidden',aan?'false':'true'); zweef.querySelector('a').tabIndex=aan?0:-1;}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){heroUit=!e[0].isIntersecting;zet();}).observe(document.querySelector('.hero'));
+    new IntersectionObserver(function(e){kiezerIn=e[0].isIntersecting;zet();},{threshold:.15}).observe($('uitkomst'));
+  }
+
+  /* rekensom + pitch (alleen met ?pitch) */
+  var paneel=$('pitch'), rK=$('rKlanten'), rB=$('rBedrag');
+  function reken(){
+    var k=+rK.value,b=+rB.value;
+    $('oKlanten').textContent=k; $('oBedrag').textContent=b;
+    $('uJaar').textContent='€ '+(k*b*52).toLocaleString('nl-NL');
+    $('uAantal').textContent=Math.ceil(595/b);
+  }
+  rK.addEventListener('input',reken); rB.addEventListener('input',reken); reken();
+  if(/[?&]pitch\b/.test(location.search)){
+    document.body.classList.add('pitch');
+    $('pitchOpen').addEventListener('click',function(){paneel.hidden=false;});
+    $('pitchDicht').addEventListener('click',function(){paneel.hidden=true;});
+    paneel.addEventListener('click',function(e){if(e.target===paneel) paneel.hidden=true;});
+  }
+})();
+</script>
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
