@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Muge Hair &amp; Beautysalon – kapsalon en wenkbrauwen in Rotterdam-West</title>
+<meta name="description" content="Muge Hair &amp; Beautysalon aan de Rösener Manzstraat 62 in Rotterdam-West: balayage, knippen, extensions en wenkbrauwen. 4,8 uit 186 Google-reviews. Afspraak via WhatsApp of Treatwell.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!--
+  L281 Muge Hair & Beautysalon (route M, Rotterdam-West).
+  Concept in één zin: "Van de stoep naar de stoel": je loopt bij het laden vanaf hun hoekpand aan de
+  Rösener Manzstraat de witte marmeren salon in; de zilveren filigraankrul uit hun eigen raamlogo is de rode draad.
+  Lay-out-archetype: DOORLOOP-RAIL MET FILIGRAAN. Mobiel: eerst een veegbare rij van vier staande eigen foto's
+  (gevel → spiegel → behandelstoel → wasplek) met de Google-score óp de rij, dan pas het tekstblok op marmer
+  (filigraan, kop, knoppen). Volgorde dus foto-rij → score → kop → knoppen, niet kop → foto → knoppen → score.
+  Desktop: tekst links op marmer, de foto-rij rechts tot de rand van het scherm.
+  Hero-beweging (eenmalig, daarna stil): de rij schuift één keer van de gevel naar binnen, tot de spiegel met hun raamlogo (camera met een doel),
+  en de filigraankrul uit hun raamlogo tekent zich vanuit het midden naar buiten open (stroke-dashoffset, forwards).
+  Reduced motion = geen schuif, krul direct af.
+  Bewust NIET: foto in een vormkader boven de kop, eyebrow + tweekleurige kop, full-bleed foto met tekst eroverheen
+  (ZALAL, Heren kapsalon 010, Hairfy), kop → volle-breedte-foto → knoppen → score (G&L, Bergweg, MAE, Ids),
+  staalwaaier (MAE), ledboog, band/marquee, stempel, schuine fotokaart, Ken Burns, stoom, licht dat aangaat,
+  letters één voor één, rolluik, matglas-raamsticker, logo als folie.
+  Palet (uit hun salon: wit marmer, grijze aders, chroom, paarse kussens): marmer #f5f4f7 / ader #dcd8e1,
+  zilver #a29fab, grafiet #2a2730, aubergine #3a2147 / pruim #5b2f73 / violet #7c3fa6, lila #eee6f4, roos #b8456a.
+  Fonts (zelf gehost, fonts/): Marcellus (koppen, ingetogen klassiek zoals het filigraan) + Jost (tekst; ook de letter
+  van het nagetekende logo).
+  Logo: hun eigen raamlogo (MÜGE, "HAIR & BEAUTY SALON" tussen streepjes, filigraan met uivormige top boven en
+  gespiegeld onder) nagetekend als SVG; letters via fontTools naar paden.
+  Beeld: salonfoto's van hun Treatwell-salonpagina (zie footer en "Aanvulling Design" in het dossier).
+-->
+<style>
+:root{--marmer:#f5f4f7;--ader:#dcd8e1;--zilver:#a29fab;--grafiet:#2a2730;--inkt:#1f1c24;--aubergine:#3a2147;--pruim:#5b2f73;--violet:#7c3fa6;--lila:#eee6f4;--roos:#b8456a;--wit:#fff;
+  --kop:'Marcellus',Georgia,serif;--tekst:'Jost',system-ui,sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--marmer);color:var(--inkt);font:400 17px/1.6 var(--tekst);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:400;line-height:1.15;margin:0 0 .5em;overflow-wrap:break-word}
+h2{font-size:clamp(28px,6.4vw,44px);color:var(--aubergine)}
+h3{font-size:clamp(20px,4.8vw,24px)}
+p{margin:0 0 1em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font:600 16px/1.2 var(--tekst);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.wa{background:var(--aubergine);color:#fff}
+.btn.wa:hover{background:var(--pruim)}
+.btn.lijn{border-color:var(--aubergine);color:var(--aubergine);background:transparent}
+.btn.lijn:hover{background:var(--lila)}
+.btn.licht{background:#fff;color:var(--aubergine)}
+.btn.lichtlijn{border-color:rgba(255,255,255,.7);color:#fff}
+:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
+
+/* marmer: dunne grijze aders, zoals hun wanden */
+.ader-bg{background-color:var(--marmer);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640' viewBox='0 0 640 640'%3E%3Cg fill='none' stroke='%23cfc9d6' stroke-linecap='round'%3E%3Cpath d='M-20 120C80 150 120 90 210 130S330 230 420 200 560 150 660 210' stroke-width='1.4' opacity='.7'/%3E%3Cpath d='M210 130c20 40 10 80 50 110' stroke-width='.9' opacity='.6'/%3E%3Cpath d='M-30 470c90-30 150 20 240-10s170-110 260-60 120 70 200 40' stroke-width='1.1' opacity='.55'/%3E%3Cpath d='M450 400c-10 50 30 80 10 140' stroke-width='.8' opacity='.5'/%3E%3C/g%3E%3C/svg%3E");background-size:640px 640px}
+
+/* demo-strook + aankondiging */
+.demo{background:var(--inkt);color:#e8e3ee;font-size:13px;text-align:center;padding:9px 16px}
+.demo a{color:#fff;display:inline-flex;align-items:center;min-height:44px;padding:0 4px;margin:-12px 0}
+.demo .pitchknop{display:none}
+body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #e8e3ee;background:transparent;color:#fff;font:600 13px var(--tekst);cursor:pointer;align-items:center}
+.aank{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;background:var(--aubergine);color:#f3eef6;font-size:14px;text-decoration:none;padding:4px 16px;text-align:center}
+.aank b{color:#fff;font-weight:600}
+.aank .ster{color:#e9c76b}
+
+/* header */
+.kopbalk{background:#fff;border-bottom:1px solid var(--ader)}
+.kopbalk .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:92px}
+.kopbalk .logo{display:inline-flex;min-height:44px}
+.kopbalk .logo img{height:78px;width:auto}
+.kopbalk nav{display:flex;align-items:center;gap:6px}
+.kopbalk nav a.n{display:none;align-items:center;min-height:44px;padding:0 12px;text-decoration:none;font-weight:500;color:var(--grafiet)}
+.kopbalk nav a.n:hover{color:var(--violet)}
+.kopbalk .btn{min-height:46px;padding:0 18px;font-size:15px}
+@media(min-width:900px){.kopbalk nav a.n{display:inline-flex}}
+
+/* hero */
+section.hero{position:relative;overflow:hidden;padding:0}
+.hero-grid{display:flex;flex-direction:column}
+.rail-wrap{position:relative}
+.rail{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:20px;padding:14px 20px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rail::-webkit-scrollbar{display:none}
+.rail figure{margin:0;flex:0 0 58%;max-width:340px;scroll-snap-align:start;position:relative}
+.rail img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:4px;background:var(--ader)}
+.rail figcaption{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:var(--aubergine);font-size:13px;font-weight:500;padding:4px 10px;border-radius:999px}
+.score{position:absolute;left:30px;top:26px;z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;background:var(--aubergine);color:#fff;text-decoration:none;font-size:14px;box-shadow:0 6px 18px rgba(31,28,36,.25)}
+.score b{font-size:17px;font-weight:600}
+.score .ster{color:#e9c76b}
+.rail-hint{display:flex;align-items:center;gap:8px;padding:0 20px;margin:0;color:var(--grafiet);font-size:14px;line-height:1.4}
+.rail-hint .pijl{display:inline-block;width:26px;height:1px;background:var(--zilver);position:relative}
+.rail-hint .pijl::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-top:1px solid var(--zilver);border-right:1px solid var(--zilver);transform:rotate(45deg)}
+.hero-tekst{padding:12px 20px 40px;text-align:center}
+.krul{display:block;width:min(220px,64%);height:auto;margin:0 auto 10px;color:var(--zilver)}
+.krul path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:teken 1.6s cubic-bezier(.45,0,.2,1) .5s forwards}
+.krul .k2{animation-delay:.9s}
+.krul .k3{animation-delay:1.25s}
+.krul circle{fill:currentColor;opacity:0;animation:stip .4s ease 1.7s forwards}
+@keyframes teken{to{stroke-dashoffset:0}}
+@keyframes stip{to{opacity:1}}
+.hero h1{font-size:clamp(29px,8vw,50px);color:var(--aubergine);margin-bottom:14px}
+.hero .intro{max-width:34em;margin:0 auto 22px;color:var(--grafiet)}
+.knoppen{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.knoppen .btn{flex:1 1 220px;max-width:300px}
+.hero .adresregel{margin:28px 0 0;font-size:15px;color:var(--grafiet)}
+.hero .adresregel a{display:inline-flex;align-items:center;min-height:44px;text-decoration-color:var(--zilver);text-underline-offset:4px}
+@media(min-width:960px){
+  .hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;min-height:640px}
+  .hero-grid>*{min-width:0}
+  .hero-tekst{order:-1;text-align:left;padding:56px 24px 56px max(32px,calc((100vw - 1180px)/2 + 20px))}
+  .krul{margin:0 0 18px;width:280px}
+  .hero .intro{margin-left:0}
+  .knoppen{justify-content:flex-start}
+  .rail{padding:40px 0 18px 10px;scroll-padding-left:10px;gap:14px}
+  .rail figure{flex:0 0 340px}
+  .score{left:24px;top:56px}
+  .rail-hint{padding:0 10px}
+}
+
+/* behandelingen */
+section{padding:72px 0}
+.beh-grid{display:grid;gap:36px}
+.beh-lijst{list-style:none;margin:0;padding:0;border-top:1px solid var(--ader)}
+.beh-lijst li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px;padding:20px 0;border-bottom:1px solid var(--ader)}
+.beh-lijst .nr{font:500 15px/1.9 var(--tekst);letter-spacing:.08em;color:var(--violet)}
+.beh-lijst h3{margin:0;color:var(--aubergine)}
+.beh-lijst p{grid-column:2;margin:0;color:var(--grafiet)}
+.beh-foto img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:4px}
+.beh-foto figcaption{font-size:14px;color:var(--grafiet);margin-top:8px}
+.ook{margin-top:20px;color:var(--grafiet)}
+@media(min-width:900px){.beh-grid{grid-template-columns:minmax(0,6fr) minmax(0,5fr);align-items:start}.beh-grid>*{min-width:0}}
+
+/* keuzehulp */
+.kiezer{background:var(--aubergine);color:#f3eef6}
+.kiezer h2{color:#fff}
+.kiezer .sub{color:#d9cde2;max-width:36em}
+.kiezer-grid{display:grid;gap:28px;margin-top:28px}
+.stap-kop{font:600 13px/1.2 var(--tekst);letter-spacing:.12em;text-transform:uppercase;color:#cdb8dd;margin:0 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:500 15px var(--tekst);cursor:pointer}
+.chip[aria-pressed="true"]{background:#fff;color:var(--aubergine);border-color:#fff}
+.chip:hover{border-color:#fff}
+.kaartje{background:#fff;color:var(--inkt);border-radius:6px;padding:26px 22px 24px;position:relative;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.kaartje .kk{display:block;width:180px;height:auto;margin:0 auto 10px;color:var(--zilver)}
+.kaartje .kk path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.kaartje h3{text-align:center;color:var(--aubergine);margin-bottom:14px}
+.kaartje .bericht{background:var(--lila);border-radius:4px;padding:14px 16px;font-size:16px;margin-bottom:18px;min-height:96px}
+.kaartje .btn{width:100%;white-space:normal;text-align:center}
+.kaartje .alt{font-size:14px;text-align:center;margin:14px 0 0;color:var(--grafiet)}
+.kaartje .alt a{display:inline-flex;align-items:center;min-height:44px;color:var(--pruim);font-weight:600}
+@media(min-width:900px){.kiezer-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:start}.kiezer-grid>*{min-width:0}.kaartje{position:sticky;top:24px}}
+
+/* waarom */
+.drie{display:grid;gap:16px;margin-top:26px}
+.drie article{background:#fff;border:1px solid var(--ader);border-radius:4px;padding:24px 22px}
+.drie h3{color:var(--aubergine);font-size:clamp(20px,5vw,23px)}
+.drie p{margin:0;color:var(--grafiet)}
+.drie .ic{width:34px;height:34px;color:var(--violet);margin-bottom:12px}
+@media(min-width:820px){.drie{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* reviews */
+.reviews{background:#fff}
+.cijfer{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-bottom:8px}
+.cijfer b{font-family:var(--kop);font-weight:400;font-size:clamp(34px,8vw,46px);color:var(--aubergine);line-height:1}
+.cijfer .ster{color:#c9a13b;font-size:22px;letter-spacing:2px}
+.cijfer a{display:inline-flex;align-items:center;min-height:44px;color:var(--pruim);font-weight:600}
+.quotes{display:grid;gap:16px;margin:26px 0 12px}
+.quotes blockquote{margin:0;background:var(--marmer);border-left:3px solid var(--violet);padding:20px 20px 18px;border-radius:0 4px 4px 0}
+.quotes p{font-family:var(--kop);font-size:19px;line-height:1.45;margin:0 0 10px;color:var(--inkt)}
+.quotes footer{font-size:14px;color:var(--grafiet)}
+.bron{font-size:14px;color:var(--grafiet)}
+.bron a{display:inline-flex;align-items:center;min-height:44px}
+@media(min-width:900px){.quotes{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* stappen */
+.stappen ol{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:16px;counter-reset:s}
+.stappen li{counter-increment:s;display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px;align-items:start}
+.stappen li::before{content:counter(s);width:56px;height:56px;border-radius:50%;border:1.5px solid var(--zilver);display:flex;align-items:center;justify-content:center;font-family:var(--kop);font-size:24px;color:var(--aubergine);background:#fff}
+.stappen h3{margin:6px 0 4px;color:var(--aubergine)}
+.stappen p{margin:0;color:var(--grafiet)}
+@media(min-width:900px){.stappen ol{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* vragen */
+.vragen{background:#fff}
+.vragen details{border-bottom:1px solid var(--ader)}
+.vragen summary{list-style:none;cursor:pointer;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;font:500 18px var(--tekst);color:var(--aubergine);padding:10px 0}
+.vragen summary::-webkit-details-marker{display:none}
+.vragen summary::after{content:"+";font-family:var(--kop);font-size:26px;color:var(--violet);flex:none}
+.vragen details[open] summary::after{content:"–"}
+.vragen details p{color:var(--grafiet);margin:0 0 18px}
+.vragen details a{color:var(--pruim);font-weight:600}
+.vragen .lijst{max-width:780px}
+
+/* route */
+.route-grid{display:grid;gap:26px;margin-top:22px}
+.route dl{margin:0 0 20px}
+.route dt{font:600 13px var(--tekst);letter-spacing:.1em;text-transform:uppercase;color:var(--zilver);margin-top:14px}
+.route dd{margin:2px 0 0;font-size:18px}
+.route dd a{display:inline-flex;align-items:center;min-height:44px;white-space:nowrap;color:var(--aubergine);font-weight:600}
+.route .knoppen{justify-content:flex-start}
+@media(min-width:900px){.route-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:start}.route-grid>*{min-width:0}}
+.mm-kaart{--mk-bg:var(--aubergine);--mk-fg:#fff;--mk-accent:#d7c3e6;--mk-lijn:rgba(255,255,255,.07);position:relative;aspect-ratio:4/3;width:100%;border-radius:6px;overflow:hidden;background:var(--mk-bg);color:var(--mk-fg)}
+.mm-kaart .mk-raster{position:absolute;inset:0;background:linear-gradient(var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px}
+.mm-kaart .mk-weg{position:absolute;background:rgba(255,255,255,.13);border-radius:6px}
+.mm-kaart .mk-inhoud{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mm-kaart .mk-pin{width:46px;height:46px}
+.mm-kaart .mk-adres{font-weight:600;line-height:1.35;margin:0}
+.mm-kaart .mk-knop{min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--mk-accent);background:transparent;color:var(--mk-fg);font:600 15px var(--tekst);cursor:pointer}
+.mm-kaart .mk-knop:hover,.mm-kaart .mk-knop:focus-visible{background:var(--mk-accent);color:var(--mk-bg)}
+.mm-kaart .mk-uitleg{font-size:12px;opacity:.75;max-width:30ch;margin:0}
+.mm-kaart iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* slot */
+.slot{background:var(--inkt);color:#efe9f4;text-align:center}
+.slot img{margin:0 auto 22px;height:150px;width:auto}
+.slot h2{color:#fff}
+.slot p{max-width:32em;margin:0 auto 26px;color:#d8cfe0}
+.slot .knoppen .btn{max-width:320px}
+footer.voet{background:#16131a;color:#bdb5c6;font-size:14px;padding:34px 0 30px}
+footer.voet .wrap{display:grid;gap:12px}
+footer.voet a{color:#fff;display:inline-flex;align-items:center;min-height:44px}
+footer.voet p{margin:0}
+
+/* zwevende knop */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;transform:translateY(calc(100% + 40px));transition:transform .3s ease}
+.zweef.aan{transform:none}
+.zweef .btn{width:100%;box-shadow:0 10px 28px rgba(31,28,36,.35)}
+@media(min-width:900px){.zweef{left:auto;right:24px;bottom:24px;width:auto}.zweef .btn{width:auto}}
+
+/* pitch (alleen met ?pitch) */
+.pitch-paneel{position:fixed;inset:0;z-index:60;background:rgba(22,19,26,.75);overflow-y:auto;padding:16px}
+.pitch-in{background:#fff;color:var(--inkt);max-width:980px;margin:0 auto;border-radius:10px;padding:24px 20px 28px}
+.pitch-in h2{font-size:clamp(26px,5vw,36px)}
+.pitch-in h3{margin-top:26px;color:var(--aubergine)}
+.pitch-sluit{float:right;min-height:44px;min-width:44px;border-radius:8px;border:2px solid var(--aubergine);background:transparent;font:600 15px var(--tekst);cursor:pointer;padding:0 16px;color:var(--aubergine)}
+.nunu{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));clear:both;margin-top:18px}
+.nunu figure{margin:0}
+.nunu img{width:100%;height:auto;max-height:560px;object-fit:contain;object-position:top;border:1px solid var(--ader);border-radius:8px;background:var(--marmer)}
+.nunu figcaption{font-size:15px;margin-top:8px}
+.pitch-in ol{padding-left:22px}
+.pitch-in li{margin-bottom:8px}
+.reken{background:var(--marmer);border-radius:8px;padding:16px 18px}
+.reken label{display:block;font-weight:500;margin-top:10px}
+.reken input{width:100%;min-height:44px;accent-color:var(--violet)}
+.uitkomst{font-size:18px;margin:12px 0 0}
+.prijs{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.prijs div{border:1.5px solid var(--ader);border-radius:8px;padding:16px}
+.prijs .eerst{border-color:var(--aubergine)}
+.prijs small{display:block;color:var(--grafiet);font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+.prijs b{display:block;font-family:var(--kop);font-weight:400;font-size:24px;color:var(--aubergine)}
+
+@media(max-width:480px){
+  body{font-size:16px}
+  .kopbalk .wrap{min-height:84px}
+  .kopbalk .logo img{height:70px}
+  .kopbalk .btn{padding:0 14px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .krul path{animation:none;stroke-dashoffset:0}
+  .krul circle{animation:none;opacity:1}
+  .zweef{transition:none}
+}
+</style>
+<link rel="stylesheet" href="fonts/fonts.css">
+
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>.<button type="button" class="pitchknop" id="pitchOpen">Pitch openen</button></div>
+<a class="aank" href="https://www.google.com/maps?cid=4713704987299111651" target="_blank" rel="noopener"><span class="ster" aria-hidden="true">★</span> <span><b>4,8</b> uit 186 Google-reviews · Rotterdam-West</span></a>
+
+<header class="kopbalk">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Muge Hair &amp; Beautysalon, naar boven"><img src="logo-dark.svg" alt="Müge Hair &amp; Beauty Salon" width="88" height="78"></a>
+    <nav aria-label="Hoofdmenu">
+      <a class="n" href="#behandelingen">Behandelingen</a>
+      <a class="n" href="#reviews">Reviews</a>
+      <a class="n" href="#route">Route</a>
+      <a class="btn wa" href="https://wa.me/31687917120?text=Hallo%20Muge%20Hair%20%26%20Beautysalon%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.4c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>App</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero ader-bg" id="top" aria-labelledby="h1">
+  <div class="hero-grid">
+    <div class="rail-wrap">
+      <a class="score" href="https://www.google.com/maps?cid=4713704987299111651" target="_blank" rel="noopener"><span class="ster" aria-hidden="true">★</span><b>4,8</b> 186 reviews op Google</a>
+      <div class="rail" id="rail" tabindex="0" aria-label="Foto's van de salon, veeg opzij">
+        <figure><img src="img/gevel.webp" alt="De gevel van Muge Hair &amp; Beautysalon met het salonlogo op de ramen en de deur op nummer 62" width="384" height="480" fetchpriority="high"><figcaption>Rösener Manzstraat 62</figcaption></figure>
+        <figure><img src="img/spiegel.webp" alt="Grote spiegel met een grijze kappersstoel; in de spiegel het logo op het raam" width="384" height="480"><figcaption>Spiegel met het raamlogo</figcaption></figure>
+        <figure><img src="img/stoel.webp" alt="Witte behandelstoel bij de tuindeur, in een ruimte met marmeren tegels" width="384" height="480"><figcaption>De behandelstoel</figcaption></figure>
+        <figure><img src="img/wasplek.webp" alt="De wasplek met een zwarte wasstoel en een kappersstoel tegen witte marmeren tegels" width="384" height="480"><figcaption>De wasplek</figcaption></figure>
+      </div>
+      <p class="rail-hint" aria-hidden="true"><span class="pijl"></span> Veeg door de salon</p>
+    </div>
+    <div class="hero-tekst">
+      <svg class="krul" viewBox="36 18 228 78" aria-hidden="true">
+        <path pathLength="1" d="M150 92H38"/><path pathLength="1" d="M150 92H262"/>
+        <path class="k2" pathLength="1" d="M128 84C113 86 105 74 93 76C81 78 79 89 67 88C59 87 57 80 62 77C66 75 70 79 67 82"/>
+        <path class="k2" pathLength="1" d="M172 84C187 86 195 74 207 76C219 78 221 89 233 88C241 87 243 80 238 77C234 75 230 79 233 82"/>
+        <path class="k2" pathLength="1" d="M133 68C120 58 108 64 103 56C100 50 106 45 111 49"/>
+        <path class="k2" pathLength="1" d="M167 68C180 58 192 64 197 56C200 50 194 45 189 49"/>
+        <path class="k3" pathLength="1" d="M132 82C125 66 146 60 150 40C154 60 175 66 168 82"/>
+        <path class="k3" pathLength="1" d="M141 80C138 71 148 66 150 56C152 66 162 71 159 80"/>
+        <path class="k3" pathLength="1" d="M150 36V26"/>
+        <circle cx="150" cy="23" r="2.6"/>
+      </svg>
+      <h1 id="h1">Balayage, knippen en wenkbrauwen in Rotterdam-West</h1>
+      <p class="intro">Sinds 2016 in Tussendijken. Voor balayage en highlights, knippen en föhnen, extensions en je wenkbrauwen.</p>
+      <div class="knoppen">
+        <a class="btn wa" href="https://wa.me/31687917120?text=Hallo%20Muge%20Hair%20%26%20Beautysalon%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20terecht%3F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.4c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Afspraak via WhatsApp</a>
+        <a class="btn lijn" href="#kiezer">Kies je behandeling</a>
+      </div>
+      <p class="adresregel"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=R%C3%B6sener%20Manzstraat%2062%2C%203026%20TV%20Rotterdam" target="_blank" rel="noopener">Rösener Manzstraat 62, 3026 TV Rotterdam</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="behandelingen" aria-labelledby="beh-kop">
+  <div class="wrap beh-grid">
+    <div>
+      <h2 id="beh-kop">Haar en wenkbrauwen, onder één dak</h2>
+      <ul class="beh-lijst">
+        <li><span class="nr">01</span><h3>Balayage en highlights</h3><p>Balayage over het hele haar, of highlights per folie.</p></li>
+        <li><span class="nr">02</span><h3>Knippen, wassen en föhnen</h3><p>Knippen, of wassen, knippen en drogen. Ook met hoofdmassage erbij.</p></li>
+        <li><span class="nr">03</span><h3>Extensions</h3><p>Vraag via WhatsApp wat er voor jouw haar mogelijk is.</p></li>
+        <li><span class="nr">04</span><h3>Wenkbrauwen epileren en verven</h3><p>Op Treatwell staat daarnaast ook threaden.</p></li>
+      </ul>
+      <p class="ook">Op de salonpagina op Treatwell staan daarnaast ook definitief ontharen en massage.</p>
+    </div>
+    <figure class="beh-foto" style="margin:0">
+      <img src="img/werkplek.webp" alt="Werkplek met kappersstoel, spiegel, föhn aan de muur en een kastje met producten tegen wit marmer" width="720" height="480" loading="lazy" decoding="async">
+      <figcaption>Een van de werkplekken in de salon.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="kiezer" id="kiezer" aria-labelledby="kiezer-kop">
+  <div class="wrap">
+    <h2 id="kiezer-kop">Je afspraakkaartje in drie keuzes</h2>
+    <p class="sub">Kies wat je wilt laten doen en wanneer het je uitkomt. Je bericht staat dan klaar in WhatsApp; de tijd spreek je daarna samen af.</p>
+    <div class="kiezer-grid">
+      <div>
+        <p class="stap-kop" id="g1">1 · Behandeling</p>
+        <div class="chips" data-groep="wat" role="group" aria-labelledby="g1">
+          <button type="button" class="chip" data-waarde="balayage" aria-pressed="true">Balayage</button>
+          <button type="button" class="chip" data-waarde="highlights" aria-pressed="false">Highlights</button>
+          <button type="button" class="chip" data-waarde="knippen" aria-pressed="false">Knippen en föhnen</button>
+          <button type="button" class="chip" data-waarde="extensions" aria-pressed="false">Extensions</button>
+          <button type="button" class="chip" data-waarde="wenkbrauwen" aria-pressed="false">Wenkbrauwen</button>
+          <button type="button" class="chip" data-waarde="anders" aria-pressed="false">Iets anders</button>
+        </div>
+        <p class="stap-kop" id="g2">2 · Precies</p>
+        <div class="chips" data-groep="variant" id="varianten" role="group" aria-labelledby="g2"></div>
+        <p class="stap-kop" id="g3">3 · Wanneer</p>
+        <div class="chips" data-groep="dag" id="dagen" role="group" aria-labelledby="g3"></div>
+      </div>
+      <div class="kaartje" aria-live="polite">
+        <svg class="kk" viewBox="36 40 228 56" aria-hidden="true"><path d="M38 92H262M128 84C113 86 105 74 93 76C81 78 79 89 67 88M172 84C187 86 195 74 207 76C219 78 221 89 233 88M132 82C125 66 146 60 150 44C154 60 175 66 168 82"/></svg>
+        <h3>Jouw bericht</h3>
+        <p class="bericht" id="bericht">Hallo Muge Hair &amp; Beautysalon, ik wil graag een afspraak maken.</p>
+        <a class="btn wa" id="waKnop" href="https://wa.me/31687917120?text=Hallo%20Muge%20Hair%20%26%20Beautysalon%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.4c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Verstuur via WhatsApp</a>
+        <p class="alt">Liever zelf een tijd kiezen? <a href="https://www.treatwell.nl/salon/muge-hair-beauty-salon/" target="_blank" rel="noopener">Boek op Treatwell</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ader-bg" aria-labelledby="waarom-kop">
+  <div class="wrap">
+    <h2 id="waarom-kop">Uit de reviews, in drie punten</h2>
+    <div class="drie">
+      <article>
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4M12 8v4l3 2"/></svg>
+        <h3>Jarenlang dezelfde salon</h3>
+        <p>Klanten schrijven dat ze hier al jaren komen.</p>
+      </article>
+      <article>
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M3 9h11a3 3 0 0 1 0 6H3zM14 15l3 6M17 10h4M17 13h3"/></svg>
+        <h3>Kapsel en föhnbeurt</h3>
+        <p>Klanten schrijven dat hun haar netjes geföhnd en geknipt is.</p>
+      </article>
+      <article>
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M3 12c4-4 14-4 18 0M6 16c2-1.5 10-1.5 12 0"/></svg>
+        <h3>Over de wenkbrauwen</h3>
+        <p>Klanten schrijven dat hun wenkbrauwen goed worden gedaan.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" aria-labelledby="rev-kop">
+  <div class="wrap">
+    <h2 id="rev-kop">Gelezen op Treatwell en Google</h2>
+    <div class="cijfer"><b>4,8</b><span class="ster" aria-hidden="true">★★★★★</span><span>uit 186 reviews op Google</span> <a href="https://www.google.com/maps?cid=4713704987299111651" target="_blank" rel="noopener">Bekijk ze</a></div>
+    <div class="quotes">
+      <blockquote><p>“Ik ben zo blij met mijn haar! Goed advies gekregen en mooie laagjes geknipt. Super blij!”</p><footer>Emma · Vrouwen knippen</footer></blockquote>
+      <blockquote><p>“Hele vriendelijke meid en heeft veel kennis van haar vak! Ik kom zeker terug!”</p><footer>Selma · Highlights, heel hoofd</footer></blockquote>
+      <blockquote><p>“Gezellige mevrouw die haar werk goed doet.”</p><footer>Maysae · Wenkbrauwen threaden</footer></blockquote>
+    </div>
+    <p class="bron">De drie citaten zijn letterlijk overgenomen uit geverifieerde reviews op <a href="https://www.treatwell.nl/salon/muge-hair-beauty-salon/" target="_blank" rel="noopener">Treatwell</a> (november 2026).</p>
+  </div>
+</section>
+
+<section class="stappen ader-bg" aria-labelledby="stap-kop">
+  <div class="wrap">
+    <h2 id="stap-kop">Van appje tot salonstoel</h2>
+    <ol>
+      <li><div><h3>Tik je behandeling aan</h3><p>In de keuzehulp hierboven: wat, welke variant en welke dag.</p></div></li>
+      <li><div><h3>Stuur het bericht</h3><p>Je bericht staat klaar in WhatsApp. De tijd spreek je daar samen af.</p></div></li>
+      <li><div><h3>Kom naar nummer 62</h3><p>Rösener Manzstraat 62 in Tussendijken, Rotterdam-West.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="vragen" aria-labelledby="vraag-kop">
+  <div class="wrap lijst">
+    <h2 id="vraag-kop">Vragen over de salon</h2>
+    <details><summary>Kan ik ook online boeken?</summary><p>Ja, via <a href="https://www.treatwell.nl/salon/muge-hair-beauty-salon/" target="_blank" rel="noopener">Treatwell</a>. Of stuur een appje met de keuzehulp op deze pagina.</p></details>
+    <details><summary>Wat zijn de openingstijden?</summary><p>Je plant je afspraak via WhatsApp of Treatwell, dan hoor je wanneer je terechtkunt. Bellen kan ook: <a href="tel:+31687917120">06 87 91 71 20</a>.</p></details>
+    <details><summary>Kan ik pinnen?</summary><p>Op de salonpagina op Treatwell staat dat je contant en met pin kunt betalen.</p></details>
+    <details><summary>Hoe kom ik er met het openbaar vervoer?</summary><p>Tramhalte Van Duylstraat is op loopafstand.</p></details>
+    <details><summary>Doen jullie meer dan haar en wenkbrauwen?</summary><p>Op Treatwell staan ook definitief ontharen en massage. Vraag het gerust via WhatsApp.</p></details>
+    <details><summary>Hoe lang bestaat de salon al?</summary><p>Muge Hair &amp; Beautysalon bestaat sinds 2016.</p></details>
+  </div>
+</section>
+
+<section class="route ader-bg" id="route" aria-labelledby="route-kop">
+  <div class="wrap">
+    <h2 id="route-kop">Langskomen in Tussendijken</h2>
+    <div class="route-grid">
+      <div>
+        <dl>
+          <dt>Adres</dt><dd>Rösener Manzstraat 62<br>3026 TV Rotterdam</dd>
+          <dt>Telefoon en WhatsApp</dt><dd><a href="tel:+31687917120">06 87 91 71 20</a></dd>
+          <dt>Afspraak</dt><dd>Via WhatsApp of <a href="https://www.treatwell.nl/salon/muge-hair-beauty-salon/" target="_blank" rel="noopener">Treatwell</a></dd>
+        </dl>
+        <div class="knoppen">
+          <a class="btn wa" href="https://wa.me/31687917120?text=Hallo%20Muge%20Hair%20%26%20Beautysalon%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20terecht%3F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.4c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>App de salon</a>
+          <a class="btn lijn" href="https://www.google.com/maps/dir/?api=1&amp;destination=R%C3%B6sener%20Manzstraat%2062%2C%203026%20TV%20Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+        </div>
+      </div>
+      <div class="mm-kaart" data-src="https://maps.google.com/maps?q=R%C3%B6sener%20Manzstraat%2062%2C%203026%20TV%20Rotterdam&amp;z=16&amp;output=embed" data-titel="Kaart: Muge Hair &amp; Beautysalon, Rösener Manzstraat 62">
+        <div class="mk-raster" aria-hidden="true"></div>
+        <div class="mk-weg" style="left:-5%;right:-5%;top:58%;height:12px;transform:rotate(-8deg)" aria-hidden="true"></div>
+        <div class="mk-weg" style="top:-5%;bottom:-5%;left:36%;width:10px;transform:rotate(12deg)" aria-hidden="true"></div>
+        <div class="mk-inhoud">
+          <svg class="mk-pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="var(--mk-accent)" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          <p class="mk-adres">Rösener Manzstraat 62<br>3026 TV Rotterdam</p>
+          <button type="button" class="mk-knop">Toon kaart</button>
+          <p class="mk-uitleg">De kaart komt van Google Maps en laadt pas als je klikt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="slot-kop">
+  <div class="wrap">
+    <img src="logo-light.svg" alt="" width="168" height="150" loading="lazy" decoding="async">
+    <h2 id="slot-kop">Zin in nieuw haar of mooie wenkbrauwen?</h2>
+    <p>Stuur een appje met wat je wilt laten doen. Liever online? Dan boek je via Treatwell.</p>
+    <div class="knoppen">
+      <a class="btn licht" href="https://wa.me/31687917120?text=Hallo%20Muge%20Hair%20%26%20Beautysalon%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20terecht%3F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.4c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Afspraak via WhatsApp</a>
+      <a class="btn lichtlijn" href="https://www.treatwell.nl/salon/muge-hair-beauty-salon/" target="_blank" rel="noopener">Boek op Treatwell</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="voet">
+  <div class="wrap">
+    <img src="logo-light.svg" alt="Müge Hair &amp; Beauty Salon" width="90" height="80" loading="lazy" decoding="async">
+    <p>Muge Hair &amp; Beautysalon · Rösener Manzstraat 62, 3026 TV Rotterdam · <a href="tel:+31687917120">06 87 91 71 20</a></p>
+    <p>Foto's: salonpagina van Muge Hair &amp; Beauty Salon op <a href="https://www.treatwell.nl/salon/muge-hair-beauty-salon/" target="_blank" rel="noopener">Treatwell</a>.</p>
+    <p>Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-hidden="true">
+  <a class="btn wa" href="https://wa.me/31687917120?text=Hallo%20Muge%20Hair%20%26%20Beautysalon%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20terecht%3F" target="_blank" rel="noopener" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.4c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Afspraak via WhatsApp</a>
+</div>
+
+<div class="pitch-paneel" id="pitch" hidden role="dialog" aria-modal="true" aria-labelledby="pitch-kop">
+  <div class="pitch-in">
+    <button type="button" class="pitch-sluit" id="pitchDicht">Sluiten</button>
+    <h2 id="pitch-kop">De websiteknop van Muge, nu en straks</h2>
+    <div class="nunu">
+      <figure>
+        <img src="img/voor-gids.jpg" alt="Een Engelstalige gidspagina van nldirecmapi.com over Muge Hair &amp; Beautysalon, met een kapotte foto en 4.7 uit 160 reviews" width="585" height="1100" loading="lazy" decoding="async">
+        <figcaption><b>Nu:</b> bij "Website" op Google staat nlcompanies.org. Dat stuurt door naar nldirecmapi.com: een Engelstalige gidspagina met een kapotte foto, een oud cijfer (4,7 uit 160) en weer andere openingstijden (nagekeken op 15 november 2026).</figcaption>
+      </figure>
+      <figure>
+        <img src="img/na-mobiel.jpg" alt="Deze nieuwe site op een telefoon" width="585" height="1266" loading="lazy" decoding="async">
+        <figcaption><b>Straks:</b> jullie eigen site, met jullie eigen salon, raamlogo en reviews.</figcaption>
+      </figure>
+    </div>
+
+    <h3>Drie dingen die de salon ermee wint</h3>
+    <ol>
+      <li>De websiteknop op Google opent jullie eigen pagina in plaats van een buitenlandse gidspagina met een oud cijfer.</li>
+      <li>Een afspraakverzoek in drie tikken via WhatsApp, met behandeling en dag al in het bericht. Treatwell blijft gewoon werken.</li>
+      <li>De witte marmeren salon, het raamlogo en de 4,8 uit 186 Google-reviews staan meteen bovenaan.</li>
+    </ol>
+
+    <h3>Samen rekenen</h3>
+    <div class="reken">
+      <p><small>Voorbeeld om samen in te vullen, geen belofte.</small></p>
+      <label for="rKlanten">Extra klanten per week via de site: <output id="oKlanten">1</output></label>
+      <input type="range" id="rKlanten" min="0" max="10" step="1" value="1">
+      <label for="rBedrag">Gemiddelde besteding per bezoek (voorbeeld): € <output id="oBedrag">30</output></label>
+      <input type="range" id="rBedrag" min="10" max="200" step="5" value="30">
+      <p class="uitkomst">Per jaar: <b id="uJaar">€ 1.560</b> extra omzet.<br>€ 595 is de omzet van <b id="uAantal">20</b> bezoeken.</p>
+    </div>
+
+    <h3>Kosten: website en beheer</h3>
+    <div class="prijs">
+      <div class="eerst"><small>Website</small><b>€ 595 eenmalig</b>excl. btw (€ 719,95 incl. btw). Tot 5 pagina's, eigen domein, hosting inbegrepen, live binnen 48 uur na betaling.</div>
+      <div class="eerst"><small>Beheer: maandbedrag</small><b>€ 25 per maand</b>excl. btw (€ 30,25 incl. btw). Wij passen alles voor jullie aan.</div>
+      <div><small>Of: klantportaal</small><b>€ 249 eenmalig</b>excl. btw (€ 301,29 incl. btw). Voor als je liever zelf aanpast.</div>
+    </div>
+    <p><small>Beheer is altijd één van de twee: het maandbedrag of het portaal.</small></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NR='31687917120';
+  var VAR={
+    balayage:{n:'balayage',v:[['heel haar','over het hele haar'],['eerst advies','eerst advies']]},
+    highlights:{n:'highlights',v:[['per folie','per folie'],['heel hoofd','over het hele hoofd']]},
+    knippen:{n:'knippen',v:[['alleen knippen','alleen knippen'],['wassen, knippen, drogen','wassen, knippen en drogen'],['met hoofdmassage','wassen, hoofdmassage, knippen en drogen']]},
+    extensions:{n:'extensions',v:[['advies','eerst advies'],['afspraak','een afspraak']]},
+    wenkbrauwen:{n:'mijn wenkbrauwen',v:[['epileren','epileren'],['verven','verven'],['epileren en verven','epileren en verven'],['threaden','threaden']]},
+    anders:{n:'iets anders',v:[['ontharen','definitief ontharen'],['massage','massage'],['iets anders','iets anders, dat leg ik uit']]}
+  };
+  var keuze={wat:'balayage',variant:0,dag:''};
+  var bericht=document.getElementById('bericht'), waK=document.getElementById('waKnop');
+  function tekst(){
+    var w=VAR[keuze.wat], v=w.v[keuze.variant][1], t;
+    if(keuze.wat==='anders') t='Hallo Muge Hair & Beautysalon, ik heb een vraag over '+v+'.';
+    else t='Hallo Muge Hair & Beautysalon, ik wil graag een afspraak voor '+w.n+' ('+v+').';
+    return t+(keuze.dag?' Het liefst '+keuze.dag+'. Kan dat?':' De dag maakt me niet uit. Wanneer kan ik terecht?');
+  }
+  function bijwerken(){var t=tekst();bericht.textContent=t;waK.href='https://wa.me/'+NR+'?text='+encodeURIComponent(t);}
+  function knop(label,waarde,aan){var b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('data-waarde',waarde);b.setAttribute('aria-pressed',aan?'true':'false');b.textContent=label;return b;}
+  var varEl=document.getElementById('varianten');
+  function varianten(){varEl.innerHTML='';VAR[keuze.wat].v.forEach(function(x,i){varEl.appendChild(knop(x[0].charAt(0).toUpperCase()+x[0].slice(1),String(i),i===keuze.variant));});}
+  var dagEl=document.getElementById('dagen');
+  (function(){
+    var namen=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'], mnd=['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+    var nu=new Date();
+    dagEl.appendChild(knop('Maakt niet uit','',true));
+    for(var i=0;i<7;i++){
+      var d=new Date(nu.getFullYear(),nu.getMonth(),nu.getDate()+i);
+      var lang=namen[d.getDay()]+' '+d.getDate()+' '+mnd[d.getMonth()];
+      var kort=i===0?'Vandaag':i===1?'Morgen':namen[d.getDay()].slice(0,2)+' '+d.getDate();
+      dagEl.appendChild(knop(kort,(i===0?'vandaag, ':i===1?'morgen, ':'op ')+lang,false));
+    }
+  })();
+  document.querySelectorAll('.kiezer .chips').forEach(function(g){
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('.chip'); if(!b) return;
+      g.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed',c===b?'true':'false');});
+      var groep=g.getAttribute('data-groep'), w=b.getAttribute('data-waarde');
+      if(groep==='wat'){keuze.wat=w;keuze.variant=0;varianten();}
+      else if(groep==='variant'){keuze.variant=+w;}
+      else keuze.dag=w;
+      bijwerken();
+    });
+  });
+  varianten(); bijwerken();
+
+  /* hero: de rij schuift één keer van de gevel naar binnen */
+  var rail=document.getElementById('rail'), geraakt=false;
+  ['pointerdown','wheel','touchstart','keydown'].forEach(function(ev){rail.addEventListener(ev,function(){geraakt=true;},{passive:true});});
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setTimeout(function(){
+      if(geraakt) return;
+      var f=rail.querySelectorAll('figure'), doel=Math.min(rail.scrollWidth-rail.clientWidth, f[1].offsetLeft-f[0].offsetLeft); if(doel<=0) return;
+      var start=null, duur=2600, van=rail.scrollLeft;
+      rail.style.scrollSnapType='none';
+      function stap(t){
+        if(geraakt){rail.style.scrollSnapType='';return;}
+        if(start===null) start=t;
+        var p=Math.min(1,(t-start)/duur), e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
+        rail.scrollLeft=van+(doel-van)*e;
+        if(p<1) requestAnimationFrame(stap); else rail.style.scrollSnapType='';
+      }
+      requestAnimationFrame(stap);
+    },1400);
+  }
+
+  /* kaart pas laden na klik */
+  document.querySelectorAll('.mm-kaart').forEach(function(k){
+    var b=k.querySelector('.mk-knop'); if(!b) return;
+    b.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src=k.getAttribute('data-src'); f.title=k.getAttribute('data-titel')||'Kaart';
+      f.loading='lazy'; f.referrerPolicy='no-referrer-when-downgrade'; f.allowFullscreen=true;
+      k.innerHTML=''; k.appendChild(f);
+    });
+  });
+
+  /* zwevende knop: zodra de hero uit beeld is, niet over de keuzehulp */
+  var zweef=document.getElementById('zweef'), hero=document.querySelector('.hero'), heroUit=false, kiezerIn=false;
+  function zet(){var aan=heroUit&&!kiezerIn; zweef.classList.toggle('aan',aan); zweef.setAttribute('aria-hidden',aan?'false':'true'); zweef.querySelector('a').tabIndex=aan?0:-1;}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){heroUit=!e[0].isIntersecting;zet();}).observe(hero);
+    new IntersectionObserver(function(e){kiezerIn=e[0].isIntersecting;zet();},{threshold:.15}).observe(document.querySelector('.kaartje'));
+  }
+
+  /* pitch (alleen met ?pitch) */
+  var paneel=document.getElementById('pitch');
+  var rK=document.getElementById('rKlanten'), rB=document.getElementById('rBedrag');
+  function reken(){
+    var k=+rK.value,b=+rB.value;
+    document.getElementById('oKlanten').textContent=k; document.getElementById('oBedrag').textContent=b;
+    document.getElementById('uJaar').textContent='€ '+(k*b*52).toLocaleString('nl-NL');
+    document.getElementById('uAantal').textContent=Math.ceil(595/b);
+  }
+  rK.addEventListener('input',reken); rB.addEventListener('input',reken); reken();
+  if(/[?&]pitch\b/.test(location.search)){
+    document.body.classList.add('pitch');
+    document.getElementById('pitchOpen').addEventListener('click',function(){paneel.hidden=false;});
+    document.getElementById('pitchDicht').addEventListener('click',function(){paneel.hidden=true;});
+    paneel.addEventListener('click',function(e){if(e.target===paneel) paneel.hidden=true;});
+  }
+})();
+</script>
+
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
