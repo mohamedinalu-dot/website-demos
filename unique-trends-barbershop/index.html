@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Unique Trends Barbershop – barbershop in Rotterdam-West</title>
+<meta name="description" content="Unique Trends Barbershop, Gerrit van de Lindestraat 24A in Rotterdam-West. Knippen, fades, baard, kinderen en tieners. 4,8 uit 60 Google-reviews. App of bel 06 27 32 08 22.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!--
+  Demo L283 Unique Trends Barbershop (Gerrit van de Lindestraat 24A, Rotterdam-West), Mohamedia, 15 nov 2026.
+  Concept in één zin: "Het contactvel van de fotograaf": hun eigen fotoserie (zwart-wit/sepia, alleen de oranje cape in
+  kleur, merk AWP) ligt als twee filmstroken op een vel, één beeld is met vetpotlood omcirkeld, en boven het vel staat
+  hun eigen logo waarin het scheermes (de U) één keer openklapt.
+  Lay-out-archetype: CONTACTVEL / FILMSTROKEN. Mobiel: logo groot → kop (één kleur, geen eyebrow) → twee knoppen →
+  twee filmstroken met 3 kleine beelden elk (tik = loep) → score als regel. Desktop: logo/kop/knoppen links, vel rechts.
+  Hero-beweging uit hun logo en vak: het open scheermes van hun logo klapt één keer open (handvat draait om de
+  scharnierpen), daarna tekent een vetpotlood één kring om een beeld. Eenmalig, daarna stil.
+  Bewust NIET: rechte eigen foto over de volle breedte onder de kop (G&L, Bergweg, MAE, Bakkerij Ids), foto in
+  vormkader, eyebrow + tweekleurige kop, band onder de hero, stempel, schuine fotokaart, Ken Burns, stoom,
+  licht dat aangaat, letters één voor één, schuimlaag (Bergweg), ledlijn (ZALAL).
+  Palet: vel #E7E5E1 / #F4F3F0, inkt #171615, grafiet #262523, stil #57534E, film #121110, cape-oranje #E46D17,
+  logo-goud #A97E22 / #D8B35A.
+  Letters: Archivo (Expanded 800, koppen) + Karla (tekst).
+-->
+<style>
+:root{--vel:#E7E5E1;--vel2:#F4F3F0;--inkt:#171615;--grafiet:#262523;--stil:#57534E;--lijn:#CFCBC4;--film:#121110;
+  --cape:#E46D17;--cape-d:#9E4509;--goud:#A97E22;--goud-l:#D8B35A;--kop:'Archivo','Arial Black',system-ui,sans-serif;--tekst:'Karla',system-ui,-apple-system,'Segoe UI',sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--vel);color:var(--inkt);font:400 17px/1.6 var(--tekst);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:800;font-stretch:125%;line-height:1.08;letter-spacing:-.01em;margin:0 0 .5em;overflow-wrap:break-word}
+h2{font-size:clamp(25px,6.4vw,42px)}
+h3{font-size:clamp(17px,4.4vw,21px)}
+p{margin:0 0 1em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+section{padding:68px 0}
+@media (min-width:900px){section{padding:96px 0}.wrap{padding:0 40px}}
+
+/* demo-strook + aankondiging */
+.demo{background:var(--inkt);color:#E9E7E3;font-size:13px;text-align:center;padding:7px 14px}
+.demo a{color:var(--goud-l);display:inline-flex;align-items:center;min-height:30px}
+.demo .pitchknop{display:none}
+body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--goud-l);background:transparent;color:var(--goud-l);font:700 13px var(--tekst);cursor:pointer;align-items:center;vertical-align:middle}
+.balk{background:var(--grafiet);color:#F4F3F0;font-size:14px;text-align:center;padding:0 14px}
+.balk a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+.balk b{color:var(--goud-l)}
+
+/* header */
+header{position:sticky;top:0;z-index:30;background:rgba(231,229,225,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--lijn)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px}
+.merk{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.merk img{width:40px;height:40px;flex:none}
+.merk span{font:800 13px/1.15 var(--kop);font-stretch:125%;letter-spacing:.02em;text-transform:uppercase;min-width:0}
+nav{display:none}
+nav a{text-decoration:none;font-weight:700;font-size:15px;display:inline-flex;align-items:center;min-height:44px;padding:0 10px}
+nav a:hover{color:var(--cape-d)}
+.bel{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:999px;border:2px solid var(--inkt);font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap;flex:none}
+.bel:hover{background:var(--inkt);color:var(--vel)}
+@media (max-width:359px){.merk span{display:none}}
+@media (max-width:420px){.merk span{font-size:11px}.bel{padding:0 13px;font-size:14px}}
+@media (min-width:900px){nav{display:flex;gap:4px}}
+
+/* knoppen */
+.knop{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:54px;padding:0 22px;border-radius:999px;font:700 16px var(--tekst);text-decoration:none;border:2px solid transparent;cursor:pointer;text-align:center;line-height:1.2}
+.knop svg{width:20px;height:20px;flex:none}
+.knop.wa{background:var(--cape);color:var(--inkt);border-color:var(--cape)}
+.knop.wa:hover{background:#F07E2C}
+.knop.twee{background:transparent;border-color:var(--inkt);color:var(--inkt)}
+.knop.twee:hover{background:var(--inkt);color:var(--vel)}
+.knop.licht{border-color:#F4F3F0;color:#F4F3F0}
+.knop.licht:hover{background:#F4F3F0;color:var(--inkt)}
+
+/* hero */
+.hero{padding:22px 0 34px;overflow:hidden}
+.hero .wrap{display:grid;gap:22px}
+.hero .wrap>*{min-width:0}
+.merk-groot{width:min(330px,86%);height:auto;display:block;margin:4px 0 14px -4px;overflow:visible}
+.greep{transform-box:view-box;transform-origin:265px 380px;animation:openklap 1.35s cubic-bezier(.25,.75,.25,1) .35s both}
+@keyframes openklap{0%{transform:rotate(38deg)}70%{transform:rotate(-4deg)}100%{transform:rotate(0deg)}}
+.hero h1{font-size:clamp(27px,7.4vw,50px);max-width:16ch;margin-bottom:12px}
+.lead{color:var(--stil);font-size:17px;max-width:40ch;margin-bottom:22px}
+.knoppen{display:flex;flex-wrap:wrap;gap:10px}
+.knoppen .knop{flex:1 1 150px}
+@media (max-width:599px){.hero .knoppen{display:grid;grid-template-columns:1.22fr 1fr}.hero .knoppen .knop{padding:0 12px;font-size:15px;gap:7px}.hero .knoppen .knop svg{width:18px;height:18px}.merk-groot{width:min(270px,74%);margin-bottom:10px}.lead{margin-bottom:18px}}
+@media (max-width:359px){.hero .knoppen{grid-template-columns:1fr}.rand{font-size:8px;letter-spacing:.1em}.rand span+span:last-child:not(:nth-child(3)){display:none}}
+.vel{background:var(--vel2);border:1px solid var(--lijn);border-radius:6px;padding:14px 10px 10px;box-shadow:0 18px 40px -24px rgba(23,22,21,.45);display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.strook{background:var(--film);border-radius:2px;padding:0 6px}
+.rand{height:22px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 6px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='22'%3E%3Crect x='3' y='3' width='8' height='5' rx='1.4' fill='%23E7E5E1' fill-opacity='.8'/%3E%3C/svg%3E") repeat-x 0 0;
+  color:#E8892F;font:800 9.5px/1 var(--kop);font-stretch:125%;letter-spacing:.14em;text-transform:uppercase}
+.rand.onder{background-position:0 13px;align-items:flex-start;padding-top:3px}
+.rand.boven{align-items:flex-end;padding-bottom:3px}
+.rand span{white-space:nowrap}
+.rand{overflow:hidden}
+.beelden{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.beeld{position:relative;padding:0;border:0;background:#000;cursor:zoom-in;aspect-ratio:3/2;min-height:44px;display:block}
+.beeld img{width:100%;height:100%;object-fit:cover}
+.beeld:focus-visible{outline:3px solid var(--cape);outline-offset:2px}
+.kring{position:absolute;left:-7%;top:-13%;width:114%;height:126%;overflow:visible;pointer-events:none}
+.kring path{fill:none;stroke:#E2501B;stroke-width:3.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:kring 1s ease-out 1.75s forwards}
+@keyframes kring{to{stroke-dashoffset:0}}
+.velnoot{font-size:13px;color:var(--stil);margin:0;padding:0 4px}
+.score{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:700;text-decoration:none;border-bottom:2px solid var(--goud);align-self:start;justify-self:start}
+.score .st{color:var(--goud)}
+@media (min-width:900px){
+  .hero{padding:56px 0 80px}
+  .hero .wrap{grid-template-columns:1fr 1.2fr;align-items:center;gap:56px}
+  .merk-groot{width:min(420px,100%)}
+  .vel{padding:22px 16px 16px;gap:16px}
+  .knoppen .knop{flex:0 1 auto}
+}
+@media (prefers-reduced-motion:reduce){.greep{animation:none}.kring path{animation:none;stroke-dashoffset:0}html{scroll-behavior:auto}}
+
+/* loep */
+dialog.loep{border:0;padding:0;background:transparent;max-width:min(1000px,94vw);width:100%}
+dialog.loep::backdrop{background:rgba(18,17,16,.88)}
+.loep figure{margin:0;background:var(--film);padding:10px;border-radius:4px}
+.loep img{width:100%;height:auto;max-height:78vh;object-fit:contain;background:#000}
+.loep figcaption{color:#E9E7E3;font-size:14px;padding:10px 4px 2px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.loep button{min-height:44px;min-width:44px;padding:0 16px;border-radius:999px;border:1px solid #E9E7E3;background:transparent;color:#E9E7E3;font:700 14px var(--tekst);cursor:pointer}
+
+/* prijzen */
+.prijzen{background:var(--vel2);border-top:1px solid var(--lijn);border-bottom:1px solid var(--lijn)}
+.prijzen .wrap{display:grid;gap:28px}
+.lijst{list-style:none;margin:0;padding:0;border-top:2px solid var(--inkt)}
+.lijst li{border-bottom:1px solid var(--lijn)}
+.lijst button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:baseline;width:100%;min-height:60px;padding:14px 2px;cursor:pointer}
+.lijst button:focus-visible{outline:3px solid var(--cape);outline-offset:2px}
+.lijst .naam{font-weight:700;font-size:18px;min-width:0}
+.lijst .naam small{display:block;font-weight:400;font-size:14px;color:var(--stil)}
+.lijst .prijs{font:800 20px var(--kop);font-stretch:125%}
+.lijst .pijl{font-size:14px;font-weight:700;color:var(--cape-d);white-space:nowrap}
+.lijst button:hover .naam{text-decoration:underline;text-decoration-color:var(--cape)}
+.klein{font-size:14px;color:var(--stil)}
+@media (min-width:900px){.prijzen .wrap{grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}}
+
+/* kiezer */
+.kiezer{background:var(--grafiet);color:#F4F3F0}
+.kiezer .wrap{max-width:860px}
+.kiezer p.intro{color:#C9C5BE}
+.stap{margin:26px 0 0}
+.stap h3{font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--goud-l);margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:48px;padding:8px 16px;border-radius:12px;border:1.5px solid #6B6762;background:transparent;color:#F4F3F0;font:700 15px/1.2 var(--tekst);cursor:pointer;text-align:left}
+.chip small{display:block;font-weight:400;font-size:12.5px;color:#C9C5BE}
+.chip[aria-pressed="true"]{background:var(--cape);border-color:var(--cape);color:var(--inkt)}
+.chip[aria-pressed="true"] small{color:#2B1606}
+.bon{margin-top:30px;background:var(--vel2);color:var(--inkt);border-radius:10px;padding:18px}
+.bon .kop{font:800 13px var(--kop);font-stretch:125%;letter-spacing:.08em;text-transform:uppercase;color:var(--stil);margin-bottom:6px}
+.bon p#bericht{font-size:16px;margin-bottom:14px}
+.bon .knop{width:100%}
+
+/* zaak */
+.zaak .wrap{display:grid;gap:30px;align-items:center}
+.zaak figure{margin:0}
+.zaak figure img{width:100%;height:auto;border-radius:4px;aspect-ratio:4/5;object-fit:cover}
+.zaak figcaption{font-size:13px;color:var(--stil);margin-top:8px}
+.feiten{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:22px 0 0;padding:0;list-style:none}
+.feiten li{background:var(--vel2);border:1px solid var(--lijn);border-radius:8px;padding:12px 14px;font-size:15px}
+.feiten b{display:block;font:800 18px var(--kop);font-stretch:125%}
+@media (min-width:900px){.zaak .wrap{grid-template-columns:1.1fr .9fr;gap:64px}}
+
+/* waarom */
+.waarom{background:var(--vel2);border-top:1px solid var(--lijn)}
+.waarom .wrap{display:grid;gap:30px;align-items:center}
+.waarom .wrap>*{min-width:0}
+.vl{margin:0;max-width:420px}
+.vl img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 100%;border-radius:4px}
+.waarom h2{max-width:20ch}
+.kaarten{display:grid;gap:14px;margin-top:26px}
+.kaart{background:var(--vel);border:1px solid var(--lijn);border-left:5px solid var(--cape);border-radius:8px;padding:20px}
+.kaart h3{margin-bottom:6px}
+.kaart p{margin:0;color:var(--stil)}
+@media (min-width:900px){.waarom .wrap{grid-template-columns:.75fr 1.25fr;gap:64px}}
+
+/* reviews */
+.reviews{background:var(--inkt);color:#F4F3F0}
+.reviews .kopregel{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin-bottom:6px}
+.reviews .cijfer{font:800 clamp(34px,8vw,52px)/1 var(--kop);font-stretch:125%;color:var(--goud-l)}
+.reviews .bron{display:inline-flex;align-items:center;min-height:44px;color:#F4F3F0;font-weight:700}
+.rev{display:grid;gap:14px;margin-top:24px}
+.rev blockquote{margin:0;background:var(--grafiet);border-radius:8px;padding:20px;border-top:3px solid var(--goud)}
+.rev blockquote p{margin:0 0 10px;font-size:17px}
+.rev cite{font-style:normal;font-weight:700;color:var(--goud-l)}
+.label{font-size:13px;color:#BDB8B0;margin-top:16px}
+@media (min-width:900px){.rev{grid-template-columns:repeat(3,1fr)}}
+
+/* stappen */
+.stappen ol{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:14px;counter-reset:s}
+.stappen li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:start;background:var(--vel2);border:1px solid var(--lijn);border-radius:8px;padding:18px}
+.stappen li::before{content:counter(s);display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--inkt);color:var(--goud-l);font:800 22px var(--kop);font-stretch:125%}
+.stappen li > div{min-width:0}
+.stappen h3{margin-bottom:4px}
+.stappen p{margin:0;color:var(--stil)}
+@media (min-width:900px){.stappen ol{grid-template-columns:repeat(3,1fr)}}
+
+/* faq */
+.faq{background:var(--vel2);border-top:1px solid var(--lijn)}
+.faq .wrap{max-width:860px}
+details{border-bottom:1px solid var(--lijn)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:60px;padding:12px 0;font-weight:700;font-size:18px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:800 24px var(--kop);color:var(--cape-d);flex:none}
+details[open] summary::after{content:"–"}
+details p{color:var(--stil);margin:0 0 18px}
+
+/* route */
+.route .wrap{display:grid;gap:28px}
+.route figure{margin:0}
+.route figure img{width:100%;height:auto;border-radius:4px}
+.route figcaption{font-size:13px;color:var(--stil);margin-top:8px}
+.adres{font-size:19px;font-weight:700;margin-bottom:6px}
+.uren{margin:0 0 20px;color:var(--stil)}
+.uren b{color:var(--inkt)}
+.route .knoppen{margin-bottom:22px}
+.mm-kaart{--mk-bg:#262523;--mk-fg:#F4F3F0;--mk-accent:#E46D17;--mk-lijn:rgba(255,255,255,.07);position:relative;aspect-ratio:4/3;width:100%;border-radius:8px;overflow:hidden;background:var(--mk-bg);color:var(--mk-fg)}
+.mm-kaart .mk-raster{position:absolute;inset:0;background:linear-gradient(var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px}
+.mm-kaart .mk-weg{position:absolute;background:rgba(255,255,255,.13);border-radius:6px}
+.mm-kaart .mk-inhoud{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mm-kaart .mk-pin{width:46px;height:46px}
+.mm-kaart .mk-adres{font-weight:700;line-height:1.35;margin:0}
+.mm-kaart .mk-knop{min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--mk-accent);background:transparent;color:var(--mk-fg);font:inherit;font-weight:700;cursor:pointer}
+.mm-kaart .mk-knop:hover,.mm-kaart .mk-knop:focus-visible{background:var(--mk-accent);color:var(--inkt)}
+.mm-kaart .mk-uitleg{font-size:12px;opacity:.75;max-width:30ch;margin:0}
+.mm-kaart iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (min-width:900px){.route .wrap{grid-template-columns:1fr 1fr;gap:56px;align-items:start}}
+
+/* slot */
+.slot{background:var(--vel2);border-top:1px solid var(--lijn);text-align:center}
+.slot img{width:min(300px,78%);height:auto;margin:0 auto 22px}
+.slot .knoppen{justify-content:center;max-width:560px;margin:0 auto}
+
+/* footer */
+footer{background:var(--film);color:#D7D3CC;padding:48px 0 110px;font-size:14px}
+footer .wrap{display:grid;gap:24px}
+footer img{width:220px;height:auto}
+footer a{display:inline-flex;align-items:center;min-height:44px}
+footer p{margin:0 0 6px}
+.door a{color:var(--goud-l);font-weight:700}
+@media (min-width:900px){footer .wrap{grid-template-columns:1.2fr 1fr 1fr}footer{padding-bottom:48px}}
+
+/* zwevende knop */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;transform:translateY(140%);transition:transform .3s ease}
+.zweef.aan{transform:none}
+.zweef .knop{width:100%;box-shadow:0 10px 30px -8px rgba(0,0,0,.5)}
+@media (min-width:900px){.zweef{display:none}}
+
+/* pitch */
+.pitchpaneel{position:fixed;inset:0;z-index:60;background:rgba(18,17,16,.72);display:flex;justify-content:flex-end}
+.pitchpaneel .in{background:#fff;color:var(--inkt);width:min(580px,100%);height:100%;overflow:auto;padding:22px 20px 40px}
+.pitchpaneel h2{font-size:clamp(22px,5.4vw,30px)}
+.pitchpaneel h3{margin-top:26px}
+.pitchpaneel .sluit{float:right;min-height:44px;min-width:44px;border-radius:10px;border:1px solid var(--lijn);background:#fff;font:700 15px var(--tekst);cursor:pointer;padding:0 14px}
+.nuenstraks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.nuenstraks figure{margin:0}
+.nuenstraks img{width:100%;height:auto;border:1px solid var(--lijn);border-radius:8px}
+.nuenstraks figcaption{font-size:13px;color:var(--stil);margin-top:6px}
+.pitchpaneel ul{padding-left:20px}
+.pitchpaneel li{margin-bottom:8px}
+.reken{background:var(--vel2);border-radius:10px;padding:16px}
+.reken label{display:block;font-weight:700;margin-top:8px}
+.reken input{width:100%;min-height:44px}
+.reken .uit{margin-top:10px;background:#fff;border-radius:8px;padding:12px}
+.prijsblok{background:var(--vel2);border-radius:10px;padding:16px}
+.prijsblok p{margin:0 0 10px}
+</style>
+<link rel="stylesheet" href="fonts/fonts.css">
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>. <button type="button" class="pitchknop" id="pitchOpen">Mo</button></div>
+<div class="balk"><a href="https://www.google.com/maps?cid=14151716952799384482" target="_blank" rel="noopener"><span><b>4,8 ★</b> uit 60 Google-reviews · di t/m za 11:00–19:00</span></a></div>
+
+<header>
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="Unique Trends Barbershop, naar boven"><img src="favicon.svg" width="40" height="40" alt=""><span>Unique Trends Barbershop</span></a>
+    <nav aria-label="Hoofdmenu"><a href="#prijzen">Prijzen</a><a href="#kiezer">Afspraak</a><a href="#route">Route</a></nav>
+    <a class="bel" href="tel:+31627320822">Bel 06 27 32 08 22</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="wrap">
+    <div>
+      <svg class="merk-groot" viewBox="4 36 992 506" role="img" aria-label="Unique Trends barbershop"><path fill="var(--goud)" d="M276.0 205.4C276.0 98.4 275.8 54.2 275.5 52.8C274.6 49.8 272.8 47.2 270.1 45.4L267.8 43.8 L248.5 43.8C226.9 43.8 227.8 43.6 224.0 47.5C220.5 51.1 220.8 44.3 220.8 147.8L220.8 241.2 L221.8 243.3C223.2 245.9 226.1 248.6 228.7 249.9C236.2 253.5 242.9 256.7 243.8 257.0C244.5 257.3 245.1 258.0 245.2 258.6C245.4 259.2 245.6 273.7 245.6 290.8C245.8 321.1 245.8 321.8 246.9 325.4C249.9 335.3 255.2 343.1 262.8 349.0C265.4 351.0 272.7 355.0 273.9 355.0C274.2 355.0 274.5 355.2 274.5 355.5C274.5 355.8 274.8 356.0 275.2 356.0C275.9 356.0 276.0 338.9 276.0 205.4ZM274.9 354.9C274.8 354.5 274.9 286.9 275.0 204.5L275.3 54.8 L275.4 205.1C275.4 287.8 275.4 355.5 275.3 355.5C275.2 355.5 275.0 355.2 274.9 354.9ZM242.5 237.6C242.5 237.3 246.2 237.0 250.8 236.9C255.3 236.7 259.2 236.5 259.3 236.3C259.5 236.2 259.3 224.5 259.0 210.4C258.3 177.6 258.3 122.2 259.0 88.3C259.6 63.5 259.5 61.9 258.7 61.0C257.9 60.1 257.1 60.0 251.2 60.0C247.1 60.0 244.5 59.8 244.5 59.5C244.5 59.2 247.2 59.0 251.7 59.0C261.7 59.0 261.1 58.2 261.8 72.9C263.1 100.1 262.3 235.1 260.8 237.4C260.4 238.1 242.5 238.3 242.5 237.6Z"/><path fill="var(--goud)" d="M232.5 495.7C233.5 495.5 235.2 494.3 237.0 492.5C240.7 488.9 241.2 486.8 240.9 477.7C240.5 468.9 241.2 455.9 242.5 448.4C243.6 441.4 245.8 431.7 246.5 430.4C246.8 429.9 247.0 429.1 247.0 428.5C247.0 428.0 247.2 427.4 247.4 427.3C247.7 427.1 248.0 426.3 248.2 425.5C248.3 424.6 249.2 422.5 250.0 420.7C250.8 418.9 251.5 417.3 251.5 417.1C251.5 416.9 252.6 414.4 254.0 411.6C256.4 406.7 256.7 405.5 255.3 405.5C255.0 405.5 251.6 404.5 247.8 403.2C238.0 400.1 235.0 400.3 230.1 404.5C228.7 405.8 225.0 412.7 225.0 414.2C225.0 414.6 224.8 415.1 224.6 415.2C224.4 415.3 223.7 417.2 223.0 419.3C222.4 421.5 221.7 423.7 221.5 424.2C220.8 425.8 218.1 437.4 217.6 441.0C217.3 442.8 216.9 445.0 216.8 446.0C215.3 454.6 214.5 481.5 215.5 485.5C217.7 493.7 223.9 497.4 232.5 495.7Z"/><path fill="var(--inkt)" d="M688.0 431.0L688.0 427.0 L683.2 426.9C680.6 426.9 678.2 426.8 677.9 426.8C677.5 426.8 677.2 427.3 677.1 427.9C676.9 429.0 676.7 429.0 673.6 428.9L670.2 428.8 L670.1 411.6L670.0 394.5 L664.1 394.4L658.2 394.2 L658.1 391.5C657.9 388.1 658.1 388.0 664.5 388.1L669.8 388.1 L669.9 315.7C670.0 263.2 670.2 243.2 670.6 242.7C671.0 242.2 673.1 242.0 679.6 242.0L688.0 242.0 L688.0 238.0L688.0 234.1 L671.4 233.8C662.2 233.7 653.7 233.5 652.5 233.3C650.0 233.0 645.6 232.3 638.8 231.3C636.3 230.9 633.3 230.4 632.1 230.3L630.0 230.0 L629.9 239.3C629.8 246.5 629.6 248.7 629.1 248.9C628.7 249.0 628.3 248.6 628.2 248.1C628.0 247.5 627.7 247.0 627.4 247.0C627.2 247.0 627.0 246.7 627.0 246.4C627.0 245.1 618.8 236.0 617.7 236.0C617.3 236.0 617.0 235.8 617.0 235.6C617.0 235.1 612.4 232.7 609.9 231.9C604.0 230.1 596.6 229.5 592.1 230.6C588.2 231.5 585.8 232.1 584.8 232.5C582.4 233.4 575.9 236.6 575.4 237.2C575.0 237.5 573.9 238.4 572.8 239.2C570.5 240.9 563.0 248.5 563.0 249.1C563.0 249.4 562.3 250.3 561.5 251.2C560.7 252.0 560.0 253.0 560.0 253.3C560.0 253.6 559.7 254.2 559.3 254.5C558.9 254.8 557.9 256.4 557.2 257.9C556.4 259.5 555.6 260.8 555.4 260.9C555.2 261.0 555.0 261.4 555.0 261.7C555.0 262.1 554.6 263.3 554.1 264.3C548.1 276.6 546.3 299.0 550.0 314.0C550.3 315.2 550.7 317.0 550.8 317.9C551.0 318.8 551.3 319.6 551.6 319.8C551.8 319.9 552.0 320.5 552.0 321.0C552.0 321.6 552.2 322.4 552.4 322.9C552.7 323.4 553.1 324.3 553.4 325.0C555.1 329.2 559.0 336.6 559.6 336.9C559.8 337.0 560.0 337.3 560.0 337.5C560.0 339.0 568.4 348.1 572.9 351.5C575.3 353.3 580.4 356.0 581.5 356.0C582.0 356.0 582.6 356.2 582.8 356.5C582.9 356.8 583.6 357.0 584.2 357.0C584.9 357.0 585.6 357.2 585.8 357.5C585.9 357.8 586.9 358.0 588.0 358.0C589.1 358.0 590.1 358.2 590.2 358.5C590.4 358.8 593.4 359.0 597.5 359.0C601.6 359.0 604.6 358.8 604.8 358.5C604.9 358.2 605.6 358.0 606.4 358.0C609.0 358.0 618.0 354.5 618.0 353.4C618.0 353.2 618.3 353.0 618.7 353.0C619.4 353.0 627.0 345.6 627.0 344.9C627.0 344.2 628.4 343.0 629.2 343.0C629.9 343.0 630.0 347.1 630.0 384.5C630.0 425.0 630.0 426.0 629.0 426.5C628.5 426.8 624.3 427.0 619.0 427.0L610.0 427.0 L610.0 431.0L610.0 435.0 L649.0 435.0L688.0 435.0 L688.0 431.0ZM943.2 358.5C943.4 358.2 944.7 358.0 946.0 358.0C947.3 358.0 948.6 357.8 948.8 357.5C948.9 357.2 949.7 357.0 950.5 357.0C951.3 357.0 952.1 356.8 952.2 356.6C952.3 356.4 953.6 355.9 955.0 355.5C956.4 355.1 957.7 354.6 957.8 354.4C957.9 354.2 958.5 354.0 959.0 354.0C959.6 354.0 960.0 353.8 960.0 353.5C960.0 353.2 960.5 353.0 961.0 353.0C961.5 353.0 962.0 352.8 962.0 352.5C962.0 352.2 962.2 352.0 962.5 352.0C964.8 352.0 980.0 338.7 980.0 336.7C980.0 336.3 980.2 336.0 980.4 336.0C980.6 336.0 981.1 335.4 981.5 334.6C981.9 333.9 982.4 333.1 982.5 333.0C982.8 332.7 985.9 326.4 986.6 324.5C986.9 323.8 987.3 322.9 987.6 322.4C987.8 321.9 988.0 321.1 988.0 320.5C988.0 320.0 988.2 319.4 988.5 319.2C988.8 319.1 989.0 318.3 989.0 317.6C989.0 316.8 989.3 315.9 989.6 315.6C990.6 314.6 989.4 314.0 985.9 314.0C982.3 314.0 981.1 314.6 981.0 316.4C981.0 317.3 976.9 325.7 976.4 325.9C976.2 326.0 976.0 326.3 976.0 326.6C976.0 328.5 964.9 341.0 963.2 341.0C963.1 341.0 962.0 341.6 960.8 342.4C953.5 347.3 943.7 349.6 935.0 348.5C932.2 348.2 929.9 347.7 929.7 347.4C929.6 347.2 928.9 347.0 928.2 347.0C927.5 347.0 927.0 346.8 927.0 346.5C927.0 346.2 926.6 346.0 926.1 346.0C925.0 346.0 920.0 340.9 920.0 339.8C920.0 339.4 919.8 339.0 919.5 339.0C919.2 339.0 919.0 338.3 919.0 337.5C919.0 336.7 918.8 336.0 918.5 336.0C918.2 336.0 918.0 335.2 918.0 334.3C918.0 333.3 917.8 332.4 917.5 332.2C917.2 332.1 917.0 330.8 917.0 329.3C917.0 327.9 916.8 326.5 916.5 326.2C916.2 325.9 916.0 318.1 916.0 306.5L915.9 287.2 L953.0 287.1L990.0 287.0 L990.0 284.3C990.0 282.8 989.8 281.4 989.5 281.2C989.2 281.1 989.0 280.0 989.0 278.8C989.0 277.5 988.8 276.4 988.5 276.2C988.2 276.1 988.0 275.1 988.0 274.0C988.0 272.9 987.8 272.0 987.5 272.0C987.2 272.0 987.0 271.3 987.0 270.5C987.0 269.7 986.8 268.9 986.5 268.8C986.2 268.6 986.0 268.0 986.0 267.5C986.0 266.9 985.8 266.1 985.6 265.6C985.3 265.1 984.4 263.2 983.4 261.2C979.6 253.1 973.0 245.4 965.9 240.6C963.8 239.2 961.8 238.0 961.6 238.0C961.3 238.0 961.0 237.8 960.9 237.6C960.8 237.3 958.3 236.0 954.4 234.3C949.3 232.0 938.0 229.9 931.5 230.0C913.4 230.2 898.0 237.4 886.4 251.0C883.0 255.0 879.0 260.6 879.0 261.4C879.0 261.7 878.8 262.0 878.6 262.1C878.2 262.2 876.6 265.5 874.8 269.5C873.7 272.1 872.1 277.4 871.6 280.5C870.2 287.8 870.0 289.5 870.0 293.6C870.0 300.3 871.4 308.7 873.8 316.0C875.2 320.2 879.9 330.0 880.6 330.0C880.8 330.0 881.0 330.3 881.0 330.7C881.0 331.0 881.5 331.8 882.0 332.2C882.5 332.7 883.0 333.4 883.0 333.6C883.0 334.1 891.5 344.0 891.9 344.0C892.1 344.0 892.9 344.6 893.8 345.4C896.8 348.3 904.1 352.7 909.0 354.6C909.7 354.9 910.6 355.3 911.1 355.6C911.6 355.8 912.4 356.0 913.0 356.0C913.5 356.0 914.1 356.2 914.2 356.5C914.4 356.8 915.3 357.0 916.2 357.0C917.2 357.0 918.1 357.2 918.2 357.5C918.4 357.8 919.7 358.0 921.0 358.0C922.3 358.0 923.6 358.2 923.8 358.5C923.9 358.8 927.7 359.0 933.5 359.0C939.3 359.0 943.1 358.8 943.2 358.5ZM762.8 356.5C762.9 356.2 763.9 356.0 765.0 356.0C766.1 356.0 767.1 355.8 767.2 355.5C767.4 355.2 768.1 355.0 768.8 355.0C769.4 355.0 770.1 354.8 770.2 354.5C770.4 354.2 771.1 354.0 771.8 354.0C772.5 354.0 773.0 353.8 773.0 353.5C773.0 353.2 773.3 353.0 773.8 353.0C774.2 353.0 774.9 352.8 775.4 352.6C775.9 352.3 777.3 351.6 778.6 351.0C779.9 350.4 781.0 349.7 781.0 349.4C781.0 349.2 781.3 349.0 781.7 349.0C782.0 349.0 782.8 348.6 783.4 348.0C784.0 347.4 784.6 347.0 784.9 347.0C785.5 347.0 791.6 341.0 793.0 339.0C793.7 338.0 794.4 337.0 794.6 336.8C794.9 336.5 795.5 335.5 796.0 334.6C798.0 331.3 798.2 332.5 798.2 345.2L798.2 357.1 L801.8 356.8C803.7 356.6 807.7 356.4 810.8 356.2C813.8 356.1 816.7 355.8 817.2 355.5C817.8 355.2 826.0 354.9 837.2 354.9L856.2 354.8 L856.2 351.0L856.2 347.2 L853.2 347.2C851.6 347.1 847.7 347.0 844.6 347.0L839.0 347.0 L839.0 290.5L839.0 234.0 L808.6 234.1L778.2 234.2 L778.2 238.1L778.1 242.0 L787.7 242.0C794.9 242.0 797.5 242.2 797.9 242.6C798.5 243.4 798.7 303.9 798.1 310.8C797.6 315.4 796.5 321.4 795.5 323.8C794.5 326.2 793.7 327.8 792.9 328.7C792.4 329.3 792.0 329.9 792.0 330.1C792.0 330.8 786.1 336.6 784.0 338.0C783.0 338.7 782.1 339.3 782.0 339.5C781.9 339.6 781.2 340.1 780.6 340.4C779.9 340.8 778.7 341.5 777.8 342.0C774.3 344.0 770.2 345.0 766.1 345.0C763.8 345.0 762.0 344.8 762.0 344.6C762.0 344.4 761.3 344.0 760.5 343.6C759.7 343.2 758.8 342.3 758.4 341.5C758.0 340.7 757.6 340.0 757.4 340.0C757.2 340.0 757.0 338.8 757.0 337.3C757.0 335.9 756.8 334.5 756.5 334.2C756.2 333.9 756.0 316.1 756.0 283.9L756.0 234.0 L727.0 234.0L698.0 234.0 L698.0 238.0L698.0 242.0 L706.3 242.0C712.4 242.0 714.6 242.2 714.8 242.6C714.9 243.0 715.1 262.6 715.2 286.2C715.3 313.6 715.6 330.4 715.9 332.5C717.0 338.9 717.1 339.5 717.6 339.8C717.8 339.9 718.0 340.5 718.0 341.0C718.0 341.6 718.2 342.0 718.5 342.0C718.8 342.0 719.0 342.3 719.0 342.6C719.0 344.4 726.8 350.6 731.8 352.9C733.1 353.6 734.6 354.3 735.1 354.6C735.6 354.8 736.4 355.0 737.0 355.0C737.5 355.0 738.1 355.2 738.2 355.5C738.4 355.8 739.3 356.0 740.2 356.0C741.2 356.0 742.1 356.2 742.2 356.5C742.4 356.8 746.4 357.0 752.5 357.0C758.6 357.0 762.6 356.8 762.8 356.5ZM368.9 351.1L368.8 347.2 L360.0 347.0L351.2 346.8 L351.1 312.5C351.0 290.1 351.2 278.1 351.5 277.8C351.8 277.5 352.0 275.9 352.0 274.2C352.0 272.5 352.2 270.9 352.5 270.8C352.8 270.6 353.0 269.7 353.0 268.8C353.0 267.8 353.2 266.9 353.5 266.8C353.8 266.6 354.0 266.0 354.0 265.5C354.0 264.9 354.2 264.1 354.4 263.6C354.7 263.1 355.2 262.1 355.6 261.2C358.3 255.2 366.1 247.7 373.2 244.6C374.1 244.2 375.1 243.7 375.5 243.5C380.6 241.1 387.2 242.1 390.7 246.0C391.4 246.8 392.0 247.8 392.0 248.3C392.0 248.7 392.2 249.4 392.5 249.9C393.9 252.7 394.0 256.9 393.9 301.5L393.8 346.8 L385.0 346.9L376.2 347.0 L376.1 351.0L376.0 355.0 L414.0 355.0L452.0 355.0 L451.8 351.1L451.7 347.2 L443.4 347.1L435.0 347.0 L435.0 303.8C435.0 275.5 434.8 260.5 434.5 260.2C434.2 260.1 434.0 258.3 434.0 256.4C434.0 252.5 433.3 249.9 431.4 245.7C430.5 243.7 424.6 238.0 423.5 238.0C423.2 238.0 423.0 237.8 423.0 237.6C423.0 237.3 422.6 237.0 422.1 236.8C421.6 236.7 420.4 236.0 419.2 235.4C413.8 232.2 405.1 230.0 397.6 230.0C392.2 230.0 385.0 231.1 380.0 232.8C376.0 234.1 370.0 237.0 370.0 237.6C370.0 237.8 369.7 238.0 369.4 238.0C367.1 238.0 357.8 247.6 353.0 255.0C351.3 257.6 351.0 256.0 351.0 242.7L351.0 229.9 L347.9 230.2C346.2 230.3 343.1 230.7 341.0 231.0C328.3 232.8 319.6 233.5 305.2 233.9L293.2 234.2 L293.1 238.1L293.0 242.0 L301.5 242.0L310.0 242.0 L310.2 243.6C310.4 244.5 310.5 268.1 310.4 296.0L310.2 346.8 L301.6 346.9L293.0 347.0 L293.0 351.0L293.0 355.0 L331.0 355.0L369.1 355.0 L368.9 351.1ZM531.2 351.0L531.2 347.2 L525.6 347.1L520.0 347.0 L519.9 289.4C519.9 257.7 519.9 231.4 519.8 231.0C519.7 230.1 519.2 230.1 507.2 232.1C498.9 233.5 491.8 234.0 478.1 234.0L464.5 234.0 L464.5 238.0L464.5 242.0 L471.6 242.1L478.8 242.2 L479.0 248.2C479.1 251.6 479.2 275.1 479.1 300.6L479.0 347.0 L471.7 347.0L464.5 347.0 L464.5 351.0L464.5 355.0 L497.9 354.9L531.2 354.8 L531.2 351.0ZM603.2 350.5C603.1 350.2 602.6 350.0 602.2 350.0C600.3 350.0 596.0 344.2 596.0 341.8C596.0 341.1 595.8 340.4 595.5 340.2C595.2 340.1 595.0 338.3 595.0 336.2C595.0 334.2 594.8 332.4 594.5 332.2C593.8 331.8 593.8 264.4 594.5 263.7C594.7 263.5 595.0 261.2 595.2 258.8C595.5 253.2 596.0 250.1 596.6 249.7C596.8 249.6 597.0 249.0 597.0 248.5C597.0 247.7 598.3 245.1 599.9 242.7C601.0 241.0 604.1 240.0 608.0 240.0C610.3 240.0 612.0 240.2 612.0 240.5C612.0 240.8 612.3 241.0 612.8 241.0C613.2 241.0 614.0 241.3 614.6 241.6C616.2 242.5 623.9 250.1 624.2 251.0C624.3 251.4 624.8 252.3 625.2 253.0C626.6 255.3 628.0 258.7 628.0 259.7C628.0 260.3 628.2 261.0 628.4 261.3C630.3 263.4 630.7 319.6 628.8 327.5C627.9 331.5 625.0 338.0 623.8 339.0C623.3 339.3 623.0 339.8 623.0 340.1C623.0 340.9 619.9 344.0 616.8 346.3C614.1 348.3 613.1 348.9 609.4 350.4C607.6 351.1 603.7 351.2 603.2 350.5ZM916.0 264.5C916.0 256.1 916.2 250.9 916.5 250.8C916.8 250.6 917.0 249.7 917.0 248.7C917.0 247.8 917.2 247.0 917.5 247.0C917.8 247.0 918.0 246.5 918.0 245.8C918.0 244.5 922.1 240.0 923.3 240.0C923.7 240.0 924.0 239.8 924.0 239.6C924.0 238.2 934.5 237.4 937.4 238.6C941.1 240.1 942.0 240.6 943.4 241.9C944.3 242.7 945.0 243.6 945.0 244.0C945.0 244.3 945.2 244.5 945.4 244.5C945.8 244.5 947.0 246.9 947.0 247.9C947.0 248.2 947.2 248.9 947.5 249.4C948.6 251.6 949.3 263.7 949.0 277.1C949.0 277.9 947.9 278.0 932.5 278.0L916.0 278.0 L916.0 264.5ZM501.2 199.5C501.4 199.2 502.4 199.0 503.5 199.0C504.6 199.0 505.5 198.8 505.5 198.5C505.5 198.2 506.1 198.0 506.8 198.0C507.4 198.0 508.0 197.8 508.0 197.5C508.0 197.2 508.3 197.0 508.7 197.0C509.6 197.0 517.0 189.7 517.0 188.7C517.0 188.3 517.2 188.0 517.5 188.0C517.8 188.0 518.0 187.6 518.0 187.0C518.0 186.4 518.2 186.0 518.5 186.0C518.8 186.0 519.0 185.3 519.0 184.5C519.0 183.7 519.2 182.9 519.5 182.8C520.2 182.3 520.1 174.7 519.4 172.5C514.0 155.7 494.6 150.5 482.7 162.8C479.7 165.8 479.0 166.9 477.4 171.0C476.6 173.1 476.5 182.9 477.4 184.6C477.7 185.2 478.2 186.5 478.6 187.4C478.9 188.3 479.4 189.0 479.6 189.0C479.8 189.0 480.0 189.3 480.0 189.7C480.0 190.7 486.0 196.2 488.2 197.2C489.4 197.7 490.6 198.3 491.1 198.5C491.6 198.8 492.5 199.0 493.2 199.0C493.9 199.0 494.6 199.2 494.8 199.5C494.9 199.8 496.4 200.0 498.0 200.0C499.6 200.0 501.1 199.8 501.2 199.5Z"/><path class="greep" fill="var(--inkt)" d="M274.3 396.8C277.2 395.3 280.4 392.1 281.9 389.2C284.1 384.8 284.1 384.6 283.9 380.7C283.4 372.4 280.0 368.0 271.5 364.3C269.7 363.5 267.3 362.5 266.2 362.0C265.1 361.5 263.0 360.6 261.5 360.0C253.1 356.7 235.4 347.1 224.2 339.7C194.5 320.1 168.1 294.5 146.0 263.5C142.4 258.5 135.0 247.6 135.0 247.3C135.0 247.2 133.9 245.4 132.5 243.3C131.1 241.2 130.0 239.4 130.0 239.2C130.0 239.1 129.3 237.9 128.5 236.8C127.7 235.6 127.0 234.4 127.0 234.3C127.0 234.1 126.3 232.9 125.5 231.5C122.6 226.9 113.7 209.4 108.8 199.0C104.7 190.3 97.2 171.6 94.3 163.0C93.9 161.8 93.0 159.2 92.3 157.2C91.7 155.3 90.6 152.1 90.0 150.0C89.4 147.9 88.7 145.8 88.4 145.2C88.0 144.1 87.0 140.8 85.1 133.2C84.4 130.5 83.7 127.8 83.5 127.2C83.1 126.4 82.6 124.2 80.5 114.2C80.3 113.2 79.8 111.1 79.5 109.8C76.8 97.5 67.7 87.6 55.5 83.7C50.5 82.0 40.7 81.7 36.5 82.9C32.5 84.1 28.8 85.6 27.4 86.6C26.7 87.1 25.9 87.5 25.7 87.5C25.4 87.5 21.2 90.9 19.7 92.2C17.2 94.6 13.1 101.5 11.7 105.3C10.0 110.5 9.4 119.1 10.5 124.0C10.7 125.2 11.1 126.9 11.3 127.8C11.4 128.6 11.8 129.7 12.0 130.2C12.2 130.8 13.5 134.8 15.0 139.2C16.4 143.7 17.7 147.7 18.0 148.2C18.2 148.8 18.9 150.6 19.5 152.2C20.1 153.9 20.8 155.7 21.0 156.2C21.2 156.8 21.9 158.6 22.5 160.2C23.2 161.9 24.3 164.7 25.1 166.4C25.9 168.1 26.5 169.7 26.5 169.9C26.5 170.1 27.0 171.4 27.7 172.8C28.3 174.1 30.6 179.2 32.8 184.0C46.0 213.3 69.2 252.3 85.6 273.0C86.4 274.0 89.4 277.8 92.3 281.5C128.0 326.6 172.3 361.8 220.1 382.9C228.9 386.8 244.8 393.0 248.2 393.8C249.1 394.0 250.0 394.3 250.2 394.5C250.5 394.7 251.3 395.0 252.0 395.1C252.7 395.3 254.8 395.9 256.8 396.5C262.4 398.3 263.5 398.5 267.8 398.2C270.7 398.1 272.4 397.7 274.3 396.8ZM262.2 386.3C258.5 384.2 257.4 381.2 259.2 377.8C261.4 373.7 266.3 373.2 269.5 376.8C273.7 381.6 267.8 389.4 262.2 386.3ZM39.8 131.2C31.0 126.7 29.4 115.5 36.7 109.1C44.0 102.7 55.5 106.0 58.3 115.4C61.5 126.2 49.7 136.3 39.8 131.2Z"/><path fill="var(--goud)" d="M688.8 431.0L688.8 426.2 L682.9 426.1L677.0 426.0 L677.0 410.3L677.0 394.6 L678.6 394.3C679.4 394.1 682.1 394.0 684.6 394.0L689.0 394.0 L689.0 391.6L689.0 389.2 L680.5 388.8C675.8 388.7 671.7 388.4 671.5 388.2C671.2 388.1 671.0 385.0 671.0 381.5C671.0 377.5 670.8 375.0 670.5 375.0C670.2 375.0 670.0 377.6 670.0 381.8L670.0 388.6 L664.1 388.4L658.2 388.2 L658.1 391.4L657.9 394.6 L662.6 394.5C665.2 394.4 668.0 394.4 668.9 394.4L670.5 394.5 L670.5 411.8L670.5 429.0 L673.7 429.0C676.5 429.0 676.9 428.9 677.1 428.0C677.4 427.1 677.8 427.0 682.6 427.0L687.9 427.0 L688.2 430.6C688.6 436.0 689.9 435.7 669.5 435.3C660.1 435.1 642.8 435.0 631.2 435.0L610.0 435.0 L610.0 431.0L610.0 427.0 L619.4 427.0C626.8 427.0 629.0 426.8 629.4 426.3C629.9 425.8 630.0 418.6 629.9 400.2L629.7 374.8 L629.6 400.4L629.5 426.0 L622.6 426.1C618.8 426.2 614.4 426.2 612.8 426.3L609.8 426.3 L609.6 430.9L609.5 435.5 L617.9 435.6C622.5 435.7 640.3 435.8 657.5 435.8L688.8 435.8 L688.8 431.0ZM712.1 421.3C712.0 413.0 712.2 412.5 714.9 412.5C717.3 412.5 717.4 412.6 720.5 417.2C723.1 421.1 725.0 423.8 727.8 427.4C729.0 428.9 729.2 429.0 732.3 429.0C735.2 429.0 736.3 428.5 735.0 427.8C734.8 427.6 733.1 425.2 731.2 422.4C729.4 419.6 727.7 417.1 727.5 417.0C727.0 416.6 724.0 412.1 724.0 411.7C724.0 411.4 725.0 410.7 726.3 410.0C733.1 406.4 734.0 395.9 727.9 391.5C725.1 389.5 721.8 388.9 713.5 389.1L706.2 389.2 L706.1 408.7C706.1 419.4 706.1 428.3 706.3 428.6C706.5 428.8 707.8 429.0 709.4 428.9L712.1 428.8 L712.1 421.3ZM775.9 426.4L776.1 424.0 L769.4 423.9C763.3 423.8 761.4 423.7 758.9 423.6C758.0 423.5 758.0 422.9 758.1 417.4L758.2 411.2 L765.4 411.1L772.6 411.0 L772.4 408.6L772.2 406.2 L765.1 406.1L758.0 406.0 L758.0 400.0L758.0 394.0 L766.9 393.9L775.8 393.8 L775.9 391.4L776.1 389.0 L764.0 389.0L752.0 389.0 L752.0 408.7C752.0 419.5 752.2 428.5 752.3 428.7C752.5 428.9 757.9 429.0 764.2 428.9L775.8 428.8 L775.9 426.4ZM799.9 414.6C800.0 406.9 800.2 400.5 800.4 400.5C800.7 400.5 803.0 403.3 807.3 409.2C808.4 410.6 810.6 413.7 812.4 416.0C822.8 429.5 822.3 429.0 825.0 429.0L826.5 429.0 L826.5 409.0L826.5 388.9 L823.9 389.1C822.0 389.2 821.2 389.5 821.2 390.0C821.1 390.4 821.1 396.7 821.1 403.9C821.0 411.1 820.8 417.0 820.6 417.0C820.4 417.0 819.8 416.3 819.3 415.5C818.9 414.7 818.2 413.7 817.8 413.4C817.5 413.0 816.1 411.3 814.8 409.5C813.5 407.7 811.9 405.6 811.3 404.8C810.2 403.3 805.9 397.8 804.8 396.4C804.4 396.0 803.8 395.1 803.5 394.5C803.2 393.9 802.7 393.6 802.3 393.8C802.0 394.0 801.9 394.0 802.1 393.8C802.3 393.5 801.8 392.4 801.0 391.2C799.6 389.2 799.3 389.0 797.2 389.0L795.0 389.0 L795.0 408.7C795.0 419.5 795.2 428.5 795.4 428.7C795.6 428.9 796.6 429.0 797.7 428.9L799.8 428.8 L799.9 414.6ZM866.6 428.2C876.5 426.1 881.7 419.0 881.3 407.8C881.0 400.8 879.6 397.5 875.1 393.4C871.0 389.7 868.0 389.0 857.1 389.0L848.0 389.0 L848.0 408.7C848.0 419.5 848.1 428.5 848.3 428.7C849.0 429.3 862.9 429.0 866.6 428.2ZM915.2 428.2C922.9 425.0 925.3 414.8 919.8 409.2C918.5 408.0 915.5 406.5 910.6 404.7C905.6 402.9 904.1 401.1 904.7 397.7C905.4 394.0 912.2 392.3 915.8 394.9C918.3 396.6 919.5 396.5 920.8 394.6C922.4 392.3 922.4 392.3 919.4 390.6C909.8 385.2 899.0 390.0 899.0 399.6C899.0 404.1 901.7 408.9 903.9 408.2C904.6 407.9 904.6 408.0 904.0 408.4C903.5 408.8 903.4 409.0 903.9 409.0C904.3 409.0 905.5 409.4 906.6 410.0C907.8 410.6 909.0 411.0 909.3 411.0C910.2 411.0 914.5 412.9 915.2 413.6C919.3 417.7 915.9 424.0 909.6 424.0C907.6 424.0 904.2 422.7 902.5 421.3C900.7 419.7 899.7 419.9 898.3 422.0L897.0 423.9 L898.6 425.3C902.8 428.8 910.6 430.2 915.2 428.2ZM854.3 423.6C854.1 423.5 854.0 416.7 854.0 408.7L854.0 394.0 L859.8 394.0C864.9 394.0 865.8 394.1 867.9 395.2C870.8 396.7 873.4 399.5 873.8 401.6C874.0 402.4 874.3 403.1 874.6 403.3C875.2 403.7 875.1 413.1 874.4 415.1C872.3 421.3 867.5 423.9 858.7 423.9C856.4 423.9 854.4 423.8 854.3 423.6ZM712.5 407.9C712.4 407.8 712.3 404.7 712.2 400.9L712.0 394.0 L716.6 394.0C723.5 394.0 726.4 396.3 725.9 401.3C725.4 405.8 722.1 408.0 716.0 408.0C714.1 408.0 712.5 407.9 712.5 407.9Z"/><path fill="var(--goud)" d="M690.0 531.0C690.0 525.0 690.2 524.2 691.6 525.8C693.3 527.9 698.9 528.7 702.1 527.3C710.7 523.6 711.5 505.7 703.3 502.0C699.5 500.2 694.8 501.2 691.7 504.3C690.2 505.7 689.7 505.5 689.4 503.3C689.3 502.5 689.0 501.7 688.6 501.6C688.1 501.5 688.0 505.2 688.0 519.2C688.0 536.7 688.0 537.0 689.0 537.0C689.9 537.0 690.0 536.7 690.0 531.0ZM346.9 526.3C347.1 524.6 347.5 524.7 350.1 526.5C354.0 529.4 361.0 528.1 363.6 524.1C365.8 520.7 366.2 519.0 366.2 513.7C366.2 509.0 366.1 508.4 364.7 505.9C361.5 500.3 354.8 499.4 349.5 503.8C348.5 504.7 347.5 505.5 347.3 505.5C347.2 505.5 347.0 501.8 346.9 497.4C346.8 490.5 346.6 489.2 346.0 489.2C345.3 489.2 345.2 491.7 345.1 508.0C345.0 518.3 345.1 527.0 345.2 527.4C345.7 528.5 346.7 527.8 346.9 526.3ZM398.2 526.1C400.7 524.3 401.5 524.4 401.5 526.3C401.5 527.0 401.8 527.5 402.2 527.5C403.5 527.5 403.3 507.4 402.1 505.0C399.8 500.4 393.3 499.7 387.9 503.4C386.9 504.2 386.0 504.9 386.0 505.1C386.0 506.2 387.6 505.9 389.7 504.5C391.5 503.2 392.4 502.9 394.7 502.8C398.6 502.8 400.5 504.7 401.2 509.5C401.7 512.9 401.4 513.3 398.1 513.7C388.4 514.8 385.0 516.9 385.0 521.7C385.0 526.4 386.9 528.0 392.3 527.9C395.5 527.8 396.2 527.5 398.2 526.1ZM427.0 518.7C427.3 509.4 427.4 508.8 429.3 506.1C431.0 503.9 433.1 502.9 435.7 503.1C437.5 503.2 437.8 503.1 437.8 502.2C437.8 501.4 437.4 501.2 435.8 501.1C433.0 500.9 430.3 502.2 428.7 504.7C427.4 506.7 427.3 506.7 426.9 505.5C426.7 504.9 426.6 504.0 426.7 503.7C427.1 502.7 426.5 501.5 425.7 501.5C424.9 501.5 424.6 526.9 425.3 527.7C426.5 528.8 426.8 527.1 427.0 518.7ZM457.9 526.1C458.1 524.3 458.5 524.1 459.5 525.3C462.0 528.3 468.6 528.9 472.4 526.4C478.2 522.6 479.3 508.0 474.2 503.4C470.7 500.2 464.3 500.3 461.1 503.6C458.7 506.1 458.5 505.7 458.4 497.1C458.3 489.9 458.2 489.2 457.3 489.2C456.5 489.2 456.4 490.3 456.4 508.2C456.4 530.3 456.3 528.1 457.1 527.9C457.5 527.8 457.8 527.0 457.9 526.1ZM512.9 527.2C515.5 526.3 517.3 524.9 516.8 524.1C516.7 523.8 515.2 524.3 513.6 525.1C506.4 528.8 499.1 524.6 498.8 516.6L498.8 513.8 L508.2 513.5L517.8 513.2 L517.9 512.0C518.4 508.8 515.6 503.6 512.7 502.3C503.1 497.7 494.3 506.4 496.7 518.0C498.5 526.3 504.7 529.8 512.9 527.2ZM540.0 518.7C540.2 510.3 540.3 509.6 541.5 507.5C543.2 504.4 545.6 502.9 548.5 503.1C550.5 503.2 550.8 503.1 550.8 502.2C550.8 501.0 547.7 500.6 545.4 501.5C544.0 502.1 541.3 504.8 540.9 506.1C540.4 507.3 539.9 506.1 539.8 503.9C539.8 502.3 539.5 501.8 539.0 501.8C538.4 501.8 538.2 503.5 538.1 514.2C538.0 527.1 538.1 528.2 539.1 527.9C539.6 527.7 539.8 525.2 540.0 518.7ZM580.0 527.1C582.6 525.7 584.0 523.3 584.0 520.5C584.0 516.7 581.8 514.8 574.7 512.5C571.8 511.6 569.8 509.8 569.8 508.0C569.8 503.4 576.0 501.0 580.9 503.8C581.7 504.3 582.6 504.6 582.8 504.4C584.2 503.0 578.9 500.7 575.3 501.1C570.5 501.7 568.0 504.1 568.0 508.1C568.0 511.8 569.0 512.6 575.7 515.1C580.7 516.9 582.0 518.0 582.0 520.6C582.0 525.8 575.9 528.3 570.5 525.2C568.4 524.0 566.9 524.1 567.7 525.5C569.2 527.9 576.7 528.8 580.0 527.1ZM605.7 527.7C606.4 527.4 606.5 526.1 606.5 517.5L606.5 507.6 L608.7 505.6C613.2 501.4 618.5 501.8 621.3 506.5C621.5 506.9 621.9 511.9 622.0 517.5C622.2 526.2 622.4 527.8 623.0 527.8C624.0 527.8 624.4 508.7 623.4 506.3C621.2 500.6 614.0 499.2 609.0 503.6C608.1 504.3 607.2 505.0 606.9 505.0C606.7 505.0 606.5 501.5 606.4 497.1C606.3 489.9 606.2 489.2 605.3 489.2C604.5 489.2 604.4 490.1 604.4 508.5C604.5 519.1 604.5 527.8 604.5 527.9C604.5 528.1 604.9 528.0 605.7 527.7ZM660.8 527.0C665.3 525.0 667.1 521.4 667.2 514.5C667.2 510.6 667.0 509.3 666.0 507.4C662.1 499.2 650.7 498.7 646.1 506.5C644.2 509.6 644.1 519.0 645.8 522.2C648.6 527.5 655.2 529.6 660.8 527.0ZM389.9 526.2C387.8 525.3 386.8 523.6 386.9 521.1C386.9 517.8 390.5 515.8 397.3 515.2C401.2 514.8 401.5 515.0 401.5 518.9C401.5 521.4 401.3 521.8 399.7 523.3C396.4 526.5 393.0 527.5 389.9 526.2ZM350.9 525.5C347.3 523.6 347.0 522.7 347.0 515.1L347.0 508.2 L348.8 506.4C353.7 501.1 360.1 501.5 363.0 507.4C364.5 510.5 364.5 517.2 363.1 520.5C360.8 525.8 355.6 527.9 350.9 525.5ZM463.0 526.0C462.3 525.7 461.0 524.7 460.1 523.9L458.5 522.3 L458.5 515.0L458.5 507.7 L460.6 505.6C465.1 501.3 470.9 501.8 473.8 506.8C475.1 509.0 475.2 509.6 475.2 514.0C475.1 519.5 474.5 521.4 471.6 524.2C469.5 526.2 465.6 527.1 463.0 526.0ZM652.8 526.0C648.6 524.7 646.8 521.3 646.8 514.8C646.8 506.8 649.6 502.9 655.4 502.8C661.8 502.8 665.1 506.8 665.1 514.7C665.1 519.5 664.3 521.5 661.6 524.2C659.5 526.2 655.9 527.0 652.8 526.0ZM693.8 525.7C690.0 523.7 690.0 523.6 690.0 515.3L690.0 507.8 L691.6 506.1C698.8 498.4 708.2 504.7 706.8 516.3C706.2 521.2 704.2 524.4 700.9 525.7C698.5 526.7 695.7 526.7 693.8 525.7ZM499.0 510.4C499.0 506.8 502.8 503.2 506.8 502.7C511.4 502.1 515.2 505.3 515.9 510.0L516.1 512.0 L507.6 512.0L499.0 512.0 L499.0 510.4Z"/></svg>
+      <h1>Fades, knippen en baard. Ook voor kinderen en tieners.</h1>
+      <p class="lead">Barbershop aan de Gerrit van de Lindestraat 24A, Rotterdam-West. Dinsdag t/m zaterdag 11:00–19:00.</p>
+      <div class="knoppen">
+        <a class="knop wa" data-wa="hero" href="https://wa.me/31627320822?text=Hoi%20Unique%20Trends%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20langskomen%3F"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>App een afspraak</a>
+        <a class="knop twee" href="#kiezer">Kies je knipbeurt</a>
+      </div>
+    </div>
+
+    <div class="vel">
+      <div class="strook">
+        <div class="rand boven" aria-hidden="true"><span>Unique Trends</span><span>24A</span></div>
+        <div class="beelden">
+          <button type="button" class="beeld" data-groot="img/f1-groot.jpg" data-tekst="De tondeuse aan het werk, achterhoofd"><img src="img/f1.jpg" width="420" height="280" alt="Barber met handschoenen werkt met de tondeuse aan een achterhoofd"></button>
+          <button type="button" class="beeld" data-groot="img/f2-groot.jpg" data-tekst="Nek bijwerken, locks opgebonden"><img src="img/f2.jpg" width="420" height="280" alt="Nek wordt bijgewerkt bij een klant met opgebonden locks"></button>
+          <button type="button" class="beeld" data-groot="img/f3-groot.jpg" data-tekst="Vlechten over een oranje cape"><img src="img/f3.jpg" width="420" height="280" alt="Lange vlechten over een oranje kapperscape"></button>
+        </div>
+        <div class="rand onder" aria-hidden="true"><span>▸ 1</span><span>▸ 2</span><span>▸ 3</span></div>
+      </div>
+      <div class="strook">
+        <div class="rand boven" aria-hidden="true"><span>4,8 ★ · 60 Google-reviews</span><span>Sinds 2012</span></div>
+        <div class="beelden">
+          <button type="button" class="beeld" data-groot="img/f4-groot.jpg" data-tekst="Tondeuses aan de wand"><img src="img/f4.jpg" width="420" height="280" alt="Vier tondeuses hangen onder een plank"></button>
+          <button type="button" class="beeld" data-groot="img/f5-groot.jpg" data-tekst="Een lijn in de fade, haar opzij met klemmen"><img src="img/f5.jpg" width="420" height="280" alt="Barber zet een lijn in een fade terwijl het bovenhaar met klemmen opzij zit">
+            <svg class="kring" viewBox="0 0 150 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M24 20C58 4 122 4 140 34C154 62 120 94 74 95C32 96 4 78 8 50C11 30 32 15 56 10"/></svg></button>
+          <button type="button" class="beeld" data-groot="img/f6-groot.jpg" data-tekst="De stoel, van bovenaf"><img src="img/f6.jpg" width="420" height="236" alt="Een kappersstoel met cape, van bovenaf gezien"></button>
+        </div>
+        <div class="rand onder" aria-hidden="true"><span>▸ 4</span><span>▸ 5</span><span>▸ 6</span></div>
+      </div>
+      <p class="velnoot">Tik op een beeld om het groot te zien. Foto's van onze eigen site.</p>
+    </div>
+
+    <a class="score" href="https://www.google.com/maps?cid=14151716952799384482" target="_blank" rel="noopener"><span class="st">★★★★★</span> 4,8 uit 60 reviews op Google · Rotterdam-West</a>
+  </div>
+</section>
+
+<dialog class="loep" id="loep" aria-label="Foto groot">
+  <figure><img id="loepImg" src="img/f1.jpg" width="1000" height="667" alt=""><figcaption><span id="loepTekst"></span><button type="button" id="loepDicht">Sluiten</button></figcaption></figure>
+</dialog>
+
+<section class="prijzen" id="prijzen">
+  <div class="wrap">
+    <div>
+      <h2>Vijf knipbeurten, vaste prijzen</h2>
+      <p>Wat je betaalt, zie je hier meteen. Tik op een regel en je keuze staat klaar in de afspraakkiezer.</p>
+      <p class="klein">Kinderen van 5 tot en met 12 jaar en tieners vanaf 13 jaar hebben een eigen prijs.</p>
+    </div>
+    <ul class="lijst">
+      <li><button type="button" data-kies="knippen"><span class="naam">Knippen</span><span class="prijs">€ 38</span><span class="pijl">Kies →</span></button></li>
+      <li><button type="button" data-kies="knippen-baard"><span class="naam">Knippen + baard of facial</span><span class="prijs">€ 48</span><span class="pijl">Kies →</span></button></li>
+      <li><button type="button" data-kies="kids"><span class="naam">Kinderen<small>5 t/m 12 jaar</small></span><span class="prijs">€ 28</span><span class="pijl">Kies →</span></button></li>
+      <li><button type="button" data-kies="tieners"><span class="naam">Tieners<small>vanaf 13 jaar</small></span><span class="prijs">€ 33</span><span class="pijl">Kies →</span></button></li>
+      <li><button type="button" data-kies="lineup"><span class="naam">Line-up</span><span class="prijs">€ 27</span><span class="pijl">Kies →</span></button></li>
+    </ul>
+  </div>
+</section>
+
+<section class="kiezer" id="kiezer">
+  <div class="wrap">
+    <h2>Zet je stoel alvast klaar</h2>
+    <p class="intro">Kies wat je wilt, op welke dag en hoe laat ongeveer. Je appje naar de zaak staat dan klaar.</p>
+    <div class="stap">
+      <h3>1 · Wat wil je laten doen?</h3>
+      <div class="chips" data-groep="dienst" id="diensten">
+        <button type="button" class="chip" aria-pressed="true" data-id="knippen" data-w="knippen (€ 38)">Knippen<small>€ 38</small></button>
+        <button type="button" class="chip" aria-pressed="false" data-id="knippen-baard" data-w="knippen + baard of facial (€ 48)">Knippen + baard of facial<small>€ 48</small></button>
+        <button type="button" class="chip" aria-pressed="false" data-id="kids" data-w="knippen voor een kind van 5 t/m 12 jaar (€ 28)">Kinderen 5 t/m 12<small>€ 28</small></button>
+        <button type="button" class="chip" aria-pressed="false" data-id="tieners" data-w="knippen voor een tiener (13+, € 33)">Tieners 13+<small>€ 33</small></button>
+        <button type="button" class="chip" aria-pressed="false" data-id="lineup" data-w="een line-up (€ 27)">Line-up<small>€ 27</small></button>
+      </div>
+    </div>
+    <div class="stap">
+      <h3>2 · Welke dag?</h3>
+      <div class="chips" data-groep="dag" id="dagen"></div>
+    </div>
+    <div class="stap">
+      <h3>3 · Hoe laat ongeveer?</h3>
+      <div class="chips" data-groep="dagdeel">
+        <button type="button" class="chip" aria-pressed="false" data-w="tussen 11:00 en 13:00">11:00–13:00</button>
+        <button type="button" class="chip" aria-pressed="false" data-w="tussen 13:00 en 16:00">13:00–16:00</button>
+        <button type="button" class="chip" aria-pressed="false" data-w="tussen 16:00 en 19:00">16:00–19:00</button>
+        <button type="button" class="chip" aria-pressed="true" data-w="">Maakt niet uit</button>
+      </div>
+    </div>
+    <div class="bon" aria-live="polite">
+      <div class="kop">Je appje</div>
+      <p id="bericht"></p>
+      <a class="knop wa" id="stuur" href="https://wa.me/31627320822"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>Verstuur via WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="zaak" id="zaak">
+  <div class="wrap">
+    <div>
+      <h2>Sinds 2012 in Rotterdam-West</h2>
+      <p>Unique Trends Barbershop bestaat sinds 2012. Je vindt de zaak aan de Gerrit van de Lindestraat 24A, in het Nieuwe Westen.</p>
+      <p>In de stoel: knippen, fades, baard en line-ups. Voor volwassenen, voor tieners en voor kinderen vanaf 5 jaar.</p>
+      <ul class="feiten">
+        <li><b>4,8 ★</b>uit 60 Google-reviews</li>
+        <li><b>di t/m za</b>11:00–19:00</li>
+        <li><b>€ 38</b>knippen</li>
+        <li><b>€ 28</b>kinderen 5 t/m 12</li>
+      </ul>
+    </div>
+    <figure>
+      <img src="img/zaak.jpg" width="720" height="900" loading="lazy" decoding="async" alt="Barber in een wit overhemd knipt een klant, gezien van achteren, in de zaak">
+      <figcaption>In de zaak.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="waarom" id="waarom">
+  <div class="wrap">
+    <figure class="vl">
+      <img src="img/vlechten.jpg" width="560" height="997" loading="lazy" decoding="async" alt="Twee lange vlechten op de rug, gezien van achteren, over een oranje cape">
+    </figure>
+    <div>
+    <h2>Uit de reviews gelicht</h2>
+    <div class="kaarten">
+      <div class="kaart"><h3>Fades en kapsels</h3><p>Klanten schrijven dat hun fade en kapsel top zitten.</p></div>
+      <div class="kaart"><h3>Vriendelijk en professioneel</h3><p>Klanten noemen de zaak vriendelijk en professioneel.</p></div>
+      <div class="kaart"><h3>Een van de beste</h3><p>In een review staat dat het een van de beste van Rotterdam is.</p></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="kopregel"><span class="cijfer">4,8 ★</span><h2 style="margin:0">uit 60 reviews op Google</h2></div>
+    <a class="bron" href="https://www.google.com/maps?cid=14151716952799384482" target="_blank" rel="noopener">Bekijk alle reviews op Google →</a>
+    <div class="rev">
+      <blockquote><p>Vindt het een van de beste in Rotterdam.</p><cite>Kevin</cite></blockquote>
+      <blockquote><p>Vriendelijk, professioneel en vakkundig. Een aanrader.</p><cite>Suheny</cite></blockquote>
+      <blockquote><p>Geweldige barber, komt sterk aanbevolen.</p><cite>Emmanuel</cite></blockquote>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="stappen" id="stappen">
+  <div class="wrap">
+    <h2>Van appje naar fade</h2>
+    <ol>
+      <li><div><h3>Kies je knipbeurt</h3><p>Knippen, baard, kinderen, tieners of een line-up. Tik het aan in de kiezer.</p></div></li>
+      <li><div><h3>Kies dag en tijd</h3><p>Dinsdag t/m zaterdag, tussen 11:00 en 19:00.</p></div></li>
+      <li><div><h3>Druk op verzenden</h3><p>Je bericht staat klaar in WhatsApp. Jij drukt alleen nog op verzenden.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2>Kort gevraagd</h2>
+    <details><summary>Wat kost knippen?</summary><p>Knippen kost € 38. Met baard of facial erbij is het € 48.</p></details>
+    <details><summary>Knippen jullie ook kinderen?</summary><p>Ja. Kinderen van 5 t/m 12 jaar: € 28. Tieners vanaf 13 jaar: € 33.</p></details>
+    <details><summary>Wat kost een line-up?</summary><p>Een line-up kost € 27.</p></details>
+    <details><summary>Wanneer zijn jullie open?</summary><p>Dinsdag t/m zaterdag van 11:00 tot 19:00. Maandag en zondag zijn we dicht.</p></details>
+    <details><summary>Hoe maak ik een afspraak?</summary><p>Stuur een appje of bel 06 27 32 08 22. Met de kiezer hierboven staat je appje meteen klaar.</p></details>
+  </div>
+</section>
+
+<section class="route" id="route">
+  <div class="wrap">
+    <figure>
+      <img src="img/gevel.jpg" width="1024" height="683" loading="lazy" decoding="async" alt="De gevel van Unique Trends Barbershop met huisnummer 24A en de naam op de muur">
+      <figcaption>De gevel, Gerrit van de Lindestraat 24A (foto: Google Maps).</figcaption>
+    </figure>
+    <div>
+      <h2>Gerrit van de Lindestraat 24A</h2>
+      <p class="adres">3022 TL Rotterdam</p>
+      <p class="uren"><b>Dinsdag t/m zaterdag</b> 11:00–19:00 · maandag en zondag dicht</p>
+      <div class="knoppen">
+        <a class="knop twee" href="https://www.google.com/maps/dir/?api=1&amp;destination=Gerrit+van+de+Lindestraat+24A%2C+3022+TL+Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+        <a class="knop wa" data-wa="route" href="https://wa.me/31627320822?text=Hoi%20Unique%20Trends%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20langskomen%3F">App de zaak</a>
+      </div>
+      <div class="mm-kaart" data-src="https://maps.google.com/maps?q=Gerrit%20van%20de%20Lindestraat%2024A%2C%203022%20TL%20Rotterdam&amp;z=16&amp;output=embed" data-titel="Kaart: Unique Trends Barbershop, Gerrit van de Lindestraat 24A">
+        <div class="mk-raster" aria-hidden="true"></div>
+        <div class="mk-weg" style="left:-5%;right:-5%;top:58%;height:12px;transform:rotate(-8deg)" aria-hidden="true"></div>
+        <div class="mk-weg" style="top:-5%;bottom:-5%;left:36%;width:10px;transform:rotate(12deg)" aria-hidden="true"></div>
+        <div class="mk-inhoud">
+          <svg class="mk-pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="#E46D17" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          <p class="mk-adres">Gerrit van de Lindestraat 24A<br>3022 TL Rotterdam</p>
+          <button type="button" class="mk-knop">Toon kaart</button>
+          <p class="mk-uitleg">De kaart komt van Google Maps en laadt pas als je klikt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <div class="wrap">
+    <img src="logo-dark.svg" width="992" height="506" alt="Unique Trends barbershop" loading="lazy" decoding="async">
+    <h2>Tijd voor een frisse snit?</h2>
+    <p>Dinsdag t/m zaterdag, 11:00–19:00.</p>
+    <div class="knoppen">
+      <a class="knop wa" data-wa="slot" href="https://wa.me/31627320822?text=Hoi%20Unique%20Trends%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20langskomen%3F">App voor een afspraak</a>
+      <a class="knop twee" href="tel:+31627320822">Bel 06 27 32 08 22</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="logo-light.svg" width="992" height="506" alt="Unique Trends barbershop" loading="lazy" decoding="async">
+    </div>
+    <div>
+      <p>Gerrit van de Lindestraat 24A<br>3022 TL Rotterdam</p>
+      <p><a href="tel:+31627320822">06 27 32 08 22</a></p>
+      <p>Di t/m za 11:00–19:00</p>
+      <p>KvK 54296528</p>
+    </div>
+    <div>
+      <p>Foto's: uniquetrends.vip (met het merk AWP op de foto's); gevel: Google Maps.</p>
+      <p class="door">Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef"><a class="knop wa" data-wa="zweef" href="https://wa.me/31627320822?text=Hoi%20Unique%20Trends%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20kan%20ik%20langskomen%3F">App voor een afspraak</a></div>
+
+<div class="pitchpaneel" id="pitch" hidden>
+  <div class="in" role="dialog" aria-modal="true" aria-labelledby="pitchKop">
+    <button type="button" class="sluit" id="pitchDicht">Sluiten</button>
+    <h2 id="pitchKop">Je site vandaag, en zo kan het</h2>
+    <div class="nuenstraks">
+      <figure><img src="img/voor-site.jpg" width="390" height="844" loading="lazy" alt="Nu: uniquetrends.vip op een telefoon, met 5,280 reviews en het mailadres info@uniqetrends.vip"><figcaption>Nu, op een telefoon (15 nov): "4.5 out of 5, Base on 5,280 reviews" en info@uniqetrends.vip.</figcaption></figure>
+      <figure><img src="img/na-mobiel.jpg" width="390" height="844" loading="lazy" alt="Straks: deze site op een telefoon"><figcaption>Straks: je eigen logo, je eigen foto's en een afspraak in één tik.</figcaption></figure>
+    </div>
+    <h3>Wat er concreet beter wordt</h3>
+    <ul>
+      <li>Op je site staat nu "4.5 out of 5" en "5,280 reviews". Op Google heb je 4,8 uit 60. Straks staat je echte Google-score erop, met een link ernaar.</li>
+      <li>Het mailadres op je site is info@uniqetrends.vip (zonder de u van unique), en het nummer en het mailadres zijn niet aan te tikken. De knoppen van Facebook, Instagram, TikTok en Twitter gaan nergens heen. Straks werkt elke knop: bellen, appen, route.</li>
+      <li>Openingstijden en een appje voor een afspraak op het eerste scherm, de prijzen direct daaronder, en je eigen zwart-witfoto's met de oranje capes bovenaan.</li>
+    </ul>
+    <h3>Rekenvoorbeeld voor jouw stoel</h3>
+    <div class="reken">
+      <p style="margin:0 0 6px;font-weight:700">Voorbeeld om samen in te vullen, geen belofte.</p>
+      <label for="rk">Extra klanten per week: <span id="rkU">2</span></label>
+      <input type="range" id="rk" min="1" max="15" value="2">
+      <label for="rb">Gemiddelde besteding per bezoek: € <span id="rbU">38</span></label>
+      <input type="range" id="rb" min="20" max="60" value="38">
+      <div class="uit"><p style="margin:0">Per jaar: <b id="rjU">€ 3.952</b> extra omzet (voorbeeld)</p><p style="margin:6px 0 0">€ 595 is de omzet van <b id="rnU">16</b> knipbeurten.</p></div>
+    </div>
+    <h3>Wat je ervoor betaalt</h3>
+    <div class="prijsblok">
+      <p><b>€ 595 eenmalig</b> excl. btw (€ 719,95 incl. btw): site tot 5 pagina's op je eigen domein, WhatsApp-knop, contactformulier, Google-reviews en route, basis-SEO, één feedbackronde, live binnen 48 uur na betaling. Hosting zit erin.</p>
+      <p>Daarnaast kies je hoe de site bijgehouden wordt:</p>
+      <p><b>Wij houden hem bij: € 25 per maand</b> excl. btw (€ 30,25 incl. btw). Jij appt wat er anders moet, wij passen het aan.</p>
+      <p style="margin:0">Of je past hem zelf aan in een eigen portaal: <b>€ 249 eenmalig</b> excl. btw (€ 301,29 incl. btw).</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NUM='31627320822';
+  // kiezer: open dagen (di t/m za) vanaf vandaag
+  var dagenEl=document.getElementById('dagen'),v=new Date(),n=0;
+  for(var i=0;i<14&&n<5;i++){
+    var d=new Date(v.getFullYear(),v.getMonth(),v.getDate()+i),wd=d.getDay();
+    if(wd===0||wd===1)continue;
+    var lang=d.toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long'});
+    var kort=d.toLocaleDateString('nl-NL',{weekday:'short',day:'numeric',month:'short'});
+    var b=document.createElement('button');b.type='button';b.className='chip';
+    b.setAttribute('aria-pressed',n===0?'true':'false');
+    b.setAttribute('data-w',i===0?'vandaag':(i===1?'morgen ('+lang+')':'op '+lang));
+    b.innerHTML=(i===0?'Vandaag':(i===1?'Morgen':kort.charAt(0).toUpperCase()+kort.slice(1)))+(i<2?'<small>'+kort+'</small>':'');
+    dagenEl.appendChild(b);n++;
+  }
+  var nb=document.createElement('button');nb.type='button';nb.className='chip';nb.setAttribute('aria-pressed','false');nb.setAttribute('data-w','');nb.textContent='Maakt niet uit';dagenEl.appendChild(nb);
+  function keuze(g){var a=document.querySelector('[data-groep="'+g+'"] [aria-pressed="true"]');return a?a.getAttribute('data-w'):'';}
+  function bouw(){
+    var t='Hoi Unique Trends, ik wil graag een afspraak voor '+keuze('dienst');
+    var wanneer=[keuze('dag'),keuze('dagdeel')].filter(Boolean).join(' ');
+    t+=wanneer?', '+wanneer+'. Kan dat?':'. Wanneer kan ik langskomen?';
+    document.getElementById('bericht').textContent=t;
+    document.getElementById('stuur').href='https://wa.me/'+NUM+'?text='+encodeURIComponent(t);
+  }
+  function druk(g,b){g.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');bouw();}
+  document.querySelectorAll('.chips').forEach(function(g){
+    g.addEventListener('click',function(e){var b=e.target.closest('.chip');if(b)druk(g,b);});
+  });
+  bouw();
+  // prijsregel kiest dienst in de kiezer
+  document.querySelectorAll('[data-kies]').forEach(function(r){
+    r.addEventListener('click',function(){
+      var g=document.getElementById('diensten'),b=g.querySelector('[data-id="'+r.getAttribute('data-kies')+'"]');
+      if(b)druk(g,b);document.getElementById('kiezer').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    });
+  });
+
+  // loep op het contactvel
+  var loep=document.getElementById('loep'),li=document.getElementById('loepImg'),lt=document.getElementById('loepTekst');
+  document.querySelectorAll('.beeld').forEach(function(b){
+    b.addEventListener('click',function(){
+      li.src=b.getAttribute('data-groot');li.alt=b.querySelector('img').alt;lt.textContent=b.getAttribute('data-tekst');
+      if(loep.showModal)loep.showModal();else loep.setAttribute('open','');
+    });
+  });
+  document.getElementById('loepDicht').addEventListener('click',function(){loep.close?loep.close():loep.removeAttribute('open');});
+  loep.addEventListener('click',function(e){if(e.target===loep)loep.close();});
+
+  // kaart pas laden na klik
+  document.querySelectorAll('.mm-kaart').forEach(function(k){
+    var b=k.querySelector('.mk-knop');if(!b)return;
+    b.addEventListener('click',function(){var f=document.createElement('iframe');f.src=k.getAttribute('data-src');f.title=k.getAttribute('data-titel')||'Kaart';
+      f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';f.allowFullscreen=true;k.innerHTML='';k.appendChild(f);});
+  });
+
+  // zwevende knop: na de hero, niet zolang de kiezer in beeld is
+  var z=document.getElementById('zweef'),heroWeg=false,kiezerIn=false;
+  function zet(){z.classList.toggle('aan',heroWeg&&!kiezerIn);}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){heroWeg=!e[0].isIntersecting;zet();}).observe(document.getElementById('hero'));
+    new IntersectionObserver(function(e){kiezerIn=e[0].isIntersecting;zet();},{threshold:.15}).observe(document.getElementById('kiezer'));
+  }
+
+  // pitch-modus: alleen met ?pitch
+  if(/[?&]pitch\b/.test(location.search)){
+    document.body.classList.add('pitch');
+    var p=document.getElementById('pitch');
+    document.getElementById('pitchOpen').addEventListener('click',function(){p.hidden=false;});
+    document.getElementById('pitchDicht').addEventListener('click',function(){p.hidden=true;});
+    p.addEventListener('click',function(e){if(e.target===p)p.hidden=true;});
+    var rk=document.getElementById('rk'),rb=document.getElementById('rb');
+    function reken(){var k=+rk.value,bb=+rb.value;
+      document.getElementById('rkU').textContent=k;document.getElementById('rbU').textContent=bb;
+      document.getElementById('rjU').textContent='€ '+(k*bb*52).toLocaleString('nl-NL');
+      document.getElementById('rnU').textContent=Math.ceil(595/bb);}
+    rk.addEventListener('input',reken);rb.addEventListener('input',reken);reken();
+  }
+})();
+</script>
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
