@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Köşebaşı Kebap – Turks restaurant in Rotterdam-Noord</title>
+<meta name="description" content="Köşebaşı Kebap aan de Bergweg 353B in Rotterdam-Noord: Adana dürüm, lahmacun, kapsalon en schotels. 4,7 uit 332 Google-reviews. Bel 010 841 65 61 of bestel online.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts/fonts.css">
+<!--
+  Demo L279 Köşebaşı Kebap (Bergweg 353B, Bergpolder, Rotterdam-Noord), Mohamedia, 14 nov 2026.
+  Concept in één zin: "Het uithangbord boven het werkblad": hun zwarte bord met gele letters en gekruiste spiesen
+  hangt boven hun eigen stalen werkblad, waar de dürüms in een rij klaarliggen.
+  Lay-out-archetype: BENTO + UITHANGBORD. Hero = bento-grid van eigen foto's (rij dürüms op het werkblad, mix-schotel,
+  Adana op lavas) met één tegel die hun uithangbord is (nagetekend logo). Mobiel: bento boven, kop en knoppen eronder;
+  desktop: kop links, bento rechts. Daarna de kaart als tabbladen met prijzen, de keuzehulp die eindigt op een zwart
+  "bord" met je keuze, een blauw vlak (kleur van de tegels in hun keuken) met wat gasten schrijven, uren + route.
+  Hero-beweging uit hun eigen logo: de twee paar spiesen schuiven één keer van linksonder en rechtsonder naar hun
+  gekruiste plek, daarna staat alles stil. Reduced motion = eindbeeld.
+  Bewust NIET: tegelgevel met kozijn en gevelfoto in de hero (Nefis KebaP, zelfde niche), puntgevel/bierviltjes
+  (De Pint), boogspiegel (ZALAL), vitrine-rij (Pronto), toestel (Phone Fix Sam), staande video (Hairfy), band onder
+  de hero, stempel, schuine fotokaart, Ken Burns, stoom, licht dat aangaat, letters één voor één, eyebrow +
+  tweekleurige kop, vlammen.
+  Palet: bordzwart #171512 / #221f1b, bordgeel #f2b51d / donker #8a5d00, staal #eceeed / #d5d9d9 / #7f8688,
+  tegelblauw #2c5a86 / licht #d7e4ef, eikenhout #b47a43, roest #a8532c (stoelen), peper #4b7a2b.
+  Fonts (zelf gehost, fonts/, latin + latin-ext voor ş/ı/ğ): Rubik (koppen) + Source Sans 3 (tekst).
+  Logo: hun eigen uithangbord/Thuisbezorgd-logo (gele schrijfletters + gekruiste spiesen) nagetekend; letters in
+  Kaushan Script, met fontTools naar paden omgezet.
+  Foto's: gevel = hoofdfoto op Google Maps, geplaatst door KÖSEBASI KEBAP (jun 2022), bord van de buurzaak en
+  bezorgstickers vervaagd. Gerechten en interieur = foto's van Google via Restaurant Guru (bron per foto in het
+  dossier, Aanvulling Design), RG-stickers weggesneden; koelkast met merknamen vervaagd.
+  Prijzen: hun eigen online bestelpagina (durum-evi-bergweg.nl, gelezen 14 nov 2026).
+  Geen WhatsApp: het nummer is vast (010). Hoofdknop = bellen, tweede = online bestellen (Thuisbezorgd).
+-->
+<style>
+:root{--kool:#171512;--kool2:#221f1b;--geel:#f2b51d;--geel-d:#8a5d00;--staal:#eceeed;--staal2:#d5d9d9;--staal-d:#7f8688;
+  --tegel:#2c5a86;--tegel-d:#21476c;--tegel-l:#d7e4ef;--hout:#b47a43;--roest:#a8532c;--peper:#4b7a2b;--wit:#fbfbfa;
+  --inkt:#1c1a17;--grijs:#575b5c;
+  --kop:'Rubik',system-ui,-apple-system,'Segoe UI',sans-serif;--tekst:'Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--wit);color:var(--inkt);font:400 17px/1.55 var(--tekst)}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);line-height:1.08;margin:0 0 .4em;letter-spacing:-.01em;overflow-wrap:break-word}
+h1{font-weight:800;font-size:clamp(31px,8.2vw,40px)}
+@media (min-width:980px){h1{font-size:clamp(40px,3.7vw,52px)}}
+h2{font-weight:800;font-size:clamp(28px,6.4vw,46px)}
+h3{font-weight:600;font-size:clamp(19px,4.6vw,23px)}
+p{margin:0 0 1em}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+@media (min-width:900px){.wrap{padding:0 40px}}
+section{padding:64px 0}
+@media (min-width:900px){section{padding:96px 0}}
+.klein{font-size:14px;color:var(--grijs)}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:0 22px;border-radius:12px;
+  font:700 17px/1 var(--tekst);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.geel{background:var(--geel);color:#141006}
+.btn.geel:hover{background:#ffc53a}
+.btn.zwart{background:var(--kool);color:var(--wit)}
+.btn.zwart:hover{background:#000}
+.btn.wit{background:var(--wit);color:var(--kool);border-color:var(--kool)}
+.btn.rand{border-color:currentColor;background:transparent}
+.btn.rand-licht{border-color:rgba(255,255,255,.55);color:var(--wit);background:transparent}
+.btn.rand-licht:hover{border-color:var(--geel);color:var(--geel)}
+.btn:focus-visible,.chip:focus-visible,.tab:focus-visible{outline:3px solid var(--tegel);outline-offset:3px}
+
+/* demo-strook + aankondiging */
+.demo{background:#000;color:#cfcfcf;font-size:13px;text-align:center;padding:8px 14px}
+.demo a{color:var(--geel);display:inline-flex;align-items:center;min-height:28px}
+.demo .pitchknop{display:none}
+body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--geel);background:transparent;color:var(--geel);font:700 13px var(--tekst);cursor:pointer;align-items:center}
+.balk{background:var(--geel);color:#141006;font-weight:600;font-size:15px;text-align:center;padding:8px 14px}
+.balk a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px;margin:-10px 0}
+
+/* header */
+.kopbalk{background:var(--kool);color:var(--wit);position:sticky;top:0;z-index:30;border-bottom:1px solid #2d2924}
+.kopbalk .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px}
+.merk{display:flex;align-items:center;min-height:44px;min-width:0}
+.merk img{height:30px;width:auto}
+@media (min-width:600px){.merk img{height:36px}}
+.nav{display:none;gap:26px;font-weight:600}
+.nav a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.nav a:hover{color:var(--geel)}
+@media (min-width:960px){.nav{display:flex}}
+.kopbalk .btn{min-height:44px;padding:0 16px;font-size:15px}
+.kopbalk .lang{display:none}
+@media (min-width:600px){.kopbalk .lang{display:inline}}
+
+/* hero */
+.hero{background:var(--kool);color:var(--wit);padding:16px 0 44px;overflow:hidden}
+.hero .wrap{display:grid;gap:26px}
+.bento{display:grid;grid-template-columns:1.08fr 1fr;grid-template-rows:auto auto;gap:10px}
+.bento figure{margin:0;border-radius:16px;overflow:hidden;background:#2a2621;position:relative}
+.bento img{width:100%;height:100%;object-fit:cover}
+.b-rij{grid-row:1 / span 2;aspect-ratio:auto;min-height:300px}
+.b-rij img{object-position:72% 62%}
+.b-bord{background:var(--kool2)!important;border:1px solid #3a342c;display:flex;align-items:center;justify-content:center;padding:12px 8px;aspect-ratio:1/0.92}
+.bord-logo{width:100%;height:auto;max-width:300px}
+.b-mix{aspect-ratio:1/0.8}
+.b-mix img{object-position:50% 60%}
+.b-adana{display:none}
+.bento figcaption{position:absolute;left:8px;bottom:8px;background:rgba(17,15,13,.78);color:#f3efe6;font-size:12.5px;line-height:1.25;padding:5px 9px;border-radius:8px;max-width:calc(100% - 16px)}
+.hero h1{color:var(--wit);margin-bottom:.32em}
+.hero h1 b{color:var(--geel);font-weight:800}
+.hero .lead{font-size:clamp(17px,4.4vw,20px);color:#e6e1d8;max-width:36ch;margin-bottom:22px}
+.hero-knoppen{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.vertrouw{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:15px;color:#d9d3c8}
+.vertrouw a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px;gap:6px}
+.vertrouw a:hover{color:var(--geel)}
+.ster{color:var(--geel)}
+.status{display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.lampje{width:10px;height:10px;border-radius:50%;background:var(--staal-d);flex:none}
+.status.open .lampje{background:#6cc04a;animation:knipper .5s ease-in-out 2 both}
+@keyframes knipper{0%,100%{opacity:1}50%{opacity:.2}}
+/* spiesen schuiven één keer op hun plek */
+.sp-l{animation:spL 1.15s cubic-bezier(.2,.8,.25,1) .35s both}
+.sp-r{animation:spR 1.15s cubic-bezier(.2,.8,.25,1) .55s both}
+@keyframes spL{from{transform:translate(-46px,40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes spR{from{transform:translate(46px,40px);opacity:0}to{transform:none;opacity:1}}
+@media (min-width:980px){
+  .hero{padding:44px 0 72px}
+  .hero .wrap{grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);align-items:center;gap:56px}
+  .hero-tekst{order:-1}
+  .bento{grid-template-columns:1fr 1fr 1fr;grid-template-rows:250px 250px}
+  .b-rij{grid-row:1 / span 2;min-height:0}
+  .b-bord{aspect-ratio:auto}
+  .b-mix{aspect-ratio:auto}
+  .b-adana{display:block;grid-column:2 / span 2}
+  .b-adana img{object-position:50% 40%}
+}
+
+/* kaart */
+.kaart{background:var(--staal)}
+.kaart-kop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:10px 30px;margin-bottom:22px}
+.kaart-kop p{max-width:48ch;color:var(--grijs);margin:0}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;margin:0 -20px;padding-left:20px;padding-right:20px;scrollbar-width:thin}
+.tab{flex:none;min-height:44px;padding:0 18px;border-radius:999px;border:2px solid var(--staal2);background:var(--wit);color:var(--inkt);font:600 16px var(--tekst);cursor:pointer}
+.tab[aria-selected=true]{background:var(--kool);border-color:var(--kool);color:var(--geel)}
+.paneel{display:grid;gap:22px;margin-top:10px;min-width:0}
+.paneel>*{min-width:0}
+.paneel figure{margin:0;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--staal2)}
+.paneel figure img{width:100%;height:100%;object-fit:cover}
+.gerechten{list-style:none;margin:0;padding:0;background:var(--wit);border-radius:16px;border:1px solid var(--staal2)}
+.gerechten li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 16px;padding:14px 18px;border-bottom:1px dashed var(--staal2)}
+.gerechten li:last-child{border-bottom:0}
+.gerechten b{font-family:var(--kop);font-weight:600;font-size:17px}
+.gerechten span{grid-column:1;color:var(--grijs);font-size:15px}
+.gerechten .prijs{grid-column:2;grid-row:1;font-weight:700;color:var(--inkt);font-variant-numeric:tabular-nums;white-space:nowrap}
+.veg{display:inline-block;font-size:12px;font-weight:700;color:var(--peper);border:1px solid currentColor;border-radius:6px;padding:0 6px;margin-left:6px;vertical-align:2px}
+@media (min-width:860px){.paneel{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start}.paneel.zonder{grid-template-columns:1fr}}
+.kaart-voet{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
+
+/* keuzehulp */
+.kiezer{background:var(--wit)}
+.stappen-k{display:grid;gap:18px;margin-top:18px}
+@media (min-width:980px){.kies-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:36px;align-items:start}}
+.stap-k{border:1px solid var(--staal2);border-radius:16px;padding:18px;background:#fff}
+.stap-k h3{display:flex;gap:10px;align-items:center}
+.nr{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--kool);color:var(--geel);font:800 15px var(--kop);flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:6px 14px;border-radius:12px;border:2px solid var(--staal2);background:var(--wit);color:var(--inkt);font:600 15px/1.2 var(--tekst);cursor:pointer;text-align:left}
+.chip small{display:block;font-weight:400;color:var(--grijs);font-size:13px}
+.chip[aria-pressed=true]{border-color:var(--kool);background:var(--kool);color:var(--wit)}
+.chip[aria-pressed=true] small{color:var(--geel)}
+.chip:disabled{opacity:.45;cursor:not-allowed}
+.aantal{display:flex;align-items:center;gap:10px;margin-top:14px;font-weight:600}
+.aantal button{width:44px;height:44px;border-radius:12px;border:2px solid var(--staal2);background:var(--wit);font:700 20px var(--tekst);cursor:pointer}
+.aantal output{min-width:2ch;text-align:center;font:800 20px var(--kop)}
+.bord{background:var(--kool);color:var(--wit);border-radius:18px;padding:22px 20px;position:relative;margin-top:18px;box-shadow:0 18px 40px -22px rgba(0,0,0,.6)}
+@media (min-width:980px){.bord{position:sticky;top:90px;margin-top:0}}
+.bord .bord-spies{width:74px;height:auto;margin:0 0 6px}
+.bord h3{color:var(--geel);font-size:22px}
+.bord dl{margin:0 0 14px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 14px}
+.bord dt{color:#b9b2a6;font-size:14px}
+.bord dd{margin:0;font-weight:600}
+.bord .totaal{border-top:1px dashed #4a433a;padding-top:12px;display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:18px}
+.bord .totaal b{font:800 26px var(--kop);color:var(--geel)}
+.bord .klein{color:#b9b2a6;margin:10px 0 16px}
+.bord .knoppen{display:grid;gap:10px}
+
+/* wat gasten schrijven (tegelblauw) */
+.gasten{background:var(--tegel);color:#fff}
+.gasten h2{color:#fff}
+.kaarten3{display:grid;gap:16px;margin-top:22px}
+@media (min-width:860px){.kaarten3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.kaartje{background:var(--tegel-d);border-radius:16px;padding:22px;border-top:4px solid var(--geel);min-width:0}
+.kaartje h3{color:var(--geel);font-size:clamp(19px,4.8vw,22px)}
+.kaartje p{color:#e8eff6;margin:0}
+.zaakfoto{margin:28px 0 0;border-radius:16px;overflow:hidden;display:grid}
+.zaakfoto img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:50% 40%}
+.zaakfoto figcaption{background:var(--tegel-d);color:#d9e5f0;font-size:14px;padding:10px 14px}
+@media (min-width:860px){.gasten-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:end}.zaakfoto{margin:0}}
+
+/* reviews */
+.reviews{background:var(--staal)}
+.score{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin-bottom:20px}
+.score .cijfer{font:800 clamp(40px,9vw,56px)/1 var(--kop)}
+.score .sterren{color:var(--geel-d);font-size:22px;letter-spacing:2px}
+.score a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+.rev{display:grid;gap:16px}
+@media (min-width:860px){.rev{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.rev article{background:var(--wit);border-radius:16px;padding:22px;border:1px solid var(--staal2);min-width:0}
+.rev h3{font-size:19px;margin-bottom:6px}
+.rev p{margin:0;color:#34312c}
+.label{margin-top:16px}
+
+/* stappen */
+.stappen{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:14px;counter-reset:s}
+@media (min-width:860px){.stappen{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.stappen li{counter-increment:s;background:var(--staal);border-radius:16px;padding:22px 22px 22px 74px;position:relative;min-width:0}
+.stappen li::before{content:counter(s);position:absolute;left:20px;top:20px;width:38px;height:38px;border-radius:10px;background:var(--geel);color:#141006;display:grid;place-items:center;font:800 19px var(--kop)}
+.stappen b{display:block;font-family:var(--kop);font-weight:600;font-size:19px;margin-bottom:4px}
+
+/* faq */
+.faq{background:var(--wit);padding-top:0}
+.faq details{border-bottom:1px solid var(--staal2)}
+.faq summary{cursor:pointer;list-style:none;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;font:600 18px/1.3 var(--kop);padding:10px 0}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:800 24px var(--kop);color:var(--geel-d)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:#3a3732;max-width:70ch}
+
+/* route */
+.route{background:var(--kool);color:var(--wit)}
+.route h2{color:#fff}
+.route-grid{display:grid;gap:26px}
+@media (min-width:980px){.route-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}}
+.gevel{margin:0;border-radius:16px;overflow:hidden;background:#2a2621}
+.gevel img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 30%}
+.gevel figcaption{font-size:13.5px;color:#bdb5a8;padding:10px 12px}
+.uren{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.uren th,.uren td{text-align:left;padding:9px 0;border-bottom:1px solid #332e28;font-weight:400}
+.uren td{text-align:right}
+.uren tr.vandaag th,.uren tr.vandaag td{color:var(--geel);font-weight:700}
+.route .adres{font-size:19px;font-weight:600;margin-bottom:6px}
+.route a.tel{display:inline-flex;align-items:center;min-height:44px;color:var(--geel);font-weight:700;white-space:nowrap}
+.route .knoppen{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.route h3{color:#fff;margin-top:6px}
+.bezorg{margin-top:22px;color:#cfc8bc;font-size:15px}
+.mm-kaart{--mk-bg:#221f1b;--mk-fg:#fff;--mk-accent:#f2b51d;--mk-lijn:rgba(255,255,255,.07);
+  position:relative;aspect-ratio:4/3;width:100%;border-radius:16px;overflow:hidden;background:var(--mk-bg);color:var(--mk-fg)}
+.mm-kaart .mk-raster{position:absolute;inset:0;background:linear-gradient(var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px}
+.mm-kaart .mk-weg{position:absolute;background:rgba(255,255,255,.13);border-radius:6px}
+.mm-kaart .mk-inhoud{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mm-kaart .mk-pin{width:46px;height:46px}
+.mm-kaart .mk-adres{font-weight:700;line-height:1.35;margin:0}
+.mm-kaart .mk-knop{min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--mk-accent);background:transparent;color:var(--mk-fg);font:inherit;font-weight:700;cursor:pointer}
+.mm-kaart .mk-knop:hover,.mm-kaart .mk-knop:focus-visible{background:var(--mk-accent);color:var(--mk-bg)}
+.mm-kaart .mk-uitleg{font-size:12.5px;opacity:.75;max-width:30ch;margin:0}
+.mm-kaart iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* slot */
+.slot{background:var(--geel);color:#141006;text-align:center}
+.slot h2{color:#141006}
+.slot p{max-width:46ch;margin:0 auto 22px;font-size:18px}
+.slot .knoppen{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+/* footer */
+footer{background:#0f0e0c;color:#bdb6aa;padding:44px 0 110px;font-size:15px}
+@media (min-width:980px){footer{padding-bottom:44px}}
+.voet{display:grid;gap:22px}
+@media (min-width:860px){.voet{grid-template-columns:1.2fr 1fr 1fr}}
+footer img{height:34px;width:auto;margin-bottom:12px}
+footer a{color:#f3efe6}
+footer p{margin:0 0 .5em}
+.mohamedia{border-top:1px solid #2a2722;margin-top:26px;padding-top:18px;font-size:14px}
+
+/* zwevende knoppen (mobiel) */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;gap:10px;transform:translateY(140%);transition:transform .3s ease;pointer-events:none}
+.zweef.aan{transform:none;pointer-events:auto}
+.zweef .btn{flex:1;min-height:54px;box-shadow:0 10px 28px -10px rgba(0,0,0,.55);padding:0 12px}
+@media (min-width:980px){.zweef{display:none}}
+
+/* pitch (alleen met ?pitch) */
+.pitch-paneel{position:fixed;inset:0;z-index:60;background:rgba(10,9,8,.76);overflow-y:auto;padding:16px}
+.pitch-in{background:var(--wit);color:var(--inkt);max-width:980px;margin:0 auto;border-radius:22px;padding:24px 20px 28px}
+.pitch-in h2{font-size:clamp(28px,5.4vw,42px)}
+.pitch-in h3{margin-top:26px}
+.pitch-sluit{float:right;min-height:44px;min-width:44px;border-radius:10px;border:2px solid var(--kool);background:transparent;font:700 15px var(--tekst);cursor:pointer;padding:0 16px}
+.nunu{display:grid;grid-template-columns:1fr 1fr;gap:14px;clear:both;margin-top:10px}
+.nunu figure{margin:0}
+.nunu img{width:100%;height:auto;border-radius:14px;border:1px solid var(--staal2)}
+.nunu figcaption{font-size:14px;margin-top:8px;color:#3a3732}
+.pitch-in ol{padding-left:22px}
+.pitch-in li{margin-bottom:8px}
+.reken{background:var(--staal);border-radius:16px;padding:18px}
+.reken label{display:block;font-weight:600;margin-top:12px}
+.reken input[type=range]{width:100%;min-height:44px;accent-color:var(--kool)}
+.uitkomst{font-size:18px;margin:12px 0 0}
+.prijzen{display:grid;gap:12px}
+@media (min-width:760px){.prijzen{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.prijzen div{border:2px solid var(--staal2);border-radius:14px;padding:16px}
+.prijzen div.eerst{border-color:var(--kool)}
+.prijzen small{display:block;color:var(--grijs);font-weight:600}
+.prijzen b{display:block;font:800 22px var(--kop);margin:4px 0}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>.<button type="button" class="pitchknop" id="pitchOpen">Pitch openen</button></div>
+<div class="balk"><a href="https://www.google.com/maps?cid=16400515871548437582" target="_blank" rel="noopener">4,7 <span class="ster" style="color:#141006">★</span>&nbsp;uit 332 Google-reviews · Bergweg 353B</a></div>
+
+<header class="kopbalk">
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="Köşebaşı Kebap, naar boven"><img src="logo-light.svg" alt="Köşebaşı Kebap" width="200" height="36"></a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <a href="#kaart">Kaart</a><a href="#kiezer">Bestellen</a><a href="#gasten">Gasten</a><a href="#route">Route en tijden</a>
+    </nav>
+    <a class="btn geel" href="tel:+31108416561"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg><span>Bel<span class="lang"> 010 841 65 61</span></span></a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap">
+    <div class="bento">
+      <figure class="b-rij"><img src="img/rij.jpg" alt="Een rij dürüms op lavas met vlees, ui en groene peper, klaar op het stalen werkblad" width="900" height="1035" fetchpriority="high"><figcaption>Op het werkblad</figcaption></figure>
+      <div class="b-bord"><svg class="bord-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 330" role="img" aria-label="Köşebaşı Kebap"><path transform="translate(7.7 100) scale(1)" fill="#f2b51d" d="M33.4 -31.7Q39.6 -40.9 45.7 -48.7Q51.7 -56.4 57.2 -62Q62.7 -67.6 67.3 -70.7Q71.9 -73.8 75.3 -73.8Q76.6 -73.8 78.2 -72.8Q79.7 -71.8 81.1 -70.2Q82.4 -68.6 83.3 -66.8Q84.2 -64.9 84.2 -63.2Q78 -61.2 72.1 -58Q66.1 -54.7 60.7 -50.5Q55.2 -46.2 50.2 -41Q45.3 -35.8 41.3 -29.9Q42.9 -25.8 45.2 -21.1Q47.6 -16.5 50.4 -12.2Q53.2 -7.8 56.4 -4.1Q59.6 -0.4 62.9 1.8Q62.4 2.9 61.2 3.9Q60 4.9 58.6 5.8Q57.2 6.6 55.7 7.1Q54.1 7.6 52.8 7.6Q50.2 7.6 48 5.2Q45.8 2.7 43.6 -2.2Q41.3 -7.2 38.9 -14.6Q36.4 -21.9 33.4 -31.7ZM18.3 8.1Q14.5 7.2 12 5Q9.5 2.7 7.4 -0.7Q8.3 -2.6 9.6 -5.7Q10.8 -8.8 12.6 -13.4Q14.4 -17.9 16.9 -24.2Q19.4 -30.6 22.7 -39.1Q24.8 -44.5 26.1 -48.2Q27.5 -51.9 28.5 -55.5Q29.4 -59 30.3 -63.3Q31.2 -67.6 32.4 -74.2Q36.6 -73.4 40 -70.5Q43.5 -67.6 46 -63.5Q44.9 -62.1 43.5 -59.2Q42 -56.4 40.2 -52.4Q38.4 -48.4 36.2 -43.5Q34 -38.6 31.6 -33.1Q26.2 -21.1 23.1 -11.2Q20 -1.2 18.3 8.1ZM86.8 3.5Q81.1 2.9 77.7 -1.5Q74.3 -5.9 74.3 -12.7Q74.3 -16.7 75.5 -21Q76.7 -25.3 78.9 -29.4Q81.1 -33.4 84.1 -37Q87.1 -40.6 90.6 -43.2Q96.1 -47.3 100.9 -47.3Q104.1 -45.6 107.2 -40.2Q107.7 -40.2 108.1 -40.2Q108.5 -40.3 109 -40.3Q114.3 -40.3 114.3 -30.9Q114.3 -24.6 112.2 -19Q110.2 -13.3 106.6 -8.7Q102.9 -4.1 97.8 -1Q92.8 2.2 86.8 3.5ZM91.9 -28Q90.2 -25.7 88.7 -23Q87.2 -20.3 86.1 -17.6Q85 -14.8 84.4 -12.2Q83.8 -9.7 83.8 -7.7Q83.8 -5.3 84.6 -3.1Q85.4 -0.9 86.4 -0.6Q90.9 -1.6 94.7 -4.4Q98.4 -7.1 101.2 -11.2Q103.9 -15.3 105.5 -20.5Q107 -25.7 107 -31.6Q107 -34.2 106.7 -35.7Q106.4 -37.2 105.7 -38.3Q101.3 -37 97.8 -34.1Q94.4 -31.2 91.9 -28ZM104.5 -59.3Q104.5 -60.8 104.7 -62.5Q104.9 -64.1 105.5 -65.5Q106.1 -66.8 107.2 -67.8Q108.4 -68.7 110.3 -68.8Q111.6 -68.6 113.8 -67.4Q116.1 -66.1 117.1 -64.4Q117.1 -64.4 116.1 -62.8Q115.1 -61.2 113.8 -59.2Q112.6 -57.3 111.3 -55.6Q110.1 -53.8 109.6 -53.4Q107.5 -54.3 106.2 -55.9Q105 -57.5 104.5 -59.3ZM117.6 -57.1Q117.6 -58.7 117.8 -60.4Q118 -62 118.6 -63.4Q119.2 -64.7 120.3 -65.6Q121.4 -66.5 123.2 -66.6Q123.8 -66.6 124.8 -66.2Q125.7 -65.8 126.7 -65.2Q127.7 -64.6 128.6 -63.8Q129.5 -63 130.1 -62.2Q130.1 -62.1 129.1 -60.5Q128.2 -58.9 126.9 -57Q125.6 -55.1 124.3 -53.4Q123 -51.7 122.4 -51.4Q120.4 -52.2 119.2 -53.8Q118.1 -55.4 117.6 -57.1ZM153.7 -39.8Q153.6 -37.9 153.1 -35.9Q152.5 -33.8 151.7 -32.2Q150.9 -30.5 150 -29.4Q149.1 -28.3 148.3 -28.3Q147.2 -28.4 147 -29.8Q147 -30.1 147.2 -30.8Q147.5 -31.4 147.8 -32.2Q148.1 -33 148.4 -33.8Q148.6 -34.6 148.6 -35.2Q148.6 -36.6 148 -37.5Q147.3 -38.5 146.2 -38.5Q142.2 -38.5 140.1 -33.5Q138 -28.5 138 -18.8Q138 -17.8 138.1 -17.6Q140.2 -17.7 141.9 -17.8Q143.5 -17.8 145.1 -17.8Q145.2 -17.6 145.2 -17Q145.2 -16.1 144.8 -15.7Q142.5 -15.2 141.2 -14.9Q139.8 -14.5 139.1 -14.2Q138.4 -13.9 138.2 -13.6Q138.1 -13.2 138.1 -12.6Q138.1 -11.8 138.2 -11Q138.2 -10.2 138.2 -9Q138.2 -1.8 134.7 3.1Q131.2 7.9 124.9 9.6Q123.5 11.7 122.3 13.8Q121.1 15.8 120.4 17.4Q121.3 16.9 122.7 16.5Q124 16 125.4 15.6Q126.8 15.2 128.2 15Q129.5 14.8 130.4 14.8Q130.8 14.8 131.8 15.5Q132.8 16.1 133.8 16.9Q134.7 17.7 135.5 18.5Q136.2 19.3 136.2 19.7Q136.2 20.4 135 21.9Q133.8 23.4 132 25.2Q130.1 27 127.8 29Q125.5 31 123.4 32.6Q121.3 34.2 119.6 35.2Q117.8 36.3 117 36.3Q116.8 36.3 116.5 35.9Q116.1 35.4 115.8 34.8Q115.4 34.2 115.2 33.6Q114.9 33 114.9 32.7Q117.2 30.8 118.9 29.2Q120.6 27.6 122 26.1Q123.4 24.6 124.6 22.9Q125.8 21.2 127.1 19.1Q126.3 19.3 124.8 19.6Q123.3 20 121.7 20.6Q120 21.1 118.3 21.7Q116.7 22.2 115.5 22.6L114.7 21.4Q114.8 20.7 115.5 19.5Q116.2 18.2 117.2 16.6Q118.1 15.1 119.1 13.5Q120.1 11.8 121 10.4Q119.6 10.3 118.1 9.6Q116.6 8.9 115.2 7.8Q113.9 6.7 112.9 5.3Q111.9 4 111.5 2.6Q111.5 -1.2 113.1 -4.7Q114.7 -8.1 117.5 -10.8Q120.2 -13.4 124 -15.1Q127.7 -16.7 132.1 -17Q132.1 -19.5 131.6 -21.9Q131.1 -24.3 130.6 -26.6Q130 -28.8 129.5 -31Q129 -33.1 129 -35.2Q129 -37.9 130.1 -40.5Q131.2 -43.2 133 -45.5Q134.8 -47.7 137.2 -49.3Q139.6 -50.9 142.2 -51.5Q143.3 -51.2 145.2 -49.8Q147 -48.3 148.8 -46.5Q150.6 -44.7 152 -42.9Q153.4 -41 153.7 -39.8ZM120.7 5.8Q123.1 4.8 125.2 2.9Q127.4 1 129 -1.4Q130.6 -3.8 131.6 -6.5Q132.5 -9.2 132.5 -11.8Q130.5 -11.5 128.1 -9.9Q125.7 -8.4 123.6 -6.2Q121.5 -4.1 120.1 -1.8Q118.7 0.5 118.7 2.2Q118.7 4.4 120.7 5.8ZM189.8 -41.4Q189.4 -35.2 187.6 -30.8Q185.8 -26.3 182.5 -23Q179.1 -19.6 174.3 -16.9Q169.5 -14.2 163.1 -11.7Q163.1 -11.1 163.1 -10.5Q163 -9.8 163 -9.1Q163 -7.8 163.2 -6.4Q163.4 -5 163.9 -3.8Q164.4 -2.6 165.3 -1.9Q166.2 -1.1 167.6 -1.1Q170.3 -1.1 172.9 -2.3Q175.5 -3.5 177.9 -5.2Q180.2 -7 182.2 -9.1Q184.3 -11.1 185.9 -12.8Q186.9 -11.9 187.6 -11.1Q183.1 -5.1 177.8 -1.2Q172.4 2.8 167.6 3.9Q160.7 3.1 156.9 -1.2Q153 -5.4 153 -11.4Q153 -15.5 154.2 -19.8Q155.3 -24 157.4 -28Q159.4 -31.9 162.2 -35.4Q164.9 -38.9 168.1 -41.5Q171.2 -44.1 174.6 -45.6Q177.9 -47.1 181.2 -47.1Q185.8 -46.5 189.8 -41.4ZM182.9 -38.1Q180.2 -37.7 177.3 -35.9Q174.4 -34.1 171.9 -31.1Q169.3 -28.1 167.2 -24.1Q165.1 -20.1 163.9 -15.5Q171.9 -19.5 177.2 -25.4Q182.5 -31.2 182.9 -38.1ZM203.6 0.7Q208.2 -2.4 212.6 -7.3Q217 -12.1 220.6 -17.8Q224.2 -23.4 226.7 -29.5Q229.2 -35.6 230.1 -41.2Q230.1 -42.4 228.8 -42.8Q227.4 -42.8 225 -40.4Q222.5 -37.9 219.6 -34.1Q216.6 -30.3 213.6 -25.6Q210.5 -20.9 208 -16.2Q205.5 -11.6 203.8 -7.6Q202 -3.5 201.8 -1Q200.8 -1 200.1 -3Q199.9 -3.5 199.4 -4.1Q198.9 -4.6 197.8 -5.4Q197.3 -5.8 196.8 -6.4Q196.3 -6.9 196.1 -7.3Q195.7 -8.1 195.7 -9.9Q195.7 -15.8 197.2 -23.2Q198.7 -30.6 201.2 -38.3Q203.6 -46 206.9 -53.5Q210.2 -60.9 213.8 -67.1Q217.3 -73.3 220.9 -77.6Q224.5 -81.9 227.7 -83.3Q228.7 -83 230.1 -82.3Q231.5 -81.6 232.9 -80.7Q234.3 -79.8 235.6 -78.9Q236.8 -78 237.4 -77.3Q226.4 -68.4 218.4 -54.5Q210.3 -40.5 205.2 -21.5Q208 -26.7 211.5 -31.6Q215 -36.4 218.5 -40.1Q221.9 -43.8 225.1 -46Q228.2 -48.2 230.3 -48.2Q231.9 -47.8 233.4 -46.8Q234.9 -45.8 236.1 -44.4Q237.3 -42.9 238.1 -41.2Q238.9 -39.6 239.1 -37.8Q239 -33.6 237.7 -28.9Q236.3 -24.1 234.1 -19.5Q231.8 -14.9 229 -10.7Q226.1 -6.5 223 -3.4Q219.8 -0.2 216.7 1.7Q213.5 3.6 210.7 3.6Q209.5 3.6 208.3 3.4Q207 3.1 206 2.7Q204.9 2.2 204.3 1.7Q203.6 1.2 203.6 0.7ZM276.1 -40.4Q277.1 -40.4 278.5 -40.1Q279.8 -39.7 280.9 -39.2Q282 -38.6 282.8 -38Q283.5 -37.4 283.5 -36.9Q281.5 -32.7 279.8 -28.5Q278.1 -24.2 276.9 -20.3Q275.7 -16.4 275 -13Q274.4 -9.6 274.4 -7.1Q274.4 -4.3 275 -2.5Q275.6 -0.6 277 0.2Q275.8 1 273.9 1.5Q272 2 270.5 2Q265.1 2 265.1 -5.4Q265.1 -11.1 268.9 -21Q266.9 -16.4 264.3 -12.4Q261.7 -8.3 259 -5.2Q256.3 -2.1 253.6 -0.2Q250.8 1.8 248.5 2.2Q244.8 2 242.5 -1.4Q240.2 -4.7 240.2 -9.9Q240.2 -15.5 242.6 -21.7Q245 -27.9 248.8 -33.2Q252.5 -38.5 256.9 -42Q261.3 -45.6 265.4 -45.8Q266.4 -45.5 267.6 -44.6Q268.9 -43.7 270 -42.5Q271.2 -41.3 272 -40.1Q272.8 -38.8 272.9 -37.9Q268.9 -37.3 264.6 -34Q260.4 -30.7 256.9 -26.1Q253.5 -21.4 251.3 -16.1Q249.1 -10.8 249.1 -6.2Q249.1 -4.3 250.5 -3.8Q253.4 -4.4 257.2 -8.8Q261 -13.1 266.4 -22.2Q267.4 -24 268.6 -26.2Q269.9 -28.4 271.2 -30.8Q272.5 -33.2 273.8 -35.7Q275 -38.1 276.1 -40.4ZM323.2 -39.8Q323.1 -37.9 322.6 -35.9Q322 -33.8 321.2 -32.2Q320.4 -30.5 319.5 -29.4Q318.6 -28.3 317.8 -28.3Q316.7 -28.4 316.5 -29.8Q316.5 -30.1 316.8 -30.8Q317 -31.4 317.3 -32.2Q317.6 -33 317.9 -33.8Q318.1 -34.6 318.1 -35.2Q318.1 -36.6 317.5 -37.5Q316.8 -38.5 315.7 -38.5Q311.7 -38.5 309.6 -33.5Q307.5 -28.5 307.5 -18.8Q307.5 -17.8 307.6 -17.6Q309.7 -17.7 311.4 -17.8Q313 -17.8 314.6 -17.8Q314.7 -17.6 314.7 -17Q314.7 -16.1 314.3 -15.7Q312 -15.2 310.7 -14.9Q309.3 -14.5 308.6 -14.2Q307.9 -13.9 307.8 -13.6Q307.6 -13.2 307.6 -12.6Q307.6 -11.8 307.7 -11Q307.7 -10.2 307.7 -9Q307.7 -1.8 304.2 3.1Q300.7 7.9 294.4 9.6Q293 11.7 291.8 13.8Q290.6 15.8 289.9 17.4Q290.8 16.9 292.2 16.5Q293.5 16 294.9 15.6Q296.3 15.2 297.7 15Q299 14.8 299.9 14.8Q300.3 14.8 301.3 15.5Q302.3 16.1 303.2 16.9Q304.2 17.7 305 18.5Q305.7 19.3 305.7 19.7Q305.7 20.4 304.5 21.9Q303.3 23.4 301.5 25.2Q299.6 27 297.3 29Q295 31 292.9 32.6Q290.8 34.2 289.1 35.2Q287.3 36.3 286.5 36.3Q286.3 36.3 286 35.9Q285.6 35.4 285.2 34.8Q284.9 34.2 284.7 33.6Q284.4 33 284.4 32.7Q286.7 30.8 288.4 29.2Q290.1 27.6 291.5 26.1Q292.9 24.6 294.1 22.9Q295.3 21.2 296.6 19.1Q295.8 19.3 294.3 19.6Q292.8 20 291.2 20.6Q289.5 21.1 287.9 21.7Q286.2 22.2 285 22.6L284.2 21.4Q284.3 20.7 285 19.5Q285.7 18.2 286.7 16.6Q287.6 15.1 288.6 13.5Q289.6 11.8 290.5 10.4Q289.1 10.3 287.6 9.6Q286.1 8.9 284.8 7.8Q283.4 6.7 282.4 5.3Q281.4 4 281 2.6Q281 -1.2 282.6 -4.7Q284.2 -8.1 287 -10.8Q289.7 -13.4 293.5 -15.1Q297.2 -16.7 301.6 -17Q301.6 -19.5 301.1 -21.9Q300.6 -24.3 300.1 -26.6Q299.5 -28.8 299 -31Q298.5 -33.1 298.5 -35.2Q298.5 -37.9 299.6 -40.5Q300.7 -43.2 302.5 -45.5Q304.3 -47.7 306.7 -49.3Q309.1 -50.9 311.7 -51.5Q312.8 -51.2 314.7 -49.8Q316.5 -48.3 318.3 -46.5Q320.1 -44.7 321.5 -42.9Q322.9 -41 323.2 -39.8ZM290.2 5.8Q292.6 4.8 294.8 2.9Q296.9 1 298.5 -1.4Q300.1 -3.8 301.1 -6.5Q302 -9.2 302 -11.8Q300 -11.5 297.6 -9.9Q295.2 -8.4 293.1 -6.2Q291 -4.1 289.6 -1.8Q288.2 0.5 288.2 2.2Q288.2 4.4 290.2 5.8ZM323.5 -5.6Q323.5 -6.5 323.6 -7.9Q323.8 -9.3 324.2 -11.5Q324.6 -13.7 325.2 -16.9Q325.9 -20 326.8 -24.4Q327 -25.3 327.6 -27.5Q328.2 -29.7 329.2 -32.2Q330.3 -34.8 331.9 -37.1Q333.5 -39.3 335.8 -40.4Q337.5 -40.2 340.4 -38.5Q343.2 -36.9 345.2 -34Q340.8 -28.8 338.6 -23.3Q336.3 -17.8 334.3 -11.3Q333.2 -7.8 332.4 -5.3Q331.5 -2.8 331.5 -0.4Q331.5 1.4 331.5 2.2Q331.4 3 330.9 3Q330.6 3 329.4 2.5Q328.2 2 326.9 0.9Q325.6 -0.1 324.6 -1.7Q323.5 -3.3 323.5 -5.6Z"/><g transform="translate(120 108) scale(1)"><g class="sp-l"><g transform="translate(10 96) rotate(-50)"><g stroke="#fff" stroke-width="3.4" stroke-linejoin="round" fill="#fff"><path d="M0 0H100" stroke-width="6.4" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="55.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="75.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/></g><path d="M0 0H100" stroke="#d9a35e" stroke-width="3" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="46.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="55.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="56.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="66.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="75.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="76.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="86.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="54.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="64.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="74.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="84.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/></g><g transform="translate(23 100) rotate(-50)"><g stroke="#fff" stroke-width="3.4" stroke-linejoin="round" fill="#fff"><path d="M0 0H100" stroke-width="6.4" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="55.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="75.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/></g><path d="M0 0H100" stroke="#d9a35e" stroke-width="3" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="46.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="55.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="56.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="66.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="75.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="76.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="86.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="54.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="64.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="74.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="84.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/></g></g><g class="sp-r"><g transform="translate(110 96) rotate(-130)"><g stroke="#fff" stroke-width="3.4" stroke-linejoin="round" fill="#fff"><path d="M0 0H100" stroke-width="6.4" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="55.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="75.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/></g><path d="M0 0H100" stroke="#d9a35e" stroke-width="3" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="46.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="55.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="56.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="66.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="75.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="76.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="86.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="54.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="64.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="74.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="84.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/></g><g transform="translate(97 100) rotate(-130)"><g stroke="#fff" stroke-width="3.4" stroke-linejoin="round" fill="#fff"><path d="M0 0H100" stroke-width="6.4" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="55.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="75.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/></g><path d="M0 0H100" stroke="#d9a35e" stroke-width="3" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="46.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="55.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="56.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="66.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="75.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="76.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="86.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="54.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="64.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="74.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="84.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/></g></g></g><path transform="translate(48.4 300) scale(1)" fill="#f2b51d" d="M33.4 -31.7Q39.6 -40.9 45.7 -48.7Q51.7 -56.4 57.2 -62Q62.7 -67.6 67.3 -70.7Q71.9 -73.8 75.3 -73.8Q76.6 -73.8 78.2 -72.8Q79.7 -71.8 81.1 -70.2Q82.4 -68.6 83.3 -66.8Q84.2 -64.9 84.2 -63.2Q78 -61.2 72.1 -58Q66.1 -54.7 60.7 -50.5Q55.2 -46.2 50.2 -41Q45.3 -35.8 41.3 -29.9Q42.9 -25.8 45.2 -21.1Q47.6 -16.5 50.4 -12.2Q53.2 -7.8 56.4 -4.1Q59.6 -0.4 62.9 1.8Q62.4 2.9 61.2 3.9Q60 4.9 58.6 5.8Q57.2 6.6 55.7 7.1Q54.1 7.6 52.8 7.6Q50.2 7.6 48 5.2Q45.8 2.7 43.6 -2.2Q41.3 -7.2 38.9 -14.6Q36.4 -21.9 33.4 -31.7ZM18.3 8.1Q14.5 7.2 12 5Q9.5 2.7 7.4 -0.7Q8.3 -2.6 9.6 -5.7Q10.8 -8.8 12.6 -13.4Q14.4 -17.9 16.9 -24.2Q19.4 -30.6 22.7 -39.1Q24.8 -44.5 26.1 -48.2Q27.5 -51.9 28.5 -55.5Q29.4 -59 30.3 -63.3Q31.2 -67.6 32.4 -74.2Q36.6 -73.4 40 -70.5Q43.5 -67.6 46 -63.5Q44.9 -62.1 43.5 -59.2Q42 -56.4 40.2 -52.4Q38.4 -48.4 36.2 -43.5Q34 -38.6 31.6 -33.1Q26.2 -21.1 23.1 -11.2Q20 -1.2 18.3 8.1ZM110.8 -41.4Q110.4 -35.2 108.6 -30.8Q106.8 -26.3 103.4 -23Q100.1 -19.6 95.3 -16.9Q90.5 -14.2 84.1 -11.7Q84.1 -11.1 84 -10.5Q84 -9.8 84 -9.1Q84 -7.8 84.2 -6.4Q84.4 -5 84.9 -3.8Q85.4 -2.6 86.3 -1.9Q87.2 -1.1 88.6 -1.1Q91.3 -1.1 93.9 -2.3Q96.5 -3.5 98.8 -5.2Q101.2 -7 103.2 -9.1Q105.3 -11.1 106.9 -12.8Q107.9 -11.9 108.6 -11.1Q104.1 -5.1 98.8 -1.2Q93.4 2.8 88.6 3.9Q81.7 3.1 77.8 -1.2Q74 -5.4 74 -11.4Q74 -15.5 75.2 -19.8Q76.3 -24 78.3 -28Q80.4 -31.9 83.2 -35.4Q85.9 -38.9 89.1 -41.5Q92.2 -44.1 95.6 -45.6Q98.9 -47.1 102.2 -47.1Q106.8 -46.5 110.8 -41.4ZM103.9 -38.1Q101.2 -37.7 98.3 -35.9Q95.4 -34.1 92.8 -31.1Q90.3 -28.1 88.2 -24.1Q86.1 -20.1 84.9 -15.5Q92.9 -19.5 98.2 -25.4Q103.5 -31.2 103.9 -38.1ZM124.6 0.7Q129.2 -2.4 133.6 -7.3Q138 -12.1 141.6 -17.8Q145.2 -23.4 147.7 -29.5Q150.2 -35.6 151.1 -41.2Q151.1 -42.4 149.8 -42.8Q148.4 -42.8 145.9 -40.4Q143.5 -37.9 140.6 -34.1Q137.6 -30.3 134.6 -25.6Q131.5 -20.9 129 -16.2Q126.5 -11.6 124.8 -7.6Q123 -3.5 122.8 -1Q121.8 -1 121.1 -3Q120.9 -3.5 120.4 -4.1Q119.9 -4.6 118.8 -5.4Q118.3 -5.8 117.8 -6.4Q117.3 -6.9 117.1 -7.3Q116.7 -8.1 116.7 -9.9Q116.7 -15.8 118.2 -23.2Q119.7 -30.6 122.2 -38.3Q124.6 -46 127.9 -53.5Q131.2 -60.9 134.8 -67.1Q138.3 -73.3 141.9 -77.6Q145.5 -81.9 148.7 -83.3Q149.7 -83 151.1 -82.3Q152.5 -81.6 153.9 -80.7Q155.3 -79.8 156.6 -78.9Q157.8 -78 158.4 -77.3Q147.4 -68.4 139.4 -54.5Q131.3 -40.5 126.2 -21.5Q129 -26.7 132.5 -31.6Q136 -36.4 139.4 -40.1Q142.9 -43.8 146.1 -46Q149.2 -48.2 151.3 -48.2Q152.9 -47.8 154.4 -46.8Q155.9 -45.8 157.1 -44.4Q158.3 -42.9 159.1 -41.2Q159.9 -39.6 160.1 -37.8Q160 -33.6 158.7 -28.9Q157.3 -24.1 155.1 -19.5Q152.8 -14.9 150 -10.7Q147.1 -6.5 144 -3.4Q140.8 -0.2 137.7 1.7Q134.5 3.6 131.7 3.6Q130.5 3.6 129.2 3.4Q128 3.1 127 2.7Q125.9 2.2 125.2 1.7Q124.6 1.2 124.6 0.7ZM197.1 -40.4Q198.1 -40.4 199.5 -40.1Q200.8 -39.7 201.9 -39.2Q203 -38.6 203.8 -38Q204.5 -37.4 204.5 -36.9Q202.5 -32.7 200.8 -28.5Q199.1 -24.2 197.9 -20.3Q196.7 -16.4 196.1 -13Q195.4 -9.6 195.4 -7.1Q195.4 -4.3 196 -2.5Q196.6 -0.6 198 0.2Q196.8 1 194.9 1.5Q193 2 191.5 2Q186.1 2 186.1 -5.4Q186.1 -11.1 189.9 -21Q187.9 -16.4 185.3 -12.4Q182.7 -8.3 180 -5.2Q177.3 -2.1 174.6 -0.2Q171.8 1.8 169.5 2.2Q165.8 2 163.5 -1.4Q161.2 -4.7 161.2 -9.9Q161.2 -15.5 163.6 -21.7Q166 -27.9 169.8 -33.2Q173.5 -38.5 177.9 -42Q182.3 -45.6 186.4 -45.8Q187.4 -45.5 188.7 -44.6Q189.9 -43.7 191.1 -42.5Q192.2 -41.3 193 -40.1Q193.8 -38.8 193.9 -37.9Q189.9 -37.3 185.7 -34Q181.4 -30.7 177.9 -26.1Q174.5 -21.4 172.3 -16.1Q170.1 -10.8 170.1 -6.2Q170.1 -4.3 171.5 -3.8Q174.4 -4.4 178.2 -8.8Q182 -13.1 187.4 -22.2Q188.4 -24 189.7 -26.2Q190.9 -28.4 192.2 -30.8Q193.5 -33.2 194.8 -35.7Q196 -38.1 197.1 -40.4ZM202.3 33.1Q200.9 32.7 200.7 30.1Q200.3 28.8 200.2 27Q200 25.2 200 22.9Q200 20.8 200.7 17.1Q201.4 13.5 202.7 8.9Q203.9 4.3 205.7 -1.1Q207.5 -6.4 209.7 -11.9Q212.4 -18.8 214.4 -23.9Q216.4 -28.9 217.8 -32.6Q219.1 -36.3 220 -38.7Q220.8 -41.1 221.3 -42.8Q221.7 -44 222.5 -45.7Q223.3 -47.4 224.4 -49.2Q225.4 -50.9 226.5 -52.5Q227.6 -54 228.5 -54.8Q232 -54.3 235.1 -53Q238.2 -51.7 238.9 -50.5Q237.5 -49.2 235.7 -46.5Q233.9 -43.7 232.2 -40.5Q230.5 -37.2 229.1 -33.8Q227.7 -30.4 227 -27.8Q228 -29.5 229.6 -31.5Q231.2 -33.5 234.5 -37Q238.2 -40.8 241.5 -42.9Q244.7 -44.9 247.1 -44.9Q250.9 -44.9 253.4 -42.8Q255.8 -40.7 255.8 -37.4Q255.8 -30.2 253.4 -23.2Q251 -16.1 246.5 -10.4Q244.8 -8.2 242.5 -6.2Q240.2 -4.2 237.7 -2.7Q235.2 -1.1 232.8 -0.2Q230.4 0.7 228.5 0.7Q226.7 0.7 225.4 -0Q224 -0.8 223.5 -1.9Q227.4 -4.2 231.1 -8.3Q234.8 -12.4 238 -17.8Q241.1 -23.1 243.5 -29.3Q245.8 -35.5 247 -41.9Q243.2 -39.9 240.2 -37.6Q237.1 -35.2 234.1 -31.4Q230.5 -27 228.4 -24.3Q226.3 -21.6 225 -19.7Q223.6 -17.8 222.8 -16.1Q221.9 -14.5 220.9 -12.1Q219.5 -8.9 217.7 -3.7Q215.8 1.6 213.9 8.1Q211.9 14.6 209.9 22Q208 29.3 206.2 36.6Q205.1 36.4 204.3 35Q203.5 34.1 203.2 33.7Q202.8 33.3 202.3 33.1Z"/></svg></div>
+      <figure class="b-mix"><img src="img/mix.jpg" alt="Houten schotel met spiesen, kip, gegrilde peper, salade en friet" width="900" height="855"></figure>
+      <figure class="b-adana"><img src="img/adana.jpg" loading="lazy" alt="Adana op lavas met rode ui en peterselie" width="900" height="848"></figure>
+    </div>
+    <div class="hero-tekst">
+      <h1 id="h1">Adana dürüm, lahmacun en schotels in Rotterdam&#8209;Noord</h1>
+      <p class="lead">Turks restaurant aan de Bergweg in Bergpolder. Eet aan tafel, of laat het thuisbezorgen.</p>
+      <div class="hero-knoppen cta">
+        <a class="btn geel" href="tel:+31108416561"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>Bel 010 841 65 61</a>
+        <a class="btn rand-licht" href="#kiezer">Kies je gerecht</a>
+      </div>
+      <div class="vertrouw">
+        <a href="https://www.google.com/maps?cid=16400515871548437582" target="_blank" rel="noopener"><span class="ster">★★★★★</span> 4,7 uit 332 reviews op Google</a>
+        <span class="status" id="status"><span class="lampje" aria-hidden="true"></span><span id="statusTekst">Di t/m zo open, maandag dicht</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kaart" id="kaart" aria-labelledby="kaart-kop">
+  <div class="wrap">
+    <div class="kaart-kop">
+      <h2 id="kaart-kop">Van broodje tot mix schotel</h2>
+      <p>De prijzen komen van onze online bestelpagina. Vegetarisch staat er los bij.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Kaart per soort">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="p-wraps" id="t-wraps">Dürüm en wraps</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-lahmacun" id="t-lahmacun" tabindex="-1">Lahmacun</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-schotels" id="t-schotels" tabindex="-1">Schotels</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-kapsalon" id="t-kapsalon" tabindex="-1">Kapsalon en broodjes</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-tapas" id="t-tapas" tabindex="-1">Soep en tapas</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p-dessert" id="t-dessert" tabindex="-1">Desserts</button>
+    </div>
+
+    <div class="paneel" role="tabpanel" id="p-wraps" aria-labelledby="t-wraps">
+      <figure><img src="img/adana-bord.jpg" alt="Adana met lavas, friet, bulgur, rijst en tomatensalade op een houten plank" width="900" height="653" loading="lazy" decoding="async"></figure>
+      <ul class="gerechten">
+        <li><b>Adana dürüm</b><span>Gekruid pittig gehakt</span><em class="prijs">€ 10,00</em></li>
+        <li><b>Kuşbaşi dürüm</b><em class="prijs">€ 10,00</em></li>
+        <li><b>Kip dürüm</b><em class="prijs">€ 10,00</em></li>
+        <li><b>Dijfilet dürüm</b><em class="prijs">€ 10,00</em></li>
+        <li><b>Kalfsdöner dürüm</b><em class="prijs">€ 10,00</em></li>
+        <li><b>Kipdöner dürüm</b><em class="prijs">€ 10,00</em></li>
+        <li><b>Falafel dürüm <i class="veg">vega</i></b><em class="prijs">€ 10,00</em></li>
+        <li><b>Crispy chicken wrap</b><em class="prijs">€ 10,00</em></li>
+        <li><b>Dubbel spies wrap</b><em class="prijs">€ 17,00</em></li>
+        <li><b>Wrap menu</b><span>Met patat en frisdrank</span><em class="prijs">€ 16,50</em></li>
+      </ul>
+    </div>
+
+    <div class="paneel zonder" role="tabpanel" id="p-lahmacun" aria-labelledby="t-lahmacun" hidden>
+      <ul class="gerechten">
+        <li><b>Lahmacun</b><span>Turkse pizza</span><em class="prijs">€ 5,00</em></li>
+        <li><b>Lahmacun met kaas</b><em class="prijs">€ 6,00</em></li>
+        <li><b>Lahmacun döner</b><em class="prijs">€ 12,00</em></li>
+        <li><b>Lahmacun döner en kaas</b><em class="prijs">€ 13,00</em></li>
+        <li><b>Lahmacun met spies</b><em class="prijs">€ 14,50</em></li>
+        <li><b>Lahmacun met spies en kaas</b><em class="prijs">€ 15,50</em></li>
+        <li><b>Lahmacun menu</b><span>Met patat en frisdrank</span><em class="prijs">€ 12,00</em></li>
+        <li><b>Lahmacun döner menu</b><span>Met patat en frisdrank</span><em class="prijs">€ 14,50</em></li>
+        <li><b>Lahmacun met spies menu</b><span>Met patat en frisdrank</span><em class="prijs">€ 17,50</em></li>
+      </ul>
+    </div>
+
+    <div class="paneel" role="tabpanel" id="p-schotels" aria-labelledby="t-schotels" hidden>
+      <figure><img src="img/schotels.jpg" alt="Twee schotels op het werkblad: vlees in tomatensaus met yoghurt, en opgerold gehakt in lavas met rijst" width="850" height="880" loading="lazy" decoding="async"></figure>
+      <ul class="gerechten">
+        <li><b>Mix schotel</b><span>Drie spiezen naar keuze met rijst, patat en brood</span><em class="prijs">€ 25,00</em></li>
+        <li><b>Dubbele spies schotel</b><span>Twee spiezen naar keuze met rijst, patat en brood</span><em class="prijs">€ 19,00</em></li>
+        <li><b>Iskender</b><span>Kalfsvlees in stukjes gesneden met lavas brood, tomatensaus, yoghurt en roomboter</span><em class="prijs">€ 19,00</em></li>
+        <li><b>Beyti kebab</b><span>Gekruid gehakt opgerold in lavas brood, met tomatensaus en yoghurt</span><em class="prijs">€ 19,50</em></li>
+        <li><b>Saç kavurma</b><span>Fijngesneden kalfsvlees roergebakken met tomaten, Turkse peper en uien</span><em class="prijs">€ 22,00</em></li>
+        <li><b>Döner schotel</b><span>Met rijst, patat en brood</span><em class="prijs">€ 18,50</em></li>
+        <li><b>Kippenvleugel schotel</b><span>Met rijst, patat en brood</span><em class="prijs">€ 18,50</em></li>
+        <li><b>Falafel schotel <i class="veg">vega</i></b><span>Met rijst, patat en brood</span><em class="prijs">€ 17,50</em></li>
+        <li><b>Manti</b><span>Deegbolletjes gevuld met gehakt</span><em class="prijs">€ 15,00</em></li>
+      </ul>
+    </div>
+
+    <div class="paneel" role="tabpanel" id="p-kapsalon" aria-labelledby="t-kapsalon" hidden>
+      <figure><img src="img/kip.jpg" alt="Houten schotel met gegrilde kip, rijst, friet, salade en een groene peper" width="900" height="848" loading="lazy" decoding="async"></figure>
+      <ul class="gerechten">
+        <li><b>Kapsalon kipdöner</b><span>Bereid met vers huisgemaakte patat</span><em class="prijs">€ 12,00</em></li>
+        <li><b>Kapsalon kalfsdöner</b><span>Bereid met vers huisgemaakte patat</span><em class="prijs">€ 12,00</em></li>
+        <li><b>Kapsalon falafel <i class="veg">vega</i></b><span>Met verse patat</span><em class="prijs">€ 12,00</em></li>
+        <li><b>Kapsalon kip met rijst</b><em class="prijs">€ 13,00</em></li>
+        <li><b>Broodje kipdöner</b><em class="prijs">€ 7,50</em></li>
+        <li><b>Broodje kalfsdöner</b><em class="prijs">€ 7,50</em></li>
+        <li><b>Broodje falafel <i class="veg">vega</i></b><em class="prijs">€ 7,50</em></li>
+        <li><b>Broodjes menu</b><span>Met patat en frisdrank</span><em class="prijs">€ 13,50</em></li>
+        <li><b>Verse patat</b><span>Huisgemaakt, met mayonaise</span><em class="prijs">€ 5,00</em></li>
+        <li><b>Verse patat met Parmezaanse kaas en truffelmayo</b><em class="prijs">€ 7,50</em></li>
+      </ul>
+    </div>
+
+    <div class="paneel" role="tabpanel" id="p-tapas" aria-labelledby="t-tapas" hidden>
+      <figure><img src="img/vleugels.jpg" alt="Twee borden met gegrilde kippenvleugels" width="700" height="926" loading="lazy" decoding="async"></figure>
+      <ul class="gerechten">
+        <li><b>Mercimek çorbası <i class="veg">vega</i></b><span>Linzensoep</span><em class="prijs">€ 6,00</em></li>
+        <li><b>Kippenvleugels</b><em class="prijs">€ 7,00</em></li>
+        <li><b>Içli köfte</b><span>2 gevulde bolletjes</span><em class="prijs">€ 8,00</em></li>
+        <li><b>Falafel <i class="veg">vega</i></b><span>6 stuks</span><em class="prijs">€ 6,50</em></li>
+        <li><b>Sigara böreği</b><span>3 stuks</span><em class="prijs">€ 5,00</em></li>
+        <li><b>Piyaz <i class="veg">vega</i></b><span>Witte bonen salade met uien en peterselie</span><em class="prijs">€ 6,50</em></li>
+        <li><b>Patlican <i class="veg">vega</i></b><span>Aubergine salade</span><em class="prijs">€ 6,50</em></li>
+        <li><b>Çoban salade met feta <i class="veg">vega</i></b><em class="prijs">€ 6,50</em></li>
+        <li><b>Cacik <i class="veg">vega</i></b><span>Yoghurt met knoflook, komkommer en mint</span><em class="prijs">€ 4,50</em></li>
+      </ul>
+    </div>
+
+    <div class="paneel zonder" role="tabpanel" id="p-dessert" aria-labelledby="t-dessert" hidden>
+      <ul class="gerechten">
+        <li><b>Kunefe</b><span>Engelenhaar gevuld met mozzarella en honingsiroop</span><em class="prijs">€ 8,50</em></li>
+        <li><b>Katmer</b><span>Filodeeg gevuld met pistache en room</span><em class="prijs">€ 8,50</em></li>
+        <li><b>Soğuk baklava</b><em class="prijs">€ 6,50</em></li>
+        <li><b>Trileçe</b><em class="prijs">€ 6,00</em></li>
+        <li><b>Sütlac</b><em class="prijs">€ 4,50</em></li>
+      </ul>
+    </div>
+
+    <div class="kaart-voet">
+      <a class="btn zwart" href="#kiezer">Stel je bestelling samen</a>
+      <a class="btn rand" href="https://www.thuisbezorgd.nl/menu/durum-evi-1" target="_blank" rel="noopener">Bestel online</a>
+    </div>
+  </div>
+</section>
+
+<section class="kiezer" id="kiezer" aria-labelledby="kies-kop">
+  <div class="wrap">
+    <h2 id="kies-kop">Adana, lahmacun of een schotel?</h2>
+    <p class="klein">Kies een gerecht, hoeveel, en wanneer. Je ziet meteen wat het kost en hoe je het regelt.</p>
+    <div class="kies-grid">
+      <div class="stappen-k">
+        <div class="stap-k">
+          <h3><span class="nr">1</span>Soort</h3>
+          <div class="chips" id="kSoort" role="group" aria-label="Soort gerecht"></div>
+        </div>
+        <div class="stap-k">
+          <h3><span class="nr">2</span>Gerecht</h3>
+          <div class="chips" id="kGerecht" role="group" aria-label="Gerecht"></div>
+          <div class="aantal"><span>Aantal</span><button type="button" id="min" aria-label="Eén minder">−</button><output id="aantal" aria-live="polite">1</output><button type="button" id="plus" aria-label="Eén meer">+</button></div>
+        </div>
+        <div class="stap-k">
+          <h3><span class="nr">3</span>Wanneer en hoe</h3>
+          <div class="chips" id="kDag" role="group" aria-label="Dag"></div>
+          <div class="chips" id="kHoe" role="group" aria-label="Hoe" style="margin-top:12px">
+            <button type="button" class="chip" data-hoe="langs" aria-pressed="true">Ik kom langs<small>aan tafel in de zaak</small></button>
+            <button type="button" class="chip" data-hoe="bezorgen" aria-pressed="false">Laten bezorgen<small>via onze bestelpagina</small></button>
+          </div>
+        </div>
+      </div>
+      <aside class="bord" id="bord" aria-live="polite">
+        <svg class="bord-spies" viewBox="0 0 120 104" aria-hidden="true"><g transform="translate(10 96) rotate(-50)"><g stroke="#fff" stroke-width="3.4" stroke-linejoin="round" fill="#fff"><path d="M0 0H100" stroke-width="6.4" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="55.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="75.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/></g><path d="M0 0H100" stroke="#d9a35e" stroke-width="3" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="46.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="55.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="56.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="66.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="75.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="76.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="86.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="54.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="64.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="74.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="84.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/></g><g transform="translate(23 100) rotate(-50)"><g stroke="#fff" stroke-width="3.4" stroke-linejoin="round" fill="#fff"><path d="M0 0H100" stroke-width="6.4" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="55.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="75.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/></g><path d="M0 0H100" stroke="#d9a35e" stroke-width="3" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="46.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="55.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="56.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="66.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="75.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="76.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="86.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="54.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="64.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="74.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="84.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/></g><g transform="translate(110 96) rotate(-130)"><g stroke="#fff" stroke-width="3.4" stroke-linejoin="round" fill="#fff"><path d="M0 0H100" stroke-width="6.4" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="55.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="75.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/></g><path d="M0 0H100" stroke="#d9a35e" stroke-width="3" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="46.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="55.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="56.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="66.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="75.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="76.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="86.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="54.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="64.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="74.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="84.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/></g><g transform="translate(97 100) rotate(-130)"><g stroke="#fff" stroke-width="3.4" stroke-linejoin="round" fill="#fff"><path d="M0 0H100" stroke-width="6.4" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="55.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="75.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6"/></g><path d="M0 0H100" stroke="#d9a35e" stroke-width="3" stroke-linecap="round"/><rect x="45.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="46.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="55.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="56.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="65.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="66.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="75.4" y="-5.8" width="9.2" height="11.6" rx="3.6" fill="#9b4a1c"/><rect x="76.8" y="-4.4" width="4" height="6.6" rx="2" fill="#c0702f"/><rect x="85.4" y="-6.4" width="9.2" height="12.8" rx="3.6" fill="#9b4a1c"/><rect x="86.8" y="-5" width="4" height="7.8" rx="2" fill="#c0702f"/><rect x="54.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="64.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="74.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/><rect x="84.1" y="-5" width="1.8" height="10" rx=".9" fill="#c62f22"/></g></svg>
+        <h3>Jouw keuze</h3>
+        <dl>
+          <dt>Gerecht</dt><dd id="bGerecht">1× Adana dürüm</dd>
+          <dt>Wanneer</dt><dd id="bDag">Vandaag</dd>
+          <dt>Tijden</dt><dd id="bTijd">12:00–22:00</dd>
+        </dl>
+        <div class="totaal"><span>Samen</span><b id="bTotaal">€ 10,00</b></div>
+        <p class="klein" id="bUitleg">Prijzen van onze online bestelpagina.</p>
+        <div class="knoppen" id="bKnoppen"></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="gasten" id="gasten" aria-labelledby="gasten-kop">
+  <div class="wrap gasten-grid">
+    <div>
+      <h2 id="gasten-kop">Waar gasten over beginnen</h2>
+      <div class="kaarten3">
+        <div class="kaartje"><h3>De Adana</h3><p>Klanten schrijven over de Adana: goed gekruid, en de Adana dürüm wordt speciaal aangeraden.</p></div>
+        <div class="kaartje"><h3>Verse friet</h3><p>Op onze kaart staat de patat als huisgemaakt. Een gast schrijft dat de friet met de hand gesneden is.</p></div>
+        <div class="kaartje"><h3>Thee erbij</h3><p>Gasten noemen het een gezellig familiebedrijf waar je je welkom voelt. Een gast kreeg meerdere keren thee aangeboden.</p></div>
+      </div>
+    </div>
+    <figure class="zaakfoto"><img src="img/zaak.jpg" alt="De zaak van binnen: houten tafels, gele en roestkleurige stoelen, de toonbank en de keuken met blauwe tegels" width="900" height="875" loading="lazy" decoding="async"><figcaption>Binnen: houten tafels en de open keuken met blauwe tegels.</figcaption></figure>
+  </div>
+</section>
+
+<section class="reviews" aria-labelledby="rev-kop">
+  <div class="wrap">
+    <h2 id="rev-kop">Zo klinkt het op Google</h2>
+    <div class="score"><span class="cijfer">4,7</span><span class="sterren" aria-hidden="true">★★★★★</span><a href="https://www.google.com/maps?cid=16400515871548437582" target="_blank" rel="noopener">uit 332 reviews op Google</a></div>
+    <div class="rev">
+      <article><h3>Yass</h3><p>Vindt hier de beste Adana van Rotterdam en raadt vooral de Adana dürüm aan. Een gezellig familiebedrijf waar je je meteen welkom voelt.</p></article>
+      <article><h3>Naureen</h3><p>At hier in de zaak: de Adana goed gekruid, de friet met de hand gesneden, en meerdere keren thee aangeboden.</p></article>
+      <article><h3>Matteo</h3><p>Goede kebab, een goede prijs en grappige mensen. Een echte aanrader.</p></article>
+    </div>
+    <p class="klein label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="werk" aria-labelledby="stap-kop">
+  <div class="wrap">
+    <h2 id="stap-kop">Van keuze tot bord</h2>
+    <ol class="stappen">
+      <li><b>Kies je gerecht</b>Op de kaart hierboven, of met de keuzehulp.</li>
+      <li><b>Bel of bestel online</b>Bezorgen gaat via onze bestelpagina. Een vraag? Bel <a href="tel:+31108416561" style="white-space:nowrap">010 841 65 61</a>.</li>
+      <li><b>Aan tafel of thuis</b>Kom langs op de Bergweg 353B, of laat het thuisbezorgen.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="faq-kop">
+  <div class="wrap">
+    <h2 id="faq-kop">Vragen over bezorgen en de kaart</h2>
+    <details><summary>Bezorgen jullie?</summary><p>Ja, via onze online bestelpagina op Thuisbezorgd. Bezorgtijden: dinsdag 12:30–21:00, woensdag 12:00–21:00, donderdag 13:00–21:00, vrijdag 12:00–21:00, zaterdag 14:00–21:00 en zondag 15:00–20:30. Op maandag niet.</p></details>
+    <details><summary>Kan ik in de zaak eten?</summary><p>Ja, er staan tafels in de zaak. Je bent welkom tijdens de openingstijden hieronder.</p></details>
+    <details><summary>Is er iets vegetarisch?</summary><p>Ja: falafel dürüm, broodje falafel, kapsalon falafel, falafel schotel, mercimek çorbası (linzensoep) en tapas als piyaz, patlican, cacik en çoban salade.</p></details>
+    <details><summary>Is de patat vers?</summary><p>Ja. Op onze kaart staat de patat als huisgemaakt, en de kapsalon kipdöner en kalfsdöner worden bereid met vers huisgemaakte patat.</p></details>
+    <details><summary>Op welke dag zijn jullie dicht?</summary><p>Op maandag. Op feestdagen kan het anders zijn. Bel bij twijfel even: <a href="tel:+31108416561" style="white-space:nowrap">010 841 65 61</a>.</p></details>
+  </div>
+</section>
+
+<section class="route" id="route" aria-labelledby="route-kop">
+  <div class="wrap">
+    <h2 id="route-kop">Bergweg 353B, Bergpolder</h2>
+    <div class="route-grid">
+      <figure class="gevel"><img src="img/gevel.jpg" alt="De zaak op de hoek met de Insulindestraat: zwarte gevel met gele letters Köşebaşı Kebap" width="735" height="1008" loading="lazy" decoding="async"><figcaption>Foto: Google Maps, geplaatst door Köşebaşı Kebap (juni 2022).</figcaption></figure>
+      <div>
+        <p class="adres">Bergweg 353B<br>3037 EP Rotterdam</p>
+        <a class="tel" href="tel:+31108416561">010 841 65 61</a>
+        <h3 style="margin-top:18px">Openingstijden</h3>
+        <table class="uren" id="uren">
+          <tr data-d="1"><th>Maandag</th><td>dicht</td></tr>
+          <tr data-d="2"><th>Dinsdag</th><td>12:00–22:00</td></tr>
+          <tr data-d="3"><th>Woensdag</th><td>12:00–22:00</td></tr>
+          <tr data-d="4"><th>Donderdag</th><td>12:00–22:00</td></tr>
+          <tr data-d="5"><th>Vrijdag</th><td>12:00–22:00</td></tr>
+          <tr data-d="6"><th>Zaterdag</th><td>14:00–22:00</td></tr>
+          <tr data-d="0"><th>Zondag</th><td>14:00–22:00</td></tr>
+        </table>
+        <p class="bezorg">Bezorgen kan tot 21:00 (zondag tot 20:30), zie de vragen hierboven. Op feestdagen kan het anders zijn.</p>
+      </div>
+      <div>
+        <div class="mm-kaart" data-src="https://maps.google.com/maps?q=Bergweg%20353B%2C%203037%20EP%20Rotterdam&amp;z=16&amp;output=embed" data-titel="Kaart: Köşebaşı Kebap, Bergweg 353B, Rotterdam">
+          <div class="mk-raster" aria-hidden="true"></div>
+          <div class="mk-weg" style="left:-5%;right:-5%;top:56%;height:12px;transform:rotate(-24deg)" aria-hidden="true"></div>
+          <div class="mk-weg" style="top:-5%;bottom:-5%;left:58%;width:9px;transform:rotate(20deg)" aria-hidden="true"></div>
+          <div class="mk-inhoud">
+            <svg class="mk-pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="var(--mk-accent)" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+            <p class="mk-adres">Bergweg 353B<br>3037 EP Rotterdam</p>
+            <button type="button" class="mk-knop">Toon kaart</button>
+            <p class="mk-uitleg">De kaart komt van Google Maps en laadt pas als je klikt.</p>
+          </div>
+        </div>
+        <div class="knoppen">
+          <a class="btn geel" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bergweg%20353B%2C%203037%20EP%20Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+          <a class="btn rand-licht" href="#kiezer">Bestelling samenstellen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="slot-kop">
+  <div class="wrap">
+    <h2 id="slot-kop">Zin in een Adana?</h2>
+    <p>Bel ons, bestel online, of kom langs op de Bergweg. Dinsdag tot en met zondag open.</p>
+    <div class="knoppen">
+      <a class="btn zwart" href="tel:+31108416561"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>Bel 010 841 65 61</a>
+      <a class="btn rand" href="#kiezer">Kies je gerecht</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="voet">
+      <div>
+        <img src="logo-light.svg" alt="Köşebaşı Kebap" width="190" height="34" loading="lazy">
+        <p>Turks restaurant in Bergpolder, Rotterdam-Noord.</p>
+      </div>
+      <div>
+        <p>Bergweg 353B<br>3037 EP Rotterdam</p>
+        <p><a href="tel:+31108416561" style="white-space:nowrap">010 841 65 61</a></p>
+      </div>
+      <div>
+        <p><a href="https://www.thuisbezorgd.nl/menu/durum-evi-1" target="_blank" rel="noopener">Online bestellen (Thuisbezorgd)</a></p>
+        <p><a href="https://www.google.com/maps?cid=16400515871548437582" target="_blank" rel="noopener">Reviews op Google</a></p>
+      </div>
+    </div>
+    <p class="mohamedia">Foto's: gevel via Google Maps (geplaatst door Köşebaşı Kebap, juni 2022); gerechten en interieur: foto's van Google, via Restaurant Guru. Website door <a href="https://mohamedia.nl">Mohamedia</a>.</p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-hidden="true">
+  <a class="btn geel" href="tel:+31108416561" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>Bel ons</a>
+  <a class="btn wit" href="#kiezer" tabindex="-1">Bestellen</a>
+</div>
+
+<div class="pitch-paneel" id="pitch" hidden role="dialog" aria-modal="true" aria-labelledby="pitch-kop">
+  <div class="pitch-in">
+    <button type="button" class="pitch-sluit" id="pitchDicht">Sluiten</button>
+    <h2 id="pitch-kop">Van bestelsjabloon naar een eigen Köşebaşı-site</h2>
+    <div class="nunu">
+      <figure>
+        <img src="img/voor-site.jpg" alt="De huidige bestelsite durum-evi-bergweg.nl op een telefoon" width="585" height="1266" loading="lazy" decoding="async">
+        <figcaption><b>Nu:</b> durum-evi-bergweg.nl, een bestelsjabloon van Thuisbezorgd. In het webadres en het colofon staat nog Dürüm Evi, er staat geen telefoonnummer op, en een cookiemelding bedekt de halve telefoon (bekeken 14 november 2026).</figcaption>
+      </figure>
+      <figure>
+        <img src="img/na-mobiel.jpg" alt="Deze nieuwe site op een telefoon" width="585" height="1266" loading="lazy" decoding="async">
+        <figcaption><b>Straks:</b> jullie eigen site, met jullie bord, jullie gerechten en een belknop.</figcaption>
+      </figure>
+    </div>
+
+    <h3>Drie dingen die straks kloppen</h3>
+    <ol>
+      <li>Overal jullie eigen naam en logo: Köşebaşı Kebap, zoals op de gevel. Op de bestelsite staat in het webadres en het colofon nog Dürüm Evi.</li>
+      <li>Bellen in één tik: 010 841 65 61 staat op elk scherm. Op de bestelsite staat nu geen nummer.</li>
+      <li>Openingstijden én bezorgtijden, met adres en route. Nu staan er alleen bezorgtijden. Op Google Maps staat nog geen website; daar komt deze site bij de knop Website.</li>
+    </ol>
+
+    <h3>Rekenvoorbeeld voor aan de toonbank</h3>
+    <div class="reken">
+      <p><small>Voorbeeld om samen in te vullen, geen belofte.</small></p>
+      <label for="rBest">Extra bestellingen per week via de site: <output id="oBest">3</output></label>
+      <input type="range" id="rBest" min="0" max="30" step="1" value="3">
+      <label for="rBedrag">Gemiddelde bestelling (voorbeeld): € <output id="oBedrag">10</output></label>
+      <input type="range" id="rBedrag" min="5" max="40" step="1" value="10">
+      <p class="uitkomst">Per jaar: <b id="uJaar">€ 1.560</b> extra omzet.<br>€ 595 is de omzet van <b id="uAantal">60</b> bestellingen.</p>
+    </div>
+
+    <h3>Investering, excl. en incl. btw</h3>
+    <div class="prijzen">
+      <div class="eerst"><small>Website</small><b>€ 595 eenmalig</b>excl. btw (€ 719,95 incl. btw). Tot 5 pagina's, eigen domein, hosting inbegrepen, live binnen 48 uur na betaling.</div>
+      <div class="eerst"><small>Beheer: maandbedrag</small><b>€ 25 per maand</b>excl. btw (€ 30,25 incl. btw). Wij passen alles voor jullie aan, zoals de kaart, prijzen en tijden.</div>
+      <div><small>Of: klantportaal</small><b>€ 249 eenmalig</b>excl. btw (€ 301,29 incl. btw). Alleen als je liever zelf aanpast.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var TEL='tel:+31108416561', ONLINE='https://www.thuisbezorgd.nl/menu/durum-evi-1',
+      ROUTE='https://www.google.com/maps/dir/?api=1&destination=Bergweg%20353B%2C%203037%20EP%20Rotterdam';
+  /* 0 = zondag */
+  var OPEN={0:[14,22],1:null,2:[12,22],3:[12,22],4:[12,22],5:[12,22],6:[14,22]};
+  var BEZORG={0:'15:00–20:30',1:null,2:'12:30–21:00',3:'12:00–21:00',4:'13:00–21:00',5:'12:00–21:00',6:'14:00–21:00'};
+  var DAGEN=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+  function uur(h){return (h<10?'0':'')+h+':00';}
+  function euro(c){return '€ '+(c/100).toFixed(2).replace('.',',');}
+
+  /* open-status in de hero */
+  var nu=new Date(), d=nu.getDay(), h=nu.getHours()+nu.getMinutes()/60, st=document.getElementById('status'), stt=document.getElementById('statusTekst');
+  if(OPEN[d] && h>=OPEN[d][0] && h<OPEN[d][1]){st.classList.add('open');stt.textContent='Nu open, tot '+uur(OPEN[d][1]);}
+  else if(OPEN[d] && h<OPEN[d][0]){stt.textContent='Vandaag open vanaf '+uur(OPEN[d][0]);}
+  else if(!OPEN[d]){stt.textContent='Maandag dicht, dinsdag vanaf 12:00';}
+  var rij=document.querySelector('#uren tr[data-d="'+d+'"]'); if(rij) rij.classList.add('vandaag');
+
+  /* kaart-tabs */
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function kies(t){tabs.forEach(function(x){var aan=x===t;x.setAttribute('aria-selected',aan);x.tabIndex=aan?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!aan;});}
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){kies(t);});
+    t.addEventListener('keydown',function(e){var n=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(!n) return; var v=tabs[(i+n+tabs.length)%tabs.length]; kies(v); v.focus();});
+  });
+
+  /* keuzehulp (prijzen van de bestelpagina, in centen) */
+  var KAART={
+    'Dürüm':[['Adana dürüm',1000],['Kuşbaşi dürüm',1000],['Kip dürüm',1000],['Kalfsdöner dürüm',1000],['Kipdöner dürüm',1000],['Falafel dürüm',1000],['Dubbel spies wrap',1700]],
+    'Lahmacun':[['Lahmacun',500],['Lahmacun met kaas',600],['Lahmacun döner',1200],['Lahmacun döner en kaas',1300],['Lahmacun met spies en kaas',1550]],
+    'Schotel':[['Mix schotel',2500],['Dubbele spies schotel',1900],['Iskender',1900],['Beyti kebab',1950],['Saç kavurma',2200],['Döner schotel',1850]],
+    'Kapsalon':[['Kapsalon kipdöner',1200],['Kapsalon kalfsdöner',1200],['Kapsalon falafel',1200],['Kapsalon kip met rijst',1300]],
+    'Broodje':[['Broodje kipdöner',750],['Broodje kalfsdöner',750],['Broodje falafel',750]]
+  };
+  var k={soort:'Dürüm',gerecht:'Adana dürüm',prijs:1000,aantal:1,dag:0,hoe:'langs'};
+  var elS=document.getElementById('kSoort'), elG=document.getElementById('kGerecht'), elD=document.getElementById('kDag');
+  function chip(tekst,sub,aan){var b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('aria-pressed',aan?'true':'false');b.textContent=tekst;if(sub){var s=document.createElement('small');s.textContent=sub;b.appendChild(s);}return b;}
+  function markeer(groep,b){[].forEach.call(groep.children,function(c){c.setAttribute('aria-pressed',c===b?'true':'false');});}
+  Object.keys(KAART).forEach(function(s){
+    var min=Math.min.apply(null,KAART[s].map(function(x){return x[1];}));
+    var b=chip(s,'vanaf '+euro(min),s===k.soort);
+    b.addEventListener('click',function(){markeer(elS,b);k.soort=s;k.gerecht=KAART[s][0][0];k.prijs=KAART[s][0][1];gerechten();bon();});
+    elS.appendChild(b);
+  });
+  function gerechten(){
+    elG.innerHTML='';
+    KAART[k.soort].forEach(function(g){
+      var b=chip(g[0],euro(g[1]),g[0]===k.gerecht);
+      b.addEventListener('click',function(){markeer(elG,b);k.gerecht=g[0];k.prijs=g[1];bon();});
+      elG.appendChild(b);
+    });
+  }
+  gerechten();
+  for(var i=0;i<7;i++){
+    (function(i){
+      var dt=new Date(nu.getFullYear(),nu.getMonth(),nu.getDate()+i), wd=dt.getDay();
+      var naam=i===0?'Vandaag':i===1?'Morgen':DAGEN[wd].charAt(0).toUpperCase()+DAGEN[wd].slice(1);
+      var sub=OPEN[wd]?(i<2?DAGEN[wd]+' ':'')+dt.getDate()+'/'+(dt.getMonth()+1):'dicht';
+      var b=chip(naam,sub,false); b.dataset.wd=wd;
+      if(!OPEN[wd]) b.disabled=true;
+      b.addEventListener('click',function(){markeer(elD,b);k.dag=i;k.wd=wd;k.naam=naam;bon();});
+      elD.appendChild(b);
+    })(i);
+  }
+  var eerste=[].filter.call(elD.children,function(b){return !b.disabled;})[0];
+  eerste.setAttribute('aria-pressed','true'); k.wd=+eerste.dataset.wd; k.naam=eerste.firstChild.textContent;
+  document.getElementById('kHoe').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;markeer(this,b);k.hoe=b.dataset.hoe;bon();});
+  var aEl=document.getElementById('aantal');
+  document.getElementById('min').addEventListener('click',function(){if(k.aantal>1){k.aantal--;bon();}});
+  document.getElementById('plus').addEventListener('click',function(){if(k.aantal<20){k.aantal++;bon();}});
+  function knop(cls,href,tekst,extern){var a=document.createElement('a');a.className='btn '+cls;a.href=href;a.textContent=tekst;if(extern){a.target='_blank';a.rel='noopener';}return a;}
+  function bon(){
+    aEl.textContent=k.aantal;
+    document.getElementById('bGerecht').textContent=k.aantal+'× '+k.gerecht;
+    document.getElementById('bDag').textContent=k.naam+(k.hoe==='bezorgen'?', bezorgen':', aan tafel');
+    var o=OPEN[k.wd];
+    document.getElementById('bTijd').textContent=k.hoe==='bezorgen'?'Bezorgen '+BEZORG[k.wd]:'Open '+uur(o[0])+'–'+uur(o[1]);
+    document.getElementById('bTotaal').textContent=euro(k.prijs*k.aantal);
+    var kn=document.getElementById('bKnoppen'); kn.innerHTML='';
+    if(k.hoe==='bezorgen'){
+      document.getElementById('bUitleg').textContent='Prijzen van onze online bestelpagina. Daar rond je de bestelling af.';
+      kn.appendChild(knop('geel',ONLINE,'Bestel online',true));
+      kn.appendChild(knop('rand-licht',TEL,'Vraag? Bel 010 841 65 61'));
+    }else{
+      document.getElementById('bUitleg').textContent='Prijzen van onze online bestelpagina. Tot straks op de Bergweg 353B.';
+      kn.appendChild(knop('geel',TEL,'Bel 010 841 65 61'));
+      kn.appendChild(knop('rand-licht',ROUTE,'Plan je route',true));
+    }
+  }
+  bon();
+
+  /* kaart pas laden na klik */
+  document.querySelectorAll('.mm-kaart').forEach(function(m){
+    var b=m.querySelector('.mk-knop'); if(!b) return;
+    b.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src=m.getAttribute('data-src'); f.title=m.getAttribute('data-titel')||'Kaart';
+      f.loading='lazy'; f.referrerPolicy='no-referrer-when-downgrade'; f.allowFullscreen=true;
+      m.innerHTML=''; m.appendChild(f);
+    });
+  });
+
+  /* zwevende knoppen: na de hero, niet boven het bord van de keuzehulp */
+  var zweef=document.getElementById('zweef'), heroUit=false, bordIn=false;
+  function zet(){var aan=heroUit&&!bordIn; zweef.classList.toggle('aan',aan); zweef.setAttribute('aria-hidden',aan?'false':'true'); zweef.querySelectorAll('a').forEach(function(a){a.tabIndex=aan?0:-1;});}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){heroUit=!e[0].isIntersecting;zet();}).observe(document.querySelector('.hero'));
+    new IntersectionObserver(function(e){bordIn=e[0].isIntersecting;zet();},{threshold:.2}).observe(document.getElementById('bord'));
+  }
+
+  /* pitch (alleen met ?pitch) */
+  var paneel=document.getElementById('pitch'), rB=document.getElementById('rBest'), rE=document.getElementById('rBedrag');
+  function reken(){
+    var b=+rB.value,e=+rE.value;
+    document.getElementById('oBest').textContent=b; document.getElementById('oBedrag').textContent=e;
+    document.getElementById('uJaar').textContent='€ '+(b*e*52).toLocaleString('nl-NL');
+    document.getElementById('uAantal').textContent=Math.ceil(595/e);
+  }
+  rB.addEventListener('input',reken); rE.addEventListener('input',reken); reken();
+  if(/[?&]pitch\b/.test(location.search)){
+    document.body.classList.add('pitch');
+    document.getElementById('pitchOpen').addEventListener('click',function(){paneel.hidden=false;});
+    document.getElementById('pitchDicht').addEventListener('click',function(){paneel.hidden=true;});
+    paneel.addEventListener('click',function(e){if(e.target===paneel) paneel.hidden=true;});
+  }
+})();
+</script>
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
