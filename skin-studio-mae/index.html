@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Skin Studio MAE – huidverbetering voor de gekleurde huid in Rotterdam</title>
+<meta name="description" content="Skin Studio MAE, Vijverhofstraat 90 in Rotterdam: gezichtsbehandelingen, peelings, laserontharing en skinboosters voor de gekleurde huid. Alleen op afspraak. 4,8 uit 124 Google-reviews.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!--
+  Demo L278 Skin Studio MAE (Vijverhofstraat 90, Agniesebuurt, Rotterdam-Noord), Mohamedia, 14 nov 2026.
+  Concept in één zin: "De staalwaaier": een studio voor de gekleurde huid, met een waaier van huidtinten
+  als rode draad, en een behandelkaart met hun eigen prijzen die eindigt in een afspraakkaartje voor WhatsApp.
+  Lay-out-archetype: STAALWAAIER + BEHANDELKAART. Mobiel: hun studiofoto recht en over de volle breedte
+  bovenaan (geen vormkader), de waaier ligt half over de onderrand, daaronder kop en knoppen.
+  Desktop: split, tekst links, foto rechts tot de rand van het scherm, waaier op de naad.
+  Hero-beweging (eenmalig, daarna stil): zeven huidtint-stalen waaieren één voor één open rond hun klinknagel.
+  Daarna: behandelkaart (soort → behandeling/duur → dag) met prijzen van skinstudiomae.com, donkere
+  reviewsectie, stappen met twee eigen behandelfoto's, vragen, route met kaart-op-klik.
+  Bewust NIET: foto in boog/toestel/puntdak (WIG ON, ZALAL, Phone Fix Sam, De Pint), eyebrow + tweekleurige kop,
+  band/marquee onder de hero, stempel, schuine fotokaart, Ken Burns, stoom, licht dat aangaat, letters één
+  voor één, vitrine-rij (Pronto), staande video (Hairfy), crème + serif + terracotta.
+  Palet: mist #eef1ee / #e1e7e3, salie #697875 (hun logo) / #4c5a56, bos #1f2b28 / #2a3934, cacao #4a2c20,
+  karamel #a8714c, honing #d6a57e, zand #efdccb, plus zeven huidtinten in de waaier.
+  Fonts (zelf gehost, fonts/): Funnel Display (koppen) + Reddit Sans (tekst). Logo: hun eigen woordmerk
+  nagetekend (Cinzel 400 naar paden, "SKIN STUDIO" salie, "MAE" donker), favicon = hun "MAE"-favicon.
+  Foto's: eigen fotoshoot op skinstudiomae.com (Webflow-CDN); geen klanten, geen personeel, merknamen
+  (Alma / Soprano-apparaat, flesjes, sticker) weggesneden of vervaagd.
+-->
+<style>
+:root{--mist:#eef1ee;--mist2:#e1e7e3;--salie:#697875;--salie-d:#4c5a56;--bos:#1f2b28;--bos2:#2a3934;
+  --cacao:#4a2c20;--cacao-h:#36201a;--karamel:#a8714c;--honing:#d6a57e;--zand:#efdccb;--inkt:#1c2422;--grijs:#55615d;--wit:#fff;
+  --t1:#f3dcc8;--t2:#e4bc9b;--t3:#c99470;--t4:#a7704c;--t5:#84543a;--t6:#5f3a28;--t7:#3d251a;
+  --kop:'Funnel Display',system-ui,sans-serif;--tekst:'Reddit Sans',system-ui,-apple-system,Segoe UI,sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--tekst);font-size:17px;line-height:1.6;color:var(--inkt);background:var(--mist);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:600;line-height:1.08;margin:0 0 .5em;overflow-wrap:break-word;letter-spacing:-.015em}
+h2{font-size:clamp(30px,6.4vw,50px)}
+h3{font-size:clamp(19px,4.8vw,23px)}
+p{margin:0 0 1em}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.grid>*{min-width:0}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:999px;
+  font:700 16px/1.1 var(--tekst);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap;
+  transition:background-color .2s,color .2s,border-color .2s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.cacao{background:var(--cacao);color:var(--wit)}
+.btn.cacao:hover{background:var(--cacao-h)}
+.btn.zand{background:var(--zand);color:var(--cacao)}
+.btn.zand:hover{background:#f7e8da}
+.btn.rand{border-color:currentColor;background:transparent}
+.btn.rand:hover{background:rgba(74,44,32,.06)}
+.knoppen{display:flex;flex-wrap:wrap;gap:12px}
+
+/* demo-strook, aankondiging, kop */
+.demo{background:var(--bos);color:#c6d1cc;font-size:13px;text-align:center;padding:8px 14px}
+.demo a{color:var(--honing)}
+.demo .pitchknop{display:none}
+body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--honing);background:transparent;color:var(--honing);font:700 13px var(--tekst);cursor:pointer;align-items:center}
+.aank{background:var(--zand);color:var(--cacao);font-size:14px;font-weight:600;text-align:center;padding:0 14px}
+.aank a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+.aank a:hover{text-decoration:underline}
+.kop{background:var(--mist);border-bottom:1px solid #d2dad5}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:72px}
+.kop .merk{display:inline-flex;align-items:center;min-height:44px;min-width:0;flex:1 1 auto;max-width:250px}
+.kop .merk img{width:100%;height:auto}
+.kop nav{display:none;gap:2px}
+.kop nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;text-decoration:none;font-weight:600;font-size:15px}
+.kop nav a:hover{color:var(--salie-d)}
+.kop .btn{min-height:46px;padding:0 16px;font-size:15px;flex:none}
+@media (max-width:420px){.kop .merk{max-width:190px}.kop .btn .lang{display:none}}
+@media (max-width:340px){.kop .merk{max-width:150px}.kop .btn{padding:0 12px}}
+@media (min-width:960px){.kop nav{display:flex}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--mist);padding:0}
+.hero-grid{display:grid}
+.studio{position:relative;margin:0 -20px;height:min(62vw,330px)}
+.studio img{width:100%;height:100%;object-fit:cover;object-position:46% 50%}
+.studio figcaption{position:absolute;left:12px;top:12px;font-size:12px;font-weight:600;color:var(--wit);background:rgba(31,43,40,.62);padding:4px 10px;border-radius:999px}
+.waaier{position:absolute;right:96px;bottom:-34px;width:40px;height:150px;pointer-events:none}
+.staal{position:absolute;left:50%;bottom:0;width:36px;height:140px;margin-left:-18px;border-radius:18px;
+  background:var(--c);border:2px solid rgba(255,255,255,.92);box-shadow:0 8px 18px -10px rgba(20,14,10,.75);
+  transform-origin:50% calc(100% - 18px);transform:rotate(var(--r));animation:waaier .95s cubic-bezier(.2,.8,.2,1) var(--d) both}
+.staal::after{content:"";position:absolute;left:50%;bottom:11px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:rgba(255,255,255,.75)}
+@keyframes waaier{from{transform:rotate(0deg)}to{transform:rotate(var(--r))}}
+.hero-tekst{padding:54px 0 48px}
+.hero h1{font-size:clamp(34px,9.6vw,60px);margin-bottom:16px;max-width:12em;hyphens:manual}
+.hero .lead{font-size:18px;color:var(--grijs);max-width:33em;margin-bottom:0}
+.hero .knoppen{margin:26px 0 30px}
+.hero .btn.rand{color:var(--cacao)}
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:2px 16px;font-size:15px;color:var(--grijs);margin:0}
+.trust a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--inkt);font-weight:700;text-decoration:none;border-bottom:2px solid var(--honing)}
+.sterren{color:var(--karamel);letter-spacing:2px}
+@media (min-width:960px){
+  .hero-grid{grid-template-columns:1fr 1.08fr;min-height:620px}
+  .hero-tekst{order:1;padding:72px 48px 72px 0;align-self:center}
+  .studio{order:2;margin:0 calc((100vw - min(1180px,100vw - 40px)) / -2) 0 0;height:auto;min-height:620px}
+  .studio figcaption{left:auto;right:18px;top:auto;bottom:18px}
+  .waaier{left:150px;right:auto;bottom:34px;width:40px;height:180px}
+  .staal{width:42px;height:168px;margin-left:-21px;border-radius:21px;transform-origin:50% calc(100% - 21px)}
+}
+
+/* secties */
+section{padding:72px 0}
+.intro{max-width:40em;color:var(--grijs);font-size:18px}
+@media (min-width:960px){section{padding:100px 0}}
+.tintlijn{display:flex;height:6px;border-radius:6px;overflow:hidden;width:140px;margin-bottom:22px}
+.tintlijn i{flex:1;background:var(--c)}
+
+/* behandelkaart */
+.kaartsectie{background:var(--wit)}
+.kaartsectie .wrap{display:grid;gap:36px}
+@media (min-width:960px){.kaartsectie .wrap{grid-template-columns:1.15fr .85fr;align-items:start;gap:56px}}
+.stap{border:0;margin:0 0 28px;padding:0}
+.stap legend{font-family:var(--kop);font-weight:600;font-size:20px;margin-bottom:12px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{min-height:48px;padding:0 18px;border-radius:999px;border:2px solid #c3cdc8;background:var(--wit);color:var(--inkt);
+  font:600 16px var(--tekst);cursor:pointer;text-align:left;transition:background-color .15s,border-color .15s,color .15s}
+.chip:hover{border-color:var(--salie)}
+.chip[aria-pressed="true"]{background:var(--salie-d);border-color:var(--salie-d);color:var(--wit)}
+.chip small{font-weight:400;opacity:.8;margin-left:6px}
+.noot-k{font-size:14px;color:var(--grijs);margin:10px 0 0}
+.afspraak{position:relative;background:var(--bos);color:var(--wit);border-radius:24px;padding:26px 22px 24px;box-shadow:0 26px 50px -30px rgba(31,43,40,.8);overflow:hidden}
+.afspraak .tintlijn{width:100%;height:8px;margin:0 0 20px}
+.afspraak-kop{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.afspraak-kop h3{margin:0;font-size:22px}
+.afspraak-kop img{width:120px;height:auto}
+.afspraak dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0 0 16px;font-size:16px}
+.afspraak dt{color:#a9b9b3}
+.afspraak dd{margin:0;font-weight:700;text-align:right;overflow-wrap:anywhere}
+.bericht{font-size:16px;line-height:1.5;background:var(--bos2);border-left:4px solid var(--honing);padding:14px 16px;margin:0 0 18px;border-radius:0 12px 12px 0;color:#e6ecea}
+.afspraak .knoppen{flex-direction:column}
+.afspraak .btn{width:100%}
+.afspraak .btn.rand{color:var(--zand)}
+.afspraak .btn.rand:hover{background:rgba(255,255,255,.06)}
+.afspraak small.noot{display:block;color:#a9b9b3;margin-top:12px;font-size:14px;line-height:1.45}
+@media (min-width:960px){.afspraak{position:sticky;top:24px}}
+
+/* waarom */
+.waarom .wrap{display:grid;gap:34px}
+@media (min-width:960px){.waarom .wrap{grid-template-columns:1fr 1fr;gap:64px;align-items:center}.waarom figure{order:2}}
+.waarom figure{margin:0}
+.waarom figure img{width:100%;height:auto;border-radius:6px}
+.waarom figcaption{font-size:13px;color:var(--grijs);margin-top:8px}
+.punten{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:22px}
+.punten li{display:grid;grid-template-columns:18px 1fr;gap:16px}
+.punten li::before{content:"";width:18px;height:56px;border-radius:9px;background:var(--c);margin-top:4px}
+.punten h3{margin-bottom:6px}
+.punten p{margin:0;color:var(--grijs)}
+
+/* reviews */
+.reviews{background:var(--bos);color:var(--wit)}
+.reviews .kopregel{display:grid;gap:10px;margin-bottom:34px}
+@media (min-width:960px){.reviews .kopregel{grid-template-columns:1fr auto;align-items:end}}
+.reviews .intro{color:#c3cfca;margin:0}
+.bron{display:inline-flex;align-items:center;min-height:44px;font-weight:700;color:var(--honing)}
+.citaten{display:grid;gap:16px}
+@media (min-width:960px){.citaten{grid-template-columns:repeat(3,1fr)}}
+.citaat{background:var(--bos2);border-radius:20px;padding:24px 22px;margin:0;display:flex;flex-direction:column;gap:14px}
+.citaat::before{content:"";display:block;width:44px;height:6px;border-radius:6px;background:var(--c)}
+.citaat p{margin:0;font-size:17px;color:#e8eeec}
+.citaat footer{font-family:var(--kop);font-weight:600;font-size:17px;color:var(--wit);margin-top:auto}
+.label{font-size:14px;color:#a9b9b3;margin-top:16px}
+
+/* stappen */
+.stappen .wrap{display:grid;gap:36px}
+@media (min-width:960px){.stappen .wrap{grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}}
+.stappen ol{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px;counter-reset:s}
+.stappen li{counter-increment:s;background:var(--wit);border-radius:18px;padding:20px 20px 20px 74px;position:relative}
+.stappen li::before{content:counter(s);position:absolute;left:20px;top:20px;width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;font-family:var(--kop);font-weight:600;font-size:19px;background:var(--c);color:var(--wit)}
+.stappen li:nth-child(1){--c:var(--t3)}.stappen li:nth-child(2){--c:var(--t5)}.stappen li:nth-child(3){--c:var(--t7)}
+.stappen li b{display:block;font-size:18px;margin-bottom:2px}
+.stappen li a{color:var(--cacao);font-weight:700;white-space:nowrap}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.duo figure{margin:0}
+.duo figure:nth-child(2){margin-top:44px}
+.duo img{width:100%;height:auto;border-radius:6px}
+.duo figcaption{font-size:13px;color:var(--grijs);margin-top:6px}
+
+/* faq */
+.faq{background:var(--wit)}
+.faq .wrap{max-width:840px}
+details{background:var(--mist);border-radius:16px;margin-bottom:12px}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;padding:14px 20px;font-weight:700;font-size:17px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--kop);font-size:26px;color:var(--karamel);flex:none}
+details[open] summary::after{content:"–"}
+details p{padding:0 20px 18px;margin:0;color:#34403c}
+details a{font-weight:700}
+
+/* route */
+.route .wrap{display:grid;gap:30px;align-items:start}
+@media (min-width:960px){.route .wrap{grid-template-columns:1fr 1fr;gap:56px}}
+.adres{font-size:19px;line-height:1.5;margin-bottom:14px}
+.adres b{font-family:var(--kop);font-weight:600;font-size:24px}
+.route .noot-r{color:var(--grijs);margin-bottom:24px}
+.route .btn.rand{color:var(--cacao)}
+.route figure{margin:26px 0 0}
+.route figure img{width:100%;height:auto;border-radius:6px}
+.route figcaption{font-size:13px;color:var(--grijs);margin-top:6px}
+.mm-kaart{--mk-bg:#2a3934;--mk-fg:#f2f4f1;--mk-accent:#d6a57e;--mk-lijn:rgba(255,255,255,.06);
+  position:relative;aspect-ratio:4/3;width:100%;border-radius:22px;overflow:hidden;background:var(--mk-bg);color:var(--mk-fg)}
+.mm-kaart .mk-raster{position:absolute;inset:0;background:linear-gradient(var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px}
+.mm-kaart .mk-weg{position:absolute;background:rgba(255,255,255,.12);border-radius:6px}
+.mm-kaart .mk-water{position:absolute;background:rgba(150,190,200,.16);border-radius:8px}
+.mm-kaart .mk-inhoud{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mm-kaart .mk-pin{width:46px;height:46px;filter:drop-shadow(0 0 14px var(--mk-accent))}
+.mm-kaart .mk-adres{font-weight:700;line-height:1.35;margin:0}
+.mm-kaart .mk-knop{min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--mk-accent);background:transparent;color:var(--mk-fg);font:inherit;font-weight:700;cursor:pointer}
+.mm-kaart .mk-knop:hover,.mm-kaart .mk-knop:focus-visible{background:var(--mk-accent);color:var(--mk-bg)}
+.mm-kaart .mk-uitleg{font-size:12px;opacity:.75;max-width:30ch;margin:0}
+.mm-kaart iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* slot */
+.slot{background:var(--zand);color:var(--cacao)}
+.slot .wrap{display:grid;gap:18px}
+@media (min-width:960px){.slot .wrap{grid-template-columns:1.2fr .8fr;align-items:center}.slot .knoppen{justify-content:flex-end}}
+.slot h2{margin-bottom:10px}
+.slot p{margin:0;max-width:32em;color:#5d3f31}
+.slot .btn.rand{color:var(--cacao)}
+
+/* footer */
+.voet{background:var(--bos);color:#a9b9b3;padding:48px 0 110px;font-size:15px}
+.voet .wrap{display:grid;gap:22px}
+.voet img{width:220px;height:auto;margin-bottom:14px}
+.voet a{color:#e4ece8}
+.voet .klein{font-size:13px;color:#8b9b95}
+@media (min-width:960px){.voet{padding-bottom:48px}.voet .wrap{grid-template-columns:1fr 1fr;align-items:end}}
+
+/* zwevende knop */
+.zweef{position:fixed;left:14px;right:14px;bottom:14px;z-index:40;display:flex;opacity:0;transform:translateY(130%);pointer-events:none;transition:opacity .25s,transform .25s}
+.zweef.aan{opacity:1;transform:none;pointer-events:auto}
+.zweef .btn{width:100%;min-height:56px;box-shadow:0 10px 30px -8px rgba(0,0,0,.55)}
+@media (min-width:960px){.zweef{display:none}}
+
+/* pitchpaneel (alleen met ?pitch) */
+.pitch-paneel{position:fixed;inset:0;z-index:60;background:rgba(20,28,26,.76);overflow-y:auto;padding:16px}
+.pitch-in{background:var(--wit);color:var(--inkt);max-width:980px;margin:0 auto;border-radius:22px;padding:24px 20px 28px}
+.pitch-in h2{font-size:clamp(26px,5vw,36px)}
+.pitch-in h3{margin-top:26px}
+.pitch-sluit{float:right;min-height:44px;min-width:44px;border-radius:999px;border:2px solid var(--bos);background:transparent;font:700 15px var(--tekst);cursor:pointer;padding:0 16px}
+.nunu{display:grid;gap:16px;margin-top:10px}
+@media (min-width:760px){.nunu{grid-template-columns:1fr 1fr}}
+.nunu figure{margin:0;background:var(--mist);border-radius:16px;padding:12px}
+.nunu img{width:100%;height:360px;object-fit:contain;background:#fff;border-radius:10px}
+.nunu figcaption{font-size:14px;margin-top:8px}
+.pitch-in ol{padding-left:22px}
+.pitch-in li{margin-bottom:8px}
+.reken{background:var(--mist);border-radius:16px;padding:18px}
+.reken label{display:block;font-weight:700;margin-top:10px}
+.reken input[type=range]{width:100%;min-height:44px;accent-color:var(--salie-d)}
+.uitkomst{font-size:19px;margin-top:12px}
+.prijs{display:grid;gap:12px}
+@media (min-width:760px){.prijs{grid-template-columns:1fr 1fr 1fr}}
+.prijs div{border:2px solid var(--mist2);border-radius:16px;padding:16px}
+.prijs div.eerst{border-color:var(--salie)}
+.prijs b{display:block;font-family:var(--kop);font-size:22px}
+.prijs small{color:var(--grijs)}
+</style>
+<link rel="stylesheet" href="fonts/fonts.css">
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>.<button type="button" class="pitchknop" id="pitchOpen">Pitch openen</button></div>
+<div class="aank"><a href="https://www.google.com/maps?cid=8637998524418471389" target="_blank" rel="noopener">4,8 ★ uit 124 Google-reviews · alleen op afspraak</a></div>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="Skin Studio MAE, naar boven"><img src="logo-dark.svg" alt="Skin Studio MAE" width="250" height="22"></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#kiezer">Behandelingen en prijzen</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#route">Route</a>
+    </nav>
+    <a class="btn cacao" href="https://wa.me/31644504354?text=Hoi%20Skin%20Studio%20MAE%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg><span>App<span class="lang"> de studio</span></span></a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="top" aria-labelledby="h1">
+  <div class="wrap hero-grid grid">
+    <figure class="studio">
+      <img src="img/studio.jpg" alt="De studio van Skin Studio MAE: een gewelfd plafond, een groene wand met productplanken, een balie en een hoge tafel met krukken" width="1000" height="668">
+      <figcaption>De studio aan de Vijverhofstraat</figcaption>
+      <div class="waaier" aria-hidden="true">
+        <span class="staal" style="--c:var(--t1);--r:-54deg;--d:.35s"></span>
+        <span class="staal" style="--c:var(--t2);--r:-36deg;--d:.45s"></span>
+        <span class="staal" style="--c:var(--t3);--r:-18deg;--d:.55s"></span>
+        <span class="staal" style="--c:var(--t4);--r:0deg;--d:.65s"></span>
+        <span class="staal" style="--c:var(--t5);--r:18deg;--d:.75s"></span>
+        <span class="staal" style="--c:var(--t6);--r:36deg;--d:.85s"></span>
+        <span class="staal" style="--c:var(--t7);--r:54deg;--d:.95s"></span>
+      </div>
+    </figure>
+    <div class="hero-tekst">
+      <h1 id="h1">Huidverbetering voor de gekleurde huid.</h1>
+      <p class="lead">Skin Studio MAE in Rotterdam-Noord: gezichtsbehandelingen, peelings, laserontharing en skinboosters. Alleen op afspraak.</p>
+      <div class="knoppen">
+        <a class="btn cacao" href="https://wa.me/31644504354?text=Hoi%20Skin%20Studio%20MAE%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg>Afspraak via WhatsApp</a>
+        <a class="btn rand" href="#kiezer">Behandelingen en prijzen</a>
+      </div>
+      <p class="trust"><a href="https://www.google.com/maps?cid=8637998524418471389" target="_blank" rel="noopener"><span class="sterren" aria-hidden="true">★★★★★</span> 4,8 uit 124 reviews op Google</a> <span>Vijverhofstraat 90, Rotterdam</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="kaartsectie" id="kiezer" aria-labelledby="kiezer-kop">
+  <div class="wrap grid">
+    <div>
+      <div class="tintlijn" aria-hidden="true"><i style="--c:var(--t1)"></i><i style="--c:var(--t2)"></i><i style="--c:var(--t3)"></i><i style="--c:var(--t4)"></i><i style="--c:var(--t5)"></i><i style="--c:var(--t6)"></i><i style="--c:var(--t7)"></i></div>
+      <h2 id="kiezer-kop">De behandelkaart van MAE</h2>
+      <p class="intro">Kies wat je wilt laten doen, zie meteen duur en prijs, en stuur je aanvraag in één tik naar de studio.</p>
+      <fieldset class="stap">
+        <legend>1 · Waar kom je voor?</legend>
+        <div class="chips" id="cSoort"></div>
+      </fieldset>
+      <fieldset class="stap">
+        <legend>2 · Welke behandeling?</legend>
+        <div class="chips" id="cBeh"></div>
+        <div class="chips" id="cDuur" style="margin-top:12px"></div>
+        <p class="noot-k" id="soortNoot"></p>
+      </fieldset>
+      <fieldset class="stap">
+        <legend>3 · Welke dag past je?</legend>
+        <div class="chips" id="cDag"></div>
+        <p class="noot-k">De studio werkt alleen op afspraak. Welke tijden die dag vrij zijn, hoor je in WhatsApp.</p>
+      </fieldset>
+    </div>
+    <div class="afspraak" id="afspraak" aria-live="polite">
+      <div class="tintlijn" aria-hidden="true"><i style="--c:var(--t1)"></i><i style="--c:var(--t2)"></i><i style="--c:var(--t3)"></i><i style="--c:var(--t4)"></i><i style="--c:var(--t5)"></i><i style="--c:var(--t6)"></i><i style="--c:var(--t7)"></i></div>
+      <div class="afspraak-kop"><h3>Je afspraakverzoek</h3><img src="logo-light.svg" alt="" width="120" height="11"></div>
+      <dl>
+        <dt>Behandeling</dt><dd id="aBeh"></dd>
+        <dt>Duur</dt><dd id="aDuur"></dd>
+        <dt>Prijs</dt><dd id="aPrijs"></dd>
+        <dt>Voorkeursdag</dt><dd id="aDag"></dd>
+      </dl>
+      <p class="bericht" id="bericht"></p>
+      <div class="knoppen">
+        <a class="btn zand" id="waKnop" href="https://wa.me/31644504354?text=Hoi%20Skin%20Studio%20MAE%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/></svg>Stuur via WhatsApp</a>
+        <a class="btn rand" href="https://salonkee.nl/salon/skin-studio-mae" target="_blank" rel="noopener">Liever online boeken</a>
+      </div>
+      <small class="noot">Je bericht gaat naar 06 44 50 43 54, het nummer van de studio. Prijzen zoals op skinstudiomae.com.</small>
+    </div>
+  </div>
+</section>
+
+<section class="waarom" aria-labelledby="waarom-kop">
+  <div class="wrap grid">
+    <figure>
+      <img src="img/behandelkamer.jpg" alt="Een behandelkamer in de studio: een behandelbank met grijze handdoek onder een gebogen ledlamp" width="900" height="842" loading="lazy" decoding="async">
+      <figcaption>Een van de behandelkamers</figcaption>
+    </figure>
+    <div>
+      <h2 id="waarom-kop">Wat klanten over MAE vertellen</h2>
+      <p class="intro">Drie dingen die steeds terugkomen in de reviews.</p>
+      <ul class="punten">
+        <li style="--c:var(--t3)"><div><h3>Thuis in de gekleurde huid</h3><p>De studio richt zich op de gekleurde huid, en klanten noemen MAE in hun reviews een specialist voor de donkere en gekleurde huid.</p></div></li>
+        <li style="--c:var(--t5)"><div><h3>Advies dat bij jouw huid past</h3><p>Klanten schrijven over persoonlijk advies en een resultaat dat ze zelf zien. Eén klant komt al meer dan zes jaar.</p></div></li>
+        <li style="--c:var(--t7)"><div><h3>Rust in de studio</h3><p>Klanten noemen de studio rustig en professioneel. Een deel komt er ook voor een massage.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" aria-labelledby="rev-kop">
+  <div class="wrap">
+    <div class="kopregel">
+      <div>
+        <h2 id="rev-kop">4,8 uit 124 reviews op Google</h2>
+        <p class="intro">Drie klanten in hun eigen woorden.</p>
+      </div>
+      <a class="bron" href="https://www.google.com/maps?cid=8637998524418471389" target="_blank" rel="noopener">Alle reviews op Google →</a>
+    </div>
+    <div class="citaten">
+      <blockquote class="citaat" style="--c:var(--t2)"><p>“Een hele fijne behandeling gehad en hele goede tips. Ik kom zeker terug, want mijn huid heeft echt in geen jaren zo fijn gevoeld.”</p><footer>Ivone</footer></blockquote>
+      <blockquote class="citaat" style="--c:var(--t4)"><p>“Wat een heerlijke ervaring! Ze zijn tot nu toe de beste huidspecialisten die ik ooit heb gehad. Ze hebben super goede kennis van hun vak. Zeker een aanrader!”</p><footer>Melissa</footer></blockquote>
+      <blockquote class="citaat" style="--c:var(--t6)"><p>“Ze werken hier super goed! Je voelt je gelijk op je gemak en ze weten precies wat je nodig hebt. Ze geven goed advies en je merkt dat het echt hun passie is. Ik ben een klant for life.”</p><footer>Jalisa</footer></blockquote>
+    </div>
+    <p class="label">Letterlijk overgenomen uit de reviews op skinstudiomae.com.</p>
+  </div>
+</section>
+
+<section class="stappen" aria-labelledby="stap-kop">
+  <div class="wrap grid">
+    <div>
+      <h2 id="stap-kop">Van keuze naar behandelbank</h2>
+      <ol>
+        <li><b>Kies op de behandelkaart</b>Soort, behandeling en een dag die je past, met duur en prijs erbij. <a href="#kiezer">Naar de kaart</a></li>
+        <li><b>Stuur je aanvraag</b>Via WhatsApp naar <a href="https://wa.me/31644504354?text=Hoi%20Skin%20Studio%20MAE%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener">06 44 50 43 54</a>, of boek online via <a href="https://salonkee.nl/salon/skin-studio-mae" target="_blank" rel="noopener">Salonkee</a>.</li>
+        <li><b>Kom naar de studio</b>Vijverhofstraat 90 in Rotterdam. Behandelingen zijn alleen op afspraak.</li>
+      </ol>
+    </div>
+    <div class="duo">
+      <figure><img src="img/laser.jpg" alt="Laserontharing: een handstuk op een onderbeen, vastgehouden met een witte handschoen" width="760" height="873" loading="lazy" decoding="async"><figcaption>Laserontharing</figcaption></figure>
+      <figure><img src="img/pen.jpg" alt="Een behandelaar met zwarte handschoenen houdt een behandelpen vast" width="760" height="873" loading="lazy" decoding="async"><figcaption>Een behandelpen in de hand</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="faq-kop">
+  <div class="wrap">
+    <h2 id="faq-kop">Vragen voor je eerste bezoek</h2>
+    <details>
+      <summary>Kan ik zonder afspraak langskomen?</summary>
+      <p>Nee, behandelingen zijn alleen op afspraak. Stuur een <a href="https://wa.me/31644504354?text=Hoi%20Skin%20Studio%20MAE%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener">WhatsApp-bericht</a> of boek online.</p>
+    </details>
+    <details>
+      <summary>Ik ben nieuw. Waar begin ik?</summary>
+      <p>Met een kennismaking. De studio kijkt naar je huid en je wensen, maakt een huidanalyse en je krijgt een product- en behandelplan op maat. Intake + huidscan duurt 30 minuten en kost € 35,00; met een behandeling erbij is het 90 minuten voor € 135,00.</p>
+    </details>
+    <details>
+      <summary>Hoe werkt laserontharing bij MAE?</summary>
+      <p>Je begint met een intake en proefbehandeling (30 minuten, € 25,00). Volgens de studio werkt laser het best als kuur vanaf 8 behandelingen. Een kuur van 4 dezelfde behandelingen geeft 10% korting, een kuur van 8 geeft 15%.</p>
+    </details>
+    <details>
+      <summary>Kan ik ook online boeken?</summary>
+      <p>Ja, via <a href="https://salonkee.nl/salon/skin-studio-mae" target="_blank" rel="noopener">Salonkee</a>. Daar zie je ook welke tijden vrij zijn.</p>
+    </details>
+    <details>
+      <summary>Waar zit de studio?</summary>
+      <p>Vijverhofstraat 90, 3032 SN Rotterdam, in de Agniesebuurt in Rotterdam-Noord.</p>
+    </details>
+  </div>
+</section>
+
+<section class="route" id="route" aria-labelledby="route-kop">
+  <div class="wrap grid">
+    <div>
+      <h2 id="route-kop">Op nummer 90 in de Vijverhofstraat</h2>
+      <p class="adres"><b>Skin Studio MAE</b><br>Vijverhofstraat 90<br>3032 SN Rotterdam</p>
+      <p class="noot-r">Alleen op afspraak. Je plant je afspraak via WhatsApp of online.</p>
+      <div class="knoppen">
+        <a class="btn cacao" href="https://www.google.com/maps/dir/?api=1&amp;destination=Skin+Studio+MAE%2C+Vijverhofstraat+90%2C+3032+SN+Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+        <a class="btn rand" href="tel:+31644504354">Bel 06 44 50 43 54</a>
+      </div>
+      <figure>
+        <img src="img/wachtruimte.jpg" alt="Wachtplek in de studio: twee fauteuils, planten en een groene wand" width="1000" height="668" loading="lazy" decoding="async">
+        <figcaption>Wachtplek in de studio</figcaption>
+      </figure>
+    </div>
+    <div class="mm-kaart" data-src="https://maps.google.com/maps?q=Skin%20Studio%20MAE%2C%20Vijverhofstraat%2090%2C%203032%20SN%20Rotterdam&amp;z=16&amp;output=embed" data-titel="Kaart: Skin Studio MAE, Vijverhofstraat 90, Rotterdam">
+      <div class="mk-raster" aria-hidden="true"></div>
+      <div class="mk-water" style="left:-5%;right:-5%;top:20%;height:18px;transform:rotate(-4deg)" aria-hidden="true"></div>
+      <div class="mk-weg" style="left:-5%;right:-5%;top:62%;height:10px;transform:rotate(5deg)" aria-hidden="true"></div>
+      <div class="mk-weg" style="top:-5%;bottom:-5%;left:58%;width:10px;transform:rotate(-9deg)" aria-hidden="true"></div>
+      <div class="mk-inhoud">
+        <svg class="mk-pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="var(--mk-accent)" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        <p class="mk-adres">Vijverhofstraat 90<br>3032 SN Rotterdam</p>
+        <button type="button" class="mk-knop">Toon kaart</button>
+        <p class="mk-uitleg">De kaart komt van Google Maps en laadt pas als je klikt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="slot-kop">
+  <div class="wrap grid">
+    <div>
+      <h2 id="slot-kop">Zin om je huid te laten bekijken?</h2>
+      <p>App Skin Studio MAE met de behandeling die je zoekt, of begin met een kennismaking.</p>
+    </div>
+    <div class="knoppen">
+      <a class="btn cacao" href="https://wa.me/31644504354?text=Hoi%20Skin%20Studio%20MAE%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener">Afspraak via WhatsApp</a>
+      <a class="btn rand" href="#kiezer">Naar de behandelkaart</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="voet">
+  <div class="wrap">
+    <div>
+      <img src="logo-light.svg" alt="Skin Studio MAE" width="220" height="19" loading="lazy" decoding="async">
+      <p>Vijverhofstraat 90, 3032 SN Rotterdam<br><a href="tel:+31644504354">06 44 50 43 54</a> · <a href="mailto:info@skinstudiomae.com">info@skinstudiomae.com</a></p>
+    </div>
+    <div>
+      <p class="klein">Foto's: eigen fotoshoot van de studio op skinstudiomae.com; merknamen vervaagd. Reviews: Google en skinstudiomae.com. Prijzen: skinstudiomae.com.</p>
+      <p>Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-hidden="true">
+  <a class="btn cacao" href="https://wa.me/31644504354?text=Hoi%20Skin%20Studio%20MAE%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener" tabindex="-1">App Skin Studio MAE</a>
+</div>
+
+<div class="pitch-paneel" id="pitch" hidden role="dialog" aria-modal="true" aria-labelledby="pitch-kop">
+  <div class="pitch-in">
+    <button type="button" class="pitch-sluit" id="pitchDicht">Sluiten</button>
+    <h2 id="pitch-kop">Wat er voor MAE verandert</h2>
+    <div class="nunu">
+      <figure>
+        <img src="img/voor-site.jpg" alt="De huidige site van Skin Studio MAE op een telefoon" width="585" height="1266" loading="lazy" decoding="async">
+        <figcaption><b>Nu:</b> skinstudiomae.com op een telefoon (bekeken 14 november 2026).</figcaption>
+      </figure>
+      <figure>
+        <img src="img/na-mobiel.jpg" alt="Deze nieuwe site op een telefoon" width="585" height="1266" loading="lazy" decoding="async">
+        <figcaption><b>Straks:</b> de eigen studio in beeld, en meteen een knop om te appen voor een afspraak.</figcaption>
+      </figure>
+    </div>
+
+    <h3>Drie punten waar MAE op wint</h3>
+    <ol>
+      <li>"Prijzen" in het menu van de huidige site doet niets als je erop klikt (desktop en mobiel menu, getest 14 november). De prijzen staan wel verderop. Hier zie je ze direct in de behandelkaart, met duur erbij.</li>
+      <li>WhatsApp staat nu alleen als nummer in de tekst. Hier gaat een klant in één tik naar WhatsApp, met behandeling en dag al ingevuld.</li>
+      <li>De zaterdagtijden verschillen nu per plek: Salonkee zegt 09:00–15:00, Google 09:30–17:00 (bekeken 14 november). Op de nieuwe site zetten we de juiste tijden één keer goed neer.</li>
+    </ol>
+
+    <h3>Een paar extra afspraken, als voorbeeld</h3>
+    <div class="reken">
+      <p><small>Voorbeeld, geen belofte. Vul samen in wat realistisch is.</small></p>
+      <label for="rKlanten">Extra behandelingen per week via de site: <output id="oKlanten">1</output></label>
+      <input type="range" id="rKlanten" min="0" max="10" step="1" value="1">
+      <label for="rBedrag">Gemiddelde behandeling (voorbeeld): € <output id="oBedrag">60</output></label>
+      <input type="range" id="rBedrag" min="25" max="200" step="5" value="60">
+      <p class="uitkomst">Per jaar: <b id="uJaar">€ 3.120</b> extra omzet.<br>€ 595 is de omzet van <b id="uAantal">10</b> behandelingen.</p>
+    </div>
+
+    <h3>Wat de site kost</h3>
+    <div class="prijs">
+      <div class="eerst"><small>Website</small><b>€ 595 eenmalig</b>excl. btw (€ 719,95 incl. btw). Tot 5 pagina's, eigen domein, hosting inbegrepen, live binnen 48 uur na betaling.</div>
+      <div class="eerst"><small>Beheer: maandbedrag</small><b>€ 25 per maand</b>excl. btw (€ 30,25 incl. btw). Wij passen alles voor je aan.</div>
+      <div><small>Of: klantportaal</small><b>€ 249 eenmalig</b>excl. btw (€ 301,29 incl. btw). Als je liever zelf aanpast.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var nummer='31644504354';
+  /* behandelingen en prijzen zoals op skinstudiomae.com/prices (bekeken 14 nov 2026) */
+  var G=[['45 min','€ 99,95'],['60 min','€ 115,00'],['75 min','€ 145,00']];
+  var DATA=[
+    {id:'nieuw',naam:'Nieuw bij MAE',noot:'Bij de kennismaking maakt de studio een huidanalyse en krijg je een product- en behandelplan op maat.',beh:[
+      {n:'Intake + huidscan',d:[['30 min','€ 35,00']]},
+      {n:'Intake + huidscan + behandeling',d:[['90 min','€ 135,00']]},
+      {n:'Intake + huidscan + hydrofacial',d:[['90 min','€ 145,00']]},
+      {n:'Online intake + productadvies',d:[['30 min','€ 25,00']]}]},
+    {id:'gezicht',naam:'Gezichtsbehandeling',noot:'Kies daarna de duur.',beh:[
+      {n:'MAE signature treatment',d:G},
+      {n:'Dermaplane',d:[['45 min','€ 99,95'],['60 min','€ 115,00'],['90 min','€ 145,00']]},
+      {n:'Biopeel treatment',d:G},
+      {n:'OxyGeneo treatment',d:G},
+      {n:'Acné therapie gelaat',d:G}]},
+    {id:'peeling',naam:'Peeling',noot:'',beh:[
+      {n:'Peeling niveau 1',d:[['45 min','€ 99,95']]},
+      {n:'Peeling niveau 2',d:[['45 min','€ 99,95']]},
+      {n:'Peeling niveau 3',d:[['45 min','€ 175,00']]}]},
+    {id:'laser',naam:'Laserontharing',noot:'Volgens de studio werkt laser het best als kuur vanaf 8 behandelingen.',beh:[
+      {n:'Intake laserontharing + proefbehandeling',d:[['30 min','€ 25,00']]},
+      {n:'Oksels',d:[['15 min','€ 60,00']]},
+      {n:'Bovenlip',d:[['15 min','€ 40,00']]},
+      {n:'Kin',d:[['15 min','€ 40,00']]},
+      {n:'Boven- of onderarmen',d:[['45 min','€ 95,00']]},
+      {n:'Onderbenen',d:[['45 min','€ 115,00']]},
+      {n:'Bikinilijn klein (buiten broekje)',d:[['30 min','€ 75,00']]},
+      {n:'Een andere zone',d:[['',''] ]}]},
+    {id:'booster',naam:'Skinbooster',noot:'',beh:[
+      {n:'Hydrating Glow Booster',d:[['45 min','€ 135,00']]},
+      {n:'Radiance Booster',d:[['45 min','€ 135,00']]},
+      {n:'Anti-ageing Booster',d:[['45 min','€ 135,00']]}]},
+    {id:'anders',naam:'Iets anders',noot:'Duur en prijs hoor je van de studio.',beh:[
+      {n:'Orthomoleculair consult',d:[['','']]},
+      {n:'Dermamelan Intimate (bikini of oksels)',d:[['','']]},
+      {n:'Een andere vraag',d:[['','']]}]}
+  ];
+  var DAGEN=['dinsdag','woensdag','donderdag','vrijdag','zaterdag','maakt niet uit'];
+  var st={s:0,b:0,u:0,dag:5};
+  var $=function(i){return document.getElementById(i);};
+  function chip(tekst,aan,klik,extra){var b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('aria-pressed',aan?'true':'false');b.textContent=tekst;
+    if(extra){var s=document.createElement('small');s.textContent=extra;b.appendChild(s);} b.addEventListener('click',klik);return b;}
+  function teken(){
+    var S=DATA[st.s], B=S.beh[st.b], U=B.d[st.u];
+    var cs=$('cSoort'); cs.innerHTML=''; DATA.forEach(function(x,i){cs.appendChild(chip(x.naam,i===st.s,function(){st.s=i;st.b=0;st.u=0;teken();}));});
+    var cb=$('cBeh'); cb.innerHTML=''; S.beh.forEach(function(x,i){cb.appendChild(chip(x.n,i===st.b,function(){st.b=i;st.u=0;teken();},x.d.length===1&&x.d[0][1]?x.d[0][1]:''));});
+    var cu=$('cDuur'); cu.innerHTML=''; cu.hidden=B.d.length<2; if(B.d.length>1){B.d.forEach(function(x,i){cu.appendChild(chip(x[0],i===st.u,function(){st.u=i;teken();},x[1]));});}
+    $('soortNoot').textContent=S.noot; $('soortNoot').hidden=!S.noot;
+    var cd=$('cDag'); cd.innerHTML=''; DAGEN.forEach(function(x,i){cd.appendChild(chip(x.charAt(0).toUpperCase()+x.slice(1),i===st.dag,function(){st.dag=i;teken();}));});
+    var naam=(S.id==='laser'&&st.b>0&&B.n!=='Een andere zone')?'Laserontharing '+B.n.toLowerCase():B.n;
+    $('aBeh').textContent=naam; $('aDuur').textContent=U[0]||'Hoor je van de studio'; $('aPrijs').textContent=U[1]||'Vraag het in je bericht';
+    var dag=DAGEN[st.dag]; $('aDag').textContent=dag.charAt(0).toUpperCase()+dag.slice(1);
+    var t='Hoi Skin Studio MAE, ik wil graag een afspraak maken voor: '+naam+(U[0]?' ('+U[0]+')':'')+'.';
+    if(B.n==='Een andere zone'||B.n==='Een andere vraag') t='Hoi Skin Studio MAE, ik heb een vraag over '+(S.id==='laser'?'laserontharing van een andere zone':'een behandeling')+'.';
+    t+= st.dag<5 ? ' Mijn voorkeur is '+dag+'. Welke tijden zijn er vrij?' : ' De dag maakt niet uit. Wanneer is er plek?';
+    $('bericht').textContent=t; $('waKnop').href='https://wa.me/'+nummer+'?text='+encodeURIComponent(t);
+  }
+  teken();
+
+  /* kaart pas laden na klik */
+  document.querySelectorAll('.mm-kaart').forEach(function(k){
+    var b=k.querySelector('.mk-knop'); if(!b) return;
+    b.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src=k.getAttribute('data-src'); f.title=k.getAttribute('data-titel')||'Kaart';
+      f.loading='lazy'; f.referrerPolicy='no-referrer-when-downgrade'; f.allowFullscreen=true;
+      k.innerHTML=''; k.appendChild(f);
+    });
+  });
+
+  /* zwevende knop: zodra de hero uit beeld is, niet boven het aanvraagkaartje */
+  var zweef=$('zweef'), heroUit=false, kaartIn=false;
+  function zet(){var aan=heroUit&&!kaartIn; zweef.classList.toggle('aan',aan); zweef.setAttribute('aria-hidden',aan?'false':'true'); zweef.querySelector('a').tabIndex=aan?0:-1;}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){heroUit=!e[0].isIntersecting;zet();}).observe(document.querySelector('.hero'));
+    new IntersectionObserver(function(e){kaartIn=e[0].isIntersecting;zet();},{threshold:.15}).observe($('afspraak'));
+  }
+
+  /* rekensom + pitch (alleen met ?pitch) */
+  var paneel=$('pitch'), rK=$('rKlanten'), rB=$('rBedrag');
+  function reken(){
+    var k=+rK.value,b=+rB.value;
+    $('oKlanten').textContent=k; $('oBedrag').textContent=b;
+    $('uJaar').textContent='€ '+(k*b*52).toLocaleString('nl-NL');
+    $('uAantal').textContent=Math.ceil(595/b);
+  }
+  rK.addEventListener('input',reken); rB.addEventListener('input',reken); reken();
+  if(/[?&]pitch\b/.test(location.search)){
+    document.body.classList.add('pitch');
+    $('pitchOpen').addEventListener('click',function(){paneel.hidden=false;});
+    $('pitchDicht').addEventListener('click',function(){paneel.hidden=true;});
+    paneel.addEventListener('click',function(e){if(e.target===paneel) paneel.hidden=true;});
+  }
+})();
+</script>
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
