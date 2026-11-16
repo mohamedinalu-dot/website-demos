@@ -21,7 +21,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/anton-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/montserrat-400-800.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="img/zawadi-2-1000.webp" imagesrcset="img/zawadi-2-1000.webp 1000w, img/zawadi-2.webp 1800w" imagesizes="100vw">
+<link rel="preload" as="image" href="img/zawadi-2-1000.webp" imagesrcset="img/zawadi-2-1000.webp 1000w, img/zawadi-2.webp 1600w" imagesizes="100vw">
 <link rel="stylesheet" href="fonts/fonts.css">
 <script>document.documentElement.classList.add("js")</script>
 <style>
@@ -115,9 +115,9 @@ button{font:inherit;color:inherit}
 .hero-voet b{font-weight:700;color:#fff}
 .scroll{display:inline-flex;align-items:center;gap:12px}
 .scroll i{display:block;width:2px;height:28px;background:rgba(255,255,255,.3);position:relative;overflow:hidden}
-.scroll i::after{content:"";position:absolute;left:0;top:-40%;width:2px;height:40%;background:#fff;animation:val 2s ease-in-out infinite}
+.scroll i::after{content:"";position:absolute;left:0;top:-40%;width:2px;height:40%;background:#fff;animation:val 2s ease-in-out 1.6s 2 both}
 @keyframes val{to{top:100%}}
-@media (max-width:940px){.hero h1{font-size:min(17vw,10.5vh)}.hero-bg img{transform:scale(1.28);transform-origin:62% 88%}}
+@media (max-width:940px){.hero h1{font-size:min(17vw,10.5vh)}.hero-bg img{object-position:74% 60%}}
 @media (max-width:600px){.hero .kick{font-size:11px;letter-spacing:.13em}.hero .kick::after{display:none}.hero-cta .btn{flex:1 1 100%}.hero-voet .rechts{display:none}.hero-voet{margin-top:22px}}
 
 /* BAND: voor jongeren, met jongeren */
@@ -178,7 +178,7 @@ button{font:inherit;color:inherit}
 .p-naam{font-family:var(--disp);font-size:clamp(26px,2.4vw,36px);line-height:1;text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg);transition:opacity .3s;white-space:nowrap}
 .p.open .p-naam{opacity:0}
 .p-plus{display:none}
-.p-body{position:absolute;left:0;bottom:0;z-index:3;width:min(640px,58vw);padding:34px 38px;opacity:0;transform:translateY(18px);transition:opacity .35s,transform .5s;pointer-events:none}
+.p-body{position:absolute;left:0;bottom:0;z-index:3;width:min(640px,100%);padding:34px 38px;opacity:0;transform:translateY(18px);transition:opacity .35s,transform .5s;pointer-events:none}
 .p.open .p-body{opacity:1;transform:none;transition-delay:.32s}
 .p-body .kick{font-size:12px;color:#E6E6E6}
 .p-body h3{font-family:var(--disp);font-weight:400;text-transform:uppercase;font-size:clamp(46px,5vw,84px);line-height:.92;margin:14px 0 16px;overflow-wrap:break-word}
@@ -260,13 +260,14 @@ button{font:inherit;color:inherit}
 .q-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
 .quote::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0A0A0A 0%,#0A0A0A 46%,rgba(10,10,10,.55) 58%,rgba(10,10,10,0) 78%)}
 .q-in{min-height:min(96vh,880px);display:flex;align-items:center}
-.q-tekst{max-width:640px;padding:clamp(80px,9vw,140px) 0}
+.q-tekst{max-width:min(600px,calc(50vw - var(--pad) - 48px));padding:clamp(80px,9vw,140px) 0}
 .q-tekst .aanh{display:block;font-family:var(--disp);font-size:180px;line-height:.6;color:var(--blauw);height:80px;margin-top:24px}
 .q-tekst blockquote p{font-size:clamp(24px,2.5vw,38px);font-weight:600;line-height:1.3;letter-spacing:-.01em}
 .q-tekst blockquote p em{font-style:normal;color:var(--blauw-ijs)}
 .q-tekst footer{margin-top:28px;display:flex;align-items:center;gap:14px;font-weight:700;font-size:14px;letter-spacing:.16em;text-transform:uppercase}
 .q-tekst footer span{font-weight:400;font-style:italic;color:#BEBEBE}
 @media (max-width:940px){
+  .q-tekst{max-width:640px}
   .q-foto{position:relative;width:100%;height:min(120vw,640px)}
   .quote::before{display:none}
   .q-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,0) 40%,rgba(10,10,10,.7) 72%,#0A0A0A 100%)}
@@ -352,6 +353,7 @@ footer.voet{background:#000;border-top:1px solid var(--lijn);padding:clamp(64px,
   .p,.p-kop,.p-media img,.p-body{transition:none}
 }
 </style>
+
 <!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
 </head>
 <body>
@@ -392,7 +394,7 @@ footer.voet{background:#000;border-top:1px solid var(--lijn);padding:clamp(64px,
   <!-- HERO -->
   <section class="hero" aria-labelledby="h1">
     <div class="hero-bg" id="hero-bg">
-      <img src="img/zawadi-2-1000.webp" srcset="img/zawadi-2-1000.webp 1000w, img/zawadi-2.webp 1800w" sizes="(min-aspect-ratio:1/1) 100vw, 200vw" width="1800" height="1375" alt="Een grote groep jongeren op een kunstgrasveld luistert naar een coach van Zawadi Sport" fetchpriority="high">
+      <img src="img/zawadi-2-1000.webp" srcset="img/zawadi-2-1000.webp 1000w, img/zawadi-2.webp 1600w" sizes="(min-aspect-ratio:1/1) 100vw, 200vw" width="1600" height="1222" alt="Een grote groep jongeren op een kunstgrasveld luistert naar een coach van Zawadi Sport" fetchpriority="high">
     </div>
     <div class="hero-in" id="hero-in">
       <p class="kick">Sport · Begeleiding · Talentontwikkeling</p>
@@ -771,11 +773,12 @@ footer.voet{background:#000;border-top:1px solid var(--lijn);padding:clamp(64px,
   frame();
 
   /* zwevende knop: pas als de hero uit beeld is, niet bij het contactblok */
-  var zweef = document.getElementById('zweef'), heroUit = false, contactIn = false;
-  function zet(){ zweef.classList.toggle('zien', heroUit && !contactIn); }
+  var zweef = document.getElementById('zweef'), heroUit = false, contactIn = false, voetIn = false;
+  function zet(){ zweef.classList.toggle('zien', heroUit && !contactIn && !voetIn); }
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){ heroUit = !es[0].isIntersecting; zet(); }).observe(document.querySelector('.hero'));
     new IntersectionObserver(function(es){ contactIn = es[0].isIntersecting; zet(); }, {threshold:.12}).observe(document.getElementById('contact'));
+    new IntersectionObserver(function(es){ voetIn = es[0].isIntersecting; zet(); }).observe(document.querySelector('footer.voet'));
   }
 
   /* formulier: naar WhatsApp of mail, geen backend */
@@ -803,6 +806,7 @@ footer.voet{background:#000;border-top:1px solid var(--lijn);padding:clamp(64px,
   }
 })();
 </script>
+
 <!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
 </body>
 </html>
