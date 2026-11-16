@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>GiCutz Barbershop – barber in Rotterdam-Prins Alexander</title>
+<meta name="description" content="GiCutz Barbershop in Het Lage Land, Rotterdam-Prins Alexander. Knippen € 27,50, knippen met baard € 37,50, kids t/m 12 jaar € 25. Dinsdag t/m zaterdag 08:45–18:00. Afspraak via WhatsApp.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!--
+  Demo L292 GiCutz Barbershop (Henk Speksnijderstraat 8, Rotterdam-Prins Alexander), Mohamedia, 16 nov 2026. Route O.
+  Concept in één zin: "De fade-schaal": een fade loopt van kort naar lang in harde stapjes, en zo komt ook hun eigen zaak
+  in beeld: de foto (neon GI CUTZ, flamingo-schilderij, de stoel) staat eerst in grijs en wordt bij het laden in zes
+  tondeuse-halen van onder naar boven in kleur gezet, terwijl een stip langs de opzetstuk-schaal 0 → 4 omhoog klikt. Daarna stil.
+  Lay-out-archetype: OPZETSTUK-KAART. De schaal 0–4 is de rode draad: de prijslijst is een kaart met balkjes per duur,
+  de keuzehulp maakt een afsprakenkaartje. Mobiel: eigen foto vult het eerste scherm (neon boven, recht, geen vormkader),
+  schaal langs de rechterrand, kop + knoppen + score onderin over de zwarte stoel (geen band, geen object over de onderrand).
+  Desktop: tekst links op zwart, foto rechts in eigen verhouding (3:4), schaal ertussen.
+  Niet gebruikt: slingerend object, deurbordje, licht/neon dat aangaat, Ken Burns, stoom, letters één voor één, marquee, stempel.
+  Foto: Google Maps-hoofdfoto van de zaak (1200×1600), onbewerkt verkleind. Logo: hun neon "GI CUTZ" nagetekend (Roboto Slab Light, naar paden).
+-->
+<style>
+:root{
+  --nacht:#141619;--nacht2:#1F2226;--inkt:#1B1E22;--muur:#E7E6E3;--muur2:#D6D4CF;--wit:#FBFBFA;
+  --ijs:#BFE0FF;--ijs2:#8EC5F5;--blauw:#245E92;--flamingo:#E86A5C;--roze:#F3B3A9;--handdoek:#8C7764;--grijs:#5D6166;
+  --kop:'Zilla Slab',Georgia,serif;--tekst:'Schibsted Grotesk',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--muur);color:var(--inkt);font:400 17px/1.6 var(--tekst);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--kop);font-weight:700;line-height:1.08;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(32px,7vw,52px)}
+h3{font-size:clamp(20px,5vw,24px)}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+section{padding:76px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:12px;font:700 16px/1.2 var(--tekst);text-decoration:none;border:2px solid transparent;cursor:pointer;text-align:center}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-ijs{background:var(--ijs);color:var(--nacht)}
+.btn-ijs:hover{background:#D9EDFF}
+.btn-rand{border-color:rgba(255,255,255,.55);color:#fff;background:transparent}
+.btn-rand:hover{border-color:#fff}
+.btn-donker{background:var(--nacht);color:#fff}
+.btn-donker:hover{background:#2A2E33}
+.btn-licht{border-color:var(--inkt);color:var(--inkt);background:transparent}
+
+/* demo-strook + aankondiging */
+.demo{background:var(--nacht);color:#C9CDD2;font-size:13px;text-align:center;padding:8px 16px;display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap}
+.demo a{color:#fff}
+.demo .pitchknop{display:none}
+body.pitch .demo .pitchknop{display:inline-flex;min-height:44px;padding:0 16px;border-radius:10px;border:1px solid #fff;background:transparent;color:#fff;font:700 13px var(--tekst);cursor:pointer;align-items:center}
+.aankondiging{display:flex;justify-content:center;align-items:center;min-height:44px;padding:0 16px;background:var(--ijs);color:var(--nacht);font-weight:600;font-size:14px;text-decoration:none;text-align:center}
+.aankondiging:hover{text-decoration:underline}
+
+/* header */
+.kop{background:var(--muur);border-bottom:1px solid var(--muur2)}
+.kop .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:68px}
+.merk{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.merk img{width:132px;height:auto}
+.merk span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--grijs);font-weight:600}
+.kop nav{display:flex;gap:6px;align-items:center}
+.kop nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;text-decoration:none;font-weight:600;font-size:15px;border-radius:10px}
+.kop nav a:hover{background:var(--muur2)}
+.kop nav a.app{background:var(--nacht);color:#fff}
+@media (max-width:640px){.kop nav a.los{display:none}.merk span{display:none}.merk img{width:116px}}
+
+/* hero */
+.hero{position:relative;background:var(--nacht);color:#fff;padding:0;overflow:hidden}
+.foto{position:absolute;inset:0;overflow:hidden}
+.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.foto .zw{filter:grayscale(1) contrast(1.05) brightness(.82)}
+.foto .kl{clip-path:inset(0 0 0 0);animation:fade 1.5s steps(5,end) .7s both}
+.foto .mes{position:absolute;left:0;right:0;top:0;height:3px;background:var(--ijs);box-shadow:0 0 14px 2px rgba(191,224,255,.75);opacity:0;animation:mes 1.5s steps(5,end) .7s both,mesweg .35s ease 2.25s forwards}
+.foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,25,0) 38%,rgba(20,22,25,.72) 62%,rgba(20,22,25,.96) 84%)}
+@keyframes fade{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes mes{from{top:100%;opacity:1}to{top:0;opacity:1}}
+@keyframes mesweg{to{opacity:0}}
+.schaal{position:absolute;right:10px;top:14%;height:44%;width:34px;z-index:2;font:700 13px/1 var(--tekst);color:#fff}
+.schaal ol{position:relative;height:100%;margin:0;padding:0;list-style:none;display:flex;flex-direction:column;justify-content:space-between}
+.schaal::before{content:"";position:absolute;left:50%;top:6px;bottom:6px;width:2px;margin-left:-1px;background:rgba(255,255,255,.35)}
+.schaal li{position:relative;height:22px;display:flex;align-items:center;justify-content:center;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.schaal li span{background:rgba(20,22,25,.55);border-radius:6px;padding:4px 5px;min-width:26px;text-align:center}
+.schaal .stip{position:absolute;left:50%;bottom:0;width:34px;height:22px;margin-left:-17px;border-radius:7px;border:2px solid var(--ijs);box-shadow:0 0 10px rgba(191,224,255,.6);animation:klik 1.5s steps(5,end) .7s both}
+@keyframes klik{from{transform:translateY(0)}to{transform:translateY(calc(-1 * var(--h)))}}
+.schaal .bijschrift{position:absolute;top:calc(100% + 8px);right:0;white-space:nowrap;font:600 11px/1.3 var(--tekst);letter-spacing:.08em;text-transform:uppercase;color:#D7DCE2;text-align:right;text-shadow:0 1px 4px rgba(0,0,0,.7)}
+.hero-in{position:relative;z-index:3;min-height:calc(100svh - 150px);display:flex;flex-direction:column;justify-content:flex-end;padding:0 20px 34px}
+.hero-in .waar{font-size:15px;color:#D7DCE2;margin:0 0 10px}
+.hero h1{font-size:clamp(40px,11vw,76px);max-width:12ch}
+.hero .sub{font-size:17px;color:#E4E7EA;margin:14px 0 0;max-width:42ch}
+.hero .sub b{color:#fff;white-space:nowrap}
+.cta-rij{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.cta-rij .btn{flex:1 1 220px}
+.score{margin:28px 0 0;font-size:15px;color:#D7DCE2;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px}
+.score a{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:#fff;font-weight:700;text-decoration:none}
+.score a:hover{text-decoration:underline}
+.score .ster{color:var(--ijs)}
+@media (max-width:979px){
+  .foto{bottom:auto;aspect-ratio:3/4}
+  .foto::after{background:linear-gradient(180deg,rgba(20,22,25,0) 50%,rgba(20,22,25,.8) 78%,var(--nacht) 99%)}
+  .schaal{top:12%;height:46%}
+  .hero-in{min-height:0;padding-top:calc(100vw * 4 / 3 - 170px)}
+}
+@media (max-width:400px){.hero h1{font-size:38px}}
+@media (min-width:980px){
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) auto}
+  .foto{position:relative;inset:auto;grid-column:2;grid-row:1;height:max(640px,min(calc(100vh - 150px),880px));width:auto;aspect-ratio:3/4}
+  .foto::after{background:linear-gradient(90deg,rgba(20,22,25,.55),rgba(20,22,25,0) 22%)}
+  .schaal{right:auto;left:18px;top:16%;height:48%}
+  .schaal .bijschrift{right:auto;left:0;text-align:left}
+  .hero-in{grid-column:1;grid-row:1;min-height:0;justify-content:center;padding:64px 56px 64px max(40px,calc((100vw - 1140px)/2 + 20px))}
+  .hero h1{font-size:clamp(56px,5.6vw,84px)}
+  .cta-rij .btn{flex:0 0 auto}
+}
+@media (prefers-reduced-motion:reduce){.foto .kl,.foto .mes,.schaal .stip{animation:none}.foto .mes{opacity:0}.schaal .stip{transform:translateY(calc(-1 * var(--h)))}html{scroll-behavior:auto}}
+
+/* prijzen */
+.prijzen{background:var(--muur)}
+.intro{max-width:60ch;color:#3A3E43;margin:14px 0 0}
+.lijst{margin:34px 0 0;padding:0;list-style:none;border-top:2px solid var(--inkt)}
+.lijst li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--muur2)}
+.lijst h3{overflow-wrap:break-word}
+.lijst .en{display:block;font:400 14px/1.3 var(--tekst);color:var(--grijs);margin-top:4px}
+.lijst .bedrag{font:700 clamp(24px,6vw,30px)/1 var(--kop);text-align:right;white-space:nowrap}
+.lijst .duur{grid-column:1;display:flex;align-items:center;gap:12px;font-size:14px;color:#3A3E43}
+.lijst .balk{flex:0 0 auto;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--nacht),var(--blauw) 60%,var(--ijs2));width:calc(var(--d) * 3.6px)}
+.lijst .kies{grid-column:2;justify-self:end;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:10px;border:2px solid var(--inkt);font-weight:700;font-size:15px;text-decoration:none}
+.lijst .kies:hover{background:var(--inkt);color:#fff}
+.wasregel{margin:26px 0 0;padding:16px 18px;border-left:5px solid var(--flamingo);background:var(--wit);border-radius:0 12px 12px 0;max-width:62ch}
+@media (min-width:860px){
+  .prijzen .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+  .lijst{margin-top:0}
+}
+
+/* kiezer */
+.kiezer{background:var(--nacht);color:#fff}
+.kiezer .intro{color:#C9CDD2}
+.stappen-k{display:grid;gap:26px;margin-top:34px;min-width:0}
+.stappen-k>*,.rooster>*{min-width:0}
+.stap-k h3{font-family:var(--tekst);font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ijs);margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:48px;padding:8px 14px;border-radius:12px;border:2px solid rgba(255,255,255,.22);background:var(--nacht2);color:#fff;font:600 15px/1.25 var(--tekst);cursor:pointer;text-align:left}
+.chip small{display:block;font-weight:400;font-size:12.5px;color:#AEB4BA}
+.chip:hover:not(:disabled){border-color:var(--ijs2)}
+.chip[aria-pressed=true]{background:var(--ijs);border-color:var(--ijs);color:var(--nacht)}
+.chip[aria-pressed=true] small{color:#2B3A48}
+.chip:disabled{opacity:.42;cursor:not-allowed;text-decoration:line-through}
+.dagen{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.dagen .chip{flex:0 0 auto;min-width:92px}
+.kaartje{background:var(--muur);color:var(--inkt);border-radius:16px;padding:22px 20px;position:relative;overflow:hidden;margin-top:30px}
+.kaartje::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:repeating-linear-gradient(180deg,var(--flamingo) 0 14px,var(--wit) 14px 20px)}
+.kaartje .titel{font:700 22px/1.1 var(--kop);margin:0 0 4px 6px}
+.kaartje dl{margin:14px 0 0 6px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 14px;font-size:15.5px}
+.kaartje dt{color:var(--grijs)}
+.kaartje dd{margin:0;font-weight:600;overflow-wrap:anywhere}
+.kaartje .btn{width:100%;margin-top:18px}
+.kaartje .of{margin:14px 0 0 6px;font-size:14.5px;color:#3A3E43}
+.kaartje .of a{font-weight:700}
+@media (min-width:980px){.kiezer .rooster{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:44px;align-items:start}.kaartje{position:sticky;top:24px;margin-top:34px}}
+
+/* waarom */
+.waarom{background:var(--wit)}
+.drie{display:grid;gap:14px;margin-top:32px}
+.drie article{background:var(--muur);border-radius:16px;padding:24px 22px}
+.drie .nr{font:700 15px/1 var(--tekst);color:var(--blauw);display:block;margin-bottom:14px;letter-spacing:.06em}
+.drie h3{margin-bottom:10px;overflow-wrap:break-word}
+.drie p{margin:0;color:#3A3E43}
+@media (min-width:860px){.drie{grid-template-columns:repeat(3,1fr)}}
+
+/* reviews */
+.reviews{background:var(--muur)}
+.reviews .kopregel{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px}
+.reviews .cijfer{font:700 clamp(30px,7vw,44px)/1 var(--kop)}
+.reviews .cijfer a{text-decoration:none}
+.reviews .cijfer small{display:block;font:400 15px/1.4 var(--tekst);color:var(--grijs);margin-top:6px}
+.revs{display:grid;gap:14px;margin-top:28px}
+.rev{background:var(--wit);border-radius:16px;padding:22px 20px;margin:0}
+.rev p{margin:0 0 12px;font-size:17.5px}
+.rev footer{font-size:14px;color:var(--grijs);font-weight:600}
+.label{font-size:13.5px;color:var(--grijs);margin:14px 0 0}
+.label a{display:inline-flex;align-items:center;min-height:44px}
+.rev.kk p{font:600 20px/1.35 var(--kop)}
+@media (min-width:860px){.revs{grid-template-columns:repeat(3,1fr)}}
+
+/* zo werkt het */
+.werkt{background:var(--nacht2);color:#fff}
+.werkt ol{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:14px;counter-reset:s}
+.werkt li{counter-increment:s;position:relative;padding:22px 20px 22px 76px;border-radius:16px;background:var(--nacht)}
+.werkt li::before{content:counter(s);position:absolute;left:20px;top:20px;width:40px;height:40px;border-radius:10px;border:2px solid var(--ijs);color:var(--ijs);font:700 20px/36px var(--kop);text-align:center}
+.werkt h3{margin-bottom:6px}
+.werkt p{margin:0;color:#C9CDD2}
+@media (min-width:860px){.werkt ol{grid-template-columns:repeat(3,1fr)}}
+
+/* faq */
+.faq{background:var(--wit)}
+.faq details{border-bottom:1px solid var(--muur2);padding:4px 0}
+.faq summary{cursor:pointer;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;font:700 19px/1.3 var(--kop);list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:700 26px/1 var(--tekst);color:var(--blauw)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0 0 18px;max-width:64ch;color:#3A3E43}
+.faq .lijstje{margin-top:28px;max-width:820px}
+
+/* bezoek */
+.bezoek{background:var(--muur)}
+.bezoek .rooster{display:grid;gap:28px;margin-top:30px}
+.status{display:inline-flex;align-items:center;gap:10px;font-weight:700;margin:0 0 14px}
+.status i{width:10px;height:10px;border-radius:50%;background:var(--grijs)}
+.status.open i{background:#2E9E5B}
+table.uren{width:100%;border-collapse:collapse;font-size:16px}
+.uren td{padding:10px 0;border-bottom:1px solid var(--muur2)}
+.uren td:last-child{text-align:right}
+.uren tr.vandaag td{font-weight:700}
+.uren tr.vandaag td:first-child::after{content:" · vandaag";font-weight:400;color:var(--blauw)}
+.adres{font-size:18px;margin:0 0 16px}
+.adres small{display:block;color:var(--grijs);font-size:15px}
+.knoppen{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.mm-kaart{--mk-bg:#1B1E22;--mk-fg:#fff;--mk-accent:#BFE0FF;--mk-lijn:rgba(255,255,255,.07);position:relative;aspect-ratio:4/3;width:100%;border-radius:16px;overflow:hidden;background:var(--mk-bg);color:var(--mk-fg)}
+.mm-kaart .mk-raster{position:absolute;inset:0;background:linear-gradient(var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px}
+.mm-kaart .mk-weg{position:absolute;background:rgba(255,255,255,.14);border-radius:6px}
+.mm-kaart .mk-inhoud{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mm-kaart .mk-pin{width:46px;height:46px;filter:drop-shadow(0 0 12px rgba(191,224,255,.7))}
+.mm-kaart .mk-adres{font-weight:700;line-height:1.35;margin:0}
+.mm-kaart .mk-knop{min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--mk-accent);background:transparent;color:var(--mk-fg);font:inherit;font-weight:700;cursor:pointer}
+.mm-kaart .mk-knop:hover{background:var(--mk-accent);color:var(--mk-bg)}
+.mm-kaart .mk-uitleg{font-size:12px;opacity:.75;max-width:30ch;margin:0}
+.mm-kaart iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (min-width:860px){.bezoek .rooster{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:48px}}
+
+/* slot */
+.slot{background:var(--nacht);color:#fff;text-align:center;padding:90px 0}
+.slot .neon{width:min(520px,82vw);height:auto;margin:0 auto 28px;filter:drop-shadow(0 0 6px rgba(191,224,255,.85)) drop-shadow(0 0 22px rgba(142,197,245,.45))}
+.slot h2{max-width:18ch;margin:0 auto}
+.slot p{color:#C9CDD2;max-width:46ch;margin:14px auto 0}
+.slot .cta-rij{justify-content:center}
+.slot .cta-rij .btn{flex:0 1 auto}
+
+/* footer */
+.voet{background:#0E0F11;color:#AEB4BA;font-size:14px;padding:34px 0 26px}
+.voet .wrap{display:grid;gap:10px}
+.voet a{color:#fff}
+.voet img{width:110px;height:auto;margin-bottom:6px}
+
+/* zwevend */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;gap:8px;transform:translateY(140%);transition:transform .3s ease;pointer-events:none}
+.zweef.aan{transform:none;pointer-events:auto}
+.zweef .btn{flex:1;box-shadow:0 10px 28px rgba(0,0,0,.35)}
+@media (min-width:980px){.zweef{display:none}}
+
+/* pitch */
+.pitch-paneel{position:fixed;inset:0;z-index:60;background:rgba(10,11,13,.82);overflow-y:auto;padding:16px}
+.pitch-in{background:#fff;color:var(--inkt);max-width:980px;margin:0 auto;border-radius:20px;padding:24px 20px 28px}
+.pitch-in h2{font-size:clamp(28px,6vw,42px)}
+.pitch-in h3{margin:26px 0 10px}
+.pitch-sluit{float:right;min-height:44px;min-width:44px;border-radius:10px;border:2px solid var(--inkt);background:transparent;font:700 15px var(--tekst);cursor:pointer;padding:0 16px}
+.nunstraks{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.nunstraks figure{margin:0}
+.nunstraks img{width:100%;height:auto;border-radius:12px;border:1px solid var(--muur2)}
+.nunstraks figcaption{font-size:14px;font-weight:700;margin-top:6px}
+.pitch-in ol{padding-left:22px}
+.pitch-in li{margin-bottom:10px}
+.reken{background:var(--muur);border-radius:14px;padding:18px}
+.reken label{display:block;font-weight:600;margin-top:10px}
+.reken input{width:100%;min-height:44px}
+.reken .uit{font:700 24px/1.2 var(--kop);margin:14px 0 6px}
+.prijs{background:var(--nacht);color:#fff;border-radius:14px;padding:18px}
+.prijs p{margin:0 0 10px}
+</style>
+<link rel="stylesheet" href="fonts/fonts.css">
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+
+<div class="demo"><span>Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>.</span><button type="button" class="pitchknop" id="pitchOpen">Pitch openen</button></div>
+<a class="aankondiging" href="https://www.google.com/maps?cid=2048144997272139909" target="_blank" rel="noopener">4,9 ★ uit 92 Google-reviews · di–za 08:45–18:00</a>
+
+<header class="kop">
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="GiCutz Barbershop, naar boven"><img src="logo-dark.svg" alt="GiCutz" width="132" height="25"><span>Barbershop</span></a>
+    <nav aria-label="Hoofdmenu">
+      <a class="los" href="#prijzen">Prijzen</a>
+      <a class="los" href="#bezoek">Route</a>
+      <a class="app" href="#kiezer">Afspraak</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="foto">
+    <img class="zw" src="img/zaak.jpg" alt="" aria-hidden="true" width="900" height="1200" fetchpriority="high">
+    <img class="kl" src="img/zaak.jpg" alt="Binnen bij GiCutz: de neonletters GI CUTZ op de muur, een schilderij met een flamingo, de kappersstoel en de barber erachter" width="900" height="1200">
+    <span class="mes" aria-hidden="true"></span>
+    <div class="schaal" id="schaal" aria-hidden="true">
+      <ol><li><span>4</span></li><li><span>3</span></li><li><span>2</span></li><li><span>1</span></li><li><span>½</span></li><li><span>0</span></li></ol>
+      <i class="stip"></i>
+      <span class="bijschrift">opzetstuk</span>
+    </div>
+  </div>
+  <div class="hero-in">
+    <p class="waar">GiCutz Barbershop · Het Lage Land</p>
+    <h1>Tijd voor een verse coupe?</h1>
+    <p class="sub">Knippen <b>€ 27,50</b>, knippen met baard <b>€ 37,50</b>. Dinsdag tot en met zaterdag van 08:45 tot 18:00.</p>
+    <div class="cta-rij">
+      <a class="btn btn-ijs" id="heroWa" href="https://wa.me/31619649817?text=Hoi%20GiCutz%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20is%20er%20plek%3F"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>App voor een afspraak</a>
+      <a class="btn btn-rand" href="#kiezer">Kies je behandeling</a>
+    </div>
+    <p class="score"><a href="https://www.google.com/maps?cid=2048144997272139909" target="_blank" rel="noopener"><span class="ster">★</span> 4,9 uit 92 Google-reviews</a><span>Rotterdam-Prins Alexander</span></p>
+  </div>
+</section>
+
+<section class="prijzen" id="prijzen">
+  <div class="wrap">
+    <div>
+      <h2>Vijf behandelingen, vaste prijzen</h2>
+      <p class="intro">Zo staan ze ook op de KnipKlok-pagina van GiCutz. Het balkje laat zien hoe lang je in de stoel zit.</p>
+      <p class="wasregel"><b>Gel of wax in je haar?</b> Was het vóór je afspraak. Anders komt er € 5 bij voor het wassen.</p>
+    </div>
+    <ul class="lijst">
+      <li><h3>Knippen<span class="en">Haircut</span></h3><span class="bedrag">€ 27,50</span><span class="duur"><span class="balk" style="--d:30"></span>30 min</span><a class="kies" href="#kiezer" data-dienst="0">Kies</a></li>
+      <li><h3>Knippen met baard<span class="en">Knippen en baard trimmen, met contouren of scheren</span></h3><span class="bedrag">€ 37,50</span><span class="duur"><span class="balk" style="--d:45"></span>45 min</span><a class="kies" href="#kiezer" data-dienst="1">Kies</a></li>
+      <li><h3>Baard<span class="en">Baard trimmen met contouren of scheren</span></h3><span class="bedrag">€ 22,50</span><span class="duur"><span class="balk" style="--d:30"></span>30 min</span><a class="kies" href="#kiezer" data-dienst="2">Kies</a></li>
+      <li><h3>Contouren<span class="en">Line-up</span></h3><span class="bedrag">€ 17,50</span><span class="duur"><span class="balk" style="--d:15"></span>15 min</span><a class="kies" href="#kiezer" data-dienst="3">Kies</a></li>
+      <li><h3>Kinderen knippen<span class="en">Tot en met 12 jaar</span></h3><span class="bedrag">€ 25</span><span class="duur"><span class="balk" style="--d:30"></span>30 min</span><a class="kies" href="#kiezer" data-dienst="4">Kies</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="kiezer" id="kiezer">
+  <div class="wrap">
+    <h2>Je afsprakenkaartje, in drie tikken</h2>
+    <p class="intro">Kies wat je wilt, welke dag en wanneer het je uitkomt. Het WhatsApp-bericht staat daarna klaar.</p>
+    <div class="rooster">
+      <div class="stappen-k">
+        <div class="stap-k"><h3>1 · Welke behandeling</h3><div class="chips" id="diensten"></div></div>
+        <div class="stap-k"><h3>2 · Op welke dag</h3><div class="dagen" id="dagen"></div></div>
+        <div class="stap-k"><h3>3 · In welk dagdeel</h3><div class="chips" id="dagdelen"></div></div>
+      </div>
+      <aside class="kaartje" aria-live="polite">
+        <p class="titel">GiCutz · afspraak</p>
+        <dl>
+          <dt>Wat</dt><dd id="kWat">Nog niet gekozen</dd>
+          <dt>Prijs</dt><dd id="kPrijs">–</dd>
+          <dt>Dag</dt><dd id="kDag">Nog niet gekozen</dd>
+          <dt>Wanneer</dt><dd id="kDeel">Nog niet gekozen</dd>
+        </dl>
+        <a class="btn btn-donker" id="kiesWa" href="https://wa.me/31619649817?text=Hoi%20GiCutz%2C%20ik%20wil%20graag%20een%20afspraak%20maken."><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>Verstuur via WhatsApp</a>
+        <p class="of">Liever zelf een tijd prikken? <a href="https://knipklok.nl/kapperszaak/gicutz-barbershop" target="_blank" rel="noopener">Boek online via KnipKlok</a>.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="waarom" id="waarom">
+  <div class="wrap">
+    <h2>Waarom GiCutz</h2>
+    <div class="drie">
+      <article><span class="nr">01</span><h3>Precies werk</h3><p>Klanten schrijven dat het resultaat strak en precies is, en elke keer hetzelfde.</p></article>
+      <article><span class="nr">02</span><h3>Een nette zaak</h3><p>In de reviews gaat het over een schone, nette zaak en een vriendelijke sfeer.</p></article>
+      <article><span class="nr">03</span><h3>Elke maand weer</h3><p>Klanten schrijven dat ze elke maand terugkomen voor hun knipbeurt.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="kopregel">
+      <h2>Gelezen op Google en KnipKlok</h2>
+      <p class="cijfer"><a href="https://www.google.com/maps?cid=2048144997272139909" target="_blank" rel="noopener">4,9 ★</a><small>uit 92 reviews op Google</small></p>
+    </div>
+    <div class="revs">
+      <figure class="rev"><p>Elke keer een perfecte knipbeurt.</p><footer>Erenay · Google</footer></figure>
+      <figure class="rev"><p>Altijd een prettige sfeer.</p><footer>Wilco · Google</footer></figure>
+      <figure class="rev"><p>Elke maand zeer tevreden over het resultaat.</p><footer>Arnaud · Google</footer></figure>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+    <div class="revs">
+      <figure class="rev kk"><p>“Super kwaliteit en service”</p><footer>Robbert N. · KnipKlok</footer></figure>
+      <figure class="rev kk"><p>“Altijd top en netjes!”</p><footer>Damir V. · KnipKlok</footer></figure>
+      <figure class="rev kk"><p>“Excellent service and a great approach to the work!”</p><footer>Vadym V. · KnipKlok</footer></figure>
+    </div>
+    <p class="label">Letterlijk van de <a href="https://knipklok.nl/kapperszaak/gicutz-barbershop" target="_blank" rel="noopener">KnipKlok-pagina van GiCutz</a>.</p>
+  </div>
+</section>
+
+<section class="werkt" id="werkt">
+  <div class="wrap">
+    <h2>Van appje naar stoel</h2>
+    <ol>
+      <li><h3>Kies</h3><p>Behandeling, dag en dagdeel in de keuzehulp hierboven.</p></li>
+      <li><h3>Verstuur</h3><p>Het bericht gaat naar 06 19 64 98 17, met je keuze er al in. Of boek zelf een tijd via KnipKlok.</p></li>
+      <li><h3>Naar de stoel</h3><p>Henk Speksnijderstraat 8, in het Homa-gebouw. Gel of wax in je haar? Eerst even wassen.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2>Vooraf even checken</h2>
+    <div class="lijstje">
+      <details><summary>Is GiCutz op maandag open?</summary><p>Nee. Op maandag en zondag is de zaak dicht. Dinsdag tot en met zaterdag ben je welkom van 08:45 tot 18:00.</p></details>
+      <details><summary>Knippen jullie ook kinderen?</summary><p>Ja. Kinderen tot en met 12 jaar knippen kost € 25.</p></details>
+      <details><summary>Kan ik alleen mijn baard laten doen?</summary><p>Ja. Baard trimmen met contouren of scheren kost € 22,50 en duurt 30 minuten. Alleen contouren (line-up) kan ook, voor € 17,50.</p></details>
+      <details><summary>Moet ik mijn haar vooraf wassen?</summary><p>Zit er gel of wax in je haar, was het dan vóór je afspraak. Anders komt er € 5 bij voor het wassen.</p></details>
+      <details><summary>Waar zit de zaak precies?</summary><p>Aan de Henk Speksnijderstraat 8 in Rotterdam, in het Homa-gebouw.</p></details>
+      <details><summary>Kan ik ook online boeken?</summary><p>Ja, via de <a href="https://knipklok.nl/kapperszaak/gicutz-barbershop" target="_blank" rel="noopener">KnipKlok-pagina van GiCutz</a>. Een appje sturen kan ook.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="bezoek" id="bezoek">
+  <div class="wrap">
+    <h2>Zo vind je de stoel</h2>
+    <div class="rooster">
+      <div>
+        <p class="status" id="status"><i></i><span>Openingstijden</span></p>
+        <p class="adres"><b>Henk Speksnijderstraat 8</b><br>3067 AC Rotterdam<small>In het Homa-gebouw · Het Lage Land, Prins Alexander</small></p>
+        <table class="uren" id="uren">
+          <tr data-d="2"><td>Dinsdag</td><td>08:45 – 18:00</td></tr>
+          <tr data-d="3"><td>Woensdag</td><td>08:45 – 18:00</td></tr>
+          <tr data-d="4"><td>Donderdag</td><td>08:45 – 18:00</td></tr>
+          <tr data-d="5"><td>Vrijdag</td><td>08:45 – 18:00</td></tr>
+          <tr data-d="6"><td>Zaterdag</td><td>08:45 – 18:00</td></tr>
+          <tr data-d="0"><td>Zondag</td><td>dicht</td></tr>
+          <tr data-d="1"><td>Maandag</td><td>dicht</td></tr>
+        </table>
+        <div class="knoppen">
+          <a class="btn btn-donker" href="https://www.google.com/maps/dir/?api=1&amp;destination=Henk%20Speksnijderstraat%208%2C%203067%20AC%20Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+          <a class="btn btn-licht" href="tel:+31619649817">Bel 06 19 64 98 17</a>
+        </div>
+      </div>
+      <div class="mm-kaart" data-src="https://maps.google.com/maps?q=Henk%20Speksnijderstraat%208%2C%203067%20AC%20Rotterdam&amp;z=16&amp;output=embed" data-titel="Kaart: GiCutz Barbershop, Henk Speksnijderstraat 8, Rotterdam">
+        <div class="mk-raster" aria-hidden="true"></div>
+        <div class="mk-weg" style="left:-5%;right:-5%;top:58%;height:12px;transform:rotate(-8deg)" aria-hidden="true"></div>
+        <div class="mk-weg" style="top:-5%;bottom:-5%;left:36%;width:10px;transform:rotate(12deg)" aria-hidden="true"></div>
+        <div class="mk-inhoud">
+          <svg class="mk-pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="#BFE0FF" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          <p class="mk-adres">Henk Speksnijderstraat 8<br>3067 AC Rotterdam</p>
+          <button type="button" class="mk-knop">Toon kaart</button>
+          <p class="mk-uitleg">De kaart komt van Google Maps en laadt pas als je klikt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot" id="slot">
+  <div class="wrap">
+    <img class="neon" src="logo-light.svg" alt="GiCutz" width="520" height="97" loading="lazy" decoding="async">
+    <h2>Plan je volgende coupe</h2>
+    <p>Stuur een appje met wat je wilt en wanneer, of kies het in de keuzehulp.</p>
+    <div class="cta-rij">
+      <a class="btn btn-ijs" href="https://wa.me/31619649817?text=Hoi%20GiCutz%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20is%20er%20plek%3F">Stuur een WhatsApp</a>
+      <a class="btn btn-rand" href="#kiezer">Naar de keuzehulp</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="voet">
+  <div class="wrap">
+    <img src="logo-light.svg" alt="GiCutz" width="110" height="21" loading="lazy" decoding="async">
+    <div>GiCutz Barbershop · Henk Speksnijderstraat 8, 3067 AC Rotterdam · <a href="tel:+31619649817">06 19 64 98 17</a></div>
+    <div>Foto: hoofdfoto van GiCutz Barbershop op Google Maps. Prijzen en tijden: KnipKlok-pagina van GiCutz.</div>
+    <div>Website door <a href="https://mohamedia.nl">Mohamedia</a></div>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-hidden="true">
+  <a class="btn btn-ijs" href="https://wa.me/31619649817?text=Hoi%20GiCutz%2C%20ik%20wil%20graag%20een%20afspraak%20maken.%20Wanneer%20is%20er%20plek%3F" tabindex="-1">Afspraak via WhatsApp</a>
+</div>
+
+<div class="pitch-paneel" id="pitch" hidden role="dialog" aria-modal="true" aria-labelledby="pitch-kop">
+  <div class="pitch-in">
+    <button type="button" class="pitch-sluit" id="pitchDicht">Sluiten</button>
+    <h2 id="pitch-kop">GiCutz: van doorstuur-adres naar eigen zaak online</h2>
+    <div class="nunstraks">
+      <figure><img src="img/voor-knipklok.jpg" alt="Nu: gicutzbarbershop.nl op een telefoon, doorgestuurd naar de KnipKlok-pagina" width="585" height="1266" loading="lazy" decoding="async"><figcaption>Nu: gicutzbarbershop.nl → KnipKlok, 16 nov</figcaption></figure>
+      <figure><img src="img/na-mobiel.jpg" alt="Straks: deze site op een telefoon" width="585" height="1266" loading="lazy" decoding="async"><figcaption>Straks: je eigen site op je eigen domein</figcaption></figure>
+    </div>
+
+    <h3>Wat de site voor GiCutz regelt</h3>
+    <ol>
+      <li><b>Je eigen domein laat je eigen zaak zien.</b> gicutzbarbershop.nl stuurt nu door naar de KnipKlok-pagina, met de letters "GB" op de plek van een logo. Straks kan dat adres deze site openen: jullie neon, de zaak en de prijzen.</li>
+      <li><b>Afspraak in één appje.</b> Behandeling, dag en dagdeel kiezen, en het bericht staat klaar. KnipKlok blijft gewoon werken voor wie zelf een tijd wil prikken.</li>
+      <li><b>Alles in het Nederlands op één plek.</b> De wasregel (€ 5 bij gel of wax) en het Homa-gebouw staan nu alleen in het Engels op KnipKlok. Straks staan ze bij de prijzen, de FAQ en de route.</li>
+    </ol>
+
+    <h3>Rekensom met schuifjes (voorbeeld, geen belofte)</h3>
+    <div class="reken">
+      <label for="rKl">Extra klanten per week: <span id="rKlV">2</span></label>
+      <input type="range" id="rKl" min="1" max="20" value="2">
+      <label for="rBe">Gemiddelde besteding: € <span id="rBeV">27,50</span></label>
+      <input type="range" id="rBe" min="17.5" max="37.5" step="2.5" value="27.5">
+      <p class="uit" id="rUit"></p>
+      <p id="rTerug" style="margin:0"></p>
+    </div>
+
+    <h3>Prijs van de site en het beheer</h3>
+    <div class="prijs">
+      <p><b>€ 595 eenmalig</b>, excl. btw (€ 719,95 incl. btw): site tot 5 pagina's, mobiel, WhatsApp-knop, Google-reviews en route, basis-SEO, hosting inbegrepen, live binnen 48 uur na betaling.</p>
+      <p><b>Plus beheer:</b> € 25 per maand excl. btw (€ 30,25 incl.), dan passen wij prijzen, tijden en foto's voor je aan. Liever zelf aanpassen? Dan het klantportaal: € 249 eenmalig excl. btw (€ 301,29 incl.).</p>
+      <p style="margin:0">Het domein betaal en bezit je zelf. We kijken eerst samen op wiens naam gicutzbarbershop.nl staat; daarna koppelen of verhuizen we het naar je nieuwe site.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var WA='31619649817';
+  var DIENSTEN=[
+    {n:'Knippen',p:'€ 27,50',d:30},
+    {n:'Knippen met baard',p:'€ 37,50',d:45},
+    {n:'Baard',p:'€ 22,50',d:30},
+    {n:'Contouren (line-up)',p:'€ 17,50',d:15},
+    {n:'Kinderen knippen (t/m 12 jaar)',p:'€ 25',d:30}
+  ];
+  /* 0=zo ... 6=za; null=dicht; minuten */
+  var UREN={0:null,1:null,2:[525,1080],3:[525,1080],4:[525,1080],5:[525,1080],6:[525,1080]};
+  var DELEN=[{n:'Ochtend',k:'08:45–12:00',van:525,tot:720},{n:'Middag',k:'12:00–15:00',van:720,tot:900},{n:'Eind van de middag',k:'15:00–18:00',van:900,tot:1080}];
+  var DAG=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+  var MND=['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'];
+  function hhmm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');}
+  function nu(){
+    try{var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Amsterdam',hour:'2-digit',minute:'2-digit',hour12:false,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+      var o={};p.forEach(function(x){o[x.type]=x.value;});
+      var d=new Date(+o.year,+o.month-1,+o.day);return {d:d.getDay(),m:(+o.hour%24)*60+(+o.minute),datum:d};
+    }catch(e){var n=new Date();return {d:n.getDay(),m:n.getHours()*60+n.getMinutes(),datum:new Date(n.getFullYear(),n.getMonth(),n.getDate())};}
+  }
+  var N=nu();
+
+  /* schaal: afstand van de stip uitrekenen */
+  var sch=document.getElementById('schaal');
+  function schaal(){var li=sch.querySelectorAll('li');if(li.length<2)return;var h=li[li.length-1].offsetTop-li[0].offsetTop;sch.style.setProperty('--h',h+'px');}
+  schaal();window.addEventListener('resize',schaal);
+
+  /* status + uren */
+  (function(){
+    var s=document.getElementById('status'),t=s.querySelector('span'),u=UREN[N.d];
+    if(u&&N.m>=u[0]&&N.m<u[1]){s.classList.add('open');t.textContent='Nu open, tot '+hhmm(u[1]);}
+    else if(u&&N.m<u[0]){t.textContent='Vandaag open vanaf '+hhmm(u[0]);}
+    else{for(var i=1;i<=7;i++){var d=(N.d+i)%7;if(UREN[d]){t.textContent='Nu dicht · '+(i===1?'morgen':DAG[d])+' open vanaf '+hhmm(UREN[d][0]);break;}}}
+    var r=document.querySelector('#uren tr[data-d="'+N.d+'"]');if(r)r.classList.add('vandaag');
+  })();
+
+  /* keuzehulp */
+  var keuze={dienst:null,dag:null,deel:null};
+  var dEl=document.getElementById('diensten'),dgEl=document.getElementById('dagen'),deEl=document.getElementById('dagdelen');
+  function chip(html){var b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('aria-pressed','false');b.innerHTML=html;return b;}
+  function druk(el,b){el.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');}
+  DIENSTEN.forEach(function(x,i){
+    var b=chip(x.n+'<small>'+x.p+' · '+x.d+' min</small>');
+    b.addEventListener('click',function(){druk(dEl,b);keuze.dienst=i;kaart();});
+    dEl.appendChild(b);
+  });
+  for(var i=0;i<12;i++){(function(i){
+    var dt=new Date(N.datum);dt.setDate(dt.getDate()+i);var d=dt.getDay(),u=UREN[d];
+    var naam=i===0?'Vandaag':(i===1?'Morgen':DAG[d].charAt(0).toUpperCase()+DAG[d].slice(1,2));
+    var klein=(i<2?DAG[d].slice(0,2)+' ':'')+dt.getDate()+' '+MND[dt.getMonth()];
+    var dicht=!u||(i===0&&N.m>=u[1]-30);
+    if(!u)klein+=' · dicht';else if(dicht)klein+=' · na sluitingstijd';
+    var b=chip(naam+'<small>'+klein+'</small>');b.disabled=dicht;
+    b.addEventListener('click',function(){druk(dgEl,b);keuze.dag={label:DAG[d]+' '+dt.getDate()+' '+MND[dt.getMonth()],vandaag:i===0,d:d};keuze.deel=null;delen();kaart();});
+    dgEl.appendChild(b);
+  })(i);}
+  function delen(){
+    deEl.innerHTML='';
+    DELEN.forEach(function(x,j){
+      var b=chip(x.n+'<small>'+x.k+'</small>');
+      if(keuze.dag&&keuze.dag.vandaag&&N.m>=x.tot-30)b.disabled=true;
+      b.addEventListener('click',function(){druk(deEl,b);keuze.deel=j;kaart();});
+      deEl.appendChild(b);
+    });
+  }
+  delen();
+  function kaart(){
+    var x=keuze.dienst!==null?DIENSTEN[keuze.dienst]:null,dl=keuze.deel!==null?DELEN[keuze.deel]:null;
+    document.getElementById('kWat').textContent=x?x.n:'Nog niet gekozen';
+    document.getElementById('kPrijs').textContent=x?x.p+' · '+x.d+' min':'–';
+    document.getElementById('kDag').textContent=keuze.dag?keuze.dag.label:'Nog niet gekozen';
+    document.getElementById('kDeel').textContent=dl?dl.n.toLowerCase()+' ('+dl.k+')':'Nog niet gekozen';
+    var t='Hoi GiCutz, ik wil graag een afspraak maken';
+    if(x)t+=' voor '+x.n.toLowerCase()+' ('+x.p+')';
+    if(keuze.dag)t+=' op '+keuze.dag.label;
+    if(dl)t+=', het liefst '+(dl.n==='Ochtend'?'in de ochtend':dl.n==='Middag'?'in de middag':'aan het eind van de middag');
+    t+='. Lukt dat?';
+    document.getElementById('kiesWa').href='https://wa.me/'+WA+'?text='+encodeURIComponent(t);
+  }
+  kaart();
+  document.querySelectorAll('.kies[data-dienst]').forEach(function(a){
+    a.addEventListener('click',function(){var b=dEl.querySelectorAll('.chip')[+a.getAttribute('data-dienst')];if(b)b.click();});
+  });
+
+  /* kaart laden met één klik */
+  document.querySelectorAll('.mm-kaart').forEach(function(k){
+    var b=k.querySelector('.mk-knop');if(!b)return;
+    b.addEventListener('click',function(){var f=document.createElement('iframe');f.src=k.getAttribute('data-src');f.title=k.getAttribute('data-titel')||'Kaart';f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';f.allowFullscreen=true;k.innerHTML='';k.appendChild(f);});
+  });
+
+  /* zwevende knop: na de hero, niet zolang de keuzehulp in beeld is */
+  var zweef=document.getElementById('zweef'),heroUit=false,kiezerIn=false;
+  function zetZweef(){var aan=heroUit&&!kiezerIn;zweef.classList.toggle('aan',aan);zweef.setAttribute('aria-hidden',aan?'false':'true');zweef.querySelectorAll('a').forEach(function(a){a.tabIndex=aan?0:-1;});}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){heroUit=!e[0].isIntersecting;zetZweef();}).observe(document.getElementById('hero'));
+    new IntersectionObserver(function(e){kiezerIn=e[0].isIntersecting;zetZweef();},{threshold:.12}).observe(document.getElementById('kiezer'));
+  }
+
+  /* pitch (alleen met ?pitch) */
+  var paneel=document.getElementById('pitch'),rK=document.getElementById('rKl'),rB=document.getElementById('rBe');
+  function eur(v){return v.toLocaleString('nl-NL',{minimumFractionDigits:v%1?2:0,maximumFractionDigits:2});}
+  function reken(){
+    var k=+rK.value,b=+rB.value,jaar=k*b*52;
+    document.getElementById('rKlV').textContent=k;document.getElementById('rBeV').textContent=eur(b).replace(/,5$/,',50');
+    document.getElementById('rUit').textContent='€ '+Math.round(jaar).toLocaleString('nl-NL')+' extra omzet per jaar';
+    document.getElementById('rTerug').textContent='€ 595 is de omzet van '+Math.ceil(595/b)+' behandelingen van € '+eur(b).replace(/,5$/,',50')+'.';
+  }
+  rK.addEventListener('input',reken);rB.addEventListener('input',reken);reken();
+  if(/[?&]pitch\b/.test(location.search)){
+    document.body.classList.add('pitch');
+    document.getElementById('pitchOpen').addEventListener('click',function(){paneel.hidden=false;});
+    document.getElementById('pitchDicht').addEventListener('click',function(){paneel.hidden=true;});
+    paneel.addEventListener('click',function(e){if(e.target===paneel)paneel.hidden=true;});
+  }
+})();
+</script>
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
