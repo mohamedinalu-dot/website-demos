@@ -1,0 +1,631 @@
+<!doctype html>
+<!--
+  Demo L296 Autobedrijf A & A VOF (Vlambloem 151, 3068 JG Rotterdam-Ommoord), Mohamedia, 16 nov 2026. Route O Prins Alexander.
+  Concept in één zin: "Garage en banden onder één dak": hun eigen gevelbord (blauwe band, witte strook met de diensten en
+  rode puntjes) is de huisstijl, en één bandenspoor loopt door de site, omdat de garage en de bandenzaak op Google twee
+  losse vermeldingen zijn maar op de Vlambloem één zaak.
+  Lay-out-archetype: BORD ALS HUISSTIJL + BANDENSPOOR. Mobiel: kop → knoppen → hun gevelfoto (recht, volle breedte) → twee
+  scores naast elkaar (garage + banden). Desktop split: tekst links, gevel rechts, het spoor over de volle breedte eronder.
+  Keuzehulp = "je eigen bord": wat je kiest verschijnt als regel op een nagemaakt A&A-bord, met rode puntjes ertussen.
+  Hero-beweging (eenmalig, daarna stil): een band rolt één keer van links naar rechts; zijn profiel drukt zich af als spoor
+  onder de foto, en achter de profielrand komt de gevel tevoorschijn (wis-vlak met een rand van profielblokken).
+  Bewust NIET: sleutelbord/hangende labels (Kosta's, route N), deurbordje (A-Yee), bento-dashboard + meter (Tarwewijk),
+  kentekenplaat (StarLine), rolluik, werkbon, licht gaat aan, Ken Burns, stoom, marquee/band, stempel, schuine fotokaart,
+  letters één voor één, foto in vormkader, eyebrow + tweekleurige kop.
+  Foto: hoofdfoto van de Google Maps-vermelding "Autobanden A&A" (zelfde adres), uploader niet zichtbaar in de beperkte
+  weergave; bijgesneden tot bord + deur (auto's en het bewerkte vlak van de uploader eruit), klein merklabel op de deur vervaagd.
+  Logo: nagetekend naar het embleem op hun gevelbord (tandwielring, "AUTO BEDRIJF" in de boog, blauwe balk met A & A, drie puntjes)
+  + hun woordmerk AUTOBEDRIJF A&A; letters als paden (Red Hat Display). Fonts: Red Hat Display + Public Sans, zelf gehost.
+  Nummer: 06 45725603 (Google Maps, eerste nummer op hun bord). Geen openingstijden (niet bevestigd), geen eigenaarsnaam.
+-->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Autobedrijf A &amp; A – garage en banden in Rotterdam-Ommoord</title>
+<meta name="description" content="Autobedrijf A &amp; A aan de Vlambloem 151 in Rotterdam-Ommoord: APK-keuring, onderhoud en reparatie, banden, schade en plaatwerk, storing uitlezen en in- en verkoop. App je afspraak.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/red-hat-display-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  --blauw:#1B3FA0;--blauw2:#2A55C9;--diep:#0E1A33;--inkt:#16202F;--grijs:#5B6676;
+  --beton:#EEF0F3;--beton2:#DFE3E9;--wit:#fff;--rood:#D4372C;--rubber:#1D2026;--lijn:#CFD5DE;
+  --kop:'Red Hat Display',system-ui,sans-serif;--tekst:'Public Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;font:400 17px/1.6 var(--tekst);color:var(--inkt);background:var(--beton);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--blauw)}
+h1,h2,h3{font-family:var(--kop);line-height:1.08;margin:0 0 .4em;color:var(--diep);overflow-wrap:break-word}
+h2{font-size:clamp(30px,7vw,46px);font-weight:900;letter-spacing:-.01em}
+h3{font-size:clamp(19px,4.6vw,22px);font-weight:700}
+p{margin:0 0 1em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+@media (min-width:900px){.wrap{padding:0 40px}}
+section{padding:72px 0}
+@media (min-width:900px){section{padding:104px 0}}
+
+/* demo-strook + aankondiging */
+.demo{background:var(--diep);color:#DCE4F5;font-size:13.5px;text-align:center;padding:9px 16px;line-height:1.5}
+.demo a{color:#fff;display:inline-flex;align-items:center;min-height:30px}
+.demo .pitchknop{display:none}
+body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid #9fb2e0;background:transparent;color:#fff;font:700 13px var(--tekst);cursor:pointer;align-items:center;vertical-align:middle}
+.meld{background:var(--blauw);color:#fff;font:600 14px/1.4 var(--tekst);text-align:center;padding:10px 16px}
+.meld .ster{color:#FFD15C}
+.meld .stip{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--rood);margin:0 10px;vertical-align:middle;box-shadow:0 0 0 2px rgba(255,255,255,.9)}
+
+/* header */
+.kopbalk{background:#fff;border-bottom:1px solid var(--lijn)}
+.kopbalk .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:68px}
+.kopbalk .merk{display:flex;align-items:center;min-width:0;min-height:44px}
+.kopbalk .merk img{height:40px;width:auto;max-width:100%}
+.kopbalk nav{display:none;gap:4px}
+.kopbalk nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;color:var(--inkt);text-decoration:none;font-weight:600;font-size:15px}
+.kopbalk nav a:hover{color:var(--blauw)}
+.belknop{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:10px;border:2px solid var(--blauw);color:var(--blauw);font:700 15px var(--tekst);text-decoration:none;white-space:nowrap;flex:none}
+.belknop svg{width:18px;height:18px}
+@media (max-width:400px){.kopbalk .merk img{height:34px}.belknop{padding:0 12px}}
+@media (min-width:980px){.kopbalk nav{display:flex}.kopbalk .merk img{height:46px}}
+
+/* knoppen */
+.knop{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:12px;font:700 16.5px/1.15 var(--tekst);text-decoration:none;border:2px solid transparent;cursor:pointer;text-align:center}
+.knop svg{width:21px;height:21px;flex:none}
+.knop.wa{background:var(--blauw);color:#fff;box-shadow:0 6px 0 #0F2A73}
+.knop.wa:hover{background:var(--blauw2)}
+.knop.wa:active{box-shadow:0 2px 0 #0F2A73}
+.knop.twee{background:#fff;color:var(--diep);border-color:var(--diep)}
+.knop.twee:hover{background:var(--diep);color:#fff}
+.knop.licht{background:#fff;color:var(--blauw);box-shadow:0 6px 0 rgba(0,0,0,.25)}
+
+/* bandenspoor (profiel) */
+.spoor{height:30px;background-color:var(--rubber);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='30' viewBox='0 0 26 30'%3E%3Cg fill='%23525A68'%3E%3Cpath d='M2 2h8l9 11.5h-8z'/%3E%3Cpath d='M2 28h8l9-11.5h-8z'/%3E%3C/g%3E%3Cpath fill='%23111318' d='M0 14h26v2H0z'/%3E%3C/svg%3E");
+  background-repeat:repeat-x;background-size:26px 30px}
+.spoor.dun{height:18px;background-size:15.6px 18px;opacity:.9}
+
+/* hero */
+.hero{padding:30px 0 0;background:var(--beton);position:relative;overflow:hidden}
+.hero .rij{display:grid;gap:22px}
+.hero h1{font-size:clamp(38px,10.4vw,74px);font-weight:900;letter-spacing:-.02em;margin-bottom:.32em}
+.hero .sub{font-size:clamp(16.5px,4.3vw,19px);color:#334055;max-width:34em;margin-bottom:22px}
+.hero .knoppen{display:flex;flex-wrap:wrap;gap:12px 12px;margin-bottom:6px}
+.hero .knoppen .knop{flex:1 1 140px;padding:0 16px}
+.hero .knoppen .knop.wa{flex:1.45 1 190px}
+.fotokader{position:relative;margin:0 -20px;overflow:hidden;background:var(--beton2)}
+.fotokader img{width:100%;height:auto;aspect-ratio:1000/864;object-fit:cover}
+.fotokader .wis{position:absolute;inset:0 -40px 0 0;background:var(--beton);transform:translateX(101%);pointer-events:none}
+.fotokader .wis::before{content:"";position:absolute;left:-26px;top:0;bottom:0;width:26px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='30' viewBox='0 0 26 30'%3E%3Cpath fill='%23EEF0F3' d='M26 0v30H14l8-15-8-15z'/%3E%3C/svg%3E") repeat-y;background-size:26px 30px}
+.fotokader figcaption{position:absolute;left:12px;bottom:12px;background:rgba(14,26,51,.82);color:#fff;font-size:12.5px;line-height:1.3;padding:7px 10px;border-radius:8px;max-width:calc(100% - 24px)}
+.hero .spoor{margin:0 -20px}
+.scores{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0 -20px;background:#fff;border-bottom:1px solid var(--lijn)}
+.scores a{display:block;padding:16px 18px 18px;text-decoration:none;color:var(--inkt);min-height:44px}
+.scores a+a{border-left:1px solid var(--lijn)}
+.scores .cijfer{font:900 clamp(28px,7vw,38px)/1 var(--kop);color:var(--diep);display:flex;align-items:center;gap:8px}
+.scores .cijfer svg{width:22px;height:22px;flex:none}
+.scores .wat{font-size:14px;color:var(--grijs);line-height:1.35;margin-top:6px}
+.scores .wat b{color:var(--inkt)}
+@media (min-width:900px){
+  .hero{padding-top:56px}
+  .hero .rij{grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+  .fotokader{margin:0;border-radius:16px 16px 0 0}
+  .hero .spoor{margin:0}
+  .scores{margin:0 0 0 auto;max-width:620px;border:1px solid var(--lijn);border-top:0;border-radius:0 0 16px 16px}
+  .hero .tekst{padding-bottom:40px}
+}
+/* hero-beweging: band rolt één keer over het scherm */
+@keyframes wis{from{transform:translateX(0)}to{transform:translateX(101%)}}
+@keyframes druk{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.js .fotokader .wis{animation:wis 1.5s cubic-bezier(.55,.05,.35,1) .35s both}
+.js .hero .spoor{animation:druk 1.5s cubic-bezier(.55,.05,.35,1) .35s both}
+@media (prefers-reduced-motion:reduce){.js .fotokader .wis,.js .hero .spoor{animation:none}.fotokader .wis{display:none}}
+
+/* het bord: diensten */
+.bord{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 0 var(--lijn),0 18px 40px -24px rgba(14,26,51,.35)}
+.bord .boven{display:flex;align-items:center;gap:14px;background:var(--blauw);color:#fff;padding:14px 18px}
+.bord .boven .embleem{flex:none;width:56px;height:56px;background:#fff;border-radius:50%;display:grid;place-items:center}
+.bord .boven .embleem img{width:50px;height:50px}
+.bord .boven b{font:900 clamp(20px,5.4vw,30px)/1.05 var(--kop);letter-spacing:.01em}
+.bord .boven small{display:block;font:600 13px/1.3 var(--tekst);opacity:.85;margin-top:4px}
+.bord ul{list-style:none;margin:0;padding:14px 16px 16px;display:flex;flex-wrap:wrap;gap:4px 0;font:700 clamp(15px,4vw,18px)/1.5 var(--kop);color:var(--diep)}
+.bord li{display:inline-flex;align-items:center}
+.bord li+li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--rood);margin:0 10px}
+.dienstuitleg{display:grid;gap:14px;margin-top:28px}
+.dienstuitleg article{background:#fff;border:1px solid var(--lijn);border-radius:14px;padding:20px 20px 18px;min-width:0}
+.dienstuitleg h3{display:flex;align-items:center;gap:10px}
+.dienstuitleg h3::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--rood);flex:none}
+.dienstuitleg p{margin:0;color:#3a4658;font-size:16px}
+.dienstuitleg a{display:inline-flex;align-items:center;min-height:44px;font-weight:700}
+@media (min-width:760px){.dienstuitleg{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1080px){.dienstuitleg{grid-template-columns:repeat(3,1fr)}}
+
+/* keuzehulp */
+.kies{background:var(--diep);color:#E6ECF8}
+.kies h2{color:#fff}
+.kies .intro{color:#C4D0E8;max-width:36em}
+.kies .raster{display:grid;gap:26px;margin-top:26px}
+.kies .raster>*{min-width:0}
+@media (min-width:980px){.kies .raster{grid-template-columns:1.1fr .9fr;align-items:start}}
+.stap{margin-bottom:22px}
+.stap .nr{font:900 14px var(--kop);letter-spacing:.08em;text-transform:uppercase;color:#9DB3EA;margin:0 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:46px;padding:0 16px;border-radius:999px;border:2px solid #3B4F7C;background:transparent;color:#fff;font:600 15.5px var(--tekst);cursor:pointer}
+.chip[aria-pressed="true"]{background:#fff;color:var(--diep);border-color:#fff}
+.chip:focus-visible{outline:3px solid #FFD15C;outline-offset:2px}
+.veld label{display:block;font-weight:600;margin-bottom:8px;color:#fff}
+.veld input{width:100%;max-width:280px;min-height:48px;border-radius:10px;border:2px solid #3B4F7C;background:#13244A;color:#fff;font:700 18px var(--tekst);padding:0 14px;letter-spacing:.06em;text-transform:uppercase}
+.veld input::placeholder{color:#7F91BA;letter-spacing:0;text-transform:none;font-weight:400}
+.mijnbord{position:sticky;top:16px}
+.mijnbord .bord ul{min-height:62px}
+.mijnbord .bericht{background:#E7F7DE;color:#1B2B12;border-radius:14px 14px 14px 4px;padding:14px 16px;margin:16px 0 14px;font-size:15.5px;line-height:1.5}
+.mijnbord .bericht small{display:block;color:#4d6a3a;font-size:12.5px;margin-bottom:4px;font-weight:600}
+.mijnbord .knop{width:100%}
+.mijnbord .klein{font-size:13.5px;color:#AFC0E0;margin:12px 0 0}
+
+/* waarom */
+.waarom .kaarten{display:grid;gap:16px;margin-top:28px}
+.waarom .kaart{background:#fff;border-radius:16px;padding:24px 22px;border-top:6px solid var(--blauw);min-width:0}
+.waarom .kaart:nth-child(2){border-top-color:var(--rood)}
+.waarom .kaart:nth-child(3){border-top-color:var(--rubber)}
+.waarom .kaart p{margin:0;color:#3a4658}
+@media (min-width:860px){.waarom .kaarten{grid-template-columns:repeat(3,1fr)}}
+
+/* reviews */
+.reviews{background:#fff}
+.reviews .top{display:grid;gap:18px;align-items:end}
+@media (min-width:860px){.reviews .top{grid-template-columns:1fr auto}}
+.reviews .bron{display:flex;flex-wrap:wrap;gap:10px}
+.reviews .bron a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid var(--lijn);border-radius:10px;text-decoration:none;color:var(--inkt);font-weight:600;font-size:15px}
+.reviews .bron a b{font-family:var(--kop);font-weight:900;color:var(--diep)}
+.citaten{display:grid;gap:16px;margin-top:28px}
+@media (min-width:860px){.citaten{grid-template-columns:repeat(3,1fr)}}
+.citaat{margin:0;background:var(--beton);border-radius:16px;padding:22px 22px 20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.citaat .sterren{color:#E5A100;letter-spacing:2px;font-size:17px}
+.citaat blockquote{margin:0;font:600 18px/1.45 var(--kop);color:var(--diep)}
+.citaat figcaption{font-size:14.5px;color:var(--grijs);margin-top:auto}
+.reviews .noot{font-size:13.5px;color:var(--grijs);margin:18px 0 0}
+
+/* stappen */
+.stappen ol{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px;counter-reset:s}
+.stappen li{counter-increment:s;background:#fff;border-radius:16px;padding:22px 22px 20px 78px;position:relative;min-width:0}
+.stappen li::before{content:counter(s);position:absolute;left:20px;top:20px;width:42px;height:42px;border-radius:50%;background:var(--rubber);color:#fff;display:grid;place-items:center;font:900 20px var(--kop);box-shadow:0 0 0 4px #fff,0 0 0 6px var(--rubber)}
+.stappen li p{margin:0;color:#3a4658}
+@media (min-width:860px){.stappen ol{grid-template-columns:repeat(3,1fr)}}
+
+/* faq */
+.faq{background:#fff}
+.faq details{border-bottom:1px solid var(--lijn)}
+.faq summary{cursor:pointer;list-style:none;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:14px;font:700 clamp(17px,4.4vw,19px)/1.3 var(--kop);color:var(--diep);padding:10px 0}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:400 28px/1 var(--tekst);color:var(--blauw);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0 0 18px;color:#3a4658;max-width:44em}
+.faq .lijst{max-width:820px;margin-top:20px}
+
+/* route */
+.route .raster{display:grid;gap:24px;margin-top:24px}
+.route .raster>*{min-width:0}
+@media (min-width:900px){.route .raster{grid-template-columns:.9fr 1.1fr;align-items:center}}
+.route dl{margin:0 0 20px;display:grid;gap:14px}
+.route dt{font:700 13px var(--tekst);letter-spacing:.08em;text-transform:uppercase;color:var(--grijs)}
+.route dd{margin:2px 0 0;font-size:18px}
+.route dd a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;white-space:nowrap}
+.route .knoppen{display:flex;flex-wrap:wrap;gap:12px}
+.mm-kaart{--mk-bg:#1B3FA0;--mk-fg:#fff;--mk-accent:#fff;--mk-lijn:rgba(255,255,255,.08);position:relative;aspect-ratio:4/3;width:100%;border-radius:16px;overflow:hidden;background:var(--mk-bg);color:var(--mk-fg)}
+.mm-kaart .mk-raster{position:absolute;inset:0;background:linear-gradient(var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px}
+.mm-kaart .mk-weg{position:absolute;background:rgba(255,255,255,.16);border-radius:6px}
+.mm-kaart .mk-snel{position:absolute;left:-5%;right:-5%;bottom:14%;height:18px;transform:rotate(-4deg);background:rgba(255,255,255,.22)}
+.mm-kaart .mk-inhoud{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mm-kaart .mk-pin{width:46px;height:46px}
+.mm-kaart .mk-adres{font-weight:700;line-height:1.35;margin:0}
+.mm-kaart .mk-knop{min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--mk-accent);background:transparent;color:var(--mk-fg);font:700 15px var(--tekst);cursor:pointer}
+.mm-kaart .mk-knop:hover,.mm-kaart .mk-knop:focus-visible{background:#fff;color:var(--blauw)}
+.mm-kaart .mk-uitleg{font-size:12.5px;opacity:.8;max-width:30ch;margin:0}
+.mm-kaart iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* slot */
+.slot{background:var(--blauw);color:#fff;text-align:left;padding-bottom:0}
+.slot h2{color:#fff;max-width:16ch}
+.slot p{color:#DCE5FA;max-width:34em}
+.slot .knoppen{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 56px}
+.slot .knop.twee{background:transparent;color:#fff;border-color:#fff}
+.slot .knop.twee:hover{background:#fff;color:var(--blauw)}
+
+/* footer */
+footer{background:var(--diep);color:#B9C6E2;font-size:14.5px;padding:44px 0 90px}
+footer .raster{display:grid;gap:22px}
+@media (min-width:860px){footer .raster{grid-template-columns:1.2fr 1fr 1fr}}
+footer a{color:#fff;display:inline-flex;align-items:center;min-height:44px}
+footer p{margin:0 0 6px}
+footer .credit{border-top:1px solid #26365c;margin-top:26px;padding-top:16px;font-size:13.5px}
+
+/* zwevende knop */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;justify-content:center;transform:translateY(140%);transition:transform .3s ease}
+.zweef.aan{transform:none}
+.zweef .knop{width:100%;max-width:420px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+@media (min-width:900px){.zweef{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.zweef{transition:none}}
+
+/* pitch */
+.pitchpaneel{position:fixed;inset:0;z-index:60;background:rgba(10,14,24,.72);display:flex;justify-content:flex-end}
+.pitchpaneel .in{background:#fff;color:var(--inkt);width:min(580px,100%);height:100%;overflow:auto;padding:22px 20px 40px}
+.pitchpaneel h2{font-size:clamp(26px,6vw,34px)}
+.pitchpaneel h3{margin-top:26px;margin-bottom:8px}
+.pitchpaneel .sluit{float:right;min-height:44px;min-width:44px;border-radius:8px;border:1px solid var(--lijn);background:#fff;font:700 15px var(--tekst);cursor:pointer;padding:0 14px}
+.nuenstraks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;clear:both}
+.nuenstraks figure{margin:0}
+.nuenstraks img{width:100%;height:auto;border-radius:12px;border:1px solid var(--lijn)}
+.nuenstraks figcaption{font-size:13px;color:var(--grijs);margin-top:6px;line-height:1.4}
+.pitchpaneel ul{padding-left:20px}
+.pitchpaneel li{margin-bottom:8px}
+.reken{background:var(--beton);border-radius:12px;padding:16px}
+.reken label{display:block;font-weight:600;margin-top:10px}
+.reken input{width:100%;min-height:44px}
+.reken .uit{margin-top:12px;background:#fff;border-radius:10px;padding:12px 14px}
+.prijs{background:var(--beton);border-radius:12px;padding:16px}
+.prijs p{margin:0 0 10px}
+</style>
+
+<script>document.documentElement.classList.add('js')</script>
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>. <button type="button" class="pitchknop" id="pitchOpen">Pitch openen</button></div>
+<div class="meld"><span class="ster">★</span> 5,0 uit 27 Google-reviews <span class="stip" aria-hidden="true"></span> banden: <span class="ster">★</span> 4,8 uit 45</div>
+
+<header class="kopbalk">
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="Autobedrijf A &amp; A, naar boven"><img src="logo-dark.svg" width="355" height="72" alt="Autobedrijf A &amp; A"></a>
+    <nav aria-label="Hoofdmenu"><a href="#diensten">Diensten</a><a href="#kies">Afspraak</a><a href="#reviews">Reviews</a><a href="#route">Route</a></nav>
+    <a class="belknop" href="tel:+31645725603"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>Bellen</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="wrap">
+    <div class="rij">
+      <div class="tekst">
+        <h1>Je auto en je banden onder één dak.</h1>
+        <p class="sub">Autobedrijf A &amp; A in Ommoord, Rotterdam: APK-keuring, onderhoud en reparatie, banden, schade en plaatwerk, storing uitlezen en in- en verkoop. App wat je auto nodig heeft.</p>
+        <div class="knoppen">
+          <a class="knop wa" href="https://wa.me/31645725603?text=Hoi%20Autobedrijf%20A%20%26%20A%2C%20ik%20wil%20graag%20een%20afspraak%20voor%20mijn%20auto.%20Wanneer%20kan%20ik%20terecht%3F"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg>App je afspraak</a>
+          <a class="knop twee" href="#kies">Kies je klus</a>
+        </div>
+      </div>
+      <div class="beeld">
+        <figure class="fotokader" style="margin-top:0;margin-bottom:0">
+          <img src="img/gevel.jpg" width="1000" height="864" fetchpriority="high" alt="De gevel van Autobedrijf A &amp; A aan de Vlambloem 151: blauw-wit bord met de diensten boven een witte garagedeur">
+          <div class="wis" aria-hidden="true"></div>
+          <figcaption>Vlambloem 151, Ommoord</figcaption>
+        </figure>
+        <div class="spoor" aria-hidden="true"></div>
+        <div class="scores">
+          <a href="https://www.google.com/maps?cid=16360451452311828655" target="_blank" rel="noopener"><span class="cijfer"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#E5A100" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>5,0</span><span class="wat"><b>Garage</b> · 27 reviews op Google</span></a>
+          <a href="https://www.google.com/maps?cid=6260528512439402523" target="_blank" rel="noopener"><span class="cijfer"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#E5A100" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg>4,8</span><span class="wat"><b>Banden</b> · 45 reviews op Google</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diensten">
+  <div class="wrap">
+    <h2>Wat er op het bord staat</h2>
+    <p style="max-width:36em;color:#3a4658">Op de gevel aan de Vlambloem hangt het al: alles voor je auto op één adres. Hieronder hetzelfde bord, en per onderdeel waar je voor kunt komen.</p>
+    <div class="bord" style="margin-top:22px">
+      <div class="boven"><span class="embleem"><img src="favicon.svg" width="50" height="50" alt="" loading="lazy" decoding="async"></span><div><b>AUTOBEDRIJF A&amp;A</b><small>Vlambloem 151 · Rotterdam-Ommoord</small></div></div>
+      <ul>
+        <li>APK-keuring</li><li>Bandenservice</li><li>Onderhoud &amp; reparatie</li><li>Schadetaxaties + plaatwerk</li><li>In- &amp; verkoop</li><li>Bemiddeling</li><li>EOBD uitlezen</li>
+      </ul>
+    </div>
+    <div class="dienstuitleg">
+      <article><h3>APK en onderhoud</h3><p>De APK-keuring en de service- en onderhoudsbeurt van je auto.</p><a href="#kies" data-dienst="apk">APK aanvragen</a></article>
+      <article><h3>Banden</h3><p>Bandenservice, en ook groothandel in banden. Op Google staat de bandenkant apart als Autobanden A&amp;A, op hetzelfde adres.</p><a href="#kies" data-dienst="banden">Banden aanvragen</a></article>
+      <article><h3>Reparatie en storing</h3><p>Reparaties, en het uitlezen van storingen (EOBD) als er een lampje brandt.</p><a href="#kies" data-dienst="storing">Storing doorgeven</a></article>
+      <article><h3>Schade en plaatwerk</h3><p>Schadetaxaties, schadeherstel en plaatwerk.</p><a href="#kies" data-dienst="schade">Schade doorgeven</a></article>
+      <article><h3>Kopen en verkopen</h3><p>In- en verkoop van auto's, bemiddeling en advies over autofinanciering.</p><a href="#kies" data-dienst="inverkoop">Over kopen of verkopen</a></article>
+      <article><h3>Pech en vervangend vervoer</h3><p>Pechhulp en vervangend vervoer horen er ook bij. Vraag even wat er kan als je belt of appt.</p><a href="#kies" data-dienst="anders">Iets anders vragen</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="kies" id="kies">
+  <div class="wrap">
+    <h2>Zet je klus op het bord</h2>
+    <p class="intro">Kies wat je auto nodig heeft en wanneer het je uitkomt. Je bericht staat daarna klaar in WhatsApp, naar 06 45 72 56 03.</p>
+    <div class="raster">
+      <div>
+        <div class="stap">
+          <p class="nr">1 · Wat moet er gebeuren?</p>
+          <div class="chips" data-groep="dienst">
+            <button type="button" class="chip" data-w="apk" aria-pressed="true">APK-keuring</button>
+            <button type="button" class="chip" data-w="onderhoud" aria-pressed="false">Onderhoud of reparatie</button>
+            <button type="button" class="chip" data-w="banden" aria-pressed="false">Banden</button>
+            <button type="button" class="chip" data-w="storing" aria-pressed="false">Storing of lampje</button>
+            <button type="button" class="chip" data-w="schade" aria-pressed="false">Schade of plaatwerk</button>
+            <button type="button" class="chip" data-w="inverkoop" aria-pressed="false">Auto kopen of verkopen</button>
+            <button type="button" class="chip" data-w="anders" aria-pressed="false">Iets anders</button>
+          </div>
+        </div>
+        <div class="stap" id="stapVariant">
+          <p class="nr" id="variantKop">2 · Welke beurt?</p>
+          <div class="chips" data-groep="variant" id="varianten"></div>
+        </div>
+        <div class="stap">
+          <p class="nr">3 · Wanneer komt het je uit?</p>
+          <div class="chips" data-groep="wanneer">
+            <button type="button" class="chip" data-w="zo snel mogelijk" aria-pressed="true">Zo snel mogelijk</button>
+            <button type="button" class="chip" data-w="deze week" aria-pressed="false">Deze week</button>
+            <button type="button" class="chip" data-w="volgende week" aria-pressed="false">Volgende week</button>
+            <button type="button" class="chip" data-w="" aria-pressed="false">Maakt niet uit</button>
+          </div>
+        </div>
+        <div class="stap veld">
+          <label for="kenteken">Kenteken (mag leeg blijven)</label>
+          <input id="kenteken" type="text" inputmode="text" autocomplete="off" maxlength="10" placeholder="bijv. je kenteken">
+        </div>
+      </div>
+      <div class="mijnbord">
+        <div class="bord">
+          <div class="boven"><span class="embleem"><img src="favicon.svg" width="50" height="50" alt="" loading="lazy" decoding="async"></span><div><b id="bordKlus">APK-keuring</b><small>jouw klus bij Autobedrijf A&amp;A</small></div></div>
+          <ul id="bordRegel"><li>APK</li></ul>
+        </div>
+        <div class="bericht"><small>Je appje</small><span id="bericht"></span></div>
+        <a class="knop licht" id="stuur" href="https://wa.me/31645725603?text=Hoi%20Autobedrijf%20A%20%26%20A%2C%20ik%20wil%20graag%20een%20afspraak%20voor%20de%20APK-keuring."><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>Verstuur via WhatsApp</a>
+        <p class="klein">Liever bellen? <a href="tel:+31645725603" style="color:#fff;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;min-height:44px">06 45 72 56 03</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="waarom">
+  <div class="wrap">
+    <h2>Waarom mensen naar de Vlambloem rijden</h2>
+    <div class="kaarten">
+      <div class="kaart"><h3>Een eerlijk verhaal</h3><p>Klanten schrijven over een no-nonsense aanpak en eerlijk, deskundig advies.</p></div>
+      <div class="kaart"><h3>Een huiselijke garage</h3><p>Reviewers noemen het een huiselijke garage. Een aantal komt er naar eigen zeggen al jaren.</p></div>
+      <div class="kaart"><h3>Ook geholpen als het spoed had</h3><p>Klanten schrijven dat ze snel geholpen werden in een noodgeval, en één keer met een schroef in de band op een zaterdagmiddag.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="top">
+      <div><h2>Wat klanten op Google zetten</h2><p style="margin:0;color:#3a4658">Twee vermeldingen, één zaak: de garage en de bandenkant aan de Vlambloem 151.</p></div>
+      <div class="bron">
+        <a href="https://www.google.com/maps?cid=16360451452311828655" target="_blank" rel="noopener"><b>5,0</b> ★ · 27 reviews garage</a>
+        <a href="https://www.google.com/maps?cid=6260528512439402523" target="_blank" rel="noopener"><b>4,8</b> ★ · 45 reviews banden</a>
+      </div>
+    </div>
+    <div class="citaten">
+      <figure class="citaat"><blockquote>“Hele huiselijke garage en no-nonsense aanpak. De garage om hulp te krijgen of een eerlijk verhaal.”</blockquote><figcaption>Bas, op Google</figcaption></figure>
+      <figure class="citaat"><blockquote>“Fijne auto garage, kom hier al jaren voor een eerlijk en deskundig advies APK en service beurten.”</blockquote><figcaption>Andre, op Google</figcaption></figure>
+      <figure class="citaat"><blockquote>“Ik had een schroef in de band op zaterdagmiddag. Zondag moest ik met de auto op pad. Ze hebben me super geholpen.”</blockquote><figcaption>Jeroen, op Google</figcaption></figure>
+    </div>
+    <p class="noot">Letterlijk overgenomen uit reviews bij Autobedrijf A &amp; A Vof op Google Maps (gelezen 16 november 2026), soms ingekort.</p>
+  </div>
+</section>
+
+<section class="stappen">
+  <div class="wrap">
+    <h2>Van appje tot werkplaats</h2>
+    <div class="spoor dun" aria-hidden="true" style="margin-top:18px;border-radius:4px"></div>
+    <ol>
+      <li><h3>Kies je klus</h3><p>APK, banden, een storing of iets anders. Met kenteken erbij als je wilt.</p></li>
+      <li><h3>App het naar de werkplaats</h3><p>Je bericht staat klaar in WhatsApp en gaat zo naar de garage.</p></li>
+      <li><h3>Rij naar Vlambloem 151</h3><p>Op de afgesproken dag breng je de auto naar het bedrijventerrein in Ommoord.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <h2>Voor je de garage belt</h2>
+    <div class="lijst">
+      <details><summary>Op welk nummer bereik ik jullie?</summary><p>Op 06 45 72 56 03, bellen of WhatsApp. Dat nummer staat ook als eerste op het bord aan de gevel.</p></details>
+      <details><summary>Zijn de garage en Autobanden A&amp;A dezelfde zaak?</summary><p>Ja. Op Google staan ze als twee vermeldingen, maar het adres is hetzelfde: Vlambloem 151 in Rotterdam.</p></details>
+      <details><summary>Wanneer kan ik langskomen?</summary><p>Je plant je afspraak via WhatsApp. App of bel even voordat je komt, dan weet je zeker dat er iemand is.</p></details>
+      <details><summary>Kunnen jullie een storingslampje uitlezen?</summary><p>Ja, EOBD uitlezen staat op het bord, net als onderhoud en reparatie.</p></details>
+      <details><summary>Kan ik mijn auto bij jullie verkopen?</summary><p>In- en verkoop van auto's en bemiddeling staan op het bord. Kies in de keuzehulp "Auto kopen of verkopen" en vertel wat je zoekt of hebt.</p></details>
+      <details><summary>Doen jullie ook schade?</summary><p>Ja: schadetaxaties, schadeherstel en plaatwerk.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="route" id="route">
+  <div class="wrap">
+    <h2>Zo rij je naar de garage</h2>
+    <div class="raster">
+      <div>
+        <dl>
+          <div><dt>Adres</dt><dd>Vlambloem 151<br>3068 JG Rotterdam (Ommoord)</dd></div>
+          <div><dt>Bellen of appen</dt><dd><a href="tel:+31645725603">06 45 72 56 03</a></dd></div>
+          <div><dt>Tijden</dt><dd>App of bel even voordat je komt.</dd></div>
+        </dl>
+        <div class="knoppen">
+          <a class="knop wa" href="https://www.google.com/maps/dir/?api=1&amp;destination=Vlambloem%20151%2C%203068%20JG%20Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+          <a class="knop twee" href="https://wa.me/31645725603?text=Hoi%20Autobedrijf%20A%20%26%20A%2C%20ik%20wil%20graag%20langskomen%20met%20mijn%20auto.%20Wanneer%20kan%20ik%20terecht%3F">App even vooraf</a>
+        </div>
+      </div>
+      <div class="mm-kaart" data-src="https://maps.google.com/maps?q=Vlambloem%20151%2C%203068%20JG%20Rotterdam&amp;z=16&amp;output=embed" data-titel="Kaart: Autobedrijf A &amp; A, Vlambloem 151, Rotterdam">
+        <div class="mk-raster" aria-hidden="true"></div>
+        <div class="mk-weg" style="left:-5%;right:-5%;top:40%;height:12px;transform:rotate(-10deg)" aria-hidden="true"></div>
+        <div class="mk-weg" style="top:-5%;bottom:-5%;left:58%;width:10px;transform:rotate(8deg)" aria-hidden="true"></div>
+        <div class="mk-snel" aria-hidden="true"></div>
+        <div class="mk-inhoud">
+          <svg class="mk-pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          <p class="mk-adres">Vlambloem 151<br>3068 JG Rotterdam</p>
+          <button type="button" class="mk-knop">Toon kaart</button>
+          <p class="mk-uitleg">De kaart komt van Google Maps en laadt pas als je klikt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot">
+  <div class="wrap">
+    <h2>Moet je auto erin? App het even.</h2>
+    <p>APK, banden, een lampje dat brandt of schade: zeg wat er is en wanneer het je uitkomt.</p>
+    <div class="knoppen">
+      <a class="knop licht" href="https://wa.me/31645725603?text=Hoi%20Autobedrijf%20A%20%26%20A%2C%20ik%20wil%20graag%20een%20afspraak%20voor%20mijn%20auto.%20Wanneer%20kan%20ik%20terecht%3F">App je afspraak</a>
+      <a class="knop twee" href="tel:+31645725603" style="white-space:nowrap">Bel 06 45 72 56 03</a>
+    </div>
+  </div>
+  <div class="spoor" aria-hidden="true"></div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="raster">
+      <div><img src="logo-light.svg" width="355" height="72" alt="Autobedrijf A &amp; A" loading="lazy" decoding="async" style="height:44px;width:auto;margin-bottom:12px"><p>Autobedrijf A &amp; A VOF · KvK 64607046</p><p>Vlambloem 151, 3068 JG Rotterdam</p></div>
+      <div><p><a href="tel:+31645725603">06 45 72 56 03</a></p><p><a href="https://wa.me/31645725603?text=Hoi%20Autobedrijf%20A%20%26%20A%2C%20ik%20heb%20een%20vraag%20over%20mijn%20auto.">WhatsApp</a></p></div>
+      <div><p><a href="#diensten">Diensten</a></p><p><a href="#reviews">Reviews</a></p><p><a href="#route">Route</a></p></div>
+    </div>
+    <div class="credit">
+      <p>Foto gevel: Google Maps, vermelding Autobanden A&amp;A (Vlambloem 151). Reviews: Google Maps, november 2026.</p>
+      <p>Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef"><a class="knop wa" href="https://wa.me/31645725603?text=Hoi%20Autobedrijf%20A%20%26%20A%2C%20ik%20wil%20graag%20een%20afspraak%20voor%20mijn%20auto.%20Wanneer%20kan%20ik%20terecht%3F">App je afspraak</a></div>
+
+<div class="pitchpaneel" id="pitch" hidden>
+  <div class="in" role="dialog" aria-modal="true" aria-labelledby="pitchKop">
+    <button type="button" class="sluit" id="pitchDicht">Sluiten</button>
+    <h2 id="pitchKop">Van drie nummers naar één knop</h2>
+    <div class="nuenstraks">
+      <figure><img src="img/voor-maps.jpg" width="390" height="844" loading="lazy" decoding="async" alt="Nu: de Google Maps-vermelding van Autobedrijf A &amp; A op een telefoon"><figcaption>Nu, 16 nov op een telefoon: alleen de Google Maps-vermelding. Een eigen site is er niet.</figcaption></figure>
+      <figure><img src="img/na-mobiel.jpg" width="390" height="844" loading="lazy" decoding="async" alt="Straks: deze site op een telefoon"><figcaption>Straks: je eigen site, met je gevel, één nummer en de afspraakknop.</figcaption></figure>
+    </div>
+    <h3>Wat er straks klopt</h3>
+    <ul>
+      <li>Er gaan drie nummers rond: <span style="white-space:nowrap">06 45 72 56 03</span> (Google Maps), <span style="white-space:nowrap">06 18 24 12 88</span> (Telefoonboek, en ook op het bord aan de gevel) en <span style="white-space:nowrap">010 751 4305</span> (de tweede Google-vermelding, Autobanden A&amp;A). Op de site staat één nummer, met één app-knop.</li>
+      <li>De garage en de banden staan op Google als twee losse vermeldingen: 5,0 uit 27 en 4,8 uit 45. Op de site komen ze samen, met beide scores en alle diensten van het bord.</li>
+      <li>autobedrijfaena.nl is niet meer bereikbaar (16 nov gecheckt), en bij de garage-vermelding op Google staat "Website toevoegen". Straks heb je weer een eigen site, op een domein dat van jou is.</li>
+    </ul>
+    <h3>Even samen rekenen (voorbeeld, geen belofte)</h3>
+    <div class="reken">
+      <label for="rk">Extra klanten per week: <span id="rkU">1</span></label>
+      <input type="range" id="rk" min="1" max="15" value="1">
+      <label for="rb">Gemiddeld bedrag per klus: € <span id="rbU">80</span></label>
+      <input type="range" id="rb" min="30" max="600" step="10" value="80">
+      <div class="uit"><p style="margin:0">Per jaar: <b id="rjU">€ 4.160</b> extra omzet (voorbeeld)</p><p style="margin:6px 0 0">€ 595 is de omzet van <b id="rnU">8</b> klussen.</p></div>
+    </div>
+    <h3>Kosten: site en beheer</h3>
+    <div class="prijs">
+      <p><b>€ 595 eenmalig</b> excl. btw (€&nbsp;719,95 incl. btw): site tot 5 pagina's, op je eigen domein, WhatsApp-knop, reviews en route, live binnen 48 uur na betaling. Hosting zit erin.</p>
+      <p><b>Beheer: € 25 per maand</b> excl. btw (€&nbsp;30,25 incl. btw). Wij passen aan wat je wilt veranderen, bijvoorbeeld een nieuw nummer of nieuwe foto's.</p>
+      <p style="margin:0">Liever zelf aanpassen? Dan krijg je in plaats daarvan een eigen portaal: <b>€ 249 eenmalig</b> excl. btw (€&nbsp;301,29 incl. btw).</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NUM='31645725603';
+  var NAMEN={apk:'APK-keuring',onderhoud:'Onderhoud of reparatie',banden:'Banden',storing:'Storing of lampje',schade:'Schade of plaatwerk',inverkoop:'Auto kopen of verkopen',anders:'Iets anders'};
+  var VARIANT={
+    apk:['2 · Welke beurt?',[['de APK-keuring','Alleen APK'],['de APK-keuring en een onderhoudsbeurt','APK + onderhoud']]],
+    onderhoud:['2 · Wat is het?',[['een onderhoudsbeurt','Onderhoudsbeurt'],['een reparatie','Reparatie'],['eerst laten kijken wat het is','Weet ik nog niet']]],
+    banden:['2 · Wat heb je nodig?',[['nieuwe banden','Nieuwe banden'],['mijn banden laten wisselen','Banden wisselen'],['een lekke band','Lekke band']]],
+    storing:['2 · Wat merk je?',[['er brandt een lampje, graag uitlezen','Er brandt een lampje'],['ik hoor of voel iets raars','Ik hoor of voel iets']]],
+    schade:['2 · Wat heb je nodig?',[['een schadetaxatie','Schadetaxatie'],['schadeherstel of plaatwerk','Herstel of plaatwerk']]],
+    inverkoop:['2 · Kopen of verkopen?',[['ik zoek een auto','Ik zoek een auto'],['ik wil mijn auto verkopen','Ik wil verkopen']]],
+    anders:null
+  };
+  var vEl=document.getElementById('varianten'),vStap=document.getElementById('stapVariant'),vKop=document.getElementById('variantKop');
+  function vul(d,kies){
+    var v=VARIANT[d];vEl.innerHTML='';
+    if(!v){vStap.hidden=true;return;}
+    vStap.hidden=false;vKop.textContent=v[0];
+    v[1].forEach(function(o,i){
+      var b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('data-w',o[0]);b.textContent=o[1];
+      b.setAttribute('aria-pressed',(kies?o[0]===kies:i===0)?'true':'false');vEl.appendChild(b);
+    });
+  }
+  function keuze(g){var a=document.querySelector('[data-groep="'+g+'"] [aria-pressed="true"]');return a?a.getAttribute('data-w'):'';}
+  function label(g){var a=document.querySelector('[data-groep="'+g+'"] [aria-pressed="true"]');return a?a.textContent:'';}
+  var kt=document.getElementById('kenteken');
+  function bouw(){
+    var d=keuze('dienst'),v=vStap.hidden?'':keuze('variant'),w=keuze('wanneer'),k=kt.value.trim().toUpperCase();
+    var t='Hoi Autobedrijf A & A, ';
+    if(d==='apk')t+='ik wil graag een afspraak voor '+v+'.';
+    else if(d==='onderhoud')t+=(v==='eerst laten kijken wat het is'?'er is iets met mijn auto. Kunnen jullie eerst kijken wat het is?':'ik wil graag een afspraak voor '+v+'.');
+    else if(d==='banden')t+=(v==='een lekke band'?'ik heb een lekke band. Wanneer kan ik langskomen?':(v==='nieuwe banden'?'ik heb nieuwe banden nodig.':'ik wil mijn banden laten wisselen.'));
+    else if(d==='storing')t+=(v==='ik hoor of voel iets raars'?'ik hoor of voel iets raars aan mijn auto. Kunnen jullie ernaar kijken?':'er brandt een lampje in mijn auto. Kunnen jullie de storing uitlezen?');
+    else if(d==='schade')t+='ik heb schade aan mijn auto en wil graag '+v+'.';
+    else if(d==='inverkoop')t+=(v==='ik wil mijn auto verkopen'?'ik wil mijn auto verkopen.':'ik zoek een auto. Wat hebben jullie op dit moment?');
+    else t+='ik heb een vraag over mijn auto: ';
+    if(d!=='anders'&&w)t+=' Het liefst '+w+'.';
+    if(k)t+=' Kenteken: '+k+'.';
+    t=t.replace(/\s+/g,' ').trim();
+    document.getElementById('bericht').textContent=t;
+    document.getElementById('stuur').href='https://wa.me/'+NUM+'?text='+encodeURIComponent(t);
+    document.getElementById('bordKlus').textContent=NAMEN[d];
+    var regel=[];
+    if(!vStap.hidden)regel.push(label('variant'));
+    regel.push(label('wanneer'));
+    if(k)regel.push(k);
+    var ul=document.getElementById('bordRegel');ul.innerHTML='';
+    regel.forEach(function(r){var li=document.createElement('li');li.textContent=r;ul.appendChild(li);});
+  }
+  function zetDienst(d,variant){
+    var g=document.querySelector('[data-groep="dienst"]'),b=g.querySelector('[data-w="'+d+'"]');if(!b)return;
+    g.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');
+    vul(d,variant);bouw();
+  }
+  document.querySelectorAll('.chips').forEach(function(g){
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('.chip');if(!b)return;
+      if(g.getAttribute('data-groep')==='dienst'){zetDienst(b.getAttribute('data-w'));return;}
+      g.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');bouw();
+    });
+  });
+  kt.addEventListener('input',bouw);
+  vul('apk');bouw();
+  document.querySelectorAll('[data-dienst]').forEach(function(a){a.addEventListener('click',function(){zetDienst(a.getAttribute('data-dienst'));});});
+
+  // kaart pas laden na klik
+  document.querySelectorAll('.mm-kaart').forEach(function(k){
+    var b=k.querySelector('.mk-knop');if(!b)return;
+    b.addEventListener('click',function(){var f=document.createElement('iframe');f.src=k.getAttribute('data-src');f.title=k.getAttribute('data-titel')||'Kaart';
+      f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';f.allowFullscreen=true;k.innerHTML='';k.appendChild(f);});
+  });
+
+  // zwevende knop: na de hero, niet zolang de keuzehulp in beeld is
+  var z=document.getElementById('zweef'),heroWeg=false,kiezerIn=false;
+  function zet(){z.classList.toggle('aan',heroWeg&&!kiezerIn);}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){heroWeg=!e[0].isIntersecting;zet();}).observe(document.getElementById('hero'));
+    new IntersectionObserver(function(e){kiezerIn=e[0].isIntersecting;zet();},{threshold:.15}).observe(document.getElementById('kies'));
+  }
+
+  // pitch-modus: alleen met ?pitch
+  if(/[?&]pitch\b/.test(location.search)){
+    document.body.classList.add('pitch');
+    var p=document.getElementById('pitch');
+    document.getElementById('pitchOpen').addEventListener('click',function(){p.hidden=false;});
+    document.getElementById('pitchDicht').addEventListener('click',function(){p.hidden=true;});
+    p.addEventListener('click',function(e){if(e.target===p)p.hidden=true;});
+    var rk=document.getElementById('rk'),rb=document.getElementById('rb');
+    function reken(){var k=+rk.value,b=+rb.value;
+      document.getElementById('rkU').textContent=k;document.getElementById('rbU').textContent=b;
+      document.getElementById('rjU').textContent='€ '+(k*b*52).toLocaleString('nl-NL');
+      document.getElementById('rnU').textContent=Math.ceil(595/b);}
+    rk.addEventListener('input',reken);rb.addEventListener('input',reken);reken();
+  }
+})();
+</script>
+
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
