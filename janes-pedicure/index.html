@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Jane's pedicure and more – pedicure en beauty in Rotterdam-Ommoord</title>
+<meta name="description" content="Jane's pedicure and more aan het Dwerggras 30 in Rotterdam-Ommoord: pedicure, manicure, BIAB, henna brows en massages, voor mannen, vrouwen en kinderen. 4,8 uit 98 Google-reviews. Plan je afspraak via WhatsApp.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!--
+  Demo L294 Jane's pedicure and more (Dwerggras 30, Rotterdam-Ommoord), Mohamedia, 16 nov 2026. Route O (Prins Alexander).
+  Concept in één zin: "In zorgzame handen" (hun eigen tagline): een drieluik van hun eigen close-ups (voet, hand, gelflesje)
+  dat zich als drie panelen in elkaar schuift, waarna de perzikkleurige krul uit hun logo er één keer overheen tekent.
+  Lay-out-archetype: DRIELUIK-HERO (drie staande fotostroken, full-bleed op mobiel, rechterhelft op desktop) + editorial
+  behandelkiezer met fototegels en een live WhatsApp-voorbeeld. Geen band onder de hero, geen Ken Burns, geen stoom,
+  geen letter-onthulling, geen hangend object of deurbordje, geen vormkader om een foto, geen eyebrow.
+  Hero-beweging: stroken schuiven één keer om en om (op/neer) op hun plek, daarna tekent de logokrul zich (stroke-dashoffset,
+  forwards). Bij scrollen bewegen de foto's binnen de stroken met verschillende snelheid (parallax op het img). Daarna stil.
+  Logo: nagetekend van hun eigen logo op janespedicureandmore.nl (J-monogram met krul, "Jane's pedicure" / "and more").
+  Foto's: hun eigen fotoserie van janespedicureandmore.nl (IMG_8129, 8310, 8321, 8106). Foto's met een herkenbare klant
+  (IMG_8193, 8197) en de foto met het gezicht van de behandelaar (IMG_8110) bewust niet gebruikt; merknamen op gelflesje
+  en UV-lamp vervaagd. Wix-stockbeelden (11062b_*, voeten op houten vloer) niet gebruikt.
+  Openingstijden: eigen site en Fresha spreken elkaar tegen, dus geen tijden; "plan je afspraak via WhatsApp".
+-->
+<style>
+:root{
+  --porselein:#F3F6FA;--wit:#fff;--inkt:#1B2F55;--blauw:#3B5F90;--blauw-l:#D7E1EF;--mist:#E8EEF6;
+  --perzik:#E1AB96;--perzik-l:#F8E8E1;--perzik-d:#9E4F36;--tekst:#2E3B57;--zacht:#5B6782;
+  --kop:'EB Garamond',Georgia,serif;--body:'Mulish',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--porselein);color:var(--tekst);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:500;color:var(--inkt);line-height:1.12;margin:0 0 .5em;overflow-wrap:break-word}
+h2{font-size:clamp(32px,6.4vw,52px)}
+h3{font-size:clamp(22px,4.6vw,27px)}
+p{margin:0 0 1em}
+.wrap{width:min(1160px,100% - 40px);margin:0 auto}
+section{padding:72px 0}
+.knop{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font:800 16px/1 var(--body);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap}
+.knop svg{width:20px;height:20px;flex:none}
+.k-wa{background:var(--inkt);color:#fff}
+.k-wa:hover,.k-wa:focus-visible{background:#0F1F3D}
+.k-licht{background:#fff;color:var(--inkt);border-color:#fff}
+.k-rand{background:transparent;color:var(--inkt);border-color:var(--inkt)}
+.k-rand:hover,.k-rand:focus-visible{background:var(--inkt);color:#fff}
+:focus-visible{outline:3px solid var(--perzik-d);outline-offset:3px}
+
+/* demo-strook + balk */
+.demo{background:var(--inkt);color:#fff;font-size:13px;text-align:center;padding:8px 14px;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:4px 8px}
+.demo a{color:#fff;font-weight:700;display:inline-flex;align-items:center;min-height:44px}
+.pitchknop{display:none}
+body.pitch .pitchknop{display:inline-flex;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.6);background:transparent;color:#fff;font:700 13px var(--body);cursor:pointer;align-items:center}
+.balk{background:var(--perzik-l);color:var(--inkt);text-align:center;font-size:14px;font-weight:700}
+.balk a{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 14px;text-decoration:none}
+.balk .ster{color:var(--perzik-d)}
+
+/* header */
+.kopbalk{background:var(--wit);border-bottom:1px solid var(--mist)}
+.kopbalk .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0}
+.kopbalk .logo{display:block;flex:none}
+.kopbalk .logo img{height:70px;width:auto}
+.kopbalk nav{display:flex;align-items:center;gap:6px}
+.kopbalk nav a.l{display:none;text-decoration:none;font-weight:700;font-size:15px;padding:0 12px;min-height:44px;align-items:center;color:var(--inkt)}
+.kopbalk .knop{min-height:46px;padding:0 18px;font-size:15px}
+.kopbalk .k-bel{display:none}
+
+/* hero: drieluik */
+.hero{position:relative;padding:0;min-height:max(600px,calc(100svh - 184px));display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;background:var(--wit)}
+.drieluik{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;background:var(--wit)}
+.strook{position:relative;overflow:hidden;background:var(--mist);animation:strookIn 1.15s cubic-bezier(.2,.75,.2,1) both}
+.strook:nth-child(1){--van:-16%;animation-delay:.08s}
+.strook:nth-child(2){--van:16%;animation-delay:.24s}
+.strook:nth-child(3){--van:-16%;animation-delay:.4s}
+.strook img{position:absolute;left:0;top:-6%;width:100%;height:112%;object-fit:cover;transform:translate3d(0,var(--p,0px),0)}
+.strook:nth-child(1) img{object-position:38% 40%}
+.strook:nth-child(2) img{object-position:45% 40%}
+.strook:nth-child(3) img{object-position:50% 30%}
+@keyframes strookIn{from{transform:translateY(var(--van));opacity:0}to{transform:none;opacity:1}}
+.krul{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.krul path{fill:none;stroke:var(--perzik);stroke-width:2.6;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:krul 2s cubic-bezier(.45,.05,.25,1) 1.25s forwards}
+.krul path.dun{stroke-width:1.2;animation-delay:1.55s}
+@keyframes krul{to{stroke-dashoffset:0}}
+.hero::before,.hero::after{content:"";position:absolute;left:0;right:0;pointer-events:none;z-index:1}
+.hero::before{top:0;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.93) 0,rgba(255,255,255,.78) 55%,rgba(255,255,255,0) 100%)}
+.hero::after{bottom:0;height:42%;background:linear-gradient(0deg,rgba(17,31,58,.9) 0,rgba(17,31,58,.55) 55%,rgba(17,31,58,0) 100%)}
+.h-boven,.h-onder{position:relative;z-index:2;padding:22px 20px}
+.h-boven h1{font-size:clamp(34px,9.2vw,72px);letter-spacing:-.01em;margin-bottom:.32em;max-width:13ch}
+.h-boven h1 i{font-style:italic;color:var(--blauw)}
+.h-boven p{font-size:16px;max-width:34ch;color:var(--tekst);margin:0}
+.h-onder{padding-bottom:18px}
+.h-knoppen .knop{min-height:50px}
+.trust .adr{display:none}
+.h-knoppen{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.h-knoppen .k-rand{color:#fff;border-color:#fff}
+.h-knoppen .k-rand:hover{background:#fff;color:var(--inkt)}
+.trust{color:#fff;font-size:15px;margin:0}
+.trust a{display:inline-flex;align-items:center;min-height:44px;gap:6px;text-decoration:none;font-weight:700}
+.trust .ster{color:var(--perzik)}
+
+/* kiezer */
+.kiezer{background:var(--wit)}
+.kiezer .intro{max-width:620px;margin-bottom:30px}
+.stap{margin-bottom:30px}
+.stap-kop{display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+.stap-kop b{font:500 30px/1 var(--kop);color:var(--perzik-d)}
+.stap-kop span{font-weight:800;color:var(--inkt);font-size:17px}
+.tegels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tegel{position:relative;display:flex;flex-direction:column;justify-content:flex-start;border-radius:14px;overflow:hidden;border:2px solid var(--mist);background:var(--wit);color:var(--inkt);text-align:left;padding:0;font:inherit;cursor:pointer}
+.tegel img{width:100%;height:clamp(110px,30vw,170px);object-fit:cover;flex:none}
+.tegel .t-tekst{position:relative;padding:11px 12px 14px}
+.tegel .t-naam{display:block;font:500 clamp(20px,5.2vw,24px)/1.1 var(--kop);color:var(--inkt)}
+.tegel .t-sub{display:block;font-size:13px;line-height:1.35;color:var(--zacht);margin-top:3px}
+.tegel .t-icoon{display:block;width:100%;height:clamp(110px,30vw,170px);padding:22px;background:var(--perzik-l);color:var(--perzik-d);flex:none}
+.tegel:last-child{grid-column:1 / -1}
+.tegel:last-child .t-icoon{height:90px}
+.tegel[aria-pressed="true"]{border-color:var(--inkt);box-shadow:0 0 0 3px var(--inkt) inset}
+.tegel[aria-pressed="true"]::after{content:"✓";position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:50%;background:var(--inkt);color:#fff;display:grid;place-items:center;font-weight:800}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:46px;padding:0 16px;border-radius:999px;border:2px solid var(--blauw-l);background:var(--wit);color:var(--inkt);font:700 15px var(--body);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--inkt);border-color:var(--inkt);color:#fff}
+.dagnoot{font-size:14px;color:var(--zacht);margin-top:10px}
+.bericht{background:var(--porselein);border-radius:18px;padding:20px;border:1px solid var(--mist)}
+.bericht h3{font-size:22px}
+.bubbel{background:#DCF8C6;color:#1d2b1d;border-radius:14px 14px 4px 14px;padding:12px 14px;font-size:15px;line-height:1.5;margin:0 0 16px auto;max-width:34ch;white-space:pre-line;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.bericht .knop{width:100%}
+.bericht .alt{font-size:14px;margin:12px 0 0;text-align:center}
+.bericht .alt a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;white-space:nowrap}
+
+/* waarom */
+.waarom{background:var(--porselein)}
+.kaarten{display:grid;gap:14px;margin-top:26px}
+.kaart{background:var(--wit);border-radius:16px;padding:24px 22px;border-top:4px solid var(--perzik)}
+.kaart .nr{font:italic 500 40px/1 var(--kop);color:var(--perzik-d);display:block;margin-bottom:8px}
+.kaart p{margin:0;color:var(--zacht)}
+
+/* reviews */
+.reviews{background:var(--inkt);color:#E9EEF7}
+.reviews h2{color:#fff}
+.reviews .score{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#fff;font-weight:800;text-decoration:none;font-size:18px}
+.reviews .score .ster{color:var(--perzik)}
+.rv{display:grid;gap:14px;margin:26px 0 14px}
+.rv figure{margin:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px}
+.rv blockquote{margin:0 0 12px;font:italic 500 23px/1.3 var(--kop);color:#fff}
+.rv figcaption{font-weight:700;color:var(--perzik)}
+.label{font-size:14px;color:#BFCBE0}
+
+/* stappen */
+.stappen{background:var(--wit)}
+.stappen ol{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:14px;counter-reset:s}
+.stappen li{counter-increment:s;background:var(--porselein);border-radius:16px;padding:22px 22px 20px 78px;position:relative;min-height:96px}
+.stappen li::before{content:counter(s);position:absolute;left:22px;top:20px;width:40px;height:40px;border-radius:50%;background:var(--perzik-l);color:var(--perzik-d);font:500 24px/40px var(--kop);text-align:center}
+.stappen li h3{font-size:23px;margin-bottom:.25em}
+.stappen li p{margin:0;color:var(--zacht)}
+
+/* faq */
+.faq{background:var(--porselein)}
+.faq details{background:var(--wit);border-radius:14px;margin-bottom:10px;border:1px solid var(--mist)}
+.faq summary{cursor:pointer;list-style:none;padding:16px 52px 16px 20px;min-height:56px;font-weight:800;color:var(--inkt);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:20px;top:12px;font:500 28px/1 var(--kop);color:var(--perzik-d)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 20px 18px;margin:0;color:var(--zacht)}
+.faq details a{font-weight:700}
+
+/* adres */
+.adres{background:var(--wit)}
+.adres-grid{display:grid;gap:22px}
+.adres dl{margin:0 0 18px}
+.adres dt{font-weight:800;color:var(--inkt);margin-top:14px}
+.adres dd{margin:0}
+.adres dd a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;white-space:nowrap}
+.adres .knoppen{display:flex;flex-wrap:wrap;gap:10px}
+.mm-kaart{--mk-bg:#E8EEF6;--mk-fg:#1B2F55;--mk-accent:#9E4F36;--mk-lijn:rgba(27,47,85,.08);position:relative;aspect-ratio:4/3;width:100%;border-radius:16px;overflow:hidden;background:var(--mk-bg);color:var(--mk-fg)}
+.mm-kaart .mk-raster{position:absolute;inset:0;background:linear-gradient(var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px}
+.mm-kaart .mk-weg{position:absolute;background:rgba(255,255,255,.9);border-radius:6px}
+.mm-kaart .mk-inhoud{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mm-kaart .mk-pin{width:46px;height:46px}
+.mm-kaart .mk-adres{font-weight:800;line-height:1.35;margin:0}
+.mm-kaart .mk-knop{min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--mk-fg);background:#fff;color:var(--mk-fg);font:inherit;font-weight:800;cursor:pointer}
+.mm-kaart .mk-knop:hover,.mm-kaart .mk-knop:focus-visible{background:var(--mk-fg);color:#fff}
+.mm-kaart .mk-uitleg{font-size:12px;opacity:.75;max-width:30ch;margin:0}
+.mm-kaart iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* slot */
+.slot{background:var(--perzik-l);text-align:center}
+.slot h2{max-width:16ch;margin-left:auto;margin-right:auto}
+.slot p{max-width:44ch;margin:0 auto 22px}
+.slot .knoppen{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+
+/* footer */
+footer{background:var(--inkt);color:#C9D3E5;padding:44px 0 90px;font-size:15px}
+footer .wrap{display:grid;gap:18px}
+footer img{height:84px;width:auto}
+footer a{color:#fff;display:inline-flex;align-items:center;min-height:44px;font-weight:700}
+footer p{margin:0}
+footer .klein{font-size:13px;color:#9EAAC2}
+
+/* zwevend */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;transform:translateY(140%);transition:transform .3s ease}
+.zweef.aan{transform:none}
+.zweef .knop{width:100%;box-shadow:0 10px 30px rgba(17,31,58,.35)}
+
+/* pitch */
+.pitch-paneel{position:fixed;inset:0;z-index:60;background:rgba(15,22,38,.84);overflow-y:auto;padding:16px}
+.pitch-in{background:#fff;color:var(--tekst);max-width:980px;margin:0 auto;border-radius:16px;padding:24px 20px 28px}
+.pitch-in h2{font-size:clamp(28px,5vw,40px)}
+.pitch-in h3{margin-top:26px}
+.pitch-sluit{float:right;min-height:44px;min-width:44px;border-radius:999px;border:2px solid var(--inkt);background:transparent;font:800 15px var(--body);cursor:pointer;padding:0 16px;color:var(--inkt)}
+.nunu{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.nunu figure{margin:0}
+.nunu img{border-radius:12px;border:1px solid var(--mist);width:100%;height:auto}
+.nunu figcaption{font-size:14px;margin-top:8px;color:var(--zacht)}
+.pitch-in ol{padding-left:22px}
+.pitch-in li{margin-bottom:10px}
+.reken{background:var(--porselein);border-radius:14px;padding:18px}
+.reken label{display:block;font-weight:700;margin-top:10px}
+.reken input{width:100%;min-height:44px;accent-color:var(--inkt)}
+.reken .uitk{font-size:18px;margin:12px 0 0}
+.prijs{display:grid;gap:10px}
+.prijs div{border:2px solid var(--mist);border-radius:14px;padding:14px 16px;font-size:15px}
+.prijs .eerst{border-color:var(--inkt)}
+.prijs small{display:block;font-weight:800;color:var(--perzik-d);text-transform:uppercase;letter-spacing:.06em;font-size:12px}
+.prijs b{display:block;font:500 26px/1.2 var(--kop);color:var(--inkt)}
+
+@media (min-width:640px){
+  .tegels{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tegel:last-child{grid-column:auto}
+  .tegel:last-child .t-icoon{height:clamp(110px,30vw,170px)}
+  .kaarten,.rv{grid-template-columns:repeat(3,1fr)}
+  .stappen ol{grid-template-columns:repeat(3,1fr)}
+  .prijs{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:980px){
+  section{padding:104px 0}
+  .kopbalk nav a.l{display:inline-flex}
+  .kopbalk .k-bel{display:inline-flex}
+  .kopbalk .logo img{height:82px}
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);min-height:min(820px,calc(100vh - 150px));background:var(--porselein)}
+  .hero::before,.hero::after{display:none}
+  .drieluik{position:relative;inset:auto;grid-column:2;grid-row:1 / span 2;gap:8px;background:var(--porselein);padding:22px 22px 22px 0}
+  .strook{border-radius:10px}
+  .h-boven{grid-column:1;grid-row:1;align-self:end;padding:40px 48px 0 max(20px,calc((100vw - 1160px)/2))}
+  .h-onder{grid-column:1;grid-row:2;align-self:start;padding:28px 48px 40px max(20px,calc((100vw - 1160px)/2))}
+  .h-boven p{font-size:19px}
+  .h-knoppen .k-rand{color:var(--inkt);border-color:var(--inkt)}
+  .h-knoppen .k-rand:hover{background:var(--inkt);color:#fff}
+  .trust{color:var(--tekst)}
+  .trust .adr{display:inline}
+  .trust .ster{color:var(--perzik-d)}
+  .kiezer-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px;align-items:start}
+  .bericht{position:sticky;top:24px}
+  .adres-grid{grid-template-columns:1fr 1.2fr;align-items:center}
+  .zweef{display:none}
+  footer .wrap{grid-template-columns:auto 1fr auto;align-items:center}
+}
+@media (max-width:400px){
+  .h-knoppen .knop{flex:1 1 100%}
+  .kopbalk .logo img{height:62px}
+}
+@media (prefers-reduced-motion:reduce){
+  .strook,.krul path{animation:none!important}
+  .krul path{stroke-dashoffset:0}
+  .strook img{transform:none}
+  html{scroll-behavior:auto}
+  .zweef{transition:none}
+}
+</style>
+<link rel="stylesheet" href="fonts/fonts.css">
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+
+
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>.<button type="button" class="pitchknop" id="pitchOpen">Mo</button></div>
+<div class="balk"><a href="https://www.google.com/maps?cid=16473205877068402885" target="_blank" rel="noopener"><span class="ster">★</span> 4,8 uit 98 Google-reviews · Ommoord, Rotterdam</a></div>
+
+<header class="kopbalk">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Jane's pedicure and more, naar boven"><img src="logo-dark.svg" alt="Jane's pedicure and more" width="110" height="96"></a>
+    <nav aria-label="Hoofdmenu">
+      <a class="l" href="#kiezer">Behandelingen</a>
+      <a class="l" href="#reviews">Reviews</a>
+      <a class="l" href="#adres">Route</a>
+      <a class="knop k-rand k-bel" href="tel:+31642016629">Bel 06 42 01 66 29</a>
+      <a class="knop k-wa" href="https://wa.me/31642016629?text=Hoi%20Jane's%20pedicure%20and%20more%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+        App ons</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero" aria-labelledby="h1">
+  <div class="drieluik" aria-hidden="true">
+    <div class="strook"><img src="img/strook-voet.jpg" alt="" width="620" height="1240" fetchpriority="high"></div>
+    <div class="strook"><img src="img/strook-hand.jpg" alt="" width="620" height="1240"></div>
+    <div class="strook"><img src="img/strook-gel.jpg" alt="" width="620" height="1240"></div>
+    <svg class="krul" viewBox="0 0 300 600" preserveAspectRatio="xMidYMid slice">
+      <path pathLength="1" d="M-20 352C30 318 64 300 110 312C150 322 176 352 214 340C262 324 292 272 268 238C246 206 196 214 182 252C168 292 200 330 238 322"/>
+      <path class="dun" pathLength="1" d="M238 322C262 316 282 296 290 270"/>
+    </svg>
+  </div>
+  <div class="h-boven">
+    <h1 id="h1">Zachte voeten en sterke nagels, in <i>zorgzame handen</i>.</h1>
+    <p>Pedicure, manicure, BIAB, henna brows en massages in Ommoord. Voor mannen, vrouwen en kinderen.</p>
+  </div>
+  <div class="h-onder">
+    <div class="h-knoppen">
+      <a class="knop k-wa" href="https://wa.me/31642016629?text=Hoi%20Jane's%20pedicure%20and%20more%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+        Afspraak via WhatsApp</a>
+      <a class="knop k-rand" href="#kiezer">Kies je behandeling</a>
+    </div>
+    <p class="trust"><a href="https://www.google.com/maps?cid=16473205877068402885" target="_blank" rel="noopener"><span class="ster">★★★★★</span> 4,8 uit 98 reviews op Google</a><span class="adr"> · Dwerggras 30, Ommoord</span></p>
+  </div>
+</section>
+
+<section class="kiezer" id="kiezer" aria-labelledby="h-kiezer">
+  <div class="wrap">
+    <div class="intro">
+      <h2 id="h-kiezer">Welke behandeling wil je?</h2>
+      <p>Tik aan wat je wilt, voor wie en welke dag je voorkeur heeft. Je bericht staat dan klaar in WhatsApp.</p>
+    </div>
+    <div class="kiezer-grid">
+      <div>
+        <div class="stap">
+          <div class="stap-kop"><b>1</b><span>Behandeling</span></div>
+          <div class="tegels" id="tDienst">
+            <button type="button" class="tegel" data-w="Pedicure" aria-pressed="false"><img src="img/pedi.jpg" alt="" width="880" height="1100" loading="lazy" decoding="async"><span class="t-tekst"><span class="t-naam">Pedicure</span><span class="t-sub">Voor verzorgde, zachte en mooie voeten.</span></span></button>
+            <button type="button" class="tegel" data-w="Manicure" aria-pressed="false"><img src="img/hand.jpg" alt="" width="880" height="1100" loading="lazy" decoding="async"><span class="t-tekst"><span class="t-naam">Manicure</span><span class="t-sub">Voor je handen en nagels.</span></span></button>
+            <button type="button" class="tegel" data-w="BIAB" aria-pressed="false"><img src="img/gel.jpg" alt="" width="880" height="1069" loading="lazy" decoding="async"><span class="t-tekst"><span class="t-naam">BIAB</span><span class="t-sub">Je nagels laten aansterken met een minder schadelijke behandeling.</span></span></button>
+            <button type="button" class="tegel" data-w="Henna brows" aria-pressed="false">
+              <svg class="t-icoon" viewBox="0 0 80 80" aria-hidden="true"><path d="M10 44C24 28 48 24 70 34" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M16 56c10 6 30 6 44-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/></svg>
+              <span class="t-tekst"><span class="t-naam">Henna brows</span><span class="t-sub">Je wenkbrauwen verven in je gewenste vorm.</span></span></button>
+            <button type="button" class="tegel" data-w="Massage" aria-pressed="false">
+              <svg class="t-icoon" viewBox="0 0 80 80" aria-hidden="true"><ellipse cx="40" cy="30" rx="22" ry="9" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="40" cy="46" rx="18" ry="7.5" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="40" cy="60" rx="13" ry="5.5" fill="none" stroke="currentColor" stroke-width="3"/></svg>
+              <span class="t-tekst"><span class="t-naam">Massage</span><span class="t-sub">Vraag welke massage bij je past.</span></span></button>
+          </div>
+        </div>
+        <div class="stap">
+          <div class="stap-kop"><b>2</b><span>Voor wie?</span></div>
+          <div class="chips" id="tWie">
+            <button type="button" class="chip" data-w="mezelf" aria-pressed="false">Voor mezelf</button>
+            <button type="button" class="chip" data-w="mijn kind" aria-pressed="false">Voor mijn kind</button>
+            <button type="button" class="chip" data-w="iemand anders" aria-pressed="false">Voor iemand anders</button>
+          </div>
+        </div>
+        <div class="stap">
+          <div class="stap-kop"><b>3</b><span>Voorkeursdag</span></div>
+          <div class="chips" id="tDag"></div>
+          <p class="dagnoot">Dit is je voorkeur. De afspraak zelf spreek je af in WhatsApp.</p>
+        </div>
+      </div>
+      <aside class="bericht" aria-live="polite">
+        <h3>Je bericht</h3>
+        <p class="bubbel" id="bubbel"></p>
+        <a class="knop k-wa" id="kWa" href="https://wa.me/31642016629" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 21l2.1-5.6A9 9 0 1 1 8 19.5L2 21zm10-17a7.5 7.5 0 0 0-6.4 11.4l.2.4-1 2.7 2.8-.9.4.2A7.5 7.5 0 1 0 12 4z"/></svg>
+          Stuur via WhatsApp</a>
+        <p class="alt">Liever bellen? <a href="tel:+31642016629">06 42 01 66 29</a></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="waarom" aria-labelledby="h-waarom">
+  <div class="wrap">
+    <h2 id="h-waarom">Wat klanten op Google opvalt</h2>
+    <p>Drie dingen die steeds terugkomen in de reviews.</p>
+    <div class="kaarten">
+      <article class="kaart"><span class="nr">i.</span><h3>Precies en geduldig</h3><p>Klanten schrijven dat er precies en met geduld gewerkt wordt, en dat de tijd genomen wordt voor je behandeling.</p></article>
+      <article class="kaart"><span class="nr">ii.</span><h3>Voeten als nieuw</h3><p>Klanten schrijven dat hun voeten na de pedicure weer als nieuw voelen, ook mannen.</p></article>
+      <article class="kaart"><span class="nr">iii.</span><h3>Vriendelijk en liefdevol</h3><p>Klanten schrijven over een vriendelijke, liefdevolle behandeling.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" aria-labelledby="h-reviews">
+  <div class="wrap">
+    <h2 id="h-reviews">Zo vertellen klanten het</h2>
+    <a class="score" href="https://www.google.com/maps?cid=16473205877068402885" target="_blank" rel="noopener"><span class="ster">★★★★★</span> 4,8 uit 98 reviews op Google</a>
+    <div class="rv">
+      <figure><blockquote>Behandelt de voeten precies en met geduld.</blockquote><figcaption>Robeathy</figcaption></figure>
+      <figure><blockquote>Vriendelijk, en neemt de tijd voor je pedicure.</blockquote><figcaption>Melanie</figcaption></figure>
+      <figure><blockquote>Voeten die weer voelen alsof ze nieuw zijn.</blockquote><figcaption>Alexander</figcaption></figure>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="stappen" aria-labelledby="h-stappen">
+  <div class="wrap">
+    <h2 id="h-stappen">Van appje naar behandelstoel</h2>
+    <ol>
+      <li><h3>Kies je behandeling</h3><p>Pedicure, manicure, BIAB, henna brows of massage.</p></li>
+      <li><h3>App je voorkeur</h3><p>Je bericht staat klaar; samen spreek je de dag en tijd af.</p></li>
+      <li><h3>Kom naar Dwerggras 30</h3><p>In Ommoord, Rotterdam. Plan je route vooraf.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="h-faq">
+  <div class="wrap">
+    <h2 id="h-faq">Handig om vooraf te weten</h2>
+    <details><summary>Behandelen jullie ook mannen en kinderen?</summary><p>Ja. We behandelen mannen, vrouwen en kinderen.</p></details>
+    <details><summary>Welke behandelingen kan ik boeken?</summary><p>Pedicure, manicure, BIAB, henna brows en massages.</p></details>
+    <details><summary>Wat is BIAB?</summary><p>Met BIAB laat je je nagels aansterken, met een behandeling die minder schadelijk is voor je nagels.</p></details>
+    <details><summary>Wanneer kan ik terecht?</summary><p>Je plant je afspraak via <a href="https://wa.me/31642016629?text=Hoi%20Jane's%20pedicure%20and%20more%2C%20wanneer%20kan%20ik%20terecht%3F" target="_blank" rel="noopener">WhatsApp</a> of je belt <a href="tel:+31642016629">06 42 01 66 29</a>.</p></details>
+    <details><summary>Waar zitten jullie?</summary><p>Aan het Dwerggras 30 in Ommoord, Rotterdam.</p></details>
+  </div>
+</section>
+
+<section class="adres" id="adres" aria-labelledby="h-adres">
+  <div class="wrap adres-grid">
+    <div>
+      <h2 id="h-adres">Te vinden in Ommoord</h2>
+      <dl>
+        <dt>Adres</dt><dd>Dwerggras 30, Rotterdam (Ommoord)</dd>
+        <dt>Telefoon</dt><dd><a href="tel:+31642016629">06 42 01 66 29</a></dd>
+        <dt>E-mail</dt><dd><a href="mailto:info@janespedicureandmore.nl">info@janespedicureandmore.nl</a></dd>
+        <dt>Afspraak</dt><dd>Je plant je afspraak via WhatsApp.</dd>
+      </dl>
+      <div class="knoppen">
+        <a class="knop k-wa" href="https://wa.me/31642016629?text=Hoi%20Jane's%20pedicure%20and%20more%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener">App voor een afspraak</a>
+        <a class="knop k-rand" href="https://www.google.com/maps?cid=16473205877068402885" target="_blank" rel="noopener">Plan je route</a>
+      </div>
+    </div>
+    <div class="mm-kaart" data-src="https://maps.google.com/maps?q=Dwerggras%2030%2C%20Rotterdam&amp;z=16&amp;output=embed" data-titel="Kaart: Jane's pedicure and more, Dwerggras 30 Rotterdam">
+      <div class="mk-raster" aria-hidden="true"></div>
+      <div class="mk-weg" style="left:-5%;right:-5%;top:60%;height:14px;transform:rotate(-6deg)" aria-hidden="true"></div>
+      <div class="mk-weg" style="top:-5%;bottom:-5%;left:34%;width:11px;transform:rotate(14deg)" aria-hidden="true"></div>
+      <div class="mk-inhoud">
+        <svg class="mk-pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="var(--mk-accent)" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        <p class="mk-adres">Dwerggras 30<br>Rotterdam-Ommoord</p>
+        <button type="button" class="mk-knop">Toon kaart</button>
+        <p class="mk-uitleg">De kaart komt van Google Maps en laadt pas als je klikt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="h-slot">
+  <div class="wrap">
+    <h2 id="h-slot">Toe aan verzorgde voeten?</h2>
+    <p>Stuur een appje met je behandeling en voorkeursdag. Bellen kan ook.</p>
+    <div class="knoppen">
+      <a class="knop k-wa" href="https://wa.me/31642016629?text=Hoi%20Jane's%20pedicure%20and%20more%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener">Afspraak via WhatsApp</a>
+      <a class="knop k-rand" href="tel:+31642016629">Bel 06 42 01 66 29</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-light.svg" alt="Jane's pedicure and more" width="110" height="96" loading="lazy" decoding="async">
+    <div>
+      <p>Jane's pedicure and more · Dwerggras 30, Rotterdam-Ommoord</p>
+      <p><a href="https://www.instagram.com/janespedicureandmore/" target="_blank" rel="noopener">Instagram @janespedicureandmore</a></p>
+      <p class="klein">Foto's: eigen fotoserie van janespedicureandmore.nl.</p>
+    </div>
+    <p>Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef" aria-hidden="true">
+  <a class="knop k-wa" href="https://wa.me/31642016629?text=Hoi%20Jane's%20pedicure%20and%20more%2C%20ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener" tabindex="-1">Afspraak via WhatsApp</a>
+</div>
+
+<div class="pitch-paneel" id="pitch" hidden role="dialog" aria-modal="true" aria-labelledby="pitch-kop">
+  <div class="pitch-in">
+    <button type="button" class="pitch-sluit" id="pitchDicht">Sluiten</button>
+    <img src="logo-dark.svg" alt="Jane's pedicure and more" width="110" height="96" loading="lazy" decoding="async" style="height:80px;width:auto;margin-bottom:10px">
+    <h2 id="pitch-kop">Van Wix-sjabloon naar een eigen site</h2>
+    <div class="nunu">
+      <figure>
+        <img src="img/voor-tijden.jpg" alt="De openingstijden op de huidige contactpagina, op een telefoon" width="585" height="1265" loading="lazy" decoding="async">
+        <figcaption><b>Nu:</b> de contactpagina van janespedicureandmore.nl op een telefoon (bekeken 16 november 2026).</figcaption>
+      </figure>
+      <figure>
+        <img src="img/na-mobiel.jpg" alt="Deze nieuwe site op een telefoon" width="585" height="1266" loading="lazy" decoding="async">
+        <figcaption><b>Straks:</b> jullie eigen foto's en logo bovenaan, met de reviews en één knop om te appen.</figcaption>
+      </figure>
+    </div>
+
+    <h3>Wat er voor een klant verandert</h3>
+    <ol>
+      <li>Op de contactpagina staat bij vrijdag en zaterdag "9:00 – 9:00" en bij maandag tot en met donderdag "Gesloten", terwijl de tekst erboven zegt dat je doordeweeks kunt bellen. Straks staan er geen tijden die elkaar tegenspreken: een klant appt meteen.</li>
+      <li>Wie op de contactpagina op het mailadres tikt, mailt naar info@mysite.com, een voorbeeldadres uit het Wix-sjabloon. Het Facebook-icoon onderaan gaat naar de pagina van Wix zelf. Straks gaat elke knop naar jullie.</li>
+      <li>Nu staat er alleen "Gevestigd in Rotterdam". Straks staan het adres in Ommoord, een routeknop en de 4,8 uit 98 Google-reviews er meteen bij.</li>
+    </ol>
+
+    <h3>Wat een paar extra afspraken opleveren</h3>
+    <div class="reken">
+      <p><small>Voorbeeld om samen in te vullen, geen belofte.</small></p>
+      <label for="rKlanten">Extra klanten per week via de site: <output id="oKlanten">1</output></label>
+      <input type="range" id="rKlanten" min="0" max="10" step="1" value="1">
+      <label for="rBedrag">Gemiddelde besteding per behandeling (voorbeeld): € <output id="oBedrag">30</output></label>
+      <input type="range" id="rBedrag" min="15" max="120" step="5" value="30">
+      <p class="uitk">Per jaar: <b id="uJaar">€ 1.560</b> extra omzet.<br>€ 595 is de omzet van <b id="uAantal">20</b> behandelingen.</p>
+    </div>
+
+    <h3>Kosten en beheer</h3>
+    <div class="prijs">
+      <div class="eerst"><small>Website</small><b>€ 595 eenmalig</b>excl. btw (€ 719,95 incl. btw). Tot 5 pagina's, eigen domein, hosting inbegrepen, live binnen 48 uur na betaling.</div>
+      <div class="eerst"><small>Beheer: maandbedrag</small><b>€ 25 per maand</b>excl. btw (€ 30,25 incl. btw). Wij passen het voor je aan.</div>
+      <div><small>Of: klantportaal</small><b>€ 249 eenmalig</b>excl. btw (€ 301,29 incl. btw). Als je liever zelf aanpast.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var nummer='31642016629';
+  var $=function(i){return document.getElementById(i);};
+
+  /* kaart laden met één klik */
+  document.querySelectorAll('.mm-kaart').forEach(function(k){
+    var b=k.querySelector('.mk-knop'); if(!b) return;
+    b.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src=k.getAttribute('data-src'); f.title=k.getAttribute('data-titel')||'Kaart';
+      f.loading='lazy'; f.referrerPolicy='no-referrer-when-downgrade'; f.allowFullscreen=true;
+      k.innerHTML=''; k.appendChild(f);
+    });
+  });
+
+  /* parallax in de stroken (alleen bij scrollen, daarna stil) */
+  var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var imgs=[].slice.call(document.querySelectorAll('.strook img')), snel=[.10,-.06,.14], hero=$('hero'), bezig=false;
+  function px(){bezig=false;var y=Math.min(window.scrollY,hero.offsetHeight);imgs.forEach(function(im,i){im.style.setProperty('--p',(y*snel[i]).toFixed(1)+'px');});}
+  if(!rm){window.addEventListener('scroll',function(){if(!bezig){bezig=true;requestAnimationFrame(px);}},{passive:true});}
+
+  /* kiezer */
+  var keuze={dienst:'',wie:'',dag:''};
+  var dagen=['zo','ma','di','wo','do','vr','za'], mnd=['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'];
+  var dagRij=$('tDag'), d=new Date(), n=0, html='';
+  while(n<10){d.setDate(d.getDate()+1); if(d.getDay()===0) continue; var t=dagen[d.getDay()]+' '+d.getDate()+' '+mnd[d.getMonth()]; html+='<button type="button" class="chip" data-w="'+t+'" aria-pressed="false">'+t+'</button>'; n++;}
+  html+='<button type="button" class="chip" data-w="maakt niet uit" aria-pressed="false">Maakt niet uit</button>';
+  dagRij.innerHTML=html;
+  function groep(id,sleutel){
+    var el=$(id);
+    el.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      el.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false');});
+      b.setAttribute('aria-pressed','true'); keuze[sleutel]=b.getAttribute('data-w'); tekst();
+    });
+  }
+  groep('tDienst','dienst'); groep('tWie','wie'); groep('tDag','dag');
+  function tekst(){
+    var r=['Hoi Jane\'s pedicure and more, ik wil graag een afspraak maken.'];
+    r.push('Behandeling: '+(keuze.dienst||'nog kiezen'));
+    if(keuze.wie) r.push('Voor: '+keuze.wie);
+    r.push('Voorkeursdag: '+(keuze.dag||'nog kiezen'));
+    r.push('Kan dat?');
+    var s=r.join('\n');
+    $('bubbel').textContent=s;
+    $('kWa').href='https://wa.me/'+nummer+'?text='+encodeURIComponent(s);
+  }
+  tekst();
+
+  /* zwevende knop: na de hero, niet als de kiezer in beeld is */
+  var zweef=$('zweef'), heroUit=false, kiezerIn=false;
+  function zet(){var aan=heroUit&&!kiezerIn; zweef.classList.toggle('aan',aan); zweef.setAttribute('aria-hidden',aan?'false':'true'); zweef.querySelector('a').tabIndex=aan?0:-1;}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){heroUit=!e[0].isIntersecting;zet();}).observe(hero);
+    new IntersectionObserver(function(e){kiezerIn=e[0].isIntersecting;zet();},{threshold:.2}).observe(document.querySelector('.bericht'));
+  }
+
+  /* rekensom + pitch (alleen met ?pitch) */
+  var paneel=$('pitch'), rK=$('rKlanten'), rB=$('rBedrag');
+  function reken(){
+    var a=+rK.value,b=+rB.value;
+    $('oKlanten').textContent=a; $('oBedrag').textContent=b;
+    $('uJaar').textContent='€ '+(a*b*52).toLocaleString('nl-NL');
+    $('uAantal').textContent=Math.ceil(595/b);
+  }
+  rK.addEventListener('input',reken); rB.addEventListener('input',reken); reken();
+  if(/[?&]pitch\b/.test(location.search)){
+    document.body.classList.add('pitch');
+    $('pitchOpen').addEventListener('click',function(){paneel.hidden=false;});
+    $('pitchDicht').addEventListener('click',function(){paneel.hidden=true;});
+    paneel.addEventListener('click',function(e){if(e.target===paneel) paneel.hidden=true;});
+  }
+})();
+</script>
+
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
