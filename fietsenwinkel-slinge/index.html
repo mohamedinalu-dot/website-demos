@@ -1,0 +1,608 @@
+<!doctype html>
+<!--
+  Demo L301 Fietsenwinkel Slinge (Krabbendijkestraat 6, 3086 LW Rotterdam-Pendrecht), Mohamedia, 17 nov 2026. Route P.
+  Concept in één zin: "De ketting loopt door": het tandwiel en de kettingschakels uit hun eigen bord (blauw tandwiel,
+  oranje fiets, "∞ SLINGE ∞") worden de aandrijving van de site; in de hero draait een kettingblad en loopt de ketting
+  onder hun eigen winkelfoto door, alsof er iemand trapt.
+  Lay-out-archetype: FULL-BLEED WINKELFOTO + AANDRIJFLIJN. Mobiel én desktop: hun winkelvloer vult het eerste scherm,
+  kop en knoppen staan onderin op het donkere verloop, daaronder de lopende ketting (geen foto-object over de onderrand,
+  geen kader, geen eyebrow). Daarna een bento-raster met het aanbod, een "belbriefje" als kiezer (vast nummer, geen WhatsApp),
+  stappen als tandjes op een kettingblad, en een tegelvloer (terrazzo, zoals in de winkel) als achtergrond van de lichte vlakken.
+  Hero-beweging: kettingblad + achtertandwiel draaien, de schakels lopen mee (CSS, stopt bij prefers-reduced-motion).
+  Geen Ken Burns, geen letters één voor één, geen slingerend bordje, geen ticker.
+-->
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Fietsenwinkel Slinge – fietsenwinkel in Rotterdam-Pendrecht</title>
+<meta name="description" content="Fietsenwinkel Slinge in Rotterdam-Pendrecht: dames- en kinderfietsen, lekke band maken, kleine reparaties en onderdelen. 4,8 uit 66 Google-reviews. Bel 010 229 81 91.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--navy:#111A52;--navy2:#0B1240;--blauw:#2A3BB5;--oranje:#EF7A1A;--oranje-d:#C95F0A;--tegel:#EEF0F4;--wit:#fff;--inkt:#141A33;--grijs:#5A6079;--lijn:#D7DBE6;
+  --kop:'Big Shoulders Display',Impact,'Arial Narrow',sans-serif;--tekst:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:400 17px/1.6 var(--tekst);color:var(--inkt);background:var(--tegel);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:900;line-height:.98;letter-spacing:.005em;margin:0;overflow-wrap:anywhere}
+h2{font-size:clamp(40px,8vw,68px);text-transform:uppercase}
+h3{font-size:clamp(24px,5vw,30px);text-transform:uppercase}
+p{margin:0 0 14px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.nw{white-space:nowrap}
+/* terrazzo: de tegelvloer van de winkel */
+.terrazzo{background-color:var(--tegel);background-image:
+  radial-gradient(circle at 20% 30%,rgba(17,26,82,.10) 0 1.2px,transparent 1.6px),
+  radial-gradient(circle at 70% 60%,rgba(17,26,82,.08) 0 1px,transparent 1.4px),
+  radial-gradient(circle at 45% 85%,rgba(239,122,26,.12) 0 1.1px,transparent 1.5px),
+  radial-gradient(circle at 85% 15%,rgba(17,26,82,.07) 0 1.6px,transparent 2px);
+  background-size:23px 23px,31px 31px,37px 37px,43px 43px}
+
+.demo{background:var(--navy2);color:#C9CFEA;text-align:center;font-size:14px;padding:9px 16px}
+.demo a{color:#fff}
+.demo .pitchknop{display:none}
+body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid #8E9AD8;background:transparent;color:#fff;font:700 13px var(--tekst);cursor:pointer;align-items:center;vertical-align:middle}
+.strook{background:var(--oranje);color:#1B1206;font-weight:700;font-size:15px;text-align:center;padding:0 16px}
+.strook a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px;gap:6px}
+.strook a:hover{text-decoration:underline}
+
+/* header */
+.kopbalk{background:var(--navy);color:#fff;position:relative;z-index:3}
+.kopbalk .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 0}
+.kopbalk .logo{display:block;flex:none}
+.kopbalk .logo img{width:76px;height:auto}
+.kopbalk nav{display:none;gap:4px}
+.kopbalk nav a{color:#DDE2F7;text-decoration:none;font-weight:600;font-size:15px;padding:0 12px;min-height:44px;display:inline-flex;align-items:center;border-radius:8px}
+.kopbalk nav a:hover{background:rgba(255,255,255,.08);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:0 24px;border-radius:12px;font:700 17px/1.1 var(--tekst);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.oranje{background:var(--oranje);color:#1B1206}
+.btn.oranje:hover{background:#FF8B2C}
+.btn.wit{background:#fff;color:var(--navy)}
+.btn.rand-licht{border-color:rgba(255,255,255,.75);color:#fff;background:rgba(11,18,64,.35)}
+.btn.rand-licht:hover{background:rgba(255,255,255,.12)}
+.btn.navy{background:var(--navy);color:#fff}
+.btn.navy:hover{background:var(--blauw)}
+.btn.rand{border-color:var(--navy);color:var(--navy);background:transparent}
+.btn.klein{min-height:46px;padding:0 16px;font-size:16px}
+
+/* hero */
+.hero{position:relative;color:#fff;background:var(--navy2);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:calc(100svh - 110px)}
+.hero .foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 30%}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:
+  linear-gradient(180deg,rgba(11,18,64,.12) 0%,rgba(11,18,64,.18) 16%,rgba(11,18,64,.62) 30%,rgba(11,18,64,.9) 44%,var(--navy2) 100%)}
+.hero .inhoud{position:relative;z-index:2;padding:0 0 22px}
+.hero .plek{font-weight:600;font-size:16px;color:#FFD3AE;margin-bottom:10px;text-shadow:0 1px 10px rgba(0,0,0,.9),0 0 2px rgba(0,0,0,.8)}
+.hero h1{font-size:clamp(48px,13vw,96px);text-transform:uppercase;max-width:13ch;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero .sub{font-size:clamp(16px,2.2vw,19px);max-width:40ch;margin:14px 0 20px;color:#E7EAF8}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero .score{margin:16px 0 0;display:flex;align-items:center;gap:10px;font-size:15px;color:#DDE2F7}
+.hero .score b{font-family:var(--kop);font-size:30px;color:#fff;line-height:1}
+.hero .score .ster{color:#FFB547;letter-spacing:2px}
+.hero .score a{min-height:44px;display:inline-flex;align-items:center}
+.aandrijving{position:relative;z-index:2;height:78px;overflow:hidden;margin-top:4px;order:-1}
+.aandrijving svg{position:absolute;left:0;bottom:4px;width:max(100%,620px);height:auto}
+.ketting{fill:none;stroke-linecap:butt}
+.ketting.plaat{stroke:#C9CFEA;stroke-width:9;stroke-dasharray:12 4;animation:loop .55s linear 6}
+.ketting.pen{stroke:var(--navy2);stroke-width:3;stroke-dasharray:3 13;stroke-dashoffset:-5;animation:loop2 .55s linear 6}
+@keyframes loop{to{stroke-dashoffset:-16}}
+@keyframes loop2{to{stroke-dashoffset:-21}}
+.blad{transform-box:fill-box;transform-origin:center;animation:draai 3.3s linear 1}
+.tandwiel{transform-box:fill-box;transform-origin:center;animation:draai 1.1s linear 3}
+@keyframes draai{to{transform:rotate(360deg)}}
+.vergrendel .plaat,.vergrendel .pen,.vergrendel .blad,.vergrendel .tandwiel{animation-play-state:paused}
+
+/* kettingrij als scheiding */
+.schakels{height:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='18'%3E%3Crect x='1.5' y='3.5' width='21' height='11' rx='5.5' fill='none' stroke='%23111A52' stroke-width='3'/%3E%3Crect x='19.5' y='3.5' width='15' height='11' rx='5.5' fill='none' stroke='%23EF7A1A' stroke-width='3'/%3E%3C/svg%3E") repeat-x left center/36px 18px;opacity:.55}
+
+section{padding:76px 0}
+.intro{max-width:60ch;color:var(--grijs);font-size:18px;margin-top:14px}
+
+/* aanbod (bento) */
+.bento{display:grid;gap:14px;margin-top:34px;grid-template-columns:1fr}
+.tegel{background:#fff;border-radius:18px;padding:22px;border:1px solid var(--lijn);position:relative;overflow:hidden}
+.tegel h3{margin-bottom:8px}
+.tegel p{color:var(--grijs);margin:0}
+.tegel .nr{position:absolute;right:16px;top:12px;font-family:var(--kop);font-weight:900;font-size:44px;color:var(--tegel);line-height:1}
+.tegel.foto{padding:0;min-height:420px;background:var(--navy2);color:#fff;border:0}
+.tegel.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tegel.foto .onder{position:absolute;left:0;right:0;bottom:0;padding:70px 22px 22px;background:linear-gradient(180deg,transparent,rgba(11,18,64,.92) 55%)}
+.tegel.foto p{color:#DDE2F7}
+.tegel.foto figcaption{font-size:13px;color:#AEB6DD;margin-top:8px}
+.tegel.prijs{background:var(--oranje);border-color:var(--oranje);color:#1B1206}
+.tegel.prijs p{color:#2A1A08}
+.tegel.prijs .nr{color:rgba(255,255,255,.35)}
+.tegel.breed{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tegel.breed p{color:#C9CFEA}
+.tegel.breed .nr{color:rgba(255,255,255,.12)}
+.tegel .link{display:inline-flex;align-items:center;min-height:44px;font-weight:700;margin-top:6px;color:var(--blauw)}
+.tegel.breed .link{color:#FFB677}
+.tegel.prijs .link{color:#1B1206}
+
+/* kiezer: het belbriefje */
+.kies{background:var(--navy);color:#fff}
+.kies .intro{color:#C9CFEA}
+.kies-grid{display:grid;gap:26px;margin-top:30px}
+.stap{margin-bottom:22px}
+.stap .kop{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;margin-bottom:10px}
+.stap .kop i{font-style:normal;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--oranje);color:#1B1206;font-family:var(--kop);font-size:20px;font-weight:900}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:46px;padding:0 16px;border-radius:999px;border:2px solid rgba(255,255,255,.28);background:transparent;color:#fff;font:600 16px var(--tekst);cursor:pointer}
+.chip:hover{border-color:#fff}
+.chip[aria-pressed="true"]{background:#fff;color:var(--navy);border-color:#fff}
+.briefje{background:#FFFDF8;color:var(--inkt);border-radius:6px;padding:26px 22px 22px;position:relative;box-shadow:0 18px 40px rgba(0,0,0,.35);transform:rotate(-1deg)}
+.briefje::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:radial-gradient(circle at 8px -2px,var(--navy) 6px,transparent 6.5px) 0 0/16px 10px repeat-x}
+.briefje .titel{font-family:var(--kop);font-weight:900;font-size:26px;text-transform:uppercase;color:var(--blauw);margin-bottom:4px}
+.briefje .wat{font-size:14px;color:var(--grijs);margin-bottom:14px}
+.briefje ul{list-style:none;padding:0;margin:0 0 14px;border-top:2px dashed var(--lijn)}
+.briefje li{padding:9px 0;border-bottom:2px dashed var(--lijn);display:flex;justify-content:space-between;gap:12px}
+.briefje li span:first-child{color:var(--grijs)}
+.briefje li span:last-child{font-weight:700;text-align:right}
+.briefje .zin{background:var(--tegel);border-radius:10px;padding:12px 14px;font-size:16px;margin-bottom:16px}
+.briefje .knoppen{display:flex;flex-wrap:wrap;gap:10px}
+.briefje .klein{font-size:13px;color:var(--grijs);margin:12px 0 0}
+
+/* waarom */
+.drie{display:grid;gap:14px;margin-top:30px}
+.kaart{background:#fff;border-radius:18px;padding:24px;border-top:6px solid var(--oranje)}
+.kaart:nth-child(2){border-top-color:var(--blauw)}
+.kaart:nth-child(3){border-top-color:var(--navy)}
+.kaart h3{margin-bottom:10px}
+.kaart p{color:var(--grijs);margin:0}
+
+/* reviews */
+.reviews{background:#fff}
+.score-groot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px}
+.score-groot .getal{font-family:var(--kop);font-weight:900;font-size:96px;line-height:.9;color:var(--navy)}
+.score-groot .ster{color:#F2A019;font-size:24px;letter-spacing:3px}
+.score-groot a{color:var(--blauw);font-weight:700;display:inline-flex;min-height:44px;align-items:center}
+.citaten{display:grid;gap:14px;margin-top:26px}
+.citaat{background:var(--tegel);border-radius:16px;padding:20px 22px}
+.citaat p{margin:0 0 8px;font-size:18px}
+.citaat b{color:var(--blauw)}
+.label{font-size:14px;color:var(--grijs);margin-top:16px}
+
+/* stappen als tanden */
+.tanden{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:14px}
+.tanden li{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start;background:#fff;border-radius:16px;padding:18px}
+.tanden .tand{width:64px;height:64px;position:relative;display:grid;place-items:center}
+.tanden .tand svg{position:absolute;inset:0;width:100%;height:100%}
+.tanden .tand span{position:relative;font-family:var(--kop);font-weight:900;font-size:28px;color:#fff}
+.tanden h3{font-size:24px;margin:6px 0 6px}
+.tanden p{margin:0;color:var(--grijs)}
+
+/* faq */
+.faq{background:#fff}
+.faq details{border-bottom:2px solid var(--tegel)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 40px 18px 0;font-weight:700;font-size:18px;position:relative;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:6px;top:12px;font-family:var(--kop);font-size:32px;color:var(--oranje)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--grijs);padding-bottom:16px;margin:0}
+.faq-lijst{margin-top:24px;max-width:780px}
+
+/* adres */
+.adres-grid{display:grid;gap:22px;margin-top:28px}
+.blok{background:#fff;border-radius:18px;padding:24px}
+.blok dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px}
+.blok dt{color:var(--grijs)}
+.blok dd{margin:0;font-weight:600}
+.blok .noot{font-size:14px;color:var(--grijs);margin:14px 0 0}
+.blok .knoppen{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.tel-groot{font-family:var(--kop);font-weight:900;font-size:40px;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;min-height:48px;white-space:nowrap}
+
+.mm-kaart{--mk-bg:#111A52;--mk-fg:#fff;--mk-accent:#EF7A1A;--mk-lijn:rgba(255,255,255,.07);position:relative;aspect-ratio:4/3;width:100%;border-radius:18px;overflow:hidden;background:var(--mk-bg);color:var(--mk-fg)}
+.mm-kaart .mk-raster{position:absolute;inset:0;background:linear-gradient(var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--mk-lijn) 1px,transparent 1px) 0 0/28px 28px}
+.mm-kaart .mk-weg{position:absolute;background:rgba(255,255,255,.14);border-radius:6px}
+.mm-kaart .mk-inhoud{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mm-kaart .mk-pin{width:46px;height:46px;filter:drop-shadow(0 0 14px var(--mk-accent))}
+.mm-kaart .mk-adres{font-weight:700;line-height:1.35;margin:0}
+.mm-kaart .mk-knop{min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--mk-accent);background:transparent;color:var(--mk-fg);font:inherit;font-weight:700;cursor:pointer}
+.mm-kaart .mk-knop:hover,.mm-kaart .mk-knop:focus-visible{background:var(--mk-accent);color:var(--mk-bg)}
+.mm-kaart .mk-uitleg{font-size:12px;opacity:.75;max-width:30ch;margin:0}
+.mm-kaart iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* slot */
+.slot{background:var(--oranje);color:#1B1206;text-align:center}
+.slot h2{max-width:16ch;margin-inline:auto}
+.slot p{font-size:19px;max-width:44ch;margin:16px auto 24px}
+.slot .knoppen{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+footer{background:var(--navy2);color:#AEB6DD;padding:40px 0 30px;font-size:15px}
+footer .wrap{display:grid;gap:18px}
+footer img{width:96px;height:auto}
+footer a{color:#fff}
+footer .bron{font-size:13px;color:#8E97C6}
+
+/* zwevend */
+.zweef{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;gap:8px;padding:8px;border-radius:16px;background:rgba(11,18,64,.94);box-shadow:0 10px 30px rgba(0,0,0,.35);transform:translateY(140%);opacity:0;transition:transform .3s,opacity .3s;visibility:hidden}
+.zweef.aan{transform:none;opacity:1;visibility:visible}
+.zweef .btn{flex:1;min-height:50px;padding:0 12px;font-size:16px}
+
+/* pitch */
+.pitchpaneel{position:fixed;inset:0;z-index:60;background:rgba(8,12,40,.72);display:flex;justify-content:flex-end}
+.pitchpaneel[hidden]{display:none}
+.pitchpaneel .in{background:#fff;color:var(--inkt);width:min(580px,100%);height:100%;overflow:auto;padding:22px 20px 40px}
+.pitchpaneel h2{font-size:clamp(30px,6vw,40px)}
+.pitchpaneel h3{margin-top:26px;margin-bottom:8px;font-size:24px}
+.pitchpaneel .sluit{float:right;min-height:44px;min-width:44px;border-radius:8px;border:1px solid var(--lijn);background:#fff;font:700 15px var(--tekst);cursor:pointer;padding:0 14px}
+.nuenstraks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;clear:both}
+.nuenstraks figure{margin:0}
+.nuenstraks img{width:100%;height:auto;border-radius:12px;border:1px solid var(--lijn)}
+.nuenstraks figcaption{font-size:13px;color:var(--grijs);margin-top:6px}
+.pitchpaneel ul{padding-left:20px}
+.pitchpaneel li{margin-bottom:8px}
+.reken{background:var(--tegel);border-radius:12px;padding:16px}
+.reken label{display:block;font-weight:600;margin-top:10px}
+.reken input{width:100%;min-height:44px}
+.reken .uit{margin-top:12px;background:#fff;border-radius:10px;padding:12px 14px}
+.prijs-p{background:var(--tegel);border-radius:12px;padding:16px}
+
+@media (min-width:760px){
+  .kopbalk nav{display:flex}
+  .kopbalk .logo img{width:104px}
+  .bento{grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(190px,auto)}
+  .bento .t-foto{grid-column:1 / span 3;grid-row:span 2}
+  .bento .t-a{grid-column:4 / span 3}
+  .bento .t-b{grid-column:4 / span 3}
+  .bento .t-c{grid-column:1 / span 2}
+  .bento .t-d{grid-column:3 / span 2}
+  .bento .t-e{grid-column:5 / span 2}
+  .kies-grid{grid-template-columns:1.1fr .9fr;align-items:start;gap:48px}
+  .drie,.citaten{grid-template-columns:repeat(3,1fr)}
+  .tanden{grid-template-columns:repeat(3,1fr)}
+  .tanden li{grid-template-columns:1fr}
+  .adres-grid{grid-template-columns:1fr 1fr;align-items:start}
+  .zweef{display:none}
+  .hero{min-height:min(760px,calc(100svh - 150px))}
+  .hero::before{background:linear-gradient(180deg,rgba(11,18,64,.25) 0%,rgba(11,18,64,.1) 25%,rgba(11,18,64,.6) 50%,rgba(11,18,64,.93) 72%,var(--navy2) 100%)}
+  .hero .inhoud{padding-top:90px}
+  .hero h1{max-width:18ch}
+  .aandrijving{height:96px;order:0}
+  .aandrijving svg{width:780px;left:max(20px,calc((100% - 1180px)/2 - 30px))}
+}
+@media (min-width:1100px){
+  .hero .foto{object-position:50% 40%}
+  .hero::before{background:linear-gradient(90deg,rgba(11,18,64,.94) 0%,rgba(11,18,64,.82) 34%,rgba(11,18,64,.25) 62%,rgba(11,18,64,.10) 100%),linear-gradient(180deg,transparent 70%,var(--navy2) 100%)}
+  .hero .inhoud{padding-top:70px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ketting.plaat,.ketting.pen,.blad,.tandwiel{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+<!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
+</head>
+<body>
+<div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>. <button type="button" class="pitchknop" id="pitchOpen">Pitch openen</button></div>
+<div class="strook"><a href="https://www.google.com/maps?cid=2966740120174505916" target="_blank" rel="noopener">★ 4,8 uit 66 Google-reviews</a></div>
+
+<header class="kopbalk">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Fietsenwinkel Slinge, naar boven"><img src="logo-light.svg" width="300" height="240" alt="Logo Fiets Winkel Slinge"></a>
+    <nav aria-label="Hoofdmenu"><a href="#aanbod">Aanbod</a><a href="#kiezer">Belbriefje</a><a href="#reviews">Reviews</a><a href="#adres">Adres en tijden</a></nav>
+    <a class="btn oranje klein" href="tel:+31102298191"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg><span class="nw">010 229 81 91</span></a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero" aria-labelledby="h1">
+  <img class="foto" src="img/winkelvloer.webp" width="1000" height="706" alt="Een lange rij fietsen in de winkel van Fietsenwinkel Slinge, met daarachter nog meer fietsen" fetchpriority="high">
+  <div class="wrap inhoud">
+    <p class="plek">Fietsenwinkel Slinge · Pendrecht, <span class="nw">Rotterdam-Zuid</span></p>
+    <h1 id="h1">Rijen fietsen, en de prijs staat erbij</h1>
+    <p class="sub">Een dames- of kinderfiets kopen, een lekke band laten maken, een kleine reparatie of een onderdeel zoals een ventiel. Bel even, of kom langs in de winkel.</p>
+    <div class="cta">
+      <a class="btn oranje" href="tel:+31102298191"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Bel de winkel</a>
+      <a class="btn rand-licht" href="#kiezer">Maak je belbriefje</a>
+    </div>
+    <p class="score"><b>4,8</b><span class="ster" aria-hidden="true">★★★★★</span><a href="https://www.google.com/maps?cid=2966740120174505916" target="_blank" rel="noopener">66 reviews op Google</a></p>
+  </div>
+  <div class="aandrijving" aria-hidden="true">
+    <svg viewBox="0 0 1000 120" width="1000" height="120">
+      <path class="ketting plaat" d="M130 14 L880 40 A20 20 0 0 1 880 80 L130 106 A46 46 0 0 1 130 14 Z"/>
+      <path class="ketting pen" d="M130 14 L880 40 A20 20 0 0 1 880 80 L130 106 A46 46 0 0 1 130 14 Z"/>
+      <g class="blad"><path fill="#EF7A1A" fill-rule="evenodd" d="M177.0,60.0 L183.0,61.7 L182.8,64.6 L176.7,65.6 L176.3,68.2 L181.9,70.8 L181.2,73.7 L175.0,73.6 L174.2,76.1 L179.2,79.7 L178.0,82.4 L172.0,81.2 L170.7,83.5 L175.0,87.9 L173.4,90.4 L167.6,88.2 L166.0,90.2 L169.5,95.3 L167.5,97.5 L162.2,94.3 L160.2,96.0 L162.8,101.7 L160.4,103.4 L155.7,99.3 L153.5,100.7 L155.0,106.7 L152.4,108.0 L148.5,103.2 L146.1,104.2 L146.6,110.3 L143.7,111.2 L140.7,105.8 L138.2,106.3 L137.6,112.5 L134.6,112.8 L132.6,106.9 L130.0,107.0 L128.3,113.0 L125.4,112.8 L124.4,106.7 L121.8,106.3 L119.2,111.9 L116.3,111.2 L116.4,105.0 L113.9,104.2 L110.3,109.2 L107.6,108.0 L108.8,102.0 L106.5,100.7 L102.1,105.0 L99.6,103.4 L101.8,97.6 L99.8,96.0 L94.7,99.5 L92.5,97.5 L95.7,92.2 L94.0,90.2 L88.3,92.8 L86.6,90.4 L90.7,85.7 L89.3,83.5 L83.3,85.0 L82.0,82.4 L86.8,78.5 L85.8,76.1 L79.7,76.6 L78.8,73.7 L84.2,70.7 L83.7,68.2 L77.5,67.6 L77.2,64.6 L83.1,62.6 L83.0,60.0 L77.0,58.3 L77.2,55.4 L83.3,54.4 L83.7,51.8 L78.1,49.2 L78.8,46.3 L85.0,46.4 L85.8,43.9 L80.8,40.3 L82.0,37.6 L88.0,38.8 L89.3,36.5 L85.0,32.1 L86.6,29.6 L92.4,31.8 L94.0,29.8 L90.5,24.7 L92.5,22.5 L97.8,25.7 L99.8,24.0 L97.2,18.3 L99.6,16.6 L104.3,20.7 L106.5,19.3 L105.0,13.3 L107.6,12.0 L111.5,16.8 L113.9,15.8 L113.4,9.7 L116.3,8.8 L119.3,14.2 L121.8,13.7 L122.4,7.5 L125.4,7.2 L127.4,13.1 L130.0,13.0 L131.7,7.0 L134.6,7.2 L135.6,13.3 L138.2,13.7 L140.8,8.1 L143.7,8.8 L143.6,15.0 L146.1,15.8 L149.7,10.8 L152.4,12.0 L151.2,18.0 L153.5,19.3 L157.9,15.0 L160.4,16.6 L158.2,22.4 L160.2,24.0 L165.3,20.5 L167.5,22.5 L164.3,27.8 L166.0,29.8 L171.7,27.2 L173.4,29.6 L169.3,34.3 L170.7,36.5 L176.7,35.0 L178.0,37.6 L173.2,41.5 L174.2,43.9 L180.3,43.4 L181.2,46.3 L175.8,49.3 L176.3,51.8 L182.5,52.4 L182.8,55.4 L176.9,57.4Z M168.0,60.0 A38 38 0 1 0 92.0,60.0 A38 38 0 1 0 168.0,60.0Z"/><path stroke="#EF7A1A" stroke-width="7" stroke-linecap="round" d="M130.0,60.0 L168.2,71.8"/><path stroke="#EF7A1A" stroke-width="7" stroke-linecap="round" d="M130.0,60.0 L130.6,100.0"/><path stroke="#EF7A1A" stroke-width="7" stroke-linecap="round" d="M130.0,60.0 L92.1,72.9"/><path stroke="#EF7A1A" stroke-width="7" stroke-linecap="round" d="M130.0,60.0 L106.0,28.0"/><path stroke="#EF7A1A" stroke-width="7" stroke-linecap="round" d="M130.0,60.0 L153.1,27.3"/><circle cx="130" cy="60" r="9" fill="#EF7A1A"/><circle cx="130" cy="60" r="4" fill="#0B1240"/></g>
+      <g class="tandwiel"><path fill="#EF7A1A" fill-rule="evenodd" d="M901.0,60.0 L905.9,62.1 L905.3,65.8 L900.0,66.3 L898.9,69.1 L902.4,73.1 L900.3,76.2 L895.3,74.4 L893.1,76.4 L894.5,81.6 L891.3,83.4 L887.6,79.6 L884.7,80.5 L883.7,85.7 L880.0,86.0 L878.3,80.9 L875.3,80.5 L872.2,84.8 L868.7,83.4 L869.4,78.1 L866.9,76.4 L862.2,79.0 L859.7,76.2 L862.6,71.7 L861.1,69.1 L855.7,69.4 L854.7,65.8 L859.2,63.0 L859.0,60.0 L854.1,57.9 L854.7,54.2 L860.0,53.7 L861.1,50.9 L857.6,46.9 L859.7,43.8 L864.7,45.6 L866.9,43.6 L865.5,38.4 L868.7,36.6 L872.4,40.4 L875.3,39.5 L876.3,34.3 L880.0,34.0 L881.7,39.1 L884.7,39.5 L887.8,35.2 L891.3,36.6 L890.6,41.9 L893.1,43.6 L897.8,41.0 L900.3,43.8 L897.4,48.3 L898.9,50.9 L904.3,50.6 L905.3,54.2 L900.8,57.0Z M891.0,60.0 A11 11 0 1 0 869.0,60.0 A11 11 0 1 0 891.0,60.0Z"/><circle cx="880" cy="60" r="4" fill="#EF7A1A"/></g>
+    </svg>
+  </div>
+</section>
+
+<section class="terrazzo" id="aanbod" aria-labelledby="aanbod-kop">
+  <div class="wrap">
+    <h2 id="aanbod-kop">Wat je hier haalt en laat maken</h2>
+    <p class="intro">Uit wat klanten op Google schrijven en wat er in de winkel staat: fietsen voor volwassenen en kinderen, en hulp als er iets stuk is.</p>
+    <div class="bento">
+      <figure class="tegel foto t-foto" style="margin:0">
+        <img src="img/winkelrij.jpg" width="600" height="800" alt="Fietsen op een rij langs de muur van de winkel, met kinderfietsen aan de wand en het eigen logo op het raam" loading="lazy" decoding="async">
+        <div class="onder"><h3>Dames- en kinderfietsen</h3><p>Een klant kocht hier een damesfiets en een kinderfiets, en noemt ze goed voor de prijs.</p><figcaption>Foto: Google Maps-vermelding van de winkel</figcaption></div>
+      </figure>
+      <div class="tegel prijs t-a"><span class="nr" aria-hidden="true">€</span><h3>De prijs hangt aan de fiets</h3><p>In een review staat dat de prijzen bij de producten staan. Je hoeft er dus niet naar te raden.</p><a class="link" href="#kiezer" data-dienst="kopen">Vraag naar een fiets</a></div>
+      <div class="tegel breed t-b"><span class="nr" aria-hidden="true">01</span><h3>Lekke band</h3><p>Een klant reed door glas. Binnen 3 uur zat er een nieuwe binnenband in.</p><a class="link" href="#kiezer" data-dienst="band">Lekke band melden</a></div>
+      <div class="tegel t-c"><span class="nr" aria-hidden="true">02</span><h3>Kleine reparaties</h3><p>Iets los, iets stuk? Klanten schrijven over snelle hulp bij kleine klussen.</p><a class="link" href="#kiezer" data-dienst="reparatie">Reparatie vragen</a></div>
+      <div class="tegel t-d"><span class="nr" aria-hidden="true">03</span><h3>Onderdelen</h3><p>Zoals een nieuw ventiel. Vraag gerust of ze het onderdeel hebben dat jij zoekt.</p><a class="link" href="#kiezer" data-dienst="onderdeel">Onderdeel vragen</a></div>
+      <figure class="tegel foto t-e" style="margin:0;min-height:220px">
+        <img src="img/stadsfietsen.jpg" width="900" height="365" alt="Zadels en sturen van stadsfietsen in de winkel" loading="lazy" decoding="async">
+        <div class="onder" style="padding-top:50px"><figcaption>Foto: Google Maps-vermelding van de winkel</figcaption></div>
+      </figure>
+    </div>
+  </div>
+</section>
+<div class="schakels" aria-hidden="true"></div>
+
+<section class="kies" id="kiezer" aria-labelledby="kies-kop">
+  <div class="wrap">
+    <h2 id="kies-kop">Schrijf je belbriefje</h2>
+    <p class="intro">Kies waar het over gaat. Je krijgt een briefje met je vraag erop: lees het voor aan de telefoon, of laat het zien aan de toonbank.</p>
+    <div class="kies-grid" id="kies">
+      <div>
+        <div class="stap"><div class="kop"><i>1</i>Waar gaat het over?</div>
+          <div class="chips" data-groep="dienst">
+            <button type="button" class="chip" data-w="kopen" aria-pressed="true">Een fiets kopen</button>
+            <button type="button" class="chip" data-w="band" aria-pressed="false">Lekke band</button>
+            <button type="button" class="chip" data-w="reparatie" aria-pressed="false">Kleine reparatie</button>
+            <button type="button" class="chip" data-w="onderdeel" aria-pressed="false">Onderdeel</button>
+            <button type="button" class="chip" data-w="anders" aria-pressed="false">Iets anders</button>
+          </div>
+        </div>
+        <div class="stap" id="stapVariant"><div class="kop"><i>2</i><span id="variantKop">Wat voor fiets?</span></div>
+          <div class="chips" data-groep="variant" id="varianten"></div>
+        </div>
+        <div class="stap"><div class="kop"><i id="stapNr">3</i>Wanneer wil je langskomen?</div>
+          <div class="chips" data-groep="wanneer">
+            <button type="button" class="chip" data-w="vandaag" aria-pressed="false">Vandaag</button>
+            <button type="button" class="chip" data-w="morgen" aria-pressed="false">Morgen</button>
+            <button type="button" class="chip" data-w="deze week" aria-pressed="true">Deze week</button>
+            <button type="button" class="chip" data-w="weet ik nog niet" aria-pressed="false">Weet ik nog niet</button>
+          </div>
+        </div>
+      </div>
+      <div class="briefje" aria-live="polite">
+        <div class="titel">Belbriefje</div>
+        <div class="wat">Fietsenwinkel Slinge · <span class="nw">010 229 81 91</span></div>
+        <ul id="regels"></ul>
+        <div class="zin" id="zin"></div>
+        <div class="knoppen">
+          <a class="btn navy" href="tel:+31102298191"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Bel met dit briefje</a>
+          <a class="btn rand" href="https://www.google.com/maps/dir/?api=1&amp;destination=Krabbendijkestraat+6,+3086+LW+Rotterdam" target="_blank" rel="noopener">Route naar de winkel</a>
+        </div>
+        <p class="klein">Het briefje blijft op je telefoon; er wordt niets verstuurd.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="terrazzo" aria-labelledby="waarom-kop">
+  <div class="wrap">
+    <h2 id="waarom-kop">Waarom Fietsenwinkel Slinge</h2>
+    <p class="intro">De drie dingen die in de reviews op Google steeds terugkomen.</p>
+    <div class="drie">
+      <article class="kaart"><h3>Prijs en eerlijk advies</h3><p>Klanten schrijven dat de prijs goed is en dat ze eerlijk advies kregen.</p></article>
+      <article class="kaart"><h3>Snel weer rijden</h3><p>Klanten schrijven over een reparatie die snel klaar was, en een klant kreeg gratis hulp toen de schroeven van het stuur los zaten.</p></article>
+      <article class="kaart"><h3>Vriendelijk geholpen</h3><p>Klanten schrijven dat ze vriendelijk geholpen werden. Een klant noemt de eigenaar echt een goed mens.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews" aria-labelledby="rev-kop">
+  <div class="wrap">
+    <h2 id="rev-kop">Wat klanten op Google schrijven</h2>
+    <div class="score-groot"><span class="getal">4,8</span><div><div class="ster" aria-hidden="true">★★★★★</div><a href="https://www.google.com/maps?cid=2966740120174505916" target="_blank" rel="noopener">Lees alle 66 reviews op Google</a></div></div>
+    <div class="citaten">
+      <div class="citaat"><p>Goede prijs en goed advies.</p><b>Anne</b></div>
+      <div class="citaat"><p>Goede service, een heel goede prijs en erg vriendelijk.</p><b>Berend</b></div>
+      <div class="citaat"><p>Goed in prijs en in kwaliteit.</p><b>Nick</b></div>
+    </div>
+    <p class="label">Samengevat uit reviews op Google, niet letterlijk geciteerd.</p>
+  </div>
+</section>
+
+<section class="terrazzo" aria-labelledby="stap-kop">
+  <div class="wrap">
+    <h2 id="stap-kop">Zo ben je weer op de fiets</h2>
+    <ol class="tanden">
+      <li><div class="tand"><svg viewBox="0 0 64 64" aria-hidden="true"><path fill="#2A3BB5" fill-rule="evenodd" d="M58.0,32.0 L62.9,34.9 L61.9,40.0 L56.4,41.1 L54.5,45.0 L57.3,50.0 L53.9,53.9 L48.6,52.0 L45.0,54.5 L44.9,60.2 L40.0,61.9 L36.3,57.6 L32.0,58.0 L29.1,62.9 L24.0,61.9 L22.9,56.4 L19.0,54.5 L14.0,57.3 L10.1,53.9 L12.0,48.6 L9.5,45.0 L3.8,44.9 L2.1,40.0 L6.4,36.3 L6.0,32.0 L1.1,29.1 L2.1,24.0 L7.6,22.9 L9.5,19.0 L6.7,14.0 L10.1,10.1 L15.4,12.0 L19.0,9.5 L19.1,3.8 L24.0,2.1 L27.7,6.4 L32.0,6.0 L34.9,1.1 L40.0,2.1 L41.1,7.6 L45.0,9.5 L50.0,6.7 L53.9,10.1 L52.0,15.4 L54.5,19.0 L60.2,19.1 L61.9,24.0 L57.6,27.7Z"/><circle cx="32" cy="32" r="22" fill="#2A3BB5"/></svg><span>1</span></div><div><h3>Kies je vraag</h3><p>Fiets, band, reparatie of onderdeel: zet het op je <a href="#kiezer">belbriefje</a>.</p></div></li>
+      <li><div class="tand"><svg viewBox="0 0 64 64" aria-hidden="true"><path fill="#2A3BB5" fill-rule="evenodd" d="M58.0,32.0 L62.9,34.9 L61.9,40.0 L56.4,41.1 L54.5,45.0 L57.3,50.0 L53.9,53.9 L48.6,52.0 L45.0,54.5 L44.9,60.2 L40.0,61.9 L36.3,57.6 L32.0,58.0 L29.1,62.9 L24.0,61.9 L22.9,56.4 L19.0,54.5 L14.0,57.3 L10.1,53.9 L12.0,48.6 L9.5,45.0 L3.8,44.9 L2.1,40.0 L6.4,36.3 L6.0,32.0 L1.1,29.1 L2.1,24.0 L7.6,22.9 L9.5,19.0 L6.7,14.0 L10.1,10.1 L15.4,12.0 L19.0,9.5 L19.1,3.8 L24.0,2.1 L27.7,6.4 L32.0,6.0 L34.9,1.1 L40.0,2.1 L41.1,7.6 L45.0,9.5 L50.0,6.7 L53.9,10.1 L52.0,15.4 L54.5,19.0 L60.2,19.1 L61.9,24.0 L57.6,27.7Z"/><circle cx="32" cy="32" r="22" fill="#2A3BB5"/></svg><span>2</span></div><div><h3>Bel of kom langs</h3><p>Bel <a class="nw" href="tel:+31102298191">010 229 81 91</a>, of loop binnen aan de Krabbendijkestraat 6 in Pendrecht.</p></div></li>
+      <li><div class="tand"><svg viewBox="0 0 64 64" aria-hidden="true"><path fill="#2A3BB5" fill-rule="evenodd" d="M58.0,32.0 L62.9,34.9 L61.9,40.0 L56.4,41.1 L54.5,45.0 L57.3,50.0 L53.9,53.9 L48.6,52.0 L45.0,54.5 L44.9,60.2 L40.0,61.9 L36.3,57.6 L32.0,58.0 L29.1,62.9 L24.0,61.9 L22.9,56.4 L19.0,54.5 L14.0,57.3 L10.1,53.9 L12.0,48.6 L9.5,45.0 L3.8,44.9 L2.1,40.0 L6.4,36.3 L6.0,32.0 L1.1,29.1 L2.1,24.0 L7.6,22.9 L9.5,19.0 L6.7,14.0 L10.1,10.1 L15.4,12.0 L19.0,9.5 L19.1,3.8 L24.0,2.1 L27.7,6.4 L32.0,6.0 L34.9,1.1 L40.0,2.1 L41.1,7.6 L45.0,9.5 L50.0,6.7 L53.9,10.1 L52.0,15.4 L54.5,19.0 L60.2,19.1 L61.9,24.0 L57.6,27.7Z"/><circle cx="32" cy="32" r="22" fill="#2A3BB5"/></svg><span>3</span></div><div><h3>Kijk en kies in de winkel</h3><p>De fietsen staan in rijen in de winkel, met de prijs erbij.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="faq-kop">
+  <div class="wrap">
+    <h2 id="faq-kop">Vaak gevraagd in de fietsenwinkel</h2>
+    <div class="faq-lijst">
+      <details><summary>Verkopen jullie ook kinderfietsen?</summary><p>Ja. In de reviews op Google staat een klant die hier een damesfiets en een kinderfiets kocht. Wil je weten wat er nu staat? Bel <a class="nw" href="tel:+31102298191">010 229 81 91</a>.</p></details>
+      <details><summary>Kan ik een lekke band laten maken?</summary><p>Ja. Bij een klant zat er binnen 3 uur een nieuwe binnenband in. Hoe snel het bij jou kan, hoor je als je belt of langskomt.</p></details>
+      <details><summary>Staan de prijzen erbij?</summary><p>Volgens een review op Google staan de prijzen bij de producten in de winkel.</p></details>
+      <details><summary>Wanneer is de winkel open?</summary><p>Van maandag tot en met zaterdag. Op maandag en zaterdag van 11:00 tot 18:00. De tijden op de andere dagen verschillen per gids op internet, dus bel even als je vroeg of laat wilt komen.</p></details>
+      <details><summary>Kan ik ook appen?</summary><p>De winkel is te bereiken op het vaste nummer <a class="nw" href="tel:+31102298191">010 229 81 91</a>. Bellen of langskomen dus.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="terrazzo" id="adres" aria-labelledby="adres-kop">
+  <div class="wrap">
+    <h2 id="adres-kop">Zo vind je de winkel</h2>
+    <div class="adres-grid">
+      <div class="blok">
+        <a class="tel-groot" href="tel:+31102298191">010 229 81 91</a>
+        <dl style="margin-top:14px">
+          <dt>Adres</dt><dd>Krabbendijkestraat 6<br>3086 LW Rotterdam</dd>
+          <dt>Wijk</dt><dd>Pendrecht</dd>
+          <dt>Maandag</dt><dd>11:00–18:00</dd>
+          <dt>Di t/m vr</dt><dd>open, bel voor de tijden</dd>
+          <dt>Zaterdag</dt><dd>11:00–18:00</dd>
+        </dl>
+        <p class="noot">Maandag en zaterdag zijn in de gidsen hetzelfde. Voor dinsdag tot en met vrijdag geven ze verschillende tijden.</p>
+        <div class="knoppen">
+          <a class="btn navy" href="https://www.google.com/maps/dir/?api=1&amp;destination=Krabbendijkestraat+6,+3086+LW+Rotterdam" target="_blank" rel="noopener">Plan je route</a>
+          <a class="btn rand" href="#kiezer">Belbriefje maken</a>
+        </div>
+      </div>
+      <div class="mm-kaart" data-src="https://maps.google.com/maps?q=Krabbendijkestraat%206%2C%203086%20LW%20Rotterdam&amp;z=16&amp;output=embed" data-titel="Kaart: Fietsenwinkel Slinge, Krabbendijkestraat 6, Rotterdam">
+        <div class="mk-raster" aria-hidden="true"></div>
+        <div class="mk-weg" style="left:-5%;right:-5%;top:34%;height:14px;transform:rotate(-4deg)" aria-hidden="true"></div>
+        <div class="mk-weg" style="top:-5%;bottom:-5%;left:30%;width:10px;transform:rotate(3deg)" aria-hidden="true"></div>
+        <div class="mk-inhoud">
+          <svg class="mk-pin" viewBox="0 0 24 24" aria-hidden="true"><path fill="var(--mk-accent)" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          <p class="mk-adres">Krabbendijkestraat 6<br>3086 LW Rotterdam</p>
+          <button type="button" class="mk-knop">Toon kaart</button>
+          <p class="mk-uitleg">De kaart komt van Google Maps en laadt pas als je klikt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slot" aria-labelledby="slot-kop">
+  <div class="wrap">
+    <h2 id="slot-kop">Fiets nodig of fiets stuk?</h2>
+    <p>Bel de winkel in Pendrecht, of zet je vraag eerst op een belbriefje.</p>
+    <div class="knoppen">
+      <a class="btn navy" href="tel:+31102298191"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg><span class="nw">010 229 81 91</span></a>
+      <a class="btn wit" href="#kiezer">Naar het belbriefje</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-light.svg" width="300" height="240" alt="Logo Fiets Winkel Slinge" loading="lazy">
+    <p style="margin:0">Fietsenwinkel Slinge · Krabbendijkestraat 6, 3086 LW Rotterdam · <a class="nw" href="tel:+31102298191">010 229 81 91</a></p>
+    <p class="bron" style="margin:0">Foto's: de Google Maps-vermelding van Fietsenwinkel Slinge (de rij fietsen: geplaatst door de zaak, mei 2024). Merknamen en prijskaartjes onscherp gemaakt. Logo nagetekend van het bord in de winkel.</p>
+    <p style="margin:0">Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
+  </div>
+</footer>
+
+<div class="zweef" id="zweef">
+  <a class="btn oranje" href="tel:+31102298191" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Bellen</a>
+  <a class="btn wit" href="#kiezer" tabindex="-1">Belbriefje</a>
+</div>
+
+<div class="pitchpaneel" id="pitch" hidden>
+  <div class="in" role="dialog" aria-modal="true" aria-labelledby="pitchKop">
+    <button type="button" class="sluit" id="pitchDicht">Sluiten</button>
+    <h2 id="pitchKop">Wat iemand in Pendrecht nu online vindt</h2>
+    <div class="nuenstraks">
+      <figure><img src="img/voor-maps.jpg" width="390" height="844" loading="lazy" decoding="async" alt="Nu: de Google Maps-vermelding van Fietsenwinkel slinge op een telefoon"><figcaption>Nu, 16 nov op een telefoon: alleen de Google Maps-vermelding.</figcaption></figure>
+      <figure><img src="img/na-mobiel.jpg" width="390" height="844" loading="lazy" decoding="async" alt="Straks: deze site op een telefoon"><figcaption>Straks: je eigen site, met je winkel, je logo en een belknop.</figcaption></figure>
+    </div>
+    <h3>Vier dingen die beter worden</h3>
+    <ul>
+      <li>De openingstijden staan op één plek. Nu geven de gidsen verschillende tijden: vindjefietsenmaker.nl zegt dinsdag t/m donderdag 10:30–17:30, revieweuro 10:00–17:00, en het Telefoonboek noemt geen tijden.</li>
+      <li>Er is nu geen eigen website: bij Google staat "Website toevoegen" en het Telefoonboek zegt "Geen website vermeld". Straks staat je winkel er met je eigen foto's, je eigen logo en je aanbod.</li>
+      <li>In de winkel staat de prijs bij de fiets. Online zie je nu niet wat er staat. Op de site kunnen fietsen met foto en prijs erbij, zodat mensen al weten wat ze komen halen.</li>
+      <li>66 reviews met een 4,8 staan nu op Google, niet op een eigen site. Op de site ziet iedereen ze meteen.</li>
+    </ul>
+    <h3>Rekenvoorbeeld met jouw cijfers (geen belofte)</h3>
+    <div class="reken">
+      <label for="rk">Extra klanten per week: <span id="rkU">1</span></label>
+      <input type="range" id="rk" min="1" max="15" value="1">
+      <label for="rb">Gemiddeld bedrag per klant: € <span id="rbU">60</span></label>
+      <input type="range" id="rb" min="10" max="900" step="10" value="60">
+      <div class="uit"><p style="margin:0">Per jaar: <b id="rjU">€ 3.120</b> extra omzet (voorbeeld)</p><p style="margin:6px 0 0">€ 595 is de omzet van <b id="rnU">10</b> klanten.</p></div>
+    </div>
+    <h3>Prijs van je site en het beheer</h3>
+    <div class="prijs-p">
+      <p><b>€ 595 eenmalig</b> excl. btw (€&nbsp;719,95 incl. btw): site tot 5 pagina's, op je eigen domein, belknop, reviews en route, live binnen 48 uur na betaling. Hosting zit erin.</p>
+      <p><b>Beheer: € 25 per maand</b> excl. btw (€&nbsp;30,25 incl. btw). Wij passen aan wat je wilt veranderen, bijvoorbeeld nieuwe fietsen, prijzen of tijden.</p>
+      <p>Je domeinnaam koop en bezit je zelf (die blijft dus van jou); wij koppelen hem aan de site.</p>
+      <p style="margin:0">Liever zelf aanpassen? Dan krijg je in plaats daarvan een eigen portaal: <b>€ 249 eenmalig</b> excl. btw (€&nbsp;301,29 incl. btw).</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NAMEN={kopen:'Een fiets kopen',band:'Lekke band',reparatie:'Kleine reparatie',onderdeel:'Onderdeel',anders:'Iets anders'};
+  var VARIANT={
+    kopen:['Wat voor fiets?',[['een damesfiets','Damesfiets'],['een kinderfiets','Kinderfiets'],['een andere fiets','Iets anders']]],
+    band:['Welke band?',[['de voorband','Voorband'],['de achterband','Achterband'],['ik weet het niet zeker','Weet ik niet']]],
+    reparatie:['Wat merk je?',[['er zit iets los','Er zit iets los'],['er is iets stuk','Er is iets stuk'],['ik weet niet wat het is','Weet ik niet']]],
+    onderdeel:['Welk onderdeel?',[['een ventiel','Ventiel'],['een ander onderdeel','Iets anders']]],
+    anders:null
+  };
+  var vEl=document.getElementById('varianten'),vStap=document.getElementById('stapVariant'),vKop=document.getElementById('variantKop'),nr=document.getElementById('stapNr');
+  function vul(d){
+    var v=VARIANT[d];vEl.innerHTML='';
+    if(!v){vStap.hidden=true;nr.textContent='2';return;}
+    vStap.hidden=false;nr.textContent='3';vKop.textContent=v[0];
+    v[1].forEach(function(o,i){
+      var b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('data-w',o[0]);b.textContent=o[1];
+      b.setAttribute('aria-pressed',i===0?'true':'false');vEl.appendChild(b);
+    });
+  }
+  function keuze(g){var a=document.querySelector('[data-groep="'+g+'"] [aria-pressed="true"]');return a?a.getAttribute('data-w'):'';}
+  function label(g){var a=document.querySelector('[data-groep="'+g+'"] [aria-pressed="true"]');return a?a.textContent:'';}
+  function bouw(){
+    var d=keuze('dienst'),v=vStap.hidden?'':keuze('variant'),w=keuze('wanneer');
+    var t='Hallo, ';
+    if(d==='kopen')t+='ik zoek '+v+'. Wat hebben jullie op dit moment staan?';
+    else if(d==='band')t+='ik heb een lekke band ('+v+'). Kunnen jullie die maken?';
+    else if(d==='reparatie')t+='ik heb een kleine reparatie: '+v+'. Kunnen jullie ernaar kijken?';
+    else if(d==='onderdeel')t+='ik zoek '+v+' voor mijn fiets. Hebben jullie dat?';
+    else t+='ik heb een vraag over mijn fiets.';
+    if(w==='weet ik nog niet')t+=' Ik weet nog niet wanneer ik langskom.';
+    else t+=' Ik wil graag '+w+' langskomen.';
+    document.getElementById('zin').textContent='“'+t+'”';
+    var r=[['Waarover',NAMEN[d]]];
+    if(!vStap.hidden)r.push(['Precies',label('variant')]);
+    r.push(['Langskomen',label('wanneer')]);
+    var ul=document.getElementById('regels');ul.innerHTML='';
+    r.forEach(function(x){var li=document.createElement('li');var a=document.createElement('span');a.textContent=x[0];var b=document.createElement('span');b.textContent=x[1];li.appendChild(a);li.appendChild(b);ul.appendChild(li);});
+  }
+  function zetDienst(d){
+    var g=document.querySelector('[data-groep="dienst"]'),b=g.querySelector('[data-w="'+d+'"]');if(!b)return;
+    g.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');
+    vul(d);bouw();
+  }
+  document.querySelectorAll('.chips').forEach(function(g){
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('.chip');if(!b)return;
+      if(g.getAttribute('data-groep')==='dienst'){zetDienst(b.getAttribute('data-w'));return;}
+      g.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');bouw();
+    });
+  });
+  vul('kopen');bouw();
+  document.querySelectorAll('[data-dienst]').forEach(function(a){a.addEventListener('click',function(){zetDienst(a.getAttribute('data-dienst'));});});
+
+  // kaart pas laden na klik (geen cookies vooraf)
+  document.querySelectorAll('.mm-kaart').forEach(function(k){
+    var b=k.querySelector('.mk-knop');if(!b)return;
+    b.addEventListener('click',function(){var f=document.createElement('iframe');f.src=k.getAttribute('data-src');f.title=k.getAttribute('data-titel')||'Kaart';
+      f.loading='eager';f.referrerPolicy='no-referrer-when-downgrade';f.allowFullscreen=true;k.innerHTML='';k.appendChild(f);});
+  });
+
+  // ketting stilzetten als de hero uit beeld is (scheelt batterij)
+  var hero=document.getElementById('hero'),z=document.getElementById('zweef'),heroWeg=false,kiezerIn=false;
+  function zet(){var aan=heroWeg&&!kiezerIn;z.classList.toggle('aan',aan);z.querySelectorAll('a').forEach(function(a){a.tabIndex=aan?0:-1;});}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){heroWeg=!e[0].isIntersecting;hero.classList.toggle('vergrendel',heroWeg);zet();}).observe(hero);
+    new IntersectionObserver(function(e){kiezerIn=e[0].isIntersecting;zet();},{threshold:.15}).observe(document.getElementById('kies'));
+  }
+
+  // pitch-modus: alleen met ?pitch
+  if(/[?&]pitch\b/.test(location.search)){
+    document.body.classList.add('pitch');
+    var p=document.getElementById('pitch');
+    document.getElementById('pitchOpen').addEventListener('click',function(){p.hidden=false;});
+    document.getElementById('pitchDicht').addEventListener('click',function(){p.hidden=true;});
+    p.addEventListener('click',function(e){if(e.target===p)p.hidden=true;});
+    var rk=document.getElementById('rk'),rb=document.getElementById('rb');
+    function reken(){var k=+rk.value,b=+rb.value;
+      document.getElementById('rkU').textContent=k;document.getElementById('rbU').textContent=b;
+      document.getElementById('rjU').textContent='€ '+(k*b*52).toLocaleString('nl-NL');
+      document.getElementById('rnU').textContent=Math.ceil(595/b);}
+    rk.addEventListener('input',reken);rb.addEventListener('input',reken);reken();
+  }
+})();
+</script>
+<!--mm-b--><p style="margin:0;padding:10px 16px 14px;text-align:center;font:400 12px/1.4 system-ui,sans-serif;opacity:.65">&copy; Mohamedia &middot; demo-ontwerp, gebruik zonder betaling niet toegestaan</p><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120],[]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-b-->
+</body>
+</html>
