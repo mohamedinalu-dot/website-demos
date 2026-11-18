@@ -200,7 +200,7 @@ body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px
 /* OXTAIL (vol beeld) */
 .oxtail{position:relative;color:var(--zand);background:var(--nacht);overflow:hidden;isolation:isolate}
 .oxtail .achter{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
-.oxtail::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(23,19,17,.35),rgba(23,19,17,.55) 45%,rgba(23,19,17,.94) 100%)}
+.oxtail::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(23,19,17,.62),rgba(23,19,17,.72) 45%,rgba(23,19,17,.96) 100%)}
 .oxtail .wrap{min-height:min(100svh,780px);display:flex;flex-direction:column;justify-content:flex-end;padding:96px 0 56px;gap:28px}
 .oxtail .kicker{color:var(--geel)}
 .oxtail h2{font-size:clamp(48px,13vw,120px);font-stretch:115%;line-height:.95}
@@ -239,8 +239,8 @@ body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px
 .vragen{background:var(--zand)}
 .vragen .wrap{display:grid;gap:30px}
 .vragen .wrap>*{min-width:0}
-.pampuna{margin:0;position:relative;border-radius:20px;overflow:hidden;aspect-ratio:960/608;background:var(--nacht)}
-.pampuna video{width:100%;height:100%;object-fit:cover}
+.pampuna{margin:0;position:relative;border-radius:20px;overflow:hidden;aspect-ratio:960/516;background:var(--nacht)}
+.pampuna img{width:100%;height:100%;object-fit:cover}
 .pampuna figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(180deg,transparent,rgba(23,19,17,.85));color:#fff;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:6px 12px}
 .pampuna figcaption b{font-size:20px;font-stretch:110%}
 .pampuna figcaption span{font-weight:700;color:var(--geel);font-size:15px}
@@ -478,7 +478,7 @@ footer .klein{font-size:13.5px;margin:0}
 </section>
 
 <section class="oxtail" id="oxtail">
-  <video class="lus achter" muted playsinline loop preload="none" poster="img/loop-oxtail.jpg" aria-hidden="true"><source src="img/loop-oxtail.mp4" type="video/mp4"></video>
+  <img class="achter" src="img/oxtail.jpg" width="760" height="873" alt="" aria-hidden="true" loading="lazy" decoding="async">
   <div class="wrap">
     <div class="oxtekst">
       <span class="kicker">Vrijdag t/m zondag</span>
@@ -487,7 +487,7 @@ footer .klein{font-size:13.5px;margin:0}
       <p class="met">Met moro, soep en arepa's.</p>
       <a class="btn geel" href="https://www.instagram.com/reel/DezowZPRFzj/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>Bekijk de oxtail-reel</a>
     </div>
-    <figure class="oxkaart"><img src="img/oxtail.jpg" width="760" height="873" alt="Oxtail in de pan" loading="lazy" decoding="async"><figcaption>Uit onze oxtail-reel</figcaption></figure>
+    <figure class="oxkaart"><img src="img/oxtail-saus.jpg" width="720" height="736" alt="Oxtail in de saus, in de pan" loading="lazy" decoding="async"><figcaption>Uit onze oxtail-reel</figcaption></figure>
   </div>
 </section>
 
@@ -514,7 +514,7 @@ footer .klein{font-size:13.5px;margin:0}
 
 <section class="sectie vragen" id="vragen">
   <div class="wrap">
-    <figure class="pampuna film"><video class="lus" muted playsinline loop preload="none" poster="img/loop-pampuna.jpg"><source src="img/loop-pampuna.mp4" type="video/mp4"></video>
+    <figure class="pampuna"><img src="img/pampuna-plaat.jpg" width="960" height="516" alt="Arepa di pampuna op de bakplaat" loading="lazy" decoding="async">
       <figcaption><b>Arepa di pampuna</b><span>€ 2,95 · + € 0,90 per topping</span></figcaption></figure>
     <div>
       <span class="kicker">Vragen</span>
