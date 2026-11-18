@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><title>BijlesBoost</title><circle cx="32" cy="32" r="27" fill="#5B3A9E"/>
+<circle cx="32" cy="32" r="30.5" fill="none" stroke="#F6B52E" stroke-width="2.2" stroke-dasharray="150 9 4 9"/>
+<g transform="rotate(42 32 32)">
+<path d="M27.6 42.5 Q32 55 36.4 42.5 Z" fill="#F6B52E"/>
+<path d="M26.4 34 L20.2 42.8 Q22.5 44 26.7 41.6 Z M37.6 34 L43.8 42.8 Q41.5 44 37.3 41.6 Z" fill="#F6B52E"/>
+<path d="M32 11.5 C39.6 17.5 41.8 29 39.2 42.6 L24.8 42.6 C22.2 29 24.4 17.5 32 11.5 Z" fill="#F5EEE6"/>
+<circle cx="32" cy="26.5" r="4.4" fill="#4A2F86"/>
+<path d="M28.6 37.4 H35.4" stroke="#4A2F86" stroke-width="2.2" stroke-linecap="round"/>
+</g></svg>
