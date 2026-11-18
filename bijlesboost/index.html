@@ -19,7 +19,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>BijlesBoost – persoonlijke bijles voor basisschool en middelbare school</title>
-<meta name="description" content="BijlesBoost: persoonlijke bijles voor leerlingen van de basisschool en de middelbare school. 1-op-1 of in een kleine groep, op een eigen rustige leslocatie en op flexibele tijden. Plan een kennismaking via WhatsApp.">
+<meta name="description" content="BijlesBoost: persoonlijke bijles voor leerlingen van de basisschool en de middelbare school. 1-op-1 of in een kleine groep, op een eigen rustige leslocatie en op flexibele tijden. Vraag bijles aan via WhatsApp.">
 <meta name="theme-color" content="#4A2F86">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/fredoka.woff2" as="font" type="font/woff2" crossorigin>
@@ -61,7 +61,7 @@ body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px
 .balk a{display:inline-flex;align-items:center;gap:8px;min-height:44px;text-decoration:none}
 .balk a span{text-decoration:underline;text-underline-offset:3px}
 .balk .pre{font-style:normal}
-@media (max-width:520px){.balk .pre{display:none}}
+@media (max-width:599px){.balk{display:none}}
 
 /* kopbalk */
 .kop{background:var(--creme);position:relative;z-index:5;border-bottom:1px solid var(--creme-d)}
@@ -94,7 +94,7 @@ body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px
   radial-gradient(90% 70% at 0% 100%,var(--paars-dd) 0%,rgba(46,28,88,0) 60%)}
 .hero .wrap{display:grid;grid-template-columns:1fr;gap:0;padding:6px 0 44px}
 .hero .wrap>*{min-width:0}
-.scene{display:block;width:calc(100% + 40px);margin:0 -20px;height:auto;aspect-ratio:640/400}
+.scene{display:block;max-width:none;width:calc(100% + 40px);margin:0 -20px;height:auto;aspect-ratio:640/400}
 .hero h1{font-size:clamp(38px,10.4vw,76px);font-weight:700;line-height:1.04;max-width:13ch;margin-top:-6px}
 .hero h1 .ond{position:relative;white-space:nowrap;display:inline-block}
 .hero h1 .ond svg{position:absolute;left:-2%;bottom:-.2em;width:104%;height:.38em;overflow:visible}
@@ -274,9 +274,8 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
 .pitchpaneel .sluit{float:right;min-height:44px;min-width:44px;border-radius:999px;border:1px solid var(--lijn);background:#fff;font:700 15px var(--tekst);cursor:pointer;padding:0 16px}
 .nuenstraks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
 .nuenstraks figure{margin:0}
-.nuenstraks img,.nuenstraks .nu{width:100%;aspect-ratio:390/844;height:auto;border-radius:16px;border:1px solid var(--lijn);object-fit:cover;object-position:top}
-.nuenstraks .nu{background:var(--creme);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;padding:16px;text-align:center;font:600 17px/1.35 var(--kop);color:var(--paars-dd)}
-.nuenstraks .nu svg{width:64%;height:auto}
+.nuenstraks img{width:100%;aspect-ratio:390/844;height:auto;border-radius:16px;border:1px solid var(--lijn);object-fit:cover;object-position:top}
+.nuenstraks img.flyer{object-fit:contain;object-position:center;background:var(--creme)}
 .nuenstraks figcaption{font-size:14px;color:var(--grijs);margin-top:6px}
 .pitchpaneel ul{padding-left:20px}
 .pitchpaneel li{margin-bottom:8px}
@@ -317,6 +316,7 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
   footer .wrap{grid-template-columns:1fr auto;align-items:end}
 }
 @media (max-width:899px){.hero .tekst{position:relative;z-index:1}}
+@media (max-width:599px){.scene{aspect-ratio:540/350}}
 @media (max-width:380px){
   .kop .logo img{height:38px}
   .badge{padding:18px 10px 16px}
@@ -331,7 +331,7 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
 </head>
 <body>
 <div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>. <button type="button" class="pitchknop" id="pitchOpen">Pitch openen</button></div>
-<div class="balk"><a href="#afspraak"><i class="pre">Basisschool &amp; middelbare school · </i><span>Plan een kennismaking</span></a></div>
+<div class="balk"><a href="#afspraak"><i class="pre">Basisschool &amp; middelbare school · </i><span>Vraag bijles aan</span></a></div>
 
 <header class="kop">
   <div class="wrap">
@@ -340,7 +340,7 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
       <a href="#waarom">Waarom wij</a><a href="#aanbod">Aanbod</a><a href="#tarieven">Tarieven</a><a href="#werkwijze">Hoe werkt het</a><a href="#vragen">Vragen</a><a href="#contact">Contact</a>
     </nav>
     <div class="rechts">
-      <a class="btn paars klein" href="#afspraak">Kennismaken</a>
+      <a class="btn paars klein" href="#afspraak">Bijles aanvragen</a>
     </div>
   </div>
 </header>
@@ -390,7 +390,7 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
       <path class="spoorpad" mask="url(#spoorMasker)" d="M52 352 C92 236 214 166 346 145"/>
       <!-- raket (getekend rond 0,0, punt omhoog) -->
       <g class="raket">
-        <g transform="scale(1.9)">
+        <g transform="scale(2.3)">
           <path class="vlam" d="M-5.6 13 Q0 33 5.6 13 Z" fill="#EE8A3A"/>
           <path class="vlam" d="M-3.2 13 Q0 25 3.2 13 Z" fill="#FCE3A6"/>
           <path d="M-6.2 2 L-13.6 13.4 Q-10.8 15 -5.8 12 Z M6.2 2 L13.6 13.4 Q10.8 15 5.8 12 Z" fill="#F6B52E"/>
@@ -405,7 +405,7 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
       <h1>Persoonlijke bijles voor <span class="ond">betere<svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 7 Q30 1 60 5 T98 4"/></svg></span> resultaten</h1>
       <p class="sub">Voor leerlingen van de basisschool en de middelbare school. Ervaren docenten met sterke vakkennis helpen je kind met leren, plannen of een bepaald vak.</p>
       <div class="cta">
-        <a class="btn geel" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20een%20kennismaking%20plannen%20voor%20mijn%20kind.%20Wanneer%20kan%20dat%3F"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>App voor een kennismaking</a>
+        <a class="btn geel" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20bijles%20voor%20mijn%20kind.%20Kunnen%20we%20iets%20afspreken%3F"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>App BijlesBoost</a>
         <a class="btn lijn-licht" href="#afspraak">Stel je vraag samen</a>
       </div>
       <ul class="feiten">
@@ -478,7 +478,7 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
     <div>
       <h2>Iedere leerling is <span class="geel">welkom.</span></h2>
       <p>Of je kind nu op de basisschool zit of op de middelbare school: bij BijlesBoost is iedere leerling welkom.</p>
-      <a class="btn geel" href="#afspraak" style="margin-top:8px">Plan een kennismaking</a>
+      <a class="btn geel" href="#afspraak" style="margin-top:8px">Vraag bijles aan</a>
     </div>
     <svg class="kring" viewBox="0 0 520 400" role="img" aria-label="Illustratie: een kring van ronde figuurtjes in verschillende kleuren rond een raket">
       <g fill="none" stroke="#F5EEE6" stroke-opacity=".14" stroke-width="1.5"><circle cx="260" cy="200" r="70"/><circle cx="260" cy="200" r="120"/><circle cx="260" cy="200" r="170"/></g>
@@ -525,7 +525,7 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
 <section class="sectie kiezer" id="afspraak">
   <div class="wrap">
     <div class="kopje">
-      <span class="label">Plan een kennismaking</span>
+      <span class="label">Bijles aanvragen</span>
       <h2>Vertel kort over je kind</h2>
       <p>Vul in wat je weet. Je bericht staat meteen klaar in WhatsApp; je hoeft alleen nog op versturen te tikken.</p>
     </div>
@@ -565,7 +565,7 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
         <h3><img src="favicon.svg" width="34" height="34" alt="">Je bericht aan BijlesBoost</h3>
         <div class="bubbel" id="bubbel"></div>
         <div class="knoppen">
-          <a class="btn geel" id="waKnop" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20een%20kennismaking%20plannen%20voor%20mijn%20kind.%20Wanneer%20kan%20dat%3F"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>Verstuur via WhatsApp</a>
+          <a class="btn geel" id="waKnop" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20bijles%20voor%20mijn%20kind.%20Kunnen%20we%20iets%20afspreken%3F"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>Verstuur via WhatsApp</a>
           <a class="btn lijn-licht" id="mailKnop" href="mailto:bijlesboost@outlook.com">Liever mailen</a>
         </div>
         <p class="klein-tekst">Of bel direct: <a class="nw" href="tel:+31618645277">06 18 64 52 77</a></p>
@@ -582,7 +582,7 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
     </div>
     <ol class="stappen">
       <li><div class="planeetje">1</div><div><h3>Contact</h3><p>Stuur een appje, bel of mail. Vertel kort op welke school je kind zit en waar het hulp bij zoekt.</p></div></li>
-      <li><div class="planeetje">2</div><div><h3>Kennismaking</h3><p>Jullie maken kennis met BijlesBoost. Je vertelt waar je kind tegenaan loopt en je kunt al je vragen stellen.</p></div></li>
+      <li><div class="planeetje">2</div><div><h3>Afstemmen</h3><p>Jullie spreken samen de vorm (1-op-1 of kleine groep) en de tijden af.</p></div></li>
       <li><div class="planeetje">3</div><div><h3>Aan de slag</h3><p>Je kind krijgt persoonlijke begeleiding, 1-op-1 of in een kleine groep, op de eigen rustige leslocatie.</p></div></li>
     </ol>
   </div>
@@ -612,7 +612,7 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
       <h2>Bereik ons zoals jij wilt</h2>
     </div>
     <div class="kanalen">
-      <a class="kanaal k-wa" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20een%20kennismaking%20plannen%20voor%20mijn%20kind.%20Wanneer%20kan%20dat%3F"><span class="rond"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg></span><span><b>WhatsApp</b><span>06 18 64 52 77</span></span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="kanaal k-wa" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20bijles%20voor%20mijn%20kind.%20Kunnen%20we%20iets%20afspreken%3F"><span class="rond"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg></span><span><b>WhatsApp</b><span>06 18 64 52 77</span></span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a class="kanaal k-bel" href="tel:+31618645277"><span class="rond"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1Z"/></svg></span><span><b>Bellen</b><span class="nw">06 18 64 52 77</span></span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a class="kanaal k-mail" href="mailto:bijlesboost@outlook.com?subject=Vraag%20over%20bijles"><span class="rond"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3.5 6.5 8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><span><b>Mailen</b><span>bijlesboost@outlook.com</span></span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
@@ -627,9 +627,9 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
   <div class="wrap">
     <img class="mini" src="favicon.svg" width="92" height="92" alt="">
     <h2>Klaar voor de start?</h2>
-    <p>Plan een kennismaking en vertel waar je kind hulp bij zoekt. Iedere leerling is welkom.</p>
+    <p>Vraag bijles aan en vertel waar je kind hulp bij zoekt. Iedere leerling is welkom.</p>
     <div class="cta">
-      <a class="btn geel" href="#afspraak">Plan een kennismaking</a>
+      <a class="btn geel" href="#afspraak">Vraag bijles aan</a>
       <a class="btn lijn-licht" href="tel:+31618645277">Bel <span class="nw">06 18 64 52 77</span></a>
     </div>
   </div>
@@ -644,50 +644,53 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
         <a href="tel:+31618645277" class="nw">06 18 64 52 77</a>
         <a href="mailto:bijlesboost@outlook.com">bijlesboost@outlook.com</a>
       </div>
-      <p class="klein">Persoonlijke bijles voor basisschool en middelbare school. Illustraties: eigen tekeningen, geen foto's.</p>
+      <p class="klein">Persoonlijke bijles voor basisschool en middelbare school.</p>
     </div>
     <p class="klein">Website door <a href="https://mohamedia.nl">Mohamedia</a></p>
   </div>
 </footer>
 
 <div class="zweef" id="zweef" aria-hidden="true">
-  <a class="btn geel" href="#afspraak" tabindex="-1">Plan een kennismaking</a>
-  <a class="btn rond" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20een%20kennismaking%20plannen%20voor%20mijn%20kind.%20Wanneer%20kan%20dat%3F" tabindex="-1" aria-label="WhatsApp BijlesBoost"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg></a>
+  <a class="btn geel" href="#afspraak" tabindex="-1">Vraag bijles aan</a>
+  <a class="btn rond" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20bijles%20voor%20mijn%20kind.%20Kunnen%20we%20iets%20afspreken%3F" tabindex="-1" aria-label="WhatsApp BijlesBoost"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg></a>
 </div>
 
 <div class="pitchpaneel" id="pitch" hidden>
   <div class="in" role="dialog" aria-modal="true" aria-labelledby="pitchKop">
     <button type="button" class="sluit" id="pitchDicht">Sluiten</button>
-    <h2 id="pitchKop">Van flyer naar je eigen site</h2>
+    <h2 id="pitchKop">Je raket, nu online</h2>
     <div class="nuenstraks">
-      <figure><div class="nu"><svg viewBox="0 0 100 130" aria-hidden="true"><rect x="4" y="4" width="92" height="122" rx="8" fill="#fff" stroke="#D8CCF0" stroke-width="2"/><rect x="14" y="14" width="72" height="10" rx="5" fill="#5B3A9E"/><rect x="14" y="30" width="50" height="6" rx="3" fill="#F6B52E"/><rect x="14" y="44" width="72" height="34" rx="6" fill="#EEE7F8"/><rect x="14" y="86" width="60" height="5" rx="2.5" fill="#D8CCF0"/><rect x="14" y="96" width="66" height="5" rx="2.5" fill="#D8CCF0"/><rect x="14" y="106" width="40" height="5" rx="2.5" fill="#D8CCF0"/></svg>Je flyer</div><figcaption>Nu: de flyer, met stockfoto's.</figcaption></figure>
+      <figure><img class="flyer" src="img/voor-flyer.jpg" width="1131" height="1600" loading="lazy" decoding="async" alt="Nu: de flyer van BijlesBoost"><figcaption>Nu: je flyer.</figcaption></figure>
       <figure><img src="img/na-mobiel.jpg" width="390" height="844" loading="lazy" decoding="async" alt="Straks: deze site op een telefoon"><figcaption>Straks: je eigen site op elke telefoon.</figcaption></figure>
     </div>
     <h3>Wat er beter wordt</h3>
     <ul>
-      <li>Een ouder plant een kennismaking in één tik: school, vorm en vraag staan al in het WhatsApp-bericht.</li>
+      <li>Een ouder vraagt bijles aan in één tik: school, vorm en hulpvraag staan al in het WhatsApp-bericht.</li>
       <li>De tarieven staan op één plek: 1-op-1 € 25, kleine groep € 20.</li>
       <li>Geen stockfoto's meer: eigen tekeningen in de kleuren van je flyer, met je raket als merkteken.</li>
       <li>Tip: zet straks de link of een QR-code op je flyer, dan komt iedereen die hem krijgt meteen hier.</li>
     </ul>
     <h3>Rekenvoorbeeld om samen in te vullen (geen belofte)</h3>
     <div class="reken">
-      <label for="rk">Extra lessen per week: <span id="rkU">2</span></label>
+      <label for="rk">Extra keer per week het tarief: <span id="rkU">2</span></label>
       <input type="range" id="rk" min="1" max="20" value="2">
       <label>Tarief</label>
       <div class="chips" id="rt">
         <button type="button" class="chip" data-w="25" aria-pressed="true">1-op-1 € 25</button>
         <button type="button" class="chip" data-w="20" aria-pressed="false">Kleine groep € 20</button>
       </div>
-      <label for="rw">Weken per jaar met les: <span id="rwU">40</span></label>
+      <label for="rw">Weken per jaar: <span id="rwU">40</span></label>
       <input type="range" id="rw" min="10" max="52" value="40">
-      <div class="uit"><p style="margin:0">Per jaar: <b id="rjU">€ 2.000</b> extra omzet (voorbeeld)</p></div>
+      <div class="uit"><p style="margin:0">Per jaar: <b id="rjU">€ 2.000</b> extra omzet</p><p style="margin:6px 0 0;font-size:14px;color:var(--grijs)">Voorbeeld: aantal keer × het tarief × weken, geen belofte.</p></div>
     </div>
   </div>
 </div>
 
 <script>
 (function(){
+  var sc=document.querySelector('.scene');
+  function vb(){sc.setAttribute('viewBox',matchMedia('(max-width:599px)').matches?'100 30 540 350':'0 0 640 400');}
+  vb();addEventListener('resize',vb);
   var NR='31618645277';
   function wa(t){return 'https://wa.me/'+NR+'?text='+encodeURIComponent(t);}
   var bubbel=document.getElementById('bubbel'),waK=document.getElementById('waKnop'),mailK=document.getElementById('mailKnop');
@@ -699,14 +702,14 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
     var n=naam.value.trim(),s=keuze('school'),v=keuze('vorm'),q=vraag.value.trim(),sn=snel();
     var t='Hallo BijlesBoost,\n\n';
     t+=n?'Ik ben '+n+'. ':'';
-    t+='Ik wil graag een kennismaking plannen voor mijn kind. Mijn kind zit op '+s+'.';
+    t+='Ik wil graag bijles voor mijn kind. Mijn kind zit op '+s+'.';
     t+=v?' We denken aan '+v+'.':' We weten nog niet of 1-op-1 of een kleine groep het beste past.';
     if(sn.length)t+='\nMijn kind zoekt hulp bij '+lijst(sn)+'.';
     if(q)t+='\n'+q;
-    t+='\n\nWanneer kunnen we kennismaken?';
+    t+='\n\nKunnen we iets afspreken?';
     bubbel.textContent=t;
     waK.href=wa(t);
-    mailK.href='mailto:bijlesboost@outlook.com?subject='+encodeURIComponent('Kennismaking BijlesBoost')+'&body='+encodeURIComponent(t);
+    mailK.href='mailto:bijlesboost@outlook.com?subject='+encodeURIComponent('Bijles aanvragen bij BijlesBoost')+'&body='+encodeURIComponent(t);
   }
   document.querySelectorAll('.kaartje .chips').forEach(function(g){
     g.addEventListener('click',function(e){
