@@ -344,6 +344,48 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
 <!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
 </head>
 <body>
+<!--mm-lock-->
+<style>
+#mm-lock,#mm-lock *{box-sizing:border-box}
+html.mm-lock,html.mm-lock body{overflow:hidden!important;height:100%}
+#mm-lock{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:24px;
+background:radial-gradient(1200px 700px at 70% 20%,rgba(91,58,158,.55),transparent 60%),radial-gradient(900px 600px at 10% 90%,rgba(246,181,46,.18),transparent 60%),rgba(34,21,63,.86);
+-webkit-backdrop-filter:blur(14px) saturate(120%);backdrop-filter:blur(14px) saturate(120%);color:#FFFCF8;font-family:var(--tekst);overflow:hidden}
+#mm-lock .mmr{position:absolute;border:1.5px solid rgba(216,204,240,.18);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}
+#mm-lock .mmr1{width:420px;height:420px}#mm-lock .mmr2{width:640px;height:640px;border-style:dashed;border-color:rgba(246,181,46,.22)}#mm-lock .mmr3{width:900px;height:900px}
+#mm-lock .mmp{position:absolute;width:14px;height:14px;border-radius:50%;background:#F6B52E;box-shadow:0 0 18px rgba(246,181,46,.7);left:50%;top:50%;
+animation:mm-baan 18s linear infinite;transform-origin:0 0}
+@keyframes mm-baan{from{transform:rotate(0deg) translateX(320px)}to{transform:rotate(360deg) translateX(320px)}}
+@media (prefers-reduced-motion:reduce){#mm-lock .mmp{animation:none;transform:translate(300px,-120px)}}
+#mm-lock .mmk{display:block!important;grid-template-columns:none!important;position:relative;max-width:520px;width:100%;text-align:center;padding:44px 32px 34px;border-radius:28px;
+background:linear-gradient(180deg,rgba(255,252,248,.10),rgba(255,252,248,.04));border:1px solid rgba(255,252,248,.16);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+#mm-lock img{max-width:200px;height:48px;width:auto;margin:0 auto 26px;display:block}
+#mm-lock .mmt{display:inline-flex;align-items:center;gap:8px;font:600 13px/1 var(--tekst);letter-spacing:.06em;text-transform:uppercase;color:#FCE3A6;
+background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8px 14px;border-radius:999px;margin-bottom:18px}
+#mm-lock .mmt i{width:8px;height:8px;border-radius:50%;background:#F6B52E;box-shadow:0 0 0 0 rgba(246,181,46,.6);animation:mm-puls 2s infinite}
+@keyframes mm-puls{70%{box-shadow:0 0 0 10px rgba(246,181,46,0)}100%{box-shadow:0 0 0 0 rgba(246,181,46,0)}}
+#mm-lock h1{display:block;writing-mode:horizontal-tb;word-break:normal;overflow-wrap:normal;max-width:none;font:700 clamp(28px,6vw,40px)/1.1 var(--kop);margin:0 0 14px;color:#FFFCF8}
+@media (max-width:560px){#mm-lock .mmk{padding:36px 20px 28px}#mm-lock h1{font-size:30px}#mm-lock p{font-size:16px}}
+#mm-lock .mmk{min-width:0;flex:0 1 520px}
+#mm-lock h1,#mm-lock p{white-space:normal}
+#mm-lock h1 span{color:#F6B52E}
+#mm-lock p{margin:0 auto;max-width:380px;font-size:17px;line-height:1.55;color:#D8CCF0}
+#mm-lock .mmv{margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,252,248,.12);font-size:13px;color:rgba(216,204,240,.75)}
+#mm-lock .mmv a{color:#FCE3A6;text-decoration:none;border-bottom:1px solid rgba(252,227,166,.4)}
+</style>
+<div id="mm-lock" role="dialog" aria-modal="true" aria-labelledby="mm-lock-kop">
+<div class="mmr mmr3"></div><div class="mmr mmr2"></div><div class="mmr mmr1"></div><div class="mmp"></div>
+<div class="mmk">
+<img src="logo-light.svg" alt="BijlesBoost">
+<div class="mmt"><i></i>Binnenkort online</div>
+<h1 id="mm-lock-kop">Klaar voor <span>lancering</span></h1>
+<p>De nieuwe website van BijlesBoost staat in de startblokken en gaat binnenkort live.</p>
+<div class="mmv">Website door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a></div>
+</div>
+</div>
+<script>document.documentElement.classList.add('mm-lock')</script>
+<!--/mm-lock-->
+
 <div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>. <button type="button" class="pitchknop" id="pitchOpen">Pitch openen</button></div>
 
 <header class="kop">
