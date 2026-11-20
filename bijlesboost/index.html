@@ -383,7 +383,7 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
 <div class="mmv">Website door <a href="https://mohamedia.nl" rel="noopener">Mohamedia</a></div>
 </div>
 </div>
-<script>document.documentElement.classList.add('mm-lock')</script>
+<script>(function(){var k='nb7k2',ok=false;try{ok=new URLSearchParams(location.search).get('voorbeeld')===k;if(ok)sessionStorage.setItem('mmv',k);else ok=sessionStorage.getItem('mmv')===k}catch(e){}if(ok){var l=document.getElementById('mm-lock');if(l)l.remove()}else document.documentElement.classList.add('mm-lock')})()</script>
 <!--/mm-lock-->
 
 <div class="demo">Dit is een demo, gemaakt door <a href="https://mohamedia.nl">Mohamedia</a>. <button type="button" class="pitchknop" id="pitchOpen">Pitch openen</button></div>
