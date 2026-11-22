@@ -422,7 +422,7 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
   <div class="wrap">
     <a class="logo" href="#top" aria-label="BijlesBoost, naar boven"><img src="logo-dark.svg" width="251" height="64" alt="BijlesBoost"></a>
     <nav aria-label="Hoofdmenu">
-      <a href="#waarom">Waarom BijlesBoost?</a><a href="#tarieven">Tarieven</a><a href="#werkwijze">Werkwijze</a><a href="#contact">Contact</a>
+      <a href="#waarom">Waarom BijlesBoost?</a><a href="#tarieven">Tarieven</a><a href="#werkwijze">Hoe werkt het?</a><a href="#contact">Contact</a>
     </nav>
     <div class="rechts">
       <a class="btn paars klein" href="#afspraak"><span>Proefles<span class="xl"> aanvragen</span></span></a>
@@ -572,7 +572,6 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
             <h3>Kleine groep</h3>
             <p>In een kleine groep met andere leerlingen.</p>
             <ul>
-              <li>Uw kind leert samen met anderen.</li>
               <li>Een lager tarief dan privéles.</li>
             </ul>
             <span class="tik" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4.5h4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vinger">Tik om terug te draaien</span><span class="muis">Klik om terug te draaien</span></span>
@@ -592,7 +591,7 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
           <div class="zijde achter" aria-hidden="true">
             <div class="soort">Om te beginnen</div>
             <h3>Intake + proefles</h3>
-            <p>De voordelige start bij BijlesBoost.</p>
+            <p>Zo leren we uw kind eerst kennen.</p>
             <ul>
               <li>Een half uur intake.</li>
               <li>Een uur proefles.</li>
@@ -611,7 +610,7 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
     <div class="kopje">
       <span class="label">Proefles of bijles aanvragen</span>
       <h2>Vertel kort over uw kind</h2>
-      <p>Uw bericht staat meteen klaar in WhatsApp. U hoeft alleen nog op versturen te tikken.</p>
+      <p>Uw bericht staat meteen klaar in WhatsApp. U hoeft het alleen nog te versturen.</p>
     </div>
     <div class="aanmeld">
       <div class="kaartje">
@@ -671,7 +670,7 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
     </div>
     <ol class="stappen">
       <li><div class="planeetje">1</div><div><h3>Aanvragen</h3><p>Dit kan via een <span class="nw">WhatsApp-bericht</span> of e-mail.</p></div></li>
-      <li><div class="planeetje">2</div><div><h3>Intake en proefles</h3><p>We beginnen altijd met een korte intake. Daarna volgt uw kind een proefles.</p></div></li>
+      <li><div class="planeetje">2</div><div><h3>Intake en proefles</h3><p>We beginnen altijd met een korte intake. Daarna kan uw kind een proefles volgen.</p></div></li>
       <li><div class="planeetje">3</div><div><h3>Aan de slag</h3><p>Samen met u spreken we de vorm en de tijden af.</p></div></li>
     </ol>
   </div>
@@ -785,7 +784,7 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
     var t='Hallo BijlesBoost, '+(n?'ik ben '+n+'. Ik':'ik');
     t+=' wil graag '+(bl?'bijles':'een intake en proefles')+' aanvragen voor mijn kind ('+s+(v?', '+v:'')+').';
     if(sn.length)t+=' Mijn kind heeft moeite met '+lijst(sn)+'.';
-    if(q)t+=' '+q+(/[.!?]$/.test(q)?'':'.');
+    if(q)t+=' '+q.charAt(0).toUpperCase()+q.slice(1)+(/[.!?]$/.test(q)?'':'.');
     t+=' Kunnen we iets afspreken?';
     bubbel.textContent=t;
     waK.href=wa(t);
