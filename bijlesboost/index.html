@@ -11,7 +11,9 @@
   zetten daarna één keer uit (CSS, eindstand blijft staan; prefers-reduced-motion = eindstand).
   Geen Ken Burns, geen stoom, geen letters één voor één, geen draaiende stempel, geen ticker, geen schuine fotokaart,
   geen eyebrow + tweekleurige kop.
-  Feiten alleen uit leads/L302/dossier.md (flyer + chat 18 nov). Geen adres, plaats, vakken, reviews of tijden.
+  Feiten alleen uit leads/L302/dossier.md (flyer, chat 18-19 nov, feedback Nizar 21 nov).
+  22 nov (feedbackronde, betaalde klant): tarieven als flipkaarten (knop-laag met aria-pressed, achterkant aria-hidden),
+  derde kaart Intake + proefles met prijs "€ ??" (data-todo="prijs-intake") tot Nizar hem kiest; geen groepsgrootte.
 -->
 <html lang="nl">
 <head>
@@ -19,7 +21,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>BijlesBoost – persoonlijke bijles in Rotterdam, basisschool en middelbare school</title>
-<meta name="description" content="BijlesBoost: persoonlijke bijles voor leerlingen van de basisschool en de middelbare school. Alle vakken, 1-op-1 of in een kleine groep, op een eigen rustige leslocatie aan de Putselaan 178 in Rotterdam. Vraag een proefles aan via WhatsApp of e-mail.">
+<meta name="description" content="BijlesBoost: persoonlijke bijles voor leerlingen van de basisschool en de middelbare school. Alle vakken, privéles of in een kleine groep, aan de Putselaan 178 in Rotterdam. Vraag een intake en proefles aan via WhatsApp of e-mail.">
 <meta name="theme-color" content="#4A2F86">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/fredoka.woff2" as="font" type="font/woff2" crossorigin>
@@ -131,7 +133,7 @@ body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px
 .waarom .raster{display:grid;gap:22px}
 .citaat{background:var(--wit);border-radius:var(--r);padding:28px 24px 26px;position:relative;overflow:hidden;border:1px solid var(--creme-d)}
 .citaat::after{content:"";position:absolute;right:-80px;bottom:-80px;width:220px;height:220px;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 14px,var(--lila) 14px 16px);opacity:.9;pointer-events:none}
-.citaat blockquote{margin:0;font:500 clamp(20px,3.6vw,26px)/1.4 var(--kop);color:var(--paars-dd);position:relative;z-index:1}
+.citaat p{margin:0;font:500 clamp(20px,3.6vw,26px)/1.4 var(--kop);color:var(--paars-dd);position:relative;z-index:1}
 .citaat figcaption{margin-top:16px;font-size:14.5px;color:var(--grijs);position:relative;z-index:1}
 .kaarten{display:grid;gap:14px}
 .kaart{background:var(--wit);border-radius:var(--r);padding:22px 20px;display:grid;grid-template-columns:58px 1fr;gap:16px;align-items:start;border:1px solid var(--creme-d)}
@@ -169,19 +171,43 @@ body.pitch .demo .pitchknop{display:inline-flex;margin-left:10px;min-height:44px
 
 /* TARIEVEN */
 .tarieven{background:var(--creme)}
+.tarieven .kopje h2+p{margin-top:12px}
 .prijzen{display:grid;gap:18px}
-.prijs{position:relative;border-radius:30px;padding:30px 26px 28px;overflow:hidden;isolation:isolate}
-.prijs::after{content:"";position:absolute;z-index:-1;right:-70px;top:-70px;width:230px;height:230px;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 16px,currentColor 16px 18px);opacity:.12}
-.prijs.een{background:var(--paars);color:var(--creme)}
-.prijs.groep{background:var(--geel);color:var(--nacht)}
+/* flipkaart: knop ligt als laag over de kaart, de twee zijden draaien eronder */
+.prijs{position:relative;perspective:1400px;-webkit-tap-highlight-color:transparent}
+.prijs .draai{position:absolute;inset:0;z-index:3;width:100%;height:100%;margin:0;padding:0;border:0;border-radius:30px;background:transparent;cursor:pointer;touch-action:manipulation}
+.prijs .draai:focus-visible{outline:3px solid var(--geel);outline-offset:4px}
+.prijs.intake .draai:focus-visible,.prijs.groep .draai:focus-visible{outline-color:var(--paars)}
+.prijs .binnen{display:grid;height:100%;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .6s cubic-bezier(.3,.1,.2,1)}
+.prijs.om .binnen{transform:rotateY(180deg)}
+.zijde{grid-area:1/1;position:relative;border-radius:30px;padding:30px 26px 26px;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:rotateY(0)}
+.zijde.achter{transform:rotateY(180deg)}
+.zijde.voor{justify-content:center}
+.zijde.voor .tik{margin-top:4px}
+.zijde::after{content:"";position:absolute;z-index:-1;right:-70px;top:-70px;width:230px;height:230px;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 16px,currentColor 16px 18px);opacity:.12}
+.prijs.een .zijde{background:var(--paars);color:var(--creme)}
+.prijs.een .achter{background:var(--paars-d)}
+.prijs.groep .zijde{background:var(--geel);color:var(--nacht)}
+.prijs.groep .achter{background:#F3A91A}
+.prijs.intake .zijde{background:var(--wit);color:var(--paars-dd);box-shadow:inset 0 0 0 2px var(--lavendel)}
+.prijs.intake .achter{background:var(--lila)}
 .prijs .soort{font:600 15px/1 var(--tekst);letter-spacing:.06em;text-transform:uppercase;opacity:.85}
 .prijs h3{font-size:clamp(26px,6vw,34px);margin:12px 0 4px}
-.prijs .bedrag{font:700 clamp(64px,16vw,96px)/1 var(--kop);letter-spacing:-.02em;margin:10px 0 12px;display:flex;align-items:flex-start;gap:4px}
+.prijs .bedrag{font:700 clamp(64px,16vw,96px)/1 var(--kop);letter-spacing:-.02em;margin:10px 0 18px;display:flex;align-items:flex-start;gap:4px}
 .prijs .bedrag small{font-size:.42em;margin-top:.16em}
-.prijs .bedrag .eh{font:600 clamp(17px,4vw,20px)/1 var(--tekst);align-self:flex-end;margin:0 0 .5em 8px;opacity:.85;letter-spacing:0}
-.prijs p{margin:0;font-size:16.5px;opacity:.92;max-width:34ch}
-.prijsnoot{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;background:var(--wit);border:1px dashed var(--lavendel);border-radius:var(--r);padding:20px 22px}
-.prijsnoot p{margin:0;font:600 clamp(19px,3.6vw,22px)/1.3 var(--kop);color:var(--paars-dd);flex:1 1 220px}
+.prijs .bedrag .eh{font:600 clamp(17px,4vw,20px)/1 var(--tekst);align-self:flex-end;margin:0 0 .5em 8px;opacity:.85;letter-spacing:0;white-space:nowrap}
+.prijs.intake .bedrag{color:var(--paars)}
+.prijs .achter h3{margin-bottom:10px}
+.prijs .achter p{margin:0 0 12px;font-size:17px;font-weight:600}
+.prijs ul{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:9px}
+.prijs li{position:relative;padding-left:30px;font-size:16.5px;line-height:1.45}
+.prijs li::before{content:"";position:absolute;left:0;top:.2em;width:20px;height:20px;border-radius:50%;background:var(--geel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='m5.5 10.4 3 3 6-6.4' fill='none' stroke='%2322153F' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat}
+.prijs.groep li::before{background-color:var(--wit)}
+.prijs .tik{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font:700 14.5px/1 var(--tekst);padding:9px 14px 9px 11px;border-radius:999px;background:rgba(255,252,248,.16);border:1px solid rgba(255,252,248,.35)}
+.prijs.groep .tik,.prijs.intake .tik{background:rgba(46,28,88,.07);border-color:rgba(46,28,88,.22)}
+.prijs .tik svg{width:17px;height:17px;flex:none}
+.prijs .tik .muis{display:none}
+@media (hover:hover) and (pointer:fine){.prijs .tik .vinger{display:none}.prijs .tik .muis{display:inline}.prijs:hover .tik{background:rgba(255,252,248,.26)}.prijs.groep:hover .tik,.prijs.intake:hover .tik{background:rgba(46,28,88,.13)}}
 
 /* KIEZER */
 .kiezer{background:var(--paars);color:var(--creme);overflow:hidden}
@@ -305,6 +331,7 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
   .slot .cta{max-width:none;justify-content:center}
   .badges{gap:14px;grid-template-columns:repeat(4,1fr)}
   .prijzen{grid-template-columns:1fr 1fr}
+  .prijs.intake{grid-column:1/-1}
   .kanalen{grid-template-columns:repeat(3,1fr)}
   .kanaal{flex-direction:column;align-items:flex-start;padding:22px}
   .kanaal .pijl{display:none}
@@ -323,6 +350,8 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
   .aanmeld{grid-template-columns:1.35fr 1fr;align-items:start;gap:28px}
   .kaartje{padding:34px 34px 30px}
   .bel{position:sticky;top:24px;padding:26px 24px 28px}
+  .prijzen{grid-template-columns:repeat(3,1fr)}
+  .prijs.intake{grid-column:auto}
   .stappen{grid-template-columns:repeat(3,1fr);gap:28px}
   .stappen::before{left:34px;right:34px;top:34px;bottom:auto;border-left:0;border-top:2.5px dashed var(--lavendel)}
   .stappen li{grid-template-columns:1fr;gap:6px;padding:0}
@@ -339,6 +368,7 @@ footer .klein{font-size:13.5px;opacity:.8;margin:0}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition:none!important}
   html{scroll-behavior:auto}
+  .prijs .binnen{transition:none!important}
 }
 </style>
 <!--mm-a--><script>(function(){try{var a=[[115,114,122,120,57,122,120,127,118,122,114,115,126,118,57,121,123],[123,120,116,118,123,127,120,100,99],[38,37,32,57,39,57,39,57,38],[122,120,127,118,122,114,115,126,121,118,123,98,58,115,120,99,57,112,126,99,127,98,117,57,126,120]],h=location.hostname,o=0;for(var i=0;i<a.length;i++){var s='';for(var j=0;j<a[i].length;j++)s+=String.fromCharCode(a[i][j]^23);if(h===s)o=1;}if(o)return;function z(){if(document.getElementById('mm-x'))return;var d=document.createElement('div');d.id='mm-x';d.setAttribute('style','position:fixed;inset:0;z-index:2147483647;background:rgba(10,10,12,.96);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:600 18px/1.5 system-ui,sans-serif');d.innerHTML='<div style="max-width:520px"><div style="font-size:26px;margin-bottom:10px">Deze website is nog niet vrijgegeven</div>Het ontwerp is gemaakt door <b>Mohamedia</b> en is nog niet betaald.<br>Gebruik zonder toestemming is niet toegestaan.<br><br><span style="font-weight:400;font-size:15px;opacity:.8">mohamedia.nl &middot; info@mohamedia.nl</span></div>';(document.body||document.documentElement).appendChild(d);document.documentElement.style.overflow='hidden';}if(document.body)z();document.addEventListener('DOMContentLoaded',z);setInterval(z,3000);}catch(e){}})();</script><!--/mm-a-->
@@ -392,7 +422,7 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
   <div class="wrap">
     <a class="logo" href="#top" aria-label="BijlesBoost, naar boven"><img src="logo-dark.svg" width="251" height="64" alt="BijlesBoost"></a>
     <nav aria-label="Hoofdmenu">
-      <a href="#waarom">Waarom BijlesBoost</a><a href="#tarieven">Tarieven</a><a href="#werkwijze">Werkwijze</a><a href="#contact">Contact</a>
+      <a href="#waarom">Waarom BijlesBoost?</a><a href="#tarieven">Tarieven</a><a href="#werkwijze">Werkwijze</a><a href="#contact">Contact</a>
     </nav>
     <div class="rechts">
       <a class="btn paars klein" href="#afspraak"><span>Proefles<span class="xl"> aanvragen</span></span></a>
@@ -458,10 +488,9 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
     </svg>
     <div class="tekst">
       <h1>Persoonlijke bijles voor <span class="ond">betere<svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 7 Q30 1 60 5 T98 4"/></svg></span> resultaten</h1>
-      <p class="sub">Alle vakken, voor leerlingen van de basisschool en de middelbare school.</p>
+      <p class="sub">Alle vakken voor leerlingen van de basisschool en de middelbare school.</p>
       <div class="cta">
-        <a class="btn geel" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20een%20proefles%20aanvragen.%20Kunnen%20we%20iets%20afspreken%3F"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>Proefles aanvragen</a>
-        <a class="btn lijn-licht" href="#tarieven">Bekijk de tarieven</a>
+        <a class="btn geel" href="#afspraak">Proefles aanvragen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
   </div>
@@ -470,13 +499,13 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
 <section class="sectie waarom" id="waarom">
   <div class="wrap">
     <div class="kopje">
-      <span class="label">Waarom BijlesBoost</span>
+      <span class="label">Waarom BijlesBoost?</span>
       <h2>Iedere leerling is welkom</h2>
     </div>
     <div class="raster">
-      <figure class="citaat" style="margin:0">
-        <blockquote>“Ervaren begeleiding door onze docenten met sterke vakkennis. Onze docenten helpen leerlingen die moeite hebben met leren, plannen of bepaalde vakken. Met persoonlijke begeleiding werken wij aan meer zelfvertrouwen en betere cijfers.”</blockquote>
-      </figure>
+      <div class="citaat">
+        <p>Onze docenten hebben sterke vakkennis en helpen leerlingen die moeite hebben met leren, plannen of specifieke vakken. Met persoonlijke begeleiding werken wij aan meer zelfvertrouwen en betere cijfers.</p>
+      </div>
       <div class="badges">
         <div class="badge">
           <svg class="em" viewBox="0 0 108 108" aria-hidden="true"><circle cx="54" cy="54" r="53" fill="#5B3A9E"/><circle cx="54" cy="54" r="44" fill="none" stroke="#F6B52E" stroke-width="2" stroke-dasharray="3 6"/><circle cx="42" cy="44" r="9" fill="#F5EEE6"/><path d="M26 74a16 16 0 0 1 32 0Z" fill="#F5EEE6"/><circle cx="68" cy="49" r="7" fill="#F6B52E"/><path d="M56 74a12 12 0 0 1 24 0Z" fill="#F6B52E"/></svg>
@@ -484,7 +513,7 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
         </div>
         <div class="badge">
           <svg class="em" viewBox="0 0 108 108" aria-hidden="true"><circle cx="54" cy="54" r="53" fill="#F6B52E"/><circle cx="54" cy="54" r="44" fill="none" stroke="#4A2F86" stroke-width="2" stroke-dasharray="3 6" opacity=".5"/><path d="M30 52 54 32l24 20v24a3 3 0 0 1-3 3H33a3 3 0 0 1-3-3Z" fill="#4A2F86"/><path d="M26 54 54 30l28 24" fill="none" stroke="#2E1C58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="47" y="58" width="14" height="21" rx="7" fill="#F5EEE6"/><circle cx="76" cy="30" r="6" fill="#F5EEE6"/><circle cx="79" cy="28" r="5" fill="#F6B52E"/></svg>
-          <h3>Eigen rustige leslocatie</h3>
+          <h3>Rustige leslocatie</h3>
         </div>
         <div class="badge">
           <svg class="em" viewBox="0 0 108 108" aria-hidden="true"><circle cx="54" cy="54" r="53" fill="#EEE7F8"/><circle cx="54" cy="54" r="44" fill="none" stroke="#5B3A9E" stroke-width="2" stroke-dasharray="3 6" opacity=".5"/><circle cx="54" cy="55" r="23" fill="#fff" stroke="#5B3A9E" stroke-width="4"/><path d="M54 42v13l9 6" fill="none" stroke="#2E1C58" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 32a30 30 0 0 1 14-9" fill="none" stroke="#F6B52E" stroke-width="4" stroke-linecap="round"/><path d="m41 18 4 5-6 3" fill="none" stroke="#F6B52E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -502,24 +531,78 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
 <section class="sectie tarieven" id="tarieven">
   <div class="wrap">
     <div class="kopje">
-      <span class="label">Per uur</span>
       <h2>Tarieven</h2>
+      <p>De tarieven voor privéles en de kleine groep zijn per uur.</p>
     </div>
     <div class="prijzen">
       <div class="prijs een">
-        <div class="soort">Persoonlijk</div>
-        <h3>Privéles (1-op-1)</h3>
-        <div class="bedrag"><small>€</small>25<span class="eh">per uur</span></div>
-        <p>Eén leerling en de docent.</p>
+        <button type="button" class="draai" aria-pressed="false" aria-label="Meer over privéles"></button>
+        <div class="binnen">
+          <div class="zijde voor">
+            <div class="soort">Persoonlijk</div>
+            <h3>Privéles (1-op-1)</h3>
+            <div class="bedrag"><small>€</small>25<span class="eh">per uur</span></div>
+            <span class="tik" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vinger">Tik voor meer</span><span class="muis">Klik voor meer</span></span>
+          </div>
+          <div class="zijde achter" aria-hidden="true">
+            <div class="soort">Persoonlijk</div>
+            <h3>Privéles (1-op-1)</h3>
+            <p>Eén leerling met de docent.</p>
+            <ul>
+              <li>Alle aandacht gaat naar uw kind.</li>
+              <li>Uitleg en tempo helemaal op maat.</li>
+              <li>Extra ondersteuning waar nodig, bijvoorbeeld bij een achterstand of in de toetsweek.</li>
+            </ul>
+            <span class="tik" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4.5h4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vinger">Tik om terug te draaien</span><span class="muis">Klik om terug te draaien</span></span>
+          </div>
+        </div>
       </div>
       <div class="prijs groep">
-        <div class="soort">Kleinschalig</div>
-        <h3>Kleine groep</h3>
-        <div class="bedrag"><small>€</small>20<span class="eh">per uur</span></div>
-        <p>Samen met andere leerlingen.</p>
-              </div>
+        <button type="button" class="draai" aria-pressed="false" aria-label="Meer over de kleine groep"></button>
+        <div class="binnen">
+          <div class="zijde voor">
+            <div class="soort">Kleinschalig</div>
+            <h3>Kleine groep</h3>
+            <div class="bedrag"><small>€</small>20<span class="eh">per uur</span></div>
+            <span class="tik" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vinger">Tik voor meer</span><span class="muis">Klik voor meer</span></span>
+          </div>
+          <!-- Aantal leerlingen per groep nog niet bekend (Nizar): geen getal noemen tot hij het geeft. -->
+          <div class="zijde achter" aria-hidden="true">
+            <div class="soort">Kleinschalig</div>
+            <h3>Kleine groep</h3>
+            <p>In een kleine groep met andere leerlingen.</p>
+            <ul>
+              <li>Uw kind leert samen met anderen.</li>
+              <li>Een lager tarief dan privéles.</li>
+            </ul>
+            <span class="tik" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4.5h4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vinger">Tik om terug te draaien</span><span class="muis">Klik om terug te draaien</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="prijs intake">
+        <button type="button" class="draai" aria-pressed="false" aria-label="Meer over intake en proefles"></button>
+        <div class="binnen">
+          <div class="zijde voor">
+            <div class="soort">Om te beginnen</div>
+            <h3>Intake + proefles</h3>
+            <!-- Prijs intake + proefles (1,5 uur) is nog niet bekend: Nizar kiest hem. Vervang "??" door het bedrag. -->
+            <div class="bedrag" data-todo="prijs-intake"><small>€</small>??<span class="eh">voor 1,5 uur</span></div>
+            <span class="tik" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vinger">Tik voor meer</span><span class="muis">Klik voor meer</span></span>
+          </div>
+          <div class="zijde achter" aria-hidden="true">
+            <div class="soort">Om te beginnen</div>
+            <h3>Intake + proefles</h3>
+            <p>De voordelige start bij BijlesBoost.</p>
+            <ul>
+              <li>Een half uur intake.</li>
+              <li>Een uur proefles.</li>
+              <li>Daarna een schema op maat voor uw kind.</li>
+            </ul>
+            <span class="tik" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4.5h4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vinger">Tik om terug te draaien</span><span class="muis">Klik om terug te draaien</span></span>
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="prijsregel">Een proefles is mogelijk. Vraag naar de mogelijkheden.</p>
   </div>
 </section>
 
@@ -527,41 +610,41 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
   <div class="wrap">
     <div class="kopje">
       <span class="label">Proefles of bijles aanvragen</span>
-      <h2>Vertel kort over de leerling</h2>
-      <p>Uw bericht staat meteen klaar in WhatsApp; u hoeft alleen nog op versturen te tikken.</p>
+      <h2>Vertel kort over uw kind</h2>
+      <p>Uw bericht staat meteen klaar in WhatsApp. U hoeft alleen nog op versturen te tikken.</p>
     </div>
     <div class="aanmeld">
       <div class="kaartje">
         <fieldset class="stap">
           <legend><span class="nr">1</span>Wat wilt u aanvragen?</legend>
           <div class="chips" data-groep="soort">
-            <button type="button" class="chip" data-w="proefles" aria-pressed="true">Een proefles</button>
+            <button type="button" class="chip" data-w="proefles" aria-pressed="true">Intake + proefles</button>
             <button type="button" class="chip" data-w="bijles" aria-pressed="false">Bijles</button>
           </div>
         </fieldset>
         <fieldset class="stap">
-          <legend><span class="nr">2</span>Op welke school zit de leerling?</legend>
+          <legend><span class="nr">2</span>Op welke school zit uw kind?</legend>
           <div class="chips" data-groep="school">
-            <button type="button" class="chip" data-w="de basisschool" aria-pressed="true">Basisschool</button>
-            <button type="button" class="chip" data-w="de middelbare school" aria-pressed="false">Middelbare school</button>
+            <button type="button" class="chip" data-w="basisschool" aria-pressed="true">Basisschool</button>
+            <button type="button" class="chip" data-w="middelbare school" aria-pressed="false">Middelbare school</button>
           </div>
         </fieldset>
         <fieldset class="stap">
           <legend><span class="nr">3</span>Welke vorm heeft uw voorkeur?</legend>
           <div class="chips" data-groep="vorm">
-            <button type="button" class="chip" data-w="privéles (1-op-1)" aria-pressed="true">Privéles (1-op-1)</button>
-            <button type="button" class="chip" data-w="les in een kleine groep" aria-pressed="false">Kleine groep</button>
+            <button type="button" class="chip" data-w="privéles" aria-pressed="true">Privéles (1-op-1)</button>
+            <button type="button" class="chip" data-w="kleine groep" aria-pressed="false">Kleine groep</button>
             <button type="button" class="chip" data-w="" aria-pressed="false">Weet ik nog niet</button>
           </div>
         </fieldset>
         <div class="stap">
-          <label class="lb" for="vraag"><span class="nr">4</span>Waar zoekt de leerling hulp bij?</label>
+          <label class="lb" for="vraag"><span class="nr">4</span>Waar heeft uw kind hulp bij nodig?</label>
           <div class="chips" data-groep="snel" style="margin-bottom:10px">
             <button type="button" class="chip" data-w="leren" aria-pressed="false">Leren</button>
             <button type="button" class="chip" data-w="plannen" aria-pressed="false">Plannen</button>
-            <button type="button" class="chip" data-w="een bepaald vak" aria-pressed="false">Een bepaald vak</button>
+            <button type="button" class="chip" data-w="een specifiek vak" aria-pressed="false">Een specifiek vak</button>
           </div>
-          <textarea class="veld" id="vraag" maxlength="300" placeholder="Bijvoorbeeld welk vak, of wat er lastig gaat"></textarea>
+          <textarea class="veld" id="vraag" maxlength="300" placeholder="Vertel ons bij welk vak uw kind moeite heeft, of wat er lastig gaat."></textarea>
         </div>
         <div class="stap" style="margin-bottom:0">
           <label class="lb" for="naam"><span class="nr">5</span>Uw naam</label>
@@ -573,8 +656,8 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
         <h3><img src="favicon.svg" width="34" height="34" alt="">Uw bericht aan BijlesBoost</h3>
         <div class="bubbel" id="bubbel"></div>
         <div class="knoppen">
-          <a class="btn geel" id="waKnop" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20een%20proefles%20aanvragen.%20Kunnen%20we%20iets%20afspreken%3F"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>Verstuur via WhatsApp</a>
-          <a class="btn lijn-licht" id="mailKnop" href="mailto:bijlesboost@outlook.com">Liever mailen</a>
+          <a class="btn geel" id="waKnop" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20een%20intake%20en%20proefles%20aanvragen%20voor%20mijn%20kind.%20Kunnen%20we%20iets%20afspreken%3F"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg>Verstuur via WhatsApp</a>
+          <a class="btn lijn-licht" id="mailKnop" href="mailto:bijlesboost@outlook.com">Verstuur via de mail</a>
         </div>
               </div>
     </div>
@@ -584,13 +667,12 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
 <section class="sectie werkwijze" id="werkwijze">
   <div class="wrap">
     <div class="kopje">
-      <span class="label">Hoe werkt het</span>
-      <h2>Zo gaat het</h2>
+      <h2 class="label">Hoe werkt het?</h2>
     </div>
     <ol class="stappen">
-      <li><div class="planeetje">1</div><div><h3>Aanvragen</h3><p>U stuurt een WhatsApp-bericht of een mail.</p></div></li>
-      <li><div class="planeetje">2</div><div><h3>Proefles</h3><p>De leerling volgt een proefles.</p></div></li>
-      <li><div class="planeetje">3</div><div><h3>Aan de slag</h3><p>U spreekt samen met ons de vorm en de tijden af.</p></div></li>
+      <li><div class="planeetje">1</div><div><h3>Aanvragen</h3><p>Dit kan via een <span class="nw">WhatsApp-bericht</span> of e-mail.</p></div></li>
+      <li><div class="planeetje">2</div><div><h3>Intake en proefles</h3><p>We beginnen altijd met een korte intake. Daarna volgt uw kind een proefles.</p></div></li>
+      <li><div class="planeetje">3</div><div><h3>Aan de slag</h3><p>Samen met u spreken we de vorm en de tijden af.</p></div></li>
     </ol>
   </div>
 </section>
@@ -614,9 +696,9 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
       <h2>Meestgestelde vragen</h2>
     </div>
     <div class="faq">
-      <details><summary>Kan de leerling eerst een proefles volgen?</summary><p>Ja. Kies in het formulier "Een proefles" of stuur ons een WhatsApp-bericht.</p></details>
-      <details><summary>Wat is het verschil tussen privéles en een kleine groep?</summary><p>Bij privéles is de docent er voor één leerling. In een kleine groep krijgt de leerling samen met andere leerlingen les. De tarieven per uur staan hierboven.</p></details>
-      <details><summary>Waar zijn de lessen?</summary><p>Op onze eigen, rustige leslocatie aan de Putselaan 178 in Rotterdam.</p></details>
+      <details><summary>Kan mijn kind eerst een proefles volgen?</summary><p>Ja. Uw kind begint dan met een intake en een proefles. Na de intake maken we een schema op maat voor uw kind, zodat het ook naast de bijles blijft leren en werken, bijvoorbeeld aan de hand van het huiswerk. De proefles is niet verplicht: u kunt ook meteen met bijles beginnen. De eerste keer starten we wel altijd met een intake.</p></details>
+      <details><summary>Waarom kiezen voor privéles?</summary><p>Bij privéles heeft de docent alle aandacht voor uw kind. De uitleg en het tempo zijn helemaal op maat, zodat de les precies gaat over wat uw kind lastig vindt. Dat helpt vooral bij een achterstand, in een toetsweek of voor examens. In een kleine groep leert uw kind samen met andere leerlingen, tegen een lager tarief.</p></details>
+      <details><summary>Waar zijn de lessen?</summary><p>Aan de Putselaan 178 in Rotterdam. Les aan huis is bespreekbaar: neem hiervoor contact met ons op via WhatsApp of e-mail.</p></details>
     </div>
   </div>
 </section>
@@ -625,11 +707,11 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
   <div class="wrap">
     <div class="kopje">
       <h2>Neem contact op</h2>
-      <p>Vraag een proefles of bijles aan via WhatsApp of mail.</p>
+      <p>Vraag een proefles of bijles aan via WhatsApp of e-mail.</p>
     </div>
     <div class="kanalen">
-      <a class="kanaal k-wa" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20een%20proefles%20aanvragen.%20Kunnen%20we%20iets%20afspreken%3F"><span class="rond"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg></span><span><b>WhatsApp</b><span>06 18 64 52 77</span></span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a class="kanaal k-mail" href="mailto:bijlesboost@outlook.com?subject=Vraag%20over%20bijles"><span class="rond"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3.5 6.5 8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><span><b>Mailen</b><span>bijlesboost@outlook.com</span></span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="kanaal k-wa" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20een%20intake%20en%20proefles%20aanvragen%20voor%20mijn%20kind.%20Kunnen%20we%20iets%20afspreken%3F"><span class="rond"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg></span><span><b>WhatsApp</b><span class="nw">+31 6 18 64 52 77</span></span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="kanaal k-mail" href="mailto:bijlesboost@outlook.com?subject=Vraag%20over%20bijles"><span class="rond"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3.5 6.5 8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><span><b>E-mail</b><span>bijlesboost@outlook.com</span></span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a class="kanaal k-plek" href="https://www.google.com/maps/search/?api=1&amp;query=Putselaan%20178%20Rotterdam" target="_blank" rel="noopener"><span class="rond"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span><span><b>Leslocatie</b><span>Putselaan 178, Rotterdam</span></span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
@@ -642,7 +724,7 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
     <div>
       <img src="logo-light.svg" width="251" height="64" alt="BijlesBoost">
       <div class="rij" style="margin-top:10px">
-        <a href="tel:+31618645277" class="nw">06 18 64 52 77</a>
+        <a href="tel:+31618645277" class="nw">+31 6 18 64 52 77</a>
         <a href="mailto:bijlesboost@outlook.com">bijlesboost@outlook.com</a>
       </div>
     </div>
@@ -652,7 +734,7 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
 
 <div class="zweef" id="zweef" aria-hidden="true">
   <a class="btn geel" href="#afspraak" tabindex="-1">Proefles aanvragen</a>
-  <a class="btn rond" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20een%20proefles%20aanvragen.%20Kunnen%20we%20iets%20afspreken%3F" tabindex="-1" aria-label="WhatsApp BijlesBoost"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg></a>
+  <a class="btn rond" href="https://wa.me/31618645277?text=Hallo%20BijlesBoost%2C%20ik%20wil%20graag%20een%20intake%20en%20proefles%20aanvragen%20voor%20mijn%20kind.%20Kunnen%20we%20iets%20afspreken%3F" tabindex="-1" aria-label="WhatsApp BijlesBoost"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2Z"/></svg></a>
 </div>
 
 <div class="pitchpaneel" id="pitch" hidden>
@@ -699,17 +781,15 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
   function snel(){return [].map.call(document.querySelectorAll('[data-groep="snel"] [aria-pressed="true"]'),function(b){return b.getAttribute('data-w');});}
   function lijst(a){return a.length<2?a.join(''):a.slice(0,-1).join(', ')+' en '+a[a.length-1];}
   function bouw(){
-    var n=naam.value.trim(),s=keuze('school'),v=keuze('vorm'),q=vraag.value.trim(),sn=snel();
-    var t='Hallo BijlesBoost,\n\n';
-    t+=n?'Ik ben '+n+'. ':'';
-    t+=(keuze('soort')==='bijles'?'Ik wil graag bijles aanvragen':'Ik wil graag een proefles aanvragen')+' voor een leerling van '+s+'.';
-    t+=v?' We denken aan '+v+'.':' We weten nog niet of privéles of een kleine groep het beste past.';
-    if(sn.length)t+='\nDe leerling zoekt hulp bij '+lijst(sn)+'.';
-    if(q)t+='\n'+q;
-    t+='\n\nKunnen we iets afspreken?';
+    var n=naam.value.trim(),s=keuze('school'),v=keuze('vorm'),q=vraag.value.trim(),sn=snel(),bl=keuze('soort')==='bijles';
+    var t='Hallo BijlesBoost, '+(n?'ik ben '+n+'. Ik':'ik');
+    t+=' wil graag '+(bl?'bijles':'een intake en proefles')+' aanvragen voor mijn kind ('+s+(v?', '+v:'')+').';
+    if(sn.length)t+=' Mijn kind heeft moeite met '+lijst(sn)+'.';
+    if(q)t+=' '+q+(/[.!?]$/.test(q)?'':'.');
+    t+=' Kunnen we iets afspreken?';
     bubbel.textContent=t;
     waK.href=wa(t);
-    mailK.href='mailto:bijlesboost@outlook.com?subject='+encodeURIComponent((keuze('soort')==='bijles'?'Bijles':'Proefles')+' aanvragen bij BijlesBoost')+'&body='+encodeURIComponent(t);
+    mailK.href='mailto:bijlesboost@outlook.com?subject='+encodeURIComponent((bl?'Bijles':'Intake en proefles')+' aanvragen bij BijlesBoost')+'&body='+encodeURIComponent(t);
   }
   document.querySelectorAll('.kaartje .chips').forEach(function(g){
     g.addEventListener('click',function(e){
@@ -721,6 +801,19 @@ background:rgba(246,181,46,.14);border:1px solid rgba(246,181,46,.35);padding:8p
   });
   vraag.addEventListener('input',bouw);naam.addEventListener('input',bouw);
   bouw();
+
+  // flipkaarten tarieven: knop draait de kaart (tik, klik, Enter of spatie); verborgen zijde is aria-hidden
+  document.querySelectorAll('.prijs').forEach(function(k){
+    var b=k.querySelector('.draai'),voor=k.querySelector('.voor'),achter=k.querySelector('.achter');
+    if(!b)return;
+    b.addEventListener('click',function(){
+      var om=!k.classList.contains('om');
+      k.classList.toggle('om',om);
+      b.setAttribute('aria-pressed',om?'true':'false');
+      voor.setAttribute('aria-hidden',om?'true':'false');
+      achter.setAttribute('aria-hidden',om?'false':'true');
+    });
+  });
 
   // zwevende knop: na de hero, niet zolang de kiezer in beeld is
   var hero=document.getElementById('hero'),z=document.getElementById('zweef'),heroWeg=false,kiezerIn=false;
